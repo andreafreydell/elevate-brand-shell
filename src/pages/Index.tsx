@@ -50,8 +50,25 @@ const Index = () => {
         </div>
       ) : (
         <>
+          {/* Section intro: The Edit */}
+          <div className="max-w-[1440px] mx-auto px-12 lg:px-16 pt-16 md:pt-20 pb-10 text-center">
+            <h2 className="font-serif text-2xl md:text-3xl tracking-[0.08em] uppercase font-medium">
+              The Edit
+            </h2>
+          </div>
           <ProductImageRow products={products} />
-          {products[0] && <FeaturedProduct product={products[0]} />}
+
+          {/* Section intro: Featured */}
+          {products[0] && (
+            <>
+              <div className="max-w-[1440px] mx-auto px-12 lg:px-16 pt-16 md:pt-20 pb-10 text-center">
+                <h2 className="font-serif text-2xl md:text-3xl tracking-[0.08em] uppercase font-medium">
+                  Featured Piece
+                </h2>
+              </div>
+              <FeaturedProduct product={products[0]} />
+            </>
+          )}
         </>
       )}
       <footer className="border-t border-border mt-12">
