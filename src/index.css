@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,87 +6,106 @@
 
 @layer base {
   :root {
-    /* GEA — Warm Editorial Craft Modernism */
-    --background: 36 33% 95%; /* warm cream */
-    --foreground: 30 10% 15%; /* deep warm charcoal */
+    /* GEA — Warm Editorial Craft Modernism
+       Source of truth: landing reference mockup */
 
-    --card: 36 25% 91%; /* oat / sand card */
-    --card-foreground: 30 10% 15%;
+    /* Backgrounds: warm cream/oat spectrum — never pure white */
+    --background: 37 30% 93%;
+    --foreground: 28 12% 14%;
 
-    --popover: 36 30% 93%;
-    --popover-foreground: 30 10% 15%;
+    /* Cards: slightly deeper sand/taupe for contrast */
+    --card: 34 22% 87%;
+    --card-foreground: 28 12% 14%;
 
-    --primary: 30 10% 15%; /* deep charcoal for CTAs */
-    --primary-foreground: 36 33% 95%;
+    /* Popovers: match background */
+    --popover: 37 30% 93%;
+    --popover-foreground: 28 12% 14%;
 
-    --secondary: 32 18% 85%; /* muted taupe */
-    --secondary-foreground: 30 10% 15%;
+    /* Primary: rich warm black for CTAs and emphasis */
+    --primary: 28 12% 14%;
+    --primary-foreground: 37 30% 93%;
 
-    --muted: 34 15% 88%;
-    --muted-foreground: 30 8% 45%;
+    /* Secondary: muted oat for subtle fills */
+    --secondary: 33 16% 83%;
+    --secondary-foreground: 28 12% 14%;
 
-    --accent: 32 20% 82%; /* warm taupe accent */
-    --accent-foreground: 30 10% 15%;
+    /* Muted: warm neutrals for de-emphasized text */
+    --muted: 34 14% 86%;
+    --muted-foreground: 28 8% 48%;
 
-    --destructive: 0 65% 50%;
-    --destructive-foreground: 36 33% 95%;
+    /* Accent: warm taupe for hover states and feature cards */
+    --accent: 32 18% 80%;
+    --accent-foreground: 28 12% 14%;
 
-    --border: 30 10% 35%;
-    --input: 30 10% 35%;
-    --ring: 30 10% 15%;
+    /* Destructive */
+    --destructive: 0 60% 48%;
+    --destructive-foreground: 37 30% 93%;
 
-    --radius: 0rem; /* brutalist: no rounded corners */
+    /* Borders: warm mid-tone — visible but not harsh */
+    --border: 30 12% 40%;
+    --input: 30 10% 50%;
+    --ring: 28 12% 14%;
 
-    --sidebar-background: 36 25% 92%;
-    --sidebar-foreground: 30 10% 15%;
-    --sidebar-primary: 30 10% 15%;
-    --sidebar-primary-foreground: 36 33% 95%;
-    --sidebar-accent: 32 18% 85%;
-    --sidebar-accent-foreground: 30 10% 15%;
-    --sidebar-border: 30 15% 82%;
-    --sidebar-ring: 30 10% 15%;
+    /* No rounded corners — architectural precision */
+    --radius: 0rem;
 
-    --font-serif: 'Playfair Display', Georgia, serif;
-    --font-sans: 'Inter', system-ui, sans-serif;
+    /* Sidebar */
+    --sidebar-background: 34 22% 90%;
+    --sidebar-foreground: 28 12% 14%;
+    --sidebar-primary: 28 12% 14%;
+    --sidebar-primary-foreground: 37 30% 93%;
+    --sidebar-accent: 33 16% 83%;
+    --sidebar-accent-foreground: 28 12% 14%;
+    --sidebar-border: 30 12% 40%;
+    --sidebar-ring: 28 12% 14%;
+
+    /* Typography */
+    --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    /* Shadows — subtle depth, warm-tinted */
+    --shadow-sm: 0 1px 2px 0 hsl(30 10% 20% / 0.04);
+    --shadow-md: 0 4px 12px -2px hsl(30 10% 20% / 0.06);
+    --shadow-lg: 0 10px 30px -6px hsl(30 10% 20% / 0.08);
   }
 
   .dark {
-    --background: 30 10% 8%;
-    --foreground: 36 25% 90%;
+    --background: 28 10% 7%;
+    --foreground: 34 22% 90%;
 
-    --card: 30 10% 12%;
-    --card-foreground: 36 25% 90%;
+    --card: 28 10% 11%;
+    --card-foreground: 34 22% 90%;
 
-    --popover: 30 10% 10%;
-    --popover-foreground: 36 25% 90%;
+    --popover: 28 10% 9%;
+    --popover-foreground: 34 22% 90%;
 
-    --primary: 36 25% 90%;
-    --primary-foreground: 30 10% 8%;
+    --primary: 34 22% 90%;
+    --primary-foreground: 28 10% 7%;
 
-    --secondary: 30 12% 18%;
-    --secondary-foreground: 36 25% 90%;
+    --secondary: 28 10% 16%;
+    --secondary-foreground: 34 22% 90%;
 
-    --muted: 30 10% 18%;
-    --muted-foreground: 32 10% 55%;
+    --muted: 28 8% 16%;
+    --muted-foreground: 30 8% 55%;
 
-    --accent: 30 12% 20%;
-    --accent-foreground: 36 25% 90%;
+    --accent: 28 10% 18%;
+    --accent-foreground: 34 22% 90%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 36 25% 90%;
+    --destructive: 0 55% 35%;
+    --destructive-foreground: 34 22% 90%;
 
-    --border: 30 10% 20%;
-    --input: 30 10% 20%;
-    --ring: 36 25% 90%;
+    --border: 28 8% 22%;
+    --input: 28 8% 22%;
+    --ring: 34 22% 90%;
 
-    --sidebar-background: 30 10% 8%;
-    --sidebar-foreground: 36 25% 90%;
-    --sidebar-primary: 36 25% 90%;
-    --sidebar-primary-foreground: 30 10% 8%;
-    --sidebar-accent: 30 10% 15%;
-    --sidebar-accent-foreground: 36 25% 90%;
-    --sidebar-border: 30 10% 20%;
-    --sidebar-ring: 36 25% 90%;
+    --sidebar-background: 28 10% 7%;
+    --sidebar-foreground: 34 22% 90%;
+    --sidebar-primary: 34 22% 90%;
+    --sidebar-primary-foreground: 28 10% 7%;
+    --sidebar-accent: 28 10% 14%;
+    --sidebar-accent-foreground: 34 22% 90%;
+    --sidebar-border: 28 8% 22%;
+    --sidebar-ring: 34 22% 90%;
   }
 }
 
@@ -96,11 +115,102 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
     font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  /* Serif headings with editorial weight and tracking */
+  h1 {
     font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.08;
+  }
+
+  h2 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    line-height: 1.15;
+  }
+
+  h3 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.25;
+  }
+
+  h4, h5, h6 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    line-height: 1.3;
+  }
+
+  /* Utility label style for uppercase micro-copy */
+  .label-upper {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+  }
+}
+
+@layer components {
+  /* GEA primary button — solid dark, square, editorial */
+  .btn-gea {
+    @apply inline-flex items-center justify-center
+      bg-primary text-primary-foreground
+      border border-primary
+      px-8 py-3
+      text-[11px] tracking-[0.2em] uppercase
+      transition-colors duration-200
+      hover:bg-transparent hover:text-foreground
+      disabled:opacity-50 disabled:pointer-events-none;
+    font-family: var(--font-sans);
+    font-weight: 500;
+  }
+
+  /* GEA outline button */
+  .btn-gea-outline {
+    @apply inline-flex items-center justify-center
+      bg-transparent text-foreground
+      border border-foreground
+      px-8 py-3
+      text-[11px] tracking-[0.2em] uppercase
+      transition-colors duration-200
+      hover:bg-primary hover:text-primary-foreground
+      disabled:opacity-50 disabled:pointer-events-none;
+    font-family: var(--font-sans);
+    font-weight: 500;
+  }
+
+  /* GEA underline CTA link */
+  .cta-underline {
+    @apply inline-block
+      border-b border-current pb-0.5
+      text-[11px] tracking-[0.25em] uppercase
+      transition-opacity duration-200
+      hover:opacity-70;
+    font-family: var(--font-sans);
+    font-weight: 500;
+  }
+
+  /* Section intro heading */
+  .section-heading {
+    @apply text-center;
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(1.25rem, 2.5vw, 1.875rem);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 }
