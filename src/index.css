@@ -31,8 +31,8 @@
     --destructive: 0 65% 50%;
     --destructive-foreground: 36 33% 95%;
 
-    --border: 30 15% 82%;
-    --input: 30 15% 82%;
+    --border: 30 10% 35%;
+    --input: 30 10% 35%;
     --ring: 30 10% 15%;
 
     --radius: 0rem; /* brutalist: no rounded corners */
