@@ -1,27 +1,82 @@
+import { useState } from "react";
+
+const slides = [
+  {
+    subtitle: "The Collection",
+    headline: "Unlimited\nDesigner Jewelry",
+    description:
+      "One membership. Infinite possibility. Access the full GEA collection — crafted moissanite, designed without compromise.",
+    cta: "Discover More",
+    ctaHref: "#collection",
+  },
+  {
+    subtitle: "New Arrivals",
+    headline: "The Brilliance\nNecklace",
+    description:
+      "Created moissanite set in gold-plated artisan settings. Light, form, and craft — reimagined.",
+    cta: "Shop Now",
+    ctaHref: "#collection",
+  },
+];
+
 export const Hero = () => {
+  const [current, setCurrent] = useState(0);
+  const slide = slides[current];
+
   return (
-    <section className="border-b border-border">
-      <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 min-h-[65vh]">
-        {/* Left: Lifestyle image placeholder */}
-        <div className="overflow-hidden bg-[hsl(30,20%,35%)] relative">
-          <div className="w-full h-full min-h-[400px] flex items-center justify-center">
-            <span className="text-xs tracking-wider uppercase text-[hsl(36,33%,85%)]">Lifestyle Image</span>
+    <section>
+      {/* 3-column hero banner */}
+      <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-[1fr_1.2fr_1fr] min-h-[600px] lg:min-h-[680px]">
+        {/* Left image block */}
+        <div className="hidden md:block bg-[hsl(30,18%,38%)] overflow-hidden">
+          <div className="w-full h-full flex items-center justify-center">
+            <span className="text-[10px] tracking-[0.3em] uppercase text-[hsl(36,20%,75%)]">
+              Editorial Image
+            </span>
           </div>
         </div>
 
-        {/* Right: Warm gradient copy panel */}
-        <div className="flex flex-col justify-center items-center text-center px-10 md:px-16 py-16 md:py-24 bg-gradient-to-br from-[hsl(30,25%,42%)] to-[hsl(25,22%,30%)]">
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.5rem] font-medium leading-[1.1] tracking-[-0.01em] mb-8 text-[hsl(36,33%,92%)]">
-            GEA /<br />
-            <em className="italic">Explore the Edit</em>
+        {/* Center copy block — solid color, no gradient */}
+        <div className="flex flex-col items-center justify-center text-center px-8 md:px-12 lg:px-16 py-20 bg-[hsl(28,22%,34%)]">
+          <p className="text-[10px] tracking-[0.4em] uppercase text-[hsl(36,25%,78%)] mb-6 font-sans">
+            {slide.subtitle}
+          </p>
+          <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.5rem] font-medium leading-[1.08] tracking-[-0.01em] text-[hsl(36,33%,93%)] whitespace-pre-line mb-6">
+            {slide.headline}
           </h1>
+          <p className="text-[13px] leading-relaxed text-[hsl(36,20%,75%)] max-w-[340px] mb-10 font-sans">
+            {slide.description}
+          </p>
           <a
-            href="#collection"
-            className="inline-block border-b-2 border-[hsl(36,33%,85%)] pb-1 text-[11px] tracking-[0.3em] uppercase font-sans text-[hsl(36,33%,85%)] hover:opacity-70 transition-opacity"
+            href={slide.ctaHref}
+            className="inline-block border-b border-[hsl(36,25%,78%)] pb-1 text-[11px] tracking-[0.3em] uppercase font-sans text-[hsl(36,25%,78%)] hover:text-[hsl(36,33%,93%)] hover:border-[hsl(36,33%,93%)] transition-colors"
           >
-            Discover More
+            {slide.cta}
           </a>
         </div>
+
+        {/* Right image block */}
+        <div className="hidden md:block bg-[hsl(32,15%,42%)] overflow-hidden">
+          <div className="w-full h-full flex items-center justify-center">
+            <span className="text-[10px] tracking-[0.3em] uppercase text-[hsl(36,20%,75%)]">
+              Editorial Image
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Carousel dots */}
+      <div className="flex items-center justify-center gap-2.5 py-5">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`w-2 h-2 rounded-full transition-colors ${
+              i === current ? "bg-foreground" : "bg-border"
+            }`}
+            aria-label={`Go to slide ${i + 1}`}
+          />
+        ))}
       </div>
     </section>
   );
