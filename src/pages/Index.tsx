@@ -31,6 +31,14 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <Hero />
+
+      {/* Section intro */}
+      <div className="max-w-[1440px] mx-auto px-12 lg:px-16 pt-20 md:pt-28 pb-10 text-center">
+        <h2 className="font-serif text-2xl md:text-3xl tracking-[0.08em] uppercase font-medium">
+          What's New
+        </h2>
+      </div>
+
       <ValueProps />
       {loading ? (
         <div className="flex items-center justify-center py-24">
@@ -46,10 +54,10 @@ const Index = () => {
           {products[0] && <FeaturedProduct product={products[0]} />}
         </>
       )}
-      <footer className="border-t border-border mt-8">
-        <div className="max-w-[1400px] mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="font-serif text-lg tracking-[0.05em] italic">Gea</p>
-          <p className="text-xs text-muted-foreground tracking-wider font-sans">
+      <footer className="border-t border-border mt-12">
+        <div className="max-w-[1440px] mx-auto px-12 lg:px-16 py-14 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="font-serif text-lg tracking-[0.08em] italic">Gea</p>
+          <p className="text-[10px] text-muted-foreground tracking-[0.2em] uppercase font-sans">
             © {new Date().getFullYear()} GEA. Unlimited Designer Jewelry.
           </p>
         </div>
