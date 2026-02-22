@@ -1,32 +1,25 @@
 export const Hero = () => {
   return (
     <section className="border-b border-border">
-      <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 min-h-[70vh]">
-        {/* Left: Image */}
-        <div className="bg-card border-r border-border overflow-hidden">
-          <div className="w-full h-full min-h-[400px] bg-secondary flex items-center justify-center">
-            <span className="text-xs tracking-wider uppercase text-muted-foreground">Editorial Image</span>
+      <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 min-h-[65vh]">
+        {/* Left: Lifestyle image placeholder */}
+        <div className="overflow-hidden bg-[hsl(30,20%,35%)] relative">
+          <div className="w-full h-full min-h-[400px] flex items-center justify-center">
+            <span className="text-xs tracking-wider uppercase text-[hsl(36,33%,85%)]">Lifestyle Image</span>
           </div>
         </div>
 
-        {/* Right: Copy */}
-        <div className="flex flex-col justify-center px-8 md:px-16 py-16 md:py-24">
-          <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-6 font-sans">
-            Introducing
-          </p>
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-[-0.01em] mb-6">
-            Unlimited Designer{" "}
-            <em className="italic">Jewelry</em>
+        {/* Right: Warm gradient copy panel */}
+        <div className="flex flex-col justify-center items-center text-center px-10 md:px-16 py-16 md:py-24 bg-gradient-to-br from-[hsl(30,25%,42%)] to-[hsl(25,22%,30%)]">
+          <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.5rem] font-medium leading-[1.1] tracking-[-0.01em] mb-8 text-[hsl(36,33%,92%)]">
+            GEA /<br />
+            <em className="italic">Explore the Edit</em>
           </h1>
-          <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-md mb-10 font-sans">
-            One membership. Infinite possibility. Access the full GEA collection — 
-            crafted moissanite, designed without compromise.
-          </p>
           <a
             href="#collection"
-            className="inline-block border border-foreground bg-foreground text-background px-8 py-3.5 text-xs tracking-[0.2em] uppercase font-sans hover:bg-transparent hover:text-foreground transition-colors self-start"
+            className="inline-block border-b-2 border-[hsl(36,33%,85%)] pb-1 text-[11px] tracking-[0.3em] uppercase font-sans text-[hsl(36,33%,85%)] hover:opacity-70 transition-opacity"
           >
-            Explore Collection
+            Discover More
           </a>
         </div>
       </div>
