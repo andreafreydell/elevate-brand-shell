@@ -1,0 +1,27 @@
+import { type LucideIcon } from "lucide-react";
+
+interface StepBlockProps {
+  number: string;
+  title: string;
+  description: string;
+  icon?: LucideIcon;
+}
+
+export const StepBlock = ({ number, title, description, icon: Icon }: StepBlockProps) => {
+  return (
+    <div className="bg-card border border-border p-8 md:p-10 flex flex-col min-h-[220px]">
+      <div className="flex items-center justify-between mb-6">
+        <span className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground">
+          Step {number}
+        </span>
+        {Icon && <Icon className="h-5 w-5 stroke-[1.3] text-foreground" />}
+      </div>
+      <h3 className="font-serif text-lg md:text-xl font-semibold tracking-[0.02em] mb-3">
+        {title}
+      </h3>
+      <p className="text-[12px] text-muted-foreground font-sans leading-relaxed mt-auto">
+        {description}
+      </p>
+    </div>
+  );
+};

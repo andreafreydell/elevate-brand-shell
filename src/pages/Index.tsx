@@ -1,11 +1,62 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { storefrontApiRequest, PRODUCTS_QUERY, type ShopifyProduct } from "@/lib/shopify";
-import { Navbar } from "@/components/Navbar";
-import { Hero } from "@/components/Hero";
-import { ValueProps } from "@/components/ValueProps";
+import { PageLayout } from "@/components/layout/PageLayout";
+import { SectionHeading } from "@/components/layout/SectionHeading";
+import { StepBlock } from "@/components/shared/StepBlock";
+import { ValueBlock } from "@/components/shared/ValueBlock";
+import { TierCard, type TierData } from "@/components/membership/TierCard";
 import { ProductImageRow } from "@/components/ProductImageRow";
-import { FeaturedProduct } from "@/components/FeaturedProduct";
-import { Loader2 } from "lucide-react";
+import { Loader2, Hand, Package, Sparkles, RefreshCw } from "lucide-react";
+
+const tiers: TierData[] = [
+  {
+    name: "Essentials",
+    label: "Tier I",
+    price: "$89",
+    period: "month",
+    pieces: "1 shipment per month",
+    features: [
+      "Access the full GEA vault",
+      "Keep any piece at member price",
+      "Free repairs & insurance",
+      "Sanitized & restored between wears",
+      "Free shipping both ways",
+      "Cancel anytime",
+    ],
+  },
+  {
+    name: "Signature",
+    label: "Most Popular",
+    price: "$159",
+    period: "month",
+    pieces: "2 shipments per month",
+    highlighted: true,
+    features: [
+      "Everything in Essentials",
+      "Priority access to new drops",
+      "Flexible mid-cycle swaps",
+      "Early access to capsule collections",
+      "Complimentary styling session",
+      "60-day satisfaction adjustment",
+    ],
+  },
+  {
+    name: "Atelier",
+    label: "Tier III",
+    price: "$279",
+    period: "month",
+    pieces: "4 shipments per month",
+    features: [
+      "Everything in Signature",
+      "Concierge styling service",
+      "Founding member badge",
+      "Full vault access — no waitlists",
+      "Quarterly surprise pieces",
+      "First access to limited editions",
+    ],
+  },
+];
 
 const Index = () => {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
@@ -28,58 +79,240 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <Hero />
+    <PageLayout>
+      {/* ═══════════════════════════════════════════
+          1. AUTHORITY HERO
+          ═══════════════════════════════════════════ */}
+      <section>
+        <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-[1fr_1.2fr_1fr] min-h-[640px] lg:min-h-[720px]">
+          {/* Left image block */}
+          <div className="hidden md:block bg-[hsl(30,18%,38%)] overflow-hidden">
+            <div className="w-full h-full flex items-center justify-center">
+              <span className="text-[10px] tracking-[0.3em] uppercase text-[hsl(36,20%,75%)]">
+                Authority Image
+              </span>
+            </div>
+          </div>
 
-      {/* Section intro */}
-      <div className="max-w-[1440px] mx-auto px-12 lg:px-16 pt-20 md:pt-28 pb-10 text-center">
-        <h2 className="font-serif text-2xl md:text-3xl tracking-[0.08em] uppercase font-medium">
-          What's New
-        </h2>
-      </div>
+          {/* Center: Declarative copy */}
+          <div className="flex flex-col items-center justify-center text-center px-8 md:px-12 lg:px-16 py-24 bg-[hsl(28,22%,34%)]">
+            <p className="text-[10px] tracking-[0.4em] uppercase text-[hsl(36,25%,78%)] mb-8 font-sans">
+              The House of GEA
+            </p>
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.8rem] font-medium leading-[1.08] tracking-[-0.01em] text-[hsl(36,33%,93%)] whitespace-pre-line mb-6">
+              Luxury,{"\n"}in Rotation.
+            </h1>
+            <p className="text-[13px] leading-relaxed text-[hsl(36,20%,75%)] max-w-[380px] mb-12 font-sans">
+              One membership. Infinite possibility. Access the full GEA collection —
+              crafted moissanite, designed without compromise, delivered to your door.
+            </p>
+            <Link
+              to="/membership"
+              className="inline-block border border-[hsl(36,25%,78%)] text-[hsl(36,25%,78%)] px-10 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans hover:bg-[hsl(36,25%,78%)] hover:text-[hsl(28,22%,34%)] transition-colors"
+            >
+              Apply for Access
+            </Link>
+          </div>
 
-      <ValueProps />
+          {/* Right image block */}
+          <div className="hidden md:block bg-[hsl(32,15%,42%)] overflow-hidden">
+            <div className="w-full h-full flex items-center justify-center">
+              <span className="text-[10px] tracking-[0.3em] uppercase text-[hsl(36,20%,75%)]">
+                Editorial Image
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          2. MATERIAL INTELLIGENCE
+          ═══════════════════════════════════════════ */}
+      <SectionHeading label="Craft" heading="Material Intelligence" />
+      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-[2px]">
+          <div className="bg-[hsl(30,14%,32%)] aspect-[4/5] flex items-end p-8">
+            <div>
+              <p className="text-[10px] tracking-[0.3em] uppercase text-[hsl(36,20%,75%)] font-sans mb-2">
+                Gold Vermeil
+              </p>
+              <p className="text-[12px] text-[hsl(36,20%,70%)] font-sans leading-relaxed max-w-[260px]">
+                2.5 micron 18k gold over sterling silver. Built to last through every rotation.
+              </p>
+            </div>
+          </div>
+          <div className="bg-[hsl(28,12%,28%)] aspect-[4/5] flex items-end p-8">
+            <div>
+              <p className="text-[10px] tracking-[0.3em] uppercase text-[hsl(36,20%,75%)] font-sans mb-2">
+                Lab-Created Moissanite
+              </p>
+              <p className="text-[12px] text-[hsl(36,20%,70%)] font-sans leading-relaxed max-w-[260px]">
+                Conflict-free brilliance. Higher refractive index than diamond. Ethically engineered.
+              </p>
+            </div>
+          </div>
+          <div className="bg-[hsl(32,16%,36%)] aspect-[4/5] flex items-end p-8">
+            <div>
+              <p className="text-[10px] tracking-[0.3em] uppercase text-[hsl(36,20%,75%)] font-sans mb-2">
+                Lifecycle Care
+              </p>
+              <p className="text-[12px] text-[hsl(36,20%,70%)] font-sans leading-relaxed max-w-[260px]">
+                Every piece is repolished, restored, and inspected before re-entering the vault.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          3. ACCESS FRAMEWORK
+          ═══════════════════════════════════════════ */}
+      <SectionHeading label="Philosophy" heading="Access Defines Status" />
+      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-[2px]">
+          <div className="bg-card border border-border p-10 md:p-14">
+            <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">
+              The Old Model
+            </p>
+            <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">
+              Ownership Is a Liability
+            </h3>
+            <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
+              The average woman wears each piece of fine jewelry fewer than five times before it sits 
+              forgotten. Thousands spent. Inches of drawer space consumed. Value depreciating silently. 
+              The traditional model rewards accumulation over expression.
+            </p>
+          </div>
+          <div className="bg-foreground text-background p-10 md:p-14">
+            <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-background/60 mb-4">
+              The GEA Model
+            </p>
+            <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">
+              Rotation Is Intelligence
+            </h3>
+            <p className="text-[12px] text-background/70 font-sans leading-relaxed">
+              Access the full vault. Wear what speaks to you this month. Return it when you're ready 
+              for something new. No commitment to a single piece — commitment to always being adorned 
+              exactly as you wish. Presence over possession. Experience over accumulation.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          4. HOW IT WORKS (mini)
+          ═══════════════════════════════════════════ */}
+      <SectionHeading label="The Process" heading="How It Works" />
+      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <StepBlock
+            number="01"
+            title="Choose"
+            description="Browse the vault. Select the pieces that speak to your month, your mood, your moment."
+            icon={Hand}
+          />
+          <StepBlock
+            number="02"
+            title="Receive"
+            description="Your selection arrives in signature packaging. Fully insured, free shipping, ready to wear."
+            icon={Package}
+          />
+          <StepBlock
+            number="03"
+            title="Wear"
+            description="Style with freedom. Take risks you wouldn't take with owned pieces. Every event deserves presence."
+            icon={Sparkles}
+          />
+          <StepBlock
+            number="04"
+            title="Rotate"
+            description="Send it back when you're ready. Your next selection is already waiting. The cycle continues."
+            icon={RefreshCw}
+          />
+        </div>
+        <div className="text-center mt-10">
+          <Link to="/how-it-works" className="cta-underline">
+            Learn More
+          </Link>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          5. VALUE EXPANSION
+          ═══════════════════════════════════════════ */}
+      <SectionHeading label="Freedom" heading="Wear More. Spend Smarter." />
+      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <ValueBlock
+            title="Freedom to Experiment"
+            description="Try bold statement pieces without the commitment of ownership. If it doesn't feel right, rotate it out next month. No risk. No regret."
+            className="bg-card"
+          />
+          <ValueBlock
+            title="Always Something New"
+            description="Your collection evolves as you do. New drops enter the vault monthly. Early access for members means you're always first."
+            className="bg-card"
+          />
+          <ValueBlock
+            title="Luxury Without Burden"
+            description="No storage anxiety. No depreciation. No buyer's remorse. Just beautiful jewelry, worn with intention, returned with ease."
+            className="bg-card"
+          />
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          6. SOCIAL VALIDATION (Product images / UGC strip)
+          ═══════════════════════════════════════════ */}
       {loading ? (
         <div className="flex items-center justify-center py-24">
           <Loader2 className="w-5 h-5 animate-spin text-muted-foreground" />
         </div>
-      ) : products.length === 0 ? (
-        <div className="text-center py-24">
-          <p className="text-sm tracking-wider uppercase text-muted-foreground">No products found</p>
-        </div>
-      ) : (
+      ) : products.length > 0 ? (
         <>
-          {/* Section intro: The Edit */}
-          <div className="max-w-[1440px] mx-auto px-12 lg:px-16 pt-16 md:pt-20 pb-10 text-center">
-            <h2 className="font-serif text-2xl md:text-3xl tracking-[0.08em] uppercase font-medium">
-              The Edit
-            </h2>
-          </div>
+          <SectionHeading label="Community" heading="The Edit" />
           <ProductImageRow products={products} />
-
-          {/* Section intro: Featured */}
-          {products[0] && (
-            <>
-              <div className="max-w-[1440px] mx-auto px-12 lg:px-16 pt-16 md:pt-20 pb-10 text-center">
-                <h2 className="font-serif text-2xl md:text-3xl tracking-[0.08em] uppercase font-medium">
-                  Featured Piece
-                </h2>
-              </div>
-              <FeaturedProduct product={products[0]} />
-            </>
-          )}
         </>
-      )}
-      <footer className="border-t border-border mt-12">
-        <div className="max-w-[1440px] mx-auto px-12 lg:px-16 py-14 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="font-serif text-lg tracking-[0.08em] italic">Gea</p>
-          <p className="text-[10px] text-muted-foreground tracking-[0.2em] uppercase font-sans">
-            © {new Date().getFullYear()} GEA. Unlimited Designer Jewelry.
+      ) : null}
+
+      {/* ═══════════════════════════════════════════
+          7. MEMBERSHIP ENGINE
+          ═══════════════════════════════════════════ */}
+      <SectionHeading label="Membership" heading="Your Tier of Access" />
+      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {tiers.map((tier) => (
+            <TierCard key={tier.name} tier={tier} />
+          ))}
+        </div>
+        <div className="text-center mt-6">
+          <p className="text-[11px] text-muted-foreground font-sans tracking-[0.1em]">
+            All tiers include free shipping, insurance, repair, and sanitization.
+            Keep any piece at member-exclusive pricing. Cancel anytime.
           </p>
         </div>
-      </footer>
-    </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          8. FINAL DECLARATIVE
+          ═══════════════════════════════════════════ */}
+      <section className="bg-[hsl(28,22%,34%)]">
+        <div className="max-w-[1440px] mx-auto px-12 lg:px-16 py-20 md:py-28 text-center">
+          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium leading-[1.1] tracking-[-0.01em] text-[hsl(36,33%,93%)] mb-6">
+            More Beauty.{"\n"}Less Burden.
+          </h2>
+          <p className="text-[13px] text-[hsl(36,20%,75%)] font-sans max-w-[400px] mx-auto mb-10 leading-relaxed">
+            Adorn the woman you are becoming. Not the one weighed down by what she already owns.
+          </p>
+          <Link
+            to="/membership"
+            className="inline-block border border-[hsl(36,25%,78%)] text-[hsl(36,25%,78%)] px-10 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans hover:bg-[hsl(36,25%,78%)] hover:text-[hsl(28,22%,34%)] transition-colors"
+          >
+            Begin Your Rotation
+          </Link>
+        </div>
+      </section>
+    </PageLayout>
   );
 };
 

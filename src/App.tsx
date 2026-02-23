@@ -6,6 +6,19 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useCartSync } from "@/hooks/useCartSync";
 import Index from "./pages/Index";
 import ProductDetail from "./pages/ProductDetail";
+import Membership from "./pages/Membership";
+import HowItWorks from "./pages/HowItWorks";
+import About from "./pages/About";
+import Sustainability from "./pages/Sustainability";
+import CareRepair from "./pages/CareRepair";
+import FAQ from "./pages/FAQ";
+import Contact from "./pages/Contact";
+import ReferFriend from "./pages/ReferFriend";
+import Ambassador from "./pages/Ambassador";
+import Press from "./pages/Press";
+import Legal from "./pages/Legal";
+import Stories from "./pages/Stories";
+import Account from "./pages/Account";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -16,6 +29,19 @@ const AppContent = () => {
     <Routes>
       <Route path="/" element={<Index />} />
       <Route path="/product/:handle" element={<ProductDetail />} />
+      <Route path="/membership" element={<Membership />} />
+      <Route path="/how-it-works" element={<HowItWorks />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/sustainability" element={<Sustainability />} />
+      <Route path="/care" element={<CareRepair />} />
+      <Route path="/faq" element={<FAQ />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/refer" element={<ReferFriend />} />
+      <Route path="/ambassador" element={<Ambassador />} />
+      <Route path="/press" element={<Press />} />
+      <Route path="/legal" element={<Legal />} />
+      <Route path="/stories" element={<Stories />} />
+      <Route path="/account" element={<Account />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

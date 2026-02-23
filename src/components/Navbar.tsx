@@ -17,13 +17,13 @@ export const Navbar = () => {
               Jewelry
             </Link>
             <Link
-              to="/"
+              to="/membership"
               className="text-[11px] tracking-[0.2em] uppercase font-sans text-muted-foreground hover:text-foreground transition-colors"
             >
               Membership
             </Link>
             <Link
-              to="/"
+              to="/stories"
               className="text-[11px] tracking-[0.2em] uppercase font-sans text-muted-foreground hover:text-foreground transition-colors"
             >
               Stories
@@ -43,9 +43,9 @@ export const Navbar = () => {
             <button className="p-1.5 hover:opacity-70 transition-opacity hidden md:block">
               <Search className="h-[18px] w-[18px] stroke-[1.5]" />
             </button>
-            <button className="p-1.5 hover:opacity-70 transition-opacity hidden md:block">
+            <Link to="/account" className="p-1.5 hover:opacity-70 transition-opacity hidden md:block">
               <User className="h-[18px] w-[18px] stroke-[1.5]" />
-            </button>
+            </Link>
             <button className="p-1.5 hover:opacity-70 transition-opacity hidden md:block">
               <Heart className="h-[18px] w-[18px] stroke-[1.5]" />
             </button>
@@ -58,21 +58,21 @@ export const Navbar = () => {
       <div className="border-b border-border">
         <nav className="max-w-[1440px] mx-auto px-12 lg:px-16 h-[42px] hidden md:flex items-center justify-center gap-8 lg:gap-10">
           {[
-            "New",
-            "Collections",
-            "Necklaces",
-            "Bracelets",
-            "Earrings",
-            "Rings",
-            "Accessories",
-            "The Edit",
+            { label: "New", href: "/" },
+            { label: "How It Works", href: "/how-it-works" },
+            { label: "Membership", href: "/membership" },
+            { label: "About", href: "/about" },
+            { label: "Sustainability", href: "/sustainability" },
+            { label: "Care", href: "/care" },
+            { label: "FAQ", href: "/faq" },
+            { label: "The Edit", href: "/stories" },
           ].map((item) => (
             <Link
-              key={item}
-              to="/"
+              key={item.label}
+              to={item.href}
               className="text-[11px] tracking-[0.18em] uppercase font-sans text-foreground hover:text-muted-foreground transition-colors whitespace-nowrap"
             >
-              {item}
+              {item.label}
             </Link>
           ))}
         </nav>
