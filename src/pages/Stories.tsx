@@ -54,20 +54,6 @@ const Stories = () => {
           ))}
         </div>
       </section>
-
-      <section className="border-t border-border">
-        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center">
-          <h2 className="font-serif text-2xl md:text-3xl tracking-[0.06em] uppercase font-medium mb-4">
-            More Stories Coming
-          </h2>
-          <p className="text-[12px] text-muted-foreground font-sans mb-8">
-            New editorial content published monthly for members.
-          </p>
-          <Link to="/membership" className="btn-gea">
-            Join the House
-          </Link>
-        </div>
-      </section>
     </PageLayout>
   );
 };

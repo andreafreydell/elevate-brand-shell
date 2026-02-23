@@ -24,7 +24,7 @@ export const CartDrawer = () => {
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
-        <button className="relative p-2 border border-border hover:bg-accent transition-colors">
+        <button className="relative p-2 border border-border hover:bg-accent transition-colors rounded-none">
           <ShoppingCart className="h-5 w-5" />
           {totalItems > 0 && (
             <Badge className="absolute -top-2 -right-2 h-5 w-5 rounded-none p-0 flex items-center justify-center text-xs bg-foreground text-background">

@@ -39,11 +39,11 @@ export const NewsletterCapture = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your email address"
                 required
-                className="flex-1 border border-border bg-transparent px-5 py-3 text-[12px] tracking-[0.1em] font-sans text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-foreground transition-colors"
+                className="flex-1 border border-border bg-transparent px-5 py-3 text-[12px] tracking-[0.1em] font-sans text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-foreground transition-colors rounded-none"
               />
               <button
                 type="submit"
-                className="btn-gea whitespace-nowrap"
+                className="btn-gea whitespace-nowrap rounded-none"
               >
                 Apply for Access
               </button>
