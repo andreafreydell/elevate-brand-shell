@@ -1,34 +1,62 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { CartDrawer } from "./CartDrawer";
-import { Search, User, Heart } from "lucide-react";
+import { Search, User, Heart, Menu, X } from "lucide-react";
+
+const navLinks = [
+  { label: "New", href: "/" },
+  { label: "How It Works", href: "/how-it-works" },
+  { label: "Membership", href: "/membership" },
+  { label: "About", href: "/about" },
+  { label: "Sustainability", href: "/sustainability" },
+  { label: "Care", href: "/care" },
+  { label: "FAQ", href: "/faq" },
+  { label: "The Edit", href: "/stories" },
+];
+
+const categoryLinks = [
+  { label: "Jewelry", href: "/", active: true },
+  { label: "Membership", href: "/membership" },
+  { label: "Stories", href: "/stories" },
+];
 
 export const Navbar = () => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
   return (
-    <header className="bg-background">
+    <header className="bg-background relative z-50">
       {/* Top utility bar */}
       <div className="border-b border-border">
-        <div className="max-w-[1440px] mx-auto px-12 lg:px-16 h-[44px] flex items-center justify-between relative">
-          {/* Left: Category tabs */}
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 h-[44px] flex items-center justify-between relative">
+          {/* Left: Category tabs (desktop) */}
           <nav className="hidden md:flex items-center gap-5">
-            <Link
-              to="/"
-              className="text-[11px] tracking-[0.2em] uppercase font-sans font-semibold text-foreground border-b border-foreground pb-0.5"
-            >
-              Jewelry
-            </Link>
-            <Link
-              to="/membership"
-              className="text-[11px] tracking-[0.2em] uppercase font-sans text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Membership
-            </Link>
-            <Link
-              to="/stories"
-              className="text-[11px] tracking-[0.2em] uppercase font-sans text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Stories
-            </Link>
+            {categoryLinks.map((link) => (
+              <Link
+                key={link.label}
+                to={link.href}
+                className={`text-[11px] tracking-[0.2em] uppercase font-sans transition-colors ${
+                  link.active
+                    ? "font-semibold text-foreground border-b border-foreground pb-0.5"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
           </nav>
+
+          {/* Mobile: Hamburger */}
+          <button
+            className="md:hidden p-1.5 hover:opacity-70 transition-opacity"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? (
+              <X className="h-5 w-5 stroke-[1.5]" />
+            ) : (
+              <Menu className="h-5 w-5 stroke-[1.5]" />
+            )}
+          </button>
 
           {/* Center: Logo */}
           <Link
@@ -54,19 +82,10 @@ export const Navbar = () => {
         </div>
       </div>
 
-      {/* Primary navigation bar */}
+      {/* Primary navigation bar (desktop) */}
       <div className="border-b border-border">
         <nav className="max-w-[1440px] mx-auto px-12 lg:px-16 h-[42px] hidden md:flex items-center justify-center gap-8 lg:gap-10">
-          {[
-            { label: "New", href: "/" },
-            { label: "How It Works", href: "/how-it-works" },
-            { label: "Membership", href: "/membership" },
-            { label: "About", href: "/about" },
-            { label: "Sustainability", href: "/sustainability" },
-            { label: "Care", href: "/care" },
-            { label: "FAQ", href: "/faq" },
-            { label: "The Edit", href: "/stories" },
-          ].map((item) => (
+          {navLinks.map((item) => (
             <Link
               key={item.label}
               to={item.href}
@@ -77,6 +96,41 @@ export const Navbar = () => {
           ))}
         </nav>
       </div>
+
+      {/* Mobile drawer */}
+      {mobileOpen && (
+        <div className="md:hidden fixed inset-0 top-[44px] z-40">
+          <div
+            className="absolute inset-0 bg-foreground/20"
+            onClick={() => setMobileOpen(false)}
+          />
+          <nav className="relative bg-background border-b border-border animate-fade-in">
+            <div className="px-6 py-6 space-y-1">
+              {navLinks.map((item) => (
+                <Link
+                  key={item.label}
+                  to={item.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="block py-3 text-[12px] tracking-[0.18em] uppercase font-sans text-foreground hover:text-muted-foreground transition-colors border-b border-border/40"
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <div className="flex items-center gap-6 pt-5">
+                <button className="p-1.5 hover:opacity-70 transition-opacity">
+                  <Search className="h-[18px] w-[18px] stroke-[1.5]" />
+                </button>
+                <Link to="/account" onClick={() => setMobileOpen(false)} className="p-1.5 hover:opacity-70 transition-opacity">
+                  <User className="h-[18px] w-[18px] stroke-[1.5]" />
+                </Link>
+                <button className="p-1.5 hover:opacity-70 transition-opacity">
+                  <Heart className="h-[18px] w-[18px] stroke-[1.5]" />
+                </button>
+              </div>
+            </div>
+          </nav>
+        </div>
+      )}
     </header>
   );
 };

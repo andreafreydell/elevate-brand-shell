@@ -3,8 +3,10 @@ import { PageLayout } from "@/components/layout/PageLayout";
 import { PageHero } from "@/components/layout/PageHero";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { TierCard, type TierData } from "@/components/membership/TierCard";
+import { SavingsCalculator } from "@/components/membership/SavingsCalculator";
 import { AccordionFAQ, type FAQItem } from "@/components/shared/AccordionFAQ";
-import { Check, Shield, RefreshCw, Truck, Gem, Wrench } from "lucide-react";
+import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
+import { Shield, RefreshCw, Truck, Gem, Wrench } from "lucide-react";
 
 const tiers: TierData[] = [
   {
@@ -107,11 +109,13 @@ const Membership = () => {
         <SectionHeading label="Choose Your Tier" heading="Your Level of Access" />
       </div>
       <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {tiers.map((tier) => (
-            <TierCard key={tier.name} tier={tier} />
+            <StaggerItem key={tier.name}>
+              <TierCard tier={tier} />
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </section>
 
       {/* Cost-per-wear reframe */}
@@ -175,19 +179,27 @@ const Membership = () => {
         </div>
       </section>
 
+      {/* Savings calculator */}
+      <SectionHeading label="The Math" heading="Your Membership Pays for Itself" />
+      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-16">
+        <SavingsCalculator />
+      </section>
+
       {/* Risk reversal */}
       <SectionHeading label="Your Guarantee" heading="Zero Risk. Full Freedom." />
       <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {riskReversals.map((item) => (
-            <div key={item.text} className="border border-border bg-card p-6 text-center">
-              <item.icon className="h-6 w-6 mx-auto mb-4 stroke-[1.3] text-foreground" />
-              <p className="text-[11px] text-muted-foreground font-sans leading-relaxed">
-                {item.text}
-              </p>
-            </div>
+            <StaggerItem key={item.text}>
+              <div className="border border-border bg-card p-6 text-center h-full">
+                <item.icon className="h-6 w-6 mx-auto mb-4 stroke-[1.3] text-foreground" />
+                <p className="text-[11px] text-muted-foreground font-sans leading-relaxed">
+                  {item.text}
+                </p>
+              </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </section>
 
       {/* FAQ */}
