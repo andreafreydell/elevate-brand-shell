@@ -25,7 +25,7 @@ export const FeaturedProduct = ({ product }: { product: ShopifyProduct }) => {
   };
 
   return (
-    <section className="max-w-[1440px] mx-auto px-12 lg:px-16 py-6">
+    <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-6">
       <div className="grid md:grid-cols-2 border border-border min-h-[500px]">
         {/* Left: Image */}
         <Link to={`/product/${product.node.handle}`} className="overflow-hidden bg-card">

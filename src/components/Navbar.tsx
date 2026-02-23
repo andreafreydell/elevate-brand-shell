@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { CartDrawer } from "./CartDrawer";
 import { Search, User, Heart, Menu, X } from "lucide-react";
@@ -22,6 +22,17 @@ const categoryLinks = [
 
 export const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  // Lock body scroll when mobile drawer is open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileOpen]);
+
+  const toggleMobile = (open: boolean) => {
+    setMobileOpen(open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
 
   return (
     <header className="bg-background relative z-50">
@@ -48,7 +59,7 @@ export const Navbar = () => {
           {/* Mobile: Hamburger */}
           <button
             className="md:hidden p-1.5 hover:opacity-70 transition-opacity"
-            onClick={() => setMobileOpen(!mobileOpen)}
+            onClick={() => toggleMobile(!mobileOpen)}
             aria-label="Toggle menu"
           >
             {mobileOpen ? (
@@ -84,7 +95,7 @@ export const Navbar = () => {
 
       {/* Primary navigation bar (desktop) */}
       <div className="border-b border-border">
-        <nav className="max-w-[1440px] mx-auto px-12 lg:px-16 h-[42px] hidden md:flex items-center justify-center gap-8 lg:gap-10">
+        <nav className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 h-[42px] hidden md:flex items-center justify-center gap-8 lg:gap-10">
           {navLinks.map((item) => (
             <Link
               key={item.label}
@@ -102,7 +113,7 @@ export const Navbar = () => {
         <div className="md:hidden fixed inset-0 top-[44px] z-40">
           <div
             className="absolute inset-0 bg-foreground/20"
-            onClick={() => setMobileOpen(false)}
+            onClick={() => toggleMobile(false)}
           />
           <nav className="relative bg-background border-b border-border animate-fade-in">
             <div className="px-6 py-6 space-y-1">
@@ -110,7 +121,7 @@ export const Navbar = () => {
                 <Link
                   key={item.label}
                   to={item.href}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={() => toggleMobile(false)}
                   className="block py-3 text-[12px] tracking-[0.18em] uppercase font-sans text-foreground hover:text-muted-foreground transition-colors border-b border-border/40"
                 >
                   {item.label}
@@ -120,7 +131,7 @@ export const Navbar = () => {
                 <button className="p-1.5 hover:opacity-70 transition-opacity">
                   <Search className="h-[18px] w-[18px] stroke-[1.5]" />
                 </button>
-                <Link to="/account" onClick={() => setMobileOpen(false)} className="p-1.5 hover:opacity-70 transition-opacity">
+                <Link to="/account" onClick={() => toggleMobile(false)} className="p-1.5 hover:opacity-70 transition-opacity">
                   <User className="h-[18px] w-[18px] stroke-[1.5]" />
                 </Link>
                 <button className="p-1.5 hover:opacity-70 transition-opacity">

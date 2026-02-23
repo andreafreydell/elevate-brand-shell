@@ -13,7 +13,7 @@ const Press = () => {
       />
 
       <SectionHeading label="Resources" heading="Press Kit" />
-      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-16">
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="border border-border bg-card p-8">
             <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">Brand Assets</p>
@@ -44,7 +44,7 @@ const Press = () => {
 
       {/* Brand statement */}
       <section className="bg-foreground text-background">
-        <div className="max-w-[1440px] mx-auto px-12 lg:px-16 py-16 md:py-20 text-center">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center">
           <p className="text-[10px] tracking-[0.4em] uppercase text-background/50 mb-6 font-sans">About GEA</p>
           <p className="font-serif text-lg md:text-xl font-medium leading-[1.5] max-w-[600px] mx-auto italic">
             GEA is a fashion house jewelry access system. We replace ownership with rotation, 

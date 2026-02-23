@@ -127,7 +127,7 @@ const Index = () => {
           2. MATERIAL INTELLIGENCE
           ═══════════════════════════════════════════ */}
       <SectionHeading label="Craft" heading="Material Intelligence" />
-      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-12">
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-[2px]">
           <div className="bg-[hsl(30,14%,32%)] aspect-[4/5] flex items-end p-8">
             <div>
@@ -166,7 +166,7 @@ const Index = () => {
           3. ACCESS FRAMEWORK
           ═══════════════════════════════════════════ */}
       <SectionHeading label="Philosophy" heading="Access Defines Status" />
-      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-16">
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-[2px]">
           <div className="bg-card border border-border p-10 md:p-14">
             <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">
@@ -201,7 +201,7 @@ const Index = () => {
           4. HOW IT WORKS (mini)
           ═══════════════════════════════════════════ */}
       <SectionHeading label="The Process" heading="How It Works" />
-      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-16">
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <StaggerItem>
             <StepBlock number="01" title="Choose" description="Browse the vault. Select the pieces that speak to your month, your mood, your moment." icon={Hand} />
@@ -225,7 +225,7 @@ const Index = () => {
           5. VALUE EXPANSION
           ═══════════════════════════════════════════ */}
       <SectionHeading label="Freedom" heading="Wear More. Spend Smarter." />
-      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-16">
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <StaggerItem>
             <ValueBlock title="Freedom to Experiment" description="Try bold statement pieces without the commitment of ownership. If it doesn't feel right, rotate it out next month. No risk. No regret." className="bg-card" />
@@ -257,7 +257,7 @@ const Index = () => {
           7. MEMBERSHIP ENGINE
           ═══════════════════════════════════════════ */}
       <SectionHeading label="Membership" heading="Your Tier of Access" />
-      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-8">
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {tiers.map((tier) => (
             <TierCard key={tier.name} tier={tier} />
@@ -275,7 +275,7 @@ const Index = () => {
           8. FINAL DECLARATIVE
           ═══════════════════════════════════════════ */}
       <section className="bg-[hsl(28,22%,34%)]">
-        <div className="max-w-[1440px] mx-auto px-12 lg:px-16 py-20 md:py-28 text-center">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-20 md:py-28 text-center">
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium leading-[1.1] tracking-[-0.01em] text-[hsl(36,33%,93%)] mb-6">
             More Beauty.{"\n"}Less Burden.
           </h2>

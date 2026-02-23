@@ -42,7 +42,7 @@ const FAQ = () => {
   return (
     <PageLayout>
       <section className="bg-[hsl(28,22%,34%)]">
-        <div className="max-w-[1440px] mx-auto px-12 lg:px-16 py-20 md:py-28 text-center">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-20 md:py-28 text-center">
           <p className="text-[10px] tracking-[0.4em] uppercase text-[hsl(36,25%,78%)] mb-6 font-sans">
             Support
           </p>
@@ -58,7 +58,7 @@ const FAQ = () => {
       {categories.map((cat) => (
         <div key={cat.label}>
           <SectionHeading heading={cat.label} />
-          <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-12">
+          <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-12">
             <AccordionFAQ items={cat.items} />
           </section>
         </div>
@@ -66,14 +66,14 @@ const FAQ = () => {
 
       {/* CTA */}
       <section className="border-t border-border">
-        <div className="max-w-[1440px] mx-auto px-12 lg:px-16 py-16 md:py-20 text-center">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center">
           <h2 className="font-serif text-2xl md:text-3xl tracking-[0.06em] uppercase font-medium mb-4">
             Still Have Questions?
           </h2>
           <p className="text-[12px] text-muted-foreground font-sans mb-8">
             Our concierge team is here to help.
           </p>
-          <Link to="/contact" className="btn-gea">
+          <Link to="/membership" className="btn-gea">
             Contact Us
           </Link>
         </div>

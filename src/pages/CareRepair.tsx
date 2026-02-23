@@ -22,7 +22,7 @@ const CareRepair = () => {
       />
 
       <SectionHeading label="The Process" heading="Six Steps to Renewal" />
-      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-16">
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {steps.map((s, i) => (
             <div key={s.title} className="border border-border bg-card p-8">
@@ -41,7 +41,7 @@ const CareRepair = () => {
       </section>
 
       {/* Care tips */}
-      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-16">
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <div className="border border-border bg-card p-10 md:p-14">
           <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">
             While It's Yours
@@ -76,7 +76,7 @@ const CareRepair = () => {
 
       {/* CTA */}
       <section className="border-t border-border">
-        <div className="max-w-[1440px] mx-auto px-12 lg:px-16 py-16 md:py-20 text-center">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center">
           <h2 className="font-serif text-2xl md:text-3xl tracking-[0.06em] uppercase font-medium mb-4">
             Every Piece, Perfectly Prepared
           </h2>

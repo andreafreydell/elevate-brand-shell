@@ -29,7 +29,7 @@ export const SiteFooter = () => {
       <NewsletterCapture />
 
       {/* Links grid */}
-      <div className="max-w-[1440px] mx-auto px-12 lg:px-16 py-14">
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-14">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
           {/* Brand column */}
           <div>
@@ -67,7 +67,7 @@ export const SiteFooter = () => {
 
       {/* Bottom bar */}
       <div className="border-t border-border">
-        <div className="max-w-[1440px] mx-auto px-12 lg:px-16 py-6 flex flex-col md:flex-row items-center justify-between gap-3">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-6 flex flex-col md:flex-row items-center justify-between gap-3">
           <p className="text-[10px] text-muted-foreground tracking-[0.2em] uppercase font-sans">
             © {new Date().getFullYear()} GEA. All rights reserved.
           </p>

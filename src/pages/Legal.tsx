@@ -5,7 +5,7 @@ const Legal = () => {
   return (
     <PageLayout>
       <section className="bg-[hsl(28,22%,34%)]">
-        <div className="max-w-[1440px] mx-auto px-12 lg:px-16 py-20 md:py-28 text-center">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-20 md:py-28 text-center">
           <h1 className="font-serif text-4xl md:text-5xl font-medium text-[hsl(36,33%,93%)] tracking-[-0.01em]">
             Legal
           </h1>
@@ -13,7 +13,7 @@ const Legal = () => {
       </section>
 
       <SectionHeading heading="Terms of Service" />
-      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-12">
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-12">
         <div className="max-w-[720px] mx-auto border border-border bg-card p-10">
           <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
             Terms of Service content will be provided by legal counsel and published here prior to launch. 
@@ -24,7 +24,7 @@ const Legal = () => {
       </section>
 
       <SectionHeading heading="Privacy Policy" />
-      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-12">
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-12">
         <div className="max-w-[720px] mx-auto border border-border bg-card p-10">
           <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
             Privacy Policy content will be provided by legal counsel and published here prior to launch. 
@@ -35,7 +35,7 @@ const Legal = () => {
       </section>
 
       <SectionHeading heading="Membership Agreement" />
-      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-16">
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <div className="max-w-[720px] mx-auto border border-border bg-card p-10">
           <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
             Membership Agreement content will detail the specific terms governing each tier, 

@@ -52,7 +52,7 @@ const HowItWorks = () => {
 
       {/* 4-step visual process */}
       <SectionHeading label="Your Rotation" heading="Choose. Receive. Wear. Rotate." />
-      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-16">
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <StepBlock
             number="01"
@@ -82,7 +82,7 @@ const HowItWorks = () => {
       </section>
 
       {/* Detailed illustration blocks */}
-      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-16">
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-[2px]">
           <div className="bg-card border border-border p-10 md:p-14">
             <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">
@@ -115,13 +115,13 @@ const HowItWorks = () => {
 
       {/* FAQ */}
       <SectionHeading label="Common Questions" heading="Everything You Need to Know" />
-      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-16">
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <AccordionFAQ items={faqItems} />
       </section>
 
       {/* Closing CTA */}
       <section className="bg-[hsl(28,22%,34%)]">
-        <div className="max-w-[1440px] mx-auto px-12 lg:px-16 py-16 md:py-20 text-center">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center">
           <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-medium text-[hsl(36,33%,93%)] tracking-[0.04em] mb-4">
             Your Rotation Awaits
           </h2>
