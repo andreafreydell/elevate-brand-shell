@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { CartDrawer } from "./CartDrawer";
 import { Search, User, Heart, Menu, X } from "lucide-react";
 
@@ -22,6 +22,7 @@ const categoryLinks = [
 
 export const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
 
   // Lock body scroll when mobile drawer is open
   useEffect(() => {
@@ -96,15 +97,22 @@ export const Navbar = () => {
       {/* Primary navigation bar (desktop) */}
       <div className="border-b border-border">
         <nav className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 h-[42px] hidden md:flex items-center justify-center gap-8 lg:gap-10">
-          {navLinks.map((item) => (
-            <Link
-              key={item.label}
-              to={item.href}
-              className="text-[11px] tracking-[0.18em] uppercase font-sans text-foreground hover:text-muted-foreground transition-colors whitespace-nowrap"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navLinks.map((item) => {
+            const isActive = item.href === "/" ? location.pathname === "/" : location.pathname.startsWith(item.href);
+            return (
+              <Link
+                key={item.label}
+                to={item.href}
+                className={`text-[11px] tracking-[0.18em] uppercase font-sans transition-colors whitespace-nowrap ${
+                  isActive
+                    ? "text-foreground border-b border-foreground pb-0.5"
+                    : "text-foreground hover:text-muted-foreground"
+                }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
       </div>
 
