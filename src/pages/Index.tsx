@@ -5,6 +5,7 @@ import { PageLayout } from "@/components/layout/PageLayout";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { StepBlock } from "@/components/shared/StepBlock";
 import { ValueBlock } from "@/components/shared/ValueBlock";
+import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
 import { TierCard, type TierData } from "@/components/membership/TierCard";
 import { ProductImageRow } from "@/components/ProductImageRow";
 import { Loader2, Hand, Package, Sparkles, RefreshCw } from "lucide-react";
@@ -85,41 +86,38 @@ const Index = () => {
           ═══════════════════════════════════════════ */}
       <section>
         <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-[1fr_1.2fr_1fr] min-h-[640px] lg:min-h-[720px]">
-          {/* Left image block */}
           <div className="hidden md:block bg-[hsl(30,18%,38%)] overflow-hidden">
             <div className="w-full h-full flex items-center justify-center">
-              <span className="text-[10px] tracking-[0.3em] uppercase text-[hsl(36,20%,75%)]">
-                Authority Image
-              </span>
+              <span className="text-[10px] tracking-[0.3em] uppercase text-[hsl(36,20%,75%)]">Authority Image</span>
             </div>
           </div>
-
-          {/* Center: Declarative copy */}
           <div className="flex flex-col items-center justify-center text-center px-8 md:px-12 lg:px-16 py-24 bg-[hsl(28,22%,34%)]">
-            <p className="text-[10px] tracking-[0.4em] uppercase text-[hsl(36,25%,78%)] mb-8 font-sans">
-              The House of GEA
-            </p>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.8rem] font-medium leading-[1.08] tracking-[-0.01em] text-[hsl(36,33%,93%)] whitespace-pre-line mb-6">
-              Luxury,{"\n"}in Rotation.
-            </h1>
-            <p className="text-[13px] leading-relaxed text-[hsl(36,20%,75%)] max-w-[380px] mb-12 font-sans">
-              One membership. Infinite possibility. Access the full GEA collection —
-              crafted moissanite, designed without compromise, delivered to your door.
-            </p>
-            <Link
-              to="/membership"
-              className="inline-block border border-[hsl(36,25%,78%)] text-[hsl(36,25%,78%)] px-10 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans hover:bg-[hsl(36,25%,78%)] hover:text-[hsl(28,22%,34%)] transition-colors"
-            >
-              Apply for Access
-            </Link>
+            <AnimateIn variant="fadeIn" duration={0.8}>
+              <p className="text-[10px] tracking-[0.4em] uppercase text-[hsl(36,25%,78%)] mb-8 font-sans">The House of GEA</p>
+            </AnimateIn>
+            <AnimateIn variant="fadeUp" delay={0.2} duration={0.8}>
+              <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.8rem] font-medium leading-[1.08] tracking-[-0.01em] text-[hsl(36,33%,93%)] whitespace-pre-line mb-6">
+                Luxury,{"\n"}in Rotation.
+              </h1>
+            </AnimateIn>
+            <AnimateIn variant="fadeUp" delay={0.4} duration={0.8}>
+              <p className="text-[13px] leading-relaxed text-[hsl(36,20%,75%)] max-w-[380px] mb-12 font-sans">
+                One membership. Infinite possibility. Access the full GEA collection —
+                crafted moissanite, designed without compromise, delivered to your door.
+              </p>
+            </AnimateIn>
+            <AnimateIn variant="fadeUp" delay={0.6} duration={0.8}>
+              <Link
+                to="/membership"
+                className="inline-block border border-[hsl(36,25%,78%)] text-[hsl(36,25%,78%)] px-10 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans hover:bg-[hsl(36,25%,78%)] hover:text-[hsl(28,22%,34%)] transition-colors"
+              >
+                Apply for Access
+              </Link>
+            </AnimateIn>
           </div>
-
-          {/* Right image block */}
           <div className="hidden md:block bg-[hsl(32,15%,42%)] overflow-hidden">
             <div className="w-full h-full flex items-center justify-center">
-              <span className="text-[10px] tracking-[0.3em] uppercase text-[hsl(36,20%,75%)]">
-                Editorial Image
-              </span>
+              <span className="text-[10px] tracking-[0.3em] uppercase text-[hsl(36,20%,75%)]">Editorial Image</span>
             </div>
           </div>
         </div>
@@ -204,36 +202,22 @@ const Index = () => {
           ═══════════════════════════════════════════ */}
       <SectionHeading label="The Process" heading="How It Works" />
       <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <StepBlock
-            number="01"
-            title="Choose"
-            description="Browse the vault. Select the pieces that speak to your month, your mood, your moment."
-            icon={Hand}
-          />
-          <StepBlock
-            number="02"
-            title="Receive"
-            description="Your selection arrives in signature packaging. Fully insured, free shipping, ready to wear."
-            icon={Package}
-          />
-          <StepBlock
-            number="03"
-            title="Wear"
-            description="Style with freedom. Take risks you wouldn't take with owned pieces. Every event deserves presence."
-            icon={Sparkles}
-          />
-          <StepBlock
-            number="04"
-            title="Rotate"
-            description="Send it back when you're ready. Your next selection is already waiting. The cycle continues."
-            icon={RefreshCw}
-          />
-        </div>
+        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <StaggerItem>
+            <StepBlock number="01" title="Choose" description="Browse the vault. Select the pieces that speak to your month, your mood, your moment." icon={Hand} />
+          </StaggerItem>
+          <StaggerItem>
+            <StepBlock number="02" title="Receive" description="Your selection arrives in signature packaging. Fully insured, free shipping, ready to wear." icon={Package} />
+          </StaggerItem>
+          <StaggerItem>
+            <StepBlock number="03" title="Wear" description="Style with freedom. Take risks you wouldn't take with owned pieces. Every event deserves presence." icon={Sparkles} />
+          </StaggerItem>
+          <StaggerItem>
+            <StepBlock number="04" title="Rotate" description="Send it back when you're ready. Your next selection is already waiting. The cycle continues." icon={RefreshCw} />
+          </StaggerItem>
+        </StaggerContainer>
         <div className="text-center mt-10">
-          <Link to="/how-it-works" className="cta-underline">
-            Learn More
-          </Link>
+          <Link to="/how-it-works" className="cta-underline">Learn More</Link>
         </div>
       </section>
 
@@ -242,23 +226,17 @@ const Index = () => {
           ═══════════════════════════════════════════ */}
       <SectionHeading label="Freedom" heading="Wear More. Spend Smarter." />
       <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <ValueBlock
-            title="Freedom to Experiment"
-            description="Try bold statement pieces without the commitment of ownership. If it doesn't feel right, rotate it out next month. No risk. No regret."
-            className="bg-card"
-          />
-          <ValueBlock
-            title="Always Something New"
-            description="Your collection evolves as you do. New drops enter the vault monthly. Early access for members means you're always first."
-            className="bg-card"
-          />
-          <ValueBlock
-            title="Luxury Without Burden"
-            description="No storage anxiety. No depreciation. No buyer's remorse. Just beautiful jewelry, worn with intention, returned with ease."
-            className="bg-card"
-          />
-        </div>
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <StaggerItem>
+            <ValueBlock title="Freedom to Experiment" description="Try bold statement pieces without the commitment of ownership. If it doesn't feel right, rotate it out next month. No risk. No regret." className="bg-card" />
+          </StaggerItem>
+          <StaggerItem>
+            <ValueBlock title="Always Something New" description="Your collection evolves as you do. New drops enter the vault monthly. Early access for members means you're always first." className="bg-card" />
+          </StaggerItem>
+          <StaggerItem>
+            <ValueBlock title="Luxury Without Burden" description="No storage anxiety. No depreciation. No buyer's remorse. Just beautiful jewelry, worn with intention, returned with ease." className="bg-card" />
+          </StaggerItem>
+        </StaggerContainer>
       </section>
 
       {/* ═══════════════════════════════════════════
