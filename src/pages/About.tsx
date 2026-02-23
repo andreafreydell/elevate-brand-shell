@@ -22,7 +22,7 @@ const About = () => {
 
       {/* Founder story */}
       <SectionHeading label="Origin" heading="The Founder's Story" />
-      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-16">
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-[2px]">
           <div className="bg-[hsl(30,14%,32%)] aspect-[4/5] md:aspect-auto flex items-center justify-center min-h-[400px]">
             <span className="text-[10px] tracking-[0.3em] uppercase text-[hsl(36,20%,75%)]">
@@ -54,7 +54,7 @@ const About = () => {
 
       {/* Values grid */}
       <SectionHeading label="Doctrine" heading="What We Stand For" />
-      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-16">
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {values.map((v) => (
             <ValueBlock key={v.title} title={v.title} description={v.description} className="bg-card" />
@@ -64,7 +64,7 @@ const About = () => {
 
       {/* Manifesto block */}
       <section className="bg-foreground text-background">
-        <div className="max-w-[1440px] mx-auto px-12 lg:px-16 py-16 md:py-24 text-center">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-24 text-center">
           <p className="text-[10px] tracking-[0.4em] uppercase text-background/50 mb-6 font-sans">
             Manifesto
           </p>
@@ -81,7 +81,7 @@ const About = () => {
 
       {/* CTA */}
       <section className="border-t border-border">
-        <div className="max-w-[1440px] mx-auto px-12 lg:px-16 py-16 md:py-20 text-center">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center">
           <h2 className="font-serif text-2xl md:text-3xl tracking-[0.06em] uppercase font-medium mb-4">
             Join the House
           </h2>

@@ -6,7 +6,7 @@ interface SectionHeadingProps {
 
 export const SectionHeading = ({ label, heading, className = "" }: SectionHeadingProps) => {
   return (
-    <div className={`max-w-[1440px] mx-auto px-12 lg:px-16 pt-16 md:pt-24 pb-10 text-center ${className}`}>
+    <div className={`max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pt-16 md:pt-24 pb-10 text-center ${className}`}>
       {label && (
         <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">
           {label}

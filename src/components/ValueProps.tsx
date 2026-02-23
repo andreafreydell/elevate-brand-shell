@@ -20,7 +20,7 @@ const props = [
 
 export const ValueProps = () => {
   return (
-    <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-12">
+    <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-12">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {props.map((p) => (
           <div

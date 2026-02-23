@@ -11,7 +11,7 @@ export const ProductImageRow = ({ products }: { products: ShopifyProduct[] }) =>
   if (images.length === 0) return null;
 
   return (
-    <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-6">
+    <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-6">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-[2px]">
         {images.map((img, i) => (
           <div key={i} className="aspect-[4/5] overflow-hidden bg-card">

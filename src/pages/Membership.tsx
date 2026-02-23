@@ -108,7 +108,7 @@ const Membership = () => {
       <div id="tiers">
         <SectionHeading label="Choose Your Tier" heading="Your Level of Access" />
       </div>
-      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-16">
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {tiers.map((tier) => (
             <StaggerItem key={tier.name}>
@@ -119,7 +119,7 @@ const Membership = () => {
       </section>
 
       {/* Cost-per-wear reframe */}
-      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-16">
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <div className="border border-border bg-card p-10 md:p-14 grid grid-cols-1 md:grid-cols-2 gap-10">
           <div>
             <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">
@@ -158,7 +158,7 @@ const Membership = () => {
 
       {/* Founding member scarcity */}
       <section className="bg-[hsl(28,22%,34%)]">
-        <div className="max-w-[1440px] mx-auto px-12 lg:px-16 py-16 md:py-20 text-center">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center">
           <p className="text-[10px] tracking-[0.4em] uppercase text-[hsl(36,25%,78%)] mb-4 font-sans">
             Limited Invitation
           </p>
@@ -181,13 +181,13 @@ const Membership = () => {
 
       {/* Savings calculator */}
       <SectionHeading label="The Math" heading="Your Membership Pays for Itself" />
-      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-16">
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <SavingsCalculator />
       </section>
 
       {/* Risk reversal */}
       <SectionHeading label="Your Guarantee" heading="Zero Risk. Full Freedom." />
-      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-16">
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {riskReversals.map((item) => (
             <StaggerItem key={item.text}>
@@ -204,13 +204,13 @@ const Membership = () => {
 
       {/* FAQ */}
       <SectionHeading label="Questions" heading="Membership FAQ" />
-      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-16">
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <AccordionFAQ items={faqItems} />
       </section>
 
       {/* Final CTA */}
       <section className="border-t border-border">
-        <div className="max-w-[1440px] mx-auto px-12 lg:px-16 py-16 md:py-20 text-center">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center">
           <h2 className="font-serif text-2xl md:text-3xl tracking-[0.06em] uppercase font-medium mb-4">
             More Beauty. Less Burden.
           </h2>

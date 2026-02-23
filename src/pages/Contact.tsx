@@ -21,7 +21,7 @@ const Contact = () => {
         subtitle="Whether it's a styling question, a membership inquiry, or simply a conversation — our concierge team responds within 24 hours."
       />
 
-      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 py-16 md:py-20">
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20">
         <div className="max-w-[600px] mx-auto">
           {submitted ? (
             <div className="text-center py-16">

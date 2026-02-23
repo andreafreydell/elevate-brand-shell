@@ -14,7 +14,7 @@ const ReferFriend = () => {
       />
 
       <SectionHeading label="How It Works" heading="Dual Reward Referral" />
-      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-16">
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="border border-border bg-card p-8 text-center">
             <Gift className="h-6 w-6 mx-auto mb-4 stroke-[1.3]" />
@@ -41,7 +41,7 @@ const ReferFriend = () => {
       </section>
 
       <section className="border-t border-border">
-        <div className="max-w-[1440px] mx-auto px-12 lg:px-16 py-16 md:py-20 text-center">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center">
           <h2 className="font-serif text-2xl md:text-3xl tracking-[0.06em] uppercase font-medium mb-4">
             Access Grows When Shared
           </h2>

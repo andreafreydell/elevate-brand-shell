@@ -22,7 +22,7 @@ const Ambassador = () => {
       />
 
       <SectionHeading label="The Program" heading="What Ambassadors Receive" />
-      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-16">
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <div className="max-w-[600px] mx-auto">
           <ul className="space-y-4">
             {benefits.map((b) => (
@@ -36,7 +36,7 @@ const Ambassador = () => {
       </section>
 
       <section className="bg-card border-t border-border">
-        <div className="max-w-[1440px] mx-auto px-12 lg:px-16 py-16 md:py-20 text-center">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center">
           <h2 className="font-serif text-2xl md:text-3xl tracking-[0.06em] uppercase font-medium mb-4">
             Apply to Represent
           </h2>

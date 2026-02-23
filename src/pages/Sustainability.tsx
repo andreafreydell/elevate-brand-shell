@@ -22,7 +22,7 @@ const Sustainability = () => {
 
       {/* Data blocks */}
       <SectionHeading label="The Reality" heading="What the Industry Won't Tell You" />
-      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-16">
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {stats.map((s) => (
             <div key={s.label} className="border border-border bg-card p-8 text-center">
@@ -37,7 +37,7 @@ const Sustainability = () => {
 
       {/* Circular model */}
       <SectionHeading label="Our Approach" heading="The Circular Model" />
-      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-16">
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <ValueBlock title="Lab-Created Stones" description="Every GEA piece features lab-created moissanite — optically superior to diamond, conflict-free, and requiring zero mining. Brilliance without extraction." className="bg-card" />
           <ValueBlock title="Rotation Over Landfill" description="A single piece in the GEA vault serves dozens of members across hundreds of wears. Rotation extends the lifecycle of every gram of metal and every set stone." className="bg-card" />
@@ -47,7 +47,7 @@ const Sustainability = () => {
 
       {/* CTA */}
       <section className="bg-[hsl(28,22%,34%)]">
-        <div className="max-w-[1440px] mx-auto px-12 lg:px-16 py-16 md:py-20 text-center">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center">
           <h2 className="font-serif text-2xl md:text-3xl font-medium text-[hsl(36,33%,93%)] mb-4">
             Wear with Intention
           </h2>

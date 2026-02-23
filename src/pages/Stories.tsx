@@ -15,7 +15,7 @@ const Stories = () => {
   return (
     <PageLayout>
       <section className="bg-[hsl(28,22%,34%)]">
-        <div className="max-w-[1440px] mx-auto px-12 lg:px-16 py-20 md:py-28 text-center">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-20 md:py-28 text-center">
           <p className="text-[10px] tracking-[0.4em] uppercase text-[hsl(36,25%,78%)] mb-6 font-sans">
             Journal
           </p>
@@ -30,7 +30,7 @@ const Stories = () => {
       </section>
 
       <SectionHeading label="Latest" heading="From the House" />
-      <section className="max-w-[1440px] mx-auto px-12 lg:px-16 pb-16">
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {editorials.map((e) => (
             <div key={e.title} className="border border-border bg-card group">
@@ -56,7 +56,7 @@ const Stories = () => {
       </section>
 
       <section className="border-t border-border">
-        <div className="max-w-[1440px] mx-auto px-12 lg:px-16 py-16 md:py-20 text-center">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center">
           <h2 className="font-serif text-2xl md:text-3xl tracking-[0.06em] uppercase font-medium mb-4">
             More Stories Coming
           </h2>
