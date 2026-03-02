@@ -8,7 +8,7 @@ const stats = [
   { value: "3,000+", label: "Tons of rock displaced per carat of mined diamond" },
   { value: "87%", label: "Of fine jewelry sits unworn in drawers" },
   { value: "0", label: "Mines required for lab-created moissanite" },
-  { value: "∞", label: "Rotations from a single restored piece" },
+  { value: "∞", label: "Wears from a single restored piece" },
 ];
 
 const Sustainability = () => {
@@ -17,7 +17,7 @@ const Sustainability = () => {
       <PageHero
         label="Responsibility"
         headline={"Beauty Without\nExtraction"}
-        subtitle="The jewelry industry mines the earth and fills drawers. GEA operates differently — lab-created stones, circular rotation, and in-house restoration."
+        subtitle="The jewelry industry mines the earth and fills drawers. GEA operates differently — lab-created stones, circular access, and in-house restoration."
       />
 
       {/* Data blocks */}
@@ -40,8 +40,8 @@ const Sustainability = () => {
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <ValueBlock title="Lab-Created Stones" description="Every GEA piece features lab-created moissanite — optically superior to diamond, conflict-free, and requiring zero mining. Brilliance without extraction." className="bg-card" />
-          <ValueBlock title="Rotation Over Landfill" description="A single piece in the GEA vault serves dozens of members across hundreds of wears. Rotation extends the lifecycle of every gram of metal and every set stone." className="bg-card" />
-          <ValueBlock title="In-House Restoration" description="Our atelier restores each piece between rotations: ultrasonic cleaning, repolishing, stone inspection. Nothing is discarded. Everything is renewed." className="bg-card" />
+          <ValueBlock title="Access Over Landfill" description="A single piece in the GEA vault serves dozens of members across hundreds of wears. Access extends the lifecycle of every gram of metal and every set stone." className="bg-card" />
+          <ValueBlock title="In-House Restoration" description="Our atelier restores each piece between members: hand cleaning, UV sanitization, 4-point inspection. Nothing is discarded. Everything is renewed." className="bg-card" />
         </div>
       </section>
 
@@ -55,10 +55,10 @@ const Sustainability = () => {
             Access beauty that doesn't cost the earth — literally.
           </p>
           <Link
-            to="/membership"
+            to="/founding-100"
             className="inline-block border border-[hsl(36,25%,78%)] text-[hsl(36,25%,78%)] px-10 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans hover:bg-[hsl(36,25%,78%)] hover:text-[hsl(28,22%,34%)] transition-colors"
           >
-            Begin Your Rotation
+            Apply for Access
           </Link>
         </div>
       </section>

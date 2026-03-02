@@ -9,7 +9,7 @@ const props = [
   {
     icon: RefreshCw,
     title: "Freedom to Evolve.",
-    desc: "Swap your jewelry monthly.",
+    desc: "Refresh your jewelry monthly.",
   },
   {
     icon: Gem,

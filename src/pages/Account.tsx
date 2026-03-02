@@ -5,11 +5,11 @@ import { User, Package, Clock, Heart, RefreshCw, Gem } from "lucide-react";
 
 const dashboardSections = [
   { icon: User, title: "Profile & Preferences", description: "Style profile, size preferences, metal affinities, and communication settings." },
-  { icon: Package, title: "Current Rotation", description: "What's in your hands right now. Return, keep, or swap — all from here." },
-  { icon: Clock, title: "Rotation History", description: "Every piece you've worn. Dates, photos, and the option to re-request favorites." },
-  { icon: Heart, title: "Vault Wishlist", description: "Save pieces for future rotations. Get notified when wishlisted items are available." },
-  { icon: RefreshCw, title: "Swap & Return", description: "Initiate returns, request mid-cycle swaps, and track shipment status." },
-  { icon: Gem, title: "Keep for Less", description: "Browse your current and past pieces with member-exclusive buyout pricing." },
+  { icon: Package, title: "Current Access", description: "What's in your hands right now. Return, keep, or refresh — all from here." },
+  { icon: Clock, title: "Access History", description: "Every piece you've worn. Dates, photos, and the option to re-request favorites." },
+  { icon: Heart, title: "Vault Wishlist", description: "Save pieces for future selections. Get notified when wishlisted items are available." },
+  { icon: RefreshCw, title: "Returns & Refresh", description: "Initiate returns, request mid-cycle refreshes, and track shipment status." },
+  { icon: Gem, title: "Keep Your Favorite", description: "Browse your current and past pieces with member-exclusive pricing." },
 ];
 
 const Account = () => {
@@ -24,7 +24,7 @@ const Account = () => {
             Your Account
           </h1>
           <p className="text-[13px] text-[hsl(36,20%,75%)] font-sans max-w-[440px] mx-auto">
-            Manage your rotation, track shipments, adjust preferences, and keep the pieces you love.
+            Manage your access, track shipments, adjust preferences, and keep the pieces you love.
           </p>
         </div>
       </section>
@@ -53,9 +53,9 @@ const Account = () => {
             Not a Member Yet?
           </h2>
           <p className="text-[12px] text-muted-foreground font-sans mb-8">
-            Your rotation is waiting.
+            Your access is waiting.
           </p>
-          <Link to="/membership" className="btn-gea">
+          <Link to="/founding-100" className="btn-gea">
             Apply for Access
           </Link>
         </div>

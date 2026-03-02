@@ -6,7 +6,7 @@ import { ValueBlock } from "@/components/shared/ValueBlock";
 
 const values = [
   { title: "Artistry Without Extraction", description: "Every piece uses lab-created moissanite and recycled metals. No mining. No compromise on brilliance." },
-  { title: "Rotation Over Accumulation", description: "We believe the most sustainable piece of jewelry is the one that's always being worn — not the one gathering dust." },
+  { title: "Access Over Accumulation", description: "We believe the most sustainable piece of jewelry is the one that's always being worn — not the one gathering dust." },
   { title: "Craft as Legacy", description: "Inspired by generations of women who adorned themselves with intention, GEA carries forward a lineage of beauty as ritual." },
   { title: "Access as Equity", description: "Luxury shouldn't require wealth accumulation. It should require taste, intention, and the freedom to express." },
 ];
@@ -34,19 +34,19 @@ const About = () => {
               A Letter from the Founder
             </p>
             <p className="text-[13px] text-foreground font-sans leading-[1.8] mb-6">
-              My mother kept a velvet box. Inside: three pieces of gold her mother gave her. 
-              She wore them on occasions that mattered — weddings, milestones, moments of quiet power. 
-              Those pieces weren't expensive. They were intentional.
+              I grew up watching my mother transform everything she touched — and build a company
+              that empowered millions of women to create the lives and homes they imagined. I wanted
+              to follow in her footsteps, but the world has changed. Women are more mobile, selective,
+              and conscious.
             </p>
             <p className="text-[13px] text-foreground font-sans leading-[1.8] mb-6">
-              That intention — adornment as ritual, as identity, as the visible expression of an 
-              inner transformation — is what GEA carries forward. But we reject the model that says 
-              you must own to access beauty. The industry's traditional structure rewards accumulation, 
-              not expression. It extracts from the earth and from your wallet.
+              We want beauty without waste, luxury without guilt, and self-expression without clutter —
+              yet jewelry is still stuck in old habits of ownership and accumulation.
             </p>
             <p className="text-[13px] text-foreground font-sans leading-[1.8]">
-              GEA is a rebellion against that. Rotation is intelligence. Access is luxury. 
-              Presence is the only possession that matters.
+              So I created a brand that reimagines luxury as access, not ownership — curated high-design
+              jewelry that moves with your life, evolves with your taste, and carries no burden.
+              Access is luxury. Presence is the only possession that matters.
             </p>
           </div>
         </div>
@@ -69,8 +69,8 @@ const About = () => {
             Manifesto
           </p>
           <blockquote className="font-serif text-2xl md:text-3xl lg:text-4xl font-medium leading-[1.2] tracking-[-0.01em] max-w-[700px] mx-auto mb-6 italic">
-            "We do not sell jewelry. We grant access to a life more beautifully adorned — 
-            without the weight of ownership, without the guilt of extraction, 
+            "We do not sell jewelry. We grant access to a life more beautifully adorned —
+            without the weight of ownership, without the guilt of extraction,
             without the anxiety of accumulation."
           </blockquote>
           <p className="text-[11px] tracking-[0.2em] uppercase font-sans text-background/50">
@@ -86,9 +86,9 @@ const About = () => {
             Join the House
           </h2>
           <p className="text-[12px] text-muted-foreground font-sans mb-8">
-            Access is luxury. Your rotation awaits.
+            Access is luxury. Your next chapter awaits.
           </p>
-          <Link to="/membership" className="btn-gea">
+          <Link to="/founding-100" className="btn-gea">
             Apply for Access
           </Link>
         </div>

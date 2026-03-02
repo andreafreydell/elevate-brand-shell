@@ -6,7 +6,7 @@ import { Search, User, Heart, Menu, X } from "lucide-react";
 const navLinks = [
   { label: "New", href: "/" },
   { label: "How It Works", href: "/how-it-works" },
-  { label: "Membership", href: "/membership" },
+  { label: "Founding 100", href: "/founding-100" },
   { label: "About", href: "/about" },
   { label: "Sustainability", href: "/sustainability" },
   { label: "Care", href: "/care" },
@@ -16,7 +16,7 @@ const navLinks = [
 
 const categoryLinks = [
   { label: "Jewelry", href: "/", active: true },
-  { label: "Membership", href: "/membership" },
+  { label: "Founding 100", href: "/founding-100" },
   { label: "Stories", href: "/stories" },
 ];
 
