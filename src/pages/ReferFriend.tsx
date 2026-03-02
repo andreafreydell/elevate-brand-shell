@@ -10,7 +10,7 @@ const ReferFriend = () => {
       <PageHero
         label="Community"
         headline={"Share the\nVault"}
-        subtitle="Give a friend their first rotation free. Receive a month of bonus credits when they join. Access grows when shared."
+        subtitle="Give a friend their first month free. Receive a month of bonus credits when they join. Access grows when shared."
       />
 
       <SectionHeading label="How It Works" heading="Dual Reward Referral" />
@@ -48,7 +48,7 @@ const ReferFriend = () => {
           <p className="text-[12px] text-muted-foreground font-sans mb-8">
             Your unique referral link is available in your account dashboard.
           </p>
-          <Link to="/membership" className="btn-gea">
+          <Link to="/founding-100" className="btn-gea">
             Join to Unlock Referrals
           </Link>
         </div>

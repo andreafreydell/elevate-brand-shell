@@ -7,16 +7,16 @@ const categories: { label: string; items: FAQItem[] }[] = [
   {
     label: "Membership",
     items: [
-      { question: "How does GEA membership work?", answer: "Choose a tier (Essentials, Signature, or Atelier), and each month you receive designer jewelry shipments from our vault. Wear them, enjoy them, then return when you're ready for your next rotation. Keep any piece at member-exclusive pricing." },
+      { question: "How does GEA membership work?", answer: "Choose a tier (Tier A or Tier B), and each cycle you receive curated high-design jewelry from our vault. Wear them, enjoy them, then return when you're ready to refresh your selection. Keep any piece through Keep Your Favorite." },
       { question: "Can I cancel anytime?", answer: "Yes. Every GEA membership is month-to-month with no long-term commitment. Cancel from your dashboard — no fees, no penalties." },
       { question: "Can I upgrade or downgrade my tier?", answer: "Absolutely. Tier changes take effect at your next billing cycle. Your preferences and founding status are always preserved." },
-      { question: "What is the 60-day satisfaction adjustment?", answer: "If your first two rotations don't resonate, we'll work with you — adjust your style profile, offer concierge guidance, or process a full adjustment. We want you to love every rotation." },
+      { question: "What is the 60-Day Adjustment?", answer: "If your first two selections don't resonate, we'll work with you — adjust your style profile, offer concierge guidance, or process a full adjustment. We want you to love every selection." },
     ],
   },
   {
     label: "Shipping & Returns",
     items: [
-      { question: "How fast does shipping take?", answer: "First rotations ship within 2 business days. Subsequent rotations ship within 1 business day of receiving your return. All shipping is free and fully insured." },
+      { question: "How fast does shipping take?", answer: "First selections ship within 2 business days. Subsequent selections ship within 1 business day of receiving your return. All shipping is free and fully insured." },
       { question: "How do I return a piece?", answer: "Every shipment includes prepaid return packaging. Simply place the piece inside, seal, and drop it at any carrier location. No cost to you." },
       { question: "Can I skip a month?", answer: "Yes. Pause anytime from your dashboard. Your tier, status, and preferences are preserved until you're ready to resume." },
     ],
@@ -33,7 +33,7 @@ const categories: { label: string; items: FAQItem[] }[] = [
     label: "Buying & Keeping",
     items: [
       { question: "Can I keep a piece permanently?", answer: "Yes. Every piece has a member buyout price — typically 40-60% below retail. Select 'Keep This Piece' in your dashboard, and it's yours." },
-      { question: "Does keeping a piece affect my rotation?", answer: "No. Buying a piece is separate from your rotation. Your next shipment proceeds as scheduled." },
+      { question: "Does keeping a piece affect my access?", answer: "No. Keeping a piece is separate from your access cycle. Your next shipment proceeds as scheduled." },
     ],
   },
 ];
@@ -50,7 +50,7 @@ const FAQ = () => {
             Frequently Asked Questions
           </h1>
           <p className="text-[13px] text-[hsl(36,20%,75%)] font-sans max-w-[440px] mx-auto">
-            Everything you need to know about GEA membership, rotation, and care.
+            Everything you need to know about GEA membership, access, and care.
           </p>
         </div>
       </section>
@@ -73,7 +73,7 @@ const FAQ = () => {
           <p className="text-[12px] text-muted-foreground font-sans mb-8">
             Our concierge team is here to help.
           </p>
-          <Link to="/membership" className="btn-gea">
+          <Link to="/founding-100" className="btn-gea">
             Contact Us
           </Link>
         </div>
