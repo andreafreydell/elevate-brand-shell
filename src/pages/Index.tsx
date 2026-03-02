@@ -5,6 +5,7 @@ import { PageLayout } from "@/components/layout/PageLayout";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { StepBlock } from "@/components/shared/StepBlock";
 import { ValueBlock } from "@/components/shared/ValueBlock";
+import { TrustStrip } from "@/components/shared/TrustStrip";
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
 import { TierCard, type TierData } from "@/components/membership/TierCard";
 import { ProductImageRow } from "@/components/ProductImageRow";
@@ -12,49 +13,36 @@ import { Loader2, Hand, Package, Sparkles, RefreshCw } from "lucide-react";
 
 const tiers: TierData[] = [
   {
-    name: "Essentials",
-    label: "Tier I",
-    price: "$89",
+    name: "Tier A",
+    label: "10 Pieces",
+    price: "$85",
+    promoPrice: "$75",
     period: "month",
-    pieces: "1 shipment per month",
+    pieces: "10 curated pieces per cycle",
+    highlighted: true,
     features: [
-      "Access the full GEA vault",
-      "Keep any piece at member price",
-      "Free repairs & insurance",
-      "Sanitized & restored between wears",
+      "Full vault access",
+      "Keep Your Favorite included",
+      "Protection coverage included",
+      "Sanitized & Sealed before delivery",
       "Free shipping both ways",
       "Cancel anytime",
     ],
   },
   {
-    name: "Signature",
-    label: "Most Popular",
-    price: "$159",
+    name: "Tier B",
+    label: "5 Pieces",
+    price: "$65",
+    promoPrice: "$55",
     period: "month",
-    pieces: "2 shipments per month",
-    highlighted: true,
+    pieces: "5 curated pieces per cycle",
     features: [
-      "Everything in Essentials",
-      "Priority access to new drops",
-      "Flexible mid-cycle swaps",
-      "Early access to capsule collections",
-      "Complimentary styling session",
-      "60-day satisfaction adjustment",
-    ],
-  },
-  {
-    name: "Atelier",
-    label: "Tier III",
-    price: "$279",
-    period: "month",
-    pieces: "4 shipments per month",
-    features: [
-      "Everything in Signature",
-      "Concierge styling service",
-      "Founding member badge",
-      "Full vault access — no waitlists",
-      "Quarterly surprise pieces",
-      "First access to limited editions",
+      "Full vault access",
+      "Keep Your Favorite included",
+      "Protection coverage included",
+      "Sanitized & Sealed before delivery",
+      "Free shipping both ways",
+      "Cancel anytime",
     ],
   },
 ];
@@ -97,18 +85,18 @@ const Index = () => {
             </AnimateIn>
             <AnimateIn variant="fadeUp" delay={0.2} duration={0.8}>
               <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.8rem] font-medium leading-[1.08] tracking-[-0.01em] text-[hsl(36,33%,93%)] whitespace-pre-line mb-6">
-                Luxury,{"\n"}in Rotation.
+                Luxury,{"\n"}Accessed.
               </h1>
             </AnimateIn>
             <AnimateIn variant="fadeUp" delay={0.4} duration={0.8}>
               <p className="text-[13px] leading-relaxed text-[hsl(36,20%,75%)] max-w-[380px] mb-12 font-sans">
-                One membership. Infinite possibility. Access the full GEA collection —
-                crafted moissanite, designed without compromise, delivered to your door.
+                Curated high-design jewelry, cared for through its entire journey.
+                Your money stretches further. Your visual impact multiplies.
               </p>
             </AnimateIn>
             <AnimateIn variant="fadeUp" delay={0.6} duration={0.8}>
               <Link
-                to="/membership"
+                to="/founding-100"
                 className="inline-block border border-[hsl(36,25%,78%)] text-[hsl(36,25%,78%)] px-10 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans hover:bg-[hsl(36,25%,78%)] hover:text-[hsl(28,22%,34%)] transition-colors"
               >
                 Apply for Access
@@ -132,10 +120,10 @@ const Index = () => {
           <div className="bg-[hsl(30,14%,32%)] aspect-[4/5] flex items-end p-8">
             <div>
               <p className="text-[10px] tracking-[0.3em] uppercase text-[hsl(36,20%,75%)] font-sans mb-2">
-                Gold Vermeil
+                316L Stainless Steel
               </p>
               <p className="text-[12px] text-[hsl(36,20%,70%)] font-sans leading-relaxed max-w-[260px]">
-                2.5 micron 18k gold over sterling silver. Built to last through every rotation.
+                Surgical-grade, tarnish-resistant, and hypoallergenic. Built to endure through every access cycle.
               </p>
             </div>
           </div>
@@ -155,7 +143,7 @@ const Index = () => {
                 Lifecycle Care
               </p>
               <p className="text-[12px] text-[hsl(36,20%,70%)] font-sans leading-relaxed max-w-[260px]">
-                Every piece is repolished, restored, and inspected before re-entering the vault.
+                Every piece is professionally cleaned, inspected, and restored between members.
               </p>
             </div>
           </div>
@@ -176,8 +164,8 @@ const Index = () => {
               Ownership Is a Liability
             </h3>
             <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
-              The average woman wears each piece of fine jewelry fewer than five times before it sits 
-              forgotten. Thousands spent. Inches of drawer space consumed. Value depreciating silently. 
+              The average woman wears each piece of fine jewelry fewer than five times before it sits
+              forgotten. Thousands spent. Inches of drawer space consumed. Value depreciating silently.
               The traditional model rewards accumulation over expression.
             </p>
           </div>
@@ -186,11 +174,11 @@ const Index = () => {
               The GEA Model
             </p>
             <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">
-              Rotation Is Intelligence
+              Access Is Intelligence
             </h3>
             <p className="text-[12px] text-background/70 font-sans leading-relaxed">
-              Access the full vault. Wear what speaks to you this month. Return it when you're ready 
-              for something new. No commitment to a single piece — commitment to always being adorned 
+              Access the full vault. Wear what speaks to you this month. Return when you're ready
+              for something new. No commitment to a single piece — commitment to always being adorned
               exactly as you wish. Presence over possession. Experience over accumulation.
             </p>
           </div>
@@ -204,16 +192,16 @@ const Index = () => {
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <StaggerItem>
-            <StepBlock number="01" title="Choose" description="Browse the vault. Select the pieces that speak to your month, your mood, your moment." icon={Hand} />
+            <StepBlock number="01" title="Choose" description="Browse our curated vault and select the pieces that speak to your moment." icon={Hand} />
           </StaggerItem>
           <StaggerItem>
-            <StepBlock number="02" title="Receive" description="Your selection arrives in signature packaging. Fully insured, free shipping, ready to wear." icon={Package} />
+            <StepBlock number="02" title="Receive" description="Your selections arrive in 1–3 days, freshly restored and sealed in our signature packaging." icon={Package} />
           </StaggerItem>
           <StaggerItem>
-            <StepBlock number="03" title="Wear" description="Style with freedom. Take risks you wouldn't take with owned pieces. Every event deserves presence." icon={Sparkles} />
+            <StepBlock number="03" title="Wear" description="Style them for your life — the event, the meeting, the dinner, the everyday." icon={Sparkles} />
           </StaggerItem>
           <StaggerItem>
-            <StepBlock number="04" title="Rotate" description="Send it back when you're ready. Your next selection is already waiting. The cycle continues." icon={RefreshCw} />
+            <StepBlock number="04" title="Refresh" description="When you're ready for something new, return and choose your next chapter." icon={RefreshCw} />
           </StaggerItem>
         </StaggerContainer>
         <div className="text-center mt-10">
@@ -228,7 +216,7 @@ const Index = () => {
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <StaggerItem>
-            <ValueBlock title="Freedom to Experiment" description="Try bold statement pieces without the commitment of ownership. If it doesn't feel right, rotate it out next month. No risk. No regret." className="bg-card" />
+            <ValueBlock title="Freedom to Experiment" description="Try bold statement pieces without the commitment of ownership. If it doesn't feel right, refresh your selection next month. No risk. No regret." className="bg-card" />
           </StaggerItem>
           <StaggerItem>
             <ValueBlock title="Always Something New" description="Your collection evolves as you do. New drops enter the vault monthly. Early access for members means you're always first." className="bg-card" />
@@ -258,16 +246,13 @@ const Index = () => {
           ═══════════════════════════════════════════ */}
       <SectionHeading label="Membership" heading="Your Tier of Access" />
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-[900px] mx-auto">
           {tiers.map((tier) => (
             <TierCard key={tier.name} tier={tier} />
           ))}
         </div>
         <div className="text-center mt-6">
-          <p className="text-[11px] text-muted-foreground font-sans tracking-[0.1em]">
-            All tiers include free shipping, insurance, repair, and sanitization.
-            Keep any piece at member-exclusive pricing. Cancel anytime.
-          </p>
+          <TrustStrip variant="compact" />
         </div>
       </section>
 
@@ -283,10 +268,10 @@ const Index = () => {
             Adorn the woman you are becoming. Not the one weighed down by what she already owns.
           </p>
           <Link
-            to="/membership"
+            to="/founding-100"
             className="inline-block border border-[hsl(36,25%,78%)] text-[hsl(36,25%,78%)] px-10 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans hover:bg-[hsl(36,25%,78%)] hover:text-[hsl(28,22%,34%)] transition-colors"
           >
-            Begin Your Rotation
+            Apply for Access
           </Link>
         </div>
       </section>
