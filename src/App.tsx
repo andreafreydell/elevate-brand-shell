@@ -54,9 +54,11 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <AppContent />
-      </BrowserRouter>
+      <LaunchGate>
+        <BrowserRouter>
+          <AppContent />
+        </BrowserRouter>
+      </LaunchGate>
     </TooltipProvider>
   </QueryClientProvider>
 );
