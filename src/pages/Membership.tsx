@@ -11,7 +11,7 @@ import { Shield, Wrench, Truck, Gem, Ban } from "lucide-react";
 
 const tiers: TierData[] = [
   {
-    name: "The Muse",
+    name: "Tier 1",
     label: "5 Pieces",
     price: "$65",
     promoPrice: "$55",
@@ -27,7 +27,7 @@ const tiers: TierData[] = [
     ],
   },
   {
-    name: "The Vault",
+    name: "Tier 2",
     label: "10 Pieces",
     price: "$85",
     promoPrice: "$75",
