@@ -1,194 +1,172 @@
-
-
-# GEA Digital Flagship -- Full Site Architecture Build
+# GEA Digital Flagship — Full Site Architecture Build (v2.1)
 
 ## Overview
 
-Transform the current 2-page storefront into a 15-page fashion house digital flagship. Every page follows the GEA Design System, maintains "Access Is Luxury" positioning, and supports the subscription rotation model. All copy and structure is informed by distilled marketing principles from the Foundr coursework (appended at the bottom as build instructions).
+Transform the storefront into a fashion-house digital flagship. Every page follows the GEA Design System v2.1, maintains "Access Is Luxury" positioning, and supports the 2-tier access model. All copy governed by CORE ASSETS v2.1 (February 2026).
+
+**Core Positioning:** This is not a jewelry rental site. This is a fashion house jewelry access system. Access Is Luxury. Ownership is outdated. Presence > Possession. Experience > Accumulation.
+
+---
+
+## Canonical Offer Structure (v2.1 — Locked)
+
+| Tier | Name | Pieces/Cycle | Price | Month 1 Promo |
+|------|------|-------------|-------|---------------|
+| A | Tier A | 10 curated pieces | $85/month | $75 ($10 off) |
+| B | Tier B | 5 curated pieces | $65/month | $55 ($10 off) |
+
+**Cycle rule:** 1 shipment per 30-day cycle. Refresh at cycle end.
+
+**Both tiers include:** Free delivery + free returns, protection coverage, Keep Your Favorite option, cancel anytime.
+
+### Three Format Variants
+- **Compact** (ads, email headers): `Tier A: 10 pieces · $75 your first month · Cancel anytime`
+- **Standard** (homepage hero, email popup): Both tiers side-by-side without cycle rule
+- **Full** (Founding 100 page, checkout): Both tiers with cycle mechanics, founding language, full value stack
+
+### Trust Strip (deploy near every CTA)
+- **Full:** Cancel Anytime · Sanitized & Sealed · Repair Guarantee · Free Returns · No Surprise Fees
+- **Compact:** Cancel Anytime · Sanitized & Sealed · Free Returns
+
+### 5 Named Trust Standards
+1. Sanitized & Sealed Protocol
+2. Repair Guarantee
+3. Secure Delivery Standard
+4. Damage Clarity Promise
+5. Cancel Anytime Freedom
+
+---
+
+## Access Vocabulary (Enforced)
+
+| Never Use | Always Use |
+|-----------|-----------|
+| Rotation / rotate | Access, refresh, renew, choose your next chapter |
+| Rental / rent | Access, membership, experience |
+| Subscription box | Membership, access tier |
+| Swap | Refresh, renew your selection |
+
+Exception: "Rotation" acceptable only in internal/ops docs, never customer-facing.
+
+---
+
+## Approved Copy (Production-Ready)
+
+### Hero Headlines
+- The Founding 100
+- Luxury, Accessed
+- Adorn the Woman You Are Becoming
+- Access Defines Status
+- The Collection — Curated High-Design Jewelry, Accessed
+- More Beauty. Less Burden.
+
+### CTAs
+- APPLY FOR ACCESS
+- CLAIM MY FOUNDING SPOT
+- JOIN THE FOUNDING 100
+- EXPLORE THE COLLECTION
+- SEE MEMBERSHIP OPTIONS
+- UNLOCK FIRST MONTH
+
+### Repeatable Lines
+- "More beauty, less burden."
+- "Luxury designed for who you're becoming."
+- "Access is our rebellion."
+- "Elevated. Sustainable. Evolving."
+- "This is not rental. This is access."
+
+### How It Works Steps
+1. **Choose** — Browse our curated vault and select the pieces that speak to your moment.
+2. **Receive** — Your selections arrive in 1–3 days, freshly restored and sealed in our signature packaging.
+3. **Wear** — Style them for your life — the event, the meeting, the dinner, the everyday.
+4. **Refresh** — When you're ready for something new, return and choose your next chapter.
 
 ---
 
 ## Build Sequence (5 Phases)
 
-### Phase 1 -- Shared Infrastructure
+### Phase 1 — Shared Infrastructure ✅ (Mostly Complete)
+Reusable layout components: PageLayout, SiteFooter, PageHero, SectionHeading, NewsletterCapture.
 
-Create reusable layout and section components used across all pages:
+### Phase 2 — Homepage Rebuild
+8-section runway sequence (fixed order):
+1. Authority Hero — Large serif declaration, single CTA
+2. Material Intelligence — Macro texture, metal depth, lifecycle care
+3. Access Framework — Reframe ownership vs access, economic argument
+4. How It Works — Choose, Receive, Wear, Refresh (elevated language)
+5. Value Expansion — Freedom to experiment
+6. Social Validation — UGC strip (only place smiling allowed)
+7. Membership Engine — 2 tier cards (Tier A / Tier B) with value framing
+8. Final Declarative — "More Beauty. Less Burden."
 
-| Component | Purpose |
-|-----------|---------|
-| `PageLayout` | Wraps every page with Navbar + expanded SiteFooter + newsletter capture |
-| `SiteFooter` | Multi-column footer with nav links, newsletter signup, legal links |
-| `PageHero` | Reusable declarative hero: serif headline, subtitle, optional CTA |
-| `SectionHeading` | Standardized section intro with label + heading |
-| `NewsletterCapture` | Email capture block with high-perceived-value framing |
+### Phase 3 — Core Conversion Pages
 
-### Phase 2 -- Homepage Rebuild
-
-Restructure `Index.tsx` into 8 runway-sequenced sections:
-
-1. **Authority Hero** -- Large serif declaration ("Luxury, in rotation."), single CTA ("Apply for Access")
-2. **Material Intelligence** -- Macro texture block, metal depth, lifecycle care messaging
-3. **Access Framework** -- Educate on ownership vs rotation, economic intelligence argument
-4. **How It Works (mini)** -- 4 elevated steps: Choose, Receive, Wear, Rotate
-5. **Value Expansion** -- Freedom to experiment, RTR-inspired rotation benefits
-6. **Social Validation** -- UGC strip (only place casual/smiling imagery allowed)
-7. **Membership Engine** -- 3 tier cards (Essentials / Signature / Atelier) with value framing
-8. **Final Declarative** -- "More beauty. Less burden." closing block
-
-### Phase 3 -- Core Conversion Pages
-
-**Membership (`/membership`)**
-- Tier comparison table with value stacking
+**Founding 100 (`/founding-100`)** — Replaces `/membership`
+- 2-tier comparison with value stacking
 - Cost-per-wear reframing
-- Keep-for-discount buyout logic
-- First month offer psychology
-- Founding member scarcity mechanic
-- Concierge layer description
-- Savings calculator concept
-- Risk reversal block (cancel anytime, repair included, flexible returns)
+- Keep Your Favorite logic
+- Month 1 promotion psychology
+- Founding member scarcity (first 100)
+- 5 Named Trust Standards
+- Savings calculator
+- Risk reversal block
 
 **How It Works (`/how-it-works`)**
 - Full-page friction removal
 - 4-step visual process
-- FAQ accordion answering shipping, returns, swaps, damage, keeping
+- FAQ accordion
 - Confidence-building closing CTA
 
 **Product Detail Enhancement**
 - Design philosophy section
-- Material composition
-- Rotation logic and event styling suggestions
-- Buyout option
-- AI styling / undertone test / style persona quiz placeholders
+- Material composition (316L stainless steel messaging)
+- Styling suggestions from Piece Styling Matrix
+- Keep Your Favorite option
 
-### Phase 4 -- Brand Authority + Growth Pages
+### Phase 4 — Brand Authority + Growth Pages
+- About / Founder (`/about`) — Founder story, manifesto, values grid
+- Sustainability (`/sustainability`) — Circular economy, no extraction
+- Care & Repair (`/care`) — Sanitized & Sealed Protocol, restoration process
+- FAQ (`/faq`) — Comprehensive accordion by category
+- Contact (`/contact`) — Concierge-style form
+- Refer a Friend (`/refer`) — Dual incentive referral
+- Ambassador (`/ambassador`) — Application placeholder
+- Press (`/press`) — Press kit, inquiries
+- Legal (`/legal`) — Terms, Privacy, Membership Agreement
 
-**About / Founder (`/about`)** -- Founder story, manifesto, values grid
-**Sustainability (`/sustainability`)** -- Data-driven mining/waste impact, circular economy
-**Care & Repair (`/care`)** -- Restoration process, lifecycle care
-**FAQ (`/faq`)** -- Comprehensive accordion by category
-**Contact (`/contact`)** -- Concierge-style form
-**Refer a Friend (`/refer`)** -- Dual incentive referral structure
-**Ambassador (`/ambassador`)** -- Application placeholder, program benefits
-**Press (`/press`)** -- Press kit, brand assets, inquiries
-**Legal (`/legal`)** -- Terms, Privacy, Membership Agreement placeholders
-
-### Phase 5 -- Retention + Dashboard
-
-**Stories / The Edit (`/stories`)** -- Style guides, rotation diaries, monthly drop calendar
-**Account Dashboard (`/account`)** -- Wireframe: profile, current rotation, history, swap/return actions, keep-for-discount, style preferences
+### Phase 5 — Retention + Dashboard
+- Stories / The Edit (`/stories`) — Style guides, monthly drop calendar
+- Account Dashboard (`/account`) — Profile, current access, history, Keep Your Favorite actions
 
 ---
 
 ## Routing
 
-All 15 routes added to `App.tsx`. Navbar updated with real navigation links.
+All routes added to `App.tsx`. Key change: `/membership` → `/founding-100`.
 
 ---
 
-## Membership Tier Structure
-
-| Tier | Name | Pieces/Month | Key Features |
-|------|------|-------------|--------------|
-| 1 | Essentials | 1 shipment | Core rotation, repair included, insurance |
-| 2 | Signature | 2 shipments | Priority access, flexible swaps, early drops |
-| 3 | Atelier | 4 shipments | Concierge styling, founding badge, full vault access |
-
-All tiers include: keep-any-piece buyout, insurance, repair, sanitization, free shipping.
+## Photography Archetype Hierarchy (Fixed Order)
+1. **Authority** — Editorial crop, runway authority, detached gaze
+2. **Material Intelligence** — Macro texture, metal depth on travertine
+3. **Cultural** — Art/architecture connection, timeless
+4. **Validation** — UGC only, smiling permitted here only
 
 ---
 
-## Technical Details
-
-```text
-New files to create:
-
-src/components/layout/
-  PageLayout.tsx
-  SiteFooter.tsx
-  PageHero.tsx
-  SectionHeading.tsx
-
-src/components/membership/
-  TierCard.tsx
-  TierComparison.tsx
-
-src/components/shared/
-  StepBlock.tsx
-  ValueBlock.tsx
-  TestimonialStrip.tsx
-  NewsletterCapture.tsx
-  AccordionFAQ.tsx
-  SaveCalculator.tsx
-
-src/pages/
-  Index.tsx (rebuilt)
-  HowItWorks.tsx
-  Membership.tsx
-  About.tsx
-  Sustainability.tsx
-  CareRepair.tsx
-  ReferFriend.tsx
-  Ambassador.tsx
-  Press.tsx
-  FAQ.tsx
-  Contact.tsx
-  Legal.tsx
-  Account.tsx
-  Stories.tsx
-
-Modified files:
-  src/App.tsx (add all routes)
-  src/components/Navbar.tsx (update nav links)
-```
-
----
-
-## Distilled Marketing Doctrine (Build Instructions)
-
-These principles, extracted from the Foundr coursework, must govern every section, CTA, and copy decision across the entire build:
-
-### 1. Offers Drive Everything
-A better offer outperforms a better ad. The membership offer must feel irresistible -- perceived value must dramatically outweigh cost (3-5x minimum). Every page should carry or reinforce the core offer. The offer must appear everywhere: homepage hero, PDP, membership page, footer, email capture.
-
-### 2. Zero-Calorie Messaging
-Every headline, subhead, and CTA must pass the 5-second clarity test: "Can the brain understand this message in 5 seconds without effort?" Clarity beats cleverness. Always. If a 6-year-old cannot repeat the message, it is too complicated.
-
-### 3. The Customer Is the Hero
-Use the StoryBrand framework throughout: Customer (Hero) has a Problem, meets a Guide (GEA), follows a Plan (Choose/Receive/Wear/Rotate), achieves Transformation (feels lighter, more expressive, more aligned), avoids Failure (clutter, waste, regret, overpaying). GEA is the guide, never the hero.
-
-### 4. Conversion-Centered Design (CCD)
-One page = one job. Remove everything that distracts from the primary CTA. Hero section must answer: What is this? Who is it for? Why does it matter? What do I do next? Place anxiety reducers near every CTA (cancel anytime, repair guarantee, flexible returns, free shipping). Visual hierarchy must guide the eye from headline to proof to CTA.
-
-### 5. Value Stacking (Not Discounting)
-Never frame as cheap or discount. Stack high-perceived-value, low-cost bonuses: free repairs, free swaps, early access, AI stylist access, founding member badge, quarterly surprises, free insurance month 1. Make the customer feel they are "beating the system."
-
-### 6. Risk Reversal at Every Friction Point
-Cancel anytime. Repair/replace guarantee. Flexible returns. Free shipping. Bonus credits. 60-day satisfaction adjustment. These must be visible and prominent near CTAs, on the membership page, and within the FAQ.
-
-### 7. Scarcity and Exclusivity (Ethical)
-Founding member access (limited spots). Early access drops. Vault access for higher tiers. Limited edition capsules. Always frame as invitation, access, privilege -- never as bargain or urgency.
-
-### 8. Continuance Ladder
-After every conversion, offer the next logical step (not a huge leap). Post-signup: style guide, rotation ritual, first drop preview. Post-first-box: upgrade options, referral boost, bonus credits. Design retention as product.
-
-### 9. Social Proof Stacking
-UGC, testimonials, press mentions, savings visualizations, member count badges. Social proof must be specific, relatable, and transformative -- not hyperbolic. Place proof immediately below hero sections.
-
-### 10. Membership Must Feel Like Beating the System
-Savings calculator showing "your membership pays for itself after X uses." Make the first order feel like it covers the membership cost. Use store credit and staged rewards to build retention into the offer structure. Members should spend 2-3x more than non-members.
-
-### 11. The Four Pillars
-Every page and section must reinforce: Good Product, Good Story, Good Experience, Consistency. A brand is only as strong as its weakest pillar. Inconsistency creates indirect anxiety in customers.
-
-### 12. Single CTA Dominance
-One CTA per section. Too many choices = no decision. The CTA must contrast visually (use `bg-foreground text-background`). Repeat the same CTA at top, middle, and bottom of long pages.
-
-### 13. Identity-Based Messaging
-Speak to who the customer is becoming, not features. "For women who live lighter." "Adorn the woman you are becoming." Transformation is the emotional payoff -- customers buy the after-state, not the product.
-
-### 14. Email Capture = High Perceived Value
-Never use "Sign up for our newsletter." Instead: "Apply for Founding Member Access," "Unlock Your First Rotation," "Join the Vault Waitlist." Tier 1 incentives for launch: exclusive access, founding member status, free first styling session.
-
-### 15. Repetition Is Strength
-The same core messages ("More beauty. Less burden." / "Access defines status." / "Luxury, in rotation.") should repeat across every page in varied contexts. Customers need 7+ consistent touchpoints to remember a brand.
-
+## Marketing Doctrine (15 Pillars — Governing All Copy)
+1. Offers drive everything (perceived value 3-5x cost)
+2. Zero-calorie messaging (5-second clarity test)
+3. StoryBrand framework (Customer as Hero)
+4. Conversion-Centered Design (one job per page)
+5. Value Stacking (never discounting)
+6. Risk Reversal at friction points
+7. Scarcity and Exclusivity (founding access)
+8. Continuance Ladder
+9. Social Proof Stacking
+10. Membership as "beating the system"
+11. Four Pillars (Product, Story, Experience, Consistency)
+12. Single CTA dominance
+13. Identity-based messaging (after-state)
+14. High-perceived-value email capture
+15. Strategic repetition of core messages
