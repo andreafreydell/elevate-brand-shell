@@ -5,6 +5,7 @@ export interface TierData {
   name: string;
   label: string;
   price: string;
+  promoPrice?: string;
   period: string;
   pieces: string;
   features: string[];
@@ -43,6 +44,15 @@ export const TierCard = ({ tier }: { tier: TierData }) => {
         >
           /{tier.period}
         </span>
+        {tier.promoPrice && (
+          <p
+            className={`text-[11px] font-sans mt-2 ${
+              tier.highlighted ? "text-background/70" : "text-muted-foreground"
+            }`}
+          >
+            {tier.promoPrice} your first month
+          </p>
+        )}
       </div>
 
       {/* Features */}
@@ -70,7 +80,7 @@ export const TierCard = ({ tier }: { tier: TierData }) => {
       {/* CTA */}
       <div className="px-8 md:px-10 pb-8 md:pb-10">
         <Link
-          to="/membership"
+          to="/founding-100"
           className={`block text-center py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans font-medium border transition-colors ${
             tier.highlighted
               ? "border-background text-background hover:bg-background hover:text-foreground"

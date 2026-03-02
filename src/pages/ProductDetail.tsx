@@ -181,10 +181,10 @@ const ProductDetail = () => {
             <div className="bg-card border border-border p-10 md:p-14">
               <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">Philosophy</p>
               <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">
-                Designed for Rotation
+                Designed for Access
               </h3>
               <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
-                Every GEA piece is engineered for the rotation lifecycle. Materials are selected for 
+                Every GEA piece is engineered for the access lifecycle. Materials are selected for 
                 durability across multiple wears and restorations. Clasps are reinforced, stones are 
                 set with precision, and finishes are chosen to age with grace through each cycle.
               </p>
@@ -222,7 +222,7 @@ const ProductDetail = () => {
               {[
                 { icon: Sparkles, label: "Evening", desc: "Pair with a structured blazer and minimal earrings for a considered evening look." },
                 { icon: Gem, label: "Daily Wear", desc: "Layer with delicate chains. This piece anchors without overwhelming casual ensembles." },
-                { icon: RefreshCw, label: "Rotate After", desc: "Best enjoyed for 2-3 weeks. Return when you're ready — your next selection is waiting." },
+                { icon: RefreshCw, label: "Refresh After", desc: "Best enjoyed for 2-3 weeks. Return when you're ready — your next selection is waiting." },
               ].map((tip) => (
                 <div key={tip.label}>
                   <tip.icon className="h-5 w-5 stroke-[1.3] text-background/70 mb-3" />
@@ -239,11 +239,11 @@ const ProductDetail = () => {
           <section className="mt-16 border border-border p-10 md:p-14 text-center">
             <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">Access</p>
             <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">
-              Wear This Piece From ${89}/month
+              Wear This Piece From ${65}/month
             </h3>
             <p className="text-[12px] text-muted-foreground font-sans leading-relaxed max-w-[480px] mx-auto mb-6">
               GEA membership gives you access to the full vault — including this piece. 
-              Rotate monthly, keep what you love, and never worry about repairs or insurance.
+              Refresh monthly, keep what you love, and never worry about repairs or insurance.
             </p>
             <div className="flex items-center justify-center gap-6 mb-8">
               {[
@@ -257,8 +257,8 @@ const ProductDetail = () => {
                 </div>
               ))}
             </div>
-            <Link to="/membership" className="btn-gea">
-              View Membership
+            <Link to="/founding-100" className="btn-gea">
+              See Membership Options
             </Link>
           </section>
         </AnimateIn>

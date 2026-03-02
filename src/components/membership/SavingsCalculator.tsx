@@ -2,22 +2,20 @@ import { useState } from "react";
 import { AnimateIn } from "@/components/shared/AnimateIn";
 
 const tiers = [
-  { name: "Essentials", price: 89, shipments: 1 },
-  { name: "Signature", price: 159, shipments: 2 },
-  { name: "Atelier", price: 279, shipments: 4 },
+  { name: "Tier A", price: 85, pieces: 10 },
+  { name: "Tier B", price: 65, pieces: 5 },
 ];
 
 export const SavingsCalculator = () => {
-  const [selectedTier, setSelectedTier] = useState(1); // Signature default
+  const [selectedTier, setSelectedTier] = useState(0);
   const [wearsPerPiece, setWearsPerPiece] = useState(4);
 
   const tier = tiers[selectedTier];
   const avgRetailPrice = 650;
-  const piecesPerMonth = tier.shipments;
 
   const traditionalCostPerWear = avgRetailPrice / wearsPerPiece;
-  const geaCostPerWear = tier.price / (piecesPerMonth * wearsPerPiece);
-  const monthlySavings = (traditionalCostPerWear * piecesPerMonth * wearsPerPiece) - tier.price;
+  const geaCostPerWear = tier.price / (tier.pieces * wearsPerPiece);
+  const monthlySavings = (traditionalCostPerWear * tier.pieces * wearsPerPiece) - tier.price;
   const yearlySavings = monthlySavings * 12;
 
   return (
@@ -28,7 +26,7 @@ export const SavingsCalculator = () => {
             Interactive
           </p>
           <h3 className="font-serif text-2xl md:text-3xl font-semibold tracking-[0.02em] mb-2">
-            Your Savings, Calculated
+            Your Access, Calculated
           </h3>
           <p className="text-[12px] text-muted-foreground font-sans leading-relaxed mb-10 max-w-[480px]">
             See how GEA membership transforms your cost-per-wear. Adjust the inputs to match your style.
@@ -50,7 +48,7 @@ export const SavingsCalculator = () => {
                       : "border-border hover:border-foreground"
                   }`}
                 >
-                  {t.name}
+                  {t.name} · {t.pieces} pieces
                 </button>
               ))}
             </div>
@@ -99,18 +97,18 @@ export const SavingsCalculator = () => {
                 ${geaCostPerWear.toFixed(0)}
               </p>
               <p className="text-[10px] text-background/60 font-sans mt-1">
-                ${tier.price}/mo ÷ {piecesPerMonth * wearsPerPiece} total wears
+                ${tier.price}/mo ÷ {tier.pieces * wearsPerPiece} total wears
               </p>
             </div>
             <div className="bg-background p-6">
               <p className="text-[10px] tracking-[0.25em] uppercase font-sans text-muted-foreground mb-1">
-                Annual Savings
+                Annual Value
               </p>
               <p className="font-serif text-2xl font-medium text-[hsl(142,50%,36%)]">
                 ${yearlySavings.toLocaleString(undefined, { maximumFractionDigits: 0 })}
               </p>
               <p className="text-[10px] text-muted-foreground font-sans mt-1">
-                vs. buying equivalent pieces
+                vs. purchasing equivalent pieces
               </p>
             </div>
           </div>

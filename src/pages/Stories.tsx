@@ -3,12 +3,12 @@ import { PageLayout } from "@/components/layout/PageLayout";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 
 const editorials = [
-  { title: "The Art of Rotation", label: "Style Guide", description: "How to build a monthly rotation that transitions from desk to dinner to weekend." },
+  { title: "The Art of Access", label: "Style Guide", description: "How to build a monthly selection that transitions from desk to dinner to weekend." },
   { title: "Moissanite vs Diamond", label: "Material Story", description: "Why lab-created brilliance outperforms mined stones — optically, ethically, and economically." },
-  { title: "Your First Rotation Ritual", label: "New Member", description: "A guide to unpacking, styling, and photographing your first GEA shipment." },
-  { title: "Event Dressing by Piece", label: "Occasion Guide", description: "Matching your rotation to your calendar: galas, meetings, brunches, and everything between." },
-  { title: "The Monthly Drop", label: "New Arrivals", description: "What's entering the vault this month. First look, first access, first rotation." },
-  { title: "Founding Members Speak", label: "Community", description: "Transformation stories from women who replaced their jewelry drawers with a rotation." },
+  { title: "Your First Access Ritual", label: "New Member", description: "A guide to unpacking, styling, and photographing your first GEA shipment." },
+  { title: "Event Dressing by Piece", label: "Occasion Guide", description: "Matching your selection to your calendar: galas, meetings, brunches, and everything between." },
+  { title: "The Monthly Drop", label: "New Arrivals", description: "What's entering the vault this month. First look, first access." },
+  { title: "Founding Members Speak", label: "Community", description: "Transformation stories from women who replaced their jewelry drawers with access." },
 ];
 
 const Stories = () => {
@@ -23,7 +23,7 @@ const Stories = () => {
             The Edit
           </h1>
           <p className="text-[13px] text-[hsl(36,20%,75%)] font-sans max-w-[440px] mx-auto">
-            Style guides, rotation rituals, material stories, and monthly drops — 
+            Style guides, access rituals, material stories, and monthly drops —
             curated for women who live lighter.
           </p>
         </div>
