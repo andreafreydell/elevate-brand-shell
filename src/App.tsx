@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useCartSync } from "@/hooks/useCartSync";
+import LaunchGate from "@/components/LaunchGate";
 import Index from "./pages/Index";
 import ProductDetail from "./pages/ProductDetail";
 import Membership from "./pages/Membership";
@@ -53,9 +54,11 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <AppContent />
-      </BrowserRouter>
+      <LaunchGate>
+        <BrowserRouter>
+          <AppContent />
+        </BrowserRouter>
+      </LaunchGate>
     </TooltipProvider>
   </QueryClientProvider>
 );
