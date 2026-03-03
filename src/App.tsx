@@ -2,10 +2,17 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useCartSync } from "@/hooks/useCartSync";
+import { useEffect } from "react";
 import LaunchGate from "@/components/LaunchGate";
 import Index from "./pages/Index";
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+};
 import ProductDetail from "./pages/ProductDetail";
 import Membership from "./pages/Membership";
 import HowItWorks from "./pages/HowItWorks";
@@ -56,6 +63,7 @@ const App = () => (
       <Sonner />
       <LaunchGate>
         <BrowserRouter>
+          <ScrollToTop />
           <AppContent />
         </BrowserRouter>
       </LaunchGate>
