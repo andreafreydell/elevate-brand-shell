@@ -36,10 +36,10 @@ const AppContent = () => {
     <Routes>
       <Route path="/" element={<Index />} />
       <Route path="/product/:handle" element={<ProductDetail />} />
-      <Route path="/founding-circle" element={<Membership />} />
-      <Route path="/membership" element={<Navigate to="/founding-circle" replace />} />
-      <Route path="/founding-100" element={<Navigate to="/founding-circle" replace />} />
       <Route path="/how-it-works" element={<HowItWorks />} />
+      <Route path="/founding-circle" element={<Navigate to="/how-it-works" replace />} />
+      <Route path="/membership" element={<Navigate to="/how-it-works" replace />} />
+      <Route path="/founding-100" element={<Navigate to="/how-it-works" replace />} />
       <Route path="/about" element={<About />} />
       <Route path="/sustainability" element={<Sustainability />} />
       <Route path="/care" element={<CareRepair />} />
