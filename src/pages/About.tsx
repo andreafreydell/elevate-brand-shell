@@ -88,7 +88,7 @@ const About = () => {
           <p className="text-[12px] text-muted-foreground font-sans mb-8">
             Access is luxury. Your next chapter awaits.
           </p>
-          <Link to="/founding-100" className="btn-gea">
+          <Link to="/founding-circle" className="btn-gea">
             Apply for Access
           </Link>
         </div>
