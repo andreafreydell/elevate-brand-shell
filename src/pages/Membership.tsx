@@ -2,48 +2,12 @@ import { Link } from "react-router-dom";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { PageHero } from "@/components/layout/PageHero";
 import { SectionHeading } from "@/components/layout/SectionHeading";
-import { TierCard, type TierData } from "@/components/membership/TierCard";
-import { SavingsCalculator } from "@/components/membership/SavingsCalculator";
+import { OfferUnit } from "@/components/membership/OfferUnit";
 import { TrustStrip } from "@/components/shared/TrustStrip";
 import { AccordionFAQ, type FAQItem } from "@/components/shared/AccordionFAQ";
-import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
+import { AnimateIn } from "@/components/shared/AnimateIn";
 import { Shield, Wrench, Truck, Gem, Ban } from "lucide-react";
-
-const tiers: TierData[] = [
-  {
-    name: "Tier 1",
-    label: "5 Pieces",
-    price: "$65",
-    promoPrice: "$55",
-    period: "month",
-    pieces: "5 curated pieces per cycle",
-    features: [
-      "Full vault access",
-      "Keep Your Favorite included",
-      "Protection coverage included",
-      "Sanitized & Sealed before delivery",
-      "Free shipping both ways",
-      "Cancel anytime — no commitment",
-    ],
-  },
-  {
-    name: "Tier 2",
-    label: "10 Pieces",
-    price: "$85",
-    promoPrice: "$75",
-    period: "month",
-    pieces: "10 curated pieces per cycle",
-    highlighted: true,
-    features: [
-      "Full vault access",
-      "Keep Your Favorite included",
-      "Protection coverage included",
-      "Sanitized & Sealed before delivery",
-      "Free shipping both ways",
-      "Cancel anytime — no commitment",
-    ],
-  },
-];
+import { StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
 
 const trustStandards = [
   { icon: Shield, title: "Sanitized & Sealed", text: "Every piece passes through our care ritual — hand cleaned, UV sanitized, 4-point inspected, and sealed before it reaches you." },
@@ -56,33 +20,27 @@ const trustStandards = [
 const faqItems: FAQItem[] = [
   {
     question: "How does the cost-per-wear work?",
-    answer:
-      "Traditional jewelry purchases average $650+ per piece worn 3-5 times — that's $130+ per wear. With GEA Tier A at $85/month, you access 10 curated pieces. Worn even twice each, your cost-per-wear drops below $5. The more you wear, the more intelligent your access becomes.",
+    answer: "Traditional jewelry purchases average $650+ per piece worn 3-5 times — that's $130+ per wear. With GEA Tier 2 at $85/month, you access 10 curated pieces. Worn even twice each, your cost-per-wear drops below $5. The more you wear, the more intelligent your access becomes.",
   },
   {
     question: "What is Keep Your Favorite?",
-    answer:
-      "Keep Your Favorite allows you to permanently add a piece from your monthly selection to your personal collection. Experience jewelry in real life before deciding to own it. Over time, build a curated collection through discovery rather than impulse.",
+    answer: "Keep Your Favorite allows you to permanently add a piece from your monthly selection to your personal collection. Experience jewelry in real life before deciding to own it. Over time, build a curated collection through discovery rather than impulse.",
   },
   {
     question: "What happens in my first month?",
-    answer:
-      "Your first selection ships within 2 business days of enrollment. Founding members receive priority vault access. Your 60-Day Adjustment means if the first selection doesn't resonate, we'll work with you to find what does.",
+    answer: "Your first selection ships within 2 business days of enrollment. Founding members receive priority vault access. Your 60-Day Adjustment means if the first selection doesn't resonate, we'll work with you to find what does.",
   },
   {
     question: "Is there a commitment period?",
-    answer:
-      "No. Every GEA membership is month-to-month. Cancel anytime from your account dashboard — no fees, no penalties, no questions. Your founding perks remain permanently attached to your account.",
+    answer: "No. Every GEA membership is month-to-month. Cancel anytime from your account dashboard — no fees, no penalties, no questions. Your founding perks remain permanently attached to your account.",
   },
   {
     question: "What if a piece is damaged during wear?",
-    answer:
-      "Normal wear is fully covered under your membership. Our in-house atelier restores every piece between members — hand cleaning, UV sanitization, 4-point inspection. For significant damage, a transparent fee schedule applies, always disclosed before checkout.",
+    answer: "Normal wear is fully covered under your membership. Our in-house atelier restores every piece between members — hand cleaning, UV sanitization, 4-point inspection. For significant damage, a transparent fee schedule applies, always disclosed before checkout.",
   },
   {
     question: "What materials are used?",
-    answer:
-      "Crafted in 316L stainless steel — surgical-grade, tarnish-resistant, and hypoallergenic. Every piece is professionally cleaned, inspected, and restored between members. Water-resistant under normal wear.",
+    answer: "Crafted in 316L stainless steel — surgical-grade, tarnish-resistant, and hypoallergenic. Every piece is professionally cleaned, inspected, and restored between members. Water-resistant under normal wear.",
   },
 ];
 
@@ -102,59 +60,12 @@ const Membership = () => {
         <TrustStrip variant="full" />
       </section>
 
-      {/* Tier cards */}
+      {/* Tier cards — Full OfferUnit */}
       <div id="tiers">
         <SectionHeading label="Choose Your Tier" heading="Your Level of Access" />
       </div>
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-8">
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-[900px] mx-auto">
-          {tiers.map((tier) => (
-            <StaggerItem key={tier.name}>
-              <TierCard tier={tier} />
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
-        <p className="text-[11px] text-muted-foreground font-sans tracking-[0.1em] text-center mt-6">
-          One curated shipment per 30-day cycle. Refresh at the end of your cycle.
-        </p>
-      </section>
-
-      {/* Cost-per-wear reframe */}
-      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
-        <div className="border border-border bg-card p-10 md:p-14 grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div>
-            <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">
-              The Math
-            </p>
-            <h3 className="font-serif text-2xl md:text-3xl font-semibold tracking-[0.02em] mb-4">
-              Cost-Per-Wear Intelligence
-            </h3>
-            <p className="text-[12px] text-muted-foreground font-sans leading-relaxed mb-6">
-              The average fine jewelry purchase sits unworn 90% of its life. GEA membership
-              inverts that equation — you wear more, spend less per occasion, and never carry
-              the weight of a depreciating asset.
-            </p>
-            <Link to="/how-it-works" className="cta-underline">
-              See How It Works
-            </Link>
-          </div>
-          <div className="flex flex-col justify-center gap-4">
-            <div className="border border-border p-6">
-              <p className="text-[10px] tracking-[0.25em] uppercase font-sans text-muted-foreground mb-1">
-                Traditional Purchase
-              </p>
-              <p className="font-serif text-2xl font-medium">$130+ per wear</p>
-              <p className="text-[11px] text-muted-foreground font-sans">$650 piece worn 5 times</p>
-            </div>
-            <div className="border border-foreground bg-foreground text-background p-6">
-              <p className="text-[10px] tracking-[0.25em] uppercase font-sans text-background/60 mb-1">
-                GEA Tier 2
-              </p>
-              <p className="font-serif text-2xl font-medium">Under $5 per wear</p>
-              <p className="text-[11px] text-background/70 font-sans">$85/mo, 10 pieces, unlimited style</p>
-            </div>
-          </div>
-        </div>
+        <OfferUnit variant="full" />
       </section>
 
       {/* Founding member scarcity */}
@@ -178,12 +89,6 @@ const Membership = () => {
             Join the Founding 100
           </Link>
         </div>
-      </section>
-
-      {/* Savings calculator */}
-      <SectionHeading label="The Math" heading="Your Membership Pays for Itself" />
-      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
-        <SavingsCalculator />
       </section>
 
       {/* 5 Named Trust Standards */}

@@ -4,6 +4,7 @@ import { PageHero } from "@/components/layout/PageHero";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { StepBlock } from "@/components/shared/StepBlock";
 import { TrustStrip } from "@/components/shared/TrustStrip";
+import { OfferUnit } from "@/components/membership/OfferUnit";
 import { AccordionFAQ, type FAQItem } from "@/components/shared/AccordionFAQ";
 import { Hand, Package, Sparkles, RefreshCw } from "lucide-react";
 
@@ -112,6 +113,12 @@ const HowItWorks = () => {
             </p>
           </div>
         </div>
+      </section>
+
+      {/* Membership tiers (standard OfferUnit) */}
+      <SectionHeading label="Membership" heading="Your Tier of Access" />
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-8">
+        <OfferUnit variant="standard" />
       </section>
 
       {/* Trust Strip */}

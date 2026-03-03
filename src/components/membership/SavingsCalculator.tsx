@@ -2,8 +2,8 @@ import { useState } from "react";
 import { AnimateIn } from "@/components/shared/AnimateIn";
 
 const tiers = [
-  { name: "Tier A", price: 85, pieces: 10 },
-  { name: "Tier B", price: 65, pieces: 5 },
+  { name: "Tier 2", price: 85, pieces: 10 },
+  { name: "Tier 1", price: 65, pieces: 5 },
 ];
 
 export const SavingsCalculator = () => {
