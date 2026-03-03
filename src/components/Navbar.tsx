@@ -5,26 +5,19 @@ import { Search, User, Heart, Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "New", href: "/" },
+  { label: "Browse All", href: "/" },
+  { label: "Earrings", href: "/" },
+  { label: "Necklaces", href: "/" },
+  { label: "Rings", href: "/" },
+  { label: "Bracelets", href: "/" },
   { label: "How It Works", href: "/how-it-works" },
   { label: "Founding 100", href: "/founding-100" },
-  { label: "About", href: "/about" },
-  { label: "Sustainability", href: "/sustainability" },
-  { label: "Care", href: "/care" },
-  { label: "FAQ", href: "/faq" },
-  { label: "The Edit", href: "/stories" },
-];
-
-const categoryLinks = [
-  { label: "Jewelry", href: "/", active: true },
-  { label: "Founding 100", href: "/founding-100" },
-  { label: "Stories", href: "/stories" },
 ];
 
 export const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
 
-  // Lock body scroll when mobile drawer is open
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
@@ -40,23 +33,6 @@ export const Navbar = () => {
       {/* Top utility bar */}
       <div className="border-b border-border">
         <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 h-[44px] flex items-center justify-between relative">
-          {/* Left: Category tabs (desktop) */}
-          <nav className="hidden md:flex items-center gap-5">
-            {categoryLinks.map((link) => (
-              <Link
-                key={link.label}
-                to={link.href}
-                className={`text-[11px] tracking-[0.2em] uppercase font-sans transition-colors ${
-                  link.active
-                    ? "font-semibold text-foreground border-b border-foreground pb-0.5"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-
           {/* Mobile: Hamburger */}
           <button
             className="md:hidden p-1.5 hover:opacity-70 transition-opacity"
@@ -69,6 +45,9 @@ export const Navbar = () => {
               <Menu className="h-5 w-5 stroke-[1.5]" />
             )}
           </button>
+
+          {/* Desktop: left spacer for centering */}
+          <div className="hidden md:block" />
 
           {/* Center: Logo */}
           <Link
@@ -104,7 +83,7 @@ export const Navbar = () => {
                 key={item.label}
                 to={item.href}
                 className={`text-[11px] tracking-[0.18em] uppercase font-sans transition-colors whitespace-nowrap ${
-                  isActive
+                  isActive && item.label === "New"
                     ? "text-foreground border-b border-foreground pb-0.5"
                     : "text-foreground hover:text-muted-foreground"
                 }`}
