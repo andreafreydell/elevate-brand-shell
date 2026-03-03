@@ -55,7 +55,7 @@ const Account = () => {
           <p className="text-[12px] text-muted-foreground font-sans mb-8">
             Your access is waiting.
           </p>
-          <Link to="/founding-100" className="btn-gea">
+          <Link to="/founding-circle" className="btn-gea">
             Apply for Access
           </Link>
         </div>

@@ -3,7 +3,7 @@ import { NewsletterCapture } from "@/components/shared/NewsletterCapture";
 
 const footerLinks = {
   Membership: [
-    { label: "Founding 100", href: "/founding-100" },
+    { label: "Founding Circle", href: "/founding-circle" },
     { label: "How It Works", href: "/how-it-works" },
     { label: "Refer a Friend", href: "/refer" },
     { label: "Ambassador", href: "/ambassador" },
