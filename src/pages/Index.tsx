@@ -13,7 +13,7 @@ import { Loader2, Hand, Package, Sparkles, RefreshCw } from "lucide-react";
 
 const tiers: TierData[] = [
   {
-    name: "Tier A",
+    name: "Tier 2",
     label: "10 Pieces",
     price: "$85",
     promoPrice: "$75",
@@ -30,7 +30,7 @@ const tiers: TierData[] = [
     ],
   },
   {
-    name: "Tier B",
+    name: "Tier 1",
     label: "5 Pieces",
     price: "$65",
     promoPrice: "$55",

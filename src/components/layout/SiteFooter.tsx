@@ -2,23 +2,22 @@ import { Link } from "react-router-dom";
 import { NewsletterCapture } from "@/components/shared/NewsletterCapture";
 
 const footerLinks = {
-  Access: [
+  Membership: [
     { label: "Founding 100", href: "/founding-100" },
     { label: "How It Works", href: "/how-it-works" },
     { label: "Refer a Friend", href: "/refer" },
     { label: "Ambassador", href: "/ambassador" },
   ],
-  House: [
+  Company: [
     { label: "About GEA", href: "/about" },
     { label: "Sustainability", href: "/sustainability" },
-    { label: "Care & Repair", href: "/care" },
     { label: "The Edit", href: "/stories" },
-  ],
-  Support: [
-    { label: "FAQ", href: "/faq" },
-    { label: "Contact", href: "/contact" },
     { label: "Press", href: "/press" },
-    { label: "Legal", href: "/legal" },
+  ],
+  Help: [
+    { label: "FAQ", href: "/faq" },
+    { label: "Care & Repair", href: "/care" },
+    { label: "Contact", href: "/contact" },
   ],
 };
 

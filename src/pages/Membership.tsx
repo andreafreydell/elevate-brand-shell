@@ -148,7 +148,7 @@ const Membership = () => {
             </div>
             <div className="border border-foreground bg-foreground text-background p-6">
               <p className="text-[10px] tracking-[0.25em] uppercase font-sans text-background/60 mb-1">
-                GEA Tier A
+                GEA Tier 2
               </p>
               <p className="font-serif text-2xl font-medium">Under $5 per wear</p>
               <p className="text-[11px] text-background/70 font-sans">$85/mo, 10 pieces, unlimited style</p>
