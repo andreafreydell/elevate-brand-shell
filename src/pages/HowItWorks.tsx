@@ -6,7 +6,16 @@ import { StepBlock } from "@/components/shared/StepBlock";
 import { TrustStrip } from "@/components/shared/TrustStrip";
 import { OfferUnit } from "@/components/membership/OfferUnit";
 import { AccordionFAQ, type FAQItem } from "@/components/shared/AccordionFAQ";
-import { Hand, Package, Sparkles, RefreshCw } from "lucide-react";
+import { StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
+import { Hand, Package, Sparkles, RefreshCw, Shield, Wrench, Truck, Gem, Ban } from "lucide-react";
+
+const trustStandards = [
+  { icon: Shield, title: "Sanitized & Sealed", text: "Every piece passes through our care ritual — hand cleaned, UV sanitized, 4-point inspected, and sealed before it reaches you." },
+  { icon: Wrench, title: "Repair Guarantee", text: "Normal wear is on us. No questions, no fees. Transparent fixed-fee schedule for significant damage, disclosed before checkout." },
+  { icon: Truck, title: "Secure Delivery", text: "Tamper-evident sealed packaging, tracking updates at key scan points, and support response within 1 business day." },
+  { icon: Gem, title: "Damage Clarity", text: "No surprise fees. Ever. Normal wear = on us. Repairable damage = fixed fee, shown before checkout." },
+  { icon: Ban, title: "Cancel Anytime", text: "No contracts. No commitments. No questions. Founding perks permanently attached even if paused." },
+];
 
 const faqItems: FAQItem[] = [
   {
@@ -41,6 +50,26 @@ const faqItems: FAQItem[] = [
     question: "Can I skip a month?",
     answer: "Yes. Pause your membership at any time from your account dashboard. Your tier, founding status, and preferences are preserved. Resume when you're ready.",
   },
+  {
+    question: "How does the cost-per-wear work?",
+    answer: "Traditional jewelry purchases average $650+ per piece worn 3-5 times — that's $130+ per wear. With GEA Tier 2 at $85/month, you access 10 curated pieces. Worn even twice each, your cost-per-wear drops below $5. The more you wear, the more intelligent your access becomes.",
+  },
+  {
+    question: "What is Keep Your Favorite?",
+    answer: "Keep Your Favorite allows you to permanently add a piece from your monthly selection to your personal collection. Experience jewelry in real life before deciding to own it. Over time, build a curated collection through discovery rather than impulse.",
+  },
+  {
+    question: "What happens in my first month?",
+    answer: "Your first selection ships within 2 business days of enrollment. Founding members receive priority vault access. Your 60-Day Adjustment means if the first selection doesn't resonate, we'll work with you to find what does.",
+  },
+  {
+    question: "Is there a commitment period?",
+    answer: "No. Every GEA membership is month-to-month. Cancel anytime from your account dashboard — no fees, no penalties, no questions. Your founding perks remain permanently attached to your account.",
+  },
+  {
+    question: "What materials are used?",
+    answer: "Crafted in 316L stainless steel — surgical-grade, tarnish-resistant, and hypoallergenic. Every piece is professionally cleaned, inspected, and restored between members. Water-resistant under normal wear.",
+  },
 ];
 
 const HowItWorks = () => {
@@ -56,30 +85,10 @@ const HowItWorks = () => {
       <SectionHeading label="How Access Works" heading="Choose. Receive. Wear. Refresh." />
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <StepBlock
-            number="01"
-            title="Choose"
-            description="Browse our curated vault and select the pieces that speak to your moment."
-            icon={Hand}
-          />
-          <StepBlock
-            number="02"
-            title="Receive"
-            description="Your selections arrive in 1–3 days, freshly restored and sealed in our signature packaging."
-            icon={Package}
-          />
-          <StepBlock
-            number="03"
-            title="Wear"
-            description="Style them for your life — the event, the meeting, the dinner, the everyday."
-            icon={Sparkles}
-          />
-          <StepBlock
-            number="04"
-            title="Refresh"
-            description="When you're ready for something new, return and choose your next chapter."
-            icon={RefreshCw}
-          />
+          <StepBlock number="01" title="Choose" description="Browse our curated vault and select the pieces that speak to your moment." icon={Hand} />
+          <StepBlock number="02" title="Receive" description="Your selections arrive in 1–3 days, freshly restored and sealed in our signature packaging." icon={Package} />
+          <StepBlock number="03" title="Wear" description="Style them for your life — the event, the meeting, the dinner, the everyday." icon={Sparkles} />
+          <StepBlock number="04" title="Refresh" description="When you're ready for something new, return and choose your next chapter." icon={RefreshCw} />
         </div>
       </section>
 
@@ -87,12 +96,8 @@ const HowItWorks = () => {
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-[2px]">
           <div className="bg-card border border-border p-10 md:p-14">
-            <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">
-              Keep What You Love
-            </p>
-            <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">
-              Keep Your Favorite
-            </h3>
+            <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">Keep What You Love</p>
+            <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">Keep Your Favorite</h3>
             <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
               Experience jewelry in real life before deciding to own it. Every piece has a member
               price. Simply choose "Keep This Piece" and it's yours forever.
@@ -100,12 +105,8 @@ const HowItWorks = () => {
             </p>
           </div>
           <div className="bg-card border border-border p-10 md:p-14">
-            <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">
-              Restored Between Every Wear
-            </p>
-            <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">
-              Sanitized & Sealed Protocol
-            </h3>
+            <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">Restored Between Every Wear</p>
+            <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">Sanitized & Sealed Protocol</h3>
             <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
               Our atelier restores every returning piece: hand cleaning, UV sanitization,
               4-point inspection (structure, surface, stones, mechanism), and sealed in
@@ -115,15 +116,68 @@ const HowItWorks = () => {
         </div>
       </section>
 
-      {/* Membership tiers (standard OfferUnit) */}
-      <SectionHeading label="Membership" heading="Your Tier of Access" />
-      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-8">
-        <OfferUnit variant="standard" />
+      {/* ══ Access Is The New Luxury ══ */}
+      <section className="border-t border-border">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center">
+          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium tracking-[-0.01em] mb-4">
+            Access Is{"\n"}The New Luxury
+          </h2>
+          <p className="text-[13px] text-muted-foreground font-sans max-w-[520px] mx-auto mb-10 leading-relaxed">
+            Two tiers of access. One philosophy: more beauty, less burden. Every membership includes protection, care, and free shipping.
+          </p>
+          <TrustStrip variant="full" />
+        </div>
       </section>
 
-      {/* Trust Strip */}
+      {/* ══ Founding Member Access ══ */}
+      <section className="bg-[hsl(28,22%,34%)]">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center">
+          <p className="text-[10px] tracking-[0.4em] uppercase text-[hsl(36,25%,78%)] mb-4 font-sans">
+            Limited Invitation
+          </p>
+          <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-medium text-[hsl(36,33%,93%)] tracking-[0.04em] mb-4">
+            Founding Member Access
+          </h2>
+          <p className="text-[13px] text-[hsl(36,20%,75%)] font-sans max-w-[480px] mx-auto mb-10 leading-relaxed">
+            We are opening our doors to founding circle members who believe luxury is not about
+            owning more — it is about accessing better. Locked pricing, early access, priority
+            selection, and founding recognition — permanently attached to your account.
+          </p>
+          <a
+            href="#tiers"
+            className="inline-block border border-[hsl(36,25%,78%)] text-[hsl(36,25%,78%)] px-10 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans hover:bg-[hsl(36,25%,78%)] hover:text-[hsl(28,22%,34%)] transition-colors"
+          >
+            Claim My Founding Spot
+          </a>
+        </div>
+      </section>
+
+      {/* ══ Membership tiers (full OfferUnit) ══ */}
+      <div id="tiers">
+        <SectionHeading label="Choose Your Tier" heading="Your Level of Access" />
+      </div>
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-8">
-        <TrustStrip variant="full" />
+        <OfferUnit variant="full" />
+      </section>
+
+      {/* ══ The 5 Trust Standards ══ */}
+      <SectionHeading label="Your Guarantee" heading="The 5 Trust Standards" />
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
+        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          {trustStandards.map((item) => (
+            <StaggerItem key={item.title}>
+              <div className="border border-border bg-card p-6 h-full">
+                <item.icon className="h-6 w-6 mb-4 stroke-[1.3] text-foreground" />
+                <p className="text-[11px] tracking-[0.15em] uppercase font-sans font-medium mb-2">
+                  {item.title}
+                </p>
+                <p className="text-[11px] text-muted-foreground font-sans leading-relaxed">
+                  {item.text}
+                </p>
+              </div>
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
       </section>
 
       {/* FAQ */}
@@ -142,7 +196,7 @@ const HowItWorks = () => {
             Two tiers. Zero risk. Cancel anytime. Begin with what feels right.
           </p>
           <Link
-            to="/founding-circle"
+            to="/how-it-works#tiers"
             className="inline-block border border-[hsl(36,25%,78%)] text-[hsl(36,25%,78%)] px-10 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans hover:bg-[hsl(36,25%,78%)] hover:text-[hsl(28,22%,34%)] transition-colors"
           >
             Apply for Access
