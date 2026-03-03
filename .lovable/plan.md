@@ -1,172 +1,167 @@
-# GEA Digital Flagship — Full Site Architecture Build (v2.1)
 
-## Overview
 
-Transform the storefront into a fashion-house digital flagship. Every page follows the GEA Design System v2.1, maintains "Access Is Luxury" positioning, and supports the 2-tier access model. All copy governed by CORE ASSETS v2.1 (February 2026).
+# GEA Build Order -- Phased Implementation Plan
 
-**Core Positioning:** This is not a jewelry rental site. This is a fashion house jewelry access system. Access Is Luxury. Ownership is outdated. Presence > Possession. Experience > Accumulation.
+This is a large scope covering 13 workstreams. Here is how to sequence them for maximum impact, grouped into phases so each one delivers a working, improved site before the next begins.
 
 ---
 
-## Canonical Offer Structure (v2.1 — Locked)
+## Current State Assessment
 
-| Tier | Name | Pieces/Cycle | Price | Month 1 Promo |
-|------|------|-------------|-------|---------------|
-| A | Tier A | 10 curated pieces | $85/month | $75 ($10 off) |
-| B | Tier B | 5 curated pieces | $65/month | $55 ($10 off) |
+**Already built and functional:**
+- Homepage (Index) with hero, material intelligence, access framework, how-it-works mini, value expansion, membership engine
+- Membership/Founding 100 page with 2-tier cards, savings calculator, trust standards, FAQ
+- How It Works page (8 sections including FAQ, trust strip, CTA)
+- About page (founder story, values, manifesto)
+- Sustainability page (stats, circular model, CTA)
+- Care & Repair page (6-step process, care guidelines)
+- FAQ page (4 categories, accordion pattern)
+- Product Detail page (images, variants, editorial sections, membership upsell)
+- TrustStrip component (full/compact variants)
+- Navbar with desktop/mobile drawer
+- Footer with 3 link columns
 
-**Cycle rule:** 1 shipment per 30-day cycle. Refresh at cycle end.
+**Known inconsistencies to fix:**
+- Homepage tier cards say "Tier A / Tier B" but Membership page says "Tier 1 / Tier 2"
+- Homepage cost-per-wear block references "GEA Tier A" instead of "Tier 2"
 
-**Both tiers include:** Free delivery + free returns, protection coverage, Keep Your Favorite option, cancel anytime.
-
-### Three Format Variants
-- **Compact** (ads, email headers): `Tier A: 10 pieces · $75 your first month · Cancel anytime`
-- **Standard** (homepage hero, email popup): Both tiers side-by-side without cycle rule
-- **Full** (Founding 100 page, checkout): Both tiers with cycle mechanics, founding language, full value stack
-
-### Trust Strip (deploy near every CTA)
-- **Full:** Cancel Anytime · Sanitized & Sealed · Repair Guarantee · Free Returns · No Surprise Fees
-- **Compact:** Cancel Anytime · Sanitized & Sealed · Free Returns
-
-### 5 Named Trust Standards
-1. Sanitized & Sealed Protocol
-2. Repair Guarantee
-3. Secure Delivery Standard
-4. Damage Clarity Promise
-5. Cancel Anytime Freedom
-
----
-
-## Access Vocabulary (Enforced)
-
-| Never Use | Always Use |
-|-----------|-----------|
-| Rotation / rotate | Access, refresh, renew, choose your next chapter |
-| Rental / rent | Access, membership, experience |
-| Subscription box | Membership, access tier |
-| Swap | Refresh, renew your selection |
-
-Exception: "Rotation" acceptable only in internal/ops docs, never customer-facing.
+**Not yet built:**
+- OfferUnit reusable component (compact/standard/full)
+- Email capture popup with trigger logic
+- Promo announcement bar
+- Collection browse pages (by type and occasion)
+- Nav restructure (shopping-first header, support-in-footer)
+- Expanded FAQ (32 Q&As with 8 anxiety clusters)
+- Sustainability homepage module ("Designed for Less")
+- Stripe integration
 
 ---
 
-## Approved Copy (Production-Ready)
+## Phase 1 -- Fix Foundations (1 prompt)
 
-### Hero Headlines
-- The Founding 100
-- Luxury, Accessed
-- Adorn the Woman You Are Becoming
-- Access Defines Status
-- The Collection — Curated High-Design Jewelry, Accessed
-- More Beauty. Less Burden.
+**Goal:** Consistent tier naming and nav/footer restructure.
 
-### CTAs
-- APPLY FOR ACCESS
-- CLAIM MY FOUNDING SPOT
-- JOIN THE FOUNDING 100
-- EXPLORE THE COLLECTION
-- SEE MEMBERSHIP OPTIONS
-- UNLOCK FIRST MONTH
+1. **Normalize tier naming everywhere** -- Change Homepage `Index.tsx` from "Tier A / Tier B" to "Tier 1 / Tier 2" and fix the cost-per-wear reference.
 
-### Repeatable Lines
-- "More beauty, less burden."
-- "Luxury designed for who you're becoming."
-- "Access is our rebellion."
-- "Elevated. Sustainable. Evolving."
-- "This is not rental. This is access."
-
-### How It Works Steps
-1. **Choose** — Browse our curated vault and select the pieces that speak to your moment.
-2. **Receive** — Your selections arrive in 1–3 days, freshly restored and sealed in our signature packaging.
-3. **Wear** — Style them for your life — the event, the meeting, the dinner, the everyday.
-4. **Refresh** — When you're ready for something new, return and choose your next chapter.
+2. **Restructure navigation (Navbar + Footer):**
+   - **Header keeps only shopping-entry links:** New, Browse All, Earrings, Necklaces, Rings, Bracelets, How It Works, Founding 100
+   - **Move FAQ, About, Sustainability, Care, Contact, Legal to footer** in organized columns: MEMBERSHIP (Founding 100, How It Works, Refer a Friend) / COMPANY (About GEA, Sustainability, The Edit) / HELP (FAQ, Care & Repair, Contact, Press) / LEGAL (Terms, Privacy)
+   - **Mobile hamburger** mirrors the same hierarchy
+   - Collection links (Earrings, etc.) will be placeholder routes for now pointing to `/` until collection pages are built
 
 ---
 
-## Build Sequence (5 Phases)
+## Phase 2 -- OfferUnit Component + Promo Bar (1 prompt)
 
-### Phase 1 — Shared Infrastructure ✅ (Mostly Complete)
-Reusable layout components: PageLayout, SiteFooter, PageHero, SectionHeading, NewsletterCapture.
+**Goal:** Create the canonical pricing display and deploy it.
 
-### Phase 2 — Homepage Rebuild
-8-section runway sequence (fixed order):
-1. Authority Hero — Large serif declaration, single CTA
-2. Material Intelligence — Macro texture, metal depth, lifecycle care
-3. Access Framework — Reframe ownership vs access, economic argument
-4. How It Works — Choose, Receive, Wear, Refresh (elevated language)
-5. Value Expansion — Freedom to experiment
-6. Social Validation — UGC strip (only place smiling allowed)
-7. Membership Engine — 2 tier cards (Tier A / Tier B) with value framing
-8. Final Declarative — "More Beauty. Less Burden."
+1. **Build `OfferUnit.tsx`** with 3 variants:
+   - **Compact** (one-line): tier name, price, piece count -- for PDP sidebar
+   - **Standard** (card): both tiers side-by-side with features -- for How It Works
+   - **Full** (with savings calculator + value stack) -- for Membership page
 
-### Phase 3 — Core Conversion Pages
+2. **Build `PromoBar.tsx`:** A slim, dismissible announcement bar above the Navbar. Copy: "FOUNDING -- Use code FOUNDING10 for $10 off your first month -- Limited to first 100 members". Dismissible with X, reappears on new sessions (sessionStorage). Links to `/founding-100`.
 
-**Founding 100 (`/founding-100`)** — Replaces `/membership`
-- 2-tier comparison with value stacking
-- Cost-per-wear reframing
-- Keep Your Favorite logic
-- Month 1 promotion psychology
-- Founding member scarcity (first 100)
-- 5 Named Trust Standards
-- Savings calculator
-- Risk reversal block
-
-**How It Works (`/how-it-works`)**
-- Full-page friction removal
-- 4-step visual process
-- FAQ accordion
-- Confidence-building closing CTA
-
-**Product Detail Enhancement**
-- Design philosophy section
-- Material composition (316L stainless steel messaging)
-- Styling suggestions from Piece Styling Matrix
-- Keep Your Favorite option
-
-### Phase 4 — Brand Authority + Growth Pages
-- About / Founder (`/about`) — Founder story, manifesto, values grid
-- Sustainability (`/sustainability`) — Circular economy, no extraction
-- Care & Repair (`/care`) — Sanitized & Sealed Protocol, restoration process
-- FAQ (`/faq`) — Comprehensive accordion by category
-- Contact (`/contact`) — Concierge-style form
-- Refer a Friend (`/refer`) — Dual incentive referral
-- Ambassador (`/ambassador`) — Application placeholder
-- Press (`/press`) — Press kit, inquiries
-- Legal (`/legal`) — Terms, Privacy, Membership Agreement
-
-### Phase 5 — Retention + Dashboard
-- Stories / The Edit (`/stories`) — Style guides, monthly drop calendar
-- Account Dashboard (`/account`) — Profile, current access, history, Keep Your Favorite actions
+3. **Deploy OfferUnit:**
+   - PDP: compact variant in the membership upsell section
+   - How It Works: standard variant replacing the current inline tier mention
+   - Membership page: full variant (replaces current inline tier cards with the canonical component)
+   - Homepage membership engine: standard variant
 
 ---
 
-## Routing
+## Phase 3 -- Expand FAQ to 32 Q&As (1 prompt)
 
-All routes added to `App.tsx`. Key change: `/membership` → `/founding-100`.
+**Goal:** Full trust-building FAQ with 8 anxiety clusters.
+
+- Expand `/faq` from 4 categories / ~13 questions to **8 categories / 32 questions:**
+  1. Access Model & How It Works (4 Qs)
+  2. Membership & Pricing (4 Qs)
+  3. Shipping & Timing (4 Qs)
+  4. Quality & Authentication (4 Qs)
+  5. Care & Cleaning (4 Qs)
+  6. Returns & Damage Policy (4 Qs)
+  7. Founding 100 Program (4 Qs)
+  8. Account Management (4 Qs)
+
+- Add anchor-link navigation at the top (jump-to sections)
+- Add FAQPage JSON-LD schema for SEO
+- Add a floating "Still have questions?" CTA that links to `/contact`
 
 ---
 
-## Photography Archetype Hierarchy (Fixed Order)
-1. **Authority** — Editorial crop, runway authority, detached gaze
-2. **Material Intelligence** — Macro texture, metal depth on travertine
-3. **Cultural** — Art/architecture connection, timeless
-4. **Validation** — UGC only, smiling permitted here only
+## Phase 4 -- Enhance Care & Repair + Sustainability (1 prompt)
+
+**Goal:** Deepen both editorial pages and add the homepage sustainability module.
+
+1. **Care & Repair `/care`:** Add sections for material-specific guides (gold, silver, plated, gemstones) and the Repair Promise (what happens when something breaks, damage vs. normal wear).
+
+2. **Sustainability `/sustainability`:** Expand to 4 full editorial sections as specified -- Hero with striking stat, The Lifecycle (mineral extraction + over-consumption with equal depth), Impact by the Numbers, Philosophy Close. Rewrite to feel like an interesting magazine feature, not corporate responsibility.
+
+3. **Homepage "Designed for Less" module:** A 3-column proof strip between the Social Validation and Membership Engine sections on Index.tsx: "No Extraction / Full Lifecycle Care / Zero Waste Access" with one-sentence facts each. Links to `/sustainability`.
+
+4. **PDP micro-copy:** Add a subtle line near product details: "This piece is part of GEA's access system -- learn about our impact" linking to `/sustainability`.
 
 ---
 
-## Marketing Doctrine (15 Pillars — Governing All Copy)
-1. Offers drive everything (perceived value 3-5x cost)
-2. Zero-calorie messaging (5-second clarity test)
-3. StoryBrand framework (Customer as Hero)
-4. Conversion-Centered Design (one job per page)
-5. Value Stacking (never discounting)
-6. Risk Reversal at friction points
-7. Scarcity and Exclusivity (founding access)
-8. Continuance Ladder
-9. Social Proof Stacking
-10. Membership as "beating the system"
-11. Four Pillars (Product, Story, Experience, Consistency)
-12. Single CTA dominance
-13. Identity-based messaging (after-state)
-14. High-perceived-value email capture
-15. Strategic repetition of core messages
+## Phase 5 -- Email Capture Popup (1 prompt)
+
+**Goal:** Top-of-funnel lead capture.
+
+1. **Build `EmailCapturePopup.tsx`:** Modal/slide-up with founding access variant as default ("Join the Founding 100 -- Get First Access + $10 Off Your First Month"). Single email field + CTA. Mobile = bottom slide-up.
+
+2. **Build `useEmailCaptureTrigger.ts` hook:** 3 trigger conditions -- 8s delay on desktop, 40% scroll on mobile, exit-intent on both. Suppress 30 days after close (localStorage), permanently after conversion.
+
+3. **Integrate into `PageLayout.tsx`** so it fires site-wide.
+
+4. **Klaviyo integration** will require an edge function and API key setup -- this will be wired as a placeholder that logs to console until Klaviyo credentials are configured.
+
+---
+
+## Phase 6 -- About Page Enhancement (1 prompt)
+
+**Goal:** Full 8-section founder authority page.
+
+Expand the current About page from 3 sections to 8:
+1. Hero (founder portrait + one-line positioning) -- exists, refine
+2. Origin Story -- exists, expand
+3. The Problem (why ownership is broken) -- new
+4. The Vision (Access Is Luxury) -- fold in from existing manifesto
+5. How It Works (brief, links to /how-it-works) -- new
+6. The Founding 100 (scarcity + perks) -- new
+7. Values -- exists, refine
+8. Press/Contact -- new
+
+---
+
+## Phase 7 -- Collection Browse Pages (1-2 prompts)
+
+**Goal:** Shopping-entry pages that make the nav functional.
+
+- Create a reusable `CollectionPage.tsx` that fetches Shopify products filtered by collection/tag
+- Build routes: `/collections/earrings`, `/collections/necklaces`, `/collections/rings`, `/collections/bracelets`, `/collections/cuffs`
+- Build occasion routes: `/collections/everyday`, `/collections/evening`, `/collections/office`, `/collections/bridal`, `/collections/travel`
+- Each page uses `PageHero` + `ProductGrid` filtered by Shopify query
+- Add a `/collections` browse-all page
+- Wire all nav links to real routes
+
+---
+
+## Phase 8 -- Stripe Integration (separate effort)
+
+**Goal:** Live checkout with 2-tier subscriptions.
+
+This requires enabling Stripe through Lovable's integration tools and setting up Supabase/Cloud for edge functions. It is best handled as its own focused session:
+- Create Stripe Products for Tier 1 and Tier 2
+- Create FOUNDING10 coupon ($10 off first invoice)
+- Build checkout flow: tier selection -> Stripe Checkout -> confirmation
+- Add trust strip and anxiety reducers at checkout
+- Webhook handling for subscription lifecycle
+
+---
+
+## Recommended Execution
+
+Start with **Phase 1** (foundations), then **Phase 2** (OfferUnit + PromoBar) since these affect every other page. After that, Phases 3-6 can be done in any order. Phase 7 depends on having Shopify products tagged by collection. Phase 8 (Stripe) is independent and can happen whenever you are ready to go live with payments.
+
+Each phase is scoped to fit in 1-2 prompts.
