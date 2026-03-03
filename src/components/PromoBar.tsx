@@ -24,7 +24,7 @@ export const PromoBar = () => {
     <div className="bg-card border-b border-border relative">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 py-2.5 flex items-center justify-center">
         <Link
-          to="/founding-circle"
+          to="/how-it-works"
           className="text-[10px] tracking-[0.2em] uppercase font-sans text-foreground hover:text-muted-foreground transition-colors text-center"
         >
           <span className="font-medium">Founding Circle</span>

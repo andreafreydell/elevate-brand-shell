@@ -14,7 +14,6 @@ const ScrollToTop = () => {
   return null;
 };
 import ProductDetail from "./pages/ProductDetail";
-import Membership from "./pages/Membership";
 import HowItWorks from "./pages/HowItWorks";
 import About from "./pages/About";
 import Sustainability from "./pages/Sustainability";
