@@ -7,45 +7,9 @@ import { StepBlock } from "@/components/shared/StepBlock";
 import { ValueBlock } from "@/components/shared/ValueBlock";
 import { TrustStrip } from "@/components/shared/TrustStrip";
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
-import { TierCard, type TierData } from "@/components/membership/TierCard";
+import { OfferUnit } from "@/components/membership/OfferUnit";
 import { ProductImageRow } from "@/components/ProductImageRow";
 import { Loader2, Hand, Package, Sparkles, RefreshCw } from "lucide-react";
-
-const tiers: TierData[] = [
-  {
-    name: "Tier 2",
-    label: "10 Pieces",
-    price: "$85",
-    promoPrice: "$75",
-    period: "month",
-    pieces: "10 curated pieces per cycle",
-    highlighted: true,
-    features: [
-      "Full vault access",
-      "Keep Your Favorite included",
-      "Protection coverage included",
-      "Sanitized & Sealed before delivery",
-      "Free shipping both ways",
-      "Cancel anytime",
-    ],
-  },
-  {
-    name: "Tier 1",
-    label: "5 Pieces",
-    price: "$65",
-    promoPrice: "$55",
-    period: "month",
-    pieces: "5 curated pieces per cycle",
-    features: [
-      "Full vault access",
-      "Keep Your Favorite included",
-      "Protection coverage included",
-      "Sanitized & Sealed before delivery",
-      "Free shipping both ways",
-      "Cancel anytime",
-    ],
-  },
-];
 
 const Index = () => {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
@@ -119,9 +83,7 @@ const Index = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-[2px]">
           <div className="bg-[hsl(30,14%,32%)] aspect-[4/5] flex items-end p-8">
             <div>
-              <p className="text-[10px] tracking-[0.3em] uppercase text-[hsl(36,20%,75%)] font-sans mb-2">
-                316L Stainless Steel
-              </p>
+              <p className="text-[10px] tracking-[0.3em] uppercase text-[hsl(36,20%,75%)] font-sans mb-2">316L Stainless Steel</p>
               <p className="text-[12px] text-[hsl(36,20%,70%)] font-sans leading-relaxed max-w-[260px]">
                 Surgical-grade, tarnish-resistant, and hypoallergenic. Built to endure through every access cycle.
               </p>
@@ -129,9 +91,7 @@ const Index = () => {
           </div>
           <div className="bg-[hsl(28,12%,28%)] aspect-[4/5] flex items-end p-8">
             <div>
-              <p className="text-[10px] tracking-[0.3em] uppercase text-[hsl(36,20%,75%)] font-sans mb-2">
-                Lab-Created Moissanite
-              </p>
+              <p className="text-[10px] tracking-[0.3em] uppercase text-[hsl(36,20%,75%)] font-sans mb-2">Lab-Created Moissanite</p>
               <p className="text-[12px] text-[hsl(36,20%,70%)] font-sans leading-relaxed max-w-[260px]">
                 Conflict-free brilliance. Higher refractive index than diamond. Ethically engineered.
               </p>
@@ -139,9 +99,7 @@ const Index = () => {
           </div>
           <div className="bg-[hsl(32,16%,36%)] aspect-[4/5] flex items-end p-8">
             <div>
-              <p className="text-[10px] tracking-[0.3em] uppercase text-[hsl(36,20%,75%)] font-sans mb-2">
-                Lifecycle Care
-              </p>
+              <p className="text-[10px] tracking-[0.3em] uppercase text-[hsl(36,20%,75%)] font-sans mb-2">Lifecycle Care</p>
               <p className="text-[12px] text-[hsl(36,20%,70%)] font-sans leading-relaxed max-w-[260px]">
                 Every piece is professionally cleaned, inspected, and restored between members.
               </p>
@@ -157,12 +115,8 @@ const Index = () => {
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-[2px]">
           <div className="bg-card border border-border p-10 md:p-14">
-            <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">
-              The Old Model
-            </p>
-            <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">
-              Ownership Is a Liability
-            </h3>
+            <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">The Old Model</p>
+            <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">Ownership Is a Liability</h3>
             <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
               The average woman wears each piece of fine jewelry fewer than five times before it sits
               forgotten. Thousands spent. Inches of drawer space consumed. Value depreciating silently.
@@ -170,12 +124,8 @@ const Index = () => {
             </p>
           </div>
           <div className="bg-foreground text-background p-10 md:p-14">
-            <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-background/60 mb-4">
-              The GEA Model
-            </p>
-            <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">
-              Access Is Intelligence
-            </h3>
+            <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-background/60 mb-4">The GEA Model</p>
+            <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">Access Is Intelligence</h3>
             <p className="text-[12px] text-background/70 font-sans leading-relaxed">
               Access the full vault. Wear what speaks to you this month. Return when you're ready
               for something new. No commitment to a single piece — commitment to always being adorned
@@ -191,18 +141,10 @@ const Index = () => {
       <SectionHeading label="The Process" heading="How It Works" />
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <StaggerItem>
-            <StepBlock number="01" title="Choose" description="Browse our curated vault and select the pieces that speak to your moment." icon={Hand} />
-          </StaggerItem>
-          <StaggerItem>
-            <StepBlock number="02" title="Receive" description="Your selections arrive in 1–3 days, freshly restored and sealed in our signature packaging." icon={Package} />
-          </StaggerItem>
-          <StaggerItem>
-            <StepBlock number="03" title="Wear" description="Style them for your life — the event, the meeting, the dinner, the everyday." icon={Sparkles} />
-          </StaggerItem>
-          <StaggerItem>
-            <StepBlock number="04" title="Refresh" description="When you're ready for something new, return and choose your next chapter." icon={RefreshCw} />
-          </StaggerItem>
+          <StaggerItem><StepBlock number="01" title="Choose" description="Browse our curated vault and select the pieces that speak to your moment." icon={Hand} /></StaggerItem>
+          <StaggerItem><StepBlock number="02" title="Receive" description="Your selections arrive in 1–3 days, freshly restored and sealed in our signature packaging." icon={Package} /></StaggerItem>
+          <StaggerItem><StepBlock number="03" title="Wear" description="Style them for your life — the event, the meeting, the dinner, the everyday." icon={Sparkles} /></StaggerItem>
+          <StaggerItem><StepBlock number="04" title="Refresh" description="When you're ready for something new, return and choose your next chapter." icon={RefreshCw} /></StaggerItem>
         </StaggerContainer>
         <div className="text-center mt-10">
           <Link to="/how-it-works" className="cta-underline">Learn More</Link>
@@ -215,20 +157,14 @@ const Index = () => {
       <SectionHeading label="Freedom" heading="Wear More. Spend Smarter." />
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <StaggerItem>
-            <ValueBlock title="Freedom to Experiment" description="Try bold statement pieces without the commitment of ownership. If it doesn't feel right, refresh your selection next month. No risk. No regret." className="bg-card" />
-          </StaggerItem>
-          <StaggerItem>
-            <ValueBlock title="Always Something New" description="Your collection evolves as you do. New drops enter the vault monthly. Early access for members means you're always first." className="bg-card" />
-          </StaggerItem>
-          <StaggerItem>
-            <ValueBlock title="Luxury Without Burden" description="No storage anxiety. No depreciation. No buyer's remorse. Just beautiful jewelry, worn with intention, returned with ease." className="bg-card" />
-          </StaggerItem>
+          <StaggerItem><ValueBlock title="Freedom to Experiment" description="Try bold statement pieces without the commitment of ownership. If it doesn't feel right, refresh your selection next month. No risk. No regret." className="bg-card" /></StaggerItem>
+          <StaggerItem><ValueBlock title="Always Something New" description="Your collection evolves as you do. New drops enter the vault monthly. Early access for members means you're always first." className="bg-card" /></StaggerItem>
+          <StaggerItem><ValueBlock title="Luxury Without Burden" description="No storage anxiety. No depreciation. No buyer's remorse. Just beautiful jewelry, worn with intention, returned with ease." className="bg-card" /></StaggerItem>
         </StaggerContainer>
       </section>
 
       {/* ═══════════════════════════════════════════
-          6. SOCIAL VALIDATION (Product images / UGC strip)
+          6. SOCIAL VALIDATION
           ═══════════════════════════════════════════ */}
       {loading ? (
         <div className="flex items-center justify-center py-24">
@@ -242,15 +178,11 @@ const Index = () => {
       ) : null}
 
       {/* ═══════════════════════════════════════════
-          7. MEMBERSHIP ENGINE
+          7. MEMBERSHIP ENGINE (OfferUnit standard)
           ═══════════════════════════════════════════ */}
       <SectionHeading label="Membership" heading="Your Tier of Access" />
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-[900px] mx-auto">
-          {tiers.map((tier) => (
-            <TierCard key={tier.name} tier={tier} />
-          ))}
-        </div>
+        <OfferUnit variant="standard" />
         <div className="text-center mt-6">
           <TrustStrip variant="compact" />
         </div>

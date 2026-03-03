@@ -5,6 +5,7 @@ import { useCartStore } from "@/stores/cartStore";
 import { Navbar } from "@/components/Navbar";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { AnimateIn } from "@/components/shared/AnimateIn";
+import { OfferUnit } from "@/components/membership/OfferUnit";
 import { Loader2, Shield, RefreshCw, Gem, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 
@@ -234,32 +235,10 @@ const ProductDetail = () => {
           </section>
         </AnimateIn>
 
-        {/* ═══ Membership upsell ═══ */}
+        {/* ═══ Membership upsell (compact OfferUnit) ═══ */}
         <AnimateIn delay={0.25}>
-          <section className="mt-16 border border-border p-10 md:p-14 text-center">
-            <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">Access</p>
-            <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">
-              Wear This Piece From ${65}/month
-            </h3>
-            <p className="text-[12px] text-muted-foreground font-sans leading-relaxed max-w-[480px] mx-auto mb-6">
-              GEA membership gives you access to the full vault — including this piece. 
-              Refresh monthly, keep what you love, and never worry about repairs or insurance.
-            </p>
-            <div className="flex items-center justify-center gap-6 mb-8">
-              {[
-                { icon: Shield, text: "Insurance included" },
-                { icon: RefreshCw, text: "Cancel anytime" },
-                { icon: Gem, text: "Keep at member price" },
-              ].map((item) => (
-                <div key={item.text} className="flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase font-sans text-muted-foreground">
-                  <item.icon className="h-3.5 w-3.5 stroke-[1.5]" />
-                  <span>{item.text}</span>
-                </div>
-              ))}
-            </div>
-            <Link to="/founding-100" className="btn-gea">
-              See Membership Options
-            </Link>
+          <section className="mt-16">
+            <OfferUnit variant="compact" />
           </section>
         </AnimateIn>
       </main>
