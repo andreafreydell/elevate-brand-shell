@@ -48,7 +48,7 @@ const Membership = () => {
   return (
     <PageLayout>
       <PageHero
-        label="The Founding 100"
+        label="The Founding Circle"
         headline={"Access Is\nThe New Luxury"}
         subtitle="Two tiers of access. One philosophy: more beauty, less burden. Every membership includes protection, care, and free shipping."
         cta="Claim My Founding Spot"
@@ -78,15 +78,15 @@ const Membership = () => {
             Founding Member Access
           </h2>
           <p className="text-[13px] text-[hsl(36,20%,75%)] font-sans max-w-[480px] mx-auto mb-10 leading-relaxed">
-            We are opening our doors to 100 founding members who believe luxury is not about
+            We are opening our doors to founding circle members who believe luxury is not about
             owning more — it is about accessing better. Locked pricing, early access, priority
             selection, and founding recognition — permanently attached to your account.
           </p>
           <Link
-            to="/founding-100"
+            to="/founding-circle"
             className="inline-block border border-[hsl(36,25%,78%)] text-[hsl(36,25%,78%)] px-10 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans hover:bg-[hsl(36,25%,78%)] hover:text-[hsl(28,22%,34%)] transition-colors"
           >
-            Join the Founding 100
+            Join the Founding Circle
           </Link>
         </div>
       </section>
@@ -126,7 +126,7 @@ const Membership = () => {
           <p className="text-[12px] text-muted-foreground font-sans max-w-[400px] mx-auto mb-6 leading-relaxed">
             Your access is waiting. Begin with either tier — upgrade, downgrade, or cancel anytime.
           </p>
-          <Link to="/founding-100" className="btn-gea">
+          <Link to="/founding-circle" className="btn-gea">
             Apply for Access
           </Link>
           <div className="mt-6">

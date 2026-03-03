@@ -73,7 +73,7 @@ const FAQ = () => {
           <p className="text-[12px] text-muted-foreground font-sans mb-8">
             Our concierge team is here to help.
           </p>
-          <Link to="/founding-100" className="btn-gea">
+          <Link to="/founding-circle" className="btn-gea">
             Contact Us
           </Link>
         </div>

@@ -142,7 +142,7 @@ const HowItWorks = () => {
             Two tiers. Zero risk. Cancel anytime. Begin with what feels right.
           </p>
           <Link
-            to="/founding-100"
+            to="/founding-circle"
             className="inline-block border border-[hsl(36,25%,78%)] text-[hsl(36,25%,78%)] px-10 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans hover:bg-[hsl(36,25%,78%)] hover:text-[hsl(28,22%,34%)] transition-colors"
           >
             Apply for Access

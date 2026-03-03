@@ -24,14 +24,14 @@ export const PromoBar = () => {
     <div className="bg-card border-b border-border relative">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 py-2.5 flex items-center justify-center">
         <Link
-          to="/founding-100"
+          to="/founding-circle"
           className="text-[10px] tracking-[0.2em] uppercase font-sans text-foreground hover:text-muted-foreground transition-colors text-center"
         >
-          <span className="font-medium">Founding</span>
+          <span className="font-medium">Founding Circle</span>
           <span className="mx-2">·</span>
           Use code <span className="font-medium">FOUNDING10</span> for $10 off your first month
           <span className="mx-2">·</span>
-          Limited to first 100 members
+          Limited founding membership
         </Link>
         <button
           onClick={dismiss}

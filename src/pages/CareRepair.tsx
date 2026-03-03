@@ -83,7 +83,7 @@ const CareRepair = () => {
           <p className="text-[12px] text-muted-foreground font-sans mb-8">
             Repair included. Insurance included. That's the standard.
           </p>
-          <Link to="/founding-100" className="btn-gea">
+          <Link to="/founding-circle" className="btn-gea">
             Apply for Access
           </Link>
         </div>
