@@ -9,7 +9,7 @@ interface StepBlockProps {
 
 export const StepBlock = ({ number, title, description, icon: Icon }: StepBlockProps) => {
   return (
-    <div className="bg-card border border-border p-8 md:p-10 flex flex-col min-h-[220px]">
+    <div className="bg-card border border-border p-8 md:p-10 flex flex-col h-full min-h-[220px]">
       <div className="flex items-center justify-between mb-6">
         <span className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground">
           Step {number}
