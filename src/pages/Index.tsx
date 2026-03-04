@@ -11,6 +11,48 @@ import { OfferUnit } from "@/components/membership/OfferUnit";
 import { ProductImageRow } from "@/components/ProductImageRow";
 import { Loader2, Hand, Package, Sparkles, RefreshCw, Shield, Wrench, Truck, Gem, Ban } from "lucide-react";
 
+const LaunchEmailCapture = () => {
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      setSubmitted(true);
+      setEmail("");
+    }
+  };
+
+  if (submitted) {
+    return (
+      <div className="text-center">
+        <p className="text-[11px] tracking-[0.2em] uppercase font-sans text-[hsl(36,33%,93%)]">
+          You're on the list. We'll be in touch.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="max-w-[480px] mx-auto flex flex-col sm:flex-row gap-3">
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Your email address"
+        required
+        className="flex-1 border border-[hsl(36,25%,78%)/0.4] bg-transparent px-5 py-3.5 text-[12px] tracking-[0.1em] font-sans text-[hsl(36,33%,93%)] placeholder:text-[hsl(36,20%,75%)/0.5] focus:outline-none focus:border-[hsl(36,25%,78%)] transition-colors"
+      />
+      <button
+        type="submit"
+        className="border border-[hsl(36,25%,78%)] text-[hsl(28,22%,34%)] bg-[hsl(36,25%,78%)] px-8 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans font-medium hover:bg-transparent hover:text-[hsl(36,25%,78%)] transition-colors whitespace-nowrap"
+      >
+        Get Early Access
+      </button>
+    </form>
+  );
+};
+
 const Index = () => {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
   const [loading, setLoading] = useState(true);
