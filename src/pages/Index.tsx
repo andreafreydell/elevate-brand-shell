@@ -226,6 +226,7 @@ const Index = () => {
             { icon: Wrench, text: "Repair Guarantee" },
             { icon: Truck, text: "Secure Delivery" },
             { icon: Gem, text: "Damage Clarity" },
+            { icon: Gem, text: "Keep Your Favorite" },
             { icon: Ban, text: "Cancel Anytime" },
           ].map((item) => (
             <div key={item.text} className="flex items-center gap-1.5 text-[10px] tracking-[0.15em] uppercase font-sans text-muted-foreground">
