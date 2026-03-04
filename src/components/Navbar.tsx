@@ -5,11 +5,11 @@ import { Search, User, Heart, Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "New", href: "/" },
-  { label: "Browse All", href: "/" },
-  { label: "Earrings", href: "/" },
-  { label: "Necklaces", href: "/" },
-  { label: "Rings", href: "/" },
-  { label: "Bracelets", href: "/" },
+  { label: "Browse All", href: "/browse" },
+  { label: "Earrings", href: "/earrings" },
+  { label: "Necklaces", href: "/necklaces" },
+  { label: "Rings", href: "/rings" },
+  { label: "Bracelets", href: "/bracelets" },
   { label: "How It Works", href: "/how-it-works" },
   { label: "Founding Circle", href: "/how-it-works#founding-circle" },
 ];
