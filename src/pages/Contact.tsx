@@ -86,8 +86,8 @@ const Contact = () => {
                   className="w-full border border-border bg-transparent px-5 py-3 text-[13px] font-sans text-foreground focus:outline-none focus:border-foreground transition-colors resize-none"
                 />
               </div>
-              <button type="submit" className="btn-gea w-full">
-                Send Message
+              <button type="submit" disabled={loading} className="btn-gea w-full disabled:opacity-50">
+                {loading ? "Sending..." : "Send Message"}
               </button>
             </form>
           )}
