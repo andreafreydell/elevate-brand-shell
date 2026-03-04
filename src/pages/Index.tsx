@@ -63,12 +63,12 @@ const Index = () => {
               </p>
             </AnimateIn>
             <AnimateIn variant="fadeUp" delay={0.6} duration={0.8}>
-              <Link
-                to="/how-it-works"
+              <a
+                href="#founding-access"
                 className="inline-block border border-[hsl(36,25%,78%)] text-[hsl(36,25%,78%)] px-10 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans hover:bg-[hsl(36,25%,78%)] hover:text-[hsl(28,22%,34%)] transition-colors"
               >
                 Apply for Access
-              </Link>
+              </a>
             </AnimateIn>
           </div>
           <div className="hidden md:block bg-[hsl(32,15%,42%)] overflow-hidden">
@@ -255,12 +255,12 @@ const Index = () => {
           <p className="text-[13px] text-[hsl(36,20%,75%)] font-sans max-w-[400px] mx-auto mb-10 leading-relaxed">
             Adorn the woman you are becoming. Not the one weighed down by what she already owns.
           </p>
-          <Link
-            to="/how-it-works"
+          <a
+            href="#founding-access"
             className="inline-block border border-[hsl(36,25%,78%)] text-[hsl(36,25%,78%)] px-10 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans hover:bg-[hsl(36,25%,78%)] hover:text-[hsl(28,22%,34%)] transition-colors"
           >
             Apply for Access
-          </Link>
+          </a>
         </div>
       </section>
     </PageLayout>
