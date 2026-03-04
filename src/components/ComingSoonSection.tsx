@@ -1,15 +1,35 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { AnimateIn } from "@/components/shared/AnimateIn";
+import { supabase } from "@/integrations/supabase/client";
 
 export const ComingSoonSection = () => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      setSubmitted(true);
+    if (!email) return;
+    setLoading(true);
+    setError("");
+    try {
+      const { error: dbError } = await supabase
+        .from("founding_members")
+        .insert({ email, source: "coming-soon" });
+      if (dbError) {
+        if (dbError.code === "23505") {
+          setError("You're already on the list!");
+          setSubmitted(true);
+        } else throw dbError;
+      } else {
+        setSubmitted(true);
+      }
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
       setEmail("");
     }
   };
@@ -77,7 +97,7 @@ export const ComingSoonSection = () => {
           <AnimateIn variant="fadeUp" delay={0.5} duration={0.8}>
             {submitted ? (
               <p className="text-[11px] tracking-[0.2em] uppercase font-sans text-[hsl(36,33%,93%)]">
-                You're on the list. Welcome to the revolution.
+                {error || "You're on the list. Welcome to the revolution."}
               </p>
             ) : (
               <form onSubmit={handleSubmit} className="max-w-[480px] mx-auto flex flex-col sm:flex-row gap-3">
@@ -91,9 +111,10 @@ export const ComingSoonSection = () => {
                 />
                 <button
                   type="submit"
-                  className="border border-[hsl(36,25%,78%)] text-[hsl(28,22%,34%)] bg-[hsl(36,25%,78%)] px-8 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans font-medium hover:bg-transparent hover:text-[hsl(36,25%,78%)] transition-colors whitespace-nowrap"
+                  disabled={loading}
+                  className="border border-[hsl(36,25%,78%)] text-[hsl(28,22%,34%)] bg-[hsl(36,25%,78%)] px-8 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans font-medium hover:bg-transparent hover:text-[hsl(36,25%,78%)] transition-colors whitespace-nowrap disabled:opacity-50"
                 >
-                  Become a Founder
+                  {loading ? "Joining..." : "Become a Founder"}
                 </button>
               </form>
             )}
