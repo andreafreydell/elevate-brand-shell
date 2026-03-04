@@ -26,6 +26,8 @@ import Press from "./pages/Press";
 import Legal from "./pages/Legal";
 import Stories from "./pages/Stories";
 import Account from "./pages/Account";
+import BrowseAll from "./pages/BrowseAll";
+import CategoryPage from "./pages/CategoryPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
