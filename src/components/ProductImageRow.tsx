@@ -1,19 +1,16 @@
 import { type ShopifyProduct } from "@/lib/shopify";
 
+const EDITORIAL_IMAGES = [
+  { url: "/images/edit-1.png", alt: "Model wearing gold earrings and moissanite ring" },
+  { url: "/images/edit-2.png", alt: "Model wearing gold chain necklace and hoop earrings" },
+  { url: "/images/edit-3.png", alt: "Model styled with layered gold jewelry and emerald rings" },
+];
+
 export const ProductImageRow = ({ products }: { products: ShopifyProduct[] }) => {
-  if (products.length === 0) return null;
-
-  // Show up to 3 product images in a full-bleed row
-  const images = products
-    .flatMap(p => p.node.images.edges.map(img => ({ url: img.node.url, alt: img.node.altText || p.node.title })))
-    .slice(0, 3);
-
-  if (images.length === 0) return null;
-
   return (
     <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-6">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-[2px]">
-        {images.map((img, i) => (
+        {EDITORIAL_IMAGES.map((img, i) => (
           <div key={i} className="aspect-[4/5] overflow-hidden bg-card">
             <img
               src={img.url}
