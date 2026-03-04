@@ -27,7 +27,7 @@ export const NewsletterCapture = () => {
   };
 
   return (
-    <div className="border-b border-border">
+    <div id="founding-access" className="border-b border-border">
       <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-14 md:py-16">
         <div className="max-w-[520px] mx-auto text-center">
           <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">

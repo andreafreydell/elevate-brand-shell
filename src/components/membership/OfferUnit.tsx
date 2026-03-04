@@ -129,7 +129,7 @@ const StandardOffer = () => (
         {/* CTA */}
         <div className="px-8 md:px-10 pb-8 md:pb-10">
           <Link
-            to="/how-it-works"
+            to="/#founding-access"
             className={`block text-center py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans font-medium border transition-colors ${
               tier.highlighted
                 ? "border-background text-background hover:bg-background hover:text-foreground"
