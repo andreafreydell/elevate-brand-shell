@@ -2,15 +2,29 @@ import { useState } from "react";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { PageHero } from "@/components/layout/PageHero";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    toast.success("Message received. We'll be in touch within 24 hours.");
+    setLoading(true);
+    try {
+      const { error } = await supabase.functions.invoke("send-contact-email", {
+        body: form,
+      });
+      if (error) throw error;
+      setSubmitted(true);
+      toast.success("Message received. We'll be in touch within 24 hours.");
+    } catch (err) {
+      console.error(err);
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
