@@ -52,7 +52,7 @@ const faqItems: FAQItem[] = [
   },
   {
     question: "How does the cost-per-wear work?",
-    answer: "Traditional jewelry purchases average $650+ per piece worn 3-5 times — that's $130+ per wear. With GEA Tier 2 at $85/month, you access 10 curated pieces. Worn even twice each, your cost-per-wear drops below $5. The more you wear, the more intelligent your access becomes.",
+    answer: "Traditional jewelry purchases average $150+ per piece worn 3-5 times — that's $30+ per wear. With GEA Tier 2 at $85/month, you access 10 curated pieces. Worn even twice each, your cost-per-wear drops below $5. The more you wear, the more intelligent your access becomes.",
   },
   {
     question: "What is Keep Your Favorite?",
