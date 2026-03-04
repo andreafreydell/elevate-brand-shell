@@ -130,7 +130,7 @@ const HowItWorks = () => {
       </section>
 
       {/* ══ Founding Member Access ══ */}
-      <section className="bg-[hsl(28,22%,34%)]">
+      <section id="founding-circle" className="bg-[hsl(28,22%,34%)]">
         <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center">
           <p className="text-[10px] tracking-[0.4em] uppercase text-[hsl(36,25%,78%)] mb-4 font-sans">
             Limited Invitation
