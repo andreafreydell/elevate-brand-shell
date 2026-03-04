@@ -102,7 +102,14 @@ const Index = () => {
             </div>
           </div>
           <div className="flex flex-col">
-            <div className="bg-[hsl(28,12%,18%)] aspect-[4/5]" />
+            <div className="aspect-[4/5] overflow-hidden">
+              <img
+                src="/images/material-moissanite.png"
+                alt="Layered moissanite tennis necklaces on model"
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
             <div className="bg-card border-t border-border p-8">
               <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-sans mb-2 font-medium">Lab-Created Moissanite</p>
               <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
