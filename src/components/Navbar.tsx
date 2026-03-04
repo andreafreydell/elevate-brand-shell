@@ -77,7 +77,7 @@ export const Navbar = () => {
       <div className="border-b border-border">
         <nav className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 h-[42px] hidden md:flex items-center justify-center gap-8 lg:gap-10">
           {navLinks.map((item) => {
-            const isActive = item.href === "/" ? location.pathname === "/" : location.pathname.startsWith(item.href);
+            const isActive = item.href === "/" ? location.pathname === "/" : location.pathname === item.href || location.pathname.startsWith(item.href + "/");
             return (
               <Link
                 key={item.label}
