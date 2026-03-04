@@ -1,13 +1,27 @@
 import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 
 export const NewsletterCapture = () => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
+    if (!email) return;
+    setLoading(true);
+    try {
+      const { error } = await supabase
+        .from("founding_members")
+        .insert({ email, source: "newsletter" });
+      if (error && error.code === "23505") {
+        // Already signed up — still show success
+      } else if (error) throw error;
       setSubmitted(true);
+    } catch {
+      // Silently fail for newsletter
+    } finally {
+      setLoading(false);
       setEmail("");
     }
   };

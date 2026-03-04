@@ -1,15 +1,35 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { AnimateIn } from "@/components/shared/AnimateIn";
+import { supabase } from "@/integrations/supabase/client";
 
 export const ComingSoonSection = () => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      setSubmitted(true);
+    if (!email) return;
+    setLoading(true);
+    setError("");
+    try {
+      const { error: dbError } = await supabase
+        .from("founding_members")
+        .insert({ email, source: "coming-soon" });
+      if (dbError) {
+        if (dbError.code === "23505") {
+          setError("You're already on the list!");
+          setSubmitted(true);
+        } else throw dbError;
+      } else {
+        setSubmitted(true);
+      }
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
       setEmail("");
     }
   };
