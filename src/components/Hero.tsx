@@ -29,11 +29,11 @@ export const Hero = () => {
       <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-[1fr_1.2fr_1fr] min-h-[600px] lg:min-h-[680px]">
         {/* Left image block */}
         <div className="hidden md:block bg-[hsl(30,18%,38%)] overflow-hidden">
-          <div className="w-full h-full flex items-center justify-center">
-            <span className="text-[10px] tracking-[0.3em] uppercase text-[hsl(36,20%,75%)]">
-              Editorial Image
-            </span>
-          </div>
+          <img
+            src="/images/hero-authority.png"
+            alt="Layered gold and moissanite necklaces on model"
+            className="w-full h-full object-cover"
+          />
         </div>
 
         {/* Center copy block — solid color, no gradient */}
