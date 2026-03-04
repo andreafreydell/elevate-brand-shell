@@ -32,7 +32,7 @@ const faqItems: FAQItem[] = [
   },
   {
     question: "What if I want to keep a piece?",
-    answer: "Every piece in the vault has a member price through Keep Your Favorite. Simply select 'Keep This Piece' in your dashboard. The amount is charged to your card, and the piece is yours.",
+    answer: "One piece per cycle is yours to keep — included in your membership at no extra cost. Simply select 'Keep This Piece' in your dashboard. Want to keep additional pieces? Members save 40% on every extra piece.",
   },
   {
     question: "What if something gets damaged?",
@@ -56,7 +56,7 @@ const faqItems: FAQItem[] = [
   },
   {
     question: "What is Keep Your Favorite?",
-    answer: "Keep Your Favorite allows you to permanently add a piece from your monthly selection to your personal collection. Experience jewelry in real life before deciding to own it. Over time, build a curated collection through discovery rather than impulse.",
+    answer: "Every cycle, one piece from your selection is yours to keep at no additional cost — it's included in your membership. If you fall in love with more than one, members enjoy 40% off any additional piece. Over time, build a curated collection through real experience, not impulse.",
   },
   {
     question: "What happens in my first month?",
@@ -100,9 +100,9 @@ const HowItWorks = () => {
             <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">Keep What You Love</p>
             <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">Keep Your Favorite</h3>
             <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
-              Experience jewelry in real life before deciding to own it. Every piece has a member
-              price. Simply choose "Keep This Piece" and it's yours forever.
-              Your access continues uninterrupted.
+              One piece per cycle is yours to keep — included in your membership.
+              Want more? Members save 40% on any additional piece. Experience jewelry
+              in real life, then build your collection through discovery.
             </p>
           </div>
           <div className="bg-card border border-border p-10 md:p-14">

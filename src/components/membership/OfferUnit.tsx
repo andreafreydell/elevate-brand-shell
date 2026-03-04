@@ -14,7 +14,7 @@ const tierData = [
     highlighted: true,
     features: [
       "Full vault access",
-      "Keep Your Favorite included",
+      "1 piece included to keep per cycle",
       "Protection coverage included",
       "Sanitized & Sealed before delivery",
       "Free shipping both ways",
@@ -32,7 +32,7 @@ const tierData = [
     highlighted: false,
     features: [
       "Full vault access",
-      "Keep Your Favorite included",
+      "1 piece included to keep per cycle",
       "Protection coverage included",
       "Sanitized & Sealed before delivery",
       "Free shipping both ways",
