@@ -187,23 +187,6 @@ const HowItWorks = () => {
         <AccordionFAQ items={faqItems} />
       </section>
 
-      {/* Closing CTA */}
-      <section className="bg-[hsl(28,22%,34%)]">
-        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center">
-          <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-medium text-[hsl(36,33%,93%)] tracking-[0.04em] mb-4">
-            Your Access Awaits
-          </h2>
-          <p className="text-[13px] text-[hsl(36,20%,75%)] font-sans max-w-[400px] mx-auto mb-10 leading-relaxed">
-            Two tiers. Zero risk. Cancel anytime. Begin with what feels right.
-          </p>
-          <Link
-            to="/#founding-access"
-            className="inline-block border border-[hsl(36,25%,78%)] text-[hsl(36,25%,78%)] px-10 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans hover:bg-[hsl(36,25%,78%)] hover:text-[hsl(28,22%,34%)] transition-colors"
-          >
-            Apply for Access
-          </Link>
-        </div>
-      </section>
     </PageLayout>
   );
 };
