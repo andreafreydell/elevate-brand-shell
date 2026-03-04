@@ -85,8 +85,15 @@ const Index = () => {
       <SectionHeading label="Craft" heading="Material Intelligence" />
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-[2px]">
-          <div className="bg-[hsl(30,14%,32%)] aspect-[4/5] flex items-end p-8">
-            <div>
+          <div className="relative aspect-[4/5] overflow-hidden">
+            <img
+              src="/images/material-steel.png"
+              alt="Layered gold chain necklaces showcasing 316L stainless steel craftsmanship"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[hsl(30,14%,20%)/0.8] to-transparent" />
+            <div className="absolute bottom-0 left-0 p-8">
               <p className="text-[10px] tracking-[0.3em] uppercase text-[hsl(36,20%,75%)] font-sans mb-2">316L Stainless Steel</p>
               <p className="text-[12px] text-[hsl(36,20%,70%)] font-sans leading-relaxed max-w-[260px]">
                 Surgical-grade, tarnish-resistant, and hypoallergenic. Built to endure through every access cycle.
