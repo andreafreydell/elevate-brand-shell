@@ -94,7 +94,7 @@ const Index = () => {
                 loading="lazy"
               />
             </div>
-            <div className="bg-card border-t border-border p-8">
+            <div className="bg-card border-t border-border p-8 flex-1 flex flex-col justify-start">
               <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-sans mb-2 font-medium">316L Stainless Steel & Sterling Silver</p>
               <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
                 Surgical-grade stainless steel — tarnish-resistant and hypoallergenic. Sterling silver for timeless brilliance. Both built to endure through every access cycle.
@@ -110,7 +110,7 @@ const Index = () => {
                 loading="lazy"
               />
             </div>
-            <div className="bg-card border-t border-border p-8">
+            <div className="bg-card border-t border-border p-8 flex-1 flex flex-col justify-start">
               <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-sans mb-2 font-medium">Lab-Created Moissanite</p>
               <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
                 Conflict-free brilliance. Higher refractive index than diamond. Ethically engineered.
@@ -126,7 +126,7 @@ const Index = () => {
                 loading="lazy"
               />
             </div>
-            <div className="bg-card border-t border-border p-8">
+            <div className="bg-card border-t border-border p-8 flex-1 flex flex-col justify-start">
               <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-sans mb-2 font-medium">Lifecycle Care</p>
               <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
                 Every piece is professionally cleaned, inspected, and restored between members.
