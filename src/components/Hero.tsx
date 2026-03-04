@@ -57,11 +57,11 @@ export const Hero = () => {
 
         {/* Right image block */}
         <div className="hidden md:block bg-[hsl(32,15%,42%)] overflow-hidden">
-          <div className="w-full h-full flex items-center justify-center">
-            <span className="text-[10px] tracking-[0.3em] uppercase text-[hsl(36,20%,75%)]">
-              Editorial Image
-            </span>
-          </div>
+          <img
+            src="/images/hero-editorial.png"
+            alt="Gold and emerald rings styled on hand"
+            className="w-full h-full object-cover"
+          />
         </div>
       </div>
 
