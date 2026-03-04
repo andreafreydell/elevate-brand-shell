@@ -217,27 +217,23 @@ const Index = () => {
       </section>
 
       {/* ═══════════════════════════════════════════
-          7b. THE 5 TRUST STANDARDS
+          7b. TRUST STRIP (5 standards)
           ═══════════════════════════════════════════ */}
-      <SectionHeading label="Promise" heading="The 5 Trust Standards" />
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
-        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-[2px]">
+        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
           {[
-            { icon: Shield, title: "Sanitized & Sealed", text: "Every piece passes through our care ritual — hand cleaned, UV sanitized, 4-point inspected, and sealed." },
-            { icon: Wrench, title: "Repair Guarantee", text: "Normal wear is on us. No questions, no fees. Transparent fixed-fee schedule for significant damage." },
-            { icon: Truck, title: "Secure Delivery", text: "Tamper-evident packaging, tracking updates at key scan points, and support within 1 business day." },
-            { icon: Gem, title: "Damage Clarity", text: "No surprise fees. Ever. Normal wear = on us. Repairable damage = fixed fee, shown before checkout." },
-            { icon: Ban, title: "Cancel Anytime", text: "No contracts. No commitments. No questions. Founding perks permanently attached even if paused." },
+            { icon: Shield, text: "Sanitized & Sealed" },
+            { icon: Wrench, text: "Repair Guarantee" },
+            { icon: Truck, text: "Secure Delivery" },
+            { icon: Gem, text: "Damage Clarity" },
+            { icon: Ban, text: "Cancel Anytime" },
           ].map((item) => (
-            <StaggerItem key={item.title}>
-              <div className="bg-card border border-border p-8 h-full flex flex-col">
-                <item.icon className="h-5 w-5 stroke-[1.3] text-foreground mb-4" />
-                <h3 className="font-serif text-base font-semibold tracking-[0.02em] mb-3">{item.title}</h3>
-                <p className="text-[12px] text-muted-foreground font-sans leading-relaxed mt-auto">{item.text}</p>
-              </div>
-            </StaggerItem>
+            <div key={item.text} className="flex items-center gap-1.5 text-[10px] tracking-[0.15em] uppercase font-sans text-muted-foreground">
+              <item.icon className="h-3.5 w-3.5 stroke-[1.5]" />
+              <span>{item.text}</span>
+            </div>
           ))}
-        </StaggerContainer>
+        </div>
       </section>
 
       {/* ═══════════════════════════════════════════
