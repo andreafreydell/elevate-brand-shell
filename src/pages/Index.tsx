@@ -9,7 +9,7 @@ import { TrustStrip } from "@/components/shared/TrustStrip";
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
 import { OfferUnit } from "@/components/membership/OfferUnit";
 import { ProductImageRow } from "@/components/ProductImageRow";
-import { Loader2, Hand, Package, Sparkles, RefreshCw } from "lucide-react";
+import { Loader2, Hand, Package, Sparkles, RefreshCw, Shield, Wrench, Truck, Gem, Ban } from "lucide-react";
 
 const Index = () => {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
@@ -214,6 +214,30 @@ const Index = () => {
         <div className="text-center mt-6">
           <TrustStrip variant="compact" />
         </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          7b. THE 5 TRUST STANDARDS
+          ═══════════════════════════════════════════ */}
+      <SectionHeading label="Promise" heading="The 5 Trust Standards" />
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
+        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-[2px]">
+          {[
+            { icon: Shield, title: "Sanitized & Sealed", text: "Every piece passes through our care ritual — hand cleaned, UV sanitized, 4-point inspected, and sealed." },
+            { icon: Wrench, title: "Repair Guarantee", text: "Normal wear is on us. No questions, no fees. Transparent fixed-fee schedule for significant damage." },
+            { icon: Truck, title: "Secure Delivery", text: "Tamper-evident packaging, tracking updates at key scan points, and support within 1 business day." },
+            { icon: Gem, title: "Damage Clarity", text: "No surprise fees. Ever. Normal wear = on us. Repairable damage = fixed fee, shown before checkout." },
+            { icon: Ban, title: "Cancel Anytime", text: "No contracts. No commitments. No questions. Founding perks permanently attached even if paused." },
+          ].map((item) => (
+            <StaggerItem key={item.title}>
+              <div className="bg-card border border-border p-8 h-full flex flex-col">
+                <item.icon className="h-5 w-5 stroke-[1.3] text-foreground mb-4" />
+                <h3 className="font-serif text-base font-semibold tracking-[0.02em] mb-3">{item.title}</h3>
+                <p className="text-[12px] text-muted-foreground font-sans leading-relaxed mt-auto">{item.text}</p>
+              </div>
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
       </section>
 
       {/* ═══════════════════════════════════════════
