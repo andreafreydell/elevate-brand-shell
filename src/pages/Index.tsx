@@ -43,6 +43,8 @@ const Index = () => {
               src="/images/hero-authority.png"
               alt="Layered gold and moissanite necklaces on model"
               className="w-full h-full object-cover"
+              width={480}
+              height={720}
               fetchPriority="high"
               decoding="async"
             />
@@ -76,6 +78,8 @@ const Index = () => {
               src="/images/hero-editorial.png"
               alt="Gold and emerald rings styled on hand"
               className="w-full h-full object-cover"
+              width={480}
+              height={720}
               fetchPriority="high"
               decoding="async"
             />
