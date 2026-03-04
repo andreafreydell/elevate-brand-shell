@@ -97,7 +97,7 @@ export const ComingSoonSection = () => {
           <AnimateIn variant="fadeUp" delay={0.5} duration={0.8}>
             {submitted ? (
               <p className="text-[11px] tracking-[0.2em] uppercase font-sans text-[hsl(36,33%,93%)]">
-                You're on the list. Welcome to the revolution.
+                {error || "You're on the list. Welcome to the revolution."}
               </p>
             ) : (
               <form onSubmit={handleSubmit} className="max-w-[480px] mx-auto flex flex-col sm:flex-row gap-3">
