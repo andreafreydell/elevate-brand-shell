@@ -57,9 +57,10 @@ export const NewsletterCapture = () => {
               />
               <button
                 type="submit"
-                className="btn-gea whitespace-nowrap rounded-none"
+                disabled={loading}
+                className="btn-gea whitespace-nowrap rounded-none disabled:opacity-50"
               >
-                Apply for Access
+                {loading ? "Submitting..." : "Apply for Access"}
               </button>
             </form>
           )}

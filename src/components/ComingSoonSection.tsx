@@ -111,9 +111,10 @@ export const ComingSoonSection = () => {
                 />
                 <button
                   type="submit"
-                  className="border border-[hsl(36,25%,78%)] text-[hsl(28,22%,34%)] bg-[hsl(36,25%,78%)] px-8 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans font-medium hover:bg-transparent hover:text-[hsl(36,25%,78%)] transition-colors whitespace-nowrap"
+                  disabled={loading}
+                  className="border border-[hsl(36,25%,78%)] text-[hsl(28,22%,34%)] bg-[hsl(36,25%,78%)] px-8 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans font-medium hover:bg-transparent hover:text-[hsl(36,25%,78%)] transition-colors whitespace-nowrap disabled:opacity-50"
                 >
-                  Become a Founder
+                  {loading ? "Joining..." : "Become a Founder"}
                 </button>
               </form>
             )}
