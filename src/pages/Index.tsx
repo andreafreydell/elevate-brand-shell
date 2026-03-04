@@ -92,11 +92,12 @@ const Index = () => {
           ═══════════════════════════════════════════ */}
       <SectionHeading label="The Process" heading="How It Works" />
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
-        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           <StaggerItem><StepBlock number="01" title="Choose" description="Browse our curated vault and select the pieces that speak to your moment." icon={Hand} /></StaggerItem>
           <StaggerItem><StepBlock number="02" title="Receive" description="Your selections arrive in 1–3 days, freshly restored and sealed in our signature packaging." icon={Package} /></StaggerItem>
           <StaggerItem><StepBlock number="03" title="Wear" description="Style them for your life — the event, the meeting, the dinner, the everyday." icon={Sparkles} /></StaggerItem>
-          <StaggerItem><StepBlock number="04" title="Refresh" description="When you're ready for something new, return and choose your next chapter." icon={RefreshCw} /></StaggerItem>
+          <StaggerItem><StepBlock number="04" title="Keep Your Favorite" description="Love a piece? Make it yours at a member-exclusive price. Experience before you own." icon={Heart} /></StaggerItem>
+          <StaggerItem><StepBlock number="05" title="Refresh" description="When you're ready for something new, return and choose your next chapter." icon={RefreshCw} /></StaggerItem>
         </StaggerContainer>
         <div className="text-center mt-10">
           <Link to="/how-it-works" className="cta-underline">Learn More</Link>

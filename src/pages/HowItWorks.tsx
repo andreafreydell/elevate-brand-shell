@@ -84,11 +84,12 @@ const HowItWorks = () => {
       {/* 4-step visual process */}
       <SectionHeading label="How Access Works" heading="Choose. Receive. Wear. Refresh." />
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           <StepBlock number="01" title="Choose" description="Browse our curated vault and select the pieces that speak to your moment." icon={Hand} />
           <StepBlock number="02" title="Receive" description="Your selections arrive in 1–3 days, freshly restored and sealed in our signature packaging." icon={Package} />
           <StepBlock number="03" title="Wear" description="Style them for your life — the event, the meeting, the dinner, the everyday." icon={Sparkles} />
-          <StepBlock number="04" title="Refresh" description="When you're ready for something new, return and choose your next chapter." icon={RefreshCw} />
+          <StepBlock number="04" title="Keep Your Favorite" description="Love a piece? Make it yours at a member-exclusive price. Experience before you own." icon={Heart} />
+          <StepBlock number="05" title="Refresh" description="When you're ready for something new, return and choose your next chapter." icon={RefreshCw} />
         </div>
       </section>
 
