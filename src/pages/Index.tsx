@@ -95,9 +95,9 @@ const Index = () => {
               />
             </div>
             <div className="bg-card border-t border-border p-8">
-              <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-sans mb-2 font-medium">316L Stainless Steel</p>
+              <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-sans mb-2 font-medium">316L Stainless Steel & Sterling Silver</p>
               <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
-                Surgical-grade, tarnish-resistant, and hypoallergenic. Built to endure through every access cycle.
+                Surgical-grade stainless steel — tarnish-resistant and hypoallergenic. Sterling silver for timeless brilliance. Both built to endure through every access cycle.
               </p>
             </div>
           </div>
