@@ -5,11 +5,11 @@ import { Search, User, Heart, Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "New", href: "/" },
-  { label: "Browse All", href: "/" },
-  { label: "Earrings", href: "/" },
-  { label: "Necklaces", href: "/" },
-  { label: "Rings", href: "/" },
-  { label: "Bracelets", href: "/" },
+  { label: "Browse All", href: "/browse" },
+  { label: "Earrings", href: "/earrings" },
+  { label: "Necklaces", href: "/necklaces" },
+  { label: "Rings", href: "/rings" },
+  { label: "Bracelets", href: "/bracelets" },
   { label: "How It Works", href: "/how-it-works" },
   { label: "Founding Circle", href: "/how-it-works#founding-circle" },
 ];
@@ -77,7 +77,7 @@ export const Navbar = () => {
       <div className="border-b border-border">
         <nav className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 h-[42px] hidden md:flex items-center justify-center gap-8 lg:gap-10">
           {navLinks.map((item) => {
-            const isActive = item.href === "/" ? location.pathname === "/" : location.pathname.startsWith(item.href);
+            const isActive = item.href === "/" ? location.pathname === "/" : location.pathname === item.href || location.pathname.startsWith(item.href + "/");
             return (
               <Link
                 key={item.label}
