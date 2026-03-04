@@ -11,7 +11,7 @@ export const SavingsCalculator = () => {
   const [wearsPerPiece, setWearsPerPiece] = useState(4);
 
   const tier = tiers[selectedTier];
-  const avgRetailPrice = 650;
+  const avgRetailPrice = 150;
 
   const traditionalCostPerWear = avgRetailPrice / wearsPerPiece;
   const geaCostPerWear = tier.price / (tier.pieces * wearsPerPiece);
