@@ -143,12 +143,12 @@ const HowItWorks = () => {
             owning more — it is about accessing better. Locked pricing, early access, priority
             selection, and founding recognition — permanently attached to your account.
           </p>
-          <a
-            href="#tiers"
+          <Link
+            to="/#founding-access"
             className="inline-block border border-[hsl(36,25%,78%)] text-[hsl(36,25%,78%)] px-10 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans hover:bg-[hsl(36,25%,78%)] hover:text-[hsl(28,22%,34%)] transition-colors"
           >
             Claim My Founding Spot
-          </a>
+          </Link>
         </div>
       </section>
 
