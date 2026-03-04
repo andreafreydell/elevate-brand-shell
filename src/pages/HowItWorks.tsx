@@ -7,7 +7,7 @@ import { TrustStrip } from "@/components/shared/TrustStrip";
 import { OfferUnit } from "@/components/membership/OfferUnit";
 import { AccordionFAQ, type FAQItem } from "@/components/shared/AccordionFAQ";
 import { StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
-import { Hand, Package, Sparkles, RefreshCw, Shield, Wrench, Truck, Gem, Ban } from "lucide-react";
+import { Hand, Package, Sparkles, RefreshCw, Shield, Wrench, Truck, Gem, Ban, Heart } from "lucide-react";
 
 const trustStandards = [
   { icon: Shield, title: "Sanitized & Sealed", text: "Every piece passes through our care ritual — hand cleaned, UV sanitized, 4-point inspected, and sealed before it reaches you." },
