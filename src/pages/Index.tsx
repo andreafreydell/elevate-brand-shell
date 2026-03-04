@@ -43,6 +43,8 @@ const Index = () => {
               src="/images/hero-authority.png"
               alt="Layered gold and moissanite necklaces on model"
               className="w-full h-full object-cover"
+              fetchPriority="high"
+              decoding="async"
             />
           </div>
           <div className="flex flex-col items-center justify-center text-center px-8 md:px-12 lg:px-16 py-24 bg-[hsl(28,22%,34%)]">
@@ -74,6 +76,8 @@ const Index = () => {
               src="/images/hero-editorial.png"
               alt="Gold and emerald rings styled on hand"
               className="w-full h-full object-cover"
+              fetchPriority="high"
+              decoding="async"
             />
           </div>
         </div>
@@ -92,6 +96,7 @@ const Index = () => {
                 alt="Layered gold chain necklaces showcasing 316L stainless steel craftsmanship"
                 className="w-full h-full object-cover"
                 loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="bg-card border-t border-border p-8 flex-1 flex flex-col justify-start">
@@ -108,6 +113,7 @@ const Index = () => {
                 alt="Layered moissanite tennis necklaces on model"
                 className="w-full h-full object-cover"
                 loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="bg-card border-t border-border p-8 flex-1 flex flex-col justify-start">
@@ -124,6 +130,7 @@ const Index = () => {
                 alt="Gold earrings and chain jewelry showcasing lifecycle care craftsmanship"
                 className="w-full h-full object-cover"
                 loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="bg-card border-t border-border p-8 flex-1 flex flex-col justify-start">

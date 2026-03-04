@@ -17,6 +17,7 @@ export const ProductImageRow = ({ products }: { products: ShopifyProduct[] }) =>
               alt={img.alt}
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               loading="lazy"
+              decoding="async"
             />
           </div>
         ))}
