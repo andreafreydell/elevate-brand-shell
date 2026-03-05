@@ -8,7 +8,7 @@ interface CategoryPageProps {
 }
 
 const CategoryPage = ({ title, subtitle }: CategoryPageProps) => (
-  <PageLayout>
+  <PageLayout hideNewsletter>
     <PageHero headline={title} subtitle={subtitle} />
     <ComingSoonSection />
   </PageLayout>

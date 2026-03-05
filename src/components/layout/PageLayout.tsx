@@ -5,15 +5,16 @@ import { SiteFooter } from "./SiteFooter";
 
 interface PageLayoutProps {
   children: ReactNode;
+  hideNewsletter?: boolean;
 }
 
-export const PageLayout = ({ children }: PageLayoutProps) => {
+export const PageLayout = ({ children, hideNewsletter }: PageLayoutProps) => {
   return (
     <div className="min-h-screen bg-background">
       <PromoBar />
       <Navbar />
       <main>{children}</main>
-      <SiteFooter />
+      <SiteFooter hideNewsletter={hideNewsletter} />
     </div>
   );
 };
