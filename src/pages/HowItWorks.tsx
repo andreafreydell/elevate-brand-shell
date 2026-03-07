@@ -61,7 +61,7 @@ const HowItWorks = () => {
     <PageLayout>
       <PageHero
         label="The Process"
-        headline={"Effortless by\nDesign"}
+        headline={<><ScribbleUnderline>Effortless</ScribbleUnderline> by<br />Design</>}
         subtitle="Four steps between you and curated high-design jewelry. Just access."
         heroMobileCompact
       />
