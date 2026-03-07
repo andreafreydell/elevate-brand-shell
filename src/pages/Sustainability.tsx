@@ -5,7 +5,6 @@ import { SectionHeading } from "@/components/layout/SectionHeading";
 import { ValueBlock } from "@/components/shared/ValueBlock";
 import { ScribbleUnderline } from "@/components/craft/ScribbleUnderline";
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
-import { ScribbleUnderline } from "@/components/craft/ScribbleUnderline";
 import { CircleEmphasis } from "@/components/craft/CircleEmphasis";
 import { GrainOverlay } from "@/components/craft/GrainOverlay";
 import { WavyDivider } from "@/components/craft/WavyDivider";

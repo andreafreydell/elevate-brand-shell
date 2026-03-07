@@ -6,7 +6,6 @@ import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/An
 import { ScribbleUnderline } from "@/components/craft/ScribbleUnderline";
 import { GrainOverlay } from "@/components/craft/GrainOverlay";
 import { WavyDivider } from "@/components/craft/WavyDivider";
-import { ScribbleUnderline } from "@/components/craft/ScribbleUnderline";
 import { TornPaperEdge } from "@/components/craft/TornPaperEdge";
 import { HandDrawnFrame } from "@/components/craft/HandDrawnFrame";
 import { TagRedStamp } from "@/components/craft/TagRedStamp";
