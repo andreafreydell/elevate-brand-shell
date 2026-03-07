@@ -8,6 +8,7 @@ import { OfferUnit } from "@/components/membership/OfferUnit";
 import { AccordionFAQ, type FAQItem } from "@/components/shared/AccordionFAQ";
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
 import { MobileCarousel } from "@/components/shared/MobileCarousel";
+import { AutoCarousel } from "@/components/shared/AutoCarousel";
 import { Hand, Package, Sparkles, RefreshCw, Shield, Wrench, Truck, Gem, Ban, Heart } from "lucide-react";
 
 const trustStandards = [
@@ -85,13 +86,13 @@ const HowItWorks = () => {
       {/* 4-step visual process */}
       <SectionHeading label="How Access Works" heading="Choose. Receive. Wear. Refresh." />
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
-        <MobileCarousel desktopClassName="grid-cols-5 gap-4" cardWidth="min-w-[68vw]">
+        <AutoCarousel interval={2000} cardWidth="min-w-[68vw] md:min-w-[240px]">
           <StepBlock number="01" title="Choose" description="Browse our curated vault and select the pieces that speak to your moment." icon={Hand} />
           <StepBlock number="02" title="Receive" description="Your selections arrive in 1–3 days, freshly restored and sealed in our signature packaging." icon={Package} />
           <StepBlock number="03" title="Wear" description="Style them for your life — the event, the meeting, the dinner, the everyday." icon={Sparkles} />
           <StepBlock number="04" title="Keep Your Favorite" description="One piece per cycle is yours to keep — included in your membership. Want more? Members save 40% on any additional piece." icon={Heart} />
           <StepBlock number="05" title="Refresh" description="When you're ready for something new, return and choose your next chapter." icon={RefreshCw} />
-        </MobileCarousel>
+        </AutoCarousel>
       </section>
 
       {/* Detailed illustration blocks */}
