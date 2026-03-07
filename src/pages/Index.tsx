@@ -319,7 +319,7 @@ const Index = () => {
         </div>
       ) : products.length > 0 ? (
         <>
-          <SectionHeading label="Community" heading="The Edit" />
+          <SectionHeading label="Community" heading="The Edit" headingMobile />
           <ProductImageRow products={products} />
         </>
       ) : null}
