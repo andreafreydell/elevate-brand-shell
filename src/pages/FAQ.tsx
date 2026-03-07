@@ -3,6 +3,9 @@ import { PageLayout } from "@/components/layout/PageLayout";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { AccordionFAQ, type FAQItem } from "@/components/shared/AccordionFAQ";
 import { AnimateIn } from "@/components/shared/AnimateIn";
+import { GrainOverlay } from "@/components/craft/GrainOverlay";
+import { WavyDivider } from "@/components/craft/WavyDivider";
+import { ScribbleUnderline } from "@/components/craft/ScribbleUnderline";
 
 const categories: { label: string; items: FAQItem[] }[] = [
   {
@@ -42,8 +45,9 @@ const categories: { label: string; items: FAQItem[] }[] = [
 const FAQ = () => {
   return (
     <PageLayout>
-      <section className="bg-[hsl(28,22%,34%)]">
-        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-20 md:py-28 text-center">
+      <section className="bg-[hsl(28,22%,34%)] relative overflow-hidden">
+        <GrainOverlay opacity={0.05} />
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-20 md:py-28 text-center relative z-[1]">
           <AnimateIn variant="fadeIn" duration={0.6}>
             <p className="text-[10px] tracking-[0.4em] uppercase text-[hsl(36,25%,78%)] mb-6 font-sans">
               Support
@@ -51,7 +55,7 @@ const FAQ = () => {
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.15} duration={0.6}>
             <h1 className="font-serif text-4xl md:text-5xl font-medium text-[hsl(36,33%,93%)] tracking-[-0.01em] mb-4">
-              Frequently Asked Questions
+              Frequently Asked <ScribbleUnderline color="var(--brass)" delay={0.6}>Questions</ScribbleUnderline>
             </h1>
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.3} duration={0.6}>
@@ -62,7 +66,7 @@ const FAQ = () => {
         </div>
       </section>
 
-      {categories.map((cat) => (
+      {categories.map((cat, idx) => (
         <div key={cat.label}>
           <SectionHeading heading={cat.label} />
           <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-12">
@@ -70,12 +74,16 @@ const FAQ = () => {
               <AccordionFAQ items={cat.items} />
             </AnimateIn>
           </section>
+          {idx < categories.length - 1 && (
+            <WavyDivider className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 mb-4" />
+          )}
         </div>
       ))}
 
       {/* CTA */}
-      <section className="border-t border-border">
-        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center">
+      <section className="border-t border-border relative overflow-hidden">
+        <GrainOverlay opacity={0.03} />
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center relative z-[1]">
           <AnimateIn variant="fadeUp" duration={0.5}>
             <h2 className="font-serif text-2xl md:text-3xl tracking-[0.06em] uppercase font-medium mb-4">
               Still Have Questions?
