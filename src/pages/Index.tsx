@@ -379,7 +379,7 @@ const Index = () => {
         <div className="hidden md:flex justify-center mb-10">
           <HandDrawnRect className="max-w-md">
             <p className="text-center font-sans text-[12px] text-muted-foreground leading-relaxed">
-              Starting from just <MarkerCircle color="var(--tag-red)"><span className="font-semibold text-foreground">$85/mo</span></MarkerCircle> — access <ScriptNumber>10+</ScriptNumber> pieces per year
+              Our most popular tier is <MarkerCircle color="var(--tag-red)"><span className="font-semibold text-foreground">$85/mo</span></MarkerCircle>, with <ScriptNumber>10</ScriptNumber> items to mix, match &amp; layer
             </p>
           </HandDrawnRect>
         </div>
