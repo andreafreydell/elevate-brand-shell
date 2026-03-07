@@ -6,7 +6,7 @@ import { StepBlock } from "@/components/shared/StepBlock";
 import { TrustStrip } from "@/components/shared/TrustStrip";
 import { OfferUnit } from "@/components/membership/OfferUnit";
 import { AccordionFAQ, type FAQItem } from "@/components/shared/AccordionFAQ";
-import { StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
+import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
 import { Hand, Package, Sparkles, RefreshCw, Shield, Wrench, Truck, Gem, Ban, Heart } from "lucide-react";
 
 const trustStandards = [
@@ -84,37 +84,41 @@ const HowItWorks = () => {
       {/* 4-step visual process */}
       <SectionHeading label="How Access Works" heading="Choose. Receive. Wear. Refresh." />
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          <StepBlock number="01" title="Choose" description="Browse our curated vault and select the pieces that speak to your moment." icon={Hand} />
-          <StepBlock number="02" title="Receive" description="Your selections arrive in 1–3 days, freshly restored and sealed in our signature packaging." icon={Package} />
-          <StepBlock number="03" title="Wear" description="Style them for your life — the event, the meeting, the dinner, the everyday." icon={Sparkles} />
-          <StepBlock number="04" title="Keep Your Favorite" description="One piece per cycle is yours to keep — included in your membership. Want more? Members save 40% on any additional piece." icon={Heart} />
-          <StepBlock number="05" title="Refresh" description="When you're ready for something new, return and choose your next chapter." icon={RefreshCw} />
-        </div>
+        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <StaggerItem><StepBlock number="01" title="Choose" description="Browse our curated vault and select the pieces that speak to your moment." icon={Hand} /></StaggerItem>
+          <StaggerItem><StepBlock number="02" title="Receive" description="Your selections arrive in 1–3 days, freshly restored and sealed in our signature packaging." icon={Package} /></StaggerItem>
+          <StaggerItem><StepBlock number="03" title="Wear" description="Style them for your life — the event, the meeting, the dinner, the everyday." icon={Sparkles} /></StaggerItem>
+          <StaggerItem><StepBlock number="04" title="Keep Your Favorite" description="One piece per cycle is yours to keep — included in your membership. Want more? Members save 40% on any additional piece." icon={Heart} /></StaggerItem>
+          <StaggerItem><StepBlock number="05" title="Refresh" description="When you're ready for something new, return and choose your next chapter." icon={RefreshCw} /></StaggerItem>
+        </StaggerContainer>
       </section>
 
       {/* Detailed illustration blocks */}
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-[2px]">
-          <div className="bg-card border border-border p-10 md:p-14">
-            <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">Keep What You Love</p>
-            <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">Keep Your Favorite</h3>
-            <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
-              One piece per cycle is yours to keep — included in your membership.
-              Want more? Members save 40% on any additional piece. Experience jewelry
-              in real life, then build your collection through discovery.
-            </p>
-          </div>
-          <div className="bg-card border border-border p-10 md:p-14">
-            <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">Restored Between Every Wear</p>
-            <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">Sanitized & Sealed Protocol</h3>
-            <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
-              Our atelier restores every returning piece: hand cleaning, UV sanitization,
-              4-point inspection (structure, surface, stones, mechanism), and sealed in
-              protective packaging. What arrives at your door is indistinguishable from new.
-            </p>
-          </div>
-        </div>
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-[2px]">
+          <StaggerItem>
+            <div className="bg-card border border-border p-10 md:p-14 h-full">
+              <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">Keep What You Love</p>
+              <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">Keep Your Favorite</h3>
+              <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
+                One piece per cycle is yours to keep — included in your membership.
+                Want more? Members save 40% on any additional piece. Experience jewelry
+                in real life, then build your collection through discovery.
+              </p>
+            </div>
+          </StaggerItem>
+          <StaggerItem>
+            <div className="bg-card border border-border p-10 md:p-14 h-full">
+              <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">Restored Between Every Wear</p>
+              <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">Sanitized & Sealed Protocol</h3>
+              <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
+                Our atelier restores every returning piece: hand cleaning, UV sanitization,
+                4-point inspection (structure, surface, stones, mechanism), and sealed in
+                protective packaging. What arrives at your door is indistinguishable from new.
+              </p>
+            </div>
+          </StaggerItem>
+        </StaggerContainer>
       </section>
 
       {/* ══ Access Is The New Luxury ══ */}

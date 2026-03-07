@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { AccordionFAQ, type FAQItem } from "@/components/shared/AccordionFAQ";
+import { AnimateIn } from "@/components/shared/AnimateIn";
 
 const categories: { label: string; items: FAQItem[] }[] = [
   {
@@ -43,15 +44,21 @@ const FAQ = () => {
     <PageLayout>
       <section className="bg-[hsl(28,22%,34%)]">
         <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-20 md:py-28 text-center">
-          <p className="text-[10px] tracking-[0.4em] uppercase text-[hsl(36,25%,78%)] mb-6 font-sans">
-            Support
-          </p>
-          <h1 className="font-serif text-4xl md:text-5xl font-medium text-[hsl(36,33%,93%)] tracking-[-0.01em] mb-4">
-            Frequently Asked Questions
-          </h1>
-          <p className="text-[13px] text-[hsl(36,20%,75%)] font-sans max-w-[440px] mx-auto">
-            Everything you need to know about GEA membership, access, and care.
-          </p>
+          <AnimateIn variant="fadeIn" duration={0.6}>
+            <p className="text-[10px] tracking-[0.4em] uppercase text-[hsl(36,25%,78%)] mb-6 font-sans">
+              Support
+            </p>
+          </AnimateIn>
+          <AnimateIn variant="fadeUp" delay={0.15} duration={0.6}>
+            <h1 className="font-serif text-4xl md:text-5xl font-medium text-[hsl(36,33%,93%)] tracking-[-0.01em] mb-4">
+              Frequently Asked Questions
+            </h1>
+          </AnimateIn>
+          <AnimateIn variant="fadeUp" delay={0.3} duration={0.6}>
+            <p className="text-[13px] text-[hsl(36,20%,75%)] font-sans max-w-[440px] mx-auto">
+              Everything you need to know about GEA membership, access, and care.
+            </p>
+          </AnimateIn>
         </div>
       </section>
 
@@ -59,7 +66,9 @@ const FAQ = () => {
         <div key={cat.label}>
           <SectionHeading heading={cat.label} />
           <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-12">
-            <AccordionFAQ items={cat.items} />
+            <AnimateIn variant="fadeUp" duration={0.5}>
+              <AccordionFAQ items={cat.items} />
+            </AnimateIn>
           </section>
         </div>
       ))}
@@ -67,15 +76,17 @@ const FAQ = () => {
       {/* CTA */}
       <section className="border-t border-border">
         <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center">
-          <h2 className="font-serif text-2xl md:text-3xl tracking-[0.06em] uppercase font-medium mb-4">
-            Still Have Questions?
-          </h2>
-          <p className="text-[12px] text-muted-foreground font-sans mb-8">
-            Our concierge team is here to help.
-          </p>
-          <Link to="/how-it-works" className="btn-gea">
-            Contact Us
-          </Link>
+          <AnimateIn variant="fadeUp" duration={0.5}>
+            <h2 className="font-serif text-2xl md:text-3xl tracking-[0.06em] uppercase font-medium mb-4">
+              Still Have Questions?
+            </h2>
+            <p className="text-[12px] text-muted-foreground font-sans mb-8">
+              Our concierge team is here to help.
+            </p>
+            <Link to="/how-it-works" className="btn-gea">
+              Contact Us
+            </Link>
+          </AnimateIn>
         </div>
       </section>
     </PageLayout>

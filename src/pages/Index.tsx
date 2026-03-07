@@ -109,59 +109,41 @@ const Index = () => {
           ═══════════════════════════════════════════ */}
       <SectionHeading label="Craft" heading="Material Intelligence" />
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-[2px]">
-          <div className="flex flex-col">
-            <div className="aspect-[4/5] overflow-hidden">
-              <img
-                src="/images/material-steel.png"
-                alt="Layered gold chain necklaces showcasing 316L stainless steel craftsmanship"
-                className="w-full h-full object-cover"
-                loading="lazy"
-                decoding="async"
-              />
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-[2px]">
+          <StaggerItem>
+            <div className="flex flex-col h-full">
+              <div className="aspect-[4/5] overflow-hidden">
+                <img src="/images/material-steel.png" alt="Layered gold chain necklaces showcasing 316L stainless steel craftsmanship" className="w-full h-full object-cover" loading="lazy" decoding="async" />
+              </div>
+              <div className="bg-card border-t border-border p-8 flex-1 flex flex-col justify-start">
+                <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-sans mb-2 font-medium">316L Stainless Steel & Sterling Silver</p>
+                <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">Surgical-grade stainless steel — tarnish-resistant and hypoallergenic. Sterling silver for timeless brilliance. Both built to endure through every access cycle.</p>
+              </div>
             </div>
-            <div className="bg-card border-t border-border p-8 flex-1 flex flex-col justify-start">
-              <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-sans mb-2 font-medium">316L Stainless Steel & Sterling Silver</p>
-              <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
-                Surgical-grade stainless steel — tarnish-resistant and hypoallergenic. Sterling silver for timeless brilliance. Both built to endure through every access cycle.
-              </p>
+          </StaggerItem>
+          <StaggerItem>
+            <div className="flex flex-col h-full">
+              <div className="aspect-[4/5] overflow-hidden">
+                <img src="/images/material-moissanite.png" alt="Layered moissanite tennis necklaces on model" className="w-full h-full object-cover" loading="lazy" decoding="async" />
+              </div>
+              <div className="bg-card border-t border-border p-8 flex-1 flex flex-col justify-start">
+                <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-sans mb-2 font-medium">Lab-Created Moissanite</p>
+                <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">Conflict-free brilliance. Higher refractive index than diamond. Ethically engineered.</p>
+              </div>
             </div>
-          </div>
-          <div className="flex flex-col">
-            <div className="aspect-[4/5] overflow-hidden">
-              <img
-                src="/images/material-moissanite.png"
-                alt="Layered moissanite tennis necklaces on model"
-                className="w-full h-full object-cover"
-                loading="lazy"
-                decoding="async"
-              />
+          </StaggerItem>
+          <StaggerItem>
+            <div className="flex flex-col h-full">
+              <div className="aspect-[4/5] overflow-hidden">
+                <img src="/images/material-lifecycle.png" alt="Gold earrings and chain jewelry showcasing lifecycle care craftsmanship" className="w-full h-full object-cover" loading="lazy" decoding="async" />
+              </div>
+              <div className="bg-card border-t border-border p-8 flex-1 flex flex-col justify-start">
+                <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-sans mb-2 font-medium">Lifecycle Care</p>
+                <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">Every piece is professionally cleaned, inspected, and restored between members.</p>
+              </div>
             </div>
-            <div className="bg-card border-t border-border p-8 flex-1 flex flex-col justify-start">
-              <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-sans mb-2 font-medium">Lab-Created Moissanite</p>
-              <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
-                Conflict-free brilliance. Higher refractive index than diamond. Ethically engineered.
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-col">
-            <div className="aspect-[4/5] overflow-hidden">
-              <img
-                src="/images/material-lifecycle.png"
-                alt="Gold earrings and chain jewelry showcasing lifecycle care craftsmanship"
-                className="w-full h-full object-cover"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <div className="bg-card border-t border-border p-8 flex-1 flex flex-col justify-start">
-              <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-sans mb-2 font-medium">Lifecycle Care</p>
-              <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
-                Every piece is professionally cleaned, inspected, and restored between members.
-              </p>
-            </div>
-          </div>
-        </div>
+          </StaggerItem>
+        </StaggerContainer>
       </section>
 
       {/* ═══════════════════════════════════════════
@@ -169,26 +151,30 @@ const Index = () => {
           ═══════════════════════════════════════════ */}
       <SectionHeading label="Philosophy" heading="Access Defines Status" />
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-[2px]">
-          <div className="bg-card border border-border p-10 md:p-14">
-            <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">The Old Model</p>
-            <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">Ownership Is a Liability</h3>
-            <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
-              The average woman wears each piece of fine jewelry fewer than five times before it sits
-              forgotten. Thousands spent. Inches of drawer space consumed. Value depreciating silently.
-              The traditional model rewards accumulation over expression.
-            </p>
-          </div>
-          <div className="bg-foreground text-background p-10 md:p-14">
-            <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-background/60 mb-4">The GEA Model</p>
-            <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4 text-background">Access Is Intelligence</h3>
-            <p className="text-[12px] text-background/70 font-sans leading-relaxed">
-              Access the full vault. Wear what speaks to you this month. Return when you're ready
-              for something new. No commitment to a single piece — commitment to always being adorned
-              exactly as you wish. Presence over possession. Experience over accumulation.
-            </p>
-          </div>
-        </div>
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-[2px]">
+          <StaggerItem>
+            <div className="bg-card border border-border p-10 md:p-14 h-full">
+              <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">The Old Model</p>
+              <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">Ownership Is a Liability</h3>
+              <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
+                The average woman wears each piece of fine jewelry fewer than five times before it sits
+                forgotten. Thousands spent. Inches of drawer space consumed. Value depreciating silently.
+                The traditional model rewards accumulation over expression.
+              </p>
+            </div>
+          </StaggerItem>
+          <StaggerItem>
+            <div className="bg-foreground text-background p-10 md:p-14 h-full">
+              <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-background/60 mb-4">The GEA Model</p>
+              <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4 text-background">Access Is Intelligence</h3>
+              <p className="text-[12px] text-background/70 font-sans leading-relaxed">
+                Access the full vault. Wear what speaks to you this month. Return when you're ready
+                for something new. No commitment to a single piece — commitment to always being adorned
+                exactly as you wish. Presence over possession. Experience over accumulation.
+              </p>
+            </div>
+          </StaggerItem>
+        </StaggerContainer>
       </section>
 
       {/* ═══════════════════════════════════════════
@@ -196,18 +182,24 @@ const Index = () => {
           ═══════════════════════════════════════════ */}
       <section className="bg-[hsl(28,22%,34%)]">
         <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-20 md:py-28 text-center">
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-[-0.01em] text-[hsl(36,33%,93%)] mb-6 normal-case">
-            More Beauty.<br />Less Burden.
-          </h2>
-          <p className="text-[13px] text-[hsl(36,20%,75%)] font-sans max-w-[400px] mx-auto mb-10 leading-relaxed">
-            Adorn the woman you are becoming. Not the one weighed down by what she already owns.
-          </p>
-          <a
-            href="#founding-access"
-            className="inline-block border border-[hsl(36,25%,78%)] text-[hsl(36,25%,78%)] px-10 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans hover:bg-[hsl(36,25%,78%)] hover:text-[hsl(28,22%,34%)] transition-colors"
-          >
-            Apply for Access
-          </a>
+          <AnimateIn variant="fadeUp" duration={0.6}>
+            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-[-0.01em] text-[hsl(36,33%,93%)] mb-6 normal-case">
+              More Beauty.<br />Less Burden.
+            </h2>
+          </AnimateIn>
+          <AnimateIn variant="fadeUp" delay={0.15} duration={0.6}>
+            <p className="text-[13px] text-[hsl(36,20%,75%)] font-sans max-w-[400px] mx-auto mb-10 leading-relaxed">
+              Adorn the woman you are becoming. Not the one weighed down by what she already owns.
+            </p>
+          </AnimateIn>
+          <AnimateIn variant="fadeUp" delay={0.3} duration={0.6}>
+            <a
+              href="#founding-access"
+              className="inline-block border border-[hsl(36,25%,78%)] text-[hsl(36,25%,78%)] px-10 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans hover:bg-[hsl(36,25%,78%)] hover:text-[hsl(28,22%,34%)] transition-colors"
+            >
+              Apply for Access
+            </a>
+          </AnimateIn>
         </div>
       </section>
 
