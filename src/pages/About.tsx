@@ -31,7 +31,7 @@ const About = () => {
     <PageLayout>
       <PageHero
         label="The House"
-        headline={"Adorn the Woman\nYou Are Becoming"}
+        headline={<>Adorn the Woman<br />You Are <ScribbleUnderline>becoming</ScribbleUnderline></>}
         subtitle="GEA was born from a simple conviction: luxury should liberate, not burden. Access should define status — not ownership."
       />
 
