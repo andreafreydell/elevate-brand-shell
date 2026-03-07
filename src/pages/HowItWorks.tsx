@@ -76,6 +76,7 @@ const faqItems: FAQItem[] = [
 ];
 
 const HowItWorks = () => {
+  const isMobile = useIsMobile();
   return (
     <PageLayout>
       <PageHero
