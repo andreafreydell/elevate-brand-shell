@@ -84,7 +84,7 @@ const HowItWorks = () => {
       />
 
       {/* 4-step visual process */}
-      <SectionHeading label="How Access Works" heading="Choose. Receive. Wear. Refresh." />
+      <SectionHeading label="How Access Works" heading="Choose. Receive. Wear. Refresh." headingMobile className="section-heading-how-it-works" />
       <section className="how-it-works-section-mobile max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <AutoCarousel interval={2000} cardWidth="min-w-[48vw] md:min-w-[240px]">
           <StepBlock number="01" title="Choose" description="Browse our curated vault and select the pieces that speak to your moment." icon={Hand} />
