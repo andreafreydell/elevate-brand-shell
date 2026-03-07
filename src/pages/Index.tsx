@@ -120,13 +120,38 @@ const Index = () => {
           2. HOW IT WORKS (mini)
           ═══════════════════════════════════════════ */}
       <SectionHeading label="The Process" heading="How It Works" />
-      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
-        <StaggerContainer className="flex flex-col md:flex-row gap-4 md:items-stretch [&>*]:md:flex-1 [&>*]:md:basis-0 [&>*]:md:min-w-0">
-          <StaggerItem><StepBlock number="01" title="Choose" description="Browse our curated vault and select the pieces that speak to your moment." icon={Hand} /></StaggerItem>
-          <StaggerItem><StepBlock number="02" title="Receive" description="Your selections arrive in 1–3 days, freshly restored and sealed in our signature packaging." icon={Package} /></StaggerItem>
-          <StaggerItem><StepBlock number="03" title="Wear" description="Style them for your life — the event, the meeting, the dinner, the everyday." icon={Sparkles} /></StaggerItem>
-          <StaggerItem><StepBlock number="04" title="Keep Your Favorite" description="One piece per cycle is yours to keep — included in your membership. Want more? Members save 40% on any additional piece." icon={Heart} /></StaggerItem>
-          <StaggerItem><StepBlock number="05" title="Refresh" description="When you're ready for something new, return and choose your next chapter." icon={RefreshCw} /></StaggerItem>
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16 relative overflow-hidden">
+        {/* Decorative craft overlays */}
+        <svg className="absolute top-2 right-8 md:right-16 opacity-[0.06] pointer-events-none" width="80" height="80" viewBox="0 0 80 80" aria-hidden="true">
+          <defs>
+            <filter id="flow-wobble-1">
+              <feTurbulence type="turbulence" baseFrequency="0.03" numOctaves="3" seed="12" />
+              <feDisplacementMap in="SourceGraphic" scale="2" />
+            </filter>
+          </defs>
+          <circle cx="40" cy="40" r="36" stroke="hsl(var(--foreground))" strokeWidth="1.5" fill="none" filter="url(#flow-wobble-1)" />
+          <circle cx="40" cy="40" r="28" stroke="hsl(var(--foreground))" strokeWidth="0.8" fill="none" filter="url(#flow-wobble-1)" />
+        </svg>
+        <svg className="absolute bottom-8 left-4 md:left-10 opacity-[0.05] pointer-events-none" width="60" height="60" viewBox="0 0 60 60" aria-hidden="true">
+          <defs>
+            <filter id="flow-wobble-2">
+              <feTurbulence type="turbulence" baseFrequency="0.04" numOctaves="2" seed="7" />
+              <feDisplacementMap in="SourceGraphic" scale="2" />
+            </filter>
+          </defs>
+          <path d="M10 50 L30 10 L50 50 Z" stroke="hsl(var(--foreground))" strokeWidth="1" fill="none" filter="url(#flow-wobble-2)" />
+        </svg>
+
+        <StaggerContainer className="flex flex-col md:flex-row gap-0 md:items-stretch">
+          <StaggerItem className="flex-1 min-w-0"><StepBlock number="01" title="Choose" description="Browse our curated vault and select the pieces that speak to your moment." icon={Hand} /></StaggerItem>
+          <StepFlowArrow />
+          <StaggerItem className="flex-1 min-w-0"><StepBlock number="02" title="Receive" description="Your selections arrive in 1–3 days, freshly restored and sealed in our signature packaging." icon={Package} /></StaggerItem>
+          <StepFlowArrow />
+          <StaggerItem className="flex-1 min-w-0"><StepBlock number="03" title="Wear" description="Style them for your life — the event, the meeting, the dinner, the everyday." icon={Sparkles} /></StaggerItem>
+          <StepFlowArrow />
+          <StaggerItem className="flex-1 min-w-0"><StepBlock number="04" title="Keep Your Favorite" description="One piece per cycle is yours to keep — included in your membership. Want more? Members save 40% on any additional piece." icon={Heart} /></StaggerItem>
+          <StepFlowArrow />
+          <StaggerItem className="flex-1 min-w-0"><StepBlock number="05" title="Refresh" description="When you're ready for something new, return and choose your next chapter." icon={RefreshCw} /></StaggerItem>
         </StaggerContainer>
         <div className="text-center mt-10">
           <Link to="/how-it-works" className="cta-underline">Learn More</Link>
