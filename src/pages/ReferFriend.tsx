@@ -3,6 +3,7 @@ import { PageLayout } from "@/components/layout/PageLayout";
 import { PageHero } from "@/components/layout/PageHero";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
+import { ScribbleUnderline } from "@/components/craft/ScribbleUnderline";
 import { GrainOverlay } from "@/components/craft/GrainOverlay";
 import { WavyDivider } from "@/components/craft/WavyDivider";
 import { ScribbleUnderline } from "@/components/craft/ScribbleUnderline";
@@ -21,7 +22,7 @@ const ReferFriend = () => {
     <PageLayout>
       <PageHero
         label="Community"
-        headline={"Share the\nVault"}
+        headline={<>Share the<br /><ScribbleUnderline>Vault</ScribbleUnderline></>}
         subtitle="Give a friend their first month free. Receive a month of bonus credits when they join. Access grows when shared."
       />
 

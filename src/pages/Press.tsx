@@ -3,6 +3,7 @@ import { PageLayout } from "@/components/layout/PageLayout";
 import { PageHero } from "@/components/layout/PageHero";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
+import { ScribbleUnderline } from "@/components/craft/ScribbleUnderline";
 import { GrainOverlay } from "@/components/craft/GrainOverlay";
 import { WavyDivider } from "@/components/craft/WavyDivider";
 import { TornPaperEdge } from "@/components/craft/TornPaperEdge";
@@ -18,7 +19,7 @@ const Press = () => {
     <PageLayout>
       <PageHero
         label="Press"
-        headline={"The House\nof GEA"}
+        headline={<>The <ScribbleUnderline>House</ScribbleUnderline><br />of GEA</>}
         subtitle="For press inquiries, brand assets, and partnership opportunities."
       />
 

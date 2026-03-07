@@ -3,6 +3,7 @@ import { PageLayout } from "@/components/layout/PageLayout";
 import { PageHero } from "@/components/layout/PageHero";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
+import { ScribbleUnderline } from "@/components/craft/ScribbleUnderline";
 import { GrainOverlay } from "@/components/craft/GrainOverlay";
 import { WavyDivider } from "@/components/craft/WavyDivider";
 import { ScribbleUnderline } from "@/components/craft/ScribbleUnderline";
@@ -31,7 +32,7 @@ const CareRepair = () => {
     <PageLayout>
       <PageHero
         label="The Atelier"
-        headline={"Restored to\nPerfection"}
+        headline={<>Restored to<br /><ScribbleUnderline>Perfection</ScribbleUnderline></>}
         subtitle="Every returning piece passes through our six-step restoration process. What arrives at your door is indistinguishable from new."
       />
 
