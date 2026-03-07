@@ -37,8 +37,8 @@ const Index = () => {
           1. AUTHORITY HERO
           ═══════════════════════════════════════════ */}
       <section className="hero-section-mobile">
-        <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-[1fr_1.2fr_1fr] min-h-[640px] lg:min-h-[720px]">
-          <div className="hidden md:block bg-[hsl(30,18%,38%)] overflow-hidden">
+        <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-[1fr_1.2fr_1fr] min-h-0 md:min-h-[640px] lg:min-h-[720px]">
+          <div className="h-[160px] md:h-auto bg-[hsl(30,18%,38%)] overflow-hidden">
             <img
               src="/images/hero-authority.png"
               alt="Layered gold and moissanite necklaces on model"
@@ -49,17 +49,17 @@ const Index = () => {
               decoding="async"
             />
           </div>
-          <div className="hero-content-mobile flex flex-col items-center justify-center text-center px-8 md:px-12 lg:px-16 py-24 bg-[hsl(28,22%,34%)]">
+          <div className="hero-content-mobile flex flex-col items-center justify-center text-center px-6 md:px-12 lg:px-16 py-10 md:py-24 bg-[hsl(28,22%,34%)]">
             <AnimateIn variant="fadeIn" duration={0.8}>
-              <p className="text-[10px] tracking-[0.4em] uppercase text-[hsl(36,25%,78%)] mb-8 font-sans">The House of GEA</p>
+              <p className="text-[10px] tracking-[0.4em] uppercase text-[hsl(36,25%,78%)] mb-4 md:mb-8 font-sans">The House of GEA</p>
             </AnimateIn>
             <AnimateIn variant="fadeUp" delay={0.2} duration={0.8}>
-              <h1 className="hero-headline-mobile font-serif text-4xl md:text-5xl lg:text-[3.8rem] font-medium leading-[1.08] tracking-[-0.01em] text-[hsl(36,33%,93%)] whitespace-pre-line mb-6">
+              <h1 className="hero-headline-mobile font-serif text-3xl md:text-5xl lg:text-[3.8rem] font-medium leading-[1.08] tracking-[-0.01em] text-[hsl(36,33%,93%)] whitespace-pre-line mb-4 md:mb-6">
                 Luxury,{"\n"}Accessed.
               </h1>
             </AnimateIn>
             <AnimateIn variant="fadeUp" delay={0.4} duration={0.8}>
-              <p className="hero-subtitle-mobile text-[13px] leading-relaxed text-[hsl(36,20%,75%)] max-w-[380px] mb-12 font-sans">
+              <p className="hero-subtitle-mobile text-[11px] md:text-[13px] leading-relaxed text-[hsl(36,20%,75%)] max-w-[380px] mb-6 md:mb-12 font-sans">
                 Curated high-design jewelry, cared for through its entire journey.
                 Your money stretches further. Your visual impact multiplies.
               </p>
@@ -67,13 +67,13 @@ const Index = () => {
             <AnimateIn variant="fadeUp" delay={0.6} duration={0.8}>
               <a
                 href="#founding-access"
-                className="inline-block border border-[hsl(36,25%,78%)] text-[hsl(36,25%,78%)] px-10 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans hover:bg-[hsl(36,25%,78%)] hover:text-[hsl(28,22%,34%)] transition-colors"
+                className="inline-block border border-[hsl(36,25%,78%)] text-[hsl(36,25%,78%)] px-8 md:px-10 py-3 md:py-3.5 text-[10px] md:text-[11px] tracking-[0.2em] uppercase font-sans hover:bg-[hsl(36,25%,78%)] hover:text-[hsl(28,22%,34%)] transition-colors"
               >
                 Apply for Access
               </a>
             </AnimateIn>
           </div>
-          <div className="hidden md:block bg-[hsl(32,15%,42%)] overflow-hidden">
+          <div className="h-[160px] md:h-auto bg-[hsl(32,15%,42%)] overflow-hidden">
             <img
               src="/images/hero-editorial.png"
               alt="Gold and emerald rings styled on hand"
