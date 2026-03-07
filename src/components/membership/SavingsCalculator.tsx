@@ -83,7 +83,7 @@ export const SavingsCalculator = () => {
                 Traditional Cost/Wear
               </p>
               <p className="font-serif text-2xl font-medium">
-                ${traditionalCostPerWear.toFixed(0)}
+                ${traditionalCostPerWear.toFixed(2)}
               </p>
               <p className="text-[10px] text-muted-foreground font-sans mt-1">
                 ${avgRetailPrice} piece ÷ {wearsPerPiece} wears
