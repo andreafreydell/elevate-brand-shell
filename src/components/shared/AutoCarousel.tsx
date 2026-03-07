@@ -40,7 +40,7 @@ export const AutoCarousel = ({
 
   return (
     <div className="overflow-hidden" ref={emblaRef}>
-      <div className="flex gap-3">
+      <div className="carousel-gap-mobile flex gap-3 md:gap-3">
         {items.map((child, i) => (
           <div key={i} className={`${cardWidth} flex-shrink-0`}>
             {child}

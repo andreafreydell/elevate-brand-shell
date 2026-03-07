@@ -259,4 +259,43 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+
+  /* Mobile-only compact step block styling */
+  @media (max-width: 768px) {
+    .step-block-mobile {
+      padding: 8px 12px;
+    }
+
+    .step-block-mobile .step-label {
+      font-size: 9px;
+    }
+
+    .step-block-mobile .step-title {
+      font-size: 13px;
+    }
+
+    .step-block-mobile .step-description {
+      font-size: 11px;
+    }
+
+    .step-block-mobile .step-icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  /* Mobile-only section padding */
+  @media (max-width: 768px) {
+    .how-it-works-section-mobile {
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+
+  /* Mobile-only carousel gap */
+  @media (max-width: 768px) {
+    .carousel-gap-mobile {
+      gap: 6px;
+    }
+  }
 }
