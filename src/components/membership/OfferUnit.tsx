@@ -72,22 +72,22 @@ const CompactOffer = () => (
 
 /* ── Standard: side-by-side cards with features ── */
 const StandardOffer = () => (
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-[900px] mx-auto">
+  <div className="tier-grid-mobile grid grid-cols-1 md:grid-cols-2 gap-4 max-w-[900px] mx-auto">
     {tierData.map((tier) => (
       <div
         key={tier.name}
-        className={`border border-border flex flex-col ${
+        className={`tier-card-mobile border border-border flex flex-col ${
           tier.highlighted ? "bg-foreground text-background" : "bg-card"
         }`}
       >
         {/* Header */}
-        <div className="p-8 md:p-10 border-b border-border">
-          <p className={`text-[10px] tracking-[0.3em] uppercase font-sans mb-3 ${
+        <div className="tier-header-mobile p-8 md:p-10 border-b border-border">
+          <p className={`tier-label text-[10px] tracking-[0.3em] uppercase font-sans mb-3 ${
             tier.highlighted ? "text-background/60" : "text-muted-foreground"
           }`}>
             {tier.label}
           </p>
-          <h3 className="font-serif text-2xl md:text-3xl font-semibold tracking-[0.02em] mb-2">
+          <h3 className="tier-name font-serif text-2xl md:text-3xl font-semibold tracking-[0.02em] mb-2">
             {tier.name}
           </h3>
           <p className="font-serif text-lg">{tier.piecesLabel}</p>
@@ -95,7 +95,7 @@ const StandardOffer = () => (
 
         {/* Price */}
         <div className="px-8 md:px-10 py-6 border-b border-border">
-          <span className="font-serif text-3xl md:text-4xl font-medium">{tier.price}</span>
+          <span className="tier-price font-serif text-3xl md:text-4xl font-medium">{tier.price}</span>
           <span className={`text-[11px] tracking-[0.15em] font-sans ml-2 ${
             tier.highlighted ? "text-background/60" : "text-muted-foreground"
           }`}>
@@ -109,10 +109,10 @@ const StandardOffer = () => (
         </div>
 
         {/* Features */}
-        <div className="p-8 md:p-10 flex-1">
+        <div className="tier-features-mobile p-8 md:p-10 flex-1 space-y-3">
           <ul className="space-y-3">
             {tier.features.map((f, i) => (
-              <li key={i} className="flex items-start gap-3">
+              <li key={i} className="tier-feature-item flex items-start gap-3">
                 <Check className={`h-4 w-4 mt-0.5 flex-shrink-0 stroke-[1.5] ${
                   tier.highlighted ? "text-background/70" : "text-foreground"
                 }`} />
@@ -130,7 +130,7 @@ const StandardOffer = () => (
         <div className="px-8 md:px-10 pb-8 md:pb-10">
           <Link
             to="/#founding-access"
-            className={`block text-center py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans font-medium border transition-colors ${
+            className={`tier-cta-mobile block text-center py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans font-medium border transition-colors ${
               tier.highlighted
                 ? "border-background text-background hover:bg-background hover:text-foreground"
                 : "border-foreground bg-foreground text-background hover:bg-transparent hover:text-foreground"
