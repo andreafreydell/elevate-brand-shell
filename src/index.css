@@ -247,5 +247,6 @@
     font-size: clamp(1.25rem, 2.5vw, 1.875rem);
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    color: hsl(var(--ink));
   }
 }
