@@ -337,4 +337,37 @@
       gap: 6px;
     }
   }
+
+  /* Mobile-only compact material intelligence styling */
+  @media (max-width: 768px) {
+    .material-section-mobile {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .material-grid-mobile {
+      gap: 8px;
+    }
+
+    .material-image-mobile {
+      max-height: 140px;
+      height: 140px;
+    }
+
+    .material-text-mobile {
+      padding: 8px 10px;
+    }
+
+    .material-label {
+      font-size: 9px;
+    }
+
+    .material-title {
+      font-size: 12px;
+    }
+
+    .material-description {
+      font-size: 10px;
+    }
+  }
 }
