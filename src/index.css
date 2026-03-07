@@ -496,6 +496,40 @@
     }
   }
 
+  /* Mobile-only compact cost-per-wear section */
+  @media (max-width: 768px) {
+    .cpw-section-mobile {
+      padding: 12px 14px;
+      gap: 12px;
+    }
+    .cpw-label {
+      font-size: 8px;
+      margin-bottom: 2px;
+    }
+    .cpw-title {
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+    .cpw-desc {
+      font-size: 10px;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .cpw-card {
+      padding: 8px 10px;
+    }
+    .cpw-card-label {
+      font-size: 8px;
+      margin-bottom: 0;
+    }
+    .cpw-card-price {
+      font-size: 16px;
+    }
+    .cpw-card-sub {
+      font-size: 9px;
+    }
+  }
+
   /* Mobile-only compact membership tier styling */
   @media (max-width: 768px) {
     .tier-section-mobile {
