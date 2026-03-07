@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
+import { type ReactNode } from "react";
 import { AnimateIn } from "@/components/shared/AnimateIn";
 import { GrainOverlay } from "@/components/craft/GrainOverlay";
 
 interface PageHeroProps {
   label?: string;
-  headline: string;
+  headline: ReactNode;
   subtitle?: string;
   cta?: string;
   ctaHref?: string;
