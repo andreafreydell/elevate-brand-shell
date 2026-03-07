@@ -51,7 +51,7 @@ const About = () => {
             <div className="bg-card border border-border p-10 md:p-14 flex flex-col justify-center h-full relative overflow-hidden">
               <GrainOverlay opacity={0.03} />
               <WaxSeal size={32} className="absolute top-6 right-6 hidden md:inline-flex" />
-              <StampBadge text="FOUNDED" subtext="2025" rotation={-10} className="absolute bottom-4 left-4 hidden md:inline-flex" />
+              <StampBadge text="FOUNDED" subtext="2026" rotation={-10} className="absolute bottom-4 left-4 hidden md:inline-flex" />
               <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-6 relative z-[1]">
                 A Letter from the Founder
               </p>

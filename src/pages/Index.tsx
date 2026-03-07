@@ -73,7 +73,7 @@ const Index = () => {
             {/* Wax seal — decorative */}
             <WaxSeal size={40} className="absolute top-6 right-6 md:top-10 md:right-10" />
             {/* Stamp badge — bottom-left decorative */}
-            <StampBadge text="FOUNDING" subtext="2025" rotation={-8} className="absolute bottom-4 left-4 md:bottom-8 md:left-8" />
+            <StampBadge text="FOUNDING" subtext="2026" rotation={-8} className="absolute bottom-4 left-4 md:bottom-8 md:left-8" />
             <AnimateIn variant="fadeIn" duration={0.8}>
               <p className="text-[10px] tracking-[0.4em] uppercase text-[hsl(36,25%,78%)] mb-4 md:mb-8 font-sans">The House of GEA</p>
             </AnimateIn>
