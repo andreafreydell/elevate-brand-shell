@@ -13,16 +13,19 @@ import { TagRedStamp } from "@/components/craft/TagRedStamp";
 import { DiamondChainBorder } from "@/components/craft/DiamondChainBorder";
 import { WashiTapeNote } from "@/components/craft/WashiTapeNote";
 import { StitchLineDivider } from "@/components/craft/StitchLineDivider";
+import { EditorialInfographic } from "@/components/stories/EditorialInfographic";
+
+type InfographicVariant = "style-guide" | "material-compare" | "first-ritual" | "occasion-guide" | "monthly-drop" | "community";
 
 const blobVariants: Array<"coastal" | "statement" | "modern" | "classic"> = ["coastal", "statement", "modern", "classic", "coastal", "statement"];
 
-const editorials = [
-  { title: "The Art of Access", label: "Style Guide", description: "How to build a monthly selection that transitions from desk to dinner to weekend." },
-  { title: "Moissanite vs Diamond", label: "Material Story", description: "Why lab-created brilliance outperforms mined stones — optically, ethically, and economically." },
-  { title: "Your First Access Ritual", label: "New Member", description: "A guide to unpacking, styling, and photographing your first GEA shipment." },
-  { title: "Event Dressing by Piece", label: "Occasion Guide", description: "Matching your selection to your calendar: galas, meetings, brunches, and everything between." },
-  { title: "The Monthly Drop", label: "New Arrivals", description: "What's entering the vault this month. First look, first access." },
-  { title: "Founding Members Speak", label: "Community", description: "Transformation stories from women who replaced their jewelry drawers with access." },
+const editorials: Array<{ title: string; label: string; description: string; infographic: InfographicVariant }> = [
+  { title: "The Art of Access", label: "Style Guide", description: "How to build a monthly selection that transitions from desk to dinner to weekend.", infographic: "style-guide" },
+  { title: "Moissanite vs Diamond", label: "Material Story", description: "Why lab-created brilliance outperforms mined stones — optically, ethically, and economically.", infographic: "material-compare" },
+  { title: "Your First Access Ritual", label: "New Member", description: "A guide to unpacking, styling, and photographing your first GEA shipment.", infographic: "first-ritual" },
+  { title: "Event Dressing by Piece", label: "Occasion Guide", description: "Matching your selection to your calendar: galas, meetings, brunches, and everything between.", infographic: "occasion-guide" },
+  { title: "The Monthly Drop", label: "New Arrivals", description: "What's entering the vault this month. First look, first access.", infographic: "monthly-drop" },
+  { title: "Founding Members Speak", label: "Community", description: "Transformation stories from women who replaced their jewelry drawers with access.", infographic: "community" },
 ];
 
 const Stories = () => {
