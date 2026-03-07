@@ -8,7 +8,7 @@ const tiers = [
 
 export const SavingsCalculator = () => {
   const [selectedTier, setSelectedTier] = useState(0);
-  const [wearsPerPiece, setWearsPerPiece] = useState(4);
+  const [wearsPerPiece, setWearsPerPiece] = useState(5);
 
   const tier = tiers[selectedTier];
   const avgRetailPrice = 150;
