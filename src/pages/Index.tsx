@@ -181,7 +181,7 @@ const Index = () => {
           </div>
           <div className="bg-foreground text-background p-10 md:p-14">
             <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-background/60 mb-4">The GEA Model</p>
-            <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">Access Is Intelligence</h3>
+            <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4 text-background">Access Is Intelligence</h3>
             <p className="text-[12px] text-background/70 font-sans leading-relaxed">
               Access the full vault. Wear what speaks to you this month. Return when you're ready
               for something new. No commitment to a single piece — commitment to always being adorned
