@@ -145,7 +145,6 @@ const Index = () => {
             </div>
           </StaggerItem>
         </MobileArrowCarousel>
-        </StaggerContainer>
       </section>
 
       {/* ═══════════════════════════════════════════
