@@ -19,6 +19,19 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        ink: "hsl(var(--ink))",
+        hero: {
+          DEFAULT: "hsl(var(--hero))",
+          text: "hsl(var(--hero-text))",
+        },
+        bar: {
+          DEFAULT: "hsl(var(--bar))",
+          text: "hsl(var(--bar-text))",
+        },
+        "dark-bar": {
+          DEFAULT: "hsl(var(--dark-bar))",
+          text: "hsl(var(--dark-bar-text))",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -38,6 +51,7 @@ export default {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
+          highlight: "hsl(var(--accent-highlight))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -57,6 +71,12 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        seafoam: "var(--seafoam)",
+        "dusty-teal": "var(--dusty-teal)",
+        "blush-peach": "var(--blush-peach)",
+        sky: "var(--sky)",
+        brass: "var(--brass)",
+        "tag-red": "var(--tag-red)",
       },
       borderRadius: {
         lg: "var(--radius)",
