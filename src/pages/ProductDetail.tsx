@@ -6,7 +6,7 @@ import { Navbar } from "@/components/Navbar";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { AnimateIn } from "@/components/shared/AnimateIn";
 import { OfferUnit } from "@/components/membership/OfferUnit";
-import { Loader2, Shield, RefreshCw, Gem, Sparkles } from "lucide-react";
+import { Loader2, Shield, RefreshCw, Gem, Sparkles, Compass, Layers } from "lucide-react";
 import { toast } from "sonner";
 
 interface ProductNode {
@@ -179,8 +179,11 @@ const ProductDetail = () => {
         {/* ═══ Design Philosophy ═══ */}
         <AnimateIn delay={0.15}>
           <section className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-[2px]">
-            <div className="bg-card border border-border p-10 md:p-14">
-              <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">Philosophy</p>
+            <div className="bg-card border border-border p-10 md:p-14 transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:-translate-y-[3px] hover:border-foreground hover:border-2">
+              <div className="flex items-center justify-between mb-4">
+                <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground">Philosophy</p>
+                <Compass className="h-5 w-5 stroke-[1.3] text-foreground" />
+              </div>
               <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">
                 Designed for Access
               </h3>
@@ -190,8 +193,11 @@ const ProductDetail = () => {
                 set with precision, and finishes are chosen to age with grace through each cycle.
               </p>
             </div>
-            <div className="bg-card border border-border p-10 md:p-14">
-              <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">Material</p>
+            <div className="bg-card border border-border p-10 md:p-14 transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:-translate-y-[3px] hover:border-foreground hover:border-2">
+              <div className="flex items-center justify-between mb-4">
+                <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground">Material</p>
+                <Layers className="h-5 w-5 stroke-[1.3] text-foreground" />
+              </div>
               <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">
                 Composition & Craft
               </h3>
