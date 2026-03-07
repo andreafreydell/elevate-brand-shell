@@ -96,9 +96,6 @@ const About = () => {
       <section className="border-t border-border">
         <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center">
           <AnimateIn variant="fadeUp" duration={0.5}>
-            <h2 className="font-serif text-2xl md:text-3xl tracking-[0.06em] uppercase font-medium mb-4">
-              Join the House
-            </h2>
             <p className="text-[12px] text-muted-foreground font-sans mb-8">
               Access is luxury. Your next chapter awaits.
             </p>
