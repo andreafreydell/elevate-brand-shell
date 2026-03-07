@@ -73,11 +73,19 @@ const HowItWorks = () => {
       {/* 4-step visual process */}
       <SectionHeading label="How Access Works" heading="Choose. Receive. Wear. Refresh." headingMobile className="section-heading-how-it-works" labelClassName="section-heading-how-it-works-label" />
       <section className="how-it-works-section-mobile max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
-        <div className="flex flex-col md:flex-row gap-2 w-full md:items-stretch [&>*]:md:flex-1 [&>*]:md:basis-0 [&>*]:md:min-w-0 [&>*]:md:h-auto">
+        <div className="flex flex-col md:flex-row gap-0 w-full md:items-stretch [&>*:not(.arrow-connector)]:md:flex-1 [&>*:not(.arrow-connector)]:md:basis-0 [&>*:not(.arrow-connector)]:md:min-w-0 [&>*:not(.arrow-connector)]:md:h-auto">
           <StepBlock number="01" title="Choose" description="Browse our curated vault and select the pieces that speak to your moment." icon={Hand} />
+          <HandDrawnArrow direction="swoopy" className="arrow-connector hidden md:flex mx-[-8px] self-center" delay={0.3} />
+          <HandDrawnArrow direction="down" className="arrow-connector md:hidden self-center my-1" delay={0.3} />
           <StepBlock number="02" title="Receive" description="Your selections arrive in 1–3 days, freshly restored and sealed in our signature packaging." icon={Package} />
+          <HandDrawnArrow direction="curved-right" className="arrow-connector hidden md:flex mx-[-8px] self-center" delay={0.5} color="var(--seafoam)" />
+          <HandDrawnArrow direction="down" className="arrow-connector md:hidden self-center my-1" delay={0.5} color="var(--seafoam)" />
           <StepBlock number="03" title="Wear" description="Style them for your life — the event, the meeting, the dinner, the everyday." icon={Sparkles} />
+          <HandDrawnArrow direction="swoopy" className="arrow-connector hidden md:flex mx-[-8px] self-center" delay={0.7} />
+          <HandDrawnArrow direction="down" className="arrow-connector md:hidden self-center my-1" delay={0.7} />
           <StepBlock number="04" title="Keep Your Favorite" description="One piece per cycle is yours to keep — included in your membership. Want more? Members save 40% on any additional piece." icon={Heart} />
+          <HandDrawnArrow direction="right" className="arrow-connector hidden md:flex mx-[-8px] self-center" delay={0.9} color="var(--seafoam)" />
+          <HandDrawnArrow direction="down" className="arrow-connector md:hidden self-center my-1" delay={0.9} color="var(--seafoam)" />
           <StepBlock number="05" title="Refresh" description="When you're ready for something new, return and choose your next chapter." icon={RefreshCw} />
         </div>
       </section>
