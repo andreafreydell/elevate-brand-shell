@@ -530,7 +530,51 @@
     }
   }
 
-  /* Mobile-only compact membership tier styling */
+  /* Mobile-only compact savings calculator */
+  @media (max-width: 768px) {
+    .savings-calc-mobile {
+      padding: 12px 14px;
+    }
+    .savings-calc-mobile p[class*="tracking-[0.3em]"],
+    .savings-calc-mobile p[class*="tracking-[0.25em]"] {
+      font-size: 8px;
+      margin-bottom: 2px;
+    }
+    .savings-calc-mobile h3 {
+      font-size: 16px;
+      margin-bottom: 2px;
+    }
+    .savings-calc-mobile > p {
+      font-size: 10px;
+      margin-bottom: 8px;
+    }
+    .savings-calc-mobile button {
+      padding: 6px 8px;
+      font-size: 9px;
+    }
+    .savings-calc-mobile .font-serif.text-2xl {
+      font-size: 16px;
+    }
+    .savings-calc-mobile .font-serif.text-lg {
+      font-size: 14px;
+    }
+    .savings-calc-mobile .mb-8 {
+      margin-bottom: 12px;
+    }
+    .savings-calc-mobile .mb-10 {
+      margin-bottom: 12px;
+    }
+    .savings-calc-mobile .grid {
+      gap: 2px;
+    }
+    .savings-calc-mobile .grid > div {
+      padding: 8px 10px;
+    }
+    .savings-calc-mobile .grid > div p[class*="text-[10px]"] {
+      font-size: 8px;
+    }
+  }
+
   @media (max-width: 768px) {
     .tier-section-mobile {
       padding-top: 24px;
