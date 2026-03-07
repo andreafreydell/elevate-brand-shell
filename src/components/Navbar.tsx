@@ -4,7 +4,7 @@ import { CartDrawer } from "./CartDrawer";
 import { Search, User, Heart, Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "New", href: "/" },
+  { label: "Home", href: "/" },
   { label: "Our Story", href: "/about" },
   { label: "How It Works", href: "/how-it-works" },
   { label: "Browse All", href: "/browse" },
