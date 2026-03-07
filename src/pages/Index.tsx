@@ -196,7 +196,7 @@ const Index = () => {
         </WashiTapeNote>
         <div className="max-w-md">
           <MarginNote attribution="GEA Material Lab">
-            The brass finish will develop a subtle patina — that's the beauty of it, not a flaw.
+            Sterling silver and surgical-grade stainless steel — every piece arrives polished and leaves looking just as fresh. No tarnish, no patina, just clean shine from first wear to last.
           </MarginNote>
         </div>
       </div>
