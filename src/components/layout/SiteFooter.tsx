@@ -4,7 +4,6 @@ import { WavyDivider } from "@/components/craft/WavyDivider";
 
 const footerLinks = {
   Membership: [
-    { label: "Founding Circle", href: "/how-it-works#founding-circle" },
     { label: "How It Works", href: "/how-it-works" },
     { label: "Refer a Friend", href: "/refer" },
     { label: "Ambassador", href: "/ambassador" },
