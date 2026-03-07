@@ -338,26 +338,28 @@
   @media (max-width: 768px) {
     .step-block-mobile {
       padding: 6px 10px;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
     }
-
-    .step-block-mobile .step-label {
+    .step-label {
       font-size: 8px;
       margin-bottom: 0;
     }
-
-    .step-block-mobile .step-title {
+    .step-title {
       font-size: 12px;
       margin-top: 2px;
       margin-bottom: 2px;
     }
-
-    .step-block-mobile .step-description {
+    .step-description {
       font-size: 10px;
       margin: 0;
     }
-
-    .step-block-mobile .step-icon {
-      width: 16px;
+    .section-heading-how-it-works {
+      font-size: 14px;
+    }
+  }
       height: 16px;
     }
   }
