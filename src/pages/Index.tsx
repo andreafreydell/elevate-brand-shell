@@ -9,7 +9,7 @@ import { TrustStrip } from "@/components/shared/TrustStrip";
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
 import { OfferUnit } from "@/components/membership/OfferUnit";
 import { ProductImageRow } from "@/components/ProductImageRow";
-import { Loader2, Hand, Package, Sparkles, RefreshCw, Shield, Wrench, Truck, Gem, Ban, Heart, Shuffle, CalendarPlus, Feather } from "lucide-react";
+import { Loader2, Hand, Package, Sparkles, RefreshCw, Shield, Wrench, Truck, Gem, Ban, Heart, Shuffle, CalendarPlus, Feather, Scale, Zap } from "lucide-react";
 
 const Index = () => {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
@@ -153,7 +153,7 @@ const Index = () => {
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-[2px]">
           <StaggerItem>
-            <div className="bg-card border border-border p-10 md:p-14 h-full">
+            <div className="bg-card border border-border p-10 md:p-14 h-full transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:-translate-y-[3px] hover:border-foreground hover:border-2">
               {/* Own vs Access Infographic — spec #3 */}
               <div className="bg-background border border-border p-6 mb-8">
                 <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
@@ -194,7 +194,10 @@ const Index = () => {
                   <rect x="352" y="260" width="16" height="16" rx="3" fill="#C54A3D" opacity="0.7" />
                 </svg>
               </div>
-              <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">The Old Model</p>
+              <div className="flex items-center justify-between mb-4">
+                <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground">The Old Model</p>
+                <Scale className="h-5 w-5 stroke-[1.3] text-foreground" />
+              </div>
               <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">Ownership Is a Liability</h3>
               <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
                 The average woman wears each piece of fine jewelry fewer than five times before it sits
@@ -204,7 +207,7 @@ const Index = () => {
             </div>
           </StaggerItem>
           <StaggerItem>
-            <div className="bg-foreground text-background p-10 md:p-14 h-full">
+            <div className="bg-foreground text-background p-10 md:p-14 h-full transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:-translate-y-[3px] hover:border-2 hover:border-background/40">
               {/* Access Cycle Infographic — spec #1 */}
               <div className="bg-background border border-border p-6 mb-8">
                 <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
@@ -254,7 +257,10 @@ const Index = () => {
                   <rect x="352" y="260" width="16" height="16" rx="3" fill="#C54A3D" opacity="0.7" />
                 </svg>
               </div>
-              <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-background/60 mb-4">The GEA Model</p>
+              <div className="flex items-center justify-between mb-4">
+                <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-background/60">The GEA Model</p>
+                <Zap className="h-5 w-5 stroke-[1.3] text-background/70" />
+              </div>
               <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4 text-background">Access Is Intelligence</h3>
               <p className="text-[12px] text-background/70 font-sans leading-relaxed">
                 Access the full vault. Wear what speaks to you this month. Return when you're ready
@@ -298,9 +304,9 @@ const Index = () => {
       <SectionHeading label="Freedom" heading="Wear More. Spend Smarter." />
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <StaggerItem><ValueBlock title="Freedom to Experiment" description="Try bold statement pieces without the commitment of ownership. If it doesn't feel right, refresh your selection next month. No risk. No regret." className="bg-card" icon={<Shuffle size={32} strokeWidth={1.2} />} /></StaggerItem>
-          <StaggerItem><ValueBlock title="Always Something New" description="Your collection evolves as you do. New drops enter the vault monthly. Early access for members means you're always first." className="bg-card" icon={<CalendarPlus size={32} strokeWidth={1.2} />} /></StaggerItem>
-          <StaggerItem><ValueBlock title="Luxury Without Burden" description="No storage anxiety. No depreciation. No buyer's remorse. Just beautiful jewelry, worn with intention, returned with ease." className="bg-card" icon={<Feather size={32} strokeWidth={1.2} />} /></StaggerItem>
+          <StaggerItem><ValueBlock title="Freedom to Experiment" description="Try bold statement pieces without the commitment of ownership. If it doesn't feel right, refresh your selection next month. No risk. No regret." className="bg-card" lucideIcon={Shuffle} label="Explore" /></StaggerItem>
+          <StaggerItem><ValueBlock title="Always Something New" description="Your collection evolves as you do. New drops enter the vault monthly. Early access for members means you're always first." className="bg-card" lucideIcon={CalendarPlus} label="Discover" /></StaggerItem>
+          <StaggerItem><ValueBlock title="Luxury Without Burden" description="No storage anxiety. No depreciation. No buyer's remorse. Just beautiful jewelry, worn with intention, returned with ease." className="bg-card" lucideIcon={Feather} label="Liberate" /></StaggerItem>
         </StaggerContainer>
       </section>
 

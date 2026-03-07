@@ -4,12 +4,13 @@ import { PageHero } from "@/components/layout/PageHero";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { ValueBlock } from "@/components/shared/ValueBlock";
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
+import { Gem, RotateCcw, Crown, Unlock } from "lucide-react";
 
 const values = [
-  { title: "Artistry Without Extraction", description: "Every piece uses lab-created moissanite and recycled metals. No mining. No compromise on brilliance." },
-  { title: "Access Over Accumulation", description: "We believe the most sustainable piece of jewelry is the one that's always being worn — not the one gathering dust." },
-  { title: "Craft as Legacy", description: "Inspired by generations of women who adorned themselves with intention, GEA carries forward a lineage of beauty as ritual." },
-  { title: "Access as Equity", description: "Luxury shouldn't require wealth accumulation. It should require taste, intention, and the freedom to express." },
+  { title: "Artistry Without Extraction", description: "Every piece uses lab-created moissanite and recycled metals. No mining. No compromise on brilliance.", icon: Gem, label: "Principle 01" },
+  { title: "Access Over Accumulation", description: "We believe the most sustainable piece of jewelry is the one that's always being worn — not the one gathering dust.", icon: RotateCcw, label: "Principle 02" },
+  { title: "Craft as Legacy", description: "Inspired by generations of women who adorned themselves with intention, GEA carries forward a lineage of beauty as ritual.", icon: Crown, label: "Principle 03" },
+  { title: "Access as Equity", description: "Luxury shouldn't require wealth accumulation. It should require taste, intention, and the freedom to express.", icon: Unlock, label: "Principle 04" },
 ];
 
 const About = () => {
@@ -61,7 +62,7 @@ const About = () => {
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {values.map((v) => (
             <StaggerItem key={v.title}>
-              <ValueBlock title={v.title} description={v.description} className="bg-card" />
+              <ValueBlock title={v.title} description={v.description} className="bg-card" lucideIcon={v.icon} label={v.label} />
             </StaggerItem>
           ))}
         </StaggerContainer>
