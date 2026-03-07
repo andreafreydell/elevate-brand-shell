@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GEA Craft Elements — Cheat Sheet</title>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brass: hsl(36, 45%, 58%);
+      --tag-red: hsl(4, 55%, 48%);
+      --seafoam: hsl(168, 28%, 72%);
+      --blush-peach: hsl(18, 55%, 82%);
+      --sky: hsl(210, 30%, 78%);
+      --ink: hsl(210, 15%, 15%);
+      --border: 36, 15%, 82%;
+      --foreground: 210, 15%, 15%;
+      --muted-fg: hsl(36, 10%, 55%);
+      --bg: hsl(38, 32%, 96%);
+      --font-sans: 'Inter', sans-serif;
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-script: 'Caveat', cursive;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--ink);
+      padding: 40px 24px 80px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: 36px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted-fg);
+      margin-bottom: 48px;
+    }
+
+    .card {
+      border: 1px solid hsl(var(--border));
+      background: white;
+      margin-bottom: 32px;
+      padding: 32px;
+      position: relative;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+
+    .card-number {
+      font-family: var(--font-script);
+      font-size: 28px;
+      color: var(--brass);
+      line-height: 1;
+    }
+
+    .card-title {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .card-file {
+      font-size: 11px;
+      font-family: monospace;
+      color: var(--muted-fg);
+      margin-bottom: 4px;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: var(--muted-fg);
+      margin-bottom: 20px;
+    }
+
+    .demo {
+      background: hsl(38, 32%, 97%);
+      border: 1px dashed hsl(var(--border));
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100px;
+      position: relative;
+      overflow: visible;
+    }
+
+    .demo-label {
+      position: absolute;
+      top: 8px;
+      left: 12px;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted-fg);
+    }
+
+    .props-table {
+      margin-top: 16px;
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    .props-table th {
+      text-align: left;
+      font-weight: 500;
+      padding: 6px 8px;
+      border-bottom: 1px solid hsl(var(--border));
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted-fg);
+    }
+
+    .props-table td {
+      padding: 6px 8px;
+      border-bottom: 1px solid hsl(var(--border));
+      vertical-align: top;
+    }
+
+    .props-table td:first-child { font-family: monospace; color: var(--tag-red); }
+    .props-table td:nth-child(2) { font-family: monospace; color: var(--muted-fg); font-size: 11px; }
+  </style>
+</head>
+<body>
+
+<h1>GEA Craft Elements</h1>
+<p class="subtitle">19 artisanal components · cheat sheet</p>
+
+<!-- 1. ScribbleUnderline -->
+<div class="card">
+  <div class="card-header"><span class="card-number">1</span><span class="card-title">ScribbleUnderline</span></div>
+  <p class="card-file">src/components/craft/ScribbleUnderline.tsx</p>
+  <p class="card-desc">Animated hand-drawn wavy underline for headlines</p>
+  <div class="demo">
+    <span class="demo-label">Preview</span>
+    <span style="position:relative; display:inline-block; font-family:var(--font-serif); font-size:28px; font-weight:600;">
+      Timeless
+      <svg style="position:absolute; bottom:-6px; left:-4px; width:calc(100% + 8px); height:12px; overflow:visible;" viewBox="0 0 200 12" preserveAspectRatio="none" fill="none">
+        <path d="M2 8 C30 2, 50 12, 80 6 S130 2, 160 8 S190 4, 198 7" stroke="var(--brass)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      </svg>
+    </span>
+  </div>
+  <table class="props-table">
+    <tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+    <tr><td>children</td><td>ReactNode</td><td>—</td></tr>
+    <tr><td>color</td><td>string</td><td>var(--brass)</td></tr>
+    <tr><td>delay</td><td>number</td><td>0.3</td></tr>
+  </table>
+</div>
+
+<!-- 2. CircleEmphasis -->
+<div class="card">
+  <div class="card-header"><span class="card-number">2</span><span class="card-title">CircleEmphasis</span></div>
+  <p class="card-file">src/components/craft/CircleEmphasis.tsx</p>
+  <p class="card-desc">Hand-drawn ellipse around a word (editor's circle mark)</p>
+  <div class="demo">
+    <span class="demo-label">Preview</span>
+    <span style="position:relative; display:inline-block; padding:0 4px; font-family:var(--font-serif); font-size:24px; font-weight:600;">
+      <svg style="position:absolute; top:-8px; left:-12px; width:calc(100% + 24px); height:calc(100% + 16px); overflow:visible;" viewBox="0 0 200 60" preserveAspectRatio="none" fill="none">
+        <ellipse cx="100" cy="30" rx="96" ry="26" stroke="var(--tag-red)" stroke-width="1.2" fill="none" opacity="0.55" transform="rotate(-2 100 30)"/>
+      </svg>
+      <span style="position:relative; z-index:1;">forever</span>
+    </span>
+  </div>
+  <table class="props-table">
+    <tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+    <tr><td>children</td><td>ReactNode</td><td>—</td></tr>
+    <tr><td>color</td><td>string</td><td>var(--tag-red)</td></tr>
+    <tr><td>delay</td><td>number</td><td>0.4</td></tr>
+  </table>
+</div>
+
+<!-- 3. GrainOverlay -->
+<div class="card">
+  <div class="card-header"><span class="card-number">3</span><span class="card-title">GrainOverlay</span></div>
+  <p class="card-file">src/components/craft/GrainOverlay.tsx</p>
+  <p class="card-desc">Paper-grain texture overlay (feTurbulence noise)</p>
+  <div class="demo" style="min-height:120px; background:hsl(210,15%,15%); color:white;">
+    <span class="demo-label" style="color:rgba(255,255,255,0.5);">Preview (dark bg)</span>
+    <div style="position:absolute;inset:0;pointer-events:none;opacity:0.08;background-image:url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;);background-size:128px 128px;"></div>
+    <span style="position:relative; z-index:1; font-family:var(--font-serif); font-size:18px;">Paper grain texture visible on dark backgrounds</span>
+  </div>
+  <table class="props-table">
+    <tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+    <tr><td>opacity</td><td>number</td><td>0.04</td></tr>
+  </table>
+</div>
+
+<!-- 4. WavyDivider -->
+<div class="card">
+  <div class="card-header"><span class="card-number">4</span><span class="card-title">WavyDivider</span></div>
+  <p class="card-file">src/components/craft/WavyDivider.tsx</p>
+  <p class="card-desc">Organic wavy SVG line divider with tremor filter</p>
+  <div class="demo" style="flex-direction:column; gap:24px;">
+    <span class="demo-label">Preview</span>
+    <div style="width:100%;">
+      <p style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted-fg); margin-bottom:6px;">Single variant</p>
+      <svg viewBox="0 0 800 24" fill="none" preserveAspectRatio="none" style="width:100%; height:16px;">
+        <defs><filter id="wavy1"><feTurbulence type="turbulence" baseFrequency="0.035" numOctaves="2" seed="3" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="2.5" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+        <path d="M0 12 C100 4, 200 20, 300 12 S500 4, 600 12 S700 20, 800 12" stroke="hsl(36,15%,82%)" stroke-width="1" stroke-linecap="round" fill="none" filter="url(#wavy1)"/>
+      </svg>
+    </div>
+    <div style="width:100%;">
+      <p style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted-fg); margin-bottom:6px;">Double variant</p>
+      <svg viewBox="0 0 800 24" fill="none" preserveAspectRatio="none" style="width:100%; height:16px;">
+        <defs><filter id="wavy2"><feTurbulence type="turbulence" baseFrequency="0.035" numOctaves="2" seed="3" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="2.5" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+        <path d="M0 12 C100 4, 200 20, 300 12 S500 4, 600 12 S700 20, 800 12" stroke="hsl(36,15%,82%)" stroke-width="1" stroke-linecap="round" fill="none" filter="url(#wavy2)"/>
+        <path d="M0 16 C100 8, 200 24, 300 16 S500 8, 600 16 S700 24, 800 16" stroke="hsl(36,15%,82%)" stroke-width="0.5" stroke-linecap="round" fill="none" opacity="0.4" filter="url(#wavy2)"/>
+      </svg>
+    </div>
+  </div>
+  <table class="props-table">
+    <tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+    <tr><td>color</td><td>string</td><td>hsl(var(--border))</td></tr>
+    <tr><td>variant</td><td>"single" | "double"</td><td>"single"</td></tr>
+    <tr><td>delay</td><td>number</td><td>0</td></tr>
+  </table>
+</div>
+
+<!-- 5. WaxSeal -->
+<div class="card">
+  <div class="card-header"><span class="card-number">5</span><span class="card-title">WaxSeal</span></div>
+  <p class="card-file">src/components/craft/WaxSeal.tsx</p>
+  <p class="card-desc">Wax seal badge with initial letter</p>
+  <div class="demo" style="gap:24px;">
+    <span class="demo-label">Preview</span>
+    <div style="transform:rotate(-6deg);">
+      <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+        <circle cx="32" cy="32" r="28" fill="var(--tag-red)" opacity="0.65"/>
+        <circle cx="32" cy="32" r="22" stroke="hsl(36,28%,90%)" stroke-width="0.5" fill="none" opacity="0.4"/>
+        <circle cx="32" cy="32" r="18" stroke="hsl(36,28%,90%)" stroke-width="0.3" fill="none" opacity="0.25"/>
+        <text x="32" y="37" text-anchor="middle" font-family="var(--font-serif)" font-size="18" font-weight="600" font-style="italic" fill="hsl(36,28%,90%)" opacity="0.9">G</text>
+      </svg>
+    </div>
+    <div style="transform:rotate(-6deg);">
+      <svg width="48" height="48" viewBox="0 0 64 64" fill="none">
+        <circle cx="32" cy="32" r="28" fill="var(--tag-red)" opacity="0.65"/>
+        <circle cx="32" cy="32" r="22" stroke="hsl(36,28%,90%)" stroke-width="0.5" fill="none" opacity="0.4"/>
+        <circle cx="32" cy="32" r="18" stroke="hsl(36,28%,90%)" stroke-width="0.3" fill="none" opacity="0.25"/>
+        <text x="32" y="37" text-anchor="middle" font-family="var(--font-serif)" font-size="18" font-weight="600" font-style="italic" fill="hsl(36,28%,90%)" opacity="0.9">E</text>
+      </svg>
+    </div>
+  </div>
+  <table class="props-table">
+    <tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+    <tr><td>letter</td><td>string</td><td>"G"</td></tr>
+    <tr><td>size</td><td>number</td><td>48</td></tr>
+  </table>
+</div>
+
+<!-- 6. StampBadge -->
+<div class="card">
+  <div class="card-header"><span class="card-number">6</span><span class="card-title">StampBadge</span></div>
+  <p class="card-file">src/components/craft/StampBadge.tsx</p>
+  <p class="card-desc">Imperfect rubber-stamp badge with ink texture</p>
+  <div class="demo">
+    <span class="demo-label">Preview</span>
+    <div style="transform:rotate(-6deg); opacity:0.55;">
+      <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+        <defs><filter id="stamp1"><feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" seed="7" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+        <g filter="url(#stamp1)">
+          <circle cx="60" cy="60" r="52" stroke="var(--tag-red)" stroke-width="2" fill="none"/>
+          <circle cx="60" cy="60" r="46" stroke="var(--tag-red)" stroke-width="0.5" fill="none"/>
+          <text x="60" y="56" text-anchor="middle" font-family="var(--font-sans)" font-size="8" font-weight="500" letter-spacing="0.2em" fill="var(--tag-red)">FOUNDING</text>
+          <text x="60" y="70" text-anchor="middle" font-family="var(--font-serif)" font-size="14" font-weight="600" font-style="italic" fill="var(--tag-red)">2026</text>
+          <text x="60" y="88" text-anchor="middle" font-family="var(--font-sans)" font-size="5" letter-spacing="0.15em" fill="var(--tag-red)">GEA · 2026</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <table class="props-table">
+    <tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+    <tr><td>text</td><td>string</td><td>—</td></tr>
+    <tr><td>subtext</td><td>string</td><td>—</td></tr>
+    <tr><td>rotation</td><td>number</td><td>-6</td></tr>
+  </table>
+</div>
+
+<!-- 7. MarginNote -->
+<div class="card">
+  <div class="card-header"><span class="card-number">7</span><span class="card-title">MarginNote</span></div>
+  <p class="card-file">src/components/craft/MarginNote.tsx</p>
+  <p class="card-desc">Editorial margin note with hand-drawn bracket</p>
+  <div class="demo" style="justify-content:flex-start;">
+    <span class="demo-label">Preview</span>
+    <div style="position:relative; padding-left:24px;">
+      <svg style="position:absolute; left:0; top:0; width:16px; height:100%; overflow:visible;" viewBox="0 0 16 100" preserveAspectRatio="none" fill="none">
+        <path d="M12 2 C6 2, 4 8, 4 20 L4 80 C4 92, 6 98, 12 98" stroke="var(--brass)" stroke-width="1" fill="none" opacity="0.5" stroke-linecap="round"/>
+      </svg>
+      <p style="font-family:var(--font-script); font-size:15px; line-height:1.6; color:var(--ink); opacity:0.8; font-style:italic;">"Sterling silver and surgical-grade steel — every piece arrives polished and stays that way."</p>
+      <p style="font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted-fg); margin-top:8px;">— GEA Curator</p>
+    </div>
+  </div>
+  <table class="props-table">
+    <tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+    <tr><td>children</td><td>ReactNode</td><td>—</td></tr>
+    <tr><td>attribution</td><td>string</td><td>"GEA Curator"</td></tr>
+  </table>
+</div>
+
+<!-- 8. ScriptNumber -->
+<div class="card">
+  <div class="card-header"><span class="card-number">8</span><span class="card-title">ScriptNumber</span></div>
+  <p class="card-file">src/components/craft/ScriptNumber.tsx</p>
+  <p class="card-desc">Caveat font wrapper for metrics/numbers</p>
+  <div class="demo" style="gap:32px;">
+    <span class="demo-label">Preview</span>
+    <div style="text-align:center;">
+      <span style="font-family:var(--font-script); font-size:42px; line-height:1;">$85</span>
+      <p style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted-fg); margin-top:4px;">/month</p>
+    </div>
+    <div style="text-align:center;">
+      <span style="font-family:var(--font-script); font-size:42px; line-height:1;">10</span>
+      <p style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted-fg); margin-top:4px;">pieces</p>
+    </div>
+    <div style="text-align:center;">
+      <span style="font-family:var(--font-script); font-size:42px; line-height:1;">∞</span>
+      <p style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted-fg); margin-top:4px;">swaps</p>
+    </div>
+  </div>
+  <table class="props-table">
+    <tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+    <tr><td>children</td><td>ReactNode</td><td>—</td></tr>
+  </table>
+</div>
+
+<!-- 9. OrganicBlobTag -->
+<div class="card">
+  <div class="card-header"><span class="card-number">9</span><span class="card-title">OrganicBlobTag</span></div>
+  <p class="card-file">src/components/craft/OrganicBlobTag.tsx</p>
+  <p class="card-desc">Irregular blob shape behind labels (4 variants)</p>
+  <div class="demo" style="gap:20px; flex-wrap:wrap;">
+    <span class="demo-label">Preview</span>
+    <!-- Coastal -->
+    <div style="position:relative; display:inline-flex; align-items:center; justify-content:center; padding:8px 20px;">
+      <svg viewBox="0 0 200 70" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;"><path d="M20,35 C20,15 45,5 100,8 C155,11 180,20 185,35 C190,50 160,62 100,60 C40,58 20,55 20,35Z" fill="var(--seafoam)" opacity="0.3"/></svg>
+      <span style="position:relative;z-index:1;font-size:9px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;">Coastal</span>
+    </div>
+    <!-- Statement -->
+    <div style="position:relative; display:inline-flex; align-items:center; justify-content:center; padding:8px 20px;">
+      <svg viewBox="0 0 200 70" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;"><path d="M15,32 C18,12 50,5 105,10 C160,15 188,22 185,38 C182,54 155,65 95,62 C35,59 12,52 15,32Z" fill="var(--blush-peach)" opacity="0.3"/></svg>
+      <span style="position:relative;z-index:1;font-size:9px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;">Statement</span>
+    </div>
+    <!-- Modern -->
+    <div style="position:relative; display:inline-flex; align-items:center; justify-content:center; padding:8px 20px;">
+      <svg viewBox="0 0 200 70" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;"><path d="M22,30 C25,10 55,2 100,6 C145,10 178,18 182,36 C186,54 150,66 100,64 C50,62 19,50 22,30Z" fill="var(--sky)" opacity="0.25"/></svg>
+      <span style="position:relative;z-index:1;font-size:9px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;">Modern</span>
+    </div>
+    <!-- Classic -->
+    <div style="position:relative; display:inline-flex; align-items:center; justify-content:center; padding:8px 20px;">
+      <svg viewBox="0 0 200 70" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;"><path d="M18,38 C15,18 48,6 100,9 C152,12 185,20 183,40 C181,60 148,68 96,65 C44,62 21,58 18,38Z" fill="var(--brass)" opacity="0.25"/></svg>
+      <span style="position:relative;z-index:1;font-size:9px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;">Classic</span>
+    </div>
+  </div>
+  <table class="props-table">
+    <tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+    <tr><td>children</td><td>ReactNode</td><td>—</td></tr>
+    <tr><td>variant</td><td>"coastal" | "statement" | "modern" | "classic"</td><td>"coastal"</td></tr>
+  </table>
+</div>
+
+<!-- 10. SketchyBorderCard -->
+<div class="card">
+  <div class="card-header"><span class="card-number">10</span><span class="card-title">SketchyBorderCard</span></div>
+  <p class="card-file">src/components/craft/SketchyBorderCard.tsx</p>
+  <p class="card-desc">Wobbly SVG border card for editorial content</p>
+  <div class="demo">
+    <span class="demo-label">Preview</span>
+    <div style="position:relative; width:100%; max-width:400px;">
+      <svg viewBox="0 0 400 250" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;">
+        <path d="M4,4 C100,2 200,6 396,4 C398,60 396,150 396,246 C300,248 100,244 4,246 C2,180 6,80 4,4Z" fill="none" stroke="hsl(36,15%,82%)" stroke-width="1" opacity="0.6"/>
+      </svg>
+      <div style="padding:32px; position:relative;">
+        <p style="font-size:10px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted-fg);margin-bottom:12px;">EDITOR'S NOTE</p>
+        <p style="font-family:var(--font-serif); font-size:16px; line-height:1.6;">Every piece in the collection is designed to be layered, swapped, and styled without limits.</p>
+      </div>
+    </div>
+  </div>
+  <table class="props-table">
+    <tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+    <tr><td>children</td><td>ReactNode</td><td>—</td></tr>
+    <tr><td>label</td><td>string</td><td>"EDITOR'S NOTE"</td></tr>
+    <tr><td>pathVariant</td><td>number</td><td>0</td></tr>
+  </table>
+</div>
+
+<!-- 11. DotGridTexture -->
+<div class="card">
+  <div class="card-header"><span class="card-number">11</span><span class="card-title">DotGridTexture</span></div>
+  <p class="card-file">src/components/craft/DotGridTexture.tsx</p>
+  <p class="card-desc">CSS-only dot grid background pattern</p>
+  <div class="demo" style="min-height:140px; background-image:radial-gradient(circle, hsl(36,15%,82%) 0.8px, transparent 0.8px); background-size:18px 18px;">
+    <span class="demo-label">Preview</span>
+    <span style="font-family:var(--font-serif); font-size:18px; color:var(--muted-fg);">Content sits on dot grid</span>
+  </div>
+  <table class="props-table">
+    <tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+    <tr><td>children</td><td>ReactNode</td><td>—</td></tr>
+    <tr><td>dotSize</td><td>number</td><td>0.8</td></tr>
+    <tr><td>spacing</td><td>number</td><td>18</td></tr>
+  </table>
+</div>
+
+<!-- 12. TornPaperEdge -->
+<div class="card">
+  <div class="card-header"><span class="card-number">12</span><span class="card-title">TornPaperEdge</span></div>
+  <p class="card-file">src/components/craft/TornPaperEdge.tsx</p>
+  <p class="card-desc">Jagged SVG line divider</p>
+  <div class="demo" style="flex-direction:column;">
+    <span class="demo-label">Preview</span>
+    <p style="font-size:11px; color:var(--muted-fg); margin-bottom:12px;">Section above</p>
+    <svg style="width:100%; display:block;" height="24" viewBox="0 0 1200 24" preserveAspectRatio="none">
+      <path d="M0,12 L15,10 L30,14 L42,8 L58,13 L72,9 L88,15 L100,7 L118,13 L132,10 L148,16 L160,8 L178,12 L192,9 L208,15 L220,7 L238,14 L252,10 L268,13 L280,8 L298,15 L312,9 L328,14 L340,7 L358,12 L372,10 L388,16 L400,8 L500,13 L600,7 L700,12 L800,8 L900,14 L1000,7 L1100,12 L1200,9" fill="none" stroke="hsl(36,15%,82%)" stroke-width="0.8" opacity="0.5"/>
+    </svg>
+    <p style="font-size:11px; color:var(--muted-fg); margin-top:12px;">Section below</p>
+  </div>
+  <table class="props-table">
+    <tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+    <tr><td>color</td><td>string</td><td>hsl(var(--border))</td></tr>
+  </table>
+</div>
+
+<!-- 13. StitchLineDivider -->
+<div class="card">
+  <div class="card-header"><span class="card-number">13</span><span class="card-title">StitchLineDivider</span></div>
+  <p class="card-file">src/components/craft/StitchLineDivider.tsx</p>
+  <p class="card-desc">Dashed sewn-seam line divider</p>
+  <div class="demo" style="flex-direction:column;">
+    <span class="demo-label">Preview</span>
+    <p style="font-size:11px; color:var(--muted-fg); margin-bottom:12px;">Above the stitch</p>
+    <svg style="width:100%; display:block;" height="12" viewBox="0 0 600 12" preserveAspectRatio="none">
+      <line x1="0" y1="6" x2="600" y2="6" stroke="hsl(36,15%,82%)" stroke-width="0.8" stroke-dasharray="8 6" opacity="0.5"/>
+    </svg>
+    <p style="font-size:11px; color:var(--muted-fg); margin-top:12px;">Below the stitch</p>
+  </div>
+  <table class="props-table">
+    <tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+    <tr><td>color</td><td>string</td><td>hsl(var(--border))</td></tr>
+  </table>
+</div>
+
+<!-- 14. DiamondChainBorder -->
+<div class="card">
+  <div class="card-header"><span class="card-number">14</span><span class="card-title">DiamondChainBorder</span></div>
+  <p class="card-file">src/components/craft/DiamondChainBorder.tsx</p>
+  <p class="card-desc">Repeating diamond motif pattern border</p>
+  <div class="demo">
+    <span class="demo-label">Preview</span>
+    <svg style="width:100%; display:block; overflow:visible;" height="20" viewBox="0 0 400 20" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <pattern id="dc1" x="0" y="0" width="40" height="20" patternUnits="userSpaceOnUse">
+          <path d="M20,2 L30,10 L20,18 L10,10 Z" fill="none" stroke="hsl(36,15%,82%)" stroke-width="0.8" opacity="0.4"/>
+          <circle cx="20" cy="10" r="2" fill="var(--brass)" opacity="0.3"/>
+          <line x1="0" y1="10" x2="10" y2="10" stroke="hsl(36,15%,82%)" stroke-width="0.5" opacity="0.3"/>
+          <line x1="30" y1="10" x2="40" y2="10" stroke="hsl(36,15%,82%)" stroke-width="0.5" opacity="0.3"/>
+        </pattern>
+      </defs>
+      <rect width="400" height="20" fill="url(#dc1)"/>
+    </svg>
+  </div>
+  <table class="props-table">
+    <tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+    <tr><td colspan="3" style="color:var(--muted-fg); font-style:italic;">No configurable props</td></tr>
+  </table>
+</div>
+
+<!-- 15. WashiTapeNote -->
+<div class="card">
+  <div class="card-header"><span class="card-number">15</span><span class="card-title">WashiTapeNote</span></div>
+  <p class="card-file">src/components/craft/WashiTapeNote.tsx</p>
+  <p class="card-desc">Pinned note card with decorative tape strip</p>
+  <div class="demo" style="min-height:180px; padding:40px 32px;">
+    <span class="demo-label">Preview</span>
+    <div style="position:relative; max-width:320px; transform:rotate(-1.5deg);">
+      <div style="position:absolute; top:-10px; left:50%; transform:translateX(-50%) rotate(1deg); width:100px; height:24px; background:var(--seafoam); opacity:0.45; clip-path:polygon(2% 0%, 98% 2%, 100% 100%, 0% 97%); z-index:10;"></div>
+      <div style="border:1px solid hsl(36,15%,82%); background:hsl(38,32%,94%); padding:32px 28px 28px; clip-path:polygon(0% 0%, 100% 0.5%, 99.5% 100%, 0.5% 99.5%); box-shadow:2px 3px 8px rgba(0,0,0,0.04); position:relative;">
+        <p style="font-size:10px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted-fg);margin-bottom:12px;">CURATOR'S PICK</p>
+        <p style="font-family:var(--font-serif); font-size:15px; line-height:1.6;">The Silver Chain Bracelet pairs perfectly with our Minimal Cuff for effortless stacking.</p>
+      </div>
+    </div>
+  </div>
+  <table class="props-table">
+    <tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+    <tr><td>children</td><td>ReactNode</td><td>—</td></tr>
+    <tr><td>label</td><td>string</td><td>"CURATOR'S PICK"</td></tr>
+    <tr><td>tapeColor</td><td>string</td><td>var(--seafoam)</td></tr>
+    <tr><td>rotation</td><td>number</td><td>-1.5</td></tr>
+  </table>
+</div>
+
+<!-- 16. HandDrawnRect -->
+<div class="card">
+  <div class="card-header"><span class="card-number">16</span><span class="card-title">HandDrawnRect</span></div>
+  <p class="card-file">src/components/craft/HandDrawnRect.tsx</p>
+  <p class="card-desc">Wobble-filtered SVG rect for callout boxes</p>
+  <div class="demo">
+    <span class="demo-label">Preview</span>
+    <div style="position:relative; width:100%; max-width:340px;">
+      <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;" viewBox="0 0 340 220" preserveAspectRatio="none">
+        <defs><filter id="hdr1" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="turbulence" baseFrequency="0.015" numOctaves="3" seed="2" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+        <rect x="8" y="8" width="324" height="204" rx="0" fill="none" stroke="var(--ink)" stroke-width="1.2" opacity="0.4" filter="url(#hdr1)"/>
+      </svg>
+      <div style="position:relative; padding:28px;">
+        <p style="font-family:var(--font-serif); font-size:16px; line-height:1.6;">Our most popular tier is <span style="font-family:var(--font-script); font-size:1.3em;">$85/mo</span>, with <span style="font-family:var(--font-script); font-size:1.3em;">10</span> items to mix, match & layer.</p>
+      </div>
+    </div>
+  </div>
+  <table class="props-table">
+    <tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+    <tr><td>children</td><td>ReactNode</td><td>—</td></tr>
+    <tr><td>strokeColor</td><td>string</td><td>hsl(var(--foreground))</td></tr>
+  </table>
+</div>
+
+<!-- 17. MarkerCircle -->
+<div class="card">
+  <div class="card-header"><span class="card-number">17</span><span class="card-title">MarkerCircle</span></div>
+  <p class="card-file">src/components/craft/MarkerCircle.tsx</p>
+  <p class="card-desc">Double-ellipse felt-tip pen circle for pricing</p>
+  <div class="demo" style="gap:32px;">
+    <span class="demo-label">Preview</span>
+    <span style="position:relative; display:inline-block; padding:0 4px; font-family:var(--font-serif); font-size:28px; font-weight:600;">
+      <svg viewBox="0 0 180 70" style="position:absolute; top:-10px; left:-16px; width:calc(100% + 30px); height:calc(100% + 20px); overflow:visible;">
+        <defs><filter id="mc1" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="turbulence" baseFrequency="0.025" numOctaves="3" seed="8" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="3.5" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+        <ellipse cx="90" cy="35" rx="82" ry="28" transform="rotate(-2, 90, 35)" fill="none" stroke="var(--tag-red)" stroke-width="2.2" opacity="0.35" filter="url(#mc1)"/>
+        <ellipse cx="90" cy="35" rx="80" ry="26" transform="rotate(1.5, 90, 35)" fill="none" stroke="var(--tag-red)" stroke-width="1.2" opacity="0.25" filter="url(#mc1)"/>
+      </svg>
+      <span style="position:relative; z-index:1;">$85</span>
+    </span>
+  </div>
+  <table class="props-table">
+    <tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+    <tr><td>children</td><td>ReactNode</td><td>—</td></tr>
+    <tr><td>color</td><td>string</td><td>var(--tag-red)</td></tr>
+  </table>
+</div>
+
+<!-- 18. HandDrawnFrame -->
+<div class="card">
+  <div class="card-header"><span class="card-number">18</span><span class="card-title">HandDrawnFrame</span></div>
+  <p class="card-file">src/components/craft/HandDrawnFrame.tsx</p>
+  <p class="card-desc">Responsive wobble-filtered frame for philosophy sections</p>
+  <div class="demo">
+    <span class="demo-label">Preview</span>
+    <div style="position:relative; width:100%;">
+      <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;" viewBox="0 0 600 200" preserveAspectRatio="none">
+        <defs><filter id="hdf1" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="turbulence" baseFrequency="0.015" numOctaves="3" seed="4" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+        <rect x="6" y="6" width="588" height="188" fill="none" stroke="var(--ink)" stroke-width="1.5" opacity="0.35" filter="url(#hdf1)"/>
+      </svg>
+      <div style="position:relative; padding:32px;">
+        <p style="font-family:var(--font-serif); font-size:18px; line-height:1.6; text-align:center; font-style:italic;">"We believe jewelry should be worn, not saved for special occasions."</p>
+      </div>
+    </div>
+  </div>
+  <table class="props-table">
+    <tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+    <tr><td>children</td><td>ReactNode</td><td>—</td></tr>
+    <tr><td>strokeColor</td><td>string</td><td>hsl(var(--foreground))</td></tr>
+  </table>
+</div>
+
+<!-- 19. TagRedStamp -->
+<div class="card">
+  <div class="card-header"><span class="card-number">19</span><span class="card-title">TagRedStamp</span></div>
+  <p class="card-file">src/components/craft/TagRedStamp.tsx</p>
+  <p class="card-desc">Brand signature red square stamp</p>
+  <div class="demo" style="gap:24px;">
+    <span class="demo-label">Preview</span>
+    <div style="display:flex; align-items:center; gap:16px;">
+      <svg width="16" height="16" viewBox="0 0 16 16" style="opacity:0.35;"><rect width="16" height="16" rx="3" fill="var(--tag-red)"/></svg>
+      <span style="font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted-fg);">16px (default)</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:16px;">
+      <svg width="24" height="24" viewBox="0 0 16 16" style="opacity:0.35;"><rect width="16" height="16" rx="3" fill="var(--tag-red)"/></svg>
+      <span style="font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted-fg);">24px</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:16px;">
+      <svg width="32" height="32" viewBox="0 0 16 16" style="opacity:0.35;"><rect width="16" height="16" rx="3" fill="var(--tag-red)"/></svg>
+      <span style="font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted-fg);">32px</span>
+    </div>
+  </div>
+  <table class="props-table">
+    <tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+    <tr><td>size</td><td>number</td><td>16</td></tr>
+  </table>
+</div>
+
+<div style="text-align:center; margin-top:48px; padding:24px;">
+  <p style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted-fg);">GEA Craft Library · 19 Components · 2026</p>
+</div>
+
+</body>
+</html>
