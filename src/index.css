@@ -6,61 +6,81 @@
 
 @layer base {
   :root {
-    /* GEA — Warm Editorial Craft Modernism
-       Source of truth: landing reference mockup */
+    /* GEA — Warm Editorial Craft Modernism v2.1
+       Three tiers of brown. --foreground is CHOCOLATE, --ink is DARKEST. */
 
-    /* Backgrounds: warm cream/oat spectrum — never pure white */
-    --background: 37 30% 93%;
-    --foreground: 28 12% 14%;
+    /* Backgrounds: cream → taupe → sand hierarchy */
+    --background: 38 28% 92%;
+    --foreground: 30 16% 36%;
+    --ink: 30 12% 22%;
 
-    /* Cards: slightly deeper sand/taupe for contrast */
-    --card: 34 22% 87%;
-    --card-foreground: 28 12% 14%;
+    /* Cards: sand fill for panels */
+    --card: 34 18% 85%;
+    --card-foreground: 30 12% 22%;
 
     /* Popovers: match background */
-    --popover: 37 30% 93%;
-    --popover-foreground: 28 12% 14%;
+    --popover: 38 28% 92%;
+    --popover-foreground: 30 12% 22%;
 
-    /* Primary: rich warm black for CTAs and emphasis */
-    --primary: 28 12% 14%;
-    --primary-foreground: 37 30% 93%;
+    /* Primary: chocolate brown for CTAs and emphasis */
+    --primary: 30 16% 36%;
+    --primary-foreground: 36 28% 90%;
 
-    /* Secondary: muted oat for subtle fills */
-    --secondary: 33 16% 83%;
-    --secondary-foreground: 28 12% 14%;
+    /* Secondary: taupe for subtle fills */
+    --secondary: 33 14% 80%;
+    --secondary-foreground: 30 12% 22%;
 
-    /* Muted: warm neutrals for de-emphasized text */
-    --muted: 34 14% 86%;
-    --muted-foreground: 28 8% 48%;
+    /* Muted: warm neutrals for de-emphasized areas */
+    --muted: 34 12% 83%;
+    --muted-foreground: 30 8% 46%;
 
-    /* Accent: warm taupe for hover states and feature cards */
-    --accent: 32 18% 80%;
-    --accent-foreground: 28 12% 14%;
+    /* Accent: warm taupe for hover states */
+    --accent: 32 15% 78%;
+    --accent-foreground: 30 12% 22%;
+    --accent-highlight: 30 20% 70%;
+
+    /* Hero: chocolate panel backgrounds */
+    --hero: 30 14% 34%;
+    --hero-text: 36 28% 90%;
+
+    /* Bars */
+    --bar: 35 14% 88%;
+    --bar-text: 30 12% 30%;
+    --dark-bar: 30 12% 22%;
+    --dark-bar-text: 36 22% 88%;
 
     /* Destructive */
-    --destructive: 0 60% 48%;
-    --destructive-foreground: 37 30% 93%;
+    --destructive: 0 55% 48%;
+    --destructive-foreground: 36 28% 90%;
 
     /* Borders: warm mid-tone — visible but not harsh */
-    --border: 30 12% 40%;
-    --input: 30 10% 50%;
-    --ring: 28 12% 14%;
+    --border: 32 12% 62%;
+    --input: 32 12% 62%;
+    --ring: 30 16% 36%;
+
+    /* Pastel accent palette */
+    --seafoam: #BFD6CF;
+    --dusty-teal: #6E8F8B;
+    --blush-peach: #E7B9A8;
+    --sky: #BFD3E6;
+    --brass: #B79B63;
+    --tag-red: #C54A3D;
 
     /* No rounded corners — architectural precision */
     --radius: 0rem;
 
     /* Sidebar */
-    --sidebar-background: 34 22% 90%;
-    --sidebar-foreground: 28 12% 14%;
-    --sidebar-primary: 28 12% 14%;
-    --sidebar-primary-foreground: 37 30% 93%;
-    --sidebar-accent: 33 16% 83%;
-    --sidebar-accent-foreground: 28 12% 14%;
-    --sidebar-border: 30 12% 40%;
-    --sidebar-ring: 28 12% 14%;
+    --sidebar-background: 35 14% 88%;
+    --sidebar-foreground: 30 16% 36%;
+    --sidebar-primary: 30 16% 36%;
+    --sidebar-primary-foreground: 36 28% 90%;
+    --sidebar-accent: 33 14% 80%;
+    --sidebar-accent-foreground: 30 12% 22%;
+    --sidebar-border: 32 12% 62%;
+    --sidebar-ring: 30 16% 36%;
 
     /* Typography */
-    --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --font-serif: 'Playfair Display', Georgia, serif;
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
     /* Shadows — subtle depth, warm-tinted */
@@ -70,42 +90,52 @@
   }
 
   .dark {
-    --background: 28 10% 7%;
-    --foreground: 34 22% 90%;
+    --background: 30 8% 7%;
+    --foreground: 34 18% 65%;
+    --ink: 34 22% 90%;
 
-    --card: 28 10% 11%;
+    --card: 30 8% 12%;
     --card-foreground: 34 22% 90%;
 
-    --popover: 28 10% 9%;
+    --popover: 30 8% 9%;
     --popover-foreground: 34 22% 90%;
 
-    --primary: 34 22% 90%;
-    --primary-foreground: 28 10% 7%;
+    --primary: 34 18% 65%;
+    --primary-foreground: 30 8% 7%;
 
-    --secondary: 28 10% 16%;
+    --secondary: 30 6% 16%;
     --secondary-foreground: 34 22% 90%;
 
-    --muted: 28 8% 16%;
-    --muted-foreground: 30 8% 55%;
+    --muted: 30 6% 14%;
+    --muted-foreground: 30 8% 52%;
 
-    --accent: 28 10% 18%;
+    --accent: 30 10% 20%;
     --accent-foreground: 34 22% 90%;
+    --accent-highlight: 30 14% 24%;
+
+    --hero: 30 10% 22%;
+    --hero-text: 34 18% 78%;
+
+    --bar: 30 6% 10%;
+    --bar-text: 34 14% 65%;
+    --dark-bar: 30 8% 5%;
+    --dark-bar-text: 34 12% 68%;
 
     --destructive: 0 55% 35%;
     --destructive-foreground: 34 22% 90%;
 
-    --border: 28 8% 22%;
-    --input: 28 8% 22%;
-    --ring: 34 22% 90%;
+    --border: 30 8% 24%;
+    --input: 30 8% 24%;
+    --ring: 34 18% 65%;
 
-    --sidebar-background: 28 10% 7%;
-    --sidebar-foreground: 34 22% 90%;
-    --sidebar-primary: 34 22% 90%;
-    --sidebar-primary-foreground: 28 10% 7%;
-    --sidebar-accent: 28 10% 14%;
+    --sidebar-background: 30 8% 7%;
+    --sidebar-foreground: 34 18% 65%;
+    --sidebar-primary: 34 18% 65%;
+    --sidebar-primary-foreground: 30 8% 7%;
+    --sidebar-accent: 30 10% 14%;
     --sidebar-accent-foreground: 34 22% 90%;
-    --sidebar-border: 28 8% 22%;
-    --sidebar-ring: 34 22% 90%;
+    --sidebar-border: 30 8% 24%;
+    --sidebar-ring: 34 18% 65%;
   }
 }
 
@@ -115,7 +145,8 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background antialiased;
+    color: hsl(var(--ink));
     font-family: var(--font-sans);
     font-weight: 400;
     font-size: 14px;
@@ -131,6 +162,8 @@
     font-weight: 500;
     letter-spacing: -0.01em;
     line-height: 1.08;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    color: hsl(var(--ink));
   }
 
   h2 {
@@ -138,6 +171,9 @@
     font-weight: 500;
     letter-spacing: 0.06em;
     line-height: 1.15;
+    font-size: clamp(1.25rem, 2.5vw, 1.875rem);
+    color: hsl(var(--foreground));
+    text-transform: uppercase;
   }
 
   h3 {
@@ -145,6 +181,8 @@
     font-weight: 600;
     letter-spacing: 0.02em;
     line-height: 1.25;
+    font-size: 1.15rem;
+    color: hsl(var(--ink));
   }
 
   h4, h5, h6 {
