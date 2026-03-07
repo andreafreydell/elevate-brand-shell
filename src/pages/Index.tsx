@@ -9,6 +9,12 @@ import { TrustStrip } from "@/components/shared/TrustStrip";
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
 import { OfferUnit } from "@/components/membership/OfferUnit";
 import { ProductImageRow } from "@/components/ProductImageRow";
+import { ScribbleUnderline } from "@/components/craft/ScribbleUnderline";
+import { CircleEmphasis } from "@/components/craft/CircleEmphasis";
+import { GrainOverlay } from "@/components/craft/GrainOverlay";
+import { WavyDivider } from "@/components/craft/WavyDivider";
+import { WaxSeal } from "@/components/craft/WaxSeal";
+import { MarginNote } from "@/components/craft/MarginNote";
 import { Loader2, Hand, Package, Sparkles, RefreshCw, Gem, Heart, Shuffle, CalendarPlus, Feather, Scale, Zap } from "lucide-react";
 
 const Index = () => {
@@ -49,13 +55,16 @@ const Index = () => {
               decoding="async"
             />
           </div>
-          <div className="hero-content-mobile flex flex-col items-center justify-center text-center px-6 md:px-12 lg:px-16 py-10 md:py-24 bg-[hsl(28,22%,34%)]">
+          <div className="hero-content-mobile relative flex flex-col items-center justify-center text-center px-6 md:px-12 lg:px-16 py-10 md:py-24 bg-[hsl(28,22%,34%)] overflow-hidden">
+            <GrainOverlay opacity={0.05} />
+            {/* Wax seal — decorative */}
+            <WaxSeal size={40} className="absolute top-6 right-6 md:top-10 md:right-10" />
             <AnimateIn variant="fadeIn" duration={0.8}>
               <p className="text-[10px] tracking-[0.4em] uppercase text-[hsl(36,25%,78%)] mb-4 md:mb-8 font-sans">The House of GEA</p>
             </AnimateIn>
             <AnimateIn variant="fadeUp" delay={0.2} duration={0.8}>
               <h1 className="hero-headline-mobile font-serif text-3xl md:text-5xl lg:text-[3.8rem] font-medium leading-[1.08] tracking-[-0.01em] text-[hsl(36,33%,93%)] whitespace-pre-line mb-4 md:mb-6">
-                Luxury,{"\n"}Accessed.
+                Luxury,{"\n"}<ScribbleUnderline color="var(--brass)" delay={0.8}>Accessed.</ScribbleUnderline>
               </h1>
             </AnimateIn>
             <AnimateIn variant="fadeUp" delay={0.4} duration={0.8}>
@@ -67,7 +76,7 @@ const Index = () => {
             <AnimateIn variant="fadeUp" delay={0.6} duration={0.8}>
               <a
                 href="#founding-access"
-                className="inline-block border border-[hsl(36,25%,78%)] text-[hsl(36,25%,78%)] px-8 md:px-10 py-3 md:py-3.5 text-[10px] md:text-[11px] tracking-[0.2em] uppercase font-sans hover:bg-[hsl(36,25%,78%)] hover:text-[hsl(28,22%,34%)] transition-colors"
+                className="relative z-[1] inline-block border border-[hsl(36,25%,78%)] text-[hsl(36,25%,78%)] px-8 md:px-10 py-3 md:py-3.5 text-[10px] md:text-[11px] tracking-[0.2em] uppercase font-sans hover:bg-[hsl(36,25%,78%)] hover:text-[hsl(28,22%,34%)] transition-colors"
               >
                 Apply for Access
               </a>
@@ -104,6 +113,9 @@ const Index = () => {
           <Link to="/how-it-works" className="cta-underline">Learn More</Link>
         </div>
       </section>
+
+      {/* Wavy divider */}
+      <WavyDivider className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16" />
 
       {/* ═══════════════════════════════════════════
           3. MATERIAL INTELLIGENCE
@@ -147,6 +159,15 @@ const Index = () => {
         </StaggerContainer>
       </section>
 
+      {/* Curator note between sections */}
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-8 hidden md:block">
+        <div className="max-w-md ml-auto">
+          <MarginNote attribution="GEA Material Lab">
+            The brass finish will develop a subtle patina — that's the beauty of it, not a flaw.
+          </MarginNote>
+        </div>
+      </div>
+
       {/* ═══════════════════════════════════════════
           4. ACCESS FRAMEWORK
           ═══════════════════════════════════════════ */}
@@ -165,33 +186,21 @@ const Index = () => {
                     </linearGradient>
                   </defs>
                   <rect width="400" height="300" fill="url(#ownBg)" />
-
-                  {/* Title */}
                   <text x="200" y="30" fontSize="7" fill="hsl(30,8%,46%)" fontFamily="Inter,sans-serif" letterSpacing="0.25em" textAnchor="middle" fontWeight="500">OWN VS. ACCESS</text>
-
-                  {/* Baseline */}
                   <line x1="60" y1="240" x2="340" y2="240" stroke="hsl(32,12%,62%)" strokeWidth="0.5" opacity="0.4" />
-
-                  {/* OWN bar — tall, blush 0.3 */}
                   <rect x="90" y="80" width="70" height="160" fill="#E7B9A8" opacity="0.3" />
                   <line x1="90" y1="80" x2="160" y2="80" stroke="hsl(32,12%,62%)" strokeWidth="0.5" opacity="0.2" />
                   <text x="125" y="72" fontSize="7" fill="hsl(30,8%,46%)" fontFamily="Inter,sans-serif" letterSpacing="0.2em" textAnchor="middle" fontWeight="500">OWN</text>
                   <text x="125" y="140" fontSize="9" fill="hsl(30,12%,22%)" fontFamily="Inter,sans-serif" textAnchor="middle" fontWeight="600">$200</text>
                   <text x="125" y="155" fontSize="7" fill="hsl(30,8%,46%)" fontFamily="Inter,sans-serif" letterSpacing="0.15em" textAnchor="middle">1 PIECE</text>
-
-                  {/* ACCESS bars — 3 shorter, seafoam/sky 0.4 */}
                   <rect x="200" y="160" width="35" height="80" fill="#BFD6CF" opacity="0.4" />
                   <rect x="245" y="150" width="35" height="90" fill="#BFD3E6" opacity="0.4" />
                   <rect x="290" y="165" width="35" height="75" fill="#BFD6CF" opacity="0.4" />
                   <text x="262" y="140" fontSize="7" fill="hsl(30,8%,46%)" fontFamily="Inter,sans-serif" letterSpacing="0.2em" textAnchor="middle" fontWeight="500">ACCESS</text>
                   <text x="262" y="200" fontSize="9" fill="hsl(30,12%,22%)" fontFamily="Inter,sans-serif" textAnchor="middle" fontWeight="600">$85/mo</text>
                   <text x="262" y="215" fontSize="7" fill="hsl(30,8%,46%)" fontFamily="Inter,sans-serif" letterSpacing="0.15em" textAnchor="middle">10 PIECES</text>
-
-                  {/* Thin guide lines */}
                   <line x1="60" y1="80" x2="80" y2="80" stroke="hsl(32,12%,62%)" strokeWidth="0.5" opacity="0.15" />
                   <line x1="60" y1="160" x2="190" y2="160" stroke="hsl(32,12%,62%)" strokeWidth="0.5" opacity="0.1" strokeDasharray="3 3" />
-
-                  {/* Tag Red stamp */}
                   <rect x="352" y="260" width="16" height="16" rx="3" fill="#C54A3D" opacity="0.7" />
                 </svg>
               </div>
@@ -199,7 +208,7 @@ const Index = () => {
                 <p className="philosophy-label text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground">The Old Model</p>
                 <Scale className="h-5 w-5 stroke-[1.3] text-foreground" />
               </div>
-              <h3 className="philosophy-title font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">Ownership Is a Liability</h3>
+              <h3 className="philosophy-title font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">Ownership Is a <CircleEmphasis color="var(--tag-red)">Liability</CircleEmphasis></h3>
               <p className="philosophy-body text-[12px] text-muted-foreground font-sans leading-relaxed">
                 The average woman wears each piece of fine jewelry fewer than five times before it sits
                 forgotten. Thousands spent. Inches of drawer space consumed. Value depreciating silently.
@@ -220,41 +229,21 @@ const Index = () => {
                     </linearGradient>
                   </defs>
                   <rect width="400" height="300" fill="url(#accessBg)" />
-
-                  {/* Title */}
                   <text x="200" y="40" fontSize="7" fill="hsl(30,8%,46%)" fontFamily="Inter,sans-serif" letterSpacing="0.25em" textAnchor="middle" fontWeight="500">ACCESS CYCLE</text>
-
-                  {/* 4 step circles in a row */}
-                  {/* CHOOSE — seafoam */}
                   <circle cx="80" cy="130" r="30" fill="#BFD6CF" opacity="0.35" />
                   <text x="80" y="133" fontSize="7" fill="hsl(30,12%,22%)" fontFamily="Inter,sans-serif" letterSpacing="0.2em" textAnchor="middle" fontWeight="500">CHOOSE</text>
-
-                  {/* RECEIVE — sky */}
                   <circle cx="170" cy="130" r="30" fill="#BFD3E6" opacity="0.35" />
                   <text x="170" y="133" fontSize="7" fill="hsl(30,12%,22%)" fontFamily="Inter,sans-serif" letterSpacing="0.2em" textAnchor="middle" fontWeight="500">RECEIVE</text>
-
-                  {/* WEAR — blush */}
                   <circle cx="260" cy="130" r="30" fill="#E7B9A8" opacity="0.35" />
                   <text x="260" y="133" fontSize="7" fill="hsl(30,12%,22%)" fontFamily="Inter,sans-serif" letterSpacing="0.2em" textAnchor="middle" fontWeight="500">WEAR</text>
-
-                  {/* REFRESH — brass */}
                   <circle cx="350" cy="130" r="30" fill="#B79B63" opacity="0.35" />
                   <text x="350" y="133" fontSize="7" fill="hsl(30,12%,22%)" fontFamily="Inter,sans-serif" letterSpacing="0.2em" textAnchor="middle" fontWeight="500">REFRESH</text>
-
-                  {/* Connecting lines */}
                   <line x1="110" y1="130" x2="140" y2="130" stroke="hsl(32,12%,62%)" strokeWidth="1" opacity="0.2" />
                   <line x1="200" y1="130" x2="230" y2="130" stroke="hsl(32,12%,62%)" strokeWidth="1" opacity="0.2" />
                   <line x1="290" y1="130" x2="320" y2="130" stroke="hsl(32,12%,62%)" strokeWidth="1" opacity="0.2" />
-
-                  {/* Dashed return arc below */}
                   <path d="M350 165 C350 220, 80 220, 80 165" stroke="#6E8F8B" strokeWidth="1" opacity="0.3" fill="none" strokeDasharray="4 4" />
-                  {/* Return arc arrow */}
                   <polygon points="80,165 75,175 85,175" fill="#6E8F8B" opacity="0.3" />
-
-                  {/* Subtitle */}
                   <text x="215" y="240" fontSize="7" fill="#6E8F8B" fontFamily="Inter,sans-serif" letterSpacing="0.2em" textAnchor="middle" fontWeight="500">RETURN &amp; REPEAT</text>
-
-                  {/* Tag Red stamp */}
                   <rect x="352" y="260" width="16" height="16" rx="3" fill="#C54A3D" opacity="0.7" />
                 </svg>
               </div>
@@ -262,7 +251,7 @@ const Index = () => {
                 <p className="philosophy-label text-[10px] tracking-[0.3em] uppercase font-sans text-background/60">The GEA Model</p>
                 <Zap className="h-5 w-5 stroke-[1.3] text-background/70" />
               </div>
-              <h3 className="philosophy-title font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4 text-background">Access Is Intelligence</h3>
+              <h3 className="philosophy-title font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4 text-background">Access Is <ScribbleUnderline color="var(--seafoam)" delay={0.5}>Intelligence</ScribbleUnderline></h3>
               <p className="philosophy-body text-[12px] text-background/70 font-sans leading-relaxed">
                 Access the full vault. Wear what speaks to you this month. Return when you're ready
                 for something new. No commitment to a single piece — commitment to always being adorned
@@ -276,11 +265,12 @@ const Index = () => {
       {/* ═══════════════════════════════════════════
           DECLARATIVE: More Beauty. Less Burden.
           ═══════════════════════════════════════════ */}
-      <section className="hidden md:block bg-[hsl(28,22%,34%)]">
-        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-20 md:py-28 text-center">
+      <section className="hidden md:block bg-[hsl(28,22%,34%)] relative overflow-hidden">
+        <GrainOverlay opacity={0.04} />
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-20 md:py-28 text-center relative z-[1]">
           <AnimateIn variant="fadeUp" duration={0.6}>
             <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-[-0.01em] text-[hsl(36,33%,93%)] mb-6 normal-case">
-              More Beauty.<br />Less Burden.
+              More <ScribbleUnderline color="var(--brass)">Beauty</ScribbleUnderline>.<br />Less Burden.
             </h2>
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.15} duration={0.6}>
@@ -298,6 +288,9 @@ const Index = () => {
           </AnimateIn>
         </div>
       </section>
+
+      {/* Wavy divider */}
+      <WavyDivider variant="double" className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 hidden md:block" />
 
       {/* ═══════════════════════════════════════════
           5. VALUE EXPANSION
@@ -324,6 +317,9 @@ const Index = () => {
           <ProductImageRow products={products} />
         </>
       ) : null}
+
+      {/* Wavy divider */}
+      <WavyDivider className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 mt-8" />
 
       {/* ═══════════════════════════════════════════
           7. MEMBERSHIP ENGINE (OfferUnit standard)
