@@ -172,7 +172,6 @@
     line-height: 1.15;
     font-size: clamp(1.25rem, 2.5vw, 1.875rem);
     color: hsl(var(--foreground));
-    text-transform: uppercase;
   }
 
   h3 {
