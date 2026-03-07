@@ -110,37 +110,37 @@ const Index = () => {
           ═══════════════════════════════════════════ */}
       <SectionHeading label="Craft" heading="Material Intelligence" />
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-12">
-        <MobileArrowCarousel desktopClassName="grid-cols-3 gap-[2px]" cardWidth="min-w-[75vw]">
+        <MobileArrowCarousel desktopClassName="grid-cols-3 gap-[2px]" cardWidth="min-w-[65vw]">
           <StaggerItem>
             <div className="flex flex-col h-full transition-transform duration-300 ease-out hover:scale-[1.03]">
-              <div className="aspect-[4/5] overflow-hidden">
+              <div className="aspect-[4/3] md:aspect-[4/5] overflow-hidden">
                 <img src="/images/material-steel.png" alt="Layered gold chain necklaces showcasing 316L stainless steel craftsmanship" className="w-full h-full object-cover" loading="lazy" decoding="async" />
               </div>
-              <div className="bg-card border-t border-border p-4 md:p-8 flex-1 flex flex-col justify-start">
-                <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-sans mb-2 font-medium">316L Stainless Steel & Sterling Silver</p>
-                <p className="text-[11px] md:text-[12px] text-muted-foreground font-sans leading-relaxed">Surgical-grade stainless steel — tarnish-resistant and hypoallergenic. Sterling silver for timeless brilliance. Both built to endure through every access cycle.</p>
+              <div className="bg-card border-t border-border p-3 md:p-8 flex-1 flex flex-col justify-start">
+                <p className="text-[9px] md:text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-sans mb-1 md:mb-2 font-medium">316L Stainless Steel & Sterling Silver</p>
+                <p className="text-[10px] md:text-[12px] text-muted-foreground font-sans leading-snug md:leading-relaxed">Surgical-grade stainless steel — tarnish-resistant and hypoallergenic. Sterling silver for timeless brilliance.</p>
               </div>
             </div>
           </StaggerItem>
           <StaggerItem>
             <div className="flex flex-col h-full transition-transform duration-300 ease-out hover:scale-[1.03]">
-              <div className="aspect-[4/5] overflow-hidden">
+              <div className="aspect-[4/3] md:aspect-[4/5] overflow-hidden">
                 <img src="/images/material-moissanite.png" alt="Layered moissanite tennis necklaces on model" className="w-full h-full object-cover" loading="lazy" decoding="async" />
               </div>
-              <div className="bg-card border-t border-border p-4 md:p-8 flex-1 flex flex-col justify-start">
-                <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-sans mb-2 font-medium">Lab-Created Moissanite</p>
-                <p className="text-[11px] md:text-[12px] text-muted-foreground font-sans leading-relaxed">Conflict-free brilliance. Higher refractive index than diamond. Ethically engineered.</p>
+              <div className="bg-card border-t border-border p-3 md:p-8 flex-1 flex flex-col justify-start">
+                <p className="text-[9px] md:text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-sans mb-1 md:mb-2 font-medium">Lab-Created Moissanite</p>
+                <p className="text-[10px] md:text-[12px] text-muted-foreground font-sans leading-snug md:leading-relaxed">Conflict-free brilliance. Higher refractive index than diamond. Ethically engineered.</p>
               </div>
             </div>
           </StaggerItem>
           <StaggerItem>
             <div className="flex flex-col h-full transition-transform duration-300 ease-out hover:scale-[1.03]">
-              <div className="aspect-[4/5] overflow-hidden">
+              <div className="aspect-[4/3] md:aspect-[4/5] overflow-hidden">
                 <img src="/images/material-lifecycle.png" alt="Gold earrings and chain jewelry showcasing lifecycle care craftsmanship" className="w-full h-full object-cover" loading="lazy" decoding="async" />
               </div>
-              <div className="bg-card border-t border-border p-4 md:p-8 flex-1 flex flex-col justify-start">
-                <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-sans mb-2 font-medium">Lifecycle Care</p>
-                <p className="text-[11px] md:text-[12px] text-muted-foreground font-sans leading-relaxed">Every piece is professionally cleaned, inspected, and restored between members.</p>
+              <div className="bg-card border-t border-border p-3 md:p-8 flex-1 flex flex-col justify-start">
+                <p className="text-[9px] md:text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-sans mb-1 md:mb-2 font-medium">Lifecycle Care</p>
+                <p className="text-[10px] md:text-[12px] text-muted-foreground font-sans leading-snug md:leading-relaxed">Every piece is professionally cleaned, inspected, and restored between members.</p>
               </div>
             </div>
           </StaggerItem>
