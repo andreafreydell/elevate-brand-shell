@@ -5,7 +5,16 @@ import { GrainOverlay } from "@/components/craft/GrainOverlay";
 import { WavyDivider } from "@/components/craft/WavyDivider";
 import { ScribbleUnderline } from "@/components/craft/ScribbleUnderline";
 import { AnimateIn } from "@/components/shared/AnimateIn";
+import { TornPaperEdge } from "@/components/craft/TornPaperEdge";
+import { WaxSeal } from "@/components/craft/WaxSeal";
+import { HandDrawnFrame } from "@/components/craft/HandDrawnFrame";
+import { DiamondChainBorder } from "@/components/craft/DiamondChainBorder";
+import { OrganicBlobTag } from "@/components/craft/OrganicBlobTag";
+import { TagRedStamp } from "@/components/craft/TagRedStamp";
+import { StitchLineDivider } from "@/components/craft/StitchLineDivider";
 import { User, Package, Clock, Heart, RefreshCw, Gem } from "lucide-react";
+
+const blobVariants: Array<"coastal" | "statement" | "modern" | "classic"> = ["coastal", "statement", "modern", "classic", "coastal", "statement"];
 
 const dashboardSections = [
   { icon: User, title: "Profile & Preferences", description: "Style profile, size preferences, metal affinities, and communication settings." },
@@ -22,6 +31,7 @@ const Account = () => {
       <section className="bg-[hsl(28,22%,34%)] relative overflow-hidden">
         <GrainOverlay opacity={0.05} />
         <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-20 md:py-28 text-center relative z-[1]">
+          <WaxSeal size={40} className="mx-auto mb-4" />
           <p className="text-[10px] tracking-[0.4em] uppercase text-[hsl(36,25%,78%)] mb-6 font-sans">
             Dashboard
           </p>
@@ -34,13 +44,20 @@ const Account = () => {
         </div>
       </section>
 
+      <TornPaperEdge className="max-w-[1440px] mx-auto" />
+
       <SectionHeading heading="Dashboard Modules" />
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {dashboardSections.map((s) => (
+          {dashboardSections.map((s, idx) => (
             <div key={s.title} className="border border-border bg-card p-8 relative overflow-hidden">
               <GrainOverlay opacity={0.03} />
-              <s.icon className="h-6 w-6 mb-4 stroke-[1.3] text-foreground relative z-[1]" />
+              <div className="flex items-center justify-between mb-4 relative z-[1]">
+                <OrganicBlobTag variant={blobVariants[idx]}>
+                  {s.title.split(' ')[0]}
+                </OrganicBlobTag>
+                <s.icon className="h-5 w-5 stroke-[1.3] text-foreground" />
+              </div>
               <h3 className="font-serif text-lg font-semibold tracking-[0.02em] mb-2 relative z-[1]">{s.title}</h3>
               <p className="text-[12px] text-muted-foreground font-sans leading-relaxed relative z-[1]">{s.description}</p>
             </div>
@@ -53,22 +70,25 @@ const Account = () => {
         </div>
       </section>
 
-      {/* Wavy divider */}
-      <WavyDivider className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 mb-4" />
+      {/* Diamond chain border */}
+      <DiamondChainBorder className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16" />
 
       <section className="border-t border-border relative overflow-hidden">
         <GrainOverlay opacity={0.03} />
         <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center relative z-[1]">
+          <TagRedStamp size={20} className="mx-auto mb-4" />
           <AnimateIn variant="fadeUp" duration={0.5}>
-            <h2 className="font-serif text-2xl md:text-3xl tracking-[0.06em] uppercase font-medium mb-4">
-              Not a Member <ScribbleUnderline color="var(--brass)" delay={0.4}>Yet?</ScribbleUnderline>
-            </h2>
-            <p className="text-[12px] text-muted-foreground font-sans mb-8">
-              Your access is waiting.
-            </p>
-            <Link to="/how-it-works" className="btn-gea">
-              Apply for Access
-            </Link>
+            <HandDrawnFrame strokeColor="hsl(var(--foreground))">
+              <h2 className="font-serif text-2xl md:text-3xl tracking-[0.06em] uppercase font-medium mb-4">
+                Not a Member <ScribbleUnderline color="var(--brass)" delay={0.4}>Yet?</ScribbleUnderline>
+              </h2>
+              <p className="text-[12px] text-muted-foreground font-sans mb-8">
+                Your access is waiting.
+              </p>
+              <Link to="/how-it-works" className="btn-gea">
+                Apply for Access
+              </Link>
+            </HandDrawnFrame>
           </AnimateIn>
         </div>
       </section>
