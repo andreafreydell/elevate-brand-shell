@@ -73,7 +73,7 @@ const Index = () => {
               </a>
             </AnimateIn>
           </div>
-          <div className="h-[160px] md:h-auto bg-[hsl(32,15%,42%)] overflow-hidden">
+          <div className="h-[120px] md:h-auto bg-[hsl(32,15%,42%)] overflow-hidden">
             <img
               src="/images/hero-editorial.png"
               alt="Gold and emerald rings styled on hand"
