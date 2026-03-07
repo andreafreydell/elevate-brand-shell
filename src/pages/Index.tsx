@@ -15,6 +15,19 @@ import { GrainOverlay } from "@/components/craft/GrainOverlay";
 import { WavyDivider } from "@/components/craft/WavyDivider";
 import { WaxSeal } from "@/components/craft/WaxSeal";
 import { MarginNote } from "@/components/craft/MarginNote";
+import { StampBadge } from "@/components/craft/StampBadge";
+import { ScriptNumber } from "@/components/craft/ScriptNumber";
+import { OrganicBlobTag } from "@/components/craft/OrganicBlobTag";
+import { SketchyBorderCard } from "@/components/craft/SketchyBorderCard";
+import { DotGridTexture } from "@/components/craft/DotGridTexture";
+import { TornPaperEdge } from "@/components/craft/TornPaperEdge";
+import { StitchLineDivider } from "@/components/craft/StitchLineDivider";
+import { DiamondChainBorder } from "@/components/craft/DiamondChainBorder";
+import { WashiTapeNote } from "@/components/craft/WashiTapeNote";
+import { HandDrawnRect } from "@/components/craft/HandDrawnRect";
+import { MarkerCircle } from "@/components/craft/MarkerCircle";
+import { HandDrawnFrame } from "@/components/craft/HandDrawnFrame";
+import { TagRedStamp } from "@/components/craft/TagRedStamp";
 import { Loader2, Hand, Package, Sparkles, RefreshCw, Gem, Heart, Shuffle, CalendarPlus, Feather, Scale, Zap } from "lucide-react";
 
 const Index = () => {
@@ -59,6 +72,8 @@ const Index = () => {
             <GrainOverlay opacity={0.05} />
             {/* Wax seal — decorative */}
             <WaxSeal size={40} className="absolute top-6 right-6 md:top-10 md:right-10" />
+            {/* Stamp badge — bottom-left decorative */}
+            <StampBadge text="FOUNDING" subtext="2025" rotation={-8} className="absolute bottom-4 left-4 md:bottom-8 md:left-8" />
             <AnimateIn variant="fadeIn" duration={0.8}>
               <p className="text-[10px] tracking-[0.4em] uppercase text-[hsl(36,25%,78%)] mb-4 md:mb-8 font-sans">The House of GEA</p>
             </AnimateIn>
@@ -97,6 +112,9 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Torn paper edge below hero */}
+      <TornPaperEdge className="max-w-[1440px] mx-auto" />
+
       {/* ═══════════════════════════════════════════
           2. HOW IT WORKS (mini)
           ═══════════════════════════════════════════ */}
@@ -114,8 +132,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Wavy divider */}
-      <WavyDivider className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16" />
+      {/* Diamond chain border divider */}
+      <DiamondChainBorder className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16" />
 
       {/* ═══════════════════════════════════════════
           3. MATERIAL INTELLIGENCE
@@ -125,8 +143,12 @@ const Index = () => {
         <StaggerContainer className="material-grid-mobile grid grid-cols-1 md:grid-cols-3 gap-[2px]">
           <StaggerItem>
             <div className="flex flex-col h-full transition-transform duration-300 ease-out hover:scale-[1.03]">
-              <div className="material-image-mobile aspect-[4/5] overflow-hidden">
+              <div className="material-image-mobile aspect-[4/5] overflow-hidden relative">
                 <img src="/images/material-steel.png" alt="Layered gold chain necklaces showcasing 316L stainless steel craftsmanship" className="w-full h-full object-cover" loading="lazy" decoding="async" />
+                {/* OrganicBlobTag on image */}
+                <div className="absolute top-4 left-4">
+                  <OrganicBlobTag variant="coastal">Hypoallergenic</OrganicBlobTag>
+                </div>
               </div>
               <div className="material-text-mobile bg-card border-t border-border p-8 flex-1 flex flex-col justify-start">
                 <p className="material-label text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-sans mb-2 font-medium">316L Stainless Steel & Sterling Silver</p>
@@ -136,8 +158,11 @@ const Index = () => {
           </StaggerItem>
           <StaggerItem className="hidden md:block">
             <div className="flex flex-col h-full transition-transform duration-300 ease-out hover:scale-[1.03]">
-              <div className="material-image-mobile aspect-[4/5] overflow-hidden">
+              <div className="material-image-mobile aspect-[4/5] overflow-hidden relative">
                 <img src="/images/material-moissanite.png" alt="Layered moissanite tennis necklaces on model" className="w-full h-full object-cover" loading="lazy" decoding="async" />
+                <div className="absolute top-4 left-4">
+                  <OrganicBlobTag variant="classic">Conflict-Free</OrganicBlobTag>
+                </div>
               </div>
               <div className="material-text-mobile bg-card border-t border-border p-8 flex-1 flex flex-col justify-start">
                 <p className="material-label text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-sans mb-2 font-medium">Lab-Created Moissanite</p>
@@ -147,8 +172,11 @@ const Index = () => {
           </StaggerItem>
           <StaggerItem className="hidden md:block">
             <div className="flex flex-col h-full transition-transform duration-300 ease-out hover:scale-[1.03]">
-              <div className="material-image-mobile aspect-[4/5] overflow-hidden">
+              <div className="material-image-mobile aspect-[4/5] overflow-hidden relative">
                 <img src="/images/material-lifecycle.png" alt="Gold earrings and chain jewelry showcasing lifecycle care craftsmanship" className="w-full h-full object-cover" loading="lazy" decoding="async" />
+                <div className="absolute top-4 left-4">
+                  <OrganicBlobTag variant="statement">Restored</OrganicBlobTag>
+                </div>
               </div>
               <div className="material-text-mobile bg-card border-t border-border p-8 flex-1 flex flex-col justify-start">
                 <p className="material-label text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-sans mb-2 font-medium">Lifecycle Care</p>
@@ -159,14 +187,22 @@ const Index = () => {
         </StaggerContainer>
       </section>
 
-      {/* Curator note between sections */}
-      <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-8 hidden md:block">
-        <div className="max-w-md ml-auto">
+      {/* Curator note with WashiTapeNote + MarginNote */}
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-8 hidden md:flex justify-between items-start gap-8">
+        <WashiTapeNote label="CURATOR'S PICK" tapeColor="var(--seafoam)" rotation={-1}>
+          <p className="font-serif text-sm italic leading-relaxed text-foreground/80">
+            "The moissanite tennis necklace is our most requested piece three months running."
+          </p>
+        </WashiTapeNote>
+        <div className="max-w-md">
           <MarginNote attribution="GEA Material Lab">
             The brass finish will develop a subtle patina — that's the beauty of it, not a flaw.
           </MarginNote>
         </div>
       </div>
+
+      {/* Stitch line divider */}
+      <StitchLineDivider className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16" />
 
       {/* ═══════════════════════════════════════════
           4. ACCESS FRAMEWORK
@@ -210,14 +246,16 @@ const Index = () => {
               </div>
               <h3 className="philosophy-title font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">Ownership Is a <CircleEmphasis color="var(--tag-red)">Liability</CircleEmphasis></h3>
               <p className="philosophy-body text-[12px] text-muted-foreground font-sans leading-relaxed">
-                The average woman wears each piece of fine jewelry fewer than five times before it sits
+                The average woman wears each piece of fine jewelry fewer than <ScriptNumber>5</ScriptNumber> times before it sits
                 forgotten. Thousands spent. Inches of drawer space consumed. Value depreciating silently.
                 The traditional model rewards accumulation over expression.
               </p>
             </div>
           </StaggerItem>
           <StaggerItem>
-            <div className="philosophy-card-mobile bg-foreground text-background p-10 md:p-14 h-full transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:-translate-y-[3px] hover:border-2 hover:border-background/40">
+            <div className="philosophy-card-mobile bg-foreground text-background p-10 md:p-14 h-full transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:-translate-y-[3px] hover:border-2 hover:border-background/40 relative">
+              {/* TagRedStamp watermark */}
+              <TagRedStamp size={24} className="absolute top-6 right-6" />
               {/* Access Cycle Infographic — spec #1 */}
               <div className="philosophy-chart-mobile bg-background border border-border p-10 mb-8 overflow-hidden min-h-[315px]">
                 <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
@@ -255,7 +293,7 @@ const Index = () => {
               <p className="philosophy-body text-[12px] text-background/70 font-sans leading-relaxed">
                 Access the full vault. Wear what speaks to you this month. Return when you're ready
                 for something new. No commitment to a single piece — commitment to always being adorned
-                exactly as you wish. Presence over possession. Experience over accumulation.
+                exactly as you wish. <ScriptNumber className="text-background/90">10+</ScriptNumber> pieces per year. Presence over possession.
               </p>
             </div>
           </StaggerItem>
@@ -269,22 +307,22 @@ const Index = () => {
         <GrainOverlay opacity={0.04} />
         <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-20 md:py-28 text-center relative z-[1]">
           <AnimateIn variant="fadeUp" duration={0.6}>
-            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-[-0.01em] text-[hsl(36,33%,93%)] mb-6 normal-case">
-              More <ScribbleUnderline color="var(--brass)">Beauty</ScribbleUnderline>.<br />Less Burden.
-            </h2>
-          </AnimateIn>
-          <AnimateIn variant="fadeUp" delay={0.15} duration={0.6}>
-            <p className="text-[13px] text-[hsl(36,20%,75%)] font-sans max-w-[400px] mx-auto mb-10 leading-relaxed">
-              Adorn the woman you are becoming. Not the one weighed down by what she already owns.
-            </p>
-          </AnimateIn>
-          <AnimateIn variant="fadeUp" delay={0.3} duration={0.6}>
-            <a
-              href="#founding-access"
-              className="inline-block border border-[hsl(36,25%,78%)] text-[hsl(36,25%,78%)] px-10 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans hover:bg-[hsl(36,25%,78%)] hover:text-[hsl(28,22%,34%)] transition-colors"
-            >
-              Apply for Access
-            </a>
+            <HandDrawnFrame strokeColor="hsl(36,25%,78%)">
+              <div className="py-6">
+                <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-[-0.01em] text-[hsl(36,33%,93%)] mb-6 normal-case">
+                  More <ScribbleUnderline color="var(--brass)">Beauty</ScribbleUnderline>.<br />Less Burden.
+                </h2>
+                <p className="text-[13px] text-[hsl(36,20%,75%)] font-sans max-w-[400px] mx-auto mb-10 leading-relaxed">
+                  Adorn the woman you are becoming. Not the one weighed down by what she already owns.
+                </p>
+                <a
+                  href="#founding-access"
+                  className="inline-block border border-[hsl(36,25%,78%)] text-[hsl(36,25%,78%)] px-10 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans hover:bg-[hsl(36,25%,78%)] hover:text-[hsl(28,22%,34%)] transition-colors"
+                >
+                  Apply for Access
+                </a>
+              </div>
+            </HandDrawnFrame>
           </AnimateIn>
         </div>
       </section>
@@ -296,13 +334,24 @@ const Index = () => {
           5. VALUE EXPANSION
           ═══════════════════════════════════════════ */}
       <SectionHeading label="Freedom" heading="Wear More. Spend Smarter." />
-      <section className="value-section-mobile max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
-        <StaggerContainer className="value-grid-mobile grid grid-cols-1 md:grid-cols-3 gap-4">
-          <StaggerItem><ValueBlock title="Freedom to Experiment" description="Try bold statement pieces without the commitment of ownership. If it doesn't feel right, refresh your selection next month. No risk. No regret." className="bg-card" lucideIcon={Shuffle} label="Explore" /></StaggerItem>
-          <StaggerItem><ValueBlock title="Always Something New" description="Your collection evolves as you do. New drops enter the vault monthly. Early access for members means you're always first." className="bg-card" lucideIcon={CalendarPlus} label="Discover" /></StaggerItem>
-          <StaggerItem><ValueBlock title="Luxury Without Burden" description="No storage anxiety. No depreciation. No buyer's remorse. Just beautiful jewelry, worn with intention, returned with ease." className="bg-card" lucideIcon={Feather} label="Liberate" /></StaggerItem>
-        </StaggerContainer>
-      </section>
+      <DotGridTexture className="max-w-[1440px] mx-auto" dotSize={0.6} spacing={24}>
+        <section className="value-section-mobile px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
+          <StaggerContainer className="value-grid-mobile grid grid-cols-1 md:grid-cols-3 gap-4">
+            <StaggerItem><ValueBlock title="Freedom to Experiment" description="Try bold statement pieces without the commitment of ownership. If it doesn't feel right, refresh your selection next month. No risk. No regret." className="bg-card" lucideIcon={Shuffle} label="Explore" /></StaggerItem>
+            <StaggerItem><ValueBlock title="Always Something New" description="Your collection evolves as you do. New drops enter the vault monthly. Early access for members means you're always first." className="bg-card" lucideIcon={CalendarPlus} label="Discover" /></StaggerItem>
+            <StaggerItem><ValueBlock title="Luxury Without Burden" description="No storage anxiety. No depreciation. No buyer's remorse. Just beautiful jewelry, worn with intention, returned with ease." className="bg-card" lucideIcon={Feather} label="Liberate" /></StaggerItem>
+          </StaggerContainer>
+
+          {/* Sketchy editorial note */}
+          <div className="hidden md:flex justify-center mt-10">
+            <SketchyBorderCard label="EDITOR'S NOTE" pathVariant={1} className="max-w-lg">
+              <p className="font-serif text-sm italic leading-relaxed text-foreground/80">
+                "Members who rotate monthly tell us they feel more confident experimenting with bolder pieces they'd never commit to buying."
+              </p>
+            </SketchyBorderCard>
+          </div>
+        </section>
+      </DotGridTexture>
 
       {/* ═══════════════════════════════════════════
           6. SOCIAL VALIDATION
@@ -326,6 +375,14 @@ const Index = () => {
           ═══════════════════════════════════════════ */}
       <SectionHeading label="Membership" heading="Your Tier of Access" />
       <section className="tier-section-mobile max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-8">
+        {/* HandDrawnRect callout above tiers */}
+        <div className="hidden md:flex justify-center mb-10">
+          <HandDrawnRect className="max-w-md">
+            <p className="text-center font-sans text-[12px] text-muted-foreground leading-relaxed">
+              Starting from just <MarkerCircle color="var(--tag-red)"><span className="font-semibold text-foreground">$85/mo</span></MarkerCircle> — access <ScriptNumber>10+</ScriptNumber> pieces per year
+            </p>
+          </HandDrawnRect>
+        </div>
         <OfferUnit variant="standard" />
         <div className="text-center mt-6">
           <TrustStrip variant="full" />
