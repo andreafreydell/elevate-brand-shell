@@ -249,6 +249,12 @@
     text-transform: uppercase;
     color: hsl(var(--ink));
   }
+
+  @media (max-width: 768px) {
+    .section-heading-mobile {
+      font-size: 14px;
+    }
+  }
 }
 
 @layer utilities {
