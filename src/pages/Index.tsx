@@ -36,7 +36,7 @@ const Index = () => {
       {/* ═══════════════════════════════════════════
           1. AUTHORITY HERO
           ═══════════════════════════════════════════ */}
-      <section>
+      <section className="hero-section-mobile">
         <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-[1fr_1.2fr_1fr] min-h-[640px] lg:min-h-[720px]">
           <div className="hidden md:block bg-[hsl(30,18%,38%)] overflow-hidden">
             <img
@@ -49,17 +49,17 @@ const Index = () => {
               decoding="async"
             />
           </div>
-          <div className="flex flex-col items-center justify-center text-center px-8 md:px-12 lg:px-16 py-24 bg-[hsl(28,22%,34%)]">
+          <div className="hero-content-mobile flex flex-col items-center justify-center text-center px-8 md:px-12 lg:px-16 py-24 bg-[hsl(28,22%,34%)]">
             <AnimateIn variant="fadeIn" duration={0.8}>
               <p className="text-[10px] tracking-[0.4em] uppercase text-[hsl(36,25%,78%)] mb-8 font-sans">The House of GEA</p>
             </AnimateIn>
             <AnimateIn variant="fadeUp" delay={0.2} duration={0.8}>
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.8rem] font-medium leading-[1.08] tracking-[-0.01em] text-[hsl(36,33%,93%)] whitespace-pre-line mb-6">
+              <h1 className="hero-headline-mobile font-serif text-4xl md:text-5xl lg:text-[3.8rem] font-medium leading-[1.08] tracking-[-0.01em] text-[hsl(36,33%,93%)] whitespace-pre-line mb-6">
                 Luxury,{"\n"}Accessed.
               </h1>
             </AnimateIn>
             <AnimateIn variant="fadeUp" delay={0.4} duration={0.8}>
-              <p className="text-[13px] leading-relaxed text-[hsl(36,20%,75%)] max-w-[380px] mb-12 font-sans">
+              <p className="hero-subtitle-mobile text-[13px] leading-relaxed text-[hsl(36,20%,75%)] max-w-[380px] mb-12 font-sans">
                 Curated high-design jewelry, cared for through its entire journey.
                 Your money stretches further. Your visual impact multiplies.
               </p>
