@@ -6,6 +6,13 @@ import { AnimateIn } from "@/components/shared/AnimateIn";
 import { GrainOverlay } from "@/components/craft/GrainOverlay";
 import { WavyDivider } from "@/components/craft/WavyDivider";
 import { ScribbleUnderline } from "@/components/craft/ScribbleUnderline";
+import { TornPaperEdge } from "@/components/craft/TornPaperEdge";
+import { WaxSeal } from "@/components/craft/WaxSeal";
+import { StitchLineDivider } from "@/components/craft/StitchLineDivider";
+import { DiamondChainBorder } from "@/components/craft/DiamondChainBorder";
+import { HandDrawnFrame } from "@/components/craft/HandDrawnFrame";
+import { MarginNote } from "@/components/craft/MarginNote";
+import { TagRedStamp } from "@/components/craft/TagRedStamp";
 
 const categories: { label: string; items: FAQItem[] }[] = [
   {
@@ -48,6 +55,7 @@ const FAQ = () => {
       <section className="bg-[hsl(28,22%,34%)] relative overflow-hidden">
         <GrainOverlay opacity={0.05} />
         <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-20 md:py-28 text-center relative z-[1]">
+          <WaxSeal size={40} className="mx-auto mb-4" />
           <AnimateIn variant="fadeIn" duration={0.6}>
             <p className="text-[10px] tracking-[0.4em] uppercase text-[hsl(36,25%,78%)] mb-6 font-sans">
               Support
@@ -66,6 +74,8 @@ const FAQ = () => {
         </div>
       </section>
 
+      <TornPaperEdge className="max-w-[1440px] mx-auto" />
+
       {categories.map((cat, idx) => (
         <div key={cat.label}>
           <SectionHeading heading={cat.label} />
@@ -75,25 +85,39 @@ const FAQ = () => {
             </AnimateIn>
           </section>
           {idx < categories.length - 1 && (
-            <WavyDivider className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 mb-4" />
+            idx % 2 === 0
+              ? <StitchLineDivider className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 mb-4" />
+              : <DiamondChainBorder className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 mb-4" />
           )}
         </div>
       ))}
+
+      {/* Margin note */}
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-8 hidden md:block">
+        <div className="max-w-md ml-auto">
+          <MarginNote attribution="GEA Concierge">
+            Can't find your answer? Our team responds within 24 hours — every time.
+          </MarginNote>
+        </div>
+      </div>
 
       {/* CTA */}
       <section className="border-t border-border relative overflow-hidden">
         <GrainOverlay opacity={0.03} />
         <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center relative z-[1]">
+          <TagRedStamp size={20} className="mx-auto mb-4" />
           <AnimateIn variant="fadeUp" duration={0.5}>
-            <h2 className="font-serif text-2xl md:text-3xl tracking-[0.06em] uppercase font-medium mb-4">
-              Still Have Questions?
-            </h2>
-            <p className="text-[12px] text-muted-foreground font-sans mb-8">
-              Our concierge team is here to help.
-            </p>
-            <Link to="/how-it-works" className="btn-gea">
-              Contact Us
-            </Link>
+            <HandDrawnFrame strokeColor="hsl(var(--foreground))">
+              <h2 className="font-serif text-2xl md:text-3xl tracking-[0.06em] uppercase font-medium mb-4">
+                Still Have Questions?
+              </h2>
+              <p className="text-[12px] text-muted-foreground font-sans mb-8">
+                Our concierge team is here to help.
+              </p>
+              <Link to="/contact" className="btn-gea">
+                Contact Us
+              </Link>
+            </HandDrawnFrame>
           </AnimateIn>
         </div>
       </section>
