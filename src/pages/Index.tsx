@@ -77,7 +77,7 @@ const Index = () => {
             <img
               src="/images/hero-editorial.png"
               alt="Gold and emerald rings styled on hand"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-bottom md:object-center"
               width={480}
               height={720}
               fetchPriority="high"
