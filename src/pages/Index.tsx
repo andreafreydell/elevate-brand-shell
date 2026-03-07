@@ -7,8 +7,6 @@ import { StepBlock } from "@/components/shared/StepBlock";
 import { ValueBlock } from "@/components/shared/ValueBlock";
 import { TrustStrip } from "@/components/shared/TrustStrip";
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
-import { AutoCarousel } from "@/components/shared/AutoCarousel";
-import { MobileCarousel } from "@/components/shared/MobileCarousel";
 import { OfferUnit } from "@/components/membership/OfferUnit";
 import { ProductImageRow } from "@/components/ProductImageRow";
 import { Loader2, Hand, Package, Sparkles, RefreshCw, Shield, Wrench, Truck, Gem, Ban, Heart, Shuffle, CalendarPlus, Feather, Scale, Zap } from "lucide-react";
@@ -94,13 +92,13 @@ const Index = () => {
           ═══════════════════════════════════════════ */}
       <SectionHeading label="The Process" heading="How It Works" />
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
-        <AutoCarousel interval={4000} cardWidth="min-w-[56vw] md:min-w-[220px]">
-          <StepBlock number="01" title="Choose" description="Browse our curated vault and select the pieces that speak to your moment." icon={Hand} />
-          <StepBlock number="02" title="Receive" description="Your selections arrive in 1–3 days, freshly restored and sealed in our signature packaging." icon={Package} />
-          <StepBlock number="03" title="Wear" description="Style them for your life — the event, the meeting, the dinner, the everyday." icon={Sparkles} />
-          <StepBlock number="04" title="Keep Your Favorite" description="One piece per cycle is yours to keep — included in your membership. Want more? Members save 40% on any additional piece." icon={Heart} />
-          <StepBlock number="05" title="Refresh" description="When you're ready for something new, return and choose your next chapter." icon={RefreshCw} />
-        </AutoCarousel>
+        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <StaggerItem><StepBlock number="01" title="Choose" description="Browse our curated vault and select the pieces that speak to your moment." icon={Hand} /></StaggerItem>
+          <StaggerItem><StepBlock number="02" title="Receive" description="Your selections arrive in 1–3 days, freshly restored and sealed in our signature packaging." icon={Package} /></StaggerItem>
+          <StaggerItem><StepBlock number="03" title="Wear" description="Style them for your life — the event, the meeting, the dinner, the everyday." icon={Sparkles} /></StaggerItem>
+          <StaggerItem><StepBlock number="04" title="Keep Your Favorite" description="One piece per cycle is yours to keep — included in your membership. Want more? Members save 40% on any additional piece." icon={Heart} /></StaggerItem>
+          <StaggerItem><StepBlock number="05" title="Refresh" description="When you're ready for something new, return and choose your next chapter." icon={RefreshCw} /></StaggerItem>
+        </StaggerContainer>
         <div className="text-center mt-10">
           <Link to="/how-it-works" className="cta-underline">Learn More</Link>
         </div>
@@ -305,11 +303,11 @@ const Index = () => {
           ═══════════════════════════════════════════ */}
       <SectionHeading label="Freedom" heading="Wear More. Spend Smarter." />
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
-        <MobileCarousel desktopClassName="grid-cols-3 gap-4" cardWidth="min-w-[72vw]">
-          <ValueBlock title="Freedom to Experiment" description="Try bold statement pieces without the commitment of ownership. If it doesn't feel right, refresh your selection next month. No risk. No regret." className="bg-card" lucideIcon={Shuffle} label="Explore" />
-          <ValueBlock title="Always Something New" description="Your collection evolves as you do. New drops enter the vault monthly. Early access for members means you're always first." className="bg-card" lucideIcon={CalendarPlus} label="Discover" />
-          <ValueBlock title="Luxury Without Burden" description="No storage anxiety. No depreciation. No buyer's remorse. Just beautiful jewelry, worn with intention, returned with ease." className="bg-card" lucideIcon={Feather} label="Liberate" />
-        </MobileCarousel>
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <StaggerItem><ValueBlock title="Freedom to Experiment" description="Try bold statement pieces without the commitment of ownership. If it doesn't feel right, refresh your selection next month. No risk. No regret." className="bg-card" lucideIcon={Shuffle} label="Explore" /></StaggerItem>
+          <StaggerItem><ValueBlock title="Always Something New" description="Your collection evolves as you do. New drops enter the vault monthly. Early access for members means you're always first." className="bg-card" lucideIcon={CalendarPlus} label="Discover" /></StaggerItem>
+          <StaggerItem><ValueBlock title="Luxury Without Burden" description="No storage anxiety. No depreciation. No buyer's remorse. Just beautiful jewelry, worn with intention, returned with ease." className="bg-card" lucideIcon={Feather} label="Liberate" /></StaggerItem>
+        </StaggerContainer>
       </section>
 
       {/* ═══════════════════════════════════════════
