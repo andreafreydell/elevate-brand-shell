@@ -51,6 +51,7 @@ const About = () => {
                 jewelry that moves with your life, evolves with your taste, and carries no burden.
                 Access is luxury. Presence is the only possession that matters.
               </p>
+              <img src="/images/founder-signature.png" alt="Founder signature" className="h-12 mt-8 opacity-80" loading="lazy" decoding="async" />
             </div>
           </AnimateIn>
         </div>
