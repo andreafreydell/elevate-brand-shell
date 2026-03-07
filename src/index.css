@@ -404,4 +404,51 @@
       line-height: 1.4;
     }
   }
+
+  /* Mobile-only compact membership tier styling */
+  @media (max-width: 768px) {
+    .tier-section-mobile {
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+
+    .tier-grid-mobile {
+      gap: 10px;
+    }
+
+    .tier-card-mobile {
+      padding: 12px;
+    }
+
+    .tier-header-mobile {
+      padding: 12px;
+      border-bottom: 1px solid hsl(var(--border));
+    }
+
+    .tier-label {
+      font-size: 9px;
+    }
+
+    .tier-name {
+      font-size: 18px;
+    }
+
+    .tier-price {
+      font-size: 22px;
+    }
+
+    .tier-features-mobile {
+      padding: 12px;
+      gap: 3px;
+    }
+
+    .tier-feature-item {
+      font-size: 10px;
+    }
+
+    .tier-cta-mobile {
+      padding: 8px;
+      font-size: 11px;
+    }
+  }
 }

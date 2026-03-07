@@ -328,7 +328,7 @@ const Index = () => {
           7. MEMBERSHIP ENGINE (OfferUnit standard)
           ═══════════════════════════════════════════ */}
       <SectionHeading label="Membership" heading="Your Tier of Access" />
-      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-8">
+      <section className="tier-section-mobile max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-8">
         <OfferUnit variant="standard" />
         <div className="text-center mt-6">
           <TrustStrip variant="compact" />
