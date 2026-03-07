@@ -63,11 +63,8 @@ const Stories = () => {
             <StaggerItem key={e.title}>
               <div className="border border-border bg-card group relative overflow-hidden">
                 <GrainOverlay opacity={0.02} />
-                <div className="aspect-[4/3] bg-secondary flex items-center justify-center relative z-[1]">
-                  <span className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground">
-                    Editorial Image
-                  </span>
-                  {/* TagRedStamp on first card */}
+                <div className="aspect-[4/3] bg-secondary relative z-[1] overflow-hidden">
+                  <EditorialInfographic variant={e.infographic} />
                   {idx === 0 && <TagRedStamp size={20} className="absolute top-3 right-3" />}
                 </div>
                 <div className="p-6 relative z-[1]">
