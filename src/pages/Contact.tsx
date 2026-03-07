@@ -4,6 +4,11 @@ import { PageHero } from "@/components/layout/PageHero";
 import { AnimateIn } from "@/components/shared/AnimateIn";
 import { GrainOverlay } from "@/components/craft/GrainOverlay";
 import { WaxSeal } from "@/components/craft/WaxSeal";
+import { TornPaperEdge } from "@/components/craft/TornPaperEdge";
+import { HandDrawnRect } from "@/components/craft/HandDrawnRect";
+import { StampBadge } from "@/components/craft/StampBadge";
+import { StitchLineDivider } from "@/components/craft/StitchLineDivider";
+import { TagRedStamp } from "@/components/craft/TagRedStamp";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -38,18 +43,24 @@ const Contact = () => {
         subtitle="Whether it's a styling question, a membership inquiry, or simply a conversation — our concierge team responds within 24 hours."
       />
 
+      <TornPaperEdge className="max-w-[1440px] mx-auto" />
+
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20">
         <AnimateIn variant="fadeUp" duration={0.6}>
           <div className="max-w-[600px] mx-auto relative">
             <WaxSeal size={32} className="absolute -top-2 -right-8 hidden md:inline-flex" />
+            <StampBadge text="CONCIERGE" subtext="24h" rotation={8} className="absolute -top-4 -left-12 hidden lg:inline-flex" />
             {submitted ? (
-              <div className="text-center py-16 relative overflow-hidden">
-                <GrainOverlay opacity={0.03} />
-                <h3 className="font-serif text-2xl font-semibold mb-4 relative z-[1]">Thank You</h3>
-                <p className="text-[13px] text-muted-foreground font-sans relative z-[1]">
-                  Your message has been received. Our concierge team will respond within 24 hours.
-                </p>
-              </div>
+              <HandDrawnRect>
+                <div className="text-center py-16 relative overflow-hidden">
+                  <GrainOverlay opacity={0.03} />
+                  <TagRedStamp size={20} className="mx-auto mb-4" />
+                  <h3 className="font-serif text-2xl font-semibold mb-4 relative z-[1]">Thank You</h3>
+                  <p className="text-[13px] text-muted-foreground font-sans relative z-[1]">
+                    Your message has been received. Our concierge team will respond within 24 hours.
+                  </p>
+                </div>
+              </HandDrawnRect>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
@@ -92,6 +103,7 @@ const Contact = () => {
                     className="w-full border border-border bg-transparent px-5 py-3 text-[13px] font-sans text-foreground focus:outline-none focus:border-foreground transition-colors resize-none"
                   />
                 </div>
+                <StitchLineDivider />
                 <button type="submit" disabled={loading} className="btn-gea w-full disabled:opacity-50">
                   {loading ? "Sending..." : "Send Message"}
                 </button>

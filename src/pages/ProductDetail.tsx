@@ -6,6 +6,18 @@ import { Navbar } from "@/components/Navbar";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { AnimateIn } from "@/components/shared/AnimateIn";
 import { OfferUnit } from "@/components/membership/OfferUnit";
+import { ScribbleUnderline } from "@/components/craft/ScribbleUnderline";
+import { WavyDivider } from "@/components/craft/WavyDivider";
+import { TornPaperEdge } from "@/components/craft/TornPaperEdge";
+import { MarginNote } from "@/components/craft/MarginNote";
+import { TagRedStamp } from "@/components/craft/TagRedStamp";
+import { StampBadge } from "@/components/craft/StampBadge";
+import { HandDrawnFrame } from "@/components/craft/HandDrawnFrame";
+import { OrganicBlobTag } from "@/components/craft/OrganicBlobTag";
+import { StitchLineDivider } from "@/components/craft/StitchLineDivider";
+import { DiamondChainBorder } from "@/components/craft/DiamondChainBorder";
+import { WaxSeal } from "@/components/craft/WaxSeal";
+import { ScriptNumber } from "@/components/craft/ScriptNumber";
 import { Loader2, Shield, RefreshCw, Gem, Sparkles, Compass, Layers } from "lucide-react";
 import { toast } from "sonner";
 
@@ -87,10 +99,12 @@ const ProductDetail = () => {
       <main className="max-w-[1400px] mx-auto px-6 py-12 md:py-20">
         {/* Product hero */}
         <AnimateIn variant="fadeIn">
-          <div className="grid md:grid-cols-2 gap-0 border border-border">
+          <div className="grid md:grid-cols-2 gap-0 border border-border relative">
+            {/* WaxSeal watermark */}
+            <WaxSeal size={32} className="absolute top-4 left-4 z-10 hidden md:inline-flex" />
             {/* Images */}
             <div className="border-r border-border">
-              <div className="aspect-square overflow-hidden bg-card">
+              <div className="aspect-square overflow-hidden bg-card relative">
                 {images[selectedImageIdx]?.node ? (
                   <img
                     src={images[selectedImageIdx].node.url}
@@ -102,6 +116,10 @@ const ProductDetail = () => {
                     <span className="text-xs text-muted-foreground tracking-wider uppercase">No image</span>
                   </div>
                 )}
+                {/* OrganicBlobTag on image */}
+                <div className="absolute bottom-4 left-4">
+                  <OrganicBlobTag variant="classic">GEA Collection</OrganicBlobTag>
+                </div>
               </div>
               {images.length > 1 && (
                 <div className="flex border-t border-border">
@@ -119,7 +137,8 @@ const ProductDetail = () => {
             </div>
 
             {/* Details */}
-            <div className="p-8 md:p-12 lg:p-16 flex flex-col justify-center">
+            <div className="p-8 md:p-12 lg:p-16 flex flex-col justify-center relative">
+              <TagRedStamp size={18} className="absolute top-6 right-6" />
               <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4 font-sans">GEA Collection</p>
               <h1 className="font-serif text-3xl md:text-4xl font-medium leading-tight mb-4">{product.title}</h1>
               <p className="font-serif text-2xl mb-8">
@@ -153,6 +172,8 @@ const ProductDetail = () => {
                 </div>
               )}
 
+              <StitchLineDivider className="mb-4" />
+
               <button
                 onClick={handleAddToCart}
                 disabled={isLoading || !variant?.availableForSale}
@@ -163,7 +184,7 @@ const ProductDetail = () => {
 
               {/* Buyout option */}
               <p className="text-[10px] text-muted-foreground font-sans tracking-[0.15em] text-center mb-8">
-                Members can keep this piece at an exclusive discount
+                Members can keep this piece at <ScriptNumber>40%</ScriptNumber> off
               </p>
 
               {product.description && (
@@ -176,16 +197,25 @@ const ProductDetail = () => {
           </div>
         </AnimateIn>
 
+        {/* Margin note */}
+        <div className="hidden md:block mt-6 max-w-sm ml-auto">
+          <MarginNote attribution="GEA Stylist">
+            This piece pairs beautifully with our layered chain necklaces — try it in your next rotation.
+          </MarginNote>
+        </div>
+
+        <DiamondChainBorder className="my-8" />
+
         {/* ═══ Design Philosophy ═══ */}
         <AnimateIn delay={0.15}>
-          <section className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-[2px]">
+          <section className="grid grid-cols-1 md:grid-cols-2 gap-[2px]">
             <div className="bg-card border border-border p-10 md:p-14 transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:-translate-y-[3px] hover:border-foreground hover:border-2">
               <div className="flex items-center justify-between mb-4">
                 <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground">Philosophy</p>
                 <Compass className="h-5 w-5 stroke-[1.3] text-foreground" />
               </div>
               <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">
-                Designed for Access
+                Designed for <ScribbleUnderline color="var(--brass)">Access</ScribbleUnderline>
               </h3>
               <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
                 Every GEA piece is engineered for the access lifecycle. Materials are selected for 
@@ -220,7 +250,8 @@ const ProductDetail = () => {
 
         {/* ═══ Rotation Logic ═══ */}
         <AnimateIn delay={0.2}>
-          <section className="mt-[2px] bg-foreground text-background p-10 md:p-14">
+          <section className="mt-[2px] bg-foreground text-background p-10 md:p-14 relative">
+            <StampBadge text="STYLING" subtext="GEA" rotation={8} className="absolute top-4 right-4 hidden md:inline-flex" />
             <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-background/60 mb-4">Styling</p>
             <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-6">
               How to Style This Piece
@@ -241,9 +272,11 @@ const ProductDetail = () => {
           </section>
         </AnimateIn>
 
+        <WavyDivider className="my-8" />
+
         {/* ═══ Membership upsell (compact OfferUnit) ═══ */}
         <AnimateIn delay={0.25}>
-          <section className="mt-16">
+          <section>
             <OfferUnit variant="compact" />
           </section>
         </AnimateIn>
