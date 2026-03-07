@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useRef, useState, useEffect } from "react";
 
 interface ValueBlockProps {
   title: string;
@@ -8,13 +8,35 @@ interface ValueBlockProps {
 }
 
 export const ValueBlock = ({ title, description, className = "", infographic }: ValueBlockProps) => {
+  const [expanded, setExpanded] = useState(false);
+  const svgRef = useRef<HTMLDivElement>(null);
+  const [baseHeight, setBaseHeight] = useState(0);
+
+  useEffect(() => {
+    if (svgRef.current && !expanded) {
+      setBaseHeight(svgRef.current.offsetHeight);
+    }
+  }, [infographic]);
+
   return (
     <div className={`border border-border p-8 md:p-10 h-full flex flex-col ${className}`}>
       {infographic && (
-        <div className="bg-background border border-border p-4 mb-6 relative group/svg cursor-zoom-in transition-all duration-500 ease-out hover:p-6 hover:mb-8 hover:scale-y-[1.75] hover:scale-x-[1.0] origin-top">
+        <div
+          ref={svgRef}
+          className="bg-background border border-border p-4 mb-6 relative cursor-zoom-in"
+          onMouseEnter={() => setExpanded(true)}
+          onMouseLeave={() => setExpanded(false)}
+          style={{
+            height: expanded && baseHeight ? baseHeight * 1.75 : undefined,
+            transition: 'height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+          }}
+        >
           {infographic}
           {/* Zoom hint */}
-          <div className="absolute top-2 right-2 w-6 h-6 bg-foreground/10 border border-border flex items-center justify-center transition-opacity duration-300 group-hover/svg:opacity-0">
+          <div
+            className="absolute top-2 right-2 w-6 h-6 bg-foreground/10 border border-border flex items-center justify-center transition-opacity duration-300"
+            style={{ opacity: expanded ? 0 : 1 }}
+          >
             <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round">
               <circle cx="7" cy="7" r="4.5" />
               <line x1="10" y1="10" x2="14" y2="14" />
