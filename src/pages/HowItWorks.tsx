@@ -8,6 +8,7 @@ import { OfferUnit } from "@/components/membership/OfferUnit";
 import { AccordionFAQ, type FAQItem } from "@/components/shared/AccordionFAQ";
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
 import { MobileCarousel } from "@/components/shared/MobileCarousel";
+import { AutoCarousel } from "@/components/shared/AutoCarousel";
 import { Hand, Package, Sparkles, RefreshCw, Shield, Wrench, Truck, Gem, Ban, Heart } from "lucide-react";
 
 const trustStandards = [
