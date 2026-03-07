@@ -1,12 +1,13 @@
-import { Shield, RefreshCw, Truck, Wrench, Ban } from "lucide-react";
+import { Shield, RefreshCw, Truck, Wrench, Ban, Gem, Heart } from "lucide-react";
 
 const trustItems = {
   full: [
-    { icon: Ban, text: "Cancel Anytime" },
     { icon: Shield, text: "Sanitized & Sealed" },
     { icon: Wrench, text: "Repair Guarantee" },
-    { icon: Truck, text: "Free Returns" },
-    { icon: RefreshCw, text: "No Surprise Fees" },
+    { icon: Truck, text: "Secure Delivery" },
+    { icon: Gem, text: "Damage Clarity" },
+    { icon: Heart, text: "Keep Your Favorite" },
+    { icon: Ban, text: "Cancel Anytime" },
   ],
   compact: [
     { icon: Ban, text: "Cancel Anytime" },
