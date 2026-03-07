@@ -122,7 +122,7 @@ const Index = () => {
               </div>
             </div>
           </StaggerItem>
-          <StaggerItem>
+          <StaggerItem className="hidden md:block">
             <div className="flex flex-col h-full transition-transform duration-300 ease-out hover:scale-[1.03]">
               <div className="material-image-mobile aspect-[4/5] overflow-hidden">
                 <img src="/images/material-moissanite.png" alt="Layered moissanite tennis necklaces on model" className="w-full h-full object-cover" loading="lazy" decoding="async" />
@@ -133,7 +133,7 @@ const Index = () => {
               </div>
             </div>
           </StaggerItem>
-          <StaggerItem>
+          <StaggerItem className="hidden md:block">
             <div className="flex flex-col h-full transition-transform duration-300 ease-out hover:scale-[1.03]">
               <div className="material-image-mobile aspect-[4/5] overflow-hidden">
                 <img src="/images/material-lifecycle.png" alt="Gold earrings and chain jewelry showcasing lifecycle care craftsmanship" className="w-full h-full object-cover" loading="lazy" decoding="async" />
