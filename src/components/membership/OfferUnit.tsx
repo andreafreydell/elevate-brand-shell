@@ -153,15 +153,15 @@ const FullOffer = () => (
     </p>
 
     {/* Cost-per-wear reframe */}
-    <div className="border border-border bg-card p-10 md:p-14 grid grid-cols-1 md:grid-cols-2 gap-10">
+    <div className="cpw-section-mobile border border-border bg-card p-10 md:p-14 grid grid-cols-1 md:grid-cols-2 gap-10">
       <div>
-        <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">
+        <p className="cpw-label text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">
           The Math
         </p>
-        <h3 className="font-serif text-2xl md:text-3xl font-semibold tracking-[0.02em] mb-4">
+        <h3 className="cpw-title font-serif text-2xl md:text-3xl font-semibold tracking-[0.02em] mb-4">
           Cost-Per-Wear Intelligence
         </h3>
-        <p className="text-[12px] text-muted-foreground font-sans leading-relaxed mb-6">
+        <p className="cpw-desc text-[12px] text-muted-foreground font-sans leading-relaxed mb-6">
           The average fine jewelry purchase sits unworn 90% of its life. GEA membership
           inverts that equation — you wear more, spend less per occasion, and never carry
           the weight of a depreciating asset.
@@ -171,19 +171,19 @@ const FullOffer = () => (
         </Link>
       </div>
       <div className="flex flex-col justify-center gap-4">
-        <div className="border border-border p-6">
-          <p className="text-[10px] tracking-[0.25em] uppercase font-sans text-muted-foreground mb-1">
+        <div className="cpw-card border border-border p-6">
+          <p className="cpw-card-label text-[10px] tracking-[0.25em] uppercase font-sans text-muted-foreground mb-1">
             Traditional Purchase
           </p>
-          <p className="font-serif text-2xl font-medium">$30+ per wear</p>
-          <p className="text-[11px] text-muted-foreground font-sans">One $150 piece worn 5 times</p>
+          <p className="cpw-card-price font-serif text-2xl font-medium">$30+ per wear</p>
+          <p className="cpw-card-sub text-[11px] text-muted-foreground font-sans">One $150 piece worn 5 times</p>
         </div>
-        <div className="border border-foreground bg-foreground text-background p-6">
-          <p className="text-[10px] tracking-[0.25em] uppercase font-sans text-background/60 mb-1">
+        <div className="cpw-card border border-foreground bg-foreground text-background p-6">
+          <p className="cpw-card-label text-[10px] tracking-[0.25em] uppercase font-sans text-background/60 mb-1">
             GEA Tier 2
           </p>
-          <p className="font-serif text-2xl font-medium">Under $2 per wear</p>
-          <p className="text-[11px] text-background/70 font-sans">$85/mo, 10 pieces, worn 5 times each</p>
+          <p className="cpw-card-price font-serif text-2xl font-medium">Under $2 per wear</p>
+          <p className="cpw-card-sub text-[11px] text-background/70 font-sans">$85/mo, 10 pieces, worn 5 times each</p>
         </div>
       </div>
     </div>
