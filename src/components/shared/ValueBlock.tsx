@@ -1,12 +1,20 @@
+import { ReactNode } from "react";
+
 interface ValueBlockProps {
   title: string;
   description: string;
   className?: string;
+  infographic?: ReactNode;
 }
 
-export const ValueBlock = ({ title, description, className = "" }: ValueBlockProps) => {
+export const ValueBlock = ({ title, description, className = "", infographic }: ValueBlockProps) => {
   return (
     <div className={`border border-border p-8 md:p-10 h-full flex flex-col ${className}`}>
+      {infographic && (
+        <div className="bg-background border border-border p-4 mb-6">
+          {infographic}
+        </div>
+      )}
       <h3 className="font-serif text-lg md:text-xl font-semibold tracking-[0.02em] mb-3">
         {title}
       </h3>
