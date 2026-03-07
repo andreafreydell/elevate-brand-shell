@@ -298,9 +298,108 @@ const Index = () => {
       <SectionHeading label="Freedom" heading="Wear More. Spend Smarter." />
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <StaggerItem><ValueBlock title="Freedom to Experiment" description="Try bold statement pieces without the commitment of ownership. If it doesn't feel right, refresh your selection next month. No risk. No regret." className="bg-card" /></StaggerItem>
-          <StaggerItem><ValueBlock title="Always Something New" description="Your collection evolves as you do. New drops enter the vault monthly. Early access for members means you're always first." className="bg-card" /></StaggerItem>
-          <StaggerItem><ValueBlock title="Luxury Without Burden" description="No storage anxiety. No depreciation. No buyer's remorse. Just beautiful jewelry, worn with intention, returned with ease." className="bg-card" /></StaggerItem>
+          <StaggerItem><ValueBlock title="Freedom to Experiment" description="Try bold statement pieces without the commitment of ownership. If it doesn't feel right, refresh your selection next month. No risk. No regret." className="bg-card" infographic={
+            <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
+              <defs>
+                <linearGradient id="expBg" x1="0" y1="0" x2="400" y2="300">
+                  <stop offset="0%" stopColor="hsl(38,28%,92%)" />
+                  <stop offset="100%" stopColor="hsl(34,18%,88%)" />
+                </linearGradient>
+              </defs>
+              <rect width="400" height="300" fill="url(#expBg)" />
+              <text x="200" y="30" fontSize="7" fill="hsl(30,8%,46%)" fontFamily="Inter,sans-serif" letterSpacing="0.25em" textAnchor="middle" fontWeight="500">EXPERIMENT FREELY</text>
+              {/* Two paths diverging — bold vs safe */}
+              <circle cx="200" cy="90" r="20" fill="#E7B9A8" opacity="0.3" />
+              <text x="200" y="93" fontSize="7" fill="hsl(30,12%,22%)" fontFamily="Inter,sans-serif" letterSpacing="0.15em" textAnchor="middle" fontWeight="500">TRY</text>
+              {/* Bold path — left */}
+              <path d="M185 108 C150 140, 100 150, 80 180" stroke="#B79B63" strokeWidth="1" opacity="0.3" fill="none" />
+              <circle cx="80" cy="190" r="18" fill="#B79B63" opacity="0.3" />
+              <text x="80" y="188" fontSize="6" fill="hsl(30,12%,22%)" fontFamily="Inter,sans-serif" letterSpacing="0.15em" textAnchor="middle" fontWeight="500">BOLD</text>
+              <text x="80" y="197" fontSize="6" fill="hsl(30,8%,46%)" fontFamily="Inter,sans-serif" textAnchor="middle">STATEMENT</text>
+              {/* Subtle path — right */}
+              <path d="M215 108 C250 140, 300 150, 320 180" stroke="#BFD6CF" strokeWidth="1" opacity="0.3" fill="none" />
+              <circle cx="320" cy="190" r="18" fill="#BFD6CF" opacity="0.35" />
+              <text x="320" y="188" fontSize="6" fill="hsl(30,12%,22%)" fontFamily="Inter,sans-serif" letterSpacing="0.15em" textAnchor="middle" fontWeight="500">QUIET</text>
+              <text x="320" y="197" fontSize="6" fill="hsl(30,8%,46%)" fontFamily="Inter,sans-serif" textAnchor="middle">ELEGANCE</text>
+              {/* Refresh arrow back to center */}
+              <path d="M80 212 C80 260, 320 260, 320 212" stroke="#6E8F8B" strokeWidth="1" opacity="0.25" fill="none" strokeDasharray="4 4" />
+              <text x="200" y="255" fontSize="7" fill="#6E8F8B" fontFamily="Inter,sans-serif" letterSpacing="0.2em" textAnchor="middle" fontWeight="500">REFRESH ANYTIME</text>
+              <rect x="352" y="260" width="16" height="16" rx="3" fill="#C54A3D" opacity="0.7" />
+            </svg>
+          } /></StaggerItem>
+          <StaggerItem><ValueBlock title="Always Something New" description="Your collection evolves as you do. New drops enter the vault monthly. Early access for members means you're always first." className="bg-card" infographic={
+            <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
+              <defs>
+                <linearGradient id="newBg" x1="0" y1="0" x2="400" y2="300">
+                  <stop offset="0%" stopColor="hsl(38,28%,92%)" />
+                  <stop offset="100%" stopColor="hsl(34,18%,88%)" />
+                </linearGradient>
+              </defs>
+              <rect width="400" height="300" fill="url(#newBg)" />
+              <text x="200" y="30" fontSize="7" fill="hsl(30,8%,46%)" fontFamily="Inter,sans-serif" letterSpacing="0.25em" textAnchor="middle" fontWeight="500">MONTHLY VAULT DROPS</text>
+              {/* Timeline — vertical with monthly drops */}
+              <line x1="200" y1="50" x2="200" y2="250" stroke="hsl(32,12%,62%)" strokeWidth="0.5" opacity="0.2" />
+              {/* Month 1 */}
+              <circle cx="200" cy="75" r="4" fill="#BFD6CF" opacity="0.5" />
+              <rect x="220" y="62" width="80" height="26" fill="#BFD6CF" opacity="0.2" />
+              <text x="260" y="77" fontSize="7" fill="hsl(30,12%,22%)" fontFamily="Inter,sans-serif" letterSpacing="0.15em" textAnchor="middle" fontWeight="500">JAN DROP</text>
+              <text x="260" y="86" fontSize="6" fill="hsl(30,8%,46%)" fontFamily="Inter,sans-serif" textAnchor="middle">+8 PIECES</text>
+              {/* Month 2 */}
+              <circle cx="200" cy="120" r="4" fill="#BFD3E6" opacity="0.5" />
+              <rect x="100" y="107" width="80" height="26" fill="#BFD3E6" opacity="0.2" />
+              <text x="140" y="122" fontSize="7" fill="hsl(30,12%,22%)" fontFamily="Inter,sans-serif" letterSpacing="0.15em" textAnchor="middle" fontWeight="500">FEB DROP</text>
+              <text x="140" y="131" fontSize="6" fill="hsl(30,8%,46%)" fontFamily="Inter,sans-serif" textAnchor="middle">+6 PIECES</text>
+              {/* Month 3 */}
+              <circle cx="200" cy="165" r="4" fill="#E7B9A8" opacity="0.5" />
+              <rect x="220" y="152" width="80" height="26" fill="#E7B9A8" opacity="0.2" />
+              <text x="260" y="167" fontSize="7" fill="hsl(30,12%,22%)" fontFamily="Inter,sans-serif" letterSpacing="0.15em" textAnchor="middle" fontWeight="500">MAR DROP</text>
+              <text x="260" y="176" fontSize="6" fill="hsl(30,8%,46%)" fontFamily="Inter,sans-serif" textAnchor="middle">+10 PIECES</text>
+              {/* Month 4 */}
+              <circle cx="200" cy="210" r="4" fill="#B79B63" opacity="0.5" />
+              <rect x="100" y="197" width="80" height="26" fill="#B79B63" opacity="0.2" />
+              <text x="140" y="212" fontSize="7" fill="hsl(30,12%,22%)" fontFamily="Inter,sans-serif" letterSpacing="0.15em" textAnchor="middle" fontWeight="500">APR DROP</text>
+              <text x="140" y="221" fontSize="6" fill="hsl(30,8%,46%)" fontFamily="Inter,sans-serif" textAnchor="middle">+7 PIECES</text>
+              {/* Early access label */}
+              <text x="200" y="268" fontSize="7" fill="#6E8F8B" fontFamily="Inter,sans-serif" letterSpacing="0.2em" textAnchor="middle" fontWeight="500">MEMBERS GET EARLY ACCESS</text>
+              <rect x="352" y="260" width="16" height="16" rx="3" fill="#C54A3D" opacity="0.7" />
+            </svg>
+          } /></StaggerItem>
+          <StaggerItem><ValueBlock title="Luxury Without Burden" description="No storage anxiety. No depreciation. No buyer's remorse. Just beautiful jewelry, worn with intention, returned with ease." className="bg-card" infographic={
+            <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
+              <defs>
+                <linearGradient id="luxBg" x1="0" y1="0" x2="400" y2="300">
+                  <stop offset="0%" stopColor="hsl(38,28%,92%)" />
+                  <stop offset="100%" stopColor="hsl(34,18%,88%)" />
+                </linearGradient>
+              </defs>
+              <rect width="400" height="300" fill="url(#luxBg)" />
+              <text x="200" y="30" fontSize="7" fill="hsl(30,8%,46%)" fontFamily="Inter,sans-serif" letterSpacing="0.25em" textAnchor="middle" fontWeight="500">BURDENS ELIMINATED</text>
+              {/* Three burden items crossed out */}
+              {/* Storage */}
+              <rect x="60" y="60" width="110" height="70" fill="#E7B9A8" opacity="0.15" />
+              <text x="115" y="90" fontSize="7" fill="hsl(30,12%,22%)" fontFamily="Inter,sans-serif" letterSpacing="0.15em" textAnchor="middle" fontWeight="500">STORAGE</text>
+              <text x="115" y="103" fontSize="6" fill="hsl(30,8%,46%)" fontFamily="Inter,sans-serif" textAnchor="middle">ANXIETY</text>
+              <line x1="65" y1="95" x2="165" y2="95" stroke="#C54A3D" strokeWidth="1" opacity="0.4" />
+              {/* Depreciation */}
+              <rect x="60" y="145" width="110" height="70" fill="#BFD3E6" opacity="0.15" />
+              <text x="115" y="178" fontSize="7" fill="hsl(30,12%,22%)" fontFamily="Inter,sans-serif" letterSpacing="0.15em" textAnchor="middle" fontWeight="500">VALUE</text>
+              <text x="115" y="191" fontSize="6" fill="hsl(30,8%,46%)" fontFamily="Inter,sans-serif" textAnchor="middle">DEPRECIATION</text>
+              <line x1="65" y1="183" x2="165" y2="183" stroke="#C54A3D" strokeWidth="1" opacity="0.4" />
+              {/* Remorse */}
+              <rect x="60" y="230" width="110" height="50" fill="#B79B63" opacity="0.15" />
+              <text x="115" y="258" fontSize="7" fill="hsl(30,12%,22%)" fontFamily="Inter,sans-serif" letterSpacing="0.15em" textAnchor="middle" fontWeight="500">REGRET</text>
+              <line x1="65" y1="258" x2="165" y2="258" stroke="#C54A3D" strokeWidth="1" opacity="0.4" />
+              {/* Arrow pointing to freedom */}
+              <line x1="200" y1="145" x2="240" y2="145" stroke="hsl(32,12%,62%)" strokeWidth="1" opacity="0.2" />
+              <polygon points="240,145 235,140 235,150" fill="hsl(32,12%,62%)" opacity="0.3" />
+              {/* Freedom circle */}
+              <circle cx="310" cy="145" r="50" fill="#BFD6CF" opacity="0.2" />
+              <circle cx="310" cy="145" r="35" fill="#BFD6CF" opacity="0.15" />
+              <text x="310" y="140" fontSize="8" fill="hsl(30,12%,22%)" fontFamily="Inter,sans-serif" letterSpacing="0.15em" textAnchor="middle" fontWeight="600">JUST</text>
+              <text x="310" y="153" fontSize="7" fill="#6E8F8B" fontFamily="Inter,sans-serif" letterSpacing="0.15em" textAnchor="middle" fontWeight="500">BEAUTY</text>
+              <rect x="352" y="260" width="16" height="16" rx="3" fill="#C54A3D" opacity="0.7" />
+            </svg>
+          } /></StaggerItem>
         </StaggerContainer>
       </section>
 
