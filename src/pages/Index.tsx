@@ -9,7 +9,7 @@ import { TrustStrip } from "@/components/shared/TrustStrip";
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
 import { OfferUnit } from "@/components/membership/OfferUnit";
 import { ProductImageRow } from "@/components/ProductImageRow";
-import { Loader2, Hand, Package, Sparkles, RefreshCw, Shield, Wrench, Truck, Gem, Ban, Heart, Shuffle, CalendarPlus, Feather } from "lucide-react";
+import { Loader2, Hand, Package, Sparkles, RefreshCw, Shield, Wrench, Truck, Gem, Ban, Heart, Shuffle, CalendarPlus, Feather, Scale, Zap } from "lucide-react";
 
 const Index = () => {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
@@ -153,7 +153,7 @@ const Index = () => {
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-[2px]">
           <StaggerItem>
-            <div className="bg-card border border-border p-10 md:p-14 h-full">
+            <div className="bg-card border border-border p-10 md:p-14 h-full transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:-translate-y-[3px] hover:border-foreground hover:border-2">
               {/* Own vs Access Infographic — spec #3 */}
               <div className="bg-background border border-border p-6 mb-8">
                 <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
