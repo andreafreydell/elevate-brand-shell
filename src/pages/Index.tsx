@@ -194,7 +194,10 @@ const Index = () => {
                   <rect x="352" y="260" width="16" height="16" rx="3" fill="#C54A3D" opacity="0.7" />
                 </svg>
               </div>
-              <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">The Old Model</p>
+              <div className="flex items-center justify-between mb-4">
+                <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground">The Old Model</p>
+                <Scale className="h-5 w-5 stroke-[1.3] text-foreground" />
+              </div>
               <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">Ownership Is a Liability</h3>
               <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
                 The average woman wears each piece of fine jewelry fewer than five times before it sits
@@ -204,7 +207,7 @@ const Index = () => {
             </div>
           </StaggerItem>
           <StaggerItem>
-            <div className="bg-foreground text-background p-10 md:p-14 h-full">
+            <div className="bg-foreground text-background p-10 md:p-14 h-full transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:-translate-y-[3px] hover:border-2 hover:border-background/40">
               {/* Access Cycle Infographic — spec #1 */}
               <div className="bg-background border border-border p-6 mb-8">
                 <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
