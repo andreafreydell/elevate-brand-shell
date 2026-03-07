@@ -175,7 +175,7 @@ const Index = () => {
                   <rect x="90" y="80" width="70" height="160" fill="#E7B9A8" opacity="0.3" />
                   <line x1="90" y1="80" x2="160" y2="80" stroke="hsl(32,12%,62%)" strokeWidth="0.5" opacity="0.2" />
                   <text x="125" y="72" fontSize="7" fill="hsl(30,8%,46%)" fontFamily="Inter,sans-serif" letterSpacing="0.2em" textAnchor="middle" fontWeight="500">OWN</text>
-                  <text x="125" y="140" fontSize="9" fill="hsl(30,12%,22%)" fontFamily="Inter,sans-serif" textAnchor="middle" fontWeight="600">$485</text>
+                  <text x="125" y="140" fontSize="9" fill="hsl(30,12%,22%)" fontFamily="Inter,sans-serif" textAnchor="middle" fontWeight="600">$200</text>
                   <text x="125" y="155" fontSize="7" fill="hsl(30,8%,46%)" fontFamily="Inter,sans-serif" letterSpacing="0.15em" textAnchor="middle">1 PIECE</text>
 
                   {/* ACCESS bars — 3 shorter, seafoam/sky 0.4 */}
@@ -183,8 +183,8 @@ const Index = () => {
                   <rect x="245" y="150" width="35" height="90" fill="#BFD3E6" opacity="0.4" />
                   <rect x="290" y="165" width="35" height="75" fill="#BFD6CF" opacity="0.4" />
                   <text x="262" y="140" fontSize="7" fill="hsl(30,8%,46%)" fontFamily="Inter,sans-serif" letterSpacing="0.2em" textAnchor="middle" fontWeight="500">ACCESS</text>
-                  <text x="262" y="200" fontSize="9" fill="hsl(30,12%,22%)" fontFamily="Inter,sans-serif" textAnchor="middle" fontWeight="600">$69/mo</text>
-                  <text x="262" y="215" fontSize="7" fill="hsl(30,8%,46%)" fontFamily="Inter,sans-serif" letterSpacing="0.15em" textAnchor="middle">3+ PIECES</text>
+                  <text x="262" y="200" fontSize="9" fill="hsl(30,12%,22%)" fontFamily="Inter,sans-serif" textAnchor="middle" fontWeight="600">$85/mo</text>
+                  <text x="262" y="215" fontSize="7" fill="hsl(30,8%,46%)" fontFamily="Inter,sans-serif" letterSpacing="0.15em" textAnchor="middle">10 PIECES</text>
 
                   {/* Thin guide lines */}
                   <line x1="60" y1="80" x2="80" y2="80" stroke="hsl(32,12%,62%)" strokeWidth="0.5" opacity="0.15" />
