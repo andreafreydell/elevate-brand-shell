@@ -92,7 +92,7 @@ const Index = () => {
           ═══════════════════════════════════════════ */}
       <SectionHeading label="The Process" heading="How It Works" />
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
-        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <StaggerContainer className="flex flex-col md:flex-row gap-4 md:items-stretch [&>*]:md:flex-1 [&>*]:md:basis-0 [&>*]:md:min-w-0">
           <StaggerItem><StepBlock number="01" title="Choose" description="Browse our curated vault and select the pieces that speak to your moment." icon={Hand} /></StaggerItem>
           <StaggerItem><StepBlock number="02" title="Receive" description="Your selections arrive in 1–3 days, freshly restored and sealed in our signature packaging." icon={Package} /></StaggerItem>
           <StaggerItem><StepBlock number="03" title="Wear" description="Style them for your life — the event, the meeting, the dinner, the everyday." icon={Sparkles} /></StaggerItem>
