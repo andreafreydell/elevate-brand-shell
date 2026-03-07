@@ -176,7 +176,7 @@ const FullOffer = () => (
             Traditional Purchase
           </p>
           <p className="font-serif text-2xl font-medium">$30+ per wear</p>
-          <p className="text-[11px] text-muted-foreground font-sans">$150 piece worn 5 times</p>
+          <p className="text-[11px] text-muted-foreground font-sans">One $150 piece worn 5 times</p>
         </div>
         <div className="border border-foreground bg-foreground text-background p-6">
           <p className="text-[10px] tracking-[0.25em] uppercase font-sans text-background/60 mb-1">
