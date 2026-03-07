@@ -158,7 +158,7 @@ const HowItWorks = () => {
 
       {/* ══ Membership tiers (full OfferUnit) ══ */}
       <div id="tiers">
-        <SectionHeading label="Choose Your Tier" heading="Your Level of Access" />
+        <SectionHeading label="Choose Your Tier" heading="Your Level of Access" className="section-heading-your-level" />
       </div>
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-8">
         <OfferUnit variant="full" />
