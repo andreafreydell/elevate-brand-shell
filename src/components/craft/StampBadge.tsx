@@ -69,9 +69,9 @@ export const StampBadge = ({
             fontSize="5"
             letterSpacing="0.15em"
             fill="var(--tag-red)"
-          >
-            GEA · 2025
-          </text>
+           >
+             GEA · 2026
+           </text>
         </g>
       </svg>
     </motion.div>
