@@ -336,10 +336,28 @@ const Index = () => {
       <SectionHeading label="Freedom" heading="Wear More. Spend Smarter." />
       <DotGridTexture className="max-w-[1440px] mx-auto" dotSize={0.6} spacing={24}>
         <section className="value-section-mobile px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
-          <StaggerContainer className="value-grid-mobile grid grid-cols-1 md:grid-cols-3 gap-4">
-            <StaggerItem><ValueBlock title="Freedom to Experiment" description="Try bold statement pieces without the commitment of ownership. If it doesn't feel right, refresh your selection next month. No risk. No regret." className="bg-card" lucideIcon={Shuffle} label="Explore" /></StaggerItem>
-            <StaggerItem><ValueBlock title="Always Something New" description="Your collection evolves as you do. New drops enter the vault monthly. Early access for members means you're always first." className="bg-card" lucideIcon={CalendarPlus} label="Discover" /></StaggerItem>
-            <StaggerItem><ValueBlock title="Luxury Without Burden" description="No storage anxiety. No depreciation. No buyer's remorse. Just beautiful jewelry, worn with intention, returned with ease." className="bg-card" lucideIcon={Feather} label="Liberate" /></StaggerItem>
+          <StaggerContainer className="value-grid-mobile grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 justify-items-center">
+            <StaggerItem>
+              <WashiTapeNote label="Explore" tapeColor="var(--seafoam)" rotation={-1.2} className="max-w-none w-full">
+                <Shuffle className="h-5 w-5 stroke-[1.3] text-foreground mb-4" />
+                <h3 className="font-serif text-lg font-semibold tracking-[0.02em] mb-3">Freedom to Experiment</h3>
+                <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">Try bold statement pieces without the commitment of ownership. If it doesn't feel right, refresh your selection next month. No risk. No regret.</p>
+              </WashiTapeNote>
+            </StaggerItem>
+            <StaggerItem>
+              <WashiTapeNote label="Discover" tapeColor="var(--tag-red)" rotation={0.8} className="max-w-none w-full">
+                <CalendarPlus className="h-5 w-5 stroke-[1.3] text-foreground mb-4" />
+                <h3 className="font-serif text-lg font-semibold tracking-[0.02em] mb-3">Always Something New</h3>
+                <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">Your collection evolves as you do. New drops enter the vault monthly. Early access for members means you're always first.</p>
+              </WashiTapeNote>
+            </StaggerItem>
+            <StaggerItem>
+              <WashiTapeNote label="Liberate" tapeColor="var(--seafoam)" rotation={-0.6} className="max-w-none w-full">
+                <Feather className="h-5 w-5 stroke-[1.3] text-foreground mb-4" />
+                <h3 className="font-serif text-lg font-semibold tracking-[0.02em] mb-3">Luxury Without Burden</h3>
+                <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">No storage anxiety. No depreciation. No buyer's remorse. Just beautiful jewelry, worn with intention, returned with ease.</p>
+              </WashiTapeNote>
+            </StaggerItem>
           </StaggerContainer>
 
           {/* Sketchy editorial note */}
