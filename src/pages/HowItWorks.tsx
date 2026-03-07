@@ -97,7 +97,7 @@ const HowItWorks = () => {
       </section>
 
       {/* Detailed illustration blocks */}
-      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16 hidden md:block">
         <MobileCarousel desktopClassName="grid-cols-2 gap-[2px]" cardWidth="min-w-[80vw]">
           <div className="step-detail-card-mobile bg-card border border-border p-8 h-full">
             <p className="step-detail-label text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">Keep What You Love</p>
