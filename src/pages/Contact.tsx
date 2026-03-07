@@ -2,6 +2,8 @@ import { useState } from "react";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { PageHero } from "@/components/layout/PageHero";
 import { AnimateIn } from "@/components/shared/AnimateIn";
+import { GrainOverlay } from "@/components/craft/GrainOverlay";
+import { WaxSeal } from "@/components/craft/WaxSeal";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -38,11 +40,13 @@ const Contact = () => {
 
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20">
         <AnimateIn variant="fadeUp" duration={0.6}>
-          <div className="max-w-[600px] mx-auto">
+          <div className="max-w-[600px] mx-auto relative">
+            <WaxSeal size={32} className="absolute -top-2 -right-8 hidden md:inline-flex" />
             {submitted ? (
-              <div className="text-center py-16">
-                <h3 className="font-serif text-2xl font-semibold mb-4">Thank You</h3>
-                <p className="text-[13px] text-muted-foreground font-sans">
+              <div className="text-center py-16 relative overflow-hidden">
+                <GrainOverlay opacity={0.03} />
+                <h3 className="font-serif text-2xl font-semibold mb-4 relative z-[1]">Thank You</h3>
+                <p className="text-[13px] text-muted-foreground font-sans relative z-[1]">
                   Your message has been received. Our concierge team will respond within 24 hours.
                 </p>
               </div>

@@ -10,6 +10,10 @@ import { AccordionFAQ, type FAQItem } from "@/components/shared/AccordionFAQ";
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
 import { MobileCarousel } from "@/components/shared/MobileCarousel";
 import { AutoCarousel } from "@/components/shared/AutoCarousel";
+import { ScribbleUnderline } from "@/components/craft/ScribbleUnderline";
+import { GrainOverlay } from "@/components/craft/GrainOverlay";
+import { WavyDivider } from "@/components/craft/WavyDivider";
+import { MarginNote } from "@/components/craft/MarginNote";
 import { Hand, Package, Sparkles, RefreshCw, Shield, Wrench, Truck, Gem, Ban, Heart } from "lucide-react";
 
 const trustStandards = [
@@ -67,7 +71,7 @@ const faqItems: FAQItem[] = [
   },
   {
     question: "Is there a commitment period?",
-    answer: "No. Every GEA membership is month-to-month. Cancel anytime from your account dashboard — no fees, no penalties, no questions. Your founding perks remain permanently attached to your account.",
+    answer: "No. Every GEA membership is month-to-month with no long-term commitment. Cancel anytime from your account dashboard — no fees, no penalties, no questions. Your founding perks remain permanently attached to your account.",
   },
   {
     question: "What materials are used?",
@@ -98,22 +102,27 @@ const HowItWorks = () => {
         </div>
       </section>
 
+      {/* Wavy divider */}
+      <WavyDivider className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16" />
+
       {/* Detailed illustration blocks */}
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16 hidden md:block">
         <MobileCarousel desktopClassName="grid-cols-2 gap-[2px]" cardWidth="min-w-[80vw]">
-          <div className="step-detail-card-mobile bg-card border border-border p-8 h-full">
-            <p className="step-detail-label text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">Keep What You Love</p>
-            <h3 className="step-detail-title font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">Keep Your Favorite</h3>
-            <p className="step-detail-description text-[12px] text-muted-foreground font-sans leading-relaxed">
+          <div className="step-detail-card-mobile bg-card border border-border p-8 h-full relative overflow-hidden">
+            <GrainOverlay opacity={0.03} />
+            <p className="step-detail-label text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4 relative z-[1]">Keep What You Love</p>
+            <h3 className="step-detail-title font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4 relative z-[1]">Keep Your Favorite</h3>
+            <p className="step-detail-description text-[12px] text-muted-foreground font-sans leading-relaxed relative z-[1]">
               One piece per cycle is yours to keep — included in your membership.
               Want more? Members save 40% on any additional piece. Experience jewelry
               in real life, then build your collection through discovery.
             </p>
           </div>
-          <div className="step-detail-card-mobile bg-card border border-border p-8 h-full">
-            <p className="step-detail-label text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">Restored Between Every Wear</p>
-            <h3 className="step-detail-title font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">Sanitized & Sealed Protocol</h3>
-            <p className="step-detail-description text-[12px] text-muted-foreground font-sans leading-relaxed">
+          <div className="step-detail-card-mobile bg-card border border-border p-8 h-full relative overflow-hidden">
+            <GrainOverlay opacity={0.03} />
+            <p className="step-detail-label text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4 relative z-[1]">Restored Between Every Wear</p>
+            <h3 className="step-detail-title font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4 relative z-[1]">Sanitized & Sealed Protocol</h3>
+            <p className="step-detail-description text-[12px] text-muted-foreground font-sans leading-relaxed relative z-[1]">
               Our atelier restores every returning piece: hand cleaning, UV sanitization,
               4-point inspection (structure, surface, stones, mechanism), and sealed in
               protective packaging. What arrives at your door is indistinguishable from new.
@@ -123,10 +132,11 @@ const HowItWorks = () => {
       </section>
 
       {/* ══ Access Is The New Luxury ══ */}
-      <section className="border-t border-border">
-        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center">
+      <section className="border-t border-border relative overflow-hidden">
+        <GrainOverlay opacity={0.03} />
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center relative z-[1]">
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium tracking-[-0.01em] mb-4 text-ink">
-            Access Is{"\n"}The New Luxury
+            Access Is{"\n"}The New <ScribbleUnderline color="var(--brass)" delay={0.5}>Luxury</ScribbleUnderline>
           </h2>
           <p className="text-[13px] text-muted-foreground font-sans max-w-[520px] mx-auto mb-10 leading-relaxed">
             Two tiers of access. One philosophy: more beauty, less burden. Every membership includes protection, care, and free shipping.
@@ -136,8 +146,9 @@ const HowItWorks = () => {
       </section>
 
       {/* ══ Founding Member Access ══ */}
-      <section id="founding-circle" className="bg-[hsl(28,22%,34%)]">
-        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center">
+      <section id="founding-circle" className="bg-[hsl(28,22%,34%)] relative overflow-hidden">
+        <GrainOverlay opacity={0.05} />
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center relative z-[1]">
           <p className="text-[10px] tracking-[0.4em] uppercase text-[hsl(36,25%,78%)] mb-4 font-sans">
             Limited Invitation
           </p>
@@ -165,6 +176,9 @@ const HowItWorks = () => {
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-8">
         <OfferUnit variant="full" />
       </section>
+
+      {/* Wavy divider */}
+      <WavyDivider variant="double" className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16" />
 
       {/* ══ The 5 Trust Standards ══ */}
       <SectionHeading label="Your Guarantee" heading="The 5 Trust Standards" />
@@ -198,6 +212,15 @@ const HowItWorks = () => {
           ))}
         </div>
       </section>
+
+      {/* Margin note */}
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-8 hidden md:block">
+        <div className="max-w-md ml-auto">
+          <MarginNote attribution="GEA Care Team">
+            Every piece that returns to our atelier is treated as if it were brand new. That's the standard.
+          </MarginNote>
+        </div>
+      </div>
 
       {/* FAQ */}
       <SectionHeading label="Common Questions" heading="Everything You Need to Know" />

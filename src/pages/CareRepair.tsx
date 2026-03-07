@@ -3,6 +3,10 @@ import { PageLayout } from "@/components/layout/PageLayout";
 import { PageHero } from "@/components/layout/PageHero";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
+import { GrainOverlay } from "@/components/craft/GrainOverlay";
+import { WavyDivider } from "@/components/craft/WavyDivider";
+import { ScribbleUnderline } from "@/components/craft/ScribbleUnderline";
+import { MarginNote } from "@/components/craft/MarginNote";
 
 const steps = [
   { title: "Ultrasonic Cleaning", description: "Professional-grade ultrasonic bath removes oils, residue, and micro-debris from every surface and setting." },
@@ -27,14 +31,15 @@ const CareRepair = () => {
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {steps.map((s, i) => (
             <StaggerItem key={s.title}>
-              <div className="border border-border bg-card p-8 h-full">
-                <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">
+              <div className="border border-border bg-card p-8 h-full relative overflow-hidden">
+                <GrainOverlay opacity={0.03} />
+                <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4 relative z-[1]">
                   Step {String(i + 1).padStart(2, "0")}
                 </p>
-                <h3 className="font-serif text-lg font-semibold tracking-[0.02em] mb-3">
+                <h3 className="font-serif text-lg font-semibold tracking-[0.02em] mb-3 relative z-[1]">
                   {s.title}
                 </h3>
-                <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
+                <p className="text-[12px] text-muted-foreground font-sans leading-relaxed relative z-[1]">
                   {s.description}
                 </p>
               </div>
@@ -43,17 +48,21 @@ const CareRepair = () => {
         </StaggerContainer>
       </section>
 
+      {/* Wavy divider */}
+      <WavyDivider variant="double" className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 mb-4" />
+
       {/* Care tips */}
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <AnimateIn variant="fadeUp" duration={0.6}>
-          <div className="border border-border bg-card p-10 md:p-14">
-            <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">
+          <div className="border border-border bg-card p-10 md:p-14 relative overflow-hidden">
+            <GrainOverlay opacity={0.03} />
+            <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4 relative z-[1]">
               While It's Yours
             </p>
-            <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-6">
-              Simple Care Guidelines
+            <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-6 relative z-[1]">
+              Simple Care <ScribbleUnderline color="var(--brass)" delay={0.4}>Guidelines</ScribbleUnderline>
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-[1]">
               <div>
                 <p className="text-[12px] text-foreground font-sans leading-relaxed mb-3">
                   <strong>Wear freely.</strong> Normal wear is fully covered under your membership. 
@@ -79,9 +88,19 @@ const CareRepair = () => {
         </AnimateIn>
       </section>
 
+      {/* Margin note */}
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-8 hidden md:block">
+        <div className="max-w-md ml-auto">
+          <MarginNote attribution="GEA Atelier">
+            We treat every returning piece as if it were being prepared for its very first wear.
+          </MarginNote>
+        </div>
+      </div>
+
       {/* CTA */}
-      <section className="border-t border-border">
-        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center">
+      <section className="border-t border-border relative overflow-hidden">
+        <GrainOverlay opacity={0.03} />
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center relative z-[1]">
           <AnimateIn variant="fadeUp" duration={0.5}>
             <h2 className="font-serif text-2xl md:text-3xl tracking-[0.06em] uppercase font-medium mb-4">
               Every Piece, Perfectly Prepared

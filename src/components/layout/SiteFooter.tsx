@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { NewsletterCapture } from "@/components/shared/NewsletterCapture";
+import { WavyDivider } from "@/components/craft/WavyDivider";
 
 const footerLinks = {
   Membership: [
@@ -26,6 +27,9 @@ export const SiteFooter = ({ hideNewsletter }: { hideNewsletter?: boolean }) => 
     <footer className="border-t border-border bg-background">
       {/* Newsletter section */}
       {!hideNewsletter && <NewsletterCapture />}
+
+      {/* Wavy divider between newsletter and links */}
+      <WavyDivider className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16" />
 
       {/* Links grid */}
       <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-14">

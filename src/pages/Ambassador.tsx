@@ -3,6 +3,9 @@ import { PageLayout } from "@/components/layout/PageLayout";
 import { PageHero } from "@/components/layout/PageHero";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
+import { GrainOverlay } from "@/components/craft/GrainOverlay";
+import { WavyDivider } from "@/components/craft/WavyDivider";
+import { ScribbleUnderline } from "@/components/craft/ScribbleUnderline";
 
 const benefits = [
   "Complimentary Atelier-tier membership",
@@ -38,11 +41,15 @@ const Ambassador = () => {
         </div>
       </section>
 
-      <section className="bg-card border-t border-border">
-        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center">
+      {/* Wavy divider */}
+      <WavyDivider className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 mb-4" />
+
+      <section className="bg-card border-t border-border relative overflow-hidden">
+        <GrainOverlay opacity={0.03} />
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center relative z-[1]">
           <AnimateIn variant="fadeUp" duration={0.5}>
             <h2 className="font-serif text-2xl md:text-3xl tracking-[0.06em] uppercase font-medium mb-4">
-              Apply to Represent
+              Apply to <ScribbleUnderline color="var(--brass)" delay={0.4}>Represent</ScribbleUnderline>
             </h2>
             <p className="text-[12px] text-muted-foreground font-sans mb-8 max-w-[400px] mx-auto">
               We review applications quarterly. Share your story, your platform, and why GEA aligns with your identity.
