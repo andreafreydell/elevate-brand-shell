@@ -78,6 +78,11 @@ export default {
         brass: "var(--brass)",
         "tag-red": "var(--tag-red)",
       },
+      fontFamily: {
+        serif: ["var(--font-serif)"],
+        sans: ["var(--font-sans)"],
+        script: ["var(--font-script)"],
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
