@@ -156,7 +156,7 @@ const Index = () => {
           <StaggerItem>
             <div className="philosophy-card-mobile bg-card border border-border p-10 md:p-14 h-full transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:-translate-y-[3px] hover:border-foreground hover:border-2">
               {/* Own vs Access Infographic — spec #3 */}
-              <div className="philosophy-chart-mobile bg-background border border-border p-10 mb-8 overflow-hidden min-h-[450px]">
+              <div className="philosophy-chart-mobile bg-background border border-border p-10 mb-8 overflow-hidden min-h-[315px]">
                 <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
                   <defs>
                     <linearGradient id="ownBg" x1="0" y1="0" x2="400" y2="300">
