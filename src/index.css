@@ -182,7 +182,6 @@
     letter-spacing: 0.02em;
     line-height: 1.25;
     font-size: 1.15rem;
-    color: hsl(var(--ink));
   }
 
   h4, h5, h6 {
