@@ -20,6 +20,7 @@ import { ScriptNumber } from "@/components/craft/ScriptNumber";
 import { OrganicBlobTag } from "@/components/craft/OrganicBlobTag";
 import { SketchyBorderCard } from "@/components/craft/SketchyBorderCard";
 import { DotGridTexture } from "@/components/craft/DotGridTexture";
+import { HandDrawnArrow } from "@/components/craft/HandDrawnArrow";
 import { TornPaperEdge } from "@/components/craft/TornPaperEdge";
 import { StitchLineDivider } from "@/components/craft/StitchLineDivider";
 import { DiamondChainBorder } from "@/components/craft/DiamondChainBorder";
@@ -120,11 +121,19 @@ const Index = () => {
           ═══════════════════════════════════════════ */}
       <SectionHeading label="The Process" heading="How It Works" />
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
-        <StaggerContainer className="flex flex-col md:flex-row gap-4 md:items-stretch [&>*]:md:flex-1 [&>*]:md:basis-0 [&>*]:md:min-w-0">
+        <StaggerContainer className="flex flex-col md:flex-row gap-0 md:items-stretch [&>*:not(.arrow-connector)]:md:flex-1 [&>*:not(.arrow-connector)]:md:basis-0 [&>*:not(.arrow-connector)]:md:min-w-0">
           <StaggerItem><StepBlock number="01" title="Choose" description="Browse our curated vault and select the pieces that speak to your moment." icon={Hand} /></StaggerItem>
+          <HandDrawnArrow direction="swoopy" className="arrow-connector hidden md:flex mx-[-8px] self-center" delay={0.4} />
+          <HandDrawnArrow direction="down" className="arrow-connector md:hidden self-center my-1" delay={0.4} />
           <StaggerItem><StepBlock number="02" title="Receive" description="Your selections arrive in 1–3 days, freshly restored and sealed in our signature packaging." icon={Package} /></StaggerItem>
+          <HandDrawnArrow direction="curved-right" className="arrow-connector hidden md:flex mx-[-8px] self-center" delay={0.6} color="var(--seafoam)" />
+          <HandDrawnArrow direction="down" className="arrow-connector md:hidden self-center my-1" delay={0.6} color="var(--seafoam)" />
           <StaggerItem><StepBlock number="03" title="Wear" description="Style them for your life — the event, the meeting, the dinner, the everyday." icon={Sparkles} /></StaggerItem>
+          <HandDrawnArrow direction="swoopy" className="arrow-connector hidden md:flex mx-[-8px] self-center" delay={0.8} />
+          <HandDrawnArrow direction="down" className="arrow-connector md:hidden self-center my-1" delay={0.8} />
           <StaggerItem><StepBlock number="04" title="Keep Your Favorite" description="One piece per cycle is yours to keep — included in your membership. Want more? Members save 40% on any additional piece." icon={Heart} /></StaggerItem>
+          <HandDrawnArrow direction="right" className="arrow-connector hidden md:flex mx-[-8px] self-center" delay={1.0} color="var(--seafoam)" />
+          <HandDrawnArrow direction="down" className="arrow-connector md:hidden self-center my-1" delay={1.0} color="var(--seafoam)" />
           <StaggerItem><StepBlock number="05" title="Refresh" description="When you're ready for something new, return and choose your next chapter." icon={RefreshCw} /></StaggerItem>
         </StaggerContainer>
         <div className="text-center mt-10">
