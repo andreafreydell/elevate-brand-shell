@@ -42,7 +42,7 @@ const Index = () => {
             <img
               src="/images/hero-authority.png"
               alt="Layered gold and moissanite necklaces on model"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-top md:object-center"
               width={480}
               height={720}
               fetchPriority="high"
