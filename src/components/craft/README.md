@@ -171,12 +171,257 @@ import { ScriptNumber } from "@/components/craft/ScriptNumber";
 
 ---
 
+## 9. OrganicBlobTag
+
+Irregular pooling shape behind labels. Each outfit style has a unique blob path.
+
+**Props:**
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode` | required | The label text |
+| `variant` | `"coastal" \| "statement" \| "modern" \| "classic"` | `"coastal"` | Blob shape & color |
+| `className` | `string` | `""` | Additional classes |
+
+**Usage:**
+```tsx
+import { OrganicBlobTag } from "@/components/craft/OrganicBlobTag";
+
+<OrganicBlobTag variant="coastal">Coastal</OrganicBlobTag>
+<OrganicBlobTag variant="statement">Editorial</OrganicBlobTag>
+```
+
+---
+
+## 10. SketchyBorderCard
+
+Wobbly SVG border that mimics a hand-drawn box. For curator notes and editorial asides. NOT for product cards.
+
+**Props:**
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode` | required | Card content |
+| `label` | `string` | `"EDITOR'S NOTE"` | Top label text |
+| `className` | `string` | `""` | Additional classes |
+| `pathVariant` | `number` | `0` | Unique wobble variant (0–2) |
+
+**Usage:**
+```tsx
+import { SketchyBorderCard } from "@/components/craft/SketchyBorderCard";
+
+<SketchyBorderCard label="CURATOR'S NOTE" pathVariant={1}>
+  <h3 className="font-serif text-lg">Why We Chose This Piece</h3>
+  <p>The weight sits just right...</p>
+</SketchyBorderCard>
+```
+
+---
+
+## 11. DotGridTexture
+
+CSS-only dot pattern that reads as graph paper. Apply as a section background.
+
+**Props:**
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode` | optional | Content inside the grid |
+| `className` | `string` | `""` | Additional classes |
+| `dotSize` | `number` | `0.8` | Dot radius in px |
+| `spacing` | `number` | `18` | Grid spacing in px |
+
+**Usage:**
+```tsx
+import { DotGridTexture } from "@/components/craft/DotGridTexture";
+
+<DotGridTexture className="min-h-[200px] p-8">
+  {/* Content on dot-grid background */}
+</DotGridTexture>
+```
+
+---
+
+## 12. TornPaperEdge
+
+Jagged SVG line divider that replaces `<hr>`. Between sections, below hero, above footer.
+
+**Props:**
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | `""` | Additional classes |
+| `color` | `string` | `"hsl(var(--border))"` | Stroke color |
+
+**Usage:**
+```tsx
+import { TornPaperEdge } from "@/components/craft/TornPaperEdge";
+
+<TornPaperEdge className="my-8" />
+```
+
+---
+
+## 13. StitchLineDivider
+
+Dashed line that reads as a sewn seam. Lighter alternative to torn edge.
+
+**Props:**
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | `""` | Additional classes |
+| `color` | `string` | `"hsl(var(--border))"` | Stroke color |
+
+**Usage:**
+```tsx
+import { StitchLineDivider } from "@/components/craft/StitchLineDivider";
+
+<StitchLineDivider className="my-6" />
+```
+
+---
+
+## 14. DiamondChainBorder
+
+Repeating geometric diamond motif using SVG `<pattern>`. For editorial pages and section borders.
+
+**Props:**
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | `""` | Additional classes |
+
+**Usage:**
+```tsx
+import { DiamondChainBorder } from "@/components/craft/DiamondChainBorder";
+
+<DiamondChainBorder className="my-10" />
+```
+
+---
+
+## 15. WashiTapeNote
+
+Pinned note card with decorative washi tape strip. For curator picks and editorial asides.
+
+**Props:**
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode` | required | Note content |
+| `label` | `string` | `"CURATOR'S PICK"` | Top label |
+| `tapeColor` | `string` | `"var(--seafoam)"` | Tape strip color |
+| `rotation` | `number` | `-1.5` | Note rotation in degrees |
+| `className` | `string` | `""` | Additional classes |
+
+**Usage:**
+```tsx
+import { WashiTapeNote } from "@/components/craft/WashiTapeNote";
+
+<WashiTapeNote label="CURATOR'S PICK" tapeColor="var(--blush-peach)">
+  <h3 className="font-serif text-lg">Mara Chain Necklace</h3>
+  <p>The asymmetric clasp lets the chain drape off-center...</p>
+</WashiTapeNote>
+```
+
+---
+
+## 16. HandDrawnRect
+
+SVG rect with feTurbulence + feDisplacementMap for organic edge wobble. For material intel cards and editorial callout boxes.
+
+**Props:**
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode` | required | Card content |
+| `className` | `string` | `""` | Additional classes |
+| `strokeColor` | `string` | `"hsl(var(--foreground))"` | Border stroke color |
+
+**Usage:**
+```tsx
+import { HandDrawnRect } from "@/components/craft/HandDrawnRect";
+
+<HandDrawnRect>
+  <p className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-3">MATERIAL INTEL</p>
+  <h3 className="font-serif text-lg">Brass-Core Construction</h3>
+</HandDrawnRect>
+```
+
+---
+
+## 17. MarkerCircle
+
+Double-ellipse marker circle with displacement filter. Mimics a felt-tip pen circle. For pricing and trust emphasis.
+
+**Props:**
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode` | required | The text to circle |
+| `color` | `string` | `"var(--tag-red)"` | Stroke color |
+| `className` | `string` | `""` | Additional classes |
+
+**Usage:**
+```tsx
+import { MarkerCircle } from "@/components/craft/MarkerCircle";
+
+<p>Starting at <MarkerCircle>$69/mo</MarkerCircle></p>
+```
+
+---
+
+## 18. HandDrawnFrame
+
+Responsive SVG rect + displacement that stretches with any container. For access comparison sections and philosophy statements.
+
+**Props:**
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode` | required | Frame content |
+| `className` | `string` | `""` | Additional classes |
+| `strokeColor` | `string` | `"hsl(var(--foreground))"` | Border stroke color |
+
+**Usage:**
+```tsx
+import { HandDrawnFrame } from "@/components/craft/HandDrawnFrame";
+
+<HandDrawnFrame className="max-w-[600px]">
+  <h3 className="font-serif text-xl">Why Rent When You Can Access?</h3>
+  <p>Ownership is a 20th-century model...</p>
+</HandDrawnFrame>
+```
+
+---
+
+## 19. TagRedStamp
+
+Brand signature tag-red square stamp. Place on every SVG infographic and dark panel.
+
+**Props:**
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | `""` | Additional classes (use for positioning) |
+| `size` | `number` | `16` | Size in pixels |
+
+**Usage:**
+```tsx
+import { TagRedStamp } from "@/components/craft/TagRedStamp";
+
+<TagRedStamp className="absolute bottom-5 right-5 z-10" />
+```
+
+---
+
 ## Design Rules
 
 - **ScribbleUnderline**: Max 1 per section headline
 - **CircleEmphasis**: Use tag-red for urgency, brass for trust
-- **GrainOverlay**: Always inside `relative overflow-hidden` parent
+- **GrainOverlay**: Always inside `relative overflow-hidden` parent; systemic on all dark panels
 - **StampBadge**: Always rotate −3° to −8°, opacity kept low (0.4–0.6)
 - **ScriptNumber**: Only for numbers, never body copy
 - **WavyDivider**: Use between major content sections
 - **WaxSeal / MarginNote**: Decorative accents, don't overuse
+- **OrganicBlobTag**: Systemic on all product cards for OUTFIT_STYLE
+- **SketchyBorderCard**: NOT for product cards — editorial content only
+- **TornPaperEdge / StitchLineDivider**: Pick ONE per divider location, never stack
+- **DiamondChainBorder**: For editorial and about pages
+- **WashiTapeNote**: Rotation −1.5° to +1°, never more than 2°
+- **HandDrawnRect / HandDrawnFrame**: One per container, never double-load
+- **MarkerCircle**: For pricing emphasis and trust claims
+- **TagRedStamp**: Required on every SVG infographic and dark panel
+- **Density**: Max 2 artisanal SVG elements visible per screen (grain/stamp don't count)
+- **Opacity**: Always 0.2–0.6 — never solid or heavy
+- **Corners**: Still `rounded-none` everywhere — these layer on top of the design system
