@@ -3,6 +3,7 @@ import { PageLayout } from "@/components/layout/PageLayout";
 import { PageHero } from "@/components/layout/PageHero";
 import { AnimateIn } from "@/components/shared/AnimateIn";
 import { GrainOverlay } from "@/components/craft/GrainOverlay";
+import { ScribbleUnderline } from "@/components/craft/ScribbleUnderline";
 import { WaxSeal } from "@/components/craft/WaxSeal";
 import { TornPaperEdge } from "@/components/craft/TornPaperEdge";
 import { HandDrawnRect } from "@/components/craft/HandDrawnRect";
@@ -39,7 +40,7 @@ const Contact = () => {
     <PageLayout>
       <PageHero
         label="Concierge"
-        headline={"We're Here\nfor You"}
+        headline={<>We're Here<br />for <ScribbleUnderline>You</ScribbleUnderline></>}
         subtitle="Whether it's a styling question, a membership inquiry, or simply a conversation — our concierge team responds within 24 hours."
       />
 

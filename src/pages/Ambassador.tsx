@@ -3,9 +3,9 @@ import { PageLayout } from "@/components/layout/PageLayout";
 import { PageHero } from "@/components/layout/PageHero";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
+import { ScribbleUnderline } from "@/components/craft/ScribbleUnderline";
 import { GrainOverlay } from "@/components/craft/GrainOverlay";
 import { WavyDivider } from "@/components/craft/WavyDivider";
-import { ScribbleUnderline } from "@/components/craft/ScribbleUnderline";
 import { TornPaperEdge } from "@/components/craft/TornPaperEdge";
 import { DiamondChainBorder } from "@/components/craft/DiamondChainBorder";
 import { HandDrawnFrame } from "@/components/craft/HandDrawnFrame";
@@ -28,7 +28,7 @@ const Ambassador = () => {
     <PageLayout>
       <PageHero
         label="Represent"
-        headline={"Become a GEA\nAmbassador"}
+        headline={<>Become a GEA<br /><ScribbleUnderline>Ambassador</ScribbleUnderline></>}
         subtitle="We partner with women who embody access, intention, and visual authority. Not influencers — ambassadors."
       />
 

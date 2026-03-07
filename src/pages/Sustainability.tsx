@@ -3,8 +3,8 @@ import { PageLayout } from "@/components/layout/PageLayout";
 import { PageHero } from "@/components/layout/PageHero";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { ValueBlock } from "@/components/shared/ValueBlock";
-import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
 import { ScribbleUnderline } from "@/components/craft/ScribbleUnderline";
+import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
 import { CircleEmphasis } from "@/components/craft/CircleEmphasis";
 import { GrainOverlay } from "@/components/craft/GrainOverlay";
 import { WavyDivider } from "@/components/craft/WavyDivider";
@@ -33,7 +33,7 @@ const Sustainability = () => {
     <PageLayout>
       <PageHero
         label="Responsibility"
-        headline={"Beauty Without\nExtraction"}
+        headline={<>Beauty Without<br /><ScribbleUnderline>Extraction</ScribbleUnderline></>}
         subtitle="The jewelry industry mines the earth and fills drawers. GEA operates differently — lab-created stones, circular access, and in-house restoration."
       />
 
