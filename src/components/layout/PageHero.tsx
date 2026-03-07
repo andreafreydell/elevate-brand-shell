@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { AnimateIn } from "@/components/shared/AnimateIn";
+import { GrainOverlay } from "@/components/craft/GrainOverlay";
 
 interface PageHeroProps {
   label?: string;
@@ -12,8 +13,9 @@ interface PageHeroProps {
 
 export const PageHero = ({ label, headline, subtitle, cta, ctaHref = "/membership", heroMobileCompact = false }: PageHeroProps) => {
   return (
-    <section className={`bg-foreground ${heroMobileCompact ? 'page-hero-section-mobile' : 'hero-section-mobile'}`}>
-      <div className={`max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-24 md:py-32 lg:py-40 flex flex-col items-center text-center ${heroMobileCompact ? 'page-hero-mobile' : ''}`}>
+    <section className={`bg-foreground relative overflow-hidden ${heroMobileCompact ? 'page-hero-section-mobile' : 'hero-section-mobile'}`}>
+      <GrainOverlay opacity={0.05} />
+      <div className={`max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-24 md:py-32 lg:py-40 flex flex-col items-center text-center relative z-[1] ${heroMobileCompact ? 'page-hero-mobile' : ''}`}>
         {label && (
           <AnimateIn variant="fadeIn" duration={0.6}>
             <p className="text-[10px] tracking-[0.4em] uppercase text-background/60 mb-6 font-sans">

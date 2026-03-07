@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { GrainOverlay } from "@/components/craft/GrainOverlay";
+import { WaxSeal } from "@/components/craft/WaxSeal";
 
 export const NewsletterCapture = () => {
   const [email, setEmail] = useState("");
@@ -27,9 +29,12 @@ export const NewsletterCapture = () => {
   };
 
   return (
-    <div id="founding-access" className="border-b border-border">
-      <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-14 md:py-16">
-        <div className="max-w-[520px] mx-auto text-center">
+    <div id="founding-access" className="border-b border-border relative overflow-hidden">
+      <GrainOverlay opacity={0.03} />
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-14 md:py-16 relative z-[1]">
+        <div className="max-w-[520px] mx-auto text-center relative">
+          {/* Decorative wax seal */}
+          <WaxSeal size={36} className="absolute -top-2 -right-8 hidden md:inline-flex" />
           <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">
             Founding Access
           </p>
