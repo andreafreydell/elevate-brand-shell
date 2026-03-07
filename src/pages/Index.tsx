@@ -9,7 +9,7 @@ import { TrustStrip } from "@/components/shared/TrustStrip";
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
 import { OfferUnit } from "@/components/membership/OfferUnit";
 import { ProductImageRow } from "@/components/ProductImageRow";
-import { Loader2, Hand, Package, Sparkles, RefreshCw, Shield, Wrench, Truck, Gem, Ban, Heart, Shuffle, CalendarPlus, Feather, Scale, Zap } from "lucide-react";
+import { Loader2, Hand, Package, Sparkles, RefreshCw, Gem, Heart, Shuffle, CalendarPlus, Feather, Scale, Zap } from "lucide-react";
 
 const Index = () => {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
@@ -332,28 +332,7 @@ const Index = () => {
       <section className="tier-section-mobile max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-8">
         <OfferUnit variant="standard" />
         <div className="text-center mt-6">
-          <TrustStrip variant="compact" />
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════
-          7b. TRUST STRIP (5 standards)
-          ═══════════════════════════════════════════ */}
-      <section className="trust-badges-section-mobile max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
-        <div className="trust-badges-grid-mobile flex flex-wrap md:flex items-center justify-center gap-x-8 gap-y-3">
-          {[
-            { icon: Shield, text: "Sanitized & Sealed" },
-            { icon: Wrench, text: "Repair Guarantee" },
-            { icon: Truck, text: "Secure Delivery" },
-            { icon: Gem, text: "Damage Clarity" },
-            { icon: Gem, text: "Keep Your Favorite" },
-            { icon: Ban, text: "Cancel Anytime" },
-          ].map((item) => (
-            <div key={item.text} className="trust-badge-item flex items-center gap-1.5 text-[10px] tracking-[0.15em] uppercase font-sans text-muted-foreground">
-              <item.icon className="trust-badge-icon h-3.5 w-3.5 stroke-[1.5]" />
-              <span>{item.text}</span>
-            </div>
-          ))}
+          <TrustStrip variant="full" />
         </div>
       </section>
 
