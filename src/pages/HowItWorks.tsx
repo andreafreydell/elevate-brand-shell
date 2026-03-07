@@ -124,7 +124,7 @@ const HowItWorks = () => {
       {/* ══ Access Is The New Luxury ══ */}
       <section className="border-t border-border">
         <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center">
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium tracking-[-0.01em] mb-4">
+          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium tracking-[-0.01em] mb-4 text-ink">
             Access Is{"\n"}The New Luxury
           </h2>
           <p className="text-[13px] text-muted-foreground font-sans max-w-[520px] mx-auto mb-10 leading-relaxed">
