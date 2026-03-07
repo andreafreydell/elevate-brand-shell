@@ -451,4 +451,27 @@
       font-size: 11px;
     }
   }
+
+  /* Mobile-only compact trust badges styling */
+  @media (max-width: 768px) {
+    .trust-badges-section-mobile {
+      padding: 12px;
+    }
+
+    .trust-badges-grid-mobile {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+    }
+
+    .trust-badge-item {
+      font-size: 9px;
+      gap: 4px;
+    }
+
+    .trust-badge-icon {
+      width: 14px;
+      height: 14px;
+    }
+  }
 }
