@@ -102,7 +102,7 @@ export const SavingsCalculator = () => {
             </div>
             <div className="bg-background p-6">
               <p className="text-[10px] tracking-[0.25em] uppercase font-sans text-muted-foreground mb-1">
-                Annual Value
+                Annual Savings
               </p>
               <p className="font-serif text-2xl font-medium text-[hsl(142,50%,36%)]">
                 ${yearlySavings.toLocaleString(undefined, { maximumFractionDigits: 0 })}
