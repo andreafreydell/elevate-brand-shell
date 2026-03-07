@@ -51,7 +51,7 @@ const About = () => {
                 jewelry that moves with your life, evolves with your taste, and carries no burden.
                 Access is luxury. Presence is the only possession that matters.
               </p>
-              <img src="/images/founder-signature.png" alt="Founder signature — Maria F. Freydell" className="h-16 mt-8 mix-blend-multiply" loading="lazy" decoding="async" />
+              <img src="/images/founder-signature.png" alt="Founder signature — Andrea Freydell" className="max-w-xs h-auto mt-8" loading="lazy" decoding="async" />
             </div>
           </AnimateIn>
         </div>
