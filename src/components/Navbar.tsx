@@ -5,13 +5,13 @@ import { Search, User, Heart, Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "New", href: "/" },
+  { label: "Our Story", href: "/about" },
+  { label: "How It Works", href: "/how-it-works" },
   { label: "Browse All", href: "/browse" },
   { label: "Earrings", href: "/earrings" },
   { label: "Necklaces", href: "/necklaces" },
   { label: "Rings", href: "/rings" },
   { label: "Bracelets", href: "/bracelets" },
-  { label: "How It Works", href: "/how-it-works" },
-  { label: "Our Story", href: "/about" },
 ];
 
 export const Navbar = () => {
