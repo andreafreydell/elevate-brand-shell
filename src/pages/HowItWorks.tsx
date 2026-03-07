@@ -13,6 +13,7 @@ import { AutoCarousel } from "@/components/shared/AutoCarousel";
 import { ScribbleUnderline } from "@/components/craft/ScribbleUnderline";
 import { CircleEmphasis } from "@/components/craft/CircleEmphasis";
 import { GrainOverlay } from "@/components/craft/GrainOverlay";
+import { HandDrawnArrow } from "@/components/craft/HandDrawnArrow";
 import { WavyDivider } from "@/components/craft/WavyDivider";
 import { MarginNote } from "@/components/craft/MarginNote";
 import { StampBadge } from "@/components/craft/StampBadge";
