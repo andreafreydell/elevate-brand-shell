@@ -298,4 +298,43 @@
       gap: 6px;
     }
   }
+
+  /* Mobile-only compact value block styling */
+  @media (max-width: 768px) {
+    .value-block-mobile {
+      padding: 8px 12px;
+    }
+
+    .value-block-mobile .value-label {
+      font-size: 9px;
+    }
+
+    .value-block-mobile .value-title {
+      font-size: 13px;
+    }
+
+    .value-block-mobile .value-description {
+      font-size: 11px;
+    }
+
+    .value-block-mobile .value-icon {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  /* Mobile-only section padding for value blocks */
+  @media (max-width: 768px) {
+    .value-section-mobile {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }
+
+  /* Mobile-only gap for value blocks grid */
+  @media (max-width: 768px) {
+    .value-grid-mobile {
+      gap: 6px;
+    }
+  }
 }
