@@ -94,7 +94,7 @@ export const SavingsCalculator = () => {
                 GEA Cost/Wear
               </p>
               <p className="font-serif text-2xl font-medium">
-                ${geaCostPerWear.toFixed(0)}
+                ${geaCostPerWear < 1 ? geaCostPerWear.toFixed(2) : geaCostPerWear.toFixed(2)}
               </p>
               <p className="text-[10px] text-background/60 font-sans mt-1">
                 ${tier.price}/mo ÷ {tier.pieces * wearsPerPiece} total wears
