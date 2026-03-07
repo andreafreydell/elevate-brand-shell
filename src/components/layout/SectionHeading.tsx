@@ -4,9 +4,10 @@ interface SectionHeadingProps {
   label?: string;
   heading: string;
   className?: string;
+  headingMobile?: boolean;
 }
 
-export const SectionHeading = ({ label, heading, className = "" }: SectionHeadingProps) => {
+export const SectionHeading = ({ label, heading, className = "", headingMobile = false }: SectionHeadingProps) => {
   return (
     <AnimateIn variant="fadeUp" duration={0.5}>
       <div className={`max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pt-16 md:pt-24 pb-10 text-center ${className}`}>
@@ -15,7 +16,7 @@ export const SectionHeading = ({ label, heading, className = "" }: SectionHeadin
             {label}
           </p>
         )}
-        <h2 className="section-heading">{heading}</h2>
+        <h2 className={`section-heading ${headingMobile ? 'section-heading-mobile' : ''}`}>{heading}</h2>
       </div>
     </AnimateIn>
   );
