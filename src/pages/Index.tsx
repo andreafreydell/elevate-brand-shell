@@ -154,6 +154,33 @@ const Index = () => {
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-[2px]">
           <StaggerItem>
             <div className="bg-card border border-border p-10 md:p-14 h-full">
+              {/* Infographic */}
+              <div className="bg-background border border-border p-6 mb-8">
+                <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
+                  {/* Declining value curve */}
+                  <text x="20" y="20" fontSize="9" fill="hsl(28,8%,48%)" fontFamily="Inter,sans-serif" letterSpacing="0.25em" textAnchor="start">VALUE OVER TIME</text>
+                  <line x1="40" y1="40" x2="40" y2="170" stroke="hsl(30,12%,40%)" strokeWidth="1"/>
+                  <line x1="40" y1="170" x2="380" y2="170" stroke="hsl(30,12%,40%)" strokeWidth="1"/>
+                  {/* Steep decline path */}
+                  <path d="M50 50 C100 52, 140 100, 180 140 S280 165, 370 168" stroke="hsl(0,60%,48%)" strokeWidth="2" strokeDasharray="6 3" fill="none"/>
+                  {/* Worn count markers */}
+                  <circle cx="80" cy="58" r="3" fill="hsl(28,12%,14%)"/>
+                  <circle cx="130" cy="95" r="3" fill="hsl(28,12%,14%)"/>
+                  <circle cx="180" cy="140" r="3" fill="hsl(28,12%,14%)"/>
+                  <circle cx="260" cy="162" r="3" fill="hsl(28,12%,14%)"/>
+                  <circle cx="370" cy="168" r="3" fill="hsl(28,12%,14%)"/>
+                  {/* Labels */}
+                  <text x="75" y="50" fontSize="8" fill="hsl(28,8%,48%)" fontFamily="Inter,sans-serif">Wear 1</text>
+                  <text x="125" y="87" fontSize="8" fill="hsl(28,8%,48%)" fontFamily="Inter,sans-serif">Wear 2</text>
+                  <text x="175" y="133" fontSize="8" fill="hsl(28,8%,48%)" fontFamily="Inter,sans-serif">Wear 3</text>
+                  <text x="255" y="155" fontSize="8" fill="hsl(28,8%,48%)" fontFamily="Inter,sans-serif">Wear 4–5</text>
+                  <text x="330" y="160" fontSize="8" fill="hsl(28,8%,48%)" fontFamily="Inter,sans-serif">Forgotten</text>
+                  {/* Cost label */}
+                  <rect x="240" y="70" width="120" height="36" rx="0" fill="hsl(37,30%,93%)" stroke="hsl(30,12%,40%)" strokeWidth="1"/>
+                  <text x="300" y="85" fontSize="9" fill="hsl(28,12%,14%)" fontFamily="Inter,sans-serif" textAnchor="middle" fontWeight="600">$3,200 spent</text>
+                  <text x="300" y="98" fontSize="8" fill="hsl(0,60%,48%)" fontFamily="Inter,sans-serif" textAnchor="middle">5 wears = $640/wear</text>
+                </svg>
+              </div>
               <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">The Old Model</p>
               <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">Ownership Is a Liability</h3>
               <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
@@ -165,6 +192,41 @@ const Index = () => {
           </StaggerItem>
           <StaggerItem>
             <div className="bg-foreground text-background p-10 md:p-14 h-full">
+              {/* Infographic */}
+              <div className="bg-[hsl(37,30%,93%)] border border-[hsl(30,12%,60%)] p-6 mb-8">
+                <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
+                  <text x="20" y="20" fontSize="9" fill="hsl(28,8%,48%)" fontFamily="Inter,sans-serif" letterSpacing="0.25em" textAnchor="start">ACCESS CYCLE</text>
+                  {/* Circular flow */}
+                  <circle cx="200" cy="115" r="65" stroke="hsl(30,12%,40%)" strokeWidth="1" fill="none" strokeDasharray="4 4"/>
+                  {/* Center */}
+                  <circle cx="200" cy="115" r="22" fill="hsl(28,12%,14%)"/>
+                  <text x="200" y="112" fontSize="8" fill="hsl(37,30%,93%)" fontFamily="Inter,sans-serif" textAnchor="middle" fontWeight="600">THE</text>
+                  <text x="200" y="122" fontSize="8" fill="hsl(37,30%,93%)" fontFamily="Inter,sans-serif" textAnchor="middle" fontWeight="600">VAULT</text>
+                  {/* Orbit nodes */}
+                  <circle cx="200" cy="50" r="14" fill="hsl(28,12%,14%)" />
+                  <text x="200" y="54" fontSize="7" fill="hsl(37,30%,93%)" fontFamily="Inter,sans-serif" textAnchor="middle">SELECT</text>
+                  <circle cx="265" cy="115" r="14" fill="hsl(28,12%,14%)" />
+                  <text x="265" y="119" fontSize="7" fill="hsl(37,30%,93%)" fontFamily="Inter,sans-serif" textAnchor="middle">WEAR</text>
+                  <circle cx="200" cy="180" r="14" fill="hsl(28,12%,14%)" />
+                  <text x="200" y="184" fontSize="7" fill="hsl(37,30%,93%)" fontFamily="Inter,sans-serif" textAnchor="middle">RETURN</text>
+                  <circle cx="135" cy="115" r="14" fill="hsl(28,12%,14%)" />
+                  <text x="135" y="119" fontSize="7" fill="hsl(37,30%,93%)" fontFamily="Inter,sans-serif" textAnchor="middle">REFRESH</text>
+                  {/* Flow arrows */}
+                  <path d="M214 52 L250 100" stroke="hsl(28,12%,14%)" strokeWidth="1.5" markerEnd="url(#arrowDark)"/>
+                  <path d="M263 130 L215 175" stroke="hsl(28,12%,14%)" strokeWidth="1.5" markerEnd="url(#arrowDark)"/>
+                  <path d="M186 178 L150 130" stroke="hsl(28,12%,14%)" strokeWidth="1.5" markerEnd="url(#arrowDark)"/>
+                  <path d="M137 100 L185 55" stroke="hsl(28,12%,14%)" strokeWidth="1.5" markerEnd="url(#arrowDark)"/>
+                  <defs>
+                    <marker id="arrowDark" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                      <path d="M0 0 L8 3 L0 6" fill="hsl(28,12%,14%)"/>
+                    </marker>
+                  </defs>
+                  {/* Bottom label */}
+                  <rect x="290" y="160" width="100" height="30" fill="hsl(37,30%,93%)" stroke="hsl(30,12%,40%)" strokeWidth="1"/>
+                  <text x="340" y="175" fontSize="8" fill="hsl(28,12%,14%)" fontFamily="Inter,sans-serif" textAnchor="middle" fontWeight="600">∞ Unlimited Access</text>
+                  <text x="340" y="186" fontSize="7" fill="hsl(28,8%,48%)" fontFamily="Inter,sans-serif" textAnchor="middle">$0/wear wasted</text>
+                </svg>
+              </div>
               <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-background/60 mb-4">The GEA Model</p>
               <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4 text-background">Access Is Intelligence</h3>
               <p className="text-[12px] text-background/70 font-sans leading-relaxed">
