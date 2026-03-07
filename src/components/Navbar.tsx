@@ -11,7 +11,7 @@ const navLinks = [
   { label: "Rings", href: "/rings" },
   { label: "Bracelets", href: "/bracelets" },
   { label: "How It Works", href: "/how-it-works" },
-  { label: "Founding Circle", href: "/how-it-works#founding-circle" },
+  { label: "Our Story", href: "/about" },
 ];
 
 export const Navbar = () => {
