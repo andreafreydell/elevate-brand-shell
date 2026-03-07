@@ -111,7 +111,7 @@ const Index = () => {
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-12">
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-[2px]">
           <StaggerItem>
-            <div className="flex flex-col h-full">
+            <div className="flex flex-col h-full transition-transform duration-300 ease-out hover:scale-[1.03]">
               <div className="aspect-[4/5] overflow-hidden">
                 <img src="/images/material-steel.png" alt="Layered gold chain necklaces showcasing 316L stainless steel craftsmanship" className="w-full h-full object-cover" loading="lazy" decoding="async" />
               </div>
@@ -122,7 +122,7 @@ const Index = () => {
             </div>
           </StaggerItem>
           <StaggerItem>
-            <div className="flex flex-col h-full">
+            <div className="flex flex-col h-full transition-transform duration-300 ease-out hover:scale-[1.03]">
               <div className="aspect-[4/5] overflow-hidden">
                 <img src="/images/material-moissanite.png" alt="Layered moissanite tennis necklaces on model" className="w-full h-full object-cover" loading="lazy" decoding="async" />
               </div>
@@ -133,7 +133,7 @@ const Index = () => {
             </div>
           </StaggerItem>
           <StaggerItem>
-            <div className="flex flex-col h-full">
+            <div className="flex flex-col h-full transition-transform duration-300 ease-out hover:scale-[1.03]">
               <div className="aspect-[4/5] overflow-hidden">
                 <img src="/images/material-lifecycle.png" alt="Gold earrings and chain jewelry showcasing lifecycle care craftsmanship" className="w-full h-full object-cover" loading="lazy" decoding="async" />
               </div>
