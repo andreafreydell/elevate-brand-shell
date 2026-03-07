@@ -94,7 +94,7 @@ const Index = () => {
           ═══════════════════════════════════════════ */}
       <SectionHeading label="The Process" heading="How It Works" />
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
-        <AutoCarousel interval={4000} cardWidth="min-w-[68vw] md:min-w-[240px]">
+        <AutoCarousel interval={4000} cardWidth="min-w-[56vw] md:min-w-[220px]">
           <StepBlock number="01" title="Choose" description="Browse our curated vault and select the pieces that speak to your moment." icon={Hand} />
           <StepBlock number="02" title="Receive" description="Your selections arrive in 1–3 days, freshly restored and sealed in our signature packaging." icon={Package} />
           <StepBlock number="03" title="Wear" description="Style them for your life — the event, the meeting, the dinner, the everyday." icon={Sparkles} />
