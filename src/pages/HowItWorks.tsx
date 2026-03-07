@@ -179,7 +179,17 @@ const HowItWorks = () => {
       {/* ══ The 5 Trust Standards ══ */}
       <SectionHeading label="Your Guarantee" heading="The 5 Trust Standards" />
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
-        <MobileCarousel desktopClassName="grid-cols-5 gap-4" cardWidth="min-w-[68vw]">
+        {/* Mobile: compact badges */}
+        <div className="flex flex-col gap-2 md:hidden">
+          {trustStandards.map((item, idx) => (
+            <div key={item.title} className="flex items-center gap-3 border border-border bg-card px-3 py-2">
+              <item.icon className="h-4 w-4 stroke-[1.3] text-foreground flex-shrink-0" />
+              <span className="text-[10px] tracking-[0.12em] uppercase font-sans font-medium">{item.title}</span>
+            </div>
+          ))}
+        </div>
+        {/* Desktop: full cards */}
+        <div className="hidden md:grid grid-cols-5 gap-4">
           {trustStandards.map((item, idx) => (
             <div key={item.title} className="border border-border bg-card p-6 h-full transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:-translate-y-[3px] hover:border-foreground hover:border-2">
               <div className="flex items-center justify-between mb-4">
@@ -196,7 +206,7 @@ const HowItWorks = () => {
               </p>
             </div>
           ))}
-        </MobileCarousel>
+        </div>
       </section>
 
       {/* FAQ */}
