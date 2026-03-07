@@ -4,6 +4,7 @@ import { storefrontApiRequest, PRODUCTS_QUERY, type ShopifyProduct } from "@/lib
 import { PageLayout } from "@/components/layout/PageLayout";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { StepBlock } from "@/components/shared/StepBlock";
+import { StepFlowArrow } from "@/components/craft/StepFlowArrow";
 import { ValueBlock } from "@/components/shared/ValueBlock";
 import { TrustStrip } from "@/components/shared/TrustStrip";
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
