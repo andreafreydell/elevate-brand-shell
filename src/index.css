@@ -370,4 +370,38 @@
       font-size: 10px;
     }
   }
+
+  /* Mobile-only compact access framework / philosophy styling */
+  @media (max-width: 768px) {
+    .philosophy-section-mobile {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+
+    .philosophy-grid-mobile {
+      gap: 8px;
+    }
+
+    .philosophy-card-mobile {
+      padding: 10px 12px;
+    }
+
+    .philosophy-chart-mobile {
+      max-height: 120px;
+      height: 120px;
+    }
+
+    .philosophy-label {
+      font-size: 9px;
+    }
+
+    .philosophy-title {
+      font-size: 14px;
+    }
+
+    .philosophy-body {
+      font-size: 10px;
+      line-height: 1.4;
+    }
+  }
 }
