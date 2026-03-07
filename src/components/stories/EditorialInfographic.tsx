@@ -61,7 +61,7 @@ const StyleGuideGraphic = () => (
     <polygon points="254,127 260,130 254,133" fill="hsl(30,16%,36%)" />
 
     {/* Labels */}
-    <text x="100" y="195" textAnchor="middle" fontSize="9" fontFamily="Inter, sans-serif" fontWeight="500" letterSpacing="0.12em" fill="hsl(30,12%,22%)" textTransform="uppercase">DESK</text>
+    <text x="100" y="195" textAnchor="middle" fontSize="9" fontFamily="Inter, sans-serif" fontWeight="500" letterSpacing="0.12em" fill="hsl(30,12%,22%)">DESK</text>
     <text x="200" y="195" textAnchor="middle" fontSize="9" fontFamily="Inter, sans-serif" fontWeight="500" letterSpacing="0.12em" fill="hsl(30,12%,22%)">DINNER</text>
     <text x="300" y="195" textAnchor="middle" fontSize="9" fontFamily="Inter, sans-serif" fontWeight="500" letterSpacing="0.12em" fill="hsl(30,12%,22%)">WEEKEND</text>
 
