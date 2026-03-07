@@ -374,6 +374,20 @@
     .carousel-gap-mobile {
       gap: 6px;
     }
+    .how-it-works-carousel {
+      overflow-x: hidden;
+      width: 100%;
+    }
+    .how-it-works-carousel .carousel-gap-mobile {
+      flex-direction: column;
+      width: 100%;
+    }
+    .how-it-works-carousel .carousel-gap-mobile > div {
+      width: 100% !important;
+      max-width: 100% !important;
+      min-width: unset !important;
+      flex-shrink: 1;
+    }
   }
 
   /* Mobile-only compact value block styling */

@@ -87,6 +87,7 @@ const HowItWorks = () => {
       {/* 4-step visual process */}
       <SectionHeading label="How Access Works" heading="Choose. Receive. Wear. Refresh." headingMobile className="section-heading-how-it-works" labelClassName="section-heading-how-it-works-label" />
       <section className="how-it-works-section-mobile max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
+        <div className="how-it-works-carousel">
         <AutoCarousel interval={2000} cardWidth="min-w-[48vw] md:min-w-[240px]">
           <StepBlock number="01" title="Choose" description="Browse our curated vault and select the pieces that speak to your moment." icon={Hand} />
           <StepBlock number="02" title="Receive" description="Your selections arrive in 1–3 days, freshly restored and sealed in our signature packaging." icon={Package} />
@@ -94,6 +95,7 @@ const HowItWorks = () => {
           <StepBlock number="04" title="Keep Your Favorite" description="One piece per cycle is yours to keep — included in your membership. Want more? Members save 40% on any additional piece." icon={Heart} />
           <StepBlock number="05" title="Refresh" description="When you're ready for something new, return and choose your next chapter." icon={RefreshCw} />
         </AutoCarousel>
+        </div>
       </section>
 
       {/* Detailed illustration blocks */}
