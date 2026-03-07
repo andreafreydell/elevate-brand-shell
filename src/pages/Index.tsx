@@ -7,6 +7,8 @@ import { StepBlock } from "@/components/shared/StepBlock";
 import { ValueBlock } from "@/components/shared/ValueBlock";
 import { TrustStrip } from "@/components/shared/TrustStrip";
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
+import { AutoCarousel } from "@/components/shared/AutoCarousel";
+import { MobileCarousel } from "@/components/shared/MobileCarousel";
 import { OfferUnit } from "@/components/membership/OfferUnit";
 import { ProductImageRow } from "@/components/ProductImageRow";
 import { Loader2, Hand, Package, Sparkles, RefreshCw, Shield, Wrench, Truck, Gem, Ban, Heart, Shuffle, CalendarPlus, Feather, Scale, Zap } from "lucide-react";
