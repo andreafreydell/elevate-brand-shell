@@ -480,6 +480,49 @@
       padding: 8px;
       font-size: 11px;
     }
+
+    /* Further mobile reductions for tier cards */
+    .tier-card-mobile-compact {
+      padding: 6px;
+    }
+
+    .tier-header-mobile-compact {
+      padding: 6px;
+      margin-bottom: 4px;
+      border-bottom: 1px solid hsl(var(--border));
+    }
+
+    .tier-price-section-mobile-compact {
+      padding: 4px 6px;
+      margin: 4px 0;
+      border-bottom: 1px solid hsl(var(--border));
+    }
+
+    .tier-features-mobile-compact {
+      padding: 6px;
+      gap: 2px;
+    }
+
+    .tier-name-mobile {
+      font-size: 16px;
+    }
+
+    .tier-price-mobile {
+      font-size: 20px;
+    }
+
+    .tier-pieces-mobile {
+      font-size: 11px;
+    }
+
+    .tier-feature-item-mobile {
+      font-size: 10px;
+    }
+
+    .tier-cta-mobile-compact {
+      padding: 8px 16px;
+      margin: 0;
+    }
   }
 
   /* Mobile-only compact trust badges styling */
