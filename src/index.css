@@ -249,6 +249,12 @@
     text-transform: uppercase;
     color: hsl(var(--ink));
   }
+
+  @media (max-width: 768px) {
+    .section-heading-mobile {
+      font-size: 14px;
+    }
+  }
 }
 
 @layer utilities {
@@ -472,6 +478,25 @@
     .trust-badge-icon {
       width: 14px;
       height: 14px;
+    }
+  }
+
+  /* Mobile-only compact edit gallery styling */
+  @media (max-width: 768px) {
+    .edit-gallery-section-mobile {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    .edit-gallery-grid-mobile {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+    }
+
+    .edit-gallery-image-mobile {
+      max-height: 120px;
+      height: 120px;
     }
   }
 }

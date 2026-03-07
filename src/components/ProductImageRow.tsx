@@ -8,10 +8,10 @@ const EDITORIAL_IMAGES = [
 
 export const ProductImageRow = ({ products }: { products: ShopifyProduct[] }) => {
   return (
-    <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-6">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-[2px]">
+    <section className="edit-gallery-section-mobile max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-6">
+      <div className="edit-gallery-grid-mobile grid grid-cols-1 md:grid-cols-3 gap-[2px]">
         {EDITORIAL_IMAGES.map((img, i) => (
-          <div key={i} className="aspect-[4/5] overflow-hidden bg-card">
+          <div key={i} className="edit-gallery-image-mobile aspect-[4/5] overflow-hidden bg-card">
             <img
               src={img.url}
               alt={img.alt}
