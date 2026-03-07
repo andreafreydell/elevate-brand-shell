@@ -251,8 +251,32 @@
   }
 
   @media (max-width: 768px) {
+    .section-heading {
+      font-size: 16px;
+    }
+
+    .section-heading-label {
+      font-size: 9px;
+    }
+
     .section-heading-mobile {
       font-size: 14px;
+    }
+
+    .hero-section-mobile {
+      min-height: 60vh;
+    }
+
+    .hero-headline-mobile {
+      font-size: 32px;
+    }
+
+    .hero-subtitle-mobile {
+      font-size: 12px;
+    }
+
+    .hero-content-mobile {
+      padding: 24px;
     }
   }
 }
