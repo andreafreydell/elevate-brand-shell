@@ -21,7 +21,7 @@ export const SavingsCalculator = () => {
   return (
     <AnimateIn>
       <div className="border border-border bg-card">
-        <div className="p-8 md:p-12 lg:p-14">
+        <div className="savings-calc-mobile p-8 md:p-12 lg:p-14">
           <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">
             Interactive
           </p>
