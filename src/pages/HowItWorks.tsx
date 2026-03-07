@@ -171,8 +171,13 @@ const HowItWorks = () => {
         <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {trustStandards.map((item) => (
             <StaggerItem key={item.title}>
-              <div className="border border-border bg-card p-6 h-full">
-                <item.icon className="h-6 w-6 mb-4 stroke-[1.3] text-foreground" />
+              <div className="border border-border bg-card p-6 h-full transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:-translate-y-[3px] hover:border-foreground hover:border-2">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground">
+                    Trust {String(trustStandards.indexOf(item) + 1).padStart(2, '0')}
+                  </span>
+                  <item.icon className="h-5 w-5 stroke-[1.3] text-foreground" />
+                </div>
                 <p className="text-[11px] tracking-[0.15em] uppercase font-sans font-medium mb-2">
                   {item.title}
                 </p>
