@@ -82,11 +82,7 @@ export const Navbar = () => {
               <Link
                 key={item.label}
                 to={item.href}
-                className={`text-[11px] tracking-[0.18em] uppercase font-sans transition-colors whitespace-nowrap ${
-                  isActive && item.label === "New"
-                    ? "text-foreground border-b border-foreground pb-0.5"
-                    : "text-foreground hover:text-muted-foreground"
-                }`}
+                className={`text-[11px] tracking-[0.18em] uppercase font-sans transition-colors whitespace-nowrap text-foreground hover:border-b hover:border-foreground hover:pb-0.5`}
               >
                 {item.label}
               </Link>
