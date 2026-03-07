@@ -73,7 +73,7 @@ export const ComingSoonSection = () => {
         <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-20 md:py-28 text-center">
           <AnimateIn variant="fadeIn" duration={0.8}>
             <p className="text-[10px] tracking-[0.4em] uppercase text-[hsl(36,25%,78%)] mb-6 font-sans font-medium">
-              The Founding Circle
+              Membership Access
             </p>
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.15} duration={0.8}>

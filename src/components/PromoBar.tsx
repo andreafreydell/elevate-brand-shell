@@ -27,11 +27,11 @@ export const PromoBar = () => {
           to="/how-it-works"
           className="text-[10px] tracking-[0.2em] uppercase font-sans text-foreground hover:text-muted-foreground transition-colors text-center"
         >
-          <span className="font-medium">Founding Circle</span>
+          <span className="font-medium">Exclusive Access</span>
           <span className="mx-2">·</span>
           Use code <span className="font-medium">FOUNDING10</span> for $10 off your first month
           <span className="mx-2">·</span>
-          Limited founding membership
+          Learn about membership
         </Link>
         <button
           onClick={dismiss}
