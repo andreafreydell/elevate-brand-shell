@@ -26,10 +26,8 @@ const About = () => {
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-[2px]">
           <AnimateIn variant="fadeIn" duration={0.6}>
-            <div className="bg-[hsl(30,14%,32%)] aspect-[4/5] md:aspect-auto flex items-center justify-center min-h-[400px]">
-              <span className="text-[10px] tracking-[0.3em] uppercase text-[hsl(36,20%,75%)]">
-                Founder Portrait
-              </span>
+            <div className="h-full">
+              <img src="/images/founder-portrait.png" alt="GEA founder portrait" className="w-full h-full object-cover" loading="lazy" decoding="async" />
             </div>
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.15} duration={0.6}>
