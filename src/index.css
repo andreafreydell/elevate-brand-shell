@@ -360,9 +360,6 @@
       font-size: 14px;
     }
   }
-      height: 16px;
-    }
-  }
 
   /* Mobile-only section padding */
   @media (max-width: 768px) {
