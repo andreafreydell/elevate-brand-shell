@@ -81,10 +81,11 @@ const HowItWorks = () => {
         label="The Process"
         headline={"Effortless by\nDesign"}
         subtitle="Four steps between you and curated high-design jewelry. Just access."
+        heroMobileCompact
       />
 
       {/* 4-step visual process */}
-      <SectionHeading label="How Access Works" heading="Choose. Receive. Wear. Refresh." headingMobile className="section-heading-how-it-works" />
+      <SectionHeading label="How Access Works" heading="Choose. Receive. Wear. Refresh." headingMobile className="section-heading-how-it-works" labelClassName="section-heading-how-it-works-label" />
       <section className="how-it-works-section-mobile max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <AutoCarousel interval={2000} cardWidth="min-w-[48vw] md:min-w-[240px]">
           <StepBlock number="01" title="Choose" description="Browse our curated vault and select the pieces that speak to your moment." icon={Hand} />
