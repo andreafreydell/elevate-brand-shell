@@ -11,10 +11,8 @@ export const ValueBlock = ({ title, description, className = "", infographic }: 
   return (
     <div className={`border border-border p-8 md:p-10 h-full flex flex-col ${className}`}>
       {infographic && (
-        <div className="bg-background border border-border p-4 mb-6 relative group/svg overflow-hidden cursor-zoom-in">
-          <div className="transition-transform duration-500 ease-out group-hover/svg:scale-[1.75] origin-center">
-            {infographic}
-          </div>
+        <div className="bg-background border border-border p-4 mb-6 relative group/svg cursor-zoom-in transition-all duration-500 ease-out hover:p-6 hover:mb-8 hover:scale-y-[1.75] hover:scale-x-[1.0] origin-top">
+          {infographic}
           {/* Zoom hint */}
           <div className="absolute top-2 right-2 w-6 h-6 bg-foreground/10 border border-border flex items-center justify-center transition-opacity duration-300 group-hover/svg:opacity-0">
             <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round">
