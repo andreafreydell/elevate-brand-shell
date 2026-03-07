@@ -81,10 +81,11 @@ const HowItWorks = () => {
         label="The Process"
         headline={"Effortless by\nDesign"}
         subtitle="Four steps between you and curated high-design jewelry. Just access."
+        heroMobileCompact
       />
 
       {/* 4-step visual process */}
-      <SectionHeading label="How Access Works" heading="Choose. Receive. Wear. Refresh." headingMobile className="section-heading-how-it-works" />
+      <SectionHeading label="How Access Works" heading="Choose. Receive. Wear. Refresh." headingMobile className="section-heading-how-it-works" labelClassName="section-heading-how-it-works-label" />
       <section className="how-it-works-section-mobile max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <AutoCarousel interval={2000} cardWidth="min-w-[48vw] md:min-w-[240px]">
           <StepBlock number="01" title="Choose" description="Browse our curated vault and select the pieces that speak to your moment." icon={Hand} />
@@ -98,19 +99,19 @@ const HowItWorks = () => {
       {/* Detailed illustration blocks */}
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <MobileCarousel desktopClassName="grid-cols-2 gap-[2px]" cardWidth="min-w-[80vw]">
-          <div className="bg-card border border-border p-8 h-full">
-            <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">Keep What You Love</p>
-            <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">Keep Your Favorite</h3>
-            <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
+          <div className="step-detail-card-mobile bg-card border border-border p-8 h-full">
+            <p className="step-detail-label text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">Keep What You Love</p>
+            <h3 className="step-detail-title font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">Keep Your Favorite</h3>
+            <p className="step-detail-description text-[12px] text-muted-foreground font-sans leading-relaxed">
               One piece per cycle is yours to keep — included in your membership.
               Want more? Members save 40% on any additional piece. Experience jewelry
               in real life, then build your collection through discovery.
             </p>
           </div>
-          <div className="bg-card border border-border p-8 h-full">
-            <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">Restored Between Every Wear</p>
-            <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">Sanitized & Sealed Protocol</h3>
-            <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">
+          <div className="step-detail-card-mobile bg-card border border-border p-8 h-full">
+            <p className="step-detail-label text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">Restored Between Every Wear</p>
+            <h3 className="step-detail-title font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">Sanitized & Sealed Protocol</h3>
+            <p className="step-detail-description text-[12px] text-muted-foreground font-sans leading-relaxed">
               Our atelier restores every returning piece: hand cleaning, UV sanitization,
               4-point inspection (structure, surface, stones, mechanism), and sealed in
               protective packaging. What arrives at your door is indistinguishable from new.
@@ -157,7 +158,7 @@ const HowItWorks = () => {
 
       {/* ══ Membership tiers (full OfferUnit) ══ */}
       <div id="tiers">
-        <SectionHeading label="Choose Your Tier" heading="Your Level of Access" />
+        <SectionHeading label="Choose Your Tier" heading="Your Level of Access" className="section-heading-your-level" />
       </div>
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-8">
         <OfferUnit variant="full" />

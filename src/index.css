@@ -264,7 +264,47 @@
     }
 
     .section-heading-how-it-works {
+      font-size: 13px;
+    }
+
+    .section-heading-how-it-works-label {
+      font-size: 8px;
+    }
+
+    .section-heading-your-level {
       font-size: 14px;
+    }
+
+    .page-hero-mobile {
+      padding: 20px;
+    }
+
+    .page-hero-headline-mobile {
+      font-size: 28px;
+    }
+
+    .page-hero-subtitle-mobile {
+      font-size: 11px;
+    }
+
+    .page-hero-section-mobile {
+      min-height: 50vh;
+    }
+
+    .step-detail-card-mobile {
+      padding: 8px 12px;
+    }
+
+    .step-detail-label {
+      font-size: 9px;
+    }
+
+    .step-detail-title {
+      font-size: 13px;
+    }
+
+    .step-detail-description {
+      font-size: 10px;
     }
 
     .hero-section-mobile {
