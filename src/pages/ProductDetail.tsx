@@ -507,7 +507,7 @@ const ProductDetail = () => {
             ].map(({ label, value, fallback }, i) => (
               <div
                 key={label}
-                className={`p-8 md:p-10 border-b sm:border-b-0 ${i < 3 ? "sm:border-r border-border" : ""}`}
+                className={`p-4 md:p-10 border-b sm:border-b-0 ${i < 3 ? "sm:border-r border-border" : ""}`}
               >
                 <p className="text-[8px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-3">
                   {label}
