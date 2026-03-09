@@ -10,6 +10,7 @@ interface PageHeroProps {
   cta?: string;
   ctaHref?: string;
   heroMobileCompact?: boolean;
+  compact?: boolean;
 }
 
 export const PageHero = ({ label, headline, subtitle, cta, ctaHref = "/membership", heroMobileCompact = false }: PageHeroProps) => {
