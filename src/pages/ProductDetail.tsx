@@ -468,7 +468,7 @@ const ProductDetail = () => {
             </div>
 
             {/* Category Graphic */}
-            <div className="bg-card flex flex-col items-center justify-center p-10 md:p-14 relative overflow-hidden">
+            <div className="bg-card flex flex-col items-center justify-center p-5 md:p-14 relative overflow-hidden">
               <div className="w-full max-w-[200px] mx-auto opacity-70">
                 <CategoryGraphic category={category} />
               </div>
