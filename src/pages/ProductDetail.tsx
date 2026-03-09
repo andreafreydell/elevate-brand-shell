@@ -119,7 +119,7 @@ const ProductDetail = () => {
   const displayPrice = `${price.currencyCode} ${parseFloat(price.amount).toFixed(2)}`;
 
   // Occasion → blob variant cycle
-  const blobVariants: Array<"classic" | "wide" | "tall" | "circle"> = ["classic", "wide", "tall", "circle"];
+  const blobVariants: Array<"classic" | "coastal" | "modern" | "statement"> = ["classic", "coastal", "modern", "statement"];
 
   const handleAddToCart = async () => {
     if (!variant) return;
