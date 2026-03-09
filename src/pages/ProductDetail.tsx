@@ -296,18 +296,15 @@ const ProductDetail = () => {
 
               {/* Occasions */}
               {occasions.length > 0 && (
-                <div className="border-t border-border pt-5">
-                  <p className="text-[9px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-3">
-                    Styled for
+                <div className="border-t border-border pt-5 mt-4">
+                  <p className="text-[9px] tracking-[0.35em] uppercase font-sans text-muted-foreground mb-4">
+                    Occasions It Was Made For
                   </p>
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="flex flex-wrap gap-3">
                     {occasions.map((occ, i) => (
-                      <span
-                        key={occ}
-                        className="text-[9px] tracking-[0.15em] uppercase font-sans border border-border px-2.5 py-1 text-muted-foreground"
-                      >
+                      <OrganicBlobTag key={occ} variant={blobVariants[i % 4]}>
                         {occ}
-                      </span>
+                      </OrganicBlobTag>
                     ))}
                   </div>
                 </div>
@@ -478,25 +475,6 @@ const ProductDetail = () => {
           </div>
         </AnimateIn>
 
-        {/* ══════════════════════════════════════════
-            SECTION 6 — Occasions mosaic
-        ══════════════════════════════════════════ */}
-        {occasions.length > 0 && (
-          <AnimateIn delay={0.25}>
-            <div className="border-x border-b border-border p-10 md:p-14">
-              <p className="text-[9px] tracking-[0.35em] uppercase font-sans text-muted-foreground mb-8">
-                Occasions It Was Made For
-              </p>
-              <div className="flex flex-wrap gap-3">
-                {occasions.map((occ, i) => (
-                  <OrganicBlobTag key={occ} variant={blobVariants[i % 4]}>
-                    {occ}
-                  </OrganicBlobTag>
-                ))}
-              </div>
-            </div>
-          </AnimateIn>
-        )}
 
         <DiamondChainBorder className="my-0" />
 
