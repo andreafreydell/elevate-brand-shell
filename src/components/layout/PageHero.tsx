@@ -17,7 +17,7 @@ export const PageHero = ({ label, headline, subtitle, cta, ctaHref = "/membershi
   return (
     <section className={`bg-foreground relative overflow-hidden ${heroMobileCompact ? 'page-hero-section-mobile' : 'hero-section-mobile'}`}>
       <GrainOverlay opacity={0.05} />
-      <div className={`max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 ${compact ? 'py-16 md:py-20 lg:py-24' : 'py-24 md:py-32 lg:py-40'} flex flex-col items-center text-center relative z-[1] ${heroMobileCompact ? 'page-hero-mobile' : ''}`}>
+      <div className={`max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 ${compact ? 'py-10 md:py-20 lg:py-24' : 'py-24 md:py-32 lg:py-40'} flex flex-col items-center text-center relative z-[1] ${heroMobileCompact ? 'page-hero-mobile' : ''}`}>
         {label && (
           <AnimateIn variant="fadeIn" duration={0.6}>
             <p className="text-[10px] tracking-[0.4em] uppercase text-background/60 mb-6 font-sans">
