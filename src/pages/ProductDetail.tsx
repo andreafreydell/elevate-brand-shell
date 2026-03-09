@@ -243,7 +243,7 @@ const ProductDetail = () => {
 
               {/* Hero phrase — the emotional hook */}
               {heroPhrase && (
-                <p className="font-serif italic text-lg text-muted-foreground leading-snug mb-6">
+                <p className="font-serif italic text-base md:text-lg text-muted-foreground leading-snug mb-4 md:mb-6">
                   "{heroPhrase}"
                 </p>
               )}
