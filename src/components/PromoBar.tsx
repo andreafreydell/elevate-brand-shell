@@ -22,16 +22,14 @@ export const PromoBar = () => {
 
   return (
     <div className="bg-card border-b border-border relative">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 py-2.5 flex items-center justify-center">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 py-1.5 md:py-2.5 flex items-center justify-center">
         <Link
           to="/how-it-works"
           className="text-[10px] tracking-[0.2em] uppercase font-sans text-foreground hover:text-muted-foreground transition-colors text-center"
         >
-          <span className="font-medium">Exclusive Access</span>
-          <span className="mx-2">·</span>
-          Use code <span className="font-medium">FOUNDING10</span> for $10 off your first month
-          <span className="mx-2">·</span>
-          Learn about membership
+          <span className="hidden md:inline"><span className="font-medium">Exclusive Access</span><span className="mx-2">·</span></span>
+          Code <span className="font-medium">FOUNDING10</span> · $10 off first month
+          <span className="hidden md:inline"><span className="mx-2">·</span>Learn about membership</span>
         </Link>
         <button
           onClick={dismiss}

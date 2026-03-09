@@ -34,14 +34,14 @@ export const ProductCard = ({ product }: { product: ShopifyProduct }) => {
           {image ? (
             <div className="relative w-full h-full">
               <img
-                src={image.url}
+                src={`${image.url}&width=600`}
                 alt={image.altText || product.node.title}
                 className={`w-full h-full object-cover transition-opacity duration-500 ${hoverImage ? 'group-hover:opacity-0' : 'group-hover:scale-105 transition-transform duration-700'}`}
                 loading="lazy"
               />
               {hoverImage && (
                 <img
-                  src={hoverImage.url}
+                  src={`${hoverImage.url}&width=600`}
                   alt={hoverImage.altText || product.node.title}
                   className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   loading="lazy"
