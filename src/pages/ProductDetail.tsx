@@ -237,7 +237,7 @@ const ProductDetail = () => {
               </p>
 
               {/* Title */}
-              <h1 className="font-serif text-3xl md:text-[2.2rem] font-medium leading-[1.1] tracking-[-0.01em] mb-2">
+              <h1 className="font-serif text-2xl md:text-[2.2rem] font-medium leading-[1.1] tracking-[-0.01em] mb-2">
                 {product.title}
               </h1>
 
