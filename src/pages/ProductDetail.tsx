@@ -432,7 +432,7 @@ const ProductDetail = () => {
           <div className="grid md:grid-cols-[3fr_2fr] border-x border-b border-border">
 
             {/* Story text */}
-            <div className="p-10 md:p-14 border-b md:border-b-0 md:border-r border-border relative">
+            <div className="p-5 md:p-14 border-b md:border-b-0 md:border-r border-border relative">
               <p className="text-[9px] tracking-[0.35em] uppercase font-sans text-muted-foreground mb-6">
                 The Story
               </p>
