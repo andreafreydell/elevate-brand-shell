@@ -9,7 +9,10 @@ export const ProductCard = ({ product, index = 0 }: { product: ShopifyProduct; i
   const isLoading = useCartStore(state => state.isLoading);
   const variant = product.node.variants.edges[0]?.node;
   const imageCount = product.node.images.edges.length;
-  const image = imageCount > 0 ? product.node.images.edges[index % imageCount]?.node : undefined;
+  // Pseudo-random but deterministic offset from product id + index for checkerboard variety
+  const hash = product.node.id.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
+  const imageIndex = imageCount > 1 ? (hash + index * 7) % imageCount : 0;
+  const image = imageCount > 0 ? product.node.images.edges[imageIndex]?.node : undefined;
   const price = product.node.priceRange.minVariantPrice;
 
   const handleAddToCart = async (e: React.MouseEvent) => {
