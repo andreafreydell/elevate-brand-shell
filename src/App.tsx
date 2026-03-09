@@ -67,6 +67,8 @@ const AppContent = () => {
       <Route path="/necklaces" element={<CategoryPage title="Necklaces" subtitle="Chains, pendants, and layering pieces — crafted to elevate." productType="Necklace" />} />
       <Route path="/rings" element={<CategoryPage title="Rings" subtitle="Bands, statement rings, and stacking sets — designed to be worn boldly." productType="Ring" />} />
       <Route path="/bracelets" element={<CategoryPage title="Bracelets" subtitle="Bangles, cuffs, and tennis bracelets — effortless luxury." productType="Bracelet" />} />
+      <Route path="/sunglasses" element={<CategoryPage title="Sunglasses" subtitle="Frames that define your gaze — bold, refined, unapologetic." productType="Sunglasses" />} />
+      <Route path="/hair" element={<CategoryPage title="Hair" subtitle="Clips, pins, and accessories — the finishing gesture." productType="Hair" />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
