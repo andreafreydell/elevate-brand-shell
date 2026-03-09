@@ -257,7 +257,7 @@ const ProductDetail = () => {
                   / piece
                 </span>
               </div>
-              <p className="text-[10px] tracking-[0.15em] font-sans text-muted-foreground mb-6">
+              <p className="text-[10px] tracking-[0.15em] font-sans text-muted-foreground mb-4 md:mb-6">
                 Members access this at <ScriptNumber>40%</ScriptNumber> off retail
               </p>
 
