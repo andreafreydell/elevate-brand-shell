@@ -135,6 +135,8 @@ export const PRODUCT_BY_HANDLE_QUERY = `
       title
       description
       handle
+      productType
+      tags
       priceRange {
         minVariantPrice {
           amount
@@ -169,6 +171,25 @@ export const PRODUCT_BY_HANDLE_QUERY = `
       options {
         name
         values
+      }
+      metafields(identifiers: [
+        { namespace: "custom", key: "hero_descriptor_phrase" }
+        { namespace: "custom", key: "differentiating_description" }
+        { namespace: "custom", key: "silhouette_category" }
+        { namespace: "custom", key: "stacking_role" }
+        { namespace: "custom", key: "plating_color_primary" }
+        { namespace: "custom", key: "other_predominant_color" }
+        { namespace: "custom", key: "material_category" }
+        { namespace: "custom", key: "size_and_fit" }
+        { namespace: "custom", key: "weight_and_comfort" }
+        { namespace: "custom", key: "closure_and_security" }
+        { namespace: "custom", key: "whats_included" }
+        { namespace: "custom", key: "occasions_possible" }
+        { namespace: "custom", key: "outfit_style" }
+        { namespace: "custom", key: "item_type" }
+      ]) {
+        key
+        value
       }
     }
   }
