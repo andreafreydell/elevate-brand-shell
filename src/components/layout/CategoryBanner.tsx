@@ -255,7 +255,7 @@ export const CategoryBanner = ({ title, subtitle, category }: CategoryBannerProp
             </div>
 
             {/* Styling note as margin annotation */}
-            <MarginNote side="right" className="max-w-[260px] self-end">
+            <MarginNote className="max-w-[260px] self-end">
               <p className="text-[11px] leading-relaxed text-muted-foreground font-sans italic">
                 {content.stylingNote}
               </p>
