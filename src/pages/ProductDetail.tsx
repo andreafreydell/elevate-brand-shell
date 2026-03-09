@@ -178,7 +178,7 @@ const ProductDetail = () => {
                 )}
                 {/* Category blob tag over image */}
                 <div className="absolute bottom-4 left-4">
-                  <OrganicBlobTag variant="wide">{category}</OrganicBlobTag>
+                  <OrganicBlobTag variant="coastal">{category}</OrganicBlobTag>
                 </div>
                 {/* WaxSeal corner */}
                 <WaxSeal size={28} className="absolute top-4 right-4" />
