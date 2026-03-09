@@ -294,25 +294,6 @@ const ProductDetail = () => {
                 ))}
               </div>
 
-              {/* Occasions */}
-              {occasions.length > 0 && (
-                <div className="border-t border-border pt-5">
-                  <p className="text-[9px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-3">
-                    Styled for
-                  </p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {occasions.map((occ, i) => (
-                      <span
-                        key={occ}
-                        className="text-[9px] tracking-[0.15em] uppercase font-sans border border-border px-2.5 py-1 text-muted-foreground"
-                      >
-                        {occ}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-
               {/* Silhouette + Stacking */}
               {(silhouette || stackingRole) && (
                 <div className="flex gap-3 mt-4">
