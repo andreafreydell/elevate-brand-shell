@@ -85,7 +85,11 @@ export const ProductGrid = ({
     );
   }
 
-  const filtered = showFilters ? applyFilters(products, filters) : products;
+  const displayProducts = useMemo(
+    () => (shuffle ? seededShuffle(products, todaySeed()) : products),
+    [products, shuffle]
+  );
+  const filtered = showFilters ? applyFilters(displayProducts, filters) : displayProducts;
 
   if (products.length === 0) {
     return (
