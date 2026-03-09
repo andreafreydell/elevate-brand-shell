@@ -274,18 +274,65 @@ const ProductDetail = () => {
                 </div>
               )}
 
-              {/* Primary CTA */}
-              <button
-                onClick={handleAddToCart}
-                disabled={isCartLoading || !variant?.availableForSale}
-                className="w-full border border-foreground bg-foreground text-background py-4 text-[11px] tracking-[0.25em] uppercase font-sans hover:bg-transparent hover:text-foreground transition-colors disabled:opacity-50 mb-3"
-              >
-                {isCartLoading
-                  ? <Loader2 className="w-3.5 h-3.5 animate-spin mx-auto" />
-                  : variant?.availableForSale
-                    ? "Add to Bag"
-                    : "Sold Out"}
-              </button>
+              {/* Dual Access/Buy Options */}
+              <div className="space-y-4 mb-3">
+                {/* Access It Option */}
+                <div className="border border-border bg-card p-6">
+                  <div className="flex items-start justify-between mb-3">
+                    <div>
+                      <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-1">
+                        Option 1
+                      </p>
+                      <p className="font-serif text-xl font-medium mb-1">Access It</p>
+                      <p className="text-[11px] text-muted-foreground font-sans leading-relaxed">
+                        Wear this piece via membership
+                      </p>
+                    </div>
+                    <CircleEmphasis className="mt-1">Access</CircleEmphasis>
+                  </div>
+                  <div className="flex items-baseline gap-2 mb-4">
+                    <span className="font-serif text-lg">$85</span>
+                    <span className="text-[9px] tracking-[0.15em] uppercase font-sans text-muted-foreground">/month</span>
+                  </div>
+                  <p className="text-[10px] text-muted-foreground font-sans mb-4">
+                    Tier 2: 10 curated pieces per cycle · Cancel anytime
+                  </p>
+                  <button
+                    disabled
+                    className="w-full border border-border bg-secondary text-muted-foreground py-3 text-[10px] tracking-[0.25em] uppercase font-sans cursor-not-allowed"
+                  >
+                    Coming Soon
+                  </button>
+                </div>
+
+                {/* Buy It Option */}
+                <div className="border border-border bg-card p-6">
+                  <div className="flex items-start justify-between mb-3">
+                    <div>
+                      <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-1">
+                        Option 2
+                      </p>
+                      <p className="font-serif text-xl font-medium mb-1">Buy It</p>
+                      <p className="text-[11px] text-muted-foreground font-sans leading-relaxed">
+                        Keep this piece forever
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-baseline gap-2 mb-4">
+                    <span className="font-serif text-lg">{displayPrice}</span>
+                    <span className="text-[9px] tracking-[0.15em] uppercase font-sans text-muted-foreground">one-time</span>
+                  </div>
+                  <p className="text-[10px] text-muted-foreground font-sans mb-4">
+                    Full retail price · Yours to keep
+                  </p>
+                  <button
+                    disabled
+                    className="w-full border border-border bg-secondary text-muted-foreground py-3 text-[10px] tracking-[0.25em] uppercase font-sans cursor-not-allowed"
+                  >
+                    Coming Soon
+                  </button>
+                </div>
+              </div>
 
               {/* Trust micro-strip */}
               <div className="flex items-center justify-center gap-4 mb-6">
