@@ -677,4 +677,24 @@
       height: 120px;
     }
   }
+
+  /* Mobile-only PDP compaction */
+  @media (max-width: 768px) {
+    /* Tighter trust micro-strip */
+    .pdp-trust-strip span {
+      font-size: 8px;
+      letter-spacing: 0.1em;
+    }
+
+    /* Occasion blob tags smaller */
+    .pdp-occasions .organic-blob-tag {
+      font-size: 9px;
+      padding: 4px 10px;
+    }
+
+    /* Membership upsell compact */
+    .pdp-membership-upsell {
+      padding: 8px;
+    }
+  }
 }
