@@ -405,7 +405,7 @@ const ProductDetail = () => {
         ══════════════════════════════════════════ */}
         {(heroPhrase || product.description) && (
           <AnimateIn delay={0.1}>
-            <div className="relative bg-foreground text-background py-12 md:py-16 px-8 md:px-16 overflow-hidden">
+            <div className="relative bg-foreground text-background py-6 md:py-16 px-5 md:px-16 overflow-hidden">
               <GrainOverlay opacity={0.03} />
               <StampBadge
                 text="GEA"
