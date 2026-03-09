@@ -9,6 +9,7 @@ export const ProductCard = ({ product }: { product: ShopifyProduct }) => {
   const isLoading = useCartStore(state => state.isLoading);
   const variant = product.node.variants.edges[0]?.node;
   const image = product.node.images.edges[0]?.node;
+  const hoverImage = product.node.images.edges[1]?.node;
   const price = product.node.priceRange.minVariantPrice;
 
   const handleAddToCart = async (e: React.MouseEvent) => {
