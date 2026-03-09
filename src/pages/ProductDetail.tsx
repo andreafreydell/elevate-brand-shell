@@ -471,30 +471,6 @@ const ProductDetail = () => {
           </div>
         </AnimateIn>
 
-        {/* ══════════════════════════════════════════
-            SECTION 4 — Outfit Styles (WashiTape Notes)
-        ══════════════════════════════════════════ */}
-        {outfitStyles.length > 0 && (
-          <AnimateIn delay={0.2}>
-            <div className="border-x border-b border-border p-10 md:p-14">
-              <p className="text-[9px] tracking-[0.35em] uppercase font-sans text-muted-foreground mb-10">
-                This Piece Belongs In
-              </p>
-              <div className="flex flex-wrap gap-12 justify-start">
-                {outfitStyles.slice(0, 4).map((style, i) => (
-                  <WashiTapeNote
-                    key={style}
-                    label={`Look ${i + 1}`}
-                    tapeColor={tapeColors[i % tapeColors.length]}
-                    rotation={i % 2 === 0 ? -1.5 : 1.5}
-                  >
-                    <p className="font-serif text-[15px] leading-snug">{style}</p>
-                  </WashiTapeNote>
-                ))}
-              </div>
-            </div>
-          </AnimateIn>
-        )}
 
         {/* ══════════════════════════════════════════
             SECTION 5 — Material & Fit Details
