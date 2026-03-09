@@ -399,6 +399,27 @@ const ProductDetail = () => {
           </div>
         </AnimateIn>
 
+        {/* Mobile-only: This Piece Belongs In — below hero grid */}
+        {outfitStyles.length > 0 && (
+          <div className="md:hidden p-4 border-t border-border">
+            <p className="text-[9px] tracking-[0.35em] uppercase font-sans text-muted-foreground mb-3">
+              This Piece Belongs In
+            </p>
+            <div className="flex flex-wrap gap-4 justify-start">
+              {outfitStyles.slice(0, 4).map((style, i) => (
+                <WashiTapeNote
+                  key={style}
+                  label={`Look ${i + 1}`}
+                  tapeColor={tapeColors[i % tapeColors.length]}
+                  rotation={i % 2 === 0 ? -1.5 : 1.5}
+                >
+                  <p className="font-serif text-[13px] leading-snug">{style}</p>
+                </WashiTapeNote>
+              ))}
+            </div>
+          </div>
+        )}
+
 
         {/* ══════════════════════════════════════════
             SECTION 2 — Hero Phrase / Tagline Band
