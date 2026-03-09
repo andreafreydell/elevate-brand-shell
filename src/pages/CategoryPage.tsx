@@ -1,20 +1,17 @@
 import { PageLayout } from "@/components/layout/PageLayout";
-import { PageHero } from "@/components/layout/PageHero";
+import { CategoryBanner } from "@/components/layout/CategoryBanner";
 import { ProductGrid } from "@/components/ProductGrid";
-import { ReactNode } from "react";
 
 interface CategoryPageProps {
   title: string;
   subtitle: string;
   /** Shopify product_type value for filtering */
   productType: string;
-  /** Optional custom headline with JSX (e.g. ScribbleUnderline) */
-  headline?: ReactNode;
 }
 
-const CategoryPage = ({ title, subtitle, productType, headline }: CategoryPageProps) => (
+const CategoryPage = ({ title, subtitle, productType }: CategoryPageProps) => (
   <PageLayout>
-    <PageHero headline={headline || title} subtitle={subtitle} />
+    <CategoryBanner title={title} subtitle={subtitle} category={productType} />
     <ProductGrid
       query={`product_type:${productType}`}
       heading={title}
