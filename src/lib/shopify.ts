@@ -93,6 +93,8 @@ export const PRODUCTS_QUERY = `
           title
           description
           handle
+          productType
+          tags
           priceRange {
             minVariantPrice {
               amount
@@ -127,6 +129,15 @@ export const PRODUCTS_QUERY = `
           options {
             name
             values
+          }
+          metafields(identifiers: [
+            { namespace: "custom", key: "plating_color_primary" }
+            { namespace: "custom", key: "silhouette_category" }
+            { namespace: "custom", key: "material_category" }
+            { namespace: "custom", key: "occasions_possible" }
+          ]) {
+            key
+            value
           }
         }
       }

@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
 import { storefrontApiRequest, PRODUCTS_QUERY, type ShopifyProduct } from "@/lib/shopify";
 import { ProductCard } from "./ProductCard";
+import { ProductFilters, applyFilters, type FilterState } from "./ProductFilters";
 import { Loader2 } from "lucide-react";
 
 interface ProductGridProps {
-  /** Shopify search query, e.g. "product_type:Earrings" */
   query?: string;
-  /** Section heading — omit to hide */
   heading?: string;
-  /** Sub-label above heading */
   label?: string;
-  /** Max products to fetch */
   limit?: number;
+  showFilters?: boolean;
 }
 
 export const ProductGrid = ({
@@ -19,9 +17,11 @@ export const ProductGrid = ({
   heading = "Current Pieces",
   label = "The Collection",
   limit = 50,
+  showFilters = false,
 }: ProductGridProps) => {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
   const [loading, setLoading] = useState(true);
+  const [filters, setFilters] = useState<FilterState>({ color: "", style: "", occasion: "", sort: "" });
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -50,6 +50,8 @@ export const ProductGrid = ({
     );
   }
 
+  const filtered = showFilters ? applyFilters(products, filters) : products;
+
   if (products.length === 0) {
     return (
       <div className="text-center py-24">
@@ -59,22 +61,32 @@ export const ProductGrid = ({
   }
 
   return (
-    <section className="max-w-[1400px] mx-auto px-6 py-16 md:py-24">
-      {heading && (
-        <div className="mb-12">
-          {label && (
-            <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-3 font-sans">{label}</p>
-          )}
-          <h2 className="font-serif text-3xl md:text-4xl font-medium">{heading}</h2>
-        </div>
+    <>
+      {showFilters && (
+        <ProductFilters products={products} filters={filters} onChange={setFilters} />
       )}
-      <div className="grid grid-cols-2 lg:grid-cols-3 gap-[1px] bg-border">
-        {products.map((product) => (
-          <div key={product.node.id} className="bg-background p-3 sm:p-6">
-            <ProductCard product={product} />
+      <section className="max-w-[1400px] mx-auto px-6 py-16 md:py-24">
+        {heading && (
+          <div className="mb-12">
+            {label && (
+              <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-3 font-sans">{label}</p>
+            )}
+            <h2 className="font-serif text-3xl md:text-4xl font-medium">{heading}</h2>
           </div>
-        ))}
-      </div>
-    </section>
+        )}
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-[1px] bg-border">
+          {filtered.map((product) => (
+            <div key={product.node.id} className="bg-background p-3 sm:p-6">
+              <ProductCard product={product} />
+            </div>
+          ))}
+        </div>
+        {showFilters && filtered.length === 0 && products.length > 0 && (
+          <div className="text-center py-16">
+            <p className="text-sm tracking-wider uppercase text-muted-foreground">No pieces match your filters</p>
+          </div>
+        )}
+      </section>
+    </>
   );
 };
