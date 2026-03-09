@@ -4,7 +4,7 @@ import { ComingSoonSection } from "@/components/ComingSoonSection";
 import { ScribbleUnderline } from "@/components/craft/ScribbleUnderline";
 
 const BrowseAll = () => (
-  <PageLayout hideNewsletter>
+  <PageLayout>
     <PageHero headline={<>Browse <ScribbleUnderline>All</ScribbleUnderline></>} subtitle="The complete GEA vault — every piece, every category." />
     <ComingSoonSection />
   </PageLayout>
