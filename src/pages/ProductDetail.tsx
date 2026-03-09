@@ -154,7 +154,7 @@ const ProductDetail = () => {
         </Link>
       </div>
 
-      <main className="max-w-[1400px] mx-auto px-6 py-8 md:py-12 space-y-0">
+      <main className="max-w-[1400px] mx-auto px-6 py-4 md:py-12 space-y-0">
 
         {/* ══════════════════════════════════════════
             SECTION 1 — Product Hero (Image + Buy Box)
@@ -207,11 +207,11 @@ const ProductDetail = () => {
 
               {/* This Piece Belongs In — inside image column */}
               {outfitStyles.length > 0 && (
-                <div className="p-6 md:p-8 border-t border-border">
-                  <p className="text-[9px] tracking-[0.35em] uppercase font-sans text-muted-foreground mb-6">
+              <div className="p-4 md:p-8 border-t border-border">
+                  <p className="text-[9px] tracking-[0.35em] uppercase font-sans text-muted-foreground mb-3 md:mb-6">
                     This Piece Belongs In
                   </p>
-                  <div className="flex flex-wrap gap-8 justify-start">
+                  <div className="flex flex-wrap gap-4 md:gap-8 justify-start">
                     {outfitStyles.slice(0, 4).map((style, i) => (
                       <WashiTapeNote
                         key={style}
@@ -219,7 +219,7 @@ const ProductDetail = () => {
                         tapeColor={tapeColors[i % tapeColors.length]}
                         rotation={i % 2 === 0 ? -1.5 : 1.5}
                       >
-                        <p className="font-serif text-[15px] leading-snug">{style}</p>
+                        <p className="font-serif text-[13px] md:text-[15px] leading-snug">{style}</p>
                       </WashiTapeNote>
                     ))}
                   </div>
@@ -228,7 +228,7 @@ const ProductDetail = () => {
             </div>
 
             {/* Buy Box */}
-            <div className="p-8 md:p-10 lg:p-14 flex flex-col relative">
+            <div className="p-4 md:p-10 lg:p-14 flex flex-col relative">
               <TagRedStamp size={18} className="absolute top-6 right-6" />
 
               {/* Category label */}
@@ -237,13 +237,13 @@ const ProductDetail = () => {
               </p>
 
               {/* Title */}
-              <h1 className="font-serif text-3xl md:text-[2.2rem] font-medium leading-[1.1] tracking-[-0.01em] mb-2">
+              <h1 className="font-serif text-2xl md:text-[2.2rem] font-medium leading-[1.1] tracking-[-0.01em] mb-2">
                 {product.title}
               </h1>
 
               {/* Hero phrase — the emotional hook */}
               {heroPhrase && (
-                <p className="font-serif italic text-lg text-muted-foreground leading-snug mb-6">
+                <p className="font-serif italic text-base md:text-lg text-muted-foreground leading-snug mb-4 md:mb-6">
                   "{heroPhrase}"
                 </p>
               )}
@@ -252,12 +252,12 @@ const ProductDetail = () => {
 
               {/* Price */}
               <div className="flex items-baseline gap-3 mb-2">
-                <span className="font-serif text-3xl font-medium">{displayPrice}</span>
+                <span className="font-serif text-xl md:text-3xl font-medium">{displayPrice}</span>
                 <span className="text-[10px] tracking-[0.2em] uppercase font-sans text-muted-foreground">
                   / piece
                 </span>
               </div>
-              <p className="text-[10px] tracking-[0.15em] font-sans text-muted-foreground mb-6">
+              <p className="text-[10px] tracking-[0.15em] font-sans text-muted-foreground mb-4 md:mb-6">
                 Members access this at <ScriptNumber>40%</ScriptNumber> off retail
               </p>
 
@@ -298,13 +298,13 @@ const ProductDetail = () => {
               {/* Dual Access/Buy Options */}
               <div className="space-y-4 mb-3">
                 {/* Access It Option */}
-                <div className="border border-border bg-card p-6">
-                  <div className="flex items-start justify-between mb-3">
+                <div className="border border-border bg-card p-3 md:p-6">
+                  <div className="flex items-start justify-between mb-2 md:mb-3">
                     <div>
                       <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-1">
                         Option 1
                       </p>
-                      <p className="font-serif text-xl font-medium mb-1">Access It</p>
+                      <p className="font-serif text-lg md:text-xl font-medium mb-1">Access It</p>
                       <p className="text-[11px] text-muted-foreground font-sans leading-relaxed">
                         Wear this piece via membership
                       </p>
@@ -327,13 +327,13 @@ const ProductDetail = () => {
                 </div>
 
                 {/* Buy It Option */}
-                <div className="border border-border bg-card p-6">
-                  <div className="flex items-start justify-between mb-3">
+                <div className="border border-border bg-card p-3 md:p-6">
+                  <div className="flex items-start justify-between mb-2 md:mb-3">
                     <div>
                       <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-1">
                         Option 2
                       </p>
-                      <p className="font-serif text-xl font-medium mb-1">Buy It</p>
+                      <p className="font-serif text-lg md:text-xl font-medium mb-1">Buy It</p>
                       <p className="text-[11px] text-muted-foreground font-sans leading-relaxed">
                         Keep this piece forever
                       </p>
@@ -356,7 +356,7 @@ const ProductDetail = () => {
               </div>
 
               {/* Trust micro-strip */}
-              <div className="flex items-center justify-center gap-4 mb-6">
+              <div className="flex items-center justify-center gap-2 md:gap-4 mb-4 md:mb-6">
                 {["Cancel Anytime", "Free Returns", "Sanitized & Sealed"].map(t => (
                   <span key={t} className="text-[9px] tracking-[0.15em] uppercase font-sans text-muted-foreground">{t}</span>
                 ))}
@@ -368,7 +368,7 @@ const ProductDetail = () => {
                   <p className="text-[9px] tracking-[0.35em] uppercase font-sans text-muted-foreground mb-4">
                     Occasions It Was Made For
                   </p>
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-2 md:gap-3">
                     {occasions.map((occ, i) => (
                       <OrganicBlobTag key={occ} variant={blobVariants[i % 4]}>
                         {occ}
@@ -405,7 +405,7 @@ const ProductDetail = () => {
         ══════════════════════════════════════════ */}
         {(heroPhrase || product.description) && (
           <AnimateIn delay={0.1}>
-            <div className="relative bg-foreground text-background py-12 md:py-16 px-8 md:px-16 overflow-hidden">
+            <div className="relative bg-foreground text-background py-6 md:py-16 px-5 md:px-16 overflow-hidden">
               <GrainOverlay opacity={0.03} />
               <StampBadge
                 text="GEA"
@@ -417,7 +417,7 @@ const ProductDetail = () => {
                 <p className="text-[9px] tracking-[0.4em] uppercase font-sans text-background/50 mb-6">
                   The Piece
                 </p>
-                <p className="font-serif text-2xl md:text-3xl lg:text-4xl font-medium leading-[1.2] tracking-[-0.01em]">
+                <p className="font-serif text-lg md:text-3xl lg:text-4xl font-medium leading-[1.2] tracking-[-0.01em]">
                   {heroPhrase || product.description.slice(0, 120)}
                 </p>
               </div>
@@ -432,7 +432,7 @@ const ProductDetail = () => {
           <div className="grid md:grid-cols-[3fr_2fr] border-x border-b border-border">
 
             {/* Story text */}
-            <div className="p-10 md:p-14 border-b md:border-b-0 md:border-r border-border relative">
+            <div className="p-5 md:p-14 border-b md:border-b-0 md:border-r border-border relative">
               <p className="text-[9px] tracking-[0.35em] uppercase font-sans text-muted-foreground mb-6">
                 The Story
               </p>
@@ -468,7 +468,7 @@ const ProductDetail = () => {
             </div>
 
             {/* Category Graphic */}
-            <div className="bg-card flex flex-col items-center justify-center p-10 md:p-14 relative overflow-hidden">
+            <div className="bg-card flex flex-col items-center justify-center p-5 md:p-14 relative overflow-hidden">
               <div className="w-full max-w-[200px] mx-auto opacity-70">
                 <CategoryGraphic category={category} />
               </div>
@@ -507,7 +507,7 @@ const ProductDetail = () => {
             ].map(({ label, value, fallback }, i) => (
               <div
                 key={label}
-                className={`p-8 md:p-10 border-b sm:border-b-0 ${i < 3 ? "sm:border-r border-border" : ""}`}
+                className={`p-4 md:p-10 border-b sm:border-b-0 ${i < 3 ? "sm:border-r border-border" : ""}`}
               >
                 <p className="text-[8px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-3">
                   {label}
@@ -547,7 +547,7 @@ const ProductDetail = () => {
             ].map(({ icon: Icon, label, body }, i) => (
               <div
                 key={label}
-                className={`p-8 md:p-10 border-b md:border-b-0 ${i < 2 ? "md:border-r border-border" : ""} relative`}
+                className={`p-4 md:p-10 border-b md:border-b-0 ${i < 2 ? "md:border-r border-border" : ""} relative`}
               >
                 <Icon className="h-4 w-4 stroke-[1.3] text-muted-foreground mb-4" />
                 <p className="text-[10px] tracking-[0.2em] uppercase font-sans mb-3">{label}</p>
@@ -572,10 +572,10 @@ const ProductDetail = () => {
             SECTION 9 — Sticky bottom CTA (mobile)
         ══════════════════════════════════════════ */}
         <AnimateIn delay={0.35}>
-          <div className="border-x border-b border-border p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="border-x border-b border-border p-4 md:p-12 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6">
             <div>
-              <p className="font-serif text-2xl mb-1">{product.title}</p>
-              <p className="font-serif text-xl text-muted-foreground">{displayPrice}</p>
+              <p className="font-serif text-lg md:text-2xl mb-1">{product.title}</p>
+              <p className="font-serif text-base md:text-xl text-muted-foreground">{displayPrice}</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
               <button

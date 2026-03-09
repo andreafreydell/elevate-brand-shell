@@ -1,47 +1,172 @@
+# GEA Digital Flagship — Full Site Architecture Build (v2.1)
 
+## Overview
 
-## Mobile-Only PDP Compaction
+Transform the storefront into a fashion-house digital flagship. Every page follows the GEA Design System v2.1, maintains "Access Is Luxury" positioning, and supports the 2-tier access model. All copy governed by CORE ASSETS v2.1 (February 2026).
 
-All changes will be **strictly within `@media (max-width: 768px)` blocks or mobile-only Tailwind prefixes** — zero risk to desktop.
+**Core Positioning:** This is not a jewelry rental site. This is a fashion house jewelry access system. Access Is Luxury. Ownership is outdated. Presence > Possession. Experience > Accumulation.
 
-### Strategy: CSS-only compaction via `src/index.css` + minimal responsive class additions in `src/pages/ProductDetail.tsx`
+---
 
-### Changes
+## Canonical Offer Structure (v2.1 — Locked)
 
-**1. `src/index.css` — Add a new `@media (max-width: 768px)` block for PDP sections**
+| Tier | Name | Pieces/Cycle | Price | Month 1 Promo |
+|------|------|-------------|-------|---------------|
+| A | Tier A | 10 curated pieces | $85/month | $75 ($10 off) |
+| B | Tier B | 5 curated pieces | $65/month | $55 ($10 off) |
 
-Target each PDP section with mobile-only overrides:
+**Cycle rule:** 1 shipment per 30-day cycle. Refresh at cycle end.
 
-- **Buy Box**: Reduce padding from `p-8` to `p-4`, shrink title from ~2.2rem to ~1.5rem, hero phrase from `text-lg` to `text-sm`, price from `text-3xl` to `text-xl`, option cards padding from `p-6` to `p-4`, trust strip gap tighter
-- **Tagline Band (Section 2)**: Reduce `py-12` to `py-6`, font from `text-2xl` to `text-lg`
-- **Story Section (Section 3)**: Reduce `p-10` to `p-4`, story text from `text-lg` to `text-base`, hide MarginNote (already hidden on mobile), category graphic padding smaller
-- **Material & Fit (Section 5)**: Reduce `p-8` to `p-4`, force 2-column grid on mobile
-- **Trust Section (Section 7)**: Reduce `p-8` to `p-4`, tighten text
-- **Membership Upsell (Section 8)**: Add compact mobile wrapper class
-- **Bottom CTA (Section 9)**: Reduce `p-8` to `p-4`, title from `text-2xl` to `text-lg`
-- **"This Piece Belongs In"**: Reduce padding, smaller WashiTapeNote text, tighter gap
-- **Outfit Styles / Occasions**: Smaller blob tags, tighter gaps
+**Both tiers include:** Free delivery + free returns, protection coverage, Keep Your Favorite option, cancel anytime.
 
-**2. `src/pages/ProductDetail.tsx` — Add mobile-specific CSS classes to elements**
+### Three Format Variants
+- **Compact** (ads, email headers): `Tier A: 10 pieces · $75 your first month · Cancel anytime`
+- **Standard** (homepage hero, email popup): Both tiers side-by-side without cycle rule
+- **Full** (Founding 100 page, checkout): Both tiers with cycle mechanics, founding language, full value stack
 
-Add semantic mobile class names (e.g., `pdp-buybox-mobile`, `pdp-tagline-mobile`, etc.) to the existing elements so the CSS can target them without affecting desktop. Use responsive Tailwind where simpler (e.g., `p-4 md:p-8`, `text-lg md:text-2xl`).
+### Trust Strip (deploy near every CTA)
+- **Full:** Cancel Anytime · Sanitized & Sealed · Repair Guarantee · Free Returns · No Surprise Fees
+- **Compact:** Cancel Anytime · Sanitized & Sealed · Free Returns
 
-Key inline responsive adjustments:
-- Main container: `py-4 md:py-12`
-- Buy box: `p-4 md:p-8 lg:p-14`
-- Access/Buy cards: `p-3 md:p-6`
-- Tagline band: `py-6 md:py-16 px-5 md:px-16`
-- Story section: `p-5 md:p-14`
-- Material grid: `p-4 md:p-10`
-- Trust grid: `p-4 md:p-10`
-- Bottom CTA: `p-4 md:p-12`
-- Title: `text-2xl md:text-[2.2rem]`
-- Price: `text-xl md:text-3xl`
-- Hero phrase: `text-base md:text-lg`
-- "This Piece Belongs In": `p-4 md:p-8`, gap `gap-4 md:gap-8`
-- Outfit WashiTapeNote text: `text-[13px] md:text-[15px]`
+### 5 Named Trust Standards
+1. Sanitized & Sealed Protocol
+2. Repair Guarantee
+3. Secure Delivery Standard
+4. Damage Clarity Promise
+5. Cancel Anytime Freedom
 
-### Files Changed
-- `src/pages/ProductDetail.tsx` — swap hardcoded paddings/sizes for responsive Tailwind classes
-- `src/index.css` — add PDP mobile overrides block for anything that can't be done inline
+---
 
+## Access Vocabulary (Enforced)
+
+| Never Use | Always Use |
+|-----------|-----------|
+| Rotation / rotate | Access, refresh, renew, choose your next chapter |
+| Rental / rent | Access, membership, experience |
+| Subscription box | Membership, access tier |
+| Swap | Refresh, renew your selection |
+
+Exception: "Rotation" acceptable only in internal/ops docs, never customer-facing.
+
+---
+
+## Approved Copy (Production-Ready)
+
+### Hero Headlines
+- The Founding 100
+- Luxury, Accessed
+- Adorn the Woman You Are Becoming
+- Access Defines Status
+- The Collection — Curated High-Design Jewelry, Accessed
+- More Beauty. Less Burden.
+
+### CTAs
+- APPLY FOR ACCESS
+- CLAIM MY FOUNDING SPOT
+- JOIN THE FOUNDING 100
+- EXPLORE THE COLLECTION
+- SEE MEMBERSHIP OPTIONS
+- UNLOCK FIRST MONTH
+
+### Repeatable Lines
+- "More beauty, less burden."
+- "Luxury designed for who you're becoming."
+- "Access is our rebellion."
+- "Elevated. Sustainable. Evolving."
+- "This is not rental. This is access."
+
+### How It Works Steps
+1. **Choose** — Browse our curated vault and select the pieces that speak to your moment.
+2. **Receive** — Your selections arrive in 1–3 days, freshly restored and sealed in our signature packaging.
+3. **Wear** — Style them for your life — the event, the meeting, the dinner, the everyday.
+4. **Refresh** — When you're ready for something new, return and choose your next chapter.
+
+---
+
+## Build Sequence (5 Phases)
+
+### Phase 1 — Shared Infrastructure ✅ (Mostly Complete)
+Reusable layout components: PageLayout, SiteFooter, PageHero, SectionHeading, NewsletterCapture.
+
+### Phase 2 — Homepage Rebuild
+8-section runway sequence (fixed order):
+1. Authority Hero — Large serif declaration, single CTA
+2. Material Intelligence — Macro texture, metal depth, lifecycle care
+3. Access Framework — Reframe ownership vs access, economic argument
+4. How It Works — Choose, Receive, Wear, Refresh (elevated language)
+5. Value Expansion — Freedom to experiment
+6. Social Validation — UGC strip (only place smiling allowed)
+7. Membership Engine — 2 tier cards (Tier A / Tier B) with value framing
+8. Final Declarative — "More Beauty. Less Burden."
+
+### Phase 3 — Core Conversion Pages
+
+**Founding 100 (`/founding-100`)** — Replaces `/membership`
+- 2-tier comparison with value stacking
+- Cost-per-wear reframing
+- Keep Your Favorite logic
+- Month 1 promotion psychology
+- Founding member scarcity (first 100)
+- 5 Named Trust Standards
+- Savings calculator
+- Risk reversal block
+
+**How It Works (`/how-it-works`)**
+- Full-page friction removal
+- 4-step visual process
+- FAQ accordion
+- Confidence-building closing CTA
+
+**Product Detail Enhancement**
+- Design philosophy section
+- Material composition (316L stainless steel messaging)
+- Styling suggestions from Piece Styling Matrix
+- Keep Your Favorite option
+
+### Phase 4 — Brand Authority + Growth Pages
+- About / Founder (`/about`) — Founder story, manifesto, values grid
+- Sustainability (`/sustainability`) — Circular economy, no extraction
+- Care & Repair (`/care`) — Sanitized & Sealed Protocol, restoration process
+- FAQ (`/faq`) — Comprehensive accordion by category
+- Contact (`/contact`) — Concierge-style form
+- Refer a Friend (`/refer`) — Dual incentive referral
+- Ambassador (`/ambassador`) — Application placeholder
+- Press (`/press`) — Press kit, inquiries
+- Legal (`/legal`) — Terms, Privacy, Membership Agreement
+
+### Phase 5 — Retention + Dashboard
+- Stories / The Edit (`/stories`) — Style guides, monthly drop calendar
+- Account Dashboard (`/account`) — Profile, current access, history, Keep Your Favorite actions
+
+---
+
+## Routing
+
+All routes added to `App.tsx`. Key change: `/membership` → `/founding-100`.
+
+---
+
+## Photography Archetype Hierarchy (Fixed Order)
+1. **Authority** — Editorial crop, runway authority, detached gaze
+2. **Material Intelligence** — Macro texture, metal depth on travertine
+3. **Cultural** — Art/architecture connection, timeless
+4. **Validation** — UGC only, smiling permitted here only
+
+---
+
+## Marketing Doctrine (15 Pillars — Governing All Copy)
+1. Offers drive everything (perceived value 3-5x cost)
+2. Zero-calorie messaging (5-second clarity test)
+3. StoryBrand framework (Customer as Hero)
+4. Conversion-Centered Design (one job per page)
+5. Value Stacking (never discounting)
+6. Risk Reversal at friction points
+7. Scarcity and Exclusivity (founding access)
+8. Continuance Ladder
+9. Social Proof Stacking
+10. Membership as "beating the system"
+11. Four Pillars (Product, Story, Experience, Consistency)
+12. Single CTA dominance
+13. Identity-based messaging (after-state)
+14. High-perceived-value email capture
+15. Strategic repetition of core messages
