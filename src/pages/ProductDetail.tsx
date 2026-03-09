@@ -294,6 +294,22 @@ const ProductDetail = () => {
                 ))}
               </div>
 
+              {/* Occasions */}
+              {occasions.length > 0 && (
+                <div className="border-t border-border pt-5 mt-4">
+                  <p className="text-[9px] tracking-[0.35em] uppercase font-sans text-muted-foreground mb-4">
+                    Occasions It Was Made For
+                  </p>
+                  <div className="flex flex-wrap gap-3">
+                    {occasions.map((occ, i) => (
+                      <OrganicBlobTag key={occ} variant={blobVariants[i % 4]}>
+                        {occ}
+                      </OrganicBlobTag>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {/* Silhouette + Stacking */}
               {(silhouette || stackingRole) && (
                 <div className="flex gap-3 mt-4">
