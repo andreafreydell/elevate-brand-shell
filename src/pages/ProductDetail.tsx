@@ -228,7 +228,7 @@ const ProductDetail = () => {
             </div>
 
             {/* Buy Box */}
-            <div className="p-8 md:p-10 lg:p-14 flex flex-col relative">
+            <div className="p-4 md:p-10 lg:p-14 flex flex-col relative">
               <TagRedStamp size={18} className="absolute top-6 right-6" />
 
               {/* Category label */}
