@@ -252,7 +252,7 @@ const ProductDetail = () => {
 
               {/* Price */}
               <div className="flex items-baseline gap-3 mb-2">
-                <span className="font-serif text-3xl font-medium">{displayPrice}</span>
+                <span className="font-serif text-xl md:text-3xl font-medium">{displayPrice}</span>
                 <span className="text-[10px] tracking-[0.2em] uppercase font-sans text-muted-foreground">
                   / piece
                 </span>
