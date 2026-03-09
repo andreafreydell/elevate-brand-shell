@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { storefrontApiRequest, PRODUCTS_QUERY, type ShopifyProduct } from "@/lib/shopify";
 import { ProductCard } from "./ProductCard";
 import { ProductFilters, applyFilters, type FilterState } from "./ProductFilters";
-import { Loader2 } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface ProductGridProps {
   query?: string;
