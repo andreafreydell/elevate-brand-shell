@@ -581,18 +581,13 @@ const ProductDetail = () => {
             </div>
             <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
               <button
-                onClick={handleAddToCart}
-                disabled={isCartLoading || !variant?.availableForSale}
-                className="border border-foreground bg-foreground text-background px-12 py-3.5 text-[11px] tracking-[0.25em] uppercase font-sans hover:bg-transparent hover:text-foreground transition-colors disabled:opacity-50 whitespace-nowrap"
+                disabled
+                className="border border-border bg-secondary text-muted-foreground px-12 py-3.5 text-[11px] tracking-[0.25em] uppercase font-sans cursor-not-allowed whitespace-nowrap"
               >
-                {isCartLoading
-                  ? <Loader2 className="w-3.5 h-3.5 animate-spin mx-auto" />
-                  : variant?.availableForSale
-                    ? "Add to Bag"
-                    : "Sold Out"}
+                Coming Soon
               </button>
               <Link
-                to="/how-it-works"
+                to="/founding-100"
                 className="border border-border px-8 py-3.5 text-[11px] tracking-[0.25em] uppercase font-sans text-muted-foreground hover:border-foreground hover:text-foreground transition-colors whitespace-nowrap text-center"
               >
                 See Membership

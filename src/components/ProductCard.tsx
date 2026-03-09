@@ -47,11 +47,10 @@ export const ProductCard = ({ product }: { product: ShopifyProduct }) => {
           <h3 className="font-serif text-base font-medium leading-snug">{product.node.title}</h3>
           <p className="text-sm text-muted-foreground">{price.currencyCode} {parseFloat(price.amount).toFixed(2)}</p>
           <button
-            onClick={handleAddToCart}
-            disabled={isLoading || !variant?.availableForSale}
-            className="w-full border border-foreground bg-foreground text-background py-2.5 text-xs tracking-[0.2em] uppercase font-sans hover:bg-transparent hover:text-foreground transition-colors disabled:opacity-50"
+            disabled
+            className="w-full border border-border bg-secondary text-muted-foreground py-2.5 text-xs tracking-[0.2em] uppercase font-sans cursor-not-allowed"
           >
-            {isLoading ? <Loader2 className="w-3.5 h-3.5 animate-spin mx-auto" /> : variant?.availableForSale ? "Add to Bag" : "Sold Out"}
+            Coming Soon
           </button>
         </div>
       </div>

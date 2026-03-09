@@ -62,11 +62,10 @@ export const FeaturedProduct = ({ product }: { product: ShopifyProduct }) => {
           )}
 
           <button
-            onClick={handleAddToCart}
-            disabled={isLoading || !variant?.availableForSale}
-            className="self-start border border-foreground bg-foreground text-background px-10 py-3.5 text-xs tracking-[0.2em] uppercase font-sans hover:bg-transparent hover:text-foreground transition-colors disabled:opacity-50"
+            disabled
+            className="self-start border border-border bg-secondary text-muted-foreground px-10 py-3.5 text-xs tracking-[0.2em] uppercase font-sans cursor-not-allowed"
           >
-            {isLoading ? <Loader2 className="w-3.5 h-3.5 animate-spin mx-auto" /> : "Add to Cart"}
+            Coming Soon
           </button>
         </div>
       </div>
