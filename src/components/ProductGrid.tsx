@@ -44,9 +44,26 @@ export const ProductGrid = ({
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center py-24">
-        <Loader2 className="w-5 h-5 animate-spin text-muted-foreground" />
-      </div>
+      <section className="max-w-[1400px] mx-auto px-6 py-16 md:py-24">
+        <div className="mb-12">
+          <Skeleton className="h-3 w-24 mb-3" />
+          <Skeleton className="h-9 w-56" />
+        </div>
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-[1px] bg-border">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={i} className="bg-background p-3 sm:p-6">
+              <div className="border border-border bg-card overflow-hidden">
+                <Skeleton className="aspect-square w-full" />
+                <div className="p-5 space-y-3">
+                  <Skeleton className="h-5 w-3/4" />
+                  <Skeleton className="h-4 w-1/3" />
+                  <Skeleton className="h-10 w-full" />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
     );
   }
 
