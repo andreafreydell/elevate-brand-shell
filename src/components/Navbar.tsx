@@ -10,8 +10,8 @@ const navLinks = [
   
   { label: "Earrings", href: "/earrings" },
   { label: "Necklaces", href: "/necklaces" },
-  { label: "Rings", href: "/rings" },
   { label: "Bracelets", href: "/bracelets" },
+  { label: "Rings", href: "/rings" },
   { label: "Sunglasses", href: "/sunglasses" },
   { label: "Hair", href: "/hair" },
 ];
