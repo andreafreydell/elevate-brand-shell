@@ -204,6 +204,27 @@ const ProductDetail = () => {
                   ))}
                 </div>
               )}
+
+              {/* This Piece Belongs In — inside image column */}
+              {outfitStyles.length > 0 && (
+                <div className="p-6 md:p-8 border-t border-border">
+                  <p className="text-[9px] tracking-[0.35em] uppercase font-sans text-muted-foreground mb-6">
+                    This Piece Belongs In
+                  </p>
+                  <div className="flex flex-wrap gap-8 justify-start">
+                    {outfitStyles.slice(0, 4).map((style, i) => (
+                      <WashiTapeNote
+                        key={style}
+                        label={`Look ${i + 1}`}
+                        tapeColor={tapeColors[i % tapeColors.length]}
+                        rotation={i % 2 === 0 ? -1.5 : 1.5}
+                      >
+                        <p className="font-serif text-[15px] leading-snug">{style}</p>
+                      </WashiTapeNote>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Buy Box */}
