@@ -475,25 +475,6 @@ const ProductDetail = () => {
           </div>
         </AnimateIn>
 
-        {/* ══════════════════════════════════════════
-            SECTION 6 — Occasions mosaic
-        ══════════════════════════════════════════ */}
-        {occasions.length > 0 && (
-          <AnimateIn delay={0.25}>
-            <div className="border-x border-b border-border p-10 md:p-14">
-              <p className="text-[9px] tracking-[0.35em] uppercase font-sans text-muted-foreground mb-8">
-                Occasions It Was Made For
-              </p>
-              <div className="flex flex-wrap gap-3">
-                {occasions.map((occ, i) => (
-                  <OrganicBlobTag key={occ} variant={blobVariants[i % 4]}>
-                    {occ}
-                  </OrganicBlobTag>
-                ))}
-              </div>
-            </div>
-          </AnimateIn>
-        )}
 
         <DiamondChainBorder className="my-0" />
 
