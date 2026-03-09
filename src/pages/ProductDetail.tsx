@@ -417,7 +417,7 @@ const ProductDetail = () => {
                 <p className="text-[9px] tracking-[0.4em] uppercase font-sans text-background/50 mb-6">
                   The Piece
                 </p>
-                <p className="font-serif text-2xl md:text-3xl lg:text-4xl font-medium leading-[1.2] tracking-[-0.01em]">
+                <p className="font-serif text-lg md:text-3xl lg:text-4xl font-medium leading-[1.2] tracking-[-0.01em]">
                   {heroPhrase || product.description.slice(0, 120)}
                 </p>
               </div>
