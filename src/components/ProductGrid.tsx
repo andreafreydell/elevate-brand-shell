@@ -41,6 +41,11 @@ export const ProductGrid = ({
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState<FilterState>({ color: "", style: "", occasion: "", sort: "" });
 
+  const displayProducts = useMemo(
+    () => (shuffle ? seededShuffle(products, todaySeed()) : products),
+    [products, shuffle]
+  );
+
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
@@ -85,10 +90,6 @@ export const ProductGrid = ({
     );
   }
 
-  const displayProducts = useMemo(
-    () => (shuffle ? seededShuffle(products, todaySeed()) : products),
-    [products, shuffle]
-  );
   const filtered = showFilters ? applyFilters(displayProducts, filters) : displayProducts;
 
   if (products.length === 0) {
