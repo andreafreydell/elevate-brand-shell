@@ -4,15 +4,11 @@ import { type ShopifyProduct } from "@/lib/shopify";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
-export const ProductCard = ({ product, index = 0 }: { product: ShopifyProduct; index?: number }) => {
+export const ProductCard = ({ product }: { product: ShopifyProduct }) => {
   const addItem = useCartStore(state => state.addItem);
   const isLoading = useCartStore(state => state.isLoading);
   const variant = product.node.variants.edges[0]?.node;
-  const imageCount = product.node.images.edges.length;
-  // Pseudo-random but deterministic offset from product id + index for checkerboard variety
-  const hash = product.node.id.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
-  const imageIndex = imageCount > 1 ? (hash + index * 7) % imageCount : 0;
-  const image = imageCount > 0 ? product.node.images.edges[imageIndex]?.node : undefined;
+  const image = product.node.images.edges[0]?.node;
   const price = product.node.priceRange.minVariantPrice;
 
   const handleAddToCart = async (e: React.MouseEvent) => {
