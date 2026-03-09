@@ -207,7 +207,7 @@ const ProductDetail = () => {
 
               {/* This Piece Belongs In — inside image column */}
               {outfitStyles.length > 0 && (
-              <div className="p-4 md:p-8 border-t border-border">
+              <div className="hidden md:block p-4 md:p-8 border-t border-border">
                   <p className="text-[9px] tracking-[0.35em] uppercase font-sans text-muted-foreground mb-3 md:mb-6">
                     This Piece Belongs In
                   </p>
