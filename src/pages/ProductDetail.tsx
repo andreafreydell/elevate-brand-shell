@@ -356,7 +356,7 @@ const ProductDetail = () => {
               </div>
 
               {/* Trust micro-strip */}
-              <div className="flex items-center justify-center gap-4 mb-6">
+              <div className="flex items-center justify-center gap-2 md:gap-4 mb-4 md:mb-6">
                 {["Cancel Anytime", "Free Returns", "Sanitized & Sealed"].map(t => (
                   <span key={t} className="text-[9px] tracking-[0.15em] uppercase font-sans text-muted-foreground">{t}</span>
                 ))}
