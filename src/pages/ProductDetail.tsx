@@ -207,11 +207,11 @@ const ProductDetail = () => {
 
               {/* This Piece Belongs In — inside image column */}
               {outfitStyles.length > 0 && (
-                <div className="p-6 md:p-8 border-t border-border">
-                  <p className="text-[9px] tracking-[0.35em] uppercase font-sans text-muted-foreground mb-6">
+              <div className="p-4 md:p-8 border-t border-border">
+                  <p className="text-[9px] tracking-[0.35em] uppercase font-sans text-muted-foreground mb-3 md:mb-6">
                     This Piece Belongs In
                   </p>
-                  <div className="flex flex-wrap gap-8 justify-start">
+                  <div className="flex flex-wrap gap-4 md:gap-8 justify-start">
                     {outfitStyles.slice(0, 4).map((style, i) => (
                       <WashiTapeNote
                         key={style}
@@ -219,7 +219,7 @@ const ProductDetail = () => {
                         tapeColor={tapeColors[i % tapeColors.length]}
                         rotation={i % 2 === 0 ? -1.5 : 1.5}
                       >
-                        <p className="font-serif text-[15px] leading-snug">{style}</p>
+                        <p className="font-serif text-[13px] md:text-[15px] leading-snug">{style}</p>
                       </WashiTapeNote>
                     ))}
                   </div>
