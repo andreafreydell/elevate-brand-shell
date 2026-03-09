@@ -19,6 +19,7 @@ const CategoryPage = ({ title, subtitle, productType, headline }: CategoryPagePr
       query={`product_type:${productType}`}
       heading={title}
       label="The Collection"
+      showFilters
     />
   </PageLayout>
 );

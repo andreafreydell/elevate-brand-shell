@@ -11,6 +11,8 @@ export interface ShopifyProduct {
     title: string;
     description: string;
     handle: string;
+    productType?: string;
+    tags?: string[];
     priceRange: {
       minVariantPrice: {
         amount: string;
@@ -46,6 +48,10 @@ export interface ShopifyProduct {
       name: string;
       values: string[];
     }>;
+    metafields?: Array<{
+      key: string;
+      value: string | null;
+    } | null>;
   };
 }
 
@@ -87,6 +93,8 @@ export const PRODUCTS_QUERY = `
           title
           description
           handle
+          productType
+          tags
           priceRange {
             minVariantPrice {
               amount
@@ -121,6 +129,15 @@ export const PRODUCTS_QUERY = `
           options {
             name
             values
+          }
+          metafields(identifiers: [
+            { namespace: "custom", key: "plating_color_primary" }
+            { namespace: "custom", key: "silhouette_category" }
+            { namespace: "custom", key: "material_category" }
+            { namespace: "custom", key: "occasions_possible" }
+          ]) {
+            key
+            value
           }
         }
       }
