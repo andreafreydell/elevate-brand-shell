@@ -572,10 +572,10 @@ const ProductDetail = () => {
             SECTION 9 — Sticky bottom CTA (mobile)
         ══════════════════════════════════════════ */}
         <AnimateIn delay={0.35}>
-          <div className="border-x border-b border-border p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="border-x border-b border-border p-4 md:p-12 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6">
             <div>
-              <p className="font-serif text-2xl mb-1">{product.title}</p>
-              <p className="font-serif text-xl text-muted-foreground">{displayPrice}</p>
+              <p className="font-serif text-lg md:text-2xl mb-1">{product.title}</p>
+              <p className="font-serif text-base md:text-xl text-muted-foreground">{displayPrice}</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
               <button
