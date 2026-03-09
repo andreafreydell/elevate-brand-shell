@@ -32,12 +32,22 @@ export const ProductCard = ({ product }: { product: ShopifyProduct }) => {
       <div className="border border-border bg-card overflow-hidden">
         <div className="aspect-square overflow-hidden">
           {image ? (
-            <img
-              src={image.url}
-              alt={image.altText || product.node.title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              loading="lazy"
-            />
+            <div className="relative w-full h-full">
+              <img
+                src={image.url}
+                alt={image.altText || product.node.title}
+                className={`w-full h-full object-cover transition-opacity duration-500 ${hoverImage ? 'group-hover:opacity-0' : 'group-hover:scale-105 transition-transform duration-700'}`}
+                loading="lazy"
+              />
+              {hoverImage && (
+                <img
+                  src={hoverImage.url}
+                  alt={hoverImage.altText || product.node.title}
+                  className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  loading="lazy"
+                />
+              )}
+            </div>
           ) : (
             <div className="w-full h-full bg-secondary flex items-center justify-center">
               <span className="text-xs text-muted-foreground tracking-wider uppercase">No image</span>
