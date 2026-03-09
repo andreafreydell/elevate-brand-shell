@@ -298,13 +298,13 @@ const ProductDetail = () => {
               {/* Dual Access/Buy Options */}
               <div className="space-y-4 mb-3">
                 {/* Access It Option */}
-                <div className="border border-border bg-card p-6">
-                  <div className="flex items-start justify-between mb-3">
+                <div className="border border-border bg-card p-3 md:p-6">
+                  <div className="flex items-start justify-between mb-2 md:mb-3">
                     <div>
                       <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-1">
                         Option 1
                       </p>
-                      <p className="font-serif text-xl font-medium mb-1">Access It</p>
+                      <p className="font-serif text-lg md:text-xl font-medium mb-1">Access It</p>
                       <p className="text-[11px] text-muted-foreground font-sans leading-relaxed">
                         Wear this piece via membership
                       </p>
