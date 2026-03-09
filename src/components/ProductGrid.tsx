@@ -1,8 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { storefrontApiRequest, PRODUCTS_QUERY, type ShopifyProduct } from "@/lib/shopify";
 import { ProductCard } from "./ProductCard";
 import { ProductFilters, applyFilters, type FilterState } from "./ProductFilters";
 import { Skeleton } from "@/components/ui/skeleton";
+
+function seededShuffle<T>(arr: T[], seed: number): T[] {
+  const copy = [...arr];
+  let s = seed;
+  for (let i = copy.length - 1; i > 0; i--) {
+    s = (s * 16807 + 0) % 2147483647;
+    const j = s % (i + 1);
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
+const todaySeed = () => {
+  const d = new Date();
+  return d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
+};
 
 interface ProductGridProps {
   query?: string;
@@ -10,6 +26,7 @@ interface ProductGridProps {
   label?: string;
   limit?: number;
   showFilters?: boolean;
+  shuffle?: boolean;
 }
 
 export const ProductGrid = ({
@@ -18,10 +35,16 @@ export const ProductGrid = ({
   label = "The Collection",
   limit = 50,
   showFilters = false,
+  shuffle = false,
 }: ProductGridProps) => {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState<FilterState>({ color: "", style: "", occasion: "", sort: "" });
+
+  const displayProducts = useMemo(
+    () => (shuffle ? seededShuffle(products, todaySeed()) : products),
+    [products, shuffle]
+  );
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -67,7 +90,7 @@ export const ProductGrid = ({
     );
   }
 
-  const filtered = showFilters ? applyFilters(products, filters) : products;
+  const filtered = showFilters ? applyFilters(displayProducts, filters) : displayProducts;
 
   if (products.length === 0) {
     return (

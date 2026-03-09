@@ -6,7 +6,7 @@ import { ScribbleUnderline } from "@/components/craft/ScribbleUnderline";
 const BrowseAll = () => (
   <PageLayout>
     <PageHero headline={<>Browse <ScribbleUnderline>All</ScribbleUnderline></>} subtitle="The complete GEA vault — every piece, every category." />
-    <ProductGrid heading="All Pieces" label="The Vault" limit={50} showFilters />
+    <ProductGrid heading="All Pieces" label="The Vault" limit={50} showFilters shuffle />
   </PageLayout>
 );
 
