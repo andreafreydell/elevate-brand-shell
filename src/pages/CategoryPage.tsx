@@ -14,7 +14,7 @@ interface CategoryPageProps {
 
 const CategoryPage = ({ title, subtitle, productType, headline }: CategoryPageProps) => (
   <PageLayout>
-    <PageHero headline={headline || title} subtitle={subtitle} />
+    <PageHero headline={headline || title} subtitle={subtitle} compact />
     <ProductGrid
       query={`product_type:${productType}`}
       heading={title}
