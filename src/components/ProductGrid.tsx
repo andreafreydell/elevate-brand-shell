@@ -35,6 +35,7 @@ export const ProductGrid = ({
   label = "The Collection",
   limit = 50,
   showFilters = false,
+  shuffle = false,
 }: ProductGridProps) => {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
   const [loading, setLoading] = useState(true);
