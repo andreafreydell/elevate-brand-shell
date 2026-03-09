@@ -13,11 +13,11 @@ interface PageHeroProps {
   compact?: boolean;
 }
 
-export const PageHero = ({ label, headline, subtitle, cta, ctaHref = "/membership", heroMobileCompact = false }: PageHeroProps) => {
+export const PageHero = ({ label, headline, subtitle, cta, ctaHref = "/membership", heroMobileCompact = false, compact = false }: PageHeroProps) => {
   return (
     <section className={`bg-foreground relative overflow-hidden ${heroMobileCompact ? 'page-hero-section-mobile' : 'hero-section-mobile'}`}>
       <GrainOverlay opacity={0.05} />
-      <div className={`max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-24 md:py-32 lg:py-40 flex flex-col items-center text-center relative z-[1] ${heroMobileCompact ? 'page-hero-mobile' : ''}`}>
+      <div className={`max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 ${compact ? 'py-16 md:py-20 lg:py-24' : 'py-24 md:py-32 lg:py-40'} flex flex-col items-center text-center relative z-[1] ${heroMobileCompact ? 'page-hero-mobile' : ''}`}>
         {label && (
           <AnimateIn variant="fadeIn" duration={0.6}>
             <p className="text-[10px] tracking-[0.4em] uppercase text-background/60 mb-6 font-sans">
@@ -26,7 +26,7 @@ export const PageHero = ({ label, headline, subtitle, cta, ctaHref = "/membershi
           </AnimateIn>
         )}
         <AnimateIn variant="fadeUp" delay={0.15} duration={0.6}>
-          <h1 className={`font-serif text-4xl md:text-5xl lg:text-[3.5rem] font-medium leading-[1.08] tracking-[-0.01em] text-background whitespace-pre-line mb-6 max-w-[700px] ${heroMobileCompact ? 'page-hero-headline-mobile' : 'hero-headline-mobile'}`}>
+          <h1 className={`font-serif ${compact ? 'text-3xl md:text-4xl lg:text-[2.5rem]' : 'text-4xl md:text-5xl lg:text-[3.5rem]'} font-medium leading-[1.08] tracking-[-0.01em] text-background whitespace-pre-line mb-6 max-w-[600px] ${heroMobileCompact ? 'page-hero-headline-mobile' : 'hero-headline-mobile'}`}>
             {headline}
           </h1>
         </AnimateIn>
