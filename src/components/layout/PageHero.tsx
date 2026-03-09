@@ -26,7 +26,7 @@ export const PageHero = ({ label, headline, subtitle, cta, ctaHref = "/membershi
           </AnimateIn>
         )}
         <AnimateIn variant="fadeUp" delay={0.15} duration={0.6}>
-          <h1 className={`font-serif ${compact ? 'text-3xl md:text-4xl lg:text-[2.5rem]' : 'text-4xl md:text-5xl lg:text-[3.5rem]'} font-medium leading-[1.08] tracking-[-0.01em] text-background whitespace-pre-line mb-6 max-w-[600px] ${heroMobileCompact ? 'page-hero-headline-mobile' : 'hero-headline-mobile'}`}>
+          <h1 className={`font-serif text-4xl md:text-5xl lg:text-[3.5rem] font-medium leading-[1.08] tracking-[-0.01em] text-background whitespace-pre-line mb-6 max-w-[600px] ${heroMobileCompact ? 'page-hero-headline-mobile' : 'hero-headline-mobile'}`}>
             {headline}
           </h1>
         </AnimateIn>
