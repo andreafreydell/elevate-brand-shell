@@ -14,7 +14,6 @@ function optimizeShopifyImage(url: string, width: number): string {
     return url;
   }
 }
-import { toast } from "sonner";
 
 export const ProductCard = ({ product }: { product: ShopifyProduct }) => {
   const addItem = useCartStore(state => state.addItem);
