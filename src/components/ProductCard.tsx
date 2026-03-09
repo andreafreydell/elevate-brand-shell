@@ -4,6 +4,18 @@ import { type ShopifyProduct } from "@/lib/shopify";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
+/** Append width param to Shopify CDN URLs for optimized loading */
+function optimizeShopifyImage(url: string, width: number): string {
+  try {
+    const u = new URL(url);
+    u.searchParams.set("width", String(width));
+    return u.toString();
+  } catch {
+    return url;
+  }
+}
+import { toast } from "sonner";
+
 export const ProductCard = ({ product }: { product: ShopifyProduct }) => {
   const addItem = useCartStore(state => state.addItem);
   const isLoading = useCartStore(state => state.isLoading);
