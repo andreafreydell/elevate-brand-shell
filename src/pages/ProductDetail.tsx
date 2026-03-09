@@ -368,7 +368,7 @@ const ProductDetail = () => {
                   <p className="text-[9px] tracking-[0.35em] uppercase font-sans text-muted-foreground mb-4">
                     Occasions It Was Made For
                   </p>
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-2 md:gap-3">
                     {occasions.map((occ, i) => (
                       <OrganicBlobTag key={occ} variant={blobVariants[i % 4]}>
                         {occ}
