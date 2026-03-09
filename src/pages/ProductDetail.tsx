@@ -547,7 +547,7 @@ const ProductDetail = () => {
             ].map(({ icon: Icon, label, body }, i) => (
               <div
                 key={label}
-                className={`p-8 md:p-10 border-b md:border-b-0 ${i < 2 ? "md:border-r border-border" : ""} relative`}
+                className={`p-4 md:p-10 border-b md:border-b-0 ${i < 2 ? "md:border-r border-border" : ""} relative`}
               >
                 <Icon className="h-4 w-4 stroke-[1.3] text-muted-foreground mb-4" />
                 <p className="text-[10px] tracking-[0.2em] uppercase font-sans mb-3">{label}</p>
