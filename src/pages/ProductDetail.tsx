@@ -154,7 +154,7 @@ const ProductDetail = () => {
         </Link>
       </div>
 
-      <main className="max-w-[1400px] mx-auto px-6 py-8 md:py-12 space-y-0">
+      <main className="max-w-[1400px] mx-auto px-6 py-4 md:py-12 space-y-0">
 
         {/* ══════════════════════════════════════════
             SECTION 1 — Product Hero (Image + Buy Box)
