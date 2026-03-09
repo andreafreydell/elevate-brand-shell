@@ -75,9 +75,9 @@ export const ProductGrid = ({
           </div>
         )}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-[1px] bg-border">
-          {filtered.map((product) => (
+          {filtered.map((product, i) => (
             <div key={product.node.id} className="bg-background p-3 sm:p-6">
-              <ProductCard product={product} />
+              <ProductCard product={product} index={i} />
             </div>
           ))}
         </div>

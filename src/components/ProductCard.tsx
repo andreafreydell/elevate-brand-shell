@@ -4,11 +4,12 @@ import { type ShopifyProduct } from "@/lib/shopify";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
-export const ProductCard = ({ product }: { product: ShopifyProduct }) => {
+export const ProductCard = ({ product, index = 0 }: { product: ShopifyProduct; index?: number }) => {
   const addItem = useCartStore(state => state.addItem);
   const isLoading = useCartStore(state => state.isLoading);
   const variant = product.node.variants.edges[0]?.node;
-  const image = product.node.images.edges[0]?.node;
+  const imageCount = product.node.images.edges.length;
+  const image = imageCount > 0 ? product.node.images.edges[index % imageCount]?.node : undefined;
   const price = product.node.priceRange.minVariantPrice;
 
   const handleAddToCart = async (e: React.MouseEvent) => {
