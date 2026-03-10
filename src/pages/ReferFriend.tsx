@@ -78,7 +78,7 @@ const ReferFriend = () => {
 
       <section className="border-t border-border relative overflow-hidden">
         <GrainOverlay opacity={0.03} />
-        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center relative z-[1]">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-24 text-center relative z-[1]">
           <AnimateIn variant="fadeUp" duration={0.5}>
             <HandDrawnFrame strokeColor="hsl(var(--foreground))">
               <h2 className="font-serif text-2xl md:text-3xl tracking-[0.06em] uppercase font-medium mb-4">

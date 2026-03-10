@@ -55,20 +55,23 @@ const About = () => {
               <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-6 relative z-[1]">
                 A Letter from the Founder
               </p>
-              <p className="text-[13px] text-foreground font-sans leading-[1.8] mb-6 relative z-[1]">
-                I grew up watching my mother transform everything she touched — and build a company
-                that empowered millions of women to create the lives and homes they imagined. I wanted
-                to follow in her footsteps, but the world has changed. Women are more mobile, selective,
-                and conscious.
-              </p>
-              <p className="text-[13px] text-foreground font-sans leading-[1.8] mb-6 relative z-[1]">
-                We want beauty without waste, luxury without guilt, and self-expression without clutter —
-                yet jewelry is still stuck in old habits of ownership and accumulation.
-              </p>
-              <p className="text-[13px] text-foreground font-sans leading-[1.8] relative z-[1]">
-                So I created a brand that reimagines luxury as access, not ownership — curated high-design
-                jewelry that moves with your life, evolves with your taste, and carries no burden.
-                Access is luxury. Presence is the only possession that matters.
+              <div className="max-w-content">
+                <p className="text-[13px] text-foreground font-sans leading-[1.8] mb-6 relative z-[1]">
+                  I grew up watching my mother transform everything she touched — and build a company
+                  that empowered millions of women to create the lives and homes they imagined. I wanted
+                  to follow in her footsteps, but the world has changed. Women are more mobile, selective,
+                  and conscious.
+                </p>
+                <p className="text-[13px] text-foreground font-sans leading-[1.8] mb-6 relative z-[1]">
+                  We want beauty without waste, luxury without guilt, and self-expression without clutter —
+                  yet jewelry is still stuck in old habits of ownership and accumulation.
+                </p>
+                <p className="text-[13px] text-foreground font-sans leading-[1.8] relative z-[1]">
+                  So I created a brand that reimagines luxury as access, not ownership — curated high-design
+                  jewelry that moves with your life, evolves with your taste, and carries no burden.
+                  Access is luxury. Presence is the only possession that matters.
+                </p>
+              </div>
               </p>
               <img src="/images/founder-signature.png" alt="Founder signature — Andrea Freydell" className="max-w-xs h-auto mt-8 relative z-[1]" loading="lazy" decoding="async" />
             </div>

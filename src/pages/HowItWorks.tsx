@@ -140,7 +140,7 @@ const HowItWorks = () => {
           <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-medium text-[hsl(36,33%,93%)] tracking-[0.04em] mb-4">
             Member Access
           </h2>
-          <p className="text-[13px] text-[hsl(36,20%,75%)] font-sans max-w-[480px] mx-auto mb-10 leading-relaxed">
+          <p className="text-[13px] text-[hsl(36,20%,75%)] font-sans max-w-content mx-auto mb-10 leading-relaxed">
             We are opening our doors to members who believe luxury is not about
             owning more — it is about accessing better. Locked pricing, early access, priority
             selection, and exclusive benefits — permanently attached to your account.

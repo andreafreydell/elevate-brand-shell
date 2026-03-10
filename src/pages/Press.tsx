@@ -70,7 +70,7 @@ const Press = () => {
       {/* Brand statement */}
       <section className="bg-foreground text-background relative overflow-hidden">
         <GrainOverlay opacity={0.05} />
-        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center relative z-[1]">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-24 text-center relative z-[1]">
           <TagRedStamp size={20} className="mx-auto mb-4" />
           <AnimateIn variant="fadeIn" duration={0.6}>
             <p className="text-[10px] tracking-[0.4em] uppercase text-background/50 mb-6 font-sans">About GEA</p>

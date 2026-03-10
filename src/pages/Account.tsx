@@ -75,7 +75,7 @@ const Account = () => {
 
       <section className="border-t border-border relative overflow-hidden">
         <GrainOverlay opacity={0.03} />
-        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center relative z-[1]">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-24 text-center relative z-[1]">
           <TagRedStamp size={20} className="mx-auto mb-4" />
           <AnimateIn variant="fadeUp" duration={0.5}>
             <HandDrawnFrame strokeColor="hsl(var(--foreground))">

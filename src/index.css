@@ -245,10 +245,17 @@
     @apply text-center;
     font-family: var(--font-serif);
     font-weight: 500;
-    font-size: clamp(1.25rem, 2.5vw, 1.875rem);
+    font-size: clamp(1.4rem, 2.8vw, 2rem);
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: hsl(var(--ink));
+  }
+
+  /* Narrow content column for text-heavy blocks */
+  .max-w-content {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   @media (max-width: 768px) {
