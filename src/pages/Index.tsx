@@ -55,57 +55,63 @@ const Index = () => {
       {/* ═══════════════════════════════════════════
           1. AUTHORITY HERO
           ═══════════════════════════════════════════ */}
-      <section className="hero-section-mobile">
-        <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-[1fr_1.2fr_1fr] min-h-0 md:min-h-[640px] lg:min-h-[720px]">
-          <div className="h-[180px] md:h-auto bg-[hsl(30,18%,38%)] overflow-hidden">
-            <img
-              src="/images/hero-authority.png"
-              alt="Layered gold and moissanite necklaces on model"
-              className="w-full h-full object-cover object-top md:object-center"
-              width={480}
-              height={720}
-              fetchPriority="high"
-              decoding="async"
-            />
+      <section className="relative">
+        <div className="max-w-[1440px] mx-auto relative overflow-hidden min-h-[85vh] md:min-h-[90vh] lg:min-h-[92vh]">
+          {/* Full-bleed hero image */}
+          <img
+            src="/images/hero-authority.png"
+            alt="Layered gold and moissanite necklaces on model"
+            className="absolute inset-0 w-full h-full object-cover"
+            fetchPriority="high"
+            decoding="async"
+          />
+
+          {/* Cinematic gradient overlay — bottom-heavy for text legibility */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[hsl(28,22%,14%)] via-[hsl(28,22%,14%)/0.35] to-transparent" />
+
+          {/* Grain texture */}
+          <GrainOverlay opacity={0.04} />
+
+          {/* Decorative craft elements */}
+          <WaxSeal size={36} className="absolute top-8 right-8 md:top-12 md:right-12 z-[2] opacity-80" />
+          <StampBadge text="FOUNDING" subtext="2026" rotation={-8} className="absolute top-8 left-8 md:top-12 md:left-12 z-[2] opacity-70" />
+
+          {/* Editorial text block — anchored bottom-left */}
+          <div className="absolute inset-x-0 bottom-0 z-[1] px-6 sm:px-8 md:px-14 lg:px-20 pb-12 md:pb-16 lg:pb-20">
+            <div className="max-w-[600px]">
+              <AnimateIn variant="fadeIn" duration={0.8}>
+                <p className="text-[9px] md:text-[10px] tracking-[0.4em] uppercase text-[hsl(36,25%,78%)] mb-3 md:mb-4 font-sans">The House of GEA</p>
+              </AnimateIn>
+              <AnimateIn variant="fadeUp" delay={0.2} duration={0.8}>
+                <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium leading-[1.1] tracking-[-0.01em] text-[hsl(36,33%,93%)] mb-4 md:mb-5">
+                  Luxury,{" "}<ScribbleUnderline color="var(--brass)" delay={0.8}>Accessed.</ScribbleUnderline>
+                </h1>
+              </AnimateIn>
+              <AnimateIn variant="fadeUp" delay={0.4} duration={0.8}>
+                <p className="text-[11px] md:text-[13px] leading-relaxed text-[hsl(36,20%,75%)] max-w-[380px] mb-6 md:mb-8 font-sans">
+                  Curated high-design jewelry, cared for through its entire journey.
+                  Your money stretches further. Your visual impact multiplies.
+                </p>
+              </AnimateIn>
+              <AnimateIn variant="fadeUp" delay={0.6} duration={0.8}>
+                <a
+                  href="#founding-access"
+                  className="inline-block border border-[hsl(36,25%,78%)] text-[hsl(36,25%,78%)] px-8 md:px-10 py-3 md:py-3.5 text-[10px] md:text-[11px] tracking-[0.2em] uppercase font-sans hover:bg-[hsl(36,25%,78%)] hover:text-[hsl(28,22%,14%)] transition-colors"
+                >
+                  Apply for Access
+                </a>
+              </AnimateIn>
+            </div>
           </div>
-          <div className="hero-content-mobile relative flex flex-col items-center justify-center text-center px-6 md:px-12 lg:px-16 py-10 md:py-24 bg-[hsl(28,22%,34%)] overflow-hidden">
-            <GrainOverlay opacity={0.05} />
-            {/* Wax seal — decorative */}
-            <WaxSeal size={40} className="absolute top-6 right-6 md:top-10 md:right-10" />
-            {/* Stamp badge — bottom-left decorative */}
-            <StampBadge text="FOUNDING" subtext="2026" rotation={-8} className="absolute bottom-4 left-4 md:bottom-8 md:left-8" />
-            <AnimateIn variant="fadeIn" duration={0.8}>
-              <p className="text-[10px] tracking-[0.4em] uppercase text-[hsl(36,25%,78%)] mb-4 md:mb-8 font-sans">The House of GEA</p>
-            </AnimateIn>
-            <AnimateIn variant="fadeUp" delay={0.2} duration={0.8}>
-              <h1 className="hero-headline-mobile font-serif text-3xl md:text-5xl lg:text-[3.8rem] font-medium leading-[1.08] tracking-[-0.01em] text-[hsl(36,33%,93%)] whitespace-pre-line mb-4 md:mb-6">
-                Luxury,{"\n"}<ScribbleUnderline color="var(--brass)" delay={0.8}>Accessed.</ScribbleUnderline>
-              </h1>
-            </AnimateIn>
-            <AnimateIn variant="fadeUp" delay={0.4} duration={0.8}>
-              <p className="hero-subtitle-mobile text-[11px] md:text-[13px] leading-relaxed text-[hsl(36,20%,75%)] max-w-[380px] mb-6 md:mb-12 font-sans">
-                Curated high-design jewelry, cared for through its entire journey.
-                Your money stretches further. Your visual impact multiplies.
-              </p>
-            </AnimateIn>
-            <AnimateIn variant="fadeUp" delay={0.6} duration={0.8}>
-              <a
-                href="#founding-access"
-                className="relative z-[1] inline-block border border-[hsl(36,25%,78%)] text-[hsl(36,25%,78%)] px-8 md:px-10 py-3 md:py-3.5 text-[10px] md:text-[11px] tracking-[0.2em] uppercase font-sans hover:bg-[hsl(36,25%,78%)] hover:text-[hsl(28,22%,34%)] transition-colors"
-              >
-                Apply for Access
-              </a>
-            </AnimateIn>
-          </div>
-          <div className="h-[180px] md:h-auto bg-[hsl(32,15%,42%)] overflow-hidden">
+
+          {/* Secondary image — small editorial inset, desktop only */}
+          <div className="hidden lg:block absolute top-10 right-12 w-[220px] xl:w-[260px] z-[1] border border-[hsl(36,25%,78%)/0.2]">
             <img
               src="/images/hero-editorial.png"
               alt="Gold and emerald rings styled on hand"
-              className="w-full h-full object-cover md:object-center"
-              style={{ objectPosition: '50% 75%' }}
-              width={480}
-              height={720}
-              fetchPriority="high"
+              className="w-full h-auto object-cover"
+              style={{ aspectRatio: '3/4' }}
+              loading="lazy"
               decoding="async"
             />
           </div>
