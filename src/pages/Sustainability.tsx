@@ -96,7 +96,7 @@ const Sustainability = () => {
       {/* CTA */}
       <section className="bg-[hsl(28,22%,34%)] relative overflow-hidden">
         <GrainOverlay opacity={0.05} />
-        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center relative z-[1]">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-24 text-center relative z-[1]">
           <WaxSeal size={36} className="mx-auto mb-4" />
           <AnimateIn variant="fadeUp" duration={0.6}>
             <HandDrawnFrame strokeColor="hsl(36,25%,78%)">

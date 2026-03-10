@@ -101,8 +101,8 @@ Three tiers of brown, not one. This is the most important thing to get right.
 
 | Role | Font | Weight | Tracking | Line Height | Size | Color | Transform |
 |------|------|--------|----------|-------------|------|-------|-----------|
-| H1 | Playfair Display | 500 | -0.01em | 1.08 | clamp(2.5rem, 5vw, 4.5rem) | `--ink` | none |
-| H2 | Playfair Display | 500 | 0.06em | 1.15 | clamp(1.25rem, 2.5vw, 1.875rem) | `--foreground` | uppercase |
+| H1 | Playfair Display | 500 | -0.01em | 1.08 | clamp(2.75rem, 5vw, 4rem) | `--ink` | none |
+| H2 | Playfair Display | 500 | 0.06em | 1.15 | clamp(1.4rem, 2.8vw, 2rem) | `--foreground` | uppercase |
 | H3 | Playfair Display | 600 | 0.02em | 1.25 | 1.15rem | `--ink` | none |
 | Body | Inter | 400 | 0.01em | 1.6 | 14px | `--ink` | none |
 | Label | Inter | 500 | 0.25em | — | 10px | `--muted-foreground` | uppercase |

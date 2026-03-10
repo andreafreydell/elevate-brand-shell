@@ -116,12 +116,12 @@ const HowItWorks = () => {
       {/* ══ Access Is The New Luxury ══ */}
       <section className="border-t border-border relative overflow-hidden">
         <GrainOverlay opacity={0.03} />
-        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center relative z-[1]">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-24 text-center relative z-[1]">
           <HandDrawnFrame strokeColor="hsl(var(--foreground))">
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium tracking-[-0.01em] mb-4 text-ink">
               Access Is{"\n"}The New <ScribbleUnderline color="var(--brass)" delay={0.5}>Luxury</ScribbleUnderline>
             </h2>
-            <p className="text-[13px] text-muted-foreground font-sans max-w-[520px] mx-auto mb-10 leading-relaxed">
+            <p className="text-[13px] text-muted-foreground font-sans max-w-content mx-auto mb-10 leading-relaxed">
               Two tiers of access. One philosophy: more beauty, less burden. Every membership includes protection, care, and free shipping.
             </p>
             <TrustStrip variant="full" />
@@ -132,7 +132,7 @@ const HowItWorks = () => {
       {/* ══ Member Access ══ */}
       <section className="bg-[hsl(28,22%,34%)] relative overflow-hidden">
         <GrainOverlay opacity={0.05} />
-        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center relative z-[1]">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-24 text-center relative z-[1]">
           <WaxSeal size={40} className="mx-auto mb-4" />
           <p className="text-[10px] tracking-[0.4em] uppercase text-[hsl(36,25%,78%)] mb-4 font-sans">
             Limited Invitation
@@ -140,7 +140,7 @@ const HowItWorks = () => {
           <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-medium text-[hsl(36,33%,93%)] tracking-[0.04em] mb-4">
             Member Access
           </h2>
-          <p className="text-[13px] text-[hsl(36,20%,75%)] font-sans max-w-[480px] mx-auto mb-10 leading-relaxed">
+          <p className="text-[13px] text-[hsl(36,20%,75%)] font-sans max-w-content mx-auto mb-10 leading-relaxed">
             We are opening our doors to members who believe luxury is not about
             owning more — it is about accessing better. Locked pricing, early access, priority
             selection, and exclusive benefits — permanently attached to your account.

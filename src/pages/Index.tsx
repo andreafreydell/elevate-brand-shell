@@ -245,7 +245,7 @@ const Index = () => {
                 <Scale className="h-5 w-5 stroke-[1.3] text-foreground" />
               </div>
               <h3 className="philosophy-title font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4">Ownership Is a <CircleEmphasis color="var(--tag-red)">Liability</CircleEmphasis></h3>
-              <p className="philosophy-body text-[12px] text-muted-foreground font-sans leading-relaxed">
+              <p className="philosophy-body text-[12px] text-muted-foreground font-sans leading-relaxed max-w-content">
                 The average woman wears each piece of fine jewelry fewer than <ScriptNumber>5</ScriptNumber> times before it sits
                 forgotten. Thousands spent. Inches of drawer space consumed. Value depreciating silently.
                 The traditional model rewards accumulation over expression.
@@ -290,7 +290,7 @@ const Index = () => {
                 <Zap className="h-5 w-5 stroke-[1.3] text-background/70" />
               </div>
               <h3 className="philosophy-title font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4 text-background">Access Is <ScribbleUnderline color="var(--seafoam)" delay={0.5}>Intelligence</ScribbleUnderline></h3>
-              <p className="philosophy-body text-[12px] text-background/70 font-sans leading-relaxed">
+              <p className="philosophy-body text-[12px] text-background/70 font-sans leading-relaxed max-w-content">
                 Access the full vault. Wear what speaks to you this month. Return when you're ready
                 for something new. No commitment to a single piece — commitment to always being adorned
                 exactly as you wish. <ScriptNumber className="text-background/90">10+</ScriptNumber> pieces per year. Presence over possession.

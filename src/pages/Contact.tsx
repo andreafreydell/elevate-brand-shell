@@ -46,7 +46,7 @@ const Contact = () => {
 
       <TornPaperEdge className="max-w-[1440px] mx-auto" />
 
-      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20">
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-24">
         <AnimateIn variant="fadeUp" duration={0.6}>
           <div className="max-w-[600px] mx-auto relative">
             <WaxSeal size={32} className="absolute -top-2 -right-8 hidden md:inline-flex" />
