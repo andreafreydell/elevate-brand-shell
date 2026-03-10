@@ -72,7 +72,6 @@ const About = () => {
                   Access is luxury. Presence is the only possession that matters.
                 </p>
               </div>
-              </p>
               <img src="/images/founder-signature.png" alt="Founder signature — Andrea Freydell" className="max-w-xs h-auto mt-8 relative z-[1]" loading="lazy" decoding="async" />
             </div>
           </AnimateIn>
