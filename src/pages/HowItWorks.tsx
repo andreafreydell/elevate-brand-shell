@@ -116,7 +116,7 @@ const HowItWorks = () => {
       {/* ══ Access Is The New Luxury ══ */}
       <section className="border-t border-border relative overflow-hidden">
         <GrainOverlay opacity={0.03} />
-        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-20 text-center relative z-[1]">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-24 text-center relative z-[1]">
           <HandDrawnFrame strokeColor="hsl(var(--foreground))">
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium tracking-[-0.01em] mb-4 text-ink">
               Access Is{"\n"}The New <ScribbleUnderline color="var(--brass)" delay={0.5}>Luxury</ScribbleUnderline>
