@@ -121,7 +121,7 @@ const HowItWorks = () => {
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium tracking-[-0.01em] mb-4 text-ink">
               Access Is{"\n"}The New <ScribbleUnderline color="var(--brass)" delay={0.5}>Luxury</ScribbleUnderline>
             </h2>
-            <p className="text-[13px] text-muted-foreground font-sans max-w-[520px] mx-auto mb-10 leading-relaxed">
+            <p className="text-[13px] text-muted-foreground font-sans max-w-content mx-auto mb-10 leading-relaxed">
               Two tiers of access. One philosophy: more beauty, less burden. Every membership includes protection, care, and free shipping.
             </p>
             <TrustStrip variant="full" />
