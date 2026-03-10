@@ -163,7 +163,7 @@ const HowItWorks = () => {
         <div className="hidden md:flex justify-center mb-8">
           <HandDrawnRect className="max-w-md">
             <p className="text-center font-sans text-[12px] text-muted-foreground leading-relaxed">
-              Starting from just <MarkerCircle color="var(--tag-red)"><span className="font-semibold text-foreground">$49/mo</span></MarkerCircle> — full vault access included
+              Starting from just <MarkerCircle color="var(--tag-red)"><span className="font-semibold text-foreground">$65/mo</span></MarkerCircle> — full vault access included
             </p>
           </HandDrawnRect>
         </div>
