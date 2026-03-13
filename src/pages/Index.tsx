@@ -410,6 +410,7 @@ const Index = () => {
         <div className="text-center mt-6">
           <TrustStrip variant="full" />
         </div>
+        </div>
       </section>
 
     </PageLayout>
