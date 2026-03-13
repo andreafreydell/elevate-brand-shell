@@ -101,12 +101,12 @@ const Index = () => {
               </a>
             </AnimateIn>
           </div>
-          <div className="h-[180px] md:h-auto bg-[hsl(32,15%,42%)] overflow-hidden">
+          <div ref={heroRightRef} className="h-[180px] md:h-auto bg-[hsl(32,15%,42%)] overflow-hidden">
             <img
               src="/images/hero-editorial.png"
               alt="Gold and emerald rings styled on hand"
-              className="w-full h-full object-cover md:object-center"
-              style={{ objectPosition: '50% 75%' }}
+              className="w-full h-[110%] object-cover md:object-center will-change-transform"
+              style={{ objectPosition: '50% 75%', transform: `translateY(${heroRightOffset}px)` }}
               width={480}
               height={720}
               fetchPriority="high"
