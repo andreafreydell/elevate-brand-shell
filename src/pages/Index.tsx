@@ -395,8 +395,9 @@ const Index = () => {
       {/* ═══════════════════════════════════════════
           7. MEMBERSHIP ENGINE (OfferUnit standard)
           ═══════════════════════════════════════════ */}
+      <section className="bg-background-alt">
       <SectionHeading label="Membership" heading="Your Tier of Access" />
-      <section className="tier-section-mobile max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-8">
+      <div className="tier-section-mobile max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-8">
         {/* HandDrawnRect callout above tiers */}
         <div className="hidden md:flex justify-center mb-10">
           <HandDrawnRect className="max-w-md">
