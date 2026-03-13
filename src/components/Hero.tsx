@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useParallax } from "@/hooks/useParallax";
 
 const slides = [
   {
@@ -23,20 +22,17 @@ const slides = [
 export const Hero = () => {
   const [current, setCurrent] = useState(0);
   const slide = slides[current];
-  const { ref: leftRef, offset: leftOffset } = useParallax(0.12);
-  const { ref: rightRef, offset: rightOffset } = useParallax(0.12);
 
   return (
     <section>
       {/* 3-column hero banner */}
       <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-[1fr_1.2fr_1fr] min-h-[600px] lg:min-h-[680px]">
         {/* Left image block */}
-        <div ref={leftRef} className="hidden md:block bg-[hsl(30,18%,38%)] overflow-hidden">
+        <div className="hidden md:block bg-[hsl(30,18%,38%)] overflow-hidden">
           <img
             src="/images/hero-authority.png"
             alt="Layered gold and moissanite necklaces on model"
-            className="w-full h-[110%] object-cover transition-transform duration-100 will-change-transform"
-            style={{ transform: `translateY(${leftOffset}px)` }}
+            className="w-full h-full object-cover"
           />
         </div>
 
@@ -60,12 +56,11 @@ export const Hero = () => {
         </div>
 
         {/* Right image block */}
-        <div ref={rightRef} className="hidden md:block bg-[hsl(32,15%,42%)] overflow-hidden">
+        <div className="hidden md:block bg-[hsl(32,15%,42%)] overflow-hidden">
           <img
             src="/images/hero-editorial.png"
             alt="Gold and emerald rings styled on hand"
-            className="w-full h-[110%] object-cover transition-transform duration-100 will-change-transform"
-            style={{ transform: `translateY(${rightOffset}px)` }}
+            className="w-full h-full object-cover"
           />
         </div>
       </div>

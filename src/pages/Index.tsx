@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useParallax } from "@/hooks/useParallax";
 import { storefrontApiRequest, PRODUCTS_QUERY, type ShopifyProduct } from "@/lib/shopify";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { SectionHeading } from "@/components/layout/SectionHeading";
@@ -34,8 +33,6 @@ import { Loader2, Hand, Package, Sparkles, RefreshCw, Gem, Heart, Shuffle, Calen
 const Index = () => {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
   const [loading, setLoading] = useState(true);
-  const { ref: heroLeftRef, offset: heroLeftOffset } = useParallax(0.1);
-  const { ref: heroRightRef, offset: heroRightOffset } = useParallax(0.1);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -60,12 +57,11 @@ const Index = () => {
           ═══════════════════════════════════════════ */}
       <section className="hero-section-mobile">
         <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-[1fr_1.2fr_1fr] min-h-0 md:min-h-[640px] lg:min-h-[720px]">
-          <div ref={heroLeftRef} className="h-[180px] md:h-auto bg-[hsl(30,18%,38%)] overflow-hidden">
+          <div className="h-[180px] md:h-auto bg-[hsl(30,18%,38%)] overflow-hidden">
             <img
               src="/images/hero-authority.png"
               alt="Layered gold and moissanite necklaces on model"
-              className="w-full h-[110%] object-cover object-top md:object-center will-change-transform"
-              style={{ transform: `translateY(${heroLeftOffset}px)` }}
+              className="w-full h-full object-cover object-top md:object-center"
               width={480}
               height={720}
               fetchPriority="high"
@@ -75,9 +71,9 @@ const Index = () => {
           <div className="hero-content-mobile relative flex flex-col items-center justify-center text-center px-6 md:px-12 lg:px-16 py-10 md:py-24 bg-[hsl(28,22%,34%)] overflow-hidden">
             <GrainOverlay opacity={0.05} />
             {/* Wax seal — decorative */}
-            <WaxSeal size={40} className="absolute top-6 right-6 md:top-10 md:right-10 animate-float-slow" />
+            <WaxSeal size={40} className="absolute top-6 right-6 md:top-10 md:right-10" />
             {/* Stamp badge — bottom-left decorative */}
-            <StampBadge text="FOUNDING" subtext="2026" rotation={-8} className="absolute bottom-4 left-4 md:bottom-8 md:left-8 animate-float" />
+            <StampBadge text="FOUNDING" subtext="2026" rotation={-8} className="absolute bottom-4 left-4 md:bottom-8 md:left-8" />
             <AnimateIn variant="fadeIn" duration={0.8}>
               <p className="text-[10px] tracking-[0.4em] uppercase text-[hsl(36,25%,78%)] mb-4 md:mb-8 font-sans">The House of GEA</p>
             </AnimateIn>
@@ -101,12 +97,12 @@ const Index = () => {
               </a>
             </AnimateIn>
           </div>
-          <div ref={heroRightRef} className="h-[180px] md:h-auto bg-[hsl(32,15%,42%)] overflow-hidden">
+          <div className="h-[180px] md:h-auto bg-[hsl(32,15%,42%)] overflow-hidden">
             <img
               src="/images/hero-editorial.png"
               alt="Gold and emerald rings styled on hand"
-              className="w-full h-[110%] object-cover md:object-center will-change-transform"
-              style={{ objectPosition: '50% 75%', transform: `translateY(${heroRightOffset}px)` }}
+              className="w-full h-full object-cover md:object-center"
+              style={{ objectPosition: '50% 75%' }}
               width={480}
               height={720}
               fetchPriority="high"
