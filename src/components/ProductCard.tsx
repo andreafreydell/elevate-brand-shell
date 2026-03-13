@@ -41,13 +41,13 @@ export const ProductCard = ({ product }: { product: ShopifyProduct }) => {
   return (
     <Link to={`/product/${product.node.handle}`} className="group block">
       <div className="border border-border bg-card overflow-hidden">
-        <div className="aspect-square overflow-hidden">
+        <div className="aspect-square overflow-hidden hover-product-zoom">
           {image ? (
             <div className="relative w-full h-full">
               <img
                 src={optimizeShopifyImage(image.url, 600)}
                 alt={image.altText || product.node.title}
-                className={`w-full h-full object-cover transition-opacity duration-500 ${hoverImage ? 'group-hover:opacity-0' : 'group-hover:scale-105 transition-transform duration-700'}`}
+                className={`w-full h-full object-cover transition-all duration-700 ease-out ${hoverImage ? 'group-hover:opacity-0' : ''}`}
                 loading="lazy"
                 decoding="async"
               />
@@ -55,7 +55,7 @@ export const ProductCard = ({ product }: { product: ShopifyProduct }) => {
                 <img
                   src={optimizeShopifyImage(hoverImage.url, 600)}
                   alt={hoverImage.altText || product.node.title}
-                  className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out"
                   loading="lazy"
                   decoding="async"
                 />

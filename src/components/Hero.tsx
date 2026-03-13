@@ -1,6 +1,5 @@
 import { useState } from "react";
-
-const slides = [
+import { useParallax } from "@/hooks/useParallax";
   {
     subtitle: "The Collection",
     headline: "Unlimited\nDesigner Jewelry",
