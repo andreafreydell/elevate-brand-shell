@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useParallax } from "@/hooks/useParallax";
 import { storefrontApiRequest, PRODUCTS_QUERY, type ShopifyProduct } from "@/lib/shopify";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { SectionHeading } from "@/components/layout/SectionHeading";
