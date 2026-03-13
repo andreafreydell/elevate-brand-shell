@@ -209,8 +209,9 @@ const Index = () => {
       {/* ═══════════════════════════════════════════
           4. ACCESS FRAMEWORK
           ═══════════════════════════════════════════ */}
+      <section className="bg-background-alt">
       <SectionHeading label="Philosophy" heading="Access Defines Status" />
-      <section className="philosophy-section-mobile max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
+      <div className="philosophy-section-mobile max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <StaggerContainer className="philosophy-grid-mobile grid grid-cols-1 md:grid-cols-2 gap-[2px]">
           <StaggerItem>
             <div className="philosophy-card-mobile bg-card border border-border p-10 md:p-14 h-full transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:-translate-y-[3px] hover:border-foreground hover:border-2">
