@@ -131,6 +131,7 @@ const Index = () => {
         <div className="text-center mt-10">
           <Link to="/how-it-works" className="cta-underline">Learn More</Link>
         </div>
+        </div>
       </section>
 
       {/* Diamond chain border divider */}
