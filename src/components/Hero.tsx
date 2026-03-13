@@ -60,11 +60,12 @@ export const Hero = () => {
         </div>
 
         {/* Right image block */}
-        <div className="hidden md:block bg-[hsl(32,15%,42%)] overflow-hidden">
+        <div ref={rightRef} className="hidden md:block bg-[hsl(32,15%,42%)] overflow-hidden">
           <img
             src="/images/hero-editorial.png"
             alt="Gold and emerald rings styled on hand"
-            className="w-full h-full object-cover"
+            className="w-full h-[110%] object-cover transition-transform duration-100 will-change-transform"
+            style={{ transform: `translateY(${rightOffset}px)` }}
           />
         </div>
       </div>
