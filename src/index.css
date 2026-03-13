@@ -102,6 +102,7 @@
 
   .dark {
     --background: 30 8% 7%;
+    --background-alt: 30 6% 10%;
     --foreground: 34 18% 65%;
     --ink: 34 22% 90%;
 
