@@ -301,6 +301,7 @@ const Index = () => {
             </div>
           </StaggerItem>
         </StaggerContainer>
+        </div>
       </section>
 
       {/* ═══════════════════════════════════════════
