@@ -60,11 +60,12 @@ const Index = () => {
           ═══════════════════════════════════════════ */}
       <section className="hero-section-mobile">
         <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-[1fr_1.2fr_1fr] min-h-0 md:min-h-[640px] lg:min-h-[720px]">
-          <div className="h-[180px] md:h-auto bg-[hsl(30,18%,38%)] overflow-hidden">
+          <div ref={heroLeftRef} className="h-[180px] md:h-auto bg-[hsl(30,18%,38%)] overflow-hidden">
             <img
               src="/images/hero-authority.png"
               alt="Layered gold and moissanite necklaces on model"
-              className="w-full h-full object-cover object-top md:object-center"
+              className="w-full h-[110%] object-cover object-top md:object-center will-change-transform"
+              style={{ transform: `translateY(${heroLeftOffset}px)` }}
               width={480}
               height={720}
               fetchPriority="high"
