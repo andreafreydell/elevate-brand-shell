@@ -118,8 +118,9 @@ const Index = () => {
       {/* ═══════════════════════════════════════════
           2. HOW IT WORKS (mini)
           ═══════════════════════════════════════════ */}
+      <section className="bg-background-alt">
       <SectionHeading label="The Process" heading="How It Works" />
-      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <StaggerContainer className="flex flex-col md:flex-row gap-4 md:items-stretch [&>*]:md:flex-1 [&>*]:md:basis-0 [&>*]:md:min-w-0">
           <StaggerItem><StepBlock number="01" title="Choose" description="Browse our curated vault and select the pieces that speak to your moment." icon={Hand} /></StaggerItem>
           <StaggerItem><StepBlock number="02" title="Receive" description="Your selections arrive in 1–3 days, freshly restored and sealed in our signature packaging." icon={Package} /></StaggerItem>
@@ -129,6 +130,7 @@ const Index = () => {
         </StaggerContainer>
         <div className="text-center mt-10">
           <Link to="/how-it-works" className="cta-underline">Learn More</Link>
+        </div>
         </div>
       </section>
 
@@ -207,8 +209,9 @@ const Index = () => {
       {/* ═══════════════════════════════════════════
           4. ACCESS FRAMEWORK
           ═══════════════════════════════════════════ */}
+      <section className="bg-background-alt">
       <SectionHeading label="Philosophy" heading="Access Defines Status" />
-      <section className="philosophy-section-mobile max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
+      <div className="philosophy-section-mobile max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <StaggerContainer className="philosophy-grid-mobile grid grid-cols-1 md:grid-cols-2 gap-[2px]">
           <StaggerItem>
             <div className="philosophy-card-mobile bg-card border border-border p-10 md:p-14 h-full transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:-translate-y-[3px] hover:border-foreground hover:border-2">
@@ -298,6 +301,7 @@ const Index = () => {
             </div>
           </StaggerItem>
         </StaggerContainer>
+        </div>
       </section>
 
       {/* ═══════════════════════════════════════════
@@ -391,8 +395,9 @@ const Index = () => {
       {/* ═══════════════════════════════════════════
           7. MEMBERSHIP ENGINE (OfferUnit standard)
           ═══════════════════════════════════════════ */}
+      <section className="bg-background-alt">
       <SectionHeading label="Membership" heading="Your Tier of Access" />
-      <section className="tier-section-mobile max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-8">
+      <div className="tier-section-mobile max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-8">
         {/* HandDrawnRect callout above tiers */}
         <div className="hidden md:flex justify-center mb-10">
           <HandDrawnRect className="max-w-md">
@@ -404,6 +409,7 @@ const Index = () => {
         <OfferUnit variant="standard" />
         <div className="text-center mt-6">
           <TrustStrip variant="full" />
+        </div>
         </div>
       </section>
 
