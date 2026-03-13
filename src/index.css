@@ -19,6 +19,7 @@
 
     /* Backgrounds: cream → taupe → sand hierarchy */
     --background: 38 28% 92%;
+    --background-alt: 36 22% 89%;
     --foreground: 30 16% 36%;
     --ink: 30 12% 22%;
 
@@ -101,6 +102,7 @@
 
   .dark {
     --background: 30 8% 7%;
+    --background-alt: 30 6% 10%;
     --foreground: 34 18% 65%;
     --ink: 34 22% 90%;
 
