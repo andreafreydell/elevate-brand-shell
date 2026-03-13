@@ -25,7 +25,7 @@ export const WaxSeal = ({ letter = "G", size = 48, className = "" }: WaxSealProp
           y="37"
           textAnchor="middle"
           fontFamily="'Heiy', var(--font-serif)"
-          fontSize="20"
+          fontSize="26"
           fontWeight="400"
           fill="hsl(36,28%,90%)"
           opacity="0.9"
