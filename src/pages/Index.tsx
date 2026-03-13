@@ -34,6 +34,8 @@ import { Loader2, Hand, Package, Sparkles, RefreshCw, Gem, Heart, Shuffle, Calen
 const Index = () => {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
   const [loading, setLoading] = useState(true);
+  const { ref: heroLeftRef, offset: heroLeftOffset } = useParallax(0.1);
+  const { ref: heroRightRef, offset: heroRightOffset } = useParallax(0.1);
 
   useEffect(() => {
     const fetchProducts = async () => {
