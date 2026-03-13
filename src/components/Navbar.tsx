@@ -34,7 +34,7 @@ export const Navbar = () => {
     <header className="bg-background relative z-50">
       {/* Top utility bar */}
       <div className="border-b border-border">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 h-[44px] flex items-center justify-between relative">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 h-[60px] md:h-[72px] flex items-center justify-between relative">
           {/* Mobile: Hamburger */}
           <button
             className="md:hidden p-1.5 hover:opacity-70 transition-opacity"
@@ -49,26 +49,26 @@ export const Navbar = () => {
           </button>
 
           {/* Desktop: left spacer for centering */}
-          <div className="hidden md:block" />
+          <div className="hidden md:block w-[180px]" />
 
           {/* Center: Logo */}
           <Link
             to="/"
-            className="absolute left-1/2 -translate-x-1/2 font-brand text-[28px] md:text-[32px] tracking-[0.04em] font-normal leading-none"
+            className="absolute left-1/2 -translate-x-1/2 font-brand text-[32px] md:text-[40px] tracking-[0.04em] font-normal leading-none"
           >
             Gea
           </Link>
 
           {/* Right: Utility icons */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-5">
             <button className="p-1.5 hover:opacity-70 transition-opacity hidden md:block">
-              <Search className="h-[18px] w-[18px] stroke-[1.5]" />
+              <Search className="h-[20px] w-[20px] stroke-[1.5]" />
             </button>
             <Link to="/account" className="p-1.5 hover:opacity-70 transition-opacity hidden md:block">
-              <User className="h-[18px] w-[18px] stroke-[1.5]" />
+              <User className="h-[20px] w-[20px] stroke-[1.5]" />
             </Link>
             <button className="p-1.5 hover:opacity-70 transition-opacity hidden md:block">
-              <Heart className="h-[18px] w-[18px] stroke-[1.5]" />
+              <Heart className="h-[20px] w-[20px] stroke-[1.5]" />
             </button>
             <CartDrawer />
           </div>
