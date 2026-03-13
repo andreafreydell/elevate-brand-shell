@@ -351,6 +351,38 @@
     display: none;
   }
 
+  /* ── Hover: underline grows from center ── */
+  .hover-underline-center {
+    @apply relative;
+  }
+  .hover-underline-center::after {
+    content: '';
+    @apply absolute bottom-0 left-1/2 w-0 h-[1px] bg-foreground transition-all duration-300 ease-out;
+    transform: translateX(-50%);
+  }
+  .hover-underline-center:hover::after {
+    @apply w-full;
+  }
+
+  /* ── Hover: product slow zoom ── */
+  .hover-product-zoom {
+    @apply overflow-hidden;
+  }
+  .hover-product-zoom img {
+    @apply transition-transform duration-700 ease-out;
+  }
+  .hover-product-zoom:hover img {
+    @apply scale-[1.06];
+  }
+
+  /* ── Hover: button subtle color fade ── */
+  .hover-btn-fade {
+    @apply transition-all duration-300 ease-out;
+  }
+  .hover-btn-fade:hover {
+    opacity: 0.85;
+  }
+
   /* Mobile-only compact step block styling */
   @media (max-width: 768px) {
     .step-block-mobile {
