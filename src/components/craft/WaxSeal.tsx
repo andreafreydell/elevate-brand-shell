@@ -22,7 +22,7 @@ export const WaxSeal = ({ letter = "G", size = 48, className = "" }: WaxSealProp
         <circle cx="32" cy="32" r="18" stroke="hsl(36,28%,90%)" strokeWidth="0.3" fill="none" opacity="0.25" />
         <text
           x="32"
-          y="37"
+          y="40"
           textAnchor="middle"
           fontFamily="'Heiy', var(--font-serif)"
           fontSize="26"
