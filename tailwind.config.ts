@@ -82,6 +82,7 @@ export default {
         serif: ["var(--font-serif)"],
         sans: ["var(--font-sans)"],
         script: ["var(--font-script)"],
+        brand: ["var(--font-brand)"],
       },
       borderRadius: {
         lg: "var(--radius)",

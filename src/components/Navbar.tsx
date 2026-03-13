@@ -54,7 +54,7 @@ export const Navbar = () => {
           {/* Center: Logo */}
           <Link
             to="/"
-            className="absolute left-1/2 -translate-x-1/2 font-serif text-[28px] md:text-[32px] tracking-[0.12em] font-semibold italic leading-none"
+            className="absolute left-1/2 -translate-x-1/2 font-brand text-[28px] md:text-[32px] tracking-[0.04em] font-normal leading-none"
           >
             Gea
           </Link>
