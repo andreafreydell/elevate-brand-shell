@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <circle cx="32" cy="32" r="28" fill="#8C7A6B" opacity="0.65" />
+  <circle cx="32" cy="32" r="22" stroke="hsl(36,28%,90%)" stroke-width="0.5" fill="none" opacity="0.4" />
+  <circle cx="32" cy="32" r="18" stroke="hsl(36,28%,90%)" stroke-width="0.3" fill="none" opacity="0.25" />
+  <text x="32" y="40" text-anchor="middle" font-family="serif" font-size="26" font-weight="400" fill="hsl(36,28%,90%)" opacity="0.9">G</text>
+</svg>
