@@ -78,7 +78,7 @@ const Index = () => {
               <p className="text-[10px] tracking-[0.4em] uppercase text-[hsl(36,25%,78%)] mb-4 md:mb-8 font-sans">The House of GEA</p>
             </AnimateIn>
             <AnimateIn variant="fadeUp" delay={0.2} duration={0.8}>
-              <h1 className="hero-headline-mobile font-serif text-3xl md:text-5xl lg:text-[3.8rem] font-medium leading-[1.08] tracking-[-0.01em] text-[hsl(36,33%,93%)] whitespace-pre-line mb-4 md:mb-6">
+              <h1 className="hero-headline-mobile hero-display text-[hsl(36,33%,93%)] whitespace-pre-line mb-4 md:mb-6">
                 Luxury,{"\n"}<ScribbleUnderline color="var(--brass)" delay={0.8}>Accessed.</ScribbleUnderline>
               </h1>
             </AnimateIn>
