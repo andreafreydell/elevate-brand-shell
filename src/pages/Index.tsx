@@ -75,7 +75,9 @@ const Index = () => {
             {/* Stamp badge — bottom-left decorative */}
             <StampBadge text="FOUNDING" subtext="2026" rotation={-8} className="absolute bottom-4 left-4 md:bottom-8 md:left-8" />
             <AnimateIn variant="fadeIn" duration={0.8}>
-              <p className="text-[10px] tracking-[0.4em] uppercase text-[hsl(36,25%,78%)] mb-4 md:mb-8 font-sans">The House of GEA</p>
+              <p className="text-[10px] tracking-[0.4em] uppercase text-[hsl(36,25%,78%)] mb-4 md:mb-8 font-sans">
+                High-Design Jewelry Access
+              </p>
             </AnimateIn>
             <AnimateIn variant="fadeUp" delay={0.2} duration={0.8}>
               <h1 className="hero-headline-mobile hero-display text-[hsl(36,33%,93%)] whitespace-pre-line mb-4 md:mb-6">
@@ -83,18 +85,30 @@ const Index = () => {
               </h1>
             </AnimateIn>
             <AnimateIn variant="fadeUp" delay={0.4} duration={0.8}>
-              <p className="hero-subtitle-mobile text-[11px] md:text-[13px] leading-relaxed text-[hsl(36,20%,75%)] max-w-[380px] mb-6 md:mb-12 font-sans">
-                Curated high-design jewelry, cared for through its entire journey.
-                Your money stretches further. Your visual impact multiplies.
+              <p className="hero-subtitle-mobile text-[11px] md:text-[13px] leading-relaxed text-[hsl(36,20%,75%)] max-w-[420px] mb-3 font-sans">
+                High-design jewelry you access, not own.
+                <br />
+                For women who want beauty without burden.
+              </p>
+            </AnimateIn>
+            <AnimateIn variant="fadeUp" delay={0.5} duration={0.8}>
+              <p className="text-[10px] md:text-[11px] tracking-[0.18em] uppercase text-[hsl(36,25%,78%)] max-w-[420px] mb-6 md:mb-8 font-sans">
+                Wear more. Store less. Spend more intelligently.
               </p>
             </AnimateIn>
             <AnimateIn variant="fadeUp" delay={0.6} duration={0.8}>
-              <a
-                href="#founding-access"
+              <Link
+                to="/browse"
                 className="relative z-[1] inline-block border border-[hsl(36,25%,78%)] text-[hsl(36,25%,78%)] px-8 md:px-10 py-3 md:py-3.5 text-[10px] md:text-[11px] tracking-[0.2em] uppercase font-sans hover:bg-[hsl(36,25%,78%)] hover:text-[hsl(28,22%,34%)] transition-colors"
               >
-                Apply for Access
-              </a>
+                Browse the Collection
+              </Link>
+            </AnimateIn>
+            <AnimateIn variant="fadeUp" delay={0.7} duration={0.8}>
+              <TrustStrip
+                variant="compact"
+                className="mt-5 md:mt-6 text-[hsl(36,25%,78%)] [&_*]:text-[hsl(36,25%,78%)]"
+              />
             </AnimateIn>
           </div>
           <div className="h-[180px] md:h-auto bg-[hsl(32,15%,42%)] overflow-hidden">

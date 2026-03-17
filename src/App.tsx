@@ -37,6 +37,7 @@ import Stories from "./pages/Stories";
 import Account from "./pages/Account";
 import BrowseAll from "./pages/BrowseAll";
 import CategoryPage from "./pages/CategoryPage";
+import OccasionPage from "./pages/OccasionPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -63,6 +64,7 @@ const AppContent = () => {
       <Route path="/stories" element={<Stories />} />
       <Route path="/account" element={<Account />} />
       <Route path="/browse" element={<BrowseAll />} />
+      <Route path="/occasions/:occasion" element={<OccasionPage />} />
       <Route path="/earrings" element={<CategoryPage title="Earrings" subtitle="Hoops, studs, drops, and ear cuffs — curated for every occasion." productType="Earrings" />} />
       <Route path="/necklaces" element={<CategoryPage title="Necklaces" subtitle="Chains, pendants, and layering pieces — crafted to elevate." productType="Necklace" />} />
       <Route path="/rings" element={<CategoryPage title="Rings" subtitle="Bands, statement rings, and stacking sets — designed to be worn boldly." productType="Ring" />} />

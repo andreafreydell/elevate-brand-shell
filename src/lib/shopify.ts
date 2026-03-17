@@ -145,6 +145,23 @@ export const PRODUCTS_QUERY = `
   }
 `;
 
+export const OCCASIONS_QUERY = `
+  query GetOccasions($first: Int!) {
+    products(first: $first) {
+      edges {
+        node {
+          metafields(identifiers: [
+            { namespace: "custom", key: "occasions_possible" }
+          ]) {
+            key
+            value
+          }
+        }
+      }
+    }
+  }
+`;
+
 export const PRODUCT_BY_HANDLE_QUERY = `
   query GetProductByHandle($handle: String!) {
     productByHandle(handle: $handle) {

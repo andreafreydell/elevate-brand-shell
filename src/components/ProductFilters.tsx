@@ -19,6 +19,7 @@ interface ProductFiltersProps {
   products: ShopifyProduct[];
   filters: FilterState;
   onChange: (filters: FilterState) => void;
+  hiddenFilters?: Array<"color" | "style" | "occasion">;
 }
 
 function getMetafieldValues(products: ShopifyProduct[], key: string): string[] {
@@ -86,7 +87,12 @@ export function applyFilters(
   return filtered;
 }
 
-export const ProductFilters = ({ products, filters, onChange }: ProductFiltersProps) => {
+export const ProductFilters = ({
+  products,
+  filters,
+  onChange,
+  hiddenFilters = [],
+}: ProductFiltersProps) => {
   const colors = getMetafieldValues(products, "plating_color_primary");
   const styles = getMetafieldValues(products, "silhouette_category");
   const occasions = getMetafieldValues(products, "occasions_possible");
@@ -103,7 +109,7 @@ export const ProductFilters = ({ products, filters, onChange }: ProductFiltersPr
     { key: "color" as const, label: "Color", options: colors },
     { key: "style" as const, label: "Style", options: styles },
     { key: "occasion" as const, label: "Occasion", options: occasions },
-  ].filter((g) => g.options.length > 0);
+  ].filter((g) => g.options.length > 0 && !hiddenFilters.includes(g.key));
 
   if (filterGroups.length === 0 && products.length === 0) return null;
 

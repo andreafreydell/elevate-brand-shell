@@ -27,6 +27,7 @@ interface ProductGridProps {
   limit?: number;
   showFilters?: boolean;
   shuffle?: boolean;
+  lockedOccasion?: string;
 }
 
 export const ProductGrid = ({
@@ -36,15 +37,33 @@ export const ProductGrid = ({
   limit = 50,
   showFilters = false,
   shuffle = false,
+  lockedOccasion,
 }: ProductGridProps) => {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
   const [loading, setLoading] = useState(true);
-  const [filters, setFilters] = useState<FilterState>({ color: "", style: "", occasion: "", sort: "" });
+  const [filters, setFilters] = useState<FilterState>({
+    color: "",
+    style: "",
+    occasion: lockedOccasion || "",
+    sort: "",
+  });
 
   const displayProducts = useMemo(
     () => (shuffle ? seededShuffle(products, todaySeed()) : products),
     [products, shuffle]
   );
+  const effectiveFilters = lockedOccasion
+    ? { ...filters, occasion: lockedOccasion }
+    : filters;
+
+  useEffect(() => {
+    setFilters({
+      color: "",
+      style: "",
+      occasion: lockedOccasion || "",
+      sort: "",
+    });
+  }, [lockedOccasion]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -90,7 +109,7 @@ export const ProductGrid = ({
     );
   }
 
-  const filtered = showFilters ? applyFilters(displayProducts, filters) : displayProducts;
+  const filtered = showFilters ? applyFilters(displayProducts, effectiveFilters) : displayProducts;
 
   if (products.length === 0) {
     return (
@@ -103,7 +122,12 @@ export const ProductGrid = ({
   return (
     <>
       {showFilters && (
-        <ProductFilters products={products} filters={filters} onChange={setFilters} />
+        <ProductFilters
+          products={products}
+          filters={effectiveFilters}
+          onChange={setFilters}
+          hiddenFilters={lockedOccasion ? ["occasion"] : []}
+        />
       )}
       <section className="max-w-[1400px] mx-auto px-6 py-16 md:py-24">
         {heading && (
