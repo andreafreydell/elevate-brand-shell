@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { AnimateIn } from "@/components/shared/AnimateIn";
-import { supabase } from "@/integrations/supabase/client";
+import { saveFoundingAccessEmail } from "@/lib/foundingAccess";
 
 export const ComingSoonSection = () => {
   const [email, setEmail] = useState("");
@@ -15,17 +15,9 @@ export const ComingSoonSection = () => {
     setLoading(true);
     setError("");
     try {
-      const { error: dbError } = await supabase
-        .from("founding_members")
-        .insert({ email, source: "coming-soon" });
-      if (dbError) {
-        if (dbError.code === "23505") {
-          setError("You're already on the list!");
-          setSubmitted(true);
-        } else throw dbError;
-      } else {
-        setSubmitted(true);
-      }
+      const result = await saveFoundingAccessEmail(email, "coming-soon");
+      if (!result.success) throw new Error(result.error);
+      setSubmitted(true);
     } catch {
       setError("Something went wrong. Please try again.");
     } finally {

@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-route
 import { useCartSync } from "@/hooks/useCartSync";
 import { useEffect } from "react";
 import LaunchGate from "@/components/LaunchGate";
+import { EmailCapturePopup } from "@/components/EmailCapturePopup";
 import Index from "./pages/Index";
 
 const ScrollToTop = () => {
@@ -84,6 +85,7 @@ const App = () => (
       <LaunchGate>
         <BrowserRouter>
           <ScrollToTop />
+          <EmailCapturePopup />
           <AppContent />
         </BrowserRouter>
       </LaunchGate>
