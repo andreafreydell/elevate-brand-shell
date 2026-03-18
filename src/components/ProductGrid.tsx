@@ -1,8 +1,10 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
 import { storefrontApiRequest, PRODUCTS_QUERY, type ShopifyProduct } from "@/lib/shopify";
 import { ProductCard } from "./ProductCard";
 import { ProductFilters, applyFilters, type FilterState } from "./ProductFilters";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Button } from "@/components/ui/button";
+import { Loader2 } from "lucide-react";
 
 function seededShuffle<T>(arr: T[], seed: number): T[] {
   const copy = [...arr];
@@ -19,6 +21,8 @@ const todaySeed = () => {
   const d = new Date();
   return d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
 };
+
+const PAGE_SIZE = 48;
 
 interface ProductGridProps {
   query?: string;
@@ -41,6 +45,9 @@ export const ProductGrid = ({
 }: ProductGridProps) => {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadingMore, setLoadingMore] = useState(false);
+  const [hasNextPage, setHasNextPage] = useState(false);
+  const [endCursor, setEndCursor] = useState<string | null>(null);
   const [filters, setFilters] = useState<FilterState>({
     color: "",
     style: "",
@@ -65,24 +72,51 @@ export const ProductGrid = ({
     });
   }, [lockedOccasion]);
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      setLoading(true);
-      try {
-        const variables: Record<string, unknown> = { first: limit };
-        if (query) variables.query = query;
-        const data = await storefrontApiRequest(PRODUCTS_QUERY, variables);
-        if (data?.data?.products?.edges) {
-          setProducts(data.data.products.edges);
-        }
-      } catch (error) {
-        console.error("Failed to fetch products:", error);
-      } finally {
-        setLoading(false);
+  const fetchProducts = useCallback(async (after?: string | null) => {
+    const isInitial = !after;
+    if (isInitial) setLoading(true);
+    else setLoadingMore(true);
+
+    try {
+      const pageSize = Math.min(PAGE_SIZE, limit);
+      const variables: Record<string, unknown> = { first: pageSize };
+      if (query) variables.query = query;
+      if (after) variables.after = after;
+
+      const data = await storefrontApiRequest(PRODUCTS_QUERY, variables);
+      const edges = data?.data?.products?.edges || [];
+      const pageInfo = data?.data?.products?.pageInfo;
+
+      if (isInitial) {
+        setProducts(edges);
+      } else {
+        setProducts(prev => [...prev, ...edges]);
       }
-    };
-    fetchProducts();
+
+      const totalAfterLoad = isInitial ? edges.length : products.length + edges.length;
+      setHasNextPage(pageInfo?.hasNextPage && totalAfterLoad < limit);
+      setEndCursor(pageInfo?.endCursor || null);
+    } catch (error) {
+      console.error("Failed to fetch products:", error);
+    } finally {
+      if (isInitial) setLoading(false);
+      else setLoadingMore(false);
+    }
+  }, [query, limit, products.length]);
+
+  useEffect(() => {
+    setProducts([]);
+    setEndCursor(null);
+    setHasNextPage(false);
+    fetchProducts(null);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, limit]);
+
+  const handleLoadMore = () => {
+    if (endCursor && hasNextPage && !loadingMore) {
+      fetchProducts(endCursor);
+    }
+  };
 
   if (loading) {
     return (
@@ -148,6 +182,26 @@ export const ProductGrid = ({
         {showFilters && filtered.length === 0 && products.length > 0 && (
           <div className="text-center py-16">
             <p className="text-sm tracking-wider uppercase text-muted-foreground">No pieces match your filters</p>
+          </div>
+        )}
+        {hasNextPage && (
+          <div className="flex justify-center pt-12">
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={handleLoadMore}
+              disabled={loadingMore}
+              className="min-w-[200px]"
+            >
+              {loadingMore ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Loading…
+                </>
+              ) : (
+                "Load More Pieces"
+              )}
+            </Button>
           </div>
         )}
       </section>
