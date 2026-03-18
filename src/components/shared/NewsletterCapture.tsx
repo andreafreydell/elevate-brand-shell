@@ -35,11 +35,11 @@ export const NewsletterCapture = () => {
             Founding Access
           </p>
           <h3 className="font-serif text-xl md:text-2xl tracking-[0.06em] uppercase font-medium mb-3">
-            Apply for Founding Member Access
+            Apply for Access
           </h3>
           <p className="text-[12px] text-muted-foreground font-sans mb-8 leading-relaxed">
-            Unlock your first rotation. Founding members receive priority vault access,
-            complimentary styling, and exclusive early drops.
+            Enter your email for early access to the vault. Priority access,
+            complimentary styling, and early drops.
           </p>
 
           {submitted ? (

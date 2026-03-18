@@ -74,10 +74,10 @@ export const EmailCapturePopup = () => {
           )}
         >
           <DialogPrimitive.Title className="sr-only">
-            Founding access email capture
+            Founding access invitation
           </DialogPrimitive.Title>
           <DialogPrimitive.Description className="sr-only">
-            Enter your email to unlock founding access and receive your invitation.
+            Enter your email for early access to the vault and receive your invitation.
           </DialogPrimitive.Description>
 
           <DialogPrimitive.Close
@@ -89,22 +89,23 @@ export const EmailCapturePopup = () => {
 
           <div className="text-center">
             <p className="mb-3 text-[10px] tracking-[0.25em] uppercase font-sans text-muted-foreground">
-              The Founding 100
+              Founding Access
             </p>
             <h2 className="font-serif text-2xl md:text-3xl font-medium tracking-[0.02em] text-foreground">
-              Unlock Founding Access
+              Luxury, Accessed.
             </h2>
             <p className="mx-auto mt-4 max-w-[360px] text-sm leading-relaxed font-sans text-muted-foreground">
-              Enter your email to be first to access curated, high-design pieces.
+              Enter your email for early access to the vault. High-design jewelry
+              that evolves with you. More beauty, less burden.
             </p>
 
             {submitted ? (
               <div className="mt-8 border border-border px-6 py-5">
                 <p className="font-serif text-lg text-foreground">
-                  You&apos;re on the list.
+                  Welcome to the vault.
                 </p>
                 <p className="mt-2 text-sm font-sans text-muted-foreground">
-                  We&apos;ll send your invitation soon.
+                  We&apos;ll be in touch soon.
                 </p>
               </div>
             ) : (
@@ -113,7 +114,7 @@ export const EmailCapturePopup = () => {
                   type="email"
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
-                  placeholder="Your email address"
+                  placeholder="Email address"
                   autoComplete="email"
                   className="w-full border border-border bg-transparent px-4 py-3 text-sm font-sans text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-foreground"
                 />
@@ -127,14 +128,14 @@ export const EmailCapturePopup = () => {
                   disabled={loading}
                   className="mt-3 w-full border border-foreground bg-foreground px-8 py-3 text-[11px] tracking-[0.2em] uppercase font-sans text-background transition-colors hover:bg-transparent hover:text-foreground disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  {loading ? "Submitting..." : "Unlock Founding Access"}
+                  {loading ? "Submitting..." : "Apply for Access"}
                 </button>
                 <button
                   type="button"
                   onClick={dismissPopup}
                   className="mt-6 text-[11px] tracking-[0.15em] uppercase font-sans text-muted-foreground transition-opacity hover:opacity-70"
                 >
-                  No Thanks
+                  Not Now
                 </button>
               </form>
             )}
