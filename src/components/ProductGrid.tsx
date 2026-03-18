@@ -34,7 +34,7 @@ export const ProductGrid = ({
   query,
   heading = "Current Pieces",
   label = "The Collection",
-  limit = 50,
+  limit = 250,
   showFilters = false,
   shuffle = false,
   lockedOccasion,
