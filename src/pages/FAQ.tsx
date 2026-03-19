@@ -155,24 +155,24 @@ const categories: { label: string; sectionLabel: string; items: FAQItem[] }[] = 
     ],
   },
   {
-    label: "The Founding 100",
-    sectionLabel: "Founding Access",
+    label: "Founding Access",
+    sectionLabel: "Invitation",
     items: [
       {
-        question: "What is the Founding 100?",
-        answer: "We are opening our doors to 100 founding members who believe luxury is not about owning more — it is about accessing better. The Founding 100 is a hard cap: exactly 100 members with permanent founding privileges. When 100 spots are claimed, founding access closes.",
+        question: "What is Founding Access?",
+        answer: "Founding Access is our invitation to early members who believe luxury is not about owning more — it is about accessing better. It opens the door to priority access, launch pricing, and member benefits attached to your account from day one.",
       },
       {
-        question: "What do founding members receive?",
-        answer: "Founding members receive permanent perks that will never be available again after the 100 spots are filled. These include priority access to new collections, founding member pricing locked for life, and recognition as part of the group that built GEA from day one.",
+        question: "What do members receive through Founding Access?",
+        answer: "Members who enter through Founding Access receive priority access to new collections, launch pricing, and early benefits that remain attached to their account.",
       },
       {
-        question: "Is the 100 cap real?",
-        answer: "Yes. This is not manufactured scarcity. We cap founding membership at 100 because our operations, curation standards, and personal attention require it. When we reach 100, founding access closes and the next chapter begins.",
+        question: "Is access limited?",
+        answer: "Yes. We release access intentionally to protect curation, service, and fulfillment quality. Availability may open and close in phases as GEA grows.",
       },
       {
-        question: "Can I gift a founding membership?",
-        answer: "Contact us directly. We can arrange founding access as a gift — the recipient receives the full founding experience with all permanent perks.",
+        question: "Can I gift Founding Access?",
+        answer: "Contact us directly. We can arrange access as a gift so the recipient receives the full GEA experience from the start.",
       },
     ],
   },

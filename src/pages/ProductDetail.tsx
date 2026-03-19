@@ -606,7 +606,7 @@ const ProductDetail = () => {
                 Coming Soon
               </button>
               <Link
-                to="/founding-100"
+                to="/how-it-works"
                 className="border border-border px-8 py-3.5 text-[11px] tracking-[0.25em] uppercase font-sans text-muted-foreground hover:border-foreground hover:text-foreground transition-colors whitespace-nowrap text-center"
               >
                 See Membership

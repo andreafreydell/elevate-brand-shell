@@ -25,7 +25,7 @@ const editorials: Array<{ title: string; label: string; description: string; inf
   { title: "Your First Access Ritual", label: "New Member", description: "A guide to unpacking, styling, and photographing your first GEA shipment.", infographic: "first-ritual" },
   { title: "Event Dressing by Piece", label: "Occasion Guide", description: "Matching your selection to your calendar: galas, meetings, brunches, and everything between.", infographic: "occasion-guide" },
   { title: "The Monthly Drop", label: "New Arrivals", description: "What's entering the vault this month. First look, first access.", infographic: "monthly-drop" },
-  { title: "Founding Members Speak", label: "Community", description: "Transformation stories from women who replaced their jewelry drawers with access.", infographic: "community" },
+  { title: "Members Speak", label: "Community", description: "Transformation stories from women who replaced their jewelry drawers with access.", infographic: "community" },
 ];
 
 const Stories = () => {

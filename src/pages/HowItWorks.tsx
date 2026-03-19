@@ -32,27 +32,27 @@ import { WaxSeal } from "@/components/craft/WaxSeal";
 import { Hand, Package, Sparkles, RefreshCw, Shield, Wrench, Truck, Gem, Ban, Heart } from "lucide-react";
 
 const trustStandards = [
-  { icon: Shield, title: "Sanitized & Sealed", text: "Every piece passes through our care ritual — hand cleaned, UV sanitized, 4-point inspected, and sealed before it reaches you." },
+  { icon: Shield, title: "Sanitized & Sealed", text: "Every piece passes through our care ritual â€” hand cleaned, UV sanitized, 4-point inspected, and sealed before it reaches you." },
   { icon: Wrench, title: "Repair Guarantee", text: "Normal wear is on us. No questions, no fees. Transparent fixed-fee schedule for significant damage, disclosed before checkout." },
   { icon: Truck, title: "Secure Delivery", text: "Tamper-evident sealed packaging, tracking updates at key scan points, and support response within 1 business day." },
   { icon: Gem, title: "Damage Clarity", text: "No surprise fees. Ever. Normal wear = on us. Repairable damage = fixed fee, shown before checkout." },
-  { icon: Ban, title: "Cancel Anytime", text: "No contracts. No commitments. No questions. Founding perks permanently attached even if paused." },
+  { icon: Ban, title: "Cancel Anytime", text: "No contracts. No commitments. No questions. Your member benefits stay attached even if you pause." },
 ];
 
 const faqItems: FAQItem[] = [
   { question: "When does my selection ship?", answer: "Your first selection ships within 2 business days of enrollment. Subsequent selections ship within 1 business day of receiving your return." },
   { question: "How long can I keep a piece?", answer: "Your membership cycle renews every 30 days. Enjoy your pieces for the full cycle. When you're ready for something new, simply use the prepaid return packaging." },
   { question: "Can I refresh mid-cycle?", answer: "Members can request mid-cycle refreshes. Simply initiate from your dashboard and your new selection ships within 1 business day." },
-  { question: "What if I want to keep a piece?", answer: "One piece per cycle is yours to keep — included in your membership at no extra cost. Simply select 'Keep This Piece' in your dashboard. Want to keep additional pieces? Members save 40% on every extra piece." },
-  { question: "What if something gets damaged?", answer: "Normal wear is fully covered. Our in-house atelier handles all repairs — hand cleaning, UV sanitization, 4-point inspection — at no cost to you." },
+  { question: "What if I want to keep a piece?", answer: "One piece per cycle is yours to keep â€” included in your membership at no extra cost. Simply select 'Keep This Piece' in your dashboard. Want to keep additional pieces? Members save 40% on every extra piece." },
+  { question: "What if something gets damaged?", answer: "Normal wear is fully covered. Our in-house atelier handles all repairs â€” hand cleaning, UV sanitization, 4-point inspection â€” at no cost to you." },
   { question: "What if I don't like my selection?", answer: "Our 60-Day Adjustment means we'll work with you. Exchange for something different, adjust your style preferences, or speak with our team." },
   { question: "How is each piece prepared?", answer: "Every piece undergoes our Sanitized & Sealed Protocol: hand clean, UV sanitization, 4-point inspection (structure, surface, stones, mechanism), and sealed in protective packaging." },
-  { question: "Can I skip a month?", answer: "Yes. Pause your membership at any time from your account dashboard. Your tier, founding status, and preferences are preserved. Resume when you're ready." },
-  { question: "How does the cost-per-wear work?", answer: "Traditional jewelry purchases average $150+ per piece worn 3-5 times — that's $30+ per wear. With GEA Tier 2 at $85/month, you access 10 curated pieces. Worn even twice each, your cost-per-wear drops below $5. The more you wear, the more intelligent your access becomes." },
-  { question: "What is Keep Your Favorite?", answer: "Every cycle, one piece from your selection is yours to keep at no additional cost — it's included in your membership. If you fall in love with more than one, members enjoy 40% off any additional piece. Over time, build a curated collection through real experience, not impulse." },
-  { question: "What happens in my first month?", answer: "Your first selection ships within 2 business days of enrollment. Founding members receive priority vault access. Your 60-Day Adjustment means if the first selection doesn't resonate, we'll work with you to find what does." },
-  { question: "Is there a commitment period?", answer: "No. Every GEA membership is month-to-month with no long-term commitment. Cancel anytime from your account dashboard — no fees, no penalties, no questions. Your founding perks remain permanently attached to your account." },
-  { question: "What materials are used?", answer: "Crafted in 316L stainless steel — surgical-grade, tarnish-resistant, and hypoallergenic. Every piece is professionally cleaned, inspected, and restored between members. Water-resistant under normal wear." },
+  { question: "Can I skip a month?", answer: "Yes. Pause your membership at any time from your account dashboard. Your tier, member status, and preferences are preserved. Resume when you're ready." },
+  { question: "How does the cost-per-wear work?", answer: "Traditional jewelry purchases average $150+ per piece worn 3-5 times â€” that's $30+ per wear. With GEA Tier 2 at $85/month, you access 10 curated pieces. Worn even twice each, your cost-per-wear drops below $5. The more you wear, the more intelligent your access becomes." },
+  { question: "What is Keep Your Favorite?", answer: "Every cycle, one piece from your selection is yours to keep at no additional cost â€” it's included in your membership. If you fall in love with more than one, members enjoy 40% off any additional piece. Over time, build a curated collection through real experience, not impulse." },
+  { question: "What happens in my first month?", answer: "Your first selection ships within 2 business days of enrollment. Members receive priority access to the vault. Your 60-Day Adjustment means if the first selection doesn't resonate, we'll work with you to find what does." },
+  { question: "Is there a commitment period?", answer: "No. Every GEA membership is month-to-month with no long-term commitment. Cancel anytime from your account dashboard - no fees, no penalties, no questions. Your member benefits remain attached to your account." },
+  { question: "What materials are used?", answer: "Crafted in 316L stainless steel â€” surgical-grade, tarnish-resistant, and hypoallergenic. Every piece is professionally cleaned, inspected, and restored between members. Water-resistant under normal wear." },
 ];
 
 const HowItWorks = () => {
@@ -74,9 +74,9 @@ const HowItWorks = () => {
       <section className="how-it-works-section-mobile max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <div className="flex flex-col md:flex-row gap-2 w-full md:items-stretch [&>*]:md:flex-1 [&>*]:md:basis-0 [&>*]:md:min-w-0 [&>*]:md:h-auto">
           <StepBlock number="01" title="Choose" description="Browse our curated vault and select the pieces that speak to your moment." icon={Hand} />
-          <StepBlock number="02" title="Receive" description="Your selections arrive in 1–3 days, freshly restored and sealed in our signature packaging." icon={Package} />
-          <StepBlock number="03" title="Wear" description="Style them for your life — the event, the meeting, the dinner, the everyday." icon={Sparkles} />
-          <StepBlock number="04" title="Keep Your Favorite" description="One piece per cycle is yours to keep — included in your membership. Want more? Members save 40% on any additional piece." icon={Heart} />
+          <StepBlock number="02" title="Receive" description="Your selections arrive in 1â€“3 days, freshly restored and sealed in our signature packaging." icon={Package} />
+          <StepBlock number="03" title="Wear" description="Style them for your life â€” the event, the meeting, the dinner, the everyday." icon={Sparkles} />
+          <StepBlock number="04" title="Keep Your Favorite" description="One piece per cycle is yours to keep â€” included in your membership. Want more? Members save 40% on any additional piece." icon={Heart} />
           <StepBlock number="05" title="Refresh" description="When you're ready for something new, return and choose your next chapter." icon={RefreshCw} />
         </div>
       </section>
@@ -92,7 +92,7 @@ const HowItWorks = () => {
             <OrganicBlobTag variant="classic" className="mb-4">Keep What You Love</OrganicBlobTag>
             <h3 className="step-detail-title font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4 relative z-[1]">Keep Your <CircleEmphasis color="var(--tag-red)">Favorite</CircleEmphasis></h3>
             <p className="step-detail-description text-[12px] text-muted-foreground font-sans leading-relaxed relative z-[1]">
-              One piece per cycle is yours to keep — included in your membership.
+              One piece per cycle is yours to keep â€” included in your membership.
               Want more? Members save <ScriptNumber>40%</ScriptNumber> on any additional piece. Experience jewelry
               in real life, then build your collection through discovery.
             </p>
@@ -113,7 +113,7 @@ const HowItWorks = () => {
       {/* Stitch line divider */}
       <StitchLineDivider className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16" />
 
-      {/* ══ Access Is The New Luxury ══ */}
+      {/* â•â• Access Is The New Luxury â•â• */}
       <section className="border-t border-border relative overflow-hidden">
         <GrainOverlay opacity={0.03} />
         <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-24 text-center relative z-[1]">
@@ -129,7 +129,7 @@ const HowItWorks = () => {
         </div>
       </section>
 
-      {/* ══ Member Access ══ */}
+      {/* â•â• Member Access â•â• */}
       <section className="bg-[hsl(28,22%,34%)] relative overflow-hidden">
         <GrainOverlay opacity={0.05} />
         <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-16 md:py-24 text-center relative z-[1]">
@@ -142,19 +142,19 @@ const HowItWorks = () => {
           </h2>
           <p className="text-[13px] text-[hsl(36,20%,75%)] font-sans max-w-content mx-auto mb-10 leading-relaxed">
             We are opening our doors to members who believe luxury is not about
-            owning more — it is about accessing better. Locked pricing, early access, priority
-            selection, and exclusive benefits — permanently attached to your account.
+            owning more - it is about accessing better. Launch pricing, early access, priority
+            selection, and member benefits - attached to your account from day one.
           </p>
           <Link
             to="/#founding-access"
             className="inline-block border border-[hsl(36,25%,78%)] text-[hsl(36,25%,78%)] px-10 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans hover:bg-[hsl(36,25%,78%)] hover:text-[hsl(28,22%,34%)] transition-colors"
           >
-            Claim My Spot
+            Apply for Access
           </Link>
         </div>
       </section>
 
-      {/* ══ Membership tiers (full OfferUnit) ══ */}
+      {/* â•â• Membership tiers (full OfferUnit) â•â• */}
       <div id="tiers">
         <SectionHeading label="Choose Your Tier" heading="Your Level of Access" className="section-heading-your-level" />
       </div>
@@ -163,7 +163,7 @@ const HowItWorks = () => {
         <div className="hidden md:flex justify-center mb-8">
           <HandDrawnRect className="max-w-md">
             <p className="text-center font-sans text-[12px] text-muted-foreground leading-relaxed">
-              Starting from just <MarkerCircle color="var(--tag-red)"><span className="font-semibold text-foreground">$65/mo</span></MarkerCircle> — full vault access included
+              Starting from just <MarkerCircle color="var(--tag-red)"><span className="font-semibold text-foreground">$65/mo</span></MarkerCircle> â€” full vault access included
             </p>
           </HandDrawnRect>
         </div>
@@ -173,7 +173,7 @@ const HowItWorks = () => {
       {/* Wavy divider */}
       <WavyDivider variant="double" className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16" />
 
-      {/* ══ The 5 Trust Standards ══ */}
+      {/* â•â• The 5 Trust Standards â•â• */}
       <SectionHeading label="Your Guarantee" heading="The 5 Trust Standards" />
       <DotGridTexture className="max-w-[1440px] mx-auto" dotSize={0.5} spacing={22}>
         <section className="px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
@@ -212,7 +212,7 @@ const HowItWorks = () => {
       <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-8 hidden md:flex justify-between items-start gap-8">
         <WashiTapeNote label="TRUST PROMISE" tapeColor="var(--seafoam)" rotation={-1}>
           <p className="font-serif text-sm italic leading-relaxed text-foreground/80">
-            "No surprise fees. No hidden costs. That's not a policy — it's a principle."
+            "No surprise fees. No hidden costs. That's not a policy â€” it's a principle."
           </p>
         </WashiTapeNote>
         <div className="max-w-md">

@@ -22,7 +22,7 @@ Transform the storefront into a fashion-house digital flagship. Every page follo
 ### Three Format Variants
 - **Compact** (ads, email headers): `Tier A: 10 pieces · $75 your first month · Cancel anytime`
 - **Standard** (homepage hero, email popup): Both tiers side-by-side without cycle rule
-- **Full** (Founding 100 page, checkout): Both tiers with cycle mechanics, founding language, full value stack
+- **Full** (Founding Access page, checkout): Both tiers with cycle mechanics, access language, full value stack
 
 ### Trust Strip (deploy near every CTA)
 - **Full:** Cancel Anytime · Sanitized & Sealed · Repair Guarantee · Free Returns · No Surprise Fees
@@ -53,7 +53,7 @@ Exception: "Rotation" acceptable only in internal/ops docs, never customer-facin
 ## Approved Copy (Production-Ready)
 
 ### Hero Headlines
-- The Founding 100
+- Founding Access
 - Luxury, Accessed
 - Adorn the Woman You Are Becoming
 - Access Defines Status
@@ -62,8 +62,8 @@ Exception: "Rotation" acceptable only in internal/ops docs, never customer-facin
 
 ### CTAs
 - APPLY FOR ACCESS
-- CLAIM MY FOUNDING SPOT
-- JOIN THE FOUNDING 100
+- BROWSE THE COLLECTION
+- DISCOVER MEMBERSHIP
 - EXPLORE THE COLLECTION
 - SEE MEMBERSHIP OPTIONS
 - UNLOCK FIRST MONTH
@@ -101,12 +101,12 @@ Reusable layout components: PageLayout, SiteFooter, PageHero, SectionHeading, Ne
 
 ### Phase 3 — Core Conversion Pages
 
-**Founding 100 (`/founding-100`)** — Replaces `/membership`
+**Membership / Founding Access** — Replaces `/membership` and now lives at `/how-it-works`
 - 2-tier comparison with value stacking
 - Cost-per-wear reframing
 - Keep Your Favorite logic
 - Month 1 promotion psychology
-- Founding member scarcity (first 100)
+- Phased-access invitation framing
 - 5 Named Trust Standards
 - Savings calculator
 - Risk reversal block
@@ -142,7 +142,7 @@ Reusable layout components: PageLayout, SiteFooter, PageHero, SectionHeading, Ne
 
 ## Routing
 
-All routes added to `App.tsx`. Key change: `/membership` → `/founding-100`.
+All routes added to `App.tsx`. Key change: `/membership` → `/how-it-works`.
 
 ---
 

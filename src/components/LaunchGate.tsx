@@ -66,7 +66,7 @@ const LaunchGate = ({ children }: LaunchGateProps) => {
 
         {/* Micro-copy */}
         <p className="text-[11px] tracking-[0.15em] text-muted-foreground mt-8 leading-relaxed">
-          Founding members and press: check your inbox for the access code.
+          Members and press: check your inbox for the access code.
         </p>
 
         {/* Inquiry line */}

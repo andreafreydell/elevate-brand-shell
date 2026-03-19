@@ -1,4 +1,4 @@
--- Create table for founding member email captures
+-- Create table for access email captures
 CREATE TABLE public.founding_members (
   id UUID NOT NULL DEFAULT gen_random_uuid() PRIMARY KEY,
   email TEXT NOT NULL UNIQUE,
@@ -10,7 +10,7 @@ CREATE TABLE public.founding_members (
 ALTER TABLE public.founding_members ENABLE ROW LEVEL SECURITY;
 
 -- Allow anonymous inserts (public signup form)
-CREATE POLICY "Anyone can sign up as founding member"
+CREATE POLICY "Anyone can submit an access email"
 ON public.founding_members
 FOR INSERT
 TO anon, authenticated

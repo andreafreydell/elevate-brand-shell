@@ -60,7 +60,7 @@ export const ComingSoonSection = () => {
         </div>
       </section>
 
-      {/* Founding Member CTA */}
+      {/* Member Access CTA */}
       <section className="bg-[hsl(28,22%,34%)]">
         <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-20 md:py-28 text-center">
           <AnimateIn variant="fadeIn" duration={0.8}>
@@ -75,14 +75,14 @@ export const ComingSoonSection = () => {
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.3} duration={0.8}>
             <p className="text-[13px] text-[hsl(36,20%,75%)] font-sans max-w-[480px] mx-auto mb-3 leading-relaxed">
-              We're curating a vault of high-design jewelry for our first 100 founding members.
-              Sign up now for priority access to drops, exclusive launch pricing,
+              We're curating a vault of high-design jewelry for early members.
+              Sign up now for priority access to drops, launch pricing,
               and a voice in shaping GEA from the ground up.
             </p>
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.4} duration={0.8}>
             <p className="text-[10px] tracking-[0.2em] uppercase text-[hsl(36,25%,78%)/0.6] font-sans mb-10">
-              Only 100 founding spots available
+              Early access opens in phases
             </p>
           </AnimateIn>
 
@@ -106,7 +106,7 @@ export const ComingSoonSection = () => {
                   disabled={loading}
                   className="border border-[hsl(36,25%,78%)] text-[hsl(28,22%,34%)] bg-[hsl(36,25%,78%)] px-8 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans font-medium hover:bg-transparent hover:text-[hsl(36,25%,78%)] transition-colors whitespace-nowrap disabled:opacity-50"
                 >
-                  {loading ? "Joining..." : "Become a Founder"}
+                  {loading ? "Applying..." : "Apply for Access"}
                 </button>
               </form>
             )}
