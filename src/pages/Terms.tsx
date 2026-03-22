@@ -8,7 +8,8 @@ import {
   LegalSubheading,
 } from "@/components/legal/LegalDocument";
 
-const inlineLinkClassName = "underline underline-offset-4 transition-colors hover:text-foreground";
+const inlineLinkClassName =
+  "underline underline-offset-4 transition-colors hover:text-foreground";
 
 const Terms = () => {
   return (
@@ -58,8 +59,7 @@ const Terms = () => {
         <LegalParagraph>
           GEA is a fashion-house jewelry access platform. Membership grants you
           access to curated, high-design jewelry - you do not purchase or own
-          the pieces during your access period unless a piece becomes yours
-          through our Keep Your Favorite program.
+          the pieces during your access period.
         </LegalParagraph>
 
         <LegalSubheading className="mt-8">How it works</LegalSubheading>
@@ -67,15 +67,15 @@ const Terms = () => {
           items={[
             "You select pieces from our curated collection each cycle",
             "You wear and enjoy them for the duration of your cycle",
-            "At the end of your cycle, you return the pieces you are not keeping and select what is next",
+            "At the end of your cycle, you return the pieces you are not keeping and select new ones",
             "Every piece is professionally cleaned, inspected, and sealed before it reaches you",
           ]}
         />
 
         <LegalParagraph>
-          Membership does not transfer ownership of any jewelry unless you
-          keep a piece through the benefit included with your cycle or complete
-          an additional keep purchase and receive confirmation from GEA.
+          Membership does not transfer ownership of any jewelry unless a piece
+          becomes yours through the included Keep Your Favorite benefit or an
+          additional keep purchase (see Section 6).
         </LegalParagraph>
       </LegalSection>
 
@@ -84,10 +84,8 @@ const Terms = () => {
         <LegalParagraph>
           GEA offers membership tiers with different access levels. Current
           tiers, pricing, and included items are displayed on our membership
-          page and confirmed at checkout. GEA may update tier structure or
-          pricing for future enrollments, but any rate lock or founding promise
-          expressly confirmed at enrollment will be honored according to those
-          terms.
+          page at the time of enrollment. Your selected tier and rate are
+          confirmed at checkout.
         </LegalParagraph>
 
         <LegalSubheading className="mt-8">Billing</LegalSubheading>
@@ -96,7 +94,7 @@ const Terms = () => {
             "Membership is billed monthly on a recurring basis",
             "Your payment method is charged on the same date each month",
             "You authorize GEA to charge your payment method for recurring membership fees",
-            "If a payment fails, we may retry the charge and notify you before pausing or cancelling access",
+            "If a payment fails, we will attempt to process it again and notify you. If payment cannot be collected after reasonable attempts, your membership may be paused or cancelled",
           ]}
         />
 
@@ -143,23 +141,22 @@ const Terms = () => {
         <LegalSubheading className="mt-8">Repairable damage</LegalSubheading>
         <LegalParagraph>
           If a piece is damaged beyond normal wear but can be repaired, a fixed
-          repair fee may apply. The applicable fee schedule is disclosed in
-          your account or before checkout so it is never a surprise.
+          repair fee applies. This fee is disclosed in your account before
+          checkout and is never a surprise.
         </LegalParagraph>
 
         <LegalSubheading className="mt-8">Loss or theft</LegalSubheading>
         <LegalParagraph>
-          If a piece is lost, stolen, or not returned in recoverable condition,
-          you are responsible for the replacement cost. Replacement costs are
-          displayed for each piece.
+          If a piece is lost or stolen, you are responsible for the replacement
+          cost. Replacement costs are displayed in your account for each piece.
         </LegalParagraph>
 
         <LegalCallout title="Our commitment" className="mt-8">
           <LegalList
             items={[
-              "Every piece passes a 4-point inspection before sealing: structure, surface, stones, and mechanism",
+              "Every piece passes a 4-point inspection before sealing: structure, surface, stones, mechanism",
               "We professionally clean, UV-sanitize, and seal every piece after each cycle",
-              "Damage-related charges are disclosed upfront - no surprise fees",
+              "Damage fees are always disclosed upfront - no surprise charges",
               "If you believe a damage assessment is incorrect, contact us within 7 days for review",
             ]}
             className="mt-0"
@@ -182,7 +179,7 @@ const Terms = () => {
         <LegalList
           items={[
             "Return shipping is prepaid - we provide a return label with every shipment",
-            "Pieces must be returned by the end of your cycle in the same condition received, accounting for normal wear",
+            "Pieces must be returned by the end of your cycle in the same condition received (accounting for normal wear)",
             "Returns must include all original pieces and packaging materials",
           ]}
         />
@@ -190,22 +187,20 @@ const Terms = () => {
         <LegalSubheading className="mt-8">Late returns</LegalSubheading>
         <LegalParagraph>
           If pieces are not returned by the cycle deadline, we will contact
-          you. After any applicable grace period, late-return fees or
-          replacement charges may apply according to the fee schedule shown in
-          your account or at checkout.
+          you. Continued non-return may result in replacement charges.
         </LegalParagraph>
       </LegalSection>
 
       <LegalSection number="6" title="Keep Your Favorite">
         <LegalParagraph>
-          If you fall in love with a piece, one piece from your current cycle
-          is included to keep at no additional cost. Any additional keep
-          pricing and member pricing details are shown in your dashboard or at
-          checkout for the pieces currently in your access set.
+          If you fall in love with a piece, one piece from your cycle is
+          included to keep at no additional cost. Keep pricing for any
+          additional pieces is displayed in your member dashboard for each
+          piece in your current access set.
         </LegalParagraph>
         <LegalParagraph>
-          Once you complete a keep purchase, that piece becomes your property
-          upon purchase confirmation. All keep purchases are final sale.
+          Kept pieces become your property upon purchase confirmation. All keep
+          purchases are final sale.
         </LegalParagraph>
       </LegalSection>
 
@@ -219,10 +214,11 @@ const Terms = () => {
             "Credits accumulate up to a maximum of $45 at any time",
             "For Founding 100 members, referral credits do not expire",
             "Credits are not redeemable for cash",
+            "Full referral terms are available at /refer",
           ]}
         />
         <LegalParagraph>
-          Full referral terms are available at{" "}
+          You can review the full program details at{" "}
           <Link to="/refer" className={inlineLinkClassName}>
             /refer
           </Link>
@@ -246,6 +242,7 @@ const Terms = () => {
           to the amount you paid in membership fees during the 3 months
           preceding the claim.
         </LegalParagraph>
+
         <LegalParagraph>
           GEA is not liable for indirect, incidental, special, or
           consequential damages, including lost profits, data loss, or business
@@ -266,16 +263,16 @@ const Terms = () => {
 
         <LegalSubheading className="mt-8">Dispute resolution</LegalSubheading>
         <LegalParagraph>
-          Any disputes will be addressed through good-faith negotiation first.
-          If negotiation does not resolve the issue, disputes will be resolved
-          in the courts of Miami-Dade County, Florida.
+          Any disputes will be resolved through good-faith negotiation first.
+          If negotiation fails, disputes will be resolved in the courts of
+          Miami-Dade County, Florida.
         </LegalParagraph>
 
         <LegalSubheading className="mt-8">Modifications</LegalSubheading>
         <LegalParagraph>
           We may update these terms from time to time. Material changes will be
-          communicated by email to your registered address and posted on this
-          page. Continued use of GEA after changes constitutes acceptance.
+          communicated via email to your registered address. Continued use of
+          GEA after changes constitutes acceptance.
         </LegalParagraph>
 
         <LegalSubheading className="mt-8">Severability</LegalSubheading>
