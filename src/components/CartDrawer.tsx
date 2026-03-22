@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -90,6 +91,23 @@ export const CartDrawer = () => {
                 <Button onClick={handleCheckout} className="w-full rounded-none h-12 text-xs tracking-[0.2em] uppercase font-sans" size="lg" disabled={items.length === 0 || isLoading || isSyncing}>
                   {isLoading || isSyncing ? <Loader2 className="w-4 h-4 animate-spin" /> : <><ExternalLink className="w-4 h-4 mr-3" />Proceed to Checkout</>}
                 </Button>
+                <p className="text-center font-sans text-[12px] text-muted-foreground">
+                  By proceeding, you agree to our{" "}
+                  <Link
+                    to="/terms"
+                    className="underline underline-offset-4 transition-colors hover:text-foreground"
+                  >
+                    Terms of Service
+                  </Link>{" "}
+                  and{" "}
+                  <Link
+                    to="/privacy"
+                    className="underline underline-offset-4 transition-colors hover:text-foreground"
+                  >
+                    Privacy Policy
+                  </Link>
+                  .
+                </p>
               </div>
             </>
           )}

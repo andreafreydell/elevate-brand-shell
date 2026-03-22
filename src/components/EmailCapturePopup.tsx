@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { useEmailCaptureTrigger } from "@/hooks/useEmailCaptureTrigger";
 import { saveFoundingAccessEmail } from "@/lib/foundingAccess";
@@ -130,6 +130,16 @@ export const EmailCapturePopup = () => {
                 >
                   {loading ? "Submitting..." : "Apply for Access"}
                 </button>
+                <p className="mt-3 text-center font-sans text-[11px] text-muted-foreground">
+                  We respect your privacy. Read our{" "}
+                  <Link
+                    to="/privacy"
+                    className="underline underline-offset-4 transition-colors hover:text-foreground"
+                  >
+                    Privacy Policy
+                  </Link>
+                  .
+                </p>
                 <button
                   type="button"
                   onClick={dismissPopup}

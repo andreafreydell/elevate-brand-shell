@@ -140,7 +140,7 @@ const Index = () => {
           <StaggerItem><StepBlock number="02" title="Receive" description="Your selections arrive in 1–3 days, freshly restored and sealed in our signature packaging." icon={Package} /></StaggerItem>
           <StaggerItem><StepBlock number="03" title="Wear" description="Style them for your life — the event, the meeting, the dinner, the everyday." icon={Sparkles} /></StaggerItem>
           <StaggerItem><StepBlock number="04" title="Keep Your Favorite" description="One piece per cycle is yours to keep — included in your membership. Want more? Members save 40% on any additional piece." icon={Heart} /></StaggerItem>
-          <StaggerItem><StepBlock number="05" title="Refresh" description="When you're ready for something new, return and choose your next chapter." icon={RefreshCw} /></StaggerItem>
+          <StaggerItem><StepBlock number="05" title="Refresh" description="At the end of your cycle, return the pieces you are not keeping and choose your next chapter." icon={RefreshCw} /></StaggerItem>
         </StaggerContainer>
         <div className="text-center mt-10">
           <Link to="/how-it-works" className="cta-underline">Learn More</Link>
@@ -307,10 +307,17 @@ const Index = () => {
                 <Zap className="h-5 w-5 stroke-[1.3] text-background/70" />
               </div>
               <h3 className="philosophy-title font-serif text-xl md:text-2xl font-semibold tracking-[0.02em] mb-4 text-background">Access Is <ScribbleUnderline color="var(--seafoam)" delay={0.5}>Intelligence</ScribbleUnderline></h3>
-              <p className="philosophy-body text-[12px] text-background/70 font-sans leading-relaxed max-w-content">
-                Access the full vault. Wear what speaks to you this month. Return when you're ready
+              {/*
+                Access the full vault. Wear what speaks to you this cycle. At the end of your cycle,
                 for something new. No commitment to a single piece — commitment to always being adorned
                 exactly as you wish. <ScriptNumber className="text-background/90">10+</ScriptNumber> pieces per year. Presence over possession.
+              */}
+              <p className="philosophy-body text-[12px] text-background/70 font-sans leading-relaxed max-w-content">
+                Access the full vault. Wear what speaks to you this cycle. At the end of your cycle,
+                keep the piece you love most, return the rest, and choose what is next. No commitment
+                to a single piece - just the freedom to stay adorned exactly as you wish.{" "}
+                <ScriptNumber className="text-background/90">10+</ScriptNumber> pieces per year.
+                Presence over possession.
               </p>
             </div>
           </StaggerItem>
@@ -359,7 +366,7 @@ const Index = () => {
               <WashiTapeNote label="Explore" tapeColor="var(--seafoam)" rotation={-1.2} className="max-w-none w-full">
                 <Shuffle className="h-5 w-5 stroke-[1.3] text-foreground mb-4" />
                 <h3 className="font-serif text-lg font-semibold tracking-[0.02em] mb-3">Freedom to Experiment</h3>
-                <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">Try bold statement pieces without the commitment of ownership. If it doesn't feel right, refresh your selection next month. No risk. No regret.</p>
+                <p className="text-[12px] text-muted-foreground font-sans leading-relaxed">Try bold statement pieces without the commitment of ownership. If it doesn't feel right, refresh your selection at the end of your cycle. No risk. No regret.</p>
               </WashiTapeNote>
             </StaggerItem>
             <StaggerItem>
@@ -382,7 +389,7 @@ const Index = () => {
           <div className="hidden md:flex justify-center mt-10">
             <SketchyBorderCard label="EDITOR'S NOTE" pathVariant={1} className="max-w-lg">
               <p className="font-serif text-sm italic leading-relaxed text-foreground/80">
-                "Members who rotate monthly tell us they feel more confident experimenting with bolder pieces they'd never commit to buying."
+                "Members who refresh each cycle tell us they feel more confident experimenting with bolder pieces they'd never commit to buying."
               </p>
             </SketchyBorderCard>
           </div>

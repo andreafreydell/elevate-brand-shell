@@ -149,7 +149,7 @@ const FullOffer = () => (
   <div className="space-y-8">
     <StandardOffer />
     <p className="text-[11px] text-muted-foreground font-sans tracking-[0.1em] text-center">
-      One curated shipment per 30-day cycle. Refresh at the end of your cycle.
+      One curated shipment per 30-day cycle. One piece is included to keep, and the rest refresh at cycle end.
     </p>
 
     {/* Cost-per-wear reframe */}

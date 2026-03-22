@@ -34,6 +34,8 @@ import ReferFriend from "./pages/ReferFriend";
 import Ambassador from "./pages/Ambassador";
 import Press from "./pages/Press";
 import Legal from "./pages/Legal";
+import Terms from "./pages/Terms";
+import Privacy from "./pages/Privacy";
 import Stories from "./pages/Stories";
 import Account from "./pages/Account";
 import BrowseAll from "./pages/BrowseAll";
@@ -59,6 +61,8 @@ const AppContent = () => {
       <Route path="/refer" element={<ReferFriend />} />
       <Route path="/ambassador" element={<Ambassador />} />
       <Route path="/press" element={<Press />} />
+      <Route path="/terms" element={<Terms />} />
+      <Route path="/privacy" element={<Privacy />} />
       <Route path="/legal" element={<Legal />} />
       <Route path="/stories" element={<Stories />} />
       <Route path="/account" element={<Account />} />

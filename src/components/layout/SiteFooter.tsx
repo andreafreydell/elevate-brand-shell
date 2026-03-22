@@ -24,30 +24,29 @@ const footerLinks = {
 export const SiteFooter = ({ hideNewsletter }: { hideNewsletter?: boolean }) => {
   return (
     <footer className="border-t border-border bg-background">
-      {/* Newsletter section */}
       {!hideNewsletter && <NewsletterCapture />}
 
-      {/* Wavy divider between newsletter and links */}
-      <WavyDivider className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16" />
+      <WavyDivider className="mx-auto max-w-[1440px] px-5 sm:px-6 md:px-12 lg:px-16" />
 
-      {/* Links grid */}
-      <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-14">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
-          {/* Brand column */}
+      <div className="mx-auto max-w-[1440px] px-5 py-14 sm:px-6 md:px-12 lg:px-16">
+        <div className="grid grid-cols-2 gap-10 md:grid-cols-4">
           <div>
-            <Link to="/" className="font-serif text-2xl tracking-[0.12em] font-semibold italic">
+            <Link
+              to="/"
+              className="font-serif text-2xl font-semibold italic tracking-[0.12em]"
+            >
               Gea
             </Link>
-            <p className="text-[11px] text-muted-foreground font-sans mt-4 leading-relaxed max-w-[200px]">
-              Unlimited Designer Jewelry.<br />
+            <p className="mt-4 max-w-[200px] font-sans text-[11px] leading-relaxed text-muted-foreground">
+              Unlimited Designer Jewelry.
+              <br />
               Access Is Luxury.
             </p>
           </div>
 
-          {/* Link columns */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <p className="text-[10px] tracking-[0.25em] uppercase font-sans font-medium text-foreground mb-5">
+              <p className="mb-5 font-sans text-[10px] font-medium uppercase tracking-[0.25em] text-foreground">
                 {category}
               </p>
               <ul className="space-y-3">
@@ -55,7 +54,7 @@ export const SiteFooter = ({ hideNewsletter }: { hideNewsletter?: boolean }) => 
                   <li key={link.href}>
                     <Link
                       to={link.href}
-                      className="text-[11px] tracking-[0.1em] font-sans text-muted-foreground hover:text-foreground transition-colors"
+                      className="font-sans text-[11px] tracking-[0.1em] text-muted-foreground transition-colors hover:text-foreground"
                     >
                       {link.label}
                     </Link>
@@ -67,20 +66,28 @@ export const SiteFooter = ({ hideNewsletter }: { hideNewsletter?: boolean }) => 
         </div>
       </div>
 
-      {/* Bottom bar */}
       <div className="border-t border-border">
-        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-6 flex flex-col md:flex-row items-center justify-between gap-3">
-          <p className="text-[10px] text-muted-foreground tracking-[0.2em] uppercase font-sans">
-            © {new Date().getFullYear()} GEA. All rights reserved.
-          </p>
-          <div className="flex items-center gap-6">
-            <Link to="/legal" className="text-[10px] text-muted-foreground tracking-[0.15em] uppercase font-sans hover:text-foreground transition-colors">
-              Terms
+        <div className="mx-auto max-w-[1440px] px-5 py-6 sm:px-6 md:px-12 lg:px-16">
+          <div className="flex items-center justify-center gap-6">
+            <Link
+              to="/terms"
+              className="font-sans text-[11px] uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground"
+            >
+              Terms of Service
             </Link>
-            <Link to="/legal" className="text-[10px] text-muted-foreground tracking-[0.15em] uppercase font-sans hover:text-foreground transition-colors">
-              Privacy
+            <span className="font-sans text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+              &middot;
+            </span>
+            <Link
+              to="/privacy"
+              className="font-sans text-[11px] uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground"
+            >
+              Privacy Policy
             </Link>
           </div>
+          <p className="mt-6 text-center font-sans text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+            &copy; {new Date().getFullYear()} GEA. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

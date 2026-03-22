@@ -315,8 +315,11 @@ const ProductDetail = () => {
                     <span className="font-serif text-lg">$85</span>
                     <span className="text-[9px] tracking-[0.15em] uppercase font-sans text-muted-foreground">/month</span>
                   </div>
-                  <p className="text-[10px] text-muted-foreground font-sans mb-4">
+                  {/*
                     Tier 2: 10 curated pieces per cycle · Cancel anytime
+                  */}
+                  <p className="text-[10px] text-muted-foreground font-sans mb-4">
+                    Tier 2: 10 curated pieces per cycle · 1 piece included to keep
                   </p>
                   <button
                     disabled
@@ -483,7 +486,7 @@ const ProductDetail = () => {
                 <MarginNote attribution="GEA Curator">
                   {outfitStyles[0]
                     ? `Best worn in a ${outfitStyles[0].toLowerCase()} aesthetic — the piece commands presence without asking for it.`
-                    : "This piece arrives restored and sealed. Wear it, return it, choose your next chapter."}
+                    : "This piece arrives restored and sealed. Access it through your cycle, then decide whether it is the one you keep."}
                 </MarginNote>
               </div>
             </div>
@@ -563,7 +566,7 @@ const ProductDetail = () => {
               {
                 icon: Loader2,
                 label: "Cancel Anytime",
-                body: "No commitment. No lock-in. Return when you're ready and choose your next chapter.",
+                body: "No commitment. No lock-in. Cancel anytime, with your access remaining active through the end of your current cycle.",
               },
             ].map(({ icon: Icon, label, body }, i) => (
               <div
