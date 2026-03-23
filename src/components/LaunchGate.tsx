@@ -9,7 +9,7 @@ interface LaunchGateProps {
 
 const LaunchGate = ({ children }: LaunchGateProps) => {
   // Temporarily bypassed — set to false to re-enable the gate
-  const GATE_ENABLED = false;
+  const GATE_ENABLED = true;
 
   const [granted, setGranted] = useState(() => !GATE_ENABLED || localStorage.getItem(STORAGE_KEY) === "true");
   const [code, setCode] = useState("");
