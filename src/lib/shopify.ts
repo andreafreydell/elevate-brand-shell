@@ -5,6 +5,18 @@ const SHOPIFY_STORE_PERMANENT_DOMAIN = '1iggem-wc.myshopify.com';
 const SHOPIFY_STOREFRONT_URL = `https://${SHOPIFY_STORE_PERMANENT_DOMAIN}/api/${SHOPIFY_API_VERSION}/graphql.json`;
 const SHOPIFY_STOREFRONT_TOKEN = 'ebe6a5e238f974f053cdf25df7daeebf';
 
+export interface ShopifyLineAttribute {
+  key: string;
+  value: string;
+}
+
+export interface ShopifyCartLineInput {
+  variantId: string;
+  quantity: number;
+  attributes?: ShopifyLineAttribute[];
+  sellingPlanId?: string | null;
+}
+
 export interface ShopifyProduct {
   node: {
     id: string;
@@ -53,6 +65,20 @@ export interface ShopifyProduct {
       value: string | null;
     } | null>;
   };
+}
+
+function normalizeShopifyLineAttributes(attributes: ShopifyLineAttribute[] = []): ShopifyLineAttribute[] {
+  return [...attributes]
+    .filter(attribute => attribute.key.length > 0)
+    .sort((left, right) => left.key.localeCompare(right.key) || left.value.localeCompare(right.value));
+}
+
+function getShopifyCartLineSignature(item: ShopifyCartLineInput): string {
+  return JSON.stringify({
+    variantId: item.variantId,
+    sellingPlanId: item.sellingPlanId ?? null,
+    attributes: normalizeShopifyLineAttributes(item.attributes),
+  });
 }
 
 export async function storefrontApiRequest(query: string, variables: Record<string, unknown> = {}) {
@@ -139,6 +165,8 @@ export const PRODUCTS_QUERY = `
             { namespace: "custom", key: "silhouette_category" }
             { namespace: "custom", key: "material_category" }
             { namespace: "custom", key: "occasions_possible" }
+            { namespace: "supercycle", key: "supercycle_enabled" }
+            { namespace: "supercycle", key: "methods" }
           ]) {
             key
             value
@@ -225,6 +253,12 @@ export const PRODUCT_BY_HANDLE_QUERY = `
         { namespace: "custom", key: "occasions_possible" }
         { namespace: "custom", key: "outfit_style" }
         { namespace: "custom", key: "item_type" }
+        { namespace: "supercycle", key: "supercycle_enabled" }
+        { namespace: "supercycle", key: "methods" }
+        { namespace: "supercycle", key: "calendar_configuration" }
+        { namespace: "supercycle", key: "membership_configuration" }
+        { namespace: "supercycle", key: "subscription_configuration" }
+        { namespace: "supercycle", key: "resale_configuration" }
       ]) {
         key
         value
@@ -246,7 +280,27 @@ export const CART_CREATE_MUTATION = `
       cart {
         id
         checkoutUrl
-        lines(first: 100) { edges { node { id merchandise { ... on ProductVariant { id } } } } }
+        lines(first: 100) {
+          edges {
+            node {
+              id
+              attributes {
+                key
+                value
+              }
+              merchandise {
+                ... on ProductVariant {
+                  id
+                }
+              }
+              sellingPlanAllocation {
+                sellingPlan {
+                  id
+                }
+              }
+            }
+          }
+        }
       }
       userErrors { field message }
     }
@@ -258,7 +312,27 @@ export const CART_LINES_ADD_MUTATION = `
     cartLinesAdd(cartId: $cartId, lines: $lines) {
       cart {
         id
-        lines(first: 100) { edges { node { id merchandise { ... on ProductVariant { id } } } } }
+        lines(first: 100) {
+          edges {
+            node {
+              id
+              attributes {
+                key
+                value
+              }
+              merchandise {
+                ... on ProductVariant {
+                  id
+                }
+              }
+              sellingPlanAllocation {
+                sellingPlan {
+                  id
+                }
+              }
+            }
+          }
+        }
       }
       userErrors { field message }
     }
@@ -268,7 +342,9 @@ export const CART_LINES_ADD_MUTATION = `
 export const CART_LINES_UPDATE_MUTATION = `
   mutation cartLinesUpdate($cartId: ID!, $lines: [CartLineUpdateInput!]!) {
     cartLinesUpdate(cartId: $cartId, lines: $lines) {
-      cart { id }
+      cart {
+        id
+      }
       userErrors { field message }
     }
   }
@@ -297,9 +373,16 @@ function isCartNotFoundError(userErrors: Array<{ field: string[] | null; message
   return userErrors.some(e => e.message.toLowerCase().includes('cart not found') || e.message.toLowerCase().includes('does not exist'));
 }
 
-export async function createShopifyCart(item: { variantId: string; quantity: number }): Promise<{ cartId: string; checkoutUrl: string; lineId: string } | null> {
+export async function createShopifyCart(item: ShopifyCartLineInput): Promise<{ cartId: string; checkoutUrl: string; lineId: string } | null> {
   const data = await storefrontApiRequest(CART_CREATE_MUTATION, {
-    input: { lines: [{ quantity: item.quantity, merchandiseId: item.variantId }] },
+    input: {
+      lines: [{
+        quantity: item.quantity,
+        merchandiseId: item.variantId,
+        attributes: item.attributes,
+        sellingPlanId: item.sellingPlanId ?? undefined,
+      }],
+    },
   });
 
   if (data?.data?.cartCreate?.userErrors?.length > 0) {
@@ -316,10 +399,15 @@ export async function createShopifyCart(item: { variantId: string; quantity: num
   return { cartId: cart.id, checkoutUrl: formatCheckoutUrl(cart.checkoutUrl), lineId };
 }
 
-export async function addLineToShopifyCart(cartId: string, item: { variantId: string; quantity: number }): Promise<{ success: boolean; lineId?: string; cartNotFound?: boolean }> {
+export async function addLineToShopifyCart(cartId: string, item: ShopifyCartLineInput): Promise<{ success: boolean; lineId?: string; cartNotFound?: boolean }> {
   const data = await storefrontApiRequest(CART_LINES_ADD_MUTATION, {
     cartId,
-    lines: [{ quantity: item.quantity, merchandiseId: item.variantId }],
+    lines: [{
+      quantity: item.quantity,
+      merchandiseId: item.variantId,
+      attributes: item.attributes,
+      sellingPlanId: item.sellingPlanId ?? undefined,
+    }],
   });
 
   const userErrors = data?.data?.cartLinesAdd?.userErrors || [];
@@ -327,14 +415,40 @@ export async function addLineToShopifyCart(cartId: string, item: { variantId: st
   if (userErrors.length > 0) return { success: false };
 
   const lines = data?.data?.cartLinesAdd?.cart?.lines?.edges || [];
-  const newLine = lines.find((l: { node: { id: string; merchandise: { id: string } } }) => l.node.merchandise.id === item.variantId);
+  const targetSignature = getShopifyCartLineSignature(item);
+  const newLine = lines.find((line: {
+    node: {
+      id: string;
+      attributes: ShopifyLineAttribute[];
+      merchandise: { id: string };
+      sellingPlanAllocation?: { sellingPlan?: { id: string | null } | null } | null;
+    };
+  }) => {
+    const candidate = line.node;
+    return getShopifyCartLineSignature({
+      variantId: candidate.merchandise.id,
+      quantity: 1,
+      attributes: candidate.attributes,
+      sellingPlanId: candidate.sellingPlanAllocation?.sellingPlan?.id ?? null,
+    }) === targetSignature;
+  });
   return { success: true, lineId: newLine?.node?.id };
 }
 
-export async function updateShopifyCartLine(cartId: string, lineId: string, quantity: number): Promise<{ success: boolean; cartNotFound?: boolean }> {
+export async function updateShopifyCartLine(
+  cartId: string,
+  lineId: string,
+  quantity: number,
+  options: Pick<ShopifyCartLineInput, 'attributes' | 'sellingPlanId'> = {}
+): Promise<{ success: boolean; cartNotFound?: boolean }> {
   const data = await storefrontApiRequest(CART_LINES_UPDATE_MUTATION, {
     cartId,
-    lines: [{ id: lineId, quantity }],
+    lines: [{
+      id: lineId,
+      quantity,
+      attributes: options.attributes,
+      sellingPlanId: options.sellingPlanId ?? undefined,
+    }],
   });
 
   const userErrors = data?.data?.cartLinesUpdate?.userErrors || [];
