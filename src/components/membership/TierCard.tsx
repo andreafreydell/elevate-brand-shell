@@ -14,7 +14,9 @@ export interface TierData {
 
 export const TierCard = ({ tier }: { tier: TierData }) => {
   return (
-    <div
+    <Link
+      to="/how-it-works#tiers"
+      aria-label={`Join ${tier.name} membership`}
       className={`border border-border flex flex-col ${
         tier.highlighted ? "bg-foreground text-background" : "bg-card"
       }`}
@@ -79,17 +81,16 @@ export const TierCard = ({ tier }: { tier: TierData }) => {
 
       {/* CTA */}
       <div className="px-8 md:px-10 pb-8 md:pb-10">
-        <Link
-          to="/#founding-access"
+        <span
           className={`block text-center py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans font-medium border transition-colors ${
             tier.highlighted
               ? "border-background text-background hover:bg-background hover:text-foreground"
               : "border-foreground bg-foreground text-background hover:bg-transparent hover:text-foreground"
           }`}
         >
-          Apply for Access
-        </Link>
+          Join Now
+        </span>
       </div>
-    </div>
+    </Link>
   );
 };

@@ -5,7 +5,6 @@ import { SectionHeading } from "@/components/layout/SectionHeading";
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
 import { ScribbleUnderline } from "@/components/craft/ScribbleUnderline";
 import { GrainOverlay } from "@/components/craft/GrainOverlay";
-import { WavyDivider } from "@/components/craft/WavyDivider";
 import { TornPaperEdge } from "@/components/craft/TornPaperEdge";
 import { HandDrawnFrame } from "@/components/craft/HandDrawnFrame";
 import { TagRedStamp } from "@/components/craft/TagRedStamp";
@@ -13,15 +12,38 @@ import { StitchLineDivider } from "@/components/craft/StitchLineDivider";
 import { WashiTapeNote } from "@/components/craft/WashiTapeNote";
 import { MarkerCircle } from "@/components/craft/MarkerCircle";
 import { ScriptNumber } from "@/components/craft/ScriptNumber";
-import { OrganicBlobTag } from "@/components/craft/OrganicBlobTag";
 import { Gift, Users, Sparkles } from "lucide-react";
+
+const referralDetails = [
+  {
+    title: "Who Can Use It",
+    description:
+      "Referral rewards are for active members once the referral program is live for their cohort. The friend offer applies to first-time memberships only.",
+  },
+  {
+    title: "When Credits Land",
+    description:
+      "Credits post after the referred member completes signup and their first shipment is confirmed. Expect the credit to appear in your account within 7 days of that activation.",
+  },
+  {
+    title: "Launch Availability",
+    description:
+      "Referral rewards may open in phases during launch so we can protect service quality. Self-referrals, duplicate accounts, and retroactive claims do not qualify.",
+  },
+];
 
 const ReferFriend = () => {
   return (
     <PageLayout>
       <PageHero
         label="Community"
-        headline={<>Share the<br /><ScribbleUnderline>Vault</ScribbleUnderline></>}
+        headline={
+          <>
+            Share the
+            <br />
+            <ScribbleUnderline>Vault</ScribbleUnderline>
+          </>
+        }
         subtitle="Give a friend their first month free. Receive a month of bonus credits when they join. Access grows when shared."
       />
 
@@ -36,7 +58,11 @@ const ReferFriend = () => {
               <Gift className="h-6 w-6 mx-auto mb-4 stroke-[1.3] relative z-[1]" />
               <h3 className="font-serif text-lg font-semibold mb-2 relative z-[1]">Your Friend Gets</h3>
               <p className="text-[12px] text-muted-foreground font-sans leading-relaxed relative z-[1]">
-                First month <MarkerCircle color="var(--seafoam)"><span className="font-semibold text-foreground">free</span></MarkerCircle> on any tier. Full vault access. Free shipping. No commitment.
+                First month{" "}
+                <MarkerCircle color="var(--seafoam)">
+                  <span className="font-semibold text-foreground">free</span>
+                </MarkerCircle>{" "}
+                on any tier. Full vault access. Free shipping. No commitment.
               </p>
             </div>
           </StaggerItem>
@@ -47,7 +73,8 @@ const ReferFriend = () => {
               <Users className="h-6 w-6 mx-auto mb-4 stroke-[1.3] relative z-[1]" />
               <h3 className="font-serif text-lg font-semibold mb-2 text-background relative z-[1]">You Receive</h3>
               <p className="text-[12px] text-background/70 font-sans leading-relaxed relative z-[1]">
-                <ScriptNumber className="text-background/90">1</ScriptNumber> month of bonus credits toward your membership. Stackable for every referral that converts.
+                <ScriptNumber className="text-background/90">1</ScriptNumber> month of bonus credits toward your
+                membership. Stackable for every referral that converts.
               </p>
             </div>
           </StaggerItem>
@@ -64,17 +91,32 @@ const ReferFriend = () => {
         </StaggerContainer>
       </section>
 
-      {/* WashiTape note */}
       <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-8 hidden md:flex justify-center">
         <WashiTapeNote label="MEMBER TIP" tapeColor="var(--seafoam)" rotation={-1.5}>
           <p className="font-serif text-sm italic leading-relaxed text-foreground/80">
-            "Our top referrers have earned over 6 months of free membership credits."
+            "The referral reward is strongest when it feels personal - send it to the friend who already borrows your jewelry."
           </p>
         </WashiTapeNote>
       </div>
 
-      {/* Stitch line divider */}
       <StitchLineDivider className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16" />
+
+      <SectionHeading label="Program Details" heading="Terms, Timing, and Availability" />
+      <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {referralDetails.map((item) => (
+            <StaggerItem key={item.title}>
+              <div className="h-full border border-border bg-card p-8 relative overflow-hidden">
+                <GrainOverlay opacity={0.03} />
+                <h3 className="mb-3 font-serif text-lg font-semibold relative z-[1]">{item.title}</h3>
+                <p className="text-[12px] leading-relaxed text-muted-foreground font-sans relative z-[1]">
+                  {item.description}
+                </p>
+              </div>
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
+      </section>
 
       <section className="border-t border-border relative overflow-hidden">
         <GrainOverlay opacity={0.03} />
@@ -82,10 +124,13 @@ const ReferFriend = () => {
           <AnimateIn variant="fadeUp" duration={0.5}>
             <HandDrawnFrame strokeColor="hsl(var(--foreground))">
               <h2 className="font-serif text-2xl md:text-3xl tracking-[0.06em] uppercase font-medium mb-4">
-                Access Grows When <ScribbleUnderline color="var(--brass)" delay={0.4}>Shared</ScribbleUnderline>
+                Access Grows When{" "}
+                <ScribbleUnderline color="var(--brass)" delay={0.4}>
+                  Shared
+                </ScribbleUnderline>
               </h2>
-              <p className="text-[12px] text-muted-foreground font-sans mb-8">
-                Your unique referral link is available in your account dashboard.
+              <p className="text-[12px] text-muted-foreground font-sans mb-8 max-w-[480px] mx-auto">
+                Referral links will appear inside eligible member accounts as the program opens. Join membership now, and you'll be first in line when referrals go live for your cohort.
               </p>
               <Link to="/how-it-works" className="btn-gea">
                 Join to Unlock Referrals

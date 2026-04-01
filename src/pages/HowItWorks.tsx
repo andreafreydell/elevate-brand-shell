@@ -43,7 +43,7 @@ const trustStandards = [
   {
     icon: Shield,
     title: "Sanitized & Sealed",
-    text: "Every piece passes through our care ritual - hand cleaned, UV sanitized, 4-point inspected, and sealed before it reaches you.",
+    text: "Every piece moves through our 3-step sanitation ritual: inspect and restore, sanitize, then restore shine and polish before sealing.",
   },
   {
     icon: Wrench,
@@ -101,7 +101,7 @@ const faqItems: FAQItem[] = [
   {
     question: "How is each piece prepared?",
     answer:
-      "Every piece undergoes our Sanitized & Sealed Protocol: hand clean, UV sanitization, 4-point inspection (structure, surface, stones, mechanism), and sealed in protective packaging.",
+      "Every piece follows our 3-step Sanitized & Sealed ritual: inspect and restore, sanitize, then restore shine and polish before it is sealed for shipping.",
   },
   {
     question: "Can I skip a month?",
@@ -111,7 +111,7 @@ const faqItems: FAQItem[] = [
   {
     question: "How does the cost-per-wear work?",
     answer:
-      "Traditional jewelry purchases average $150+ per piece worn 3-5 times - that's $30+ per wear. With GEA Tier 2 at $85/month, you access 10 curated pieces. Worn even twice each, your cost-per-wear drops below $5. The more you wear, the more intelligent your access becomes.",
+      "Traditional jewelry purchases average $150+ per piece worn 3-5 times - that's $30+ per wear. With the Stacking Membership at $85 per 10-piece cycle, your cost-per-wear drops fast. The more you wear, the smarter your access becomes.",
   },
   {
     question: "What is Keep Your Favorite?",
@@ -149,15 +149,42 @@ const HowItWorks = () => {
             Design
           </>
         }
-        subtitle="Four steps between you and curated high-design jewelry. Just access."
+        subtitle="Five steps between you and curated high-design jewelry. Just access."
         heroMobileCompact
       />
 
       <TornPaperEdge className="mx-auto max-w-[1440px]" />
 
+      <div id="tiers">
+        <SectionHeading
+          label="Choose Your Tier"
+          heading="Your Level of Access"
+          className="section-heading-your-level"
+        />
+      </div>
+      <section className="mx-auto max-w-[1440px] px-5 pb-8 sm:px-6 md:px-12 lg:px-16">
+        <div className="mb-8 hidden justify-center md:flex">
+          <HandDrawnRect className="max-w-md">
+            <p className="text-center font-sans text-[12px] leading-relaxed text-muted-foreground">
+              Starting from just{" "}
+              <MarkerCircle color="var(--tag-red)">
+                <span className="font-semibold text-foreground">$65/mo</span>
+              </MarkerCircle>{" "}
+              - Starter Membership pricing with full vault access included
+            </p>
+          </HandDrawnRect>
+        </div>
+        <OfferUnit variant="full" />
+      </section>
+
+      <WavyDivider
+        variant="double"
+        className="mx-auto max-w-[1440px] px-5 sm:px-6 md:px-12 lg:px-16"
+      />
+
       <SectionHeading
         label="How Access Works"
-        heading="Choose. Receive. Wear. Refresh."
+        heading="Choose. Receive. Wear. Keep. Refresh."
         headingMobile
         className="section-heading-how-it-works"
         labelClassName="section-heading-how-it-works-label"
@@ -226,11 +253,10 @@ const HowItWorks = () => {
               Sanitized & Sealed Protocol
             </h3>
             <p className="step-detail-description relative z-[1] font-sans text-[12px] leading-relaxed text-muted-foreground">
-              Our atelier restores every returning piece: hand cleaning, UV
-              sanitization, <ScriptNumber>4</ScriptNumber>-point inspection
-              (structure, surface, stones, mechanism), and sealed in protective
-              packaging. What arrives at your door is indistinguishable from
-              new.
+              Our atelier follows a 3-step ritual: inspect and restore every
+              detail, sanitize for hygienic wear, then restore shine and polish
+              before sealing. What arrives at your door looks styled, finished,
+              and ready to wear.
             </p>
           </div>
         </MobileCarousel>
@@ -249,7 +275,7 @@ const HowItWorks = () => {
               </ScribbleUnderline>
             </h2>
             <p className="mx-auto mb-10 max-w-content font-sans text-[13px] leading-relaxed text-muted-foreground">
-              Two tiers of access. One philosophy: more beauty, less burden.
+              Two memberships. One philosophy: more beauty, less burden.
               Every membership includes protection, care, and free shipping.
             </p>
             <TrustStrip variant="full" />
@@ -274,40 +300,13 @@ const HowItWorks = () => {
             account from day one.
           </p>
           <Link
-            to="/#founding-access"
+            to="/how-it-works#tiers"
             className="inline-block border border-[hsl(36,25%,78%)] px-10 py-3.5 font-sans text-[11px] uppercase tracking-[0.2em] text-[hsl(36,25%,78%)] transition-colors hover:bg-[hsl(36,25%,78%)] hover:text-[hsl(28,22%,34%)]"
           >
-            Apply for Access
+            Join Now
           </Link>
         </div>
       </section>
-
-      <div id="tiers">
-        <SectionHeading
-          label="Choose Your Tier"
-          heading="Your Level of Access"
-          className="section-heading-your-level"
-        />
-      </div>
-      <section className="mx-auto max-w-[1440px] px-5 pb-8 sm:px-6 md:px-12 lg:px-16">
-        <div className="mb-8 hidden justify-center md:flex">
-          <HandDrawnRect className="max-w-md">
-            <p className="text-center font-sans text-[12px] leading-relaxed text-muted-foreground">
-              Starting from just{" "}
-              <MarkerCircle color="var(--tag-red)">
-                <span className="font-semibold text-foreground">$65/mo</span>
-              </MarkerCircle>{" "}
-              - full vault access included
-            </p>
-          </HandDrawnRect>
-        </div>
-        <OfferUnit variant="full" />
-      </section>
-
-      <WavyDivider
-        variant="double"
-        className="mx-auto max-w-[1440px] px-5 sm:px-6 md:px-12 lg:px-16"
-      />
 
       <SectionHeading label="Your Guarantee" heading="The 5 Trust Standards" />
       <DotGridTexture className="mx-auto max-w-[1440px]" dotSize={0.5} spacing={22}>

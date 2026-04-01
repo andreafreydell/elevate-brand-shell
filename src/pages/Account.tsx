@@ -131,7 +131,7 @@ const Account = () => {
                 Your access is waiting.
               </p>
               <Link to="/how-it-works" className="btn-gea">
-                Apply for Access
+                See Membership
               </Link>
             </HandDrawnFrame>
           </AnimateIn>
