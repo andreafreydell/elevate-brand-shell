@@ -161,10 +161,14 @@ export const PRODUCTS_QUERY = `
             values
           }
           metafields(identifiers: [
+            { namespace: "custom", key: "hero_descriptor_phrase" }
             { namespace: "custom", key: "plating_color_primary" }
             { namespace: "custom", key: "silhouette_category" }
+            { namespace: "custom", key: "stacking_role" }
             { namespace: "custom", key: "material_category" }
             { namespace: "custom", key: "occasions_possible" }
+            { namespace: "custom", key: "outfit_style" }
+            { namespace: "custom", key: "item_type" }
             { namespace: "supercycle", key: "supercycle_enabled" }
             { namespace: "supercycle", key: "methods" }
           ]) {

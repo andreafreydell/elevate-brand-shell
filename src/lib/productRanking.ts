@@ -99,8 +99,19 @@ function getCategoryFitScore(product: ShopifyProduct, category: MerchandisingCat
     score += 0.5;
   }
 
-  if (category === "necklace" && (haystack.includes("pendant") || haystack.includes("tennis"))) {
-    score += 0.5;
+  if (category === "necklace") {
+    if (haystack.includes("tennis") || haystack.includes("layered") || haystack.includes("chain base")) {
+      score += 0.8;
+    }
+
+    if (
+      haystack.includes("beaded") ||
+      haystack.includes("strand") ||
+      haystack.includes("natural stone") ||
+      haystack.includes("pearl")
+    ) {
+      score += 0.7;
+    }
   }
 
   if (category === "earrings" && (haystack.includes("huggie") || haystack.includes("stud"))) {
@@ -111,8 +122,68 @@ function getCategoryFitScore(product: ShopifyProduct, category: MerchandisingCat
     score += 0.75;
   }
 
+  if (category === "bracelet") {
+    if (
+      haystack.includes("tennis") ||
+      haystack.includes("link bracelet") ||
+      haystack.includes("chain bracelet") ||
+      haystack.includes("cuff")
+    ) {
+      score += 0.6;
+    }
+
+    if (
+      haystack.includes("lobster clasp") ||
+      haystack.includes("slider bracelet") ||
+      haystack.includes("adjustable") ||
+      haystack.includes("double-row")
+    ) {
+      score += 0.35;
+    }
+
+    const isSpecialLinkStory =
+      (haystack.includes("link bracelet") || haystack.includes("chain bracelet") || haystack.includes("link")) &&
+      (haystack.includes("enamel") || haystack.includes("tile") || haystack.includes("mixed metal") || haystack.includes("chevron"));
+
+    if (isSpecialLinkStory) {
+      score += 0.35;
+    }
+
+    if (
+      haystack.includes("stretch") ||
+      haystack.includes("stretchy") ||
+      haystack.includes("stretch bracelet") ||
+      haystack.includes("stretchy cord") ||
+      haystack.includes("stretch cord")
+    ) {
+      score -= isSpecialLinkStory ? 0.2 : 0.8;
+    }
+  }
+
   if (category === "sunglasses" && haystack.includes("cat eye")) {
     score += 0.75;
+  }
+
+  if (category === "hair accessory") {
+    if (
+      haystack.includes("bow") ||
+      haystack.includes("shell") ||
+      haystack.includes("sculptural") ||
+      haystack.includes("pearlescent") ||
+      haystack.includes("iridescent") ||
+      haystack.includes("rhinestone")
+    ) {
+      score += 0.8;
+    }
+
+    if (
+      haystack.includes("rectangular") ||
+      haystack.includes("sleek") ||
+      haystack.includes("flat resin") ||
+      haystack.includes("oval barrette")
+    ) {
+      score -= 0.45;
+    }
   }
 
   return clampScore(score);
@@ -126,7 +197,12 @@ function getStackabilityScore(product: ShopifyProduct, haystack: string): number
     score += 1;
   }
 
-  if (haystack.includes("delicate") || haystack.includes("chain base")) {
+  if (
+    haystack.includes("delicate") ||
+    haystack.includes("chain base") ||
+    haystack.includes("strand") ||
+    haystack.includes("choker")
+  ) {
     score += 0.5;
   }
 
@@ -275,10 +351,57 @@ export function getProductRankingBreakdown(
     baseBreakdown.materialConfidence * profile.materialConfidence +
     baseBreakdown.manualBoost;
 
+  if (category === "hair accessory") {
+    const isTooSafe =
+      baseBreakdown.everydayAppeal >= 9 &&
+      baseBreakdown.trendSignal <= 7.5 &&
+      baseBreakdown.statementAppeal <= 7;
+
+    const isEditorialLeader =
+      baseBreakdown.trendSignal >= 9 &&
+      baseBreakdown.statementAppeal >= 8;
+
+    if (isTooSafe) {
+      finalScore -= 0.6;
+    }
+
+    if (isEditorialLeader) {
+      finalScore += 0.45;
+    }
+  }
+
   if (context.lockedOccasion) {
     const normalizedOccasion = context.lockedOccasion.toLowerCase();
     if (occasions.includes(normalizedOccasion)) {
       finalScore += 0.75;
+    }
+  }
+
+  if (category === "bracelet") {
+    const isGenericStoneStrand =
+      baseBreakdown.categoryFit <= 7 &&
+      baseBreakdown.stackability >= 9 &&
+      baseBreakdown.statementAppeal <= 7 &&
+      haystack.includes("natural stone");
+
+    const isStructuredHero =
+      baseBreakdown.categoryFit >= 8.5 &&
+      (haystack.includes("tennis") || haystack.includes("link") || haystack.includes("cuff"));
+
+    const isSpecialLinkHero =
+      (haystack.includes("link") || haystack.includes("chain bracelet")) &&
+      (haystack.includes("enamel") || haystack.includes("tile") || haystack.includes("mixed metal"));
+
+    if (isGenericStoneStrand) {
+      finalScore -= 0.6;
+    }
+
+    if (isStructuredHero) {
+      finalScore += 0.4;
+    }
+
+    if (isSpecialLinkHero) {
+      finalScore += 0.2;
     }
   }
 
