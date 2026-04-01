@@ -1,5 +1,6 @@
 import { useEffect, useState, useMemo, useCallback } from "react";
 import { storefrontApiRequest, PRODUCTS_QUERY, type ShopifyProduct } from "@/lib/shopify";
+import { rankProducts } from "@/lib/productRanking";
 import { ProductCard } from "./ProductCard";
 import { ProductFilters, applyFilters, type FilterState } from "./ProductFilters";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -23,6 +24,7 @@ const todaySeed = () => {
 };
 
 const PAGE_SIZE = 48;
+const FULL_RANKED_FETCH_SIZE = 250;
 
 interface ProductGridProps {
   query?: string;
@@ -59,6 +61,10 @@ export const ProductGrid = ({
     () => (shuffle ? seededShuffle(products, todaySeed()) : products),
     [products, shuffle]
   );
+  const rankedProducts = useMemo(
+    () => (shuffle ? displayProducts : rankProducts(displayProducts, { query, lockedOccasion })),
+    [displayProducts, query, lockedOccasion, shuffle]
+  );
   const effectiveFilters = lockedOccasion
     ? { ...filters, occasion: lockedOccasion }
     : filters;
@@ -78,7 +84,11 @@ export const ProductGrid = ({
     else setLoadingMore(true);
 
     try {
-      const pageSize = Math.min(PAGE_SIZE, limit);
+      // Category-style grids need the full set up front so ranking is based on
+      // the whole assortment, not just the first Shopify page.
+      const pageSize = isInitial && showFilters
+        ? Math.min(FULL_RANKED_FETCH_SIZE, limit)
+        : Math.min(PAGE_SIZE, limit);
       const variables: Record<string, unknown> = { first: pageSize };
       if (query) variables.query = query;
       if (after) variables.after = after;
@@ -143,7 +153,7 @@ export const ProductGrid = ({
     );
   }
 
-  const filtered = showFilters ? applyFilters(displayProducts, effectiveFilters) : displayProducts;
+  const filtered = showFilters ? applyFilters(rankedProducts, effectiveFilters) : rankedProducts;
 
   if (products.length === 0) {
     return (
@@ -196,7 +206,7 @@ export const ProductGrid = ({
               {loadingMore ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Loading…
+                  Loading...
                 </>
               ) : (
                 "Load More Pieces"

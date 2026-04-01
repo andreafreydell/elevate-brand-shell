@@ -24,63 +24,62 @@ interface ProductFiltersProps {
 
 function getMetafieldValues(products: ShopifyProduct[], key: string): string[] {
   const values = new Set<string>();
-  products.forEach((p) => {
-    const mf = p.node.metafields?.find((m) => m?.key === key);
-    if (mf?.value) {
-      // Support comma-separated values (e.g. occasions)
-      mf.value.split(",").forEach((v) => {
-        const trimmed = v.trim();
-        if (trimmed) values.add(trimmed);
+  products.forEach((product) => {
+    const metafield = product.node.metafields?.find((item) => item?.key === key);
+    if (metafield?.value) {
+      metafield.value.split(",").forEach((value) => {
+        const trimmed = value.trim();
+        if (trimmed) {
+          values.add(trimmed);
+        }
       });
     }
   });
+
   return Array.from(values).sort();
 }
 
 const SORT_OPTIONS = [
-  { value: "default", label: "Default" },
-  { value: "price-asc", label: "Price: Low → High" },
-  { value: "price-desc", label: "Price: High → Low" },
+  { value: "default", label: "GEA Featured" },
+  { value: "price-asc", label: "Price: Low to High" },
+  { value: "price-desc", label: "Price: High to Low" },
 ];
 
-export function applyFilters(
-  products: ShopifyProduct[],
-  filters: FilterState
-): ShopifyProduct[] {
+export function applyFilters(products: ShopifyProduct[], filters: FilterState): ShopifyProduct[] {
   let filtered = [...products];
 
   if (filters.color) {
-    filtered = filtered.filter((p) => {
-      const mf = p.node.metafields?.find((m) => m?.key === "plating_color_primary");
-      return mf?.value?.toLowerCase().includes(filters.color.toLowerCase());
+    filtered = filtered.filter((product) => {
+      const metafield = product.node.metafields?.find((item) => item?.key === "plating_color_primary");
+      return metafield?.value?.toLowerCase().includes(filters.color.toLowerCase());
     });
   }
 
   if (filters.style) {
-    filtered = filtered.filter((p) => {
-      const mf = p.node.metafields?.find((m) => m?.key === "silhouette_category");
-      return mf?.value?.toLowerCase().includes(filters.style.toLowerCase());
+    filtered = filtered.filter((product) => {
+      const metafield = product.node.metafields?.find((item) => item?.key === "silhouette_category");
+      return metafield?.value?.toLowerCase().includes(filters.style.toLowerCase());
     });
   }
 
   if (filters.occasion) {
-    filtered = filtered.filter((p) => {
-      const mf = p.node.metafields?.find((m) => m?.key === "occasions_possible");
-      return mf?.value?.toLowerCase().includes(filters.occasion.toLowerCase());
+    filtered = filtered.filter((product) => {
+      const metafield = product.node.metafields?.find((item) => item?.key === "occasions_possible");
+      return metafield?.value?.toLowerCase().includes(filters.occasion.toLowerCase());
     });
   }
 
   if (filters.sort === "price-asc") {
     filtered.sort(
-      (a, b) =>
-        parseFloat(a.node.priceRange.minVariantPrice.amount) -
-        parseFloat(b.node.priceRange.minVariantPrice.amount)
+      (left, right) =>
+        Number.parseFloat(left.node.priceRange.minVariantPrice.amount) -
+        Number.parseFloat(right.node.priceRange.minVariantPrice.amount),
     );
   } else if (filters.sort === "price-desc") {
     filtered.sort(
-      (a, b) =>
-        parseFloat(b.node.priceRange.minVariantPrice.amount) -
-        parseFloat(a.node.priceRange.minVariantPrice.amount)
+      (left, right) =>
+        Number.parseFloat(right.node.priceRange.minVariantPrice.amount) -
+        Number.parseFloat(left.node.priceRange.minVariantPrice.amount),
     );
   }
 
@@ -97,7 +96,8 @@ export const ProductFilters = ({
   const styles = getMetafieldValues(products, "silhouette_category");
   const occasions = getMetafieldValues(products, "occasions_possible");
 
-  const hasActiveFilter = filters.color || filters.style || filters.occasion || (filters.sort && filters.sort !== "default");
+  const hasActiveFilter =
+    filters.color || filters.style || filters.occasion || (filters.sort && filters.sort !== "default");
 
   const update = (key: keyof FilterState, value: string) => {
     onChange({ ...filters, [key]: value === "all" ? "" : value });
@@ -109,44 +109,39 @@ export const ProductFilters = ({
     { key: "color" as const, label: "Color", options: colors },
     { key: "style" as const, label: "Style", options: styles },
     { key: "occasion" as const, label: "Occasion", options: occasions },
-  ].filter((g) => g.options.length > 0 && !hiddenFilters.includes(g.key));
+  ].filter((group) => group.options.length > 0 && !hiddenFilters.includes(group.key));
 
-  if (filterGroups.length === 0 && products.length === 0) return null;
+  if (filterGroups.length === 0 && products.length === 0) {
+    return null;
+  }
 
   return (
     <div className="max-w-[1400px] mx-auto px-6">
       <div className="flex flex-wrap items-center gap-3 py-4 border-b border-border">
         {filterGroups.map((group) => (
-          <Select
-            key={group.key}
-            value={filters[group.key] || "all"}
-            onValueChange={(v) => update(group.key, v)}
-          >
+          <Select key={group.key} value={filters[group.key] || "all"} onValueChange={(value) => update(group.key, value)}>
             <SelectTrigger className="w-auto min-w-[120px] h-9 border-border bg-transparent text-xs tracking-[0.15em] uppercase font-sans">
               <SelectValue placeholder={group.label} />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="all">All {group.label}s</SelectItem>
-              {group.options.map((opt) => (
-                <SelectItem key={opt} value={opt}>
-                  {opt}
+              {group.options.map((option) => (
+                <SelectItem key={option} value={option}>
+                  {option}
                 </SelectItem>
               ))}
             </SelectContent>
           </Select>
         ))}
 
-        <Select
-          value={filters.sort || "default"}
-          onValueChange={(v) => update("sort", v)}
-        >
+        <Select value={filters.sort || "default"} onValueChange={(value) => update("sort", value)}>
           <SelectTrigger className="w-auto min-w-[140px] h-9 border-border bg-transparent text-xs tracking-[0.15em] uppercase font-sans">
             <SelectValue placeholder="Sort" />
           </SelectTrigger>
           <SelectContent>
-            {SORT_OPTIONS.map((opt) => (
-              <SelectItem key={opt.value} value={opt.value}>
-                {opt.label}
+            {SORT_OPTIONS.map((option) => (
+              <SelectItem key={option.value} value={option.value}>
+                {option.label}
               </SelectItem>
             ))}
           </SelectContent>

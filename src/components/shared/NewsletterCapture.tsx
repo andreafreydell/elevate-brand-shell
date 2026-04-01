@@ -26,25 +26,28 @@ export const NewsletterCapture = () => {
   };
 
   return (
-    <div id="founding-access" className="border-b border-border relative overflow-hidden">
+    <div id="stacking-edit" className="border-b border-border relative overflow-hidden">
       <GrainOverlay opacity={0.03} />
       <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-14 md:py-16 relative z-[1]">
-        <div className="max-w-[520px] mx-auto text-center relative">
+        <div className="max-w-[560px] mx-auto text-center relative">
           <WaxSeal size={36} className="absolute -top-2 -right-8 hidden md:inline-flex" />
           <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-4">
-            Founding Access
+            The Stacking Edit
           </p>
-          <h3 className="font-serif text-xl md:text-2xl tracking-[0.06em] uppercase font-medium mb-3">
-            Apply for Access
+          <h3 className="font-serif text-xl md:text-2xl tracking-[0.04em] font-medium mb-3">
+            Get the styling formulas behind the jewelry looks everyone saves.
           </h3>
           <p className="text-[12px] text-muted-foreground font-sans mb-8 leading-relaxed">
-            Enter your email for early access to the vault. Priority access,
-            complimentary styling, and early drops.
+            Weekly stack ideas, trend-led styling notes, what pieces are peaking now,
+            and early access to drops before they get picked over.
+          </p>
+          <p className="text-[11px] text-muted-foreground font-sans mb-8 leading-relaxed max-w-[440px] mx-auto">
+            Beta bonus: take the style quiz and connect with our team to join the private beta segment and receive a complimentary tennis necklace.
           </p>
 
           {submitted ? (
             <p className="text-[11px] tracking-[0.2em] uppercase font-sans text-foreground">
-              Welcome to the vault. We&apos;ll be in touch.
+              You&apos;re on the edit. Watch for your first stack guide, beta note, and style quiz invite.
             </p>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
@@ -61,7 +64,7 @@ export const NewsletterCapture = () => {
                 disabled={loading}
                 className="btn-gea whitespace-nowrap rounded-none disabled:opacity-50"
               >
-                {loading ? "Submitting..." : "Apply for Access"}
+                {loading ? "Submitting..." : "Get the Edit"}
               </button>
             </form>
           )}

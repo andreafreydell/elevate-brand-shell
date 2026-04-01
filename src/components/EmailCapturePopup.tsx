@@ -74,10 +74,10 @@ export const EmailCapturePopup = () => {
           )}
         >
           <DialogPrimitive.Title className="sr-only">
-            Founding access invitation
+            The Stacking Edit beta subscription
           </DialogPrimitive.Title>
           <DialogPrimitive.Description className="sr-only">
-            Enter your email for early access to the vault and receive your invitation.
+            Enter your email to get The Stacking Edit, join the beta path, take the style quiz, and unlock the tennis necklace offer.
           </DialogPrimitive.Description>
 
           <DialogPrimitive.Close
@@ -89,23 +89,30 @@ export const EmailCapturePopup = () => {
 
           <div className="text-center">
             <p className="mb-3 text-[10px] tracking-[0.25em] uppercase font-sans text-muted-foreground">
-              Founding Access
+              The Stacking Edit Beta
             </p>
             <h2 className="font-serif text-2xl md:text-3xl font-medium tracking-[0.02em] text-foreground">
-              Luxury, Accessed.
+              Take the style quiz. Join the beta. Receive a complimentary tennis necklace.
             </h2>
-            <p className="mx-auto mt-4 max-w-[360px] text-sm leading-relaxed font-sans text-muted-foreground">
-              Enter your email for early access to the vault. High-design jewelry
-              that evolves with you. More beauty, less burden.
+            <p className="mx-auto mt-4 max-w-[380px] text-sm leading-relaxed font-sans text-muted-foreground">
+              Subscribe to The Stacking Edit for trend-led stack ideas, early styling notes,
+              and what&apos;s rising now. Then take the style quiz and connect with our team
+              to join the private beta segment and receive a complimentary tennis necklace.
             </p>
+            <Link
+              to="/how-it-works"
+              className="mt-4 inline-block text-[11px] tracking-[0.15em] uppercase font-sans text-muted-foreground underline underline-offset-4 transition-colors hover:text-foreground"
+            >
+              See Membership Details
+            </Link>
 
             {submitted ? (
               <div className="mt-8 border border-border px-6 py-5">
                 <p className="font-serif text-lg text-foreground">
-                  Welcome to the vault.
+                  You&apos;re on the edit.
                 </p>
                 <p className="mt-2 text-sm font-sans text-muted-foreground">
-                  We&apos;ll be in touch soon.
+                  Watch for your first Stacking Edit email, style quiz invite, and beta instructions.
                 </p>
               </div>
             ) : (
@@ -128,8 +135,11 @@ export const EmailCapturePopup = () => {
                   disabled={loading}
                   className="mt-3 w-full border border-foreground bg-foreground px-8 py-3 text-[11px] tracking-[0.2em] uppercase font-sans text-background transition-colors hover:bg-transparent hover:text-foreground disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  {loading ? "Submitting..." : "Apply for Access"}
+                  {loading ? "Submitting..." : "Get the Edit"}
                 </button>
+                <p className="mt-3 text-center font-sans text-[11px] text-muted-foreground">
+                  Beta bonus: subscribe, take the style quiz, and connect with our team to join the private beta segment and receive a complimentary tennis necklace.
+                </p>
                 <p className="mt-3 text-center font-sans text-[11px] text-muted-foreground">
                   We respect your privacy. Read our{" "}
                   <Link

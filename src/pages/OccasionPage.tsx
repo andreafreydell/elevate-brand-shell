@@ -20,7 +20,7 @@ const OccasionPage = () => {
             {decodedOccasion}
           </h1>
           <p className="text-[11px] md:text-[13px] leading-relaxed text-background/60 max-w-[440px] font-sans shrink-0">
-            Pieces curated for {decodedOccasion.toLowerCase()} moments, pulled directly from the occasion tags in your product metadata.
+            Pieces curated for {decodedOccasion.toLowerCase()} moments so you can style the look faster, wear it through membership, and keep the favorite that earns a permanent place in your collection.
           </p>
         </div>
       </section>

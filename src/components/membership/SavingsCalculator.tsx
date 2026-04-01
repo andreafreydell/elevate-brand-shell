@@ -2,9 +2,11 @@ import { useState } from "react";
 import { AnimateIn } from "@/components/shared/AnimateIn";
 
 const tiers = [
-  { name: "Tier 2", price: 85, pieces: 10 },
-  { name: "Tier 1", price: 65, pieces: 5 },
+  { name: "Stacking Membership", price: 85, pieces: 10 },
+  { name: "Starter Membership", price: 65, pieces: 5 },
 ];
+
+const wearMarks = Array.from({ length: 10 }, (_, index) => index + 1);
 
 export const SavingsCalculator = () => {
   const [selectedTier, setSelectedTier] = useState(0);
@@ -15,7 +17,7 @@ export const SavingsCalculator = () => {
 
   const traditionalCostPerWear = avgRetailPrice / wearsPerPiece;
   const geaCostPerWear = tier.price / (tier.pieces * wearsPerPiece);
-  const monthlySavings = (traditionalCostPerWear * tier.pieces * wearsPerPiece) - tier.price;
+  const monthlySavings = traditionalCostPerWear * tier.pieces * wearsPerPiece - tier.price;
   const yearlySavings = monthlySavings * 12;
 
   return (
@@ -32,29 +34,27 @@ export const SavingsCalculator = () => {
             See how GEA membership transforms your cost-per-wear. Adjust the inputs to match your style.
           </p>
 
-          {/* Tier selector */}
           <div className="mb-8">
             <p className="text-[10px] tracking-[0.25em] uppercase font-sans text-muted-foreground mb-3">
               Select Your Tier
             </p>
             <div className="flex gap-2">
-              {tiers.map((t, i) => (
+              {tiers.map((tierOption, index) => (
                 <button
-                  key={t.name}
-                  onClick={() => setSelectedTier(i)}
+                  key={tierOption.name}
+                  onClick={() => setSelectedTier(index)}
                   className={`flex-1 border px-4 py-3 text-[11px] tracking-[0.15em] uppercase font-sans transition-colors ${
-                    i === selectedTier
+                    index === selectedTier
                       ? "border-foreground bg-foreground text-background"
                       : "border-border hover:border-foreground"
                   }`}
                 >
-                  {t.name} · {t.pieces} pieces
+                  {tierOption.name} · {tierOption.pieces} pieces
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Wears slider */}
           <div className="mb-10">
             <div className="flex items-center justify-between mb-3">
               <p className="text-[10px] tracking-[0.25em] uppercase font-sans text-muted-foreground">
@@ -67,24 +67,35 @@ export const SavingsCalculator = () => {
               min={1}
               max={10}
               value={wearsPerPiece}
-              onChange={(e) => setWearsPerPiece(Number(e.target.value))}
+              onChange={(event) => setWearsPerPiece(Number(event.target.value))}
               className="w-full h-[2px] bg-border appearance-none cursor-pointer accent-foreground [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:bg-foreground [&::-webkit-slider-thumb]:border-0 [&::-webkit-slider-thumb]:cursor-pointer"
             />
-            <div className="flex justify-between mt-1">
-              <span className="text-[10px] text-muted-foreground font-sans">1</span>
-              <span className="text-[10px] text-muted-foreground font-sans">10</span>
+            <div className="mt-4 grid grid-cols-10 gap-1">
+              {wearMarks.map((mark) => (
+                <div key={mark} className="flex flex-col items-center gap-1">
+                  <span
+                    className={`h-2 w-[2px] ${
+                      mark <= wearsPerPiece ? "bg-foreground" : "bg-border"
+                    }`}
+                  />
+                  <span
+                    className={`text-[10px] font-sans ${
+                      mark === wearsPerPiece ? "text-foreground" : "text-muted-foreground"
+                    }`}
+                  >
+                    {mark}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Results */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-[2px]">
             <div className="bg-background p-6">
               <p className="text-[10px] tracking-[0.25em] uppercase font-sans text-muted-foreground mb-1">
                 Traditional Cost/Wear
               </p>
-              <p className="font-serif text-2xl font-medium">
-                ${traditionalCostPerWear.toFixed(2)}
-              </p>
+              <p className="font-serif text-2xl font-medium">${traditionalCostPerWear.toFixed(2)}</p>
               <p className="text-[10px] text-muted-foreground font-sans mt-1">
                 ${avgRetailPrice} piece ÷ {wearsPerPiece} wears
               </p>
@@ -93,11 +104,9 @@ export const SavingsCalculator = () => {
               <p className="text-[10px] tracking-[0.25em] uppercase font-sans text-background/60 mb-1">
                 GEA Cost/Wear
               </p>
-              <p className="font-serif text-2xl font-medium">
-                ${geaCostPerWear < 1 ? geaCostPerWear.toFixed(2) : geaCostPerWear.toFixed(2)}
-              </p>
+              <p className="font-serif text-2xl font-medium">${geaCostPerWear.toFixed(2)}</p>
               <p className="text-[10px] text-background/60 font-sans mt-1">
-                ${tier.price}/mo ÷ {tier.pieces * wearsPerPiece} total wears
+                ${tier.price} per cycle ÷ {tier.pieces * wearsPerPiece} total wears
               </p>
             </div>
             <div className="bg-background p-6">
