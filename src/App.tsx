@@ -8,21 +8,7 @@ import { useEffect } from "react";
 import LaunchGate from "@/components/LaunchGate";
 import { EmailCapturePopup } from "@/components/EmailCapturePopup";
 import Index from "./pages/Index";
-
-const ScrollToTop = () => {
-  const { pathname, hash } = useLocation();
-  useEffect(() => {
-    if (hash) {
-      setTimeout(() => {
-        const el = document.getElementById(hash.slice(1));
-        el?.scrollIntoView({ behavior: "smooth" });
-      }, 100);
-    } else {
-      window.scrollTo(0, 0);
-    }
-  }, [pathname, hash]);
-  return null;
-};
+import AdminRentalOps from "./pages/AdminRentalOps";
 import ProductDetail from "./pages/ProductDetail";
 import HowItWorks from "./pages/HowItWorks";
 import About from "./pages/About";
@@ -43,6 +29,21 @@ import CategoryPage from "./pages/CategoryPage";
 import OccasionPage from "./pages/OccasionPage";
 import NotFound from "./pages/NotFound";
 
+const ScrollToTop = () => {
+  const { pathname, hash } = useLocation();
+  useEffect(() => {
+    if (hash) {
+      setTimeout(() => {
+        const el = document.getElementById(hash.slice(1));
+        el?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, hash]);
+  return null;
+};
+
 const queryClient = new QueryClient();
 
 const AppContent = () => {
@@ -50,6 +51,7 @@ const AppContent = () => {
   return (
     <Routes>
       <Route path="/" element={<Index />} />
+      <Route path="/admin/rental-ops" element={<AdminRentalOps />} />
       <Route path="/product/:handle" element={<ProductDetail />} />
       <Route path="/how-it-works" element={<HowItWorks />} />
       <Route path="/membership" element={<Navigate to="/how-it-works" replace />} />
@@ -68,12 +70,30 @@ const AppContent = () => {
       <Route path="/account" element={<Account />} />
       <Route path="/browse" element={<BrowseAll />} />
       <Route path="/occasions/:occasion" element={<OccasionPage />} />
-      <Route path="/earrings" element={<CategoryPage title="Earrings" subtitle="Hoops, studs, drops, and ear cuffs — curated for every occasion." productType="Earrings" />} />
-      <Route path="/necklaces" element={<CategoryPage title="Necklaces" subtitle="Chains, pendants, and layering pieces — crafted to elevate." productType="Necklace" />} />
-      <Route path="/rings" element={<CategoryPage title="Rings" subtitle="Bands, statement rings, and stacking sets — designed to be worn boldly." productType="Ring" />} />
-      <Route path="/bracelets" element={<CategoryPage title="Bracelets" subtitle="Bangles, cuffs, and tennis bracelets — effortless luxury." productType="Bracelet" />} />
-      <Route path="/sunglasses" element={<CategoryPage title="Sunglasses" subtitle="Frames that define your gaze — bold, refined, unapologetic." productType="Sunglasses" />} />
-      <Route path="/hair" element={<CategoryPage title="Hair" subtitle="Clips, pins, and accessories — the finishing gesture." productType="Hair" />} />
+      <Route
+        path="/earrings"
+        element={<CategoryPage title="Earrings" subtitle="Hoops, studs, drops, and ear cuffs — curated for every occasion." productType="Earrings" />}
+      />
+      <Route
+        path="/necklaces"
+        element={<CategoryPage title="Necklaces" subtitle="Chains, pendants, and layering pieces — crafted to elevate." productType="Necklace" />}
+      />
+      <Route
+        path="/rings"
+        element={<CategoryPage title="Rings" subtitle="Bands, statement rings, and stacking sets — designed to be worn boldly." productType="Ring" />}
+      />
+      <Route
+        path="/bracelets"
+        element={<CategoryPage title="Bracelets" subtitle="Bangles, cuffs, and tennis bracelets — effortless luxury." productType="Bracelet" />}
+      />
+      <Route
+        path="/sunglasses"
+        element={<CategoryPage title="Sunglasses" subtitle="Frames that define your gaze — bold, refined, unapologetic." productType="Sunglasses" />}
+      />
+      <Route
+        path="/hair"
+        element={<CategoryPage title="Hair" subtitle="Clips, pins, and accessories — the finishing gesture." productType="Hair" />}
+      />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
