@@ -460,7 +460,7 @@ const formatDate = (value?: string) => {
   }).format(new Date(value));
 };
 
-const toLabel = (value: string) => value.replaceAll("_", " ");
+const toLabel = (value: string) => value.split("_").join(" ");
 
 const makeId = (prefix: string) => `${prefix}-${Math.random().toString(36).slice(2, 8)}`;
 
