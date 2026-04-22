@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import LaunchGate from "@/components/LaunchGate";
 import { EmailCapturePopup } from "@/components/EmailCapturePopup";
 import Index from "./pages/Index";
+import AdminRentalOps from "./pages/AdminRentalOps";
 
 const ScrollToTop = () => {
   const { pathname, hash } = useLocation();
