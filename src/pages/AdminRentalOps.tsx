@@ -993,21 +993,33 @@ const AdminRentalOps = () => {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="grid gap-4 md:grid-cols-2">
-                  <div className="grid gap-2">
-                    <MiniLabel>Namespace</MiniLabel>
-                    <Input
-                      value={fieldConfig.field_namespace}
-                      onChange={(event) =>
-                        setFieldConfig((current) => ({
-                          ...current,
-                          field_namespace: event.target.value,
-                          updated_at: new Date().toISOString(),
-                        }))
-                      }
-                      className="rounded-none bg-background"
-                    />
+                {fieldConfig.field_strategy === "line_item_property" && (
+                  <div className="border border-border bg-background-alt p-4 text-xs leading-6 text-muted-foreground">
+                    <span className="font-medium text-foreground">line_item_property</span> writes the assigned serial directly onto each order line. The WMS reads this field on the pick ticket. One serial per line item; comma-separated if quantity &gt; 1.
                   </div>
+                )}
+                <div
+                  className={cn(
+                    "grid gap-4",
+                    fieldConfig.field_strategy !== "line_item_property" && "md:grid-cols-2",
+                  )}
+                >
+                  {fieldConfig.field_strategy !== "line_item_property" && (
+                    <div className="grid gap-2">
+                      <MiniLabel>Namespace</MiniLabel>
+                      <Input
+                        value={fieldConfig.field_namespace}
+                        onChange={(event) =>
+                          setFieldConfig((current) => ({
+                            ...current,
+                            field_namespace: event.target.value,
+                            updated_at: new Date().toISOString(),
+                          }))
+                        }
+                        className="rounded-none bg-background"
+                      />
+                    </div>
+                  )}
                   <div className="grid gap-2">
                     <MiniLabel>Field key</MiniLabel>
                     <Input
