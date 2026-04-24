@@ -31,8 +31,8 @@ const SHOPIFY_API_VERSION = "2025-07";
 // Match line items by SKU OR by variant_id. We seed the DB by variant_id and SKU,
 // so as long as one matches we will claim a serial. This makes the function robust
 // to Shopify variants where the SKU field is empty.
-const SERIALIZED_SKUS = new Set<string>(["THEOLIA-SCC-NECK"]);
-const SERIALIZED_VARIANT_IDS = new Set<string>(["7601234502426"]);
+const SERIALIZED_SKUS = new Set<string>(["7601234502426", "THEOLIA-SCC-NECK"]);
+const SERIALIZED_VARIANT_IDS = new Set<string>(["48038518489188"]);
 
 // ---------- Helpers ----------
 
