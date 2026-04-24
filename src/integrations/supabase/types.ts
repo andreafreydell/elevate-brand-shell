@@ -62,12 +62,56 @@ export type Database = {
         }
         Relationships: []
       }
+      theolia_test_serials: {
+        Row: {
+          assigned_at: string | null
+          assigned_line_item_id: string | null
+          assigned_order_id: string | null
+          assigned_order_name: string | null
+          created_at: string
+          serial: string
+          sku: string
+          updated_at: string
+          variant_id: string
+        }
+        Insert: {
+          assigned_at?: string | null
+          assigned_line_item_id?: string | null
+          assigned_order_id?: string | null
+          assigned_order_name?: string | null
+          created_at?: string
+          serial: string
+          sku: string
+          updated_at?: string
+          variant_id: string
+        }
+        Update: {
+          assigned_at?: string | null
+          assigned_line_item_id?: string | null
+          assigned_order_id?: string | null
+          assigned_order_name?: string | null
+          created_at?: string
+          serial?: string
+          sku?: string
+          updated_at?: string
+          variant_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      claim_theolia_serial: {
+        Args: {
+          _line_item_id: string
+          _order_id: string
+          _order_name: string
+          _variant_id: string
+        }
+        Returns: string
+      }
     }
     Enums: {
       [_ in never]: never
