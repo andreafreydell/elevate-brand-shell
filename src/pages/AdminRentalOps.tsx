@@ -330,8 +330,8 @@ const AdminRentalOps = () => {
   const [reservationOrderFilter, setReservationOrderFilter] = useState("");
 
   const [selectedUnitId, setSelectedUnitId] = useState<string | null>(initialUnits[0]?.id ?? null);
-  const [assignVariantId, setAssignVariantId] = useState("");
-  const [assignSku, setAssignSku] = useState("");
+  const [assignVariantId, setAssignVariantId] = useState("7601234502426");
+  const [assignSku, setAssignSku] = useState("THEOLIA-SCC-NECK");
   const [assignOrderId, setAssignOrderId] = useState("");
   const [assignOrderName, setAssignOrderName] = useState("");
   const [assignResult, setAssignResult] = useState<string>("");
