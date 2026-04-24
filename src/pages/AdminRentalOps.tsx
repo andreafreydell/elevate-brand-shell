@@ -913,11 +913,14 @@ const AdminRentalOps = () => {
             <section className="border border-border bg-card p-5 md:p-6">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <MiniLabel>Assign test unit</MiniLabel>
+                  <MiniLabel>Simulate incoming order</MiniLabel>
                   <h2 className="mt-2 text-2xl text-foreground">Least-used assignment</h2>
                 </div>
                 <ArrowRight className="mt-1 h-4 w-4 text-muted-foreground" />
               </div>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                In production, this fires automatically via Shopify webhook on order creation. Use this panel to manually simulate that trigger during testing.
+              </p>
               <div className="mt-6 grid gap-3">
                 <Input
                   value={assignVariantId}
@@ -944,7 +947,7 @@ const AdminRentalOps = () => {
                   className="rounded-none bg-background"
                 />
                 <Button onClick={handleAssignLeastUsed} className="mt-2 rounded-none">
-                  Assign least-used unit
+                  Simulate order + assign serial
                 </Button>
                 {assignResult && (
                   <div className="border border-primary/30 bg-primary/10 p-4">
