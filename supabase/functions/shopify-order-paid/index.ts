@@ -28,8 +28,11 @@ const corsHeaders = {
 
 const SHOPIFY_API_VERSION = "2025-07";
 
-// SKUs that should receive a serial. Keep small and explicit while we test.
+// Match line items by SKU OR by variant_id. We seed the DB by variant_id and SKU,
+// so as long as one matches we will claim a serial. This makes the function robust
+// to Shopify variants where the SKU field is empty.
 const SERIALIZED_SKUS = new Set<string>(["THEOLIA-SCC-NECK"]);
+const SERIALIZED_VARIANT_IDS = new Set<string>(["7601234502426"]);
 
 // ---------- Helpers ----------
 
@@ -203,13 +206,30 @@ Deno.serve(async (req) => {
   const orderName: string | undefined = order?.name;
   const lineItems: Array<any> = Array.isArray(order?.line_items) ? order.line_items : [];
 
+  console.log("orders/paid received", {
+    orderId,
+    orderName,
+    lineItems: lineItems.map((li) => ({
+      id: li?.id,
+      sku: li?.sku,
+      variant_id: li?.variant_id,
+      title: li?.title,
+      quantity: li?.quantity,
+    })),
+  });
+
   if (!orderId || !orderName) {
     return new Response("Missing order id/name", { status: 400, headers: corsHeaders });
   }
 
-  // Find line items that need a serial.
-  const targets = lineItems.filter((li) => li?.sku && SERIALIZED_SKUS.has(li.sku));
+  // Find line items that need a serial — match on SKU OR variant_id.
+  const targets = lineItems.filter((li) => {
+    const sku = li?.sku ? String(li.sku) : "";
+    const variantId = li?.variant_id ? String(li.variant_id) : "";
+    return SERIALIZED_SKUS.has(sku) || SERIALIZED_VARIANT_IDS.has(variantId);
+  });
   if (targets.length === 0) {
+    console.log("No serialized line items found", { orderName });
     return new Response(JSON.stringify({ skipped: "no serialized SKUs in order" }), {
       status: 200,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
