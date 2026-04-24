@@ -12,10 +12,9 @@
 //
 // Required runtime secrets:
 //   SHOPIFY_CLIENT_ID
-//   SHOPIFY_CLIENT_SECRET
+//   SHOPIFY_CLIENT_SECRET         doubles as the webhook signing key for HTTPS
+//                                 webhooks created via the Dev Dashboard / app config
 //   SHOPIFY_STORE_DOMAIN          e.g. maisonfreydell.myshopify.com
-//   SHOPIFY_WEBHOOK_SECRET        the signing secret Shopify gives you when you
-//                                 subscribe to the orders/paid webhook
 //   SUPABASE_URL                  (auto-provided)
 //   SUPABASE_SERVICE_ROLE_KEY     (auto-provided)
 
@@ -174,9 +173,11 @@ Deno.serve(async (req) => {
   const topic = req.headers.get("x-shopify-topic");
   const shopDomain = req.headers.get("x-shopify-shop-domain");
 
-  const webhookSecret = Deno.env.get("SHOPIFY_WEBHOOK_SECRET");
+  // Shopify signs HTTPS webhooks created via the Dev Dashboard/app config using
+  // the app's Client Secret. There is no separate webhook signing secret.
+  const webhookSecret = Deno.env.get("SHOPIFY_CLIENT_SECRET");
   if (!webhookSecret) {
-    console.error("SHOPIFY_WEBHOOK_SECRET is not configured");
+    console.error("SHOPIFY_CLIENT_SECRET is not configured");
     return new Response("Server not configured", { status: 500, headers: corsHeaders });
   }
 
