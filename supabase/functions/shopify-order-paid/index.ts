@@ -266,7 +266,18 @@ Deno.serve(async (req) => {
         failed.push({ sku: li.sku, lineItemId, reason: "no_serial_available" });
         break;
       }
-      claimed.push({ sku: li.sku, lineItemId, serial: data as unknown as string });
+      const serial = data as unknown as string;
+      claimed.push({ sku: li.sku, lineItemId, serial });
+
+      // Flip unit lifecycle to RESERVED so the ops dashboard reflects the assignment.
+      const { error: reserveErr } = await supabase.rpc("mark_unit_reserved", {
+        _serial: serial,
+        _order_id: String(orderId),
+        _order_name: orderName,
+      });
+      if (reserveErr) {
+        console.error("mark_unit_reserved error", { serial, error: reserveErr });
+      }
     }
   }
 

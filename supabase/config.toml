@@ -5,3 +5,9 @@ verify_jwt = false
 
 [functions.shopify-order-paid]
 verify_jwt = false
+
+[functions.shopify-order-lifecycle]
+verify_jwt = false
+
+[functions.shopify-register-webhook]
+verify_jwt = false

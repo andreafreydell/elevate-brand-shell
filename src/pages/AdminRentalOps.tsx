@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   AlertTriangle,
   ArrowRight,
@@ -7,11 +7,13 @@ import {
   Eye,
   PackageCheck,
   PackageX,
+  RefreshCw,
   ScanSearch,
   Settings2,
   ShieldAlert,
   Sparkles,
 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -40,11 +42,12 @@ import {
 } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
 
-type AvailabilityStatus = "in_stock" | "out_of_stock";
+type AvailabilityStatus = "in_stock" | "out_of_stock" | "reserved" | "shipped";
 type ConditionStatus =
   | "cleaned_and_ready"
   | "under_inspection"
-  | "marked_damaged_for_inspection";
+  | "marked_damaged_for_inspection"
+  | "retired";
 type InternalStatus =
   | "assigned"
   | "released_to_wms"
@@ -209,6 +212,8 @@ const initialConfig: ShopifyWmsFieldConfig = {
 const availabilityOptions: Array<{ value: AvailabilityStatus | "all"; label: string }> = [
   { value: "all", label: "All availability" },
   { value: "in_stock", label: "In stock" },
+  { value: "reserved", label: "Reserved" },
+  { value: "shipped", label: "Shipped" },
   { value: "out_of_stock", label: "Out of stock" },
 ];
 
@@ -217,6 +222,7 @@ const conditionOptions: Array<{ value: ConditionStatus | "all"; label: string }>
   { value: "cleaned_and_ready", label: "Cleaned + ready" },
   { value: "under_inspection", label: "Under inspection" },
   { value: "marked_damaged_for_inspection", label: "Marked damaged" },
+  { value: "retired", label: "Retired" },
 ];
 
 const reservationStatusOptions: Array<{ value: InternalStatus | "all"; label: string }> = [
@@ -281,8 +287,12 @@ const StatusPill = ({ kind, children }: { kind: keyof typeof statusTone; childre
   </span>
 );
 
-const getAvailabilityTone = (value: AvailabilityStatus) =>
-  value === "in_stock" ? "ready" : "dark";
+const getAvailabilityTone = (value: AvailabilityStatus) => {
+  if (value === "in_stock") return "ready";
+  if (value === "reserved") return "neutral";
+  if (value === "shipped") return "dark";
+  return "dark";
+};
 
 const getConditionTone = (value: ConditionStatus) => {
   if (value === "cleaned_and_ready") return "ready";
@@ -317,6 +327,8 @@ const AdminRentalOps = () => {
   const [reservations, setReservations] = useState<RentalReservation[]>(initialReservations);
   const [events, setEvents] = useState<WMSEvent[]>(initialEvents);
   const [fieldConfig, setFieldConfig] = useState<ShopifyWmsFieldConfig>(initialConfig);
+  const [loadingData, setLoadingData] = useState(false);
+  const [loadError, setLoadError] = useState<string>("");
 
   const [availabilityFilter, setAvailabilityFilter] = useState<AvailabilityStatus | "all">("all");
   const [conditionFilter, setConditionFilter] = useState<ConditionStatus | "all">("all");
@@ -336,6 +348,119 @@ const AdminRentalOps = () => {
   const [assignOrderName, setAssignOrderName] = useState("");
   const [assignResult, setAssignResult] = useState<string>("");
   const [assignError, setAssignError] = useState<string>("");
+
+  // Map a Supabase serial row → the local InventoryUnit shape the UI uses.
+  const mapDbUnit = (row: any): InventoryUnit => ({
+    id: row.serial,
+    unit_id: row.serial,
+    serial_number: row.serial,
+    shopify_variant_id: row.variant_id,
+    sku: row.sku,
+    availability_status: row.availability_status as AvailabilityStatus,
+    condition_status: row.condition_status as ConditionStatus,
+    rental_count: row.rental_count ?? 0,
+    total_days_out: 0,
+    location: row.location ?? undefined,
+    ready_since: row.ready_since ?? row.created_at,
+    last_shipped_at: row.last_shipped_at ?? undefined,
+    last_returned_at: row.last_returned_at ?? undefined,
+    last_inspected_at: undefined,
+    notes: row.notes ?? "",
+    metadata: {},
+    created_at: row.created_at,
+    updated_at: row.updated_at,
+  });
+
+  // Derive a UI reservation row from the DB serial when it has an assigned order.
+  const mapDbReservation = (row: any): RentalReservation | null => {
+    if (!row.assigned_order_id) return null;
+    let internal: InternalStatus = "assigned";
+    if (row.availability_status === "shipped") internal = "shipped";
+    else if (row.availability_status === "reserved") internal = "assigned";
+    else if (row.condition_status === "under_inspection") internal = "return_open";
+    else if (row.condition_status === "marked_damaged_for_inspection") internal = "damage_review";
+
+    return {
+      id: `db-${row.serial}-${row.assigned_order_id}`,
+      shopify_order_id: row.assigned_order_id,
+      shopify_order_name: row.assigned_order_name ?? `#${row.assigned_order_id}`,
+      shopify_line_item_id: row.assigned_line_item_id ?? "",
+      shopify_customer_id: "",
+      shopify_product_id: "",
+      shopify_variant_id: row.variant_id,
+      sku: row.sku,
+      inventory_unit_id: row.serial,
+      unit_id: row.serial,
+      serial_number: row.serial,
+      internal_status: internal,
+      assigned_at: row.assigned_at ?? undefined,
+      shipped_at: row.last_shipped_at ?? undefined,
+      returned_at: row.last_returned_at ?? undefined,
+      metadata: { source: "live" },
+      created_at: row.assigned_at ?? row.created_at,
+      updated_at: row.updated_at,
+    };
+  };
+
+  const mapDbEvent = (row: any): WMSEvent => ({
+    id: row.id,
+    source: row.source,
+    event_type: row.event_type as WMSEventType,
+    shopify_order_id: row.shopify_order_id ?? undefined,
+    shopify_line_item_id: undefined,
+    inventory_unit_id: row.serial,
+    unit_id: row.serial,
+    serial_number: row.serial,
+    sku: "",
+    condition_status: row.condition_snapshot ?? undefined,
+    payload: { availability: row.availability_snapshot, condition: row.condition_snapshot },
+    processed_at: row.created_at,
+    created_at: row.created_at,
+  });
+
+  const loadOpsData = async () => {
+    setLoadingData(true);
+    setLoadError("");
+    try {
+      const [unitsRes, eventsRes] = await Promise.all([
+        supabase
+          .from("theolia_test_serials")
+          .select("*")
+          .order("serial", { ascending: true }),
+        supabase
+          .from("unit_lifecycle_events")
+          .select("*")
+          .order("created_at", { ascending: false })
+          .limit(50),
+      ]);
+
+      if (unitsRes.error) throw unitsRes.error;
+      if (eventsRes.error) throw eventsRes.error;
+
+      const dbUnits = (unitsRes.data ?? []).map(mapDbUnit);
+      const dbReservations = (unitsRes.data ?? [])
+        .map(mapDbReservation)
+        .filter((r): r is RentalReservation => r !== null);
+      const dbEvents = (eventsRes.data ?? []).map(mapDbEvent);
+
+      setInventoryUnits(dbUnits);
+      setReservations(dbReservations);
+      setEvents(dbEvents);
+      if (dbUnits[0] && !selectedUnitId) setSelectedUnitId(dbUnits[0].id);
+    } catch (err) {
+      console.error("Failed to load rental ops data", err);
+      setLoadError(err instanceof Error ? err.message : "Failed to load data");
+    } finally {
+      setLoadingData(false);
+    }
+  };
+
+  useEffect(() => {
+    if (accessGranted) {
+      void loadOpsData();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [accessGranted]);
 
   const selectedUnit = useMemo(
     () => inventoryUnits.find((unit) => unit.id === selectedUnitId) ?? null,
@@ -655,20 +780,35 @@ const AdminRentalOps = () => {
         <div className="mx-auto max-w-[1440px] px-5 py-8 sm:px-6 md:px-12 lg:px-16">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl space-y-4">
-              <MiniLabel>GEA rental brain · prototype mode</MiniLabel>
+              <MiniLabel>GEA rental brain · live data</MiniLabel>
               <h1 className="text-4xl text-foreground md:text-5xl">Rental Operations</h1>
               <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
-                Internal console for inventory visibility, assignment testing, exception handling, and WMS-state rehearsal before live backend automation is connected.
+                Live inventory and lifecycle for serialized rental units. Assignments, shipments, and returns flow in automatically from Shopify webhooks.
               </p>
             </div>
             <div className="grid gap-3 border border-border bg-card p-4 text-sm md:min-w-[340px]">
-              <MiniLabel>Current mode</MiniLabel>
+              <div className="flex items-center justify-between gap-3">
+                <MiniLabel>Live data</MiniLabel>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => void loadOpsData()}
+                  disabled={loadingData}
+                  className="rounded-none gap-2 h-8"
+                >
+                  <RefreshCw className={cn("h-3.5 w-3.5", loadingData && "animate-spin")} />
+                  {loadingData ? "Refreshing" : "Refresh"}
+                </Button>
+              </div>
               <div className="flex items-start gap-3">
                 <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-foreground" />
                 <p className="leading-6 text-muted-foreground">
-                  Using local prototype data only. Once Shopify inventory is complete, we can attach the migration and live queries without changing this layout.
+                  Connected to Lovable Cloud. Reservations advance on <code>orders/paid</code>, ship on <code>orders/fulfilled</code>, and re-enter inspection on refunds.
                 </p>
               </div>
+              {loadError && (
+                <p className="text-xs text-destructive">Load error: {loadError}</p>
+              )}
             </div>
           </div>
         </div>
