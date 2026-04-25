@@ -212,6 +212,8 @@ const initialConfig: ShopifyWmsFieldConfig = {
 const availabilityOptions: Array<{ value: AvailabilityStatus | "all"; label: string }> = [
   { value: "all", label: "All availability" },
   { value: "in_stock", label: "In stock" },
+  { value: "reserved", label: "Reserved" },
+  { value: "shipped", label: "Shipped" },
   { value: "out_of_stock", label: "Out of stock" },
 ];
 
@@ -220,6 +222,7 @@ const conditionOptions: Array<{ value: ConditionStatus | "all"; label: string }>
   { value: "cleaned_and_ready", label: "Cleaned + ready" },
   { value: "under_inspection", label: "Under inspection" },
   { value: "marked_damaged_for_inspection", label: "Marked damaged" },
+  { value: "retired", label: "Retired" },
 ];
 
 const reservationStatusOptions: Array<{ value: InternalStatus | "all"; label: string }> = [
