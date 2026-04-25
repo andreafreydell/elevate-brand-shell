@@ -287,8 +287,12 @@ const StatusPill = ({ kind, children }: { kind: keyof typeof statusTone; childre
   </span>
 );
 
-const getAvailabilityTone = (value: AvailabilityStatus) =>
-  value === "in_stock" ? "ready" : "dark";
+const getAvailabilityTone = (value: AvailabilityStatus) => {
+  if (value === "in_stock") return "ready";
+  if (value === "reserved") return "neutral";
+  if (value === "shipped") return "dark";
+  return "dark";
+};
 
 const getConditionTone = (value: ConditionStatus) => {
   if (value === "cleaned_and_ready") return "ready";
