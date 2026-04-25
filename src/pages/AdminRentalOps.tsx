@@ -327,6 +327,8 @@ const AdminRentalOps = () => {
   const [reservations, setReservations] = useState<RentalReservation[]>(initialReservations);
   const [events, setEvents] = useState<WMSEvent[]>(initialEvents);
   const [fieldConfig, setFieldConfig] = useState<ShopifyWmsFieldConfig>(initialConfig);
+  const [loadingData, setLoadingData] = useState(false);
+  const [loadError, setLoadError] = useState<string>("");
 
   const [availabilityFilter, setAvailabilityFilter] = useState<AvailabilityStatus | "all">("all");
   const [conditionFilter, setConditionFilter] = useState<ConditionStatus | "all">("all");
@@ -346,6 +348,119 @@ const AdminRentalOps = () => {
   const [assignOrderName, setAssignOrderName] = useState("");
   const [assignResult, setAssignResult] = useState<string>("");
   const [assignError, setAssignError] = useState<string>("");
+
+  // Map a Supabase serial row → the local InventoryUnit shape the UI uses.
+  const mapDbUnit = (row: any): InventoryUnit => ({
+    id: row.serial,
+    unit_id: row.serial,
+    serial_number: row.serial,
+    shopify_variant_id: row.variant_id,
+    sku: row.sku,
+    availability_status: row.availability_status as AvailabilityStatus,
+    condition_status: row.condition_status as ConditionStatus,
+    rental_count: row.rental_count ?? 0,
+    total_days_out: 0,
+    location: row.location ?? undefined,
+    ready_since: row.ready_since ?? row.created_at,
+    last_shipped_at: row.last_shipped_at ?? undefined,
+    last_returned_at: row.last_returned_at ?? undefined,
+    last_inspected_at: undefined,
+    notes: row.notes ?? "",
+    metadata: {},
+    created_at: row.created_at,
+    updated_at: row.updated_at,
+  });
+
+  // Derive a UI reservation row from the DB serial when it has an assigned order.
+  const mapDbReservation = (row: any): RentalReservation | null => {
+    if (!row.assigned_order_id) return null;
+    let internal: InternalStatus = "assigned";
+    if (row.availability_status === "shipped") internal = "shipped";
+    else if (row.availability_status === "reserved") internal = "assigned";
+    else if (row.condition_status === "under_inspection") internal = "return_open";
+    else if (row.condition_status === "marked_damaged_for_inspection") internal = "damage_review";
+
+    return {
+      id: `db-${row.serial}-${row.assigned_order_id}`,
+      shopify_order_id: row.assigned_order_id,
+      shopify_order_name: row.assigned_order_name ?? `#${row.assigned_order_id}`,
+      shopify_line_item_id: row.assigned_line_item_id ?? "",
+      shopify_customer_id: "",
+      shopify_product_id: "",
+      shopify_variant_id: row.variant_id,
+      sku: row.sku,
+      inventory_unit_id: row.serial,
+      unit_id: row.serial,
+      serial_number: row.serial,
+      internal_status: internal,
+      assigned_at: row.assigned_at ?? undefined,
+      shipped_at: row.last_shipped_at ?? undefined,
+      returned_at: row.last_returned_at ?? undefined,
+      metadata: { source: "live" },
+      created_at: row.assigned_at ?? row.created_at,
+      updated_at: row.updated_at,
+    };
+  };
+
+  const mapDbEvent = (row: any): WMSEvent => ({
+    id: row.id,
+    source: row.source,
+    event_type: row.event_type as WMSEventType,
+    shopify_order_id: row.shopify_order_id ?? undefined,
+    shopify_line_item_id: undefined,
+    inventory_unit_id: row.serial,
+    unit_id: row.serial,
+    serial_number: row.serial,
+    sku: "",
+    condition_status: row.condition_snapshot ?? undefined,
+    payload: { availability: row.availability_snapshot, condition: row.condition_snapshot },
+    processed_at: row.created_at,
+    created_at: row.created_at,
+  });
+
+  const loadOpsData = async () => {
+    setLoadingData(true);
+    setLoadError("");
+    try {
+      const [unitsRes, eventsRes] = await Promise.all([
+        supabase
+          .from("theolia_test_serials")
+          .select("*")
+          .order("serial", { ascending: true }),
+        supabase
+          .from("unit_lifecycle_events")
+          .select("*")
+          .order("created_at", { ascending: false })
+          .limit(50),
+      ]);
+
+      if (unitsRes.error) throw unitsRes.error;
+      if (eventsRes.error) throw eventsRes.error;
+
+      const dbUnits = (unitsRes.data ?? []).map(mapDbUnit);
+      const dbReservations = (unitsRes.data ?? [])
+        .map(mapDbReservation)
+        .filter((r): r is RentalReservation => r !== null);
+      const dbEvents = (eventsRes.data ?? []).map(mapDbEvent);
+
+      setInventoryUnits(dbUnits);
+      setReservations(dbReservations);
+      setEvents(dbEvents);
+      if (dbUnits[0] && !selectedUnitId) setSelectedUnitId(dbUnits[0].id);
+    } catch (err) {
+      console.error("Failed to load rental ops data", err);
+      setLoadError(err instanceof Error ? err.message : "Failed to load data");
+    } finally {
+      setLoadingData(false);
+    }
+  };
+
+  useEffect(() => {
+    if (accessGranted) {
+      void loadOpsData();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [accessGranted]);
 
   const selectedUnit = useMemo(
     () => inventoryUnits.find((unit) => unit.id === selectedUnitId) ?? null,
