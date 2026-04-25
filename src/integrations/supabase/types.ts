@@ -68,7 +68,15 @@ export type Database = {
           assigned_line_item_id: string | null
           assigned_order_id: string | null
           assigned_order_name: string | null
+          availability_status: string
+          condition_status: string
           created_at: string
+          last_returned_at: string | null
+          last_shipped_at: string | null
+          location: string
+          notes: string | null
+          ready_since: string | null
+          rental_count: number
           serial: string
           sku: string
           updated_at: string
@@ -79,7 +87,15 @@ export type Database = {
           assigned_line_item_id?: string | null
           assigned_order_id?: string | null
           assigned_order_name?: string | null
+          availability_status?: string
+          condition_status?: string
           created_at?: string
+          last_returned_at?: string | null
+          last_shipped_at?: string | null
+          location?: string
+          notes?: string | null
+          ready_since?: string | null
+          rental_count?: number
           serial: string
           sku: string
           updated_at?: string
@@ -90,13 +106,68 @@ export type Database = {
           assigned_line_item_id?: string | null
           assigned_order_id?: string | null
           assigned_order_name?: string | null
+          availability_status?: string
+          condition_status?: string
           created_at?: string
+          last_returned_at?: string | null
+          last_shipped_at?: string | null
+          location?: string
+          notes?: string | null
+          ready_since?: string | null
+          rental_count?: number
           serial?: string
           sku?: string
           updated_at?: string
           variant_id?: string
         }
         Relationships: []
+      }
+      unit_lifecycle_events: {
+        Row: {
+          availability_snapshot: string | null
+          condition_snapshot: string | null
+          created_at: string
+          event_type: string
+          id: string
+          notes: string | null
+          serial: string
+          shopify_order_id: string | null
+          shopify_order_name: string | null
+          source: string
+        }
+        Insert: {
+          availability_snapshot?: string | null
+          condition_snapshot?: string | null
+          created_at?: string
+          event_type: string
+          id?: string
+          notes?: string | null
+          serial: string
+          shopify_order_id?: string | null
+          shopify_order_name?: string | null
+          source?: string
+        }
+        Update: {
+          availability_snapshot?: string | null
+          condition_snapshot?: string | null
+          created_at?: string
+          event_type?: string
+          id?: string
+          notes?: string | null
+          serial?: string
+          shopify_order_id?: string | null
+          shopify_order_name?: string | null
+          source?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "unit_lifecycle_events_serial_fkey"
+            columns: ["serial"]
+            isOneToOne: false
+            referencedRelation: "theolia_test_serials"
+            referencedColumns: ["serial"]
+          },
+        ]
       }
     }
     Views: {
@@ -111,6 +182,26 @@ export type Database = {
           _variant_id: string
         }
         Returns: string
+      }
+      mark_unit_damaged: {
+        Args: { _notes: string; _serial: string }
+        Returns: boolean
+      }
+      mark_unit_ready: {
+        Args: { _serial: string; _source?: string }
+        Returns: boolean
+      }
+      mark_unit_reserved: {
+        Args: { _order_id: string; _order_name: string; _serial: string }
+        Returns: boolean
+      }
+      mark_unit_returned: {
+        Args: { _order_id: string; _order_name: string; _serial: string }
+        Returns: boolean
+      }
+      mark_unit_shipped: {
+        Args: { _order_id: string; _order_name: string; _serial: string }
+        Returns: boolean
       }
     }
     Enums: {
