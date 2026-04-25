@@ -42,11 +42,12 @@ import {
 } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
 
-type AvailabilityStatus = "in_stock" | "out_of_stock";
+type AvailabilityStatus = "in_stock" | "out_of_stock" | "reserved" | "shipped";
 type ConditionStatus =
   | "cleaned_and_ready"
   | "under_inspection"
-  | "marked_damaged_for_inspection";
+  | "marked_damaged_for_inspection"
+  | "retired";
 type InternalStatus =
   | "assigned"
   | "released_to_wms"
