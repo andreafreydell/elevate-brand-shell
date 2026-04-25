@@ -79,12 +79,13 @@ Deno.serve(async (req) => {
     return new Response("Invalid JSON", { status: 400, headers: corsHeaders });
   }
 
-  // For orders/fulfilled the body is the order. For refunds/create it's the refund,
-  // which has order_id at the top level but no order_name. We fetch the assigned
-  // serials by order id either way.
-  const orderId: number | undefined = payload?.id && topic === "orders/fulfilled"
-    ? payload.id
-    : payload?.order_id;
+  // For orders/fulfilled and orders/cancelled the body is the order itself (has `id`).
+  // For refunds/create it's the refund, which has `order_id` at the top level. We
+  // resolve the order id from whichever field is present.
+  const orderId: number | undefined =
+    (topic === "orders/fulfilled" || topic === "orders/cancelled")
+      ? payload?.id
+      : payload?.order_id;
   const orderName: string | undefined = payload?.name ?? payload?.order_name ?? "";
 
   if (!orderId) {
