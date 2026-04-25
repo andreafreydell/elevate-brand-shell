@@ -120,6 +120,21 @@ Deno.serve(async (req) => {
   const results: Array<{ serial: string; ok: boolean; reason?: string }> = [];
 
   for (const unit of units) {
+    // Cancellations release the unit back into available inventory.
+    if (topic === "orders/cancelled") {
+      const { error } = await supabase.rpc("mark_unit_ready", {
+        _serial: unit.serial,
+        _source: "webhook_cancel",
+      });
+      if (error) {
+        console.error("mark_unit_ready (cancel) failed", { serial: unit.serial, error });
+        results.push({ serial: unit.serial, ok: false, reason: error.message });
+      } else {
+        results.push({ serial: unit.serial, ok: true });
+      }
+      continue;
+    }
+
     let rpcName: "mark_unit_shipped" | "mark_unit_returned";
     if (topic === "orders/fulfilled") {
       rpcName = "mark_unit_shipped";
