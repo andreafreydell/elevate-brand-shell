@@ -780,20 +780,35 @@ const AdminRentalOps = () => {
         <div className="mx-auto max-w-[1440px] px-5 py-8 sm:px-6 md:px-12 lg:px-16">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl space-y-4">
-              <MiniLabel>GEA rental brain · prototype mode</MiniLabel>
+              <MiniLabel>GEA rental brain · live data</MiniLabel>
               <h1 className="text-4xl text-foreground md:text-5xl">Rental Operations</h1>
               <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
-                Internal console for inventory visibility, assignment testing, exception handling, and WMS-state rehearsal before live backend automation is connected.
+                Live inventory and lifecycle for serialized rental units. Assignments, shipments, and returns flow in automatically from Shopify webhooks.
               </p>
             </div>
             <div className="grid gap-3 border border-border bg-card p-4 text-sm md:min-w-[340px]">
-              <MiniLabel>Current mode</MiniLabel>
+              <div className="flex items-center justify-between gap-3">
+                <MiniLabel>Live data</MiniLabel>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => void loadOpsData()}
+                  disabled={loadingData}
+                  className="rounded-none gap-2 h-8"
+                >
+                  <RefreshCw className={cn("h-3.5 w-3.5", loadingData && "animate-spin")} />
+                  {loadingData ? "Refreshing" : "Refresh"}
+                </Button>
+              </div>
               <div className="flex items-start gap-3">
                 <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-foreground" />
                 <p className="leading-6 text-muted-foreground">
-                  Using local prototype data only. Once Shopify inventory is complete, we can attach the migration and live queries without changing this layout.
+                  Connected to Lovable Cloud. Reservations advance on <code>orders/paid</code>, ship on <code>orders/fulfilled</code>, and re-enter inspection on refunds.
                 </p>
               </div>
+              {loadError && (
+                <p className="text-xs text-destructive">Load error: {loadError}</p>
+              )}
             </div>
           </div>
         </div>
