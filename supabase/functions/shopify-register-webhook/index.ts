@@ -20,7 +20,7 @@ const corsHeaders = {
 const SHOPIFY_API_VERSION = "2025-07";
 
 type TopicSpec = {
-  topic: "ORDERS_PAID" | "ORDERS_FULFILLED" | "REFUNDS_CREATE";
+  topic: "ORDERS_PAID" | "ORDERS_FULFILLED" | "REFUNDS_CREATE" | "ORDERS_CANCELLED";
   fnPath: "shopify-order-paid" | "shopify-order-lifecycle";
 };
 
@@ -28,6 +28,7 @@ const TOPICS: TopicSpec[] = [
   { topic: "ORDERS_PAID", fnPath: "shopify-order-paid" },
   { topic: "ORDERS_FULFILLED", fnPath: "shopify-order-lifecycle" },
   { topic: "REFUNDS_CREATE", fnPath: "shopify-order-lifecycle" },
+  { topic: "ORDERS_CANCELLED", fnPath: "shopify-order-lifecycle" },
 ];
 
 async function getAdminAccessToken(storeDomain: string): Promise<string> {
