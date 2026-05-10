@@ -1,0 +1,437 @@
+import { useCallback, useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import {
+  Ban,
+  CalendarPlus,
+  Check,
+  Feather,
+  Hand,
+  Heart,
+  Package,
+  RefreshCw,
+  Scale,
+  Shield,
+  Shuffle,
+  Sparkles,
+  Truck,
+  Zap,
+} from "lucide-react";
+import { CircleEmphasis } from "@/components/craft/CircleEmphasis";
+import { ScribbleUnderline } from "@/components/craft/ScribbleUnderline";
+import { ScriptNumber } from "@/components/craft/ScriptNumber";
+import { TrustStrip } from "@/components/shared/TrustStrip";
+
+const steps = [
+  {
+    number: "01",
+    title: "Choose",
+    description: "Browse our curated vault and select the pieces that speak to your moment.",
+    icon: Hand,
+  },
+  {
+    number: "02",
+    title: "Receive",
+    description: "Your selections arrive in 1-3 days, freshly restored and sealed in our signature packaging.",
+    icon: Package,
+  },
+  {
+    number: "03",
+    title: "Wear",
+    description: "Style them for your life - the event, the meeting, the dinner, the everyday.",
+    icon: Sparkles,
+  },
+  {
+    number: "04",
+    title: "Keep",
+    description: "One piece per cycle is yours to keep. Want more? Members save 40% on any additional piece.",
+    icon: Heart,
+  },
+  {
+    number: "05",
+    title: "Refresh",
+    description: "Return the pieces you are not keeping and choose your next chapter.",
+    icon: RefreshCw,
+  },
+];
+
+const tiers = [
+  {
+    name: "Stacking Membership",
+    label: "10 Pieces",
+    price: "$85",
+    promoPrice: "$75 your first month",
+    detail: "10 curated pieces per cycle",
+    highlighted: true,
+  },
+  {
+    name: "Starter Membership",
+    label: "5 Pieces",
+    price: "$65",
+    promoPrice: "$55 your first month",
+    detail: "5 curated pieces per cycle",
+    highlighted: false,
+  },
+];
+
+const assurances = [
+  { icon: Shield, text: "Sanitized & Sealed" },
+  { icon: Truck, text: "Free Shipping Both Ways" },
+  { icon: Ban, text: "Cancel Anytime" },
+  { icon: CalendarPlus, text: "One 30-Day Cycle" },
+];
+
+const freedomBlocks = [
+  {
+    label: "Explore",
+    title: "Freedom to Experiment",
+    text: "Try bold statement pieces without the commitment of ownership. If it doesn't feel right, refresh your selection at the end of your cycle. No risk. No regret.",
+    icon: Shuffle,
+  },
+  {
+    label: "Discover",
+    title: "Always Something New",
+    text: "Your collection evolves as you do. New drops enter the vault monthly. Early access for members means you're always first.",
+    icon: CalendarPlus,
+  },
+  {
+    label: "Liberate",
+    title: "Luxury Without Burden",
+    text: "No storage anxiety. No depreciation. No buyer's remorse. Just beautiful jewelry, worn with intention, returned with ease.",
+    icon: Feather,
+  },
+];
+
+const clamp = (value: number) => Math.min(1, Math.max(0, value));
+
+export const LandingScrollVideoHero = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const frameRef = useRef<number | null>(null);
+  const durationRef = useRef(0);
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  const updateVideoTime = useCallback(() => {
+    const section = sectionRef.current;
+    const video = videoRef.current;
+
+    if (!section || !video || !durationRef.current || reducedMotion) return;
+
+    const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+    const sectionHeight = section.offsetHeight;
+    const scrollRange = Math.max(1, sectionHeight - window.innerHeight);
+    const progress = clamp((window.scrollY - sectionTop) / scrollRange);
+    const videoProgress = clamp(progress * 1.45);
+    const targetTime = Math.max(0, durationRef.current - 0.05) * videoProgress;
+
+    if (Math.abs(video.currentTime - targetTime) < 0.04) return;
+
+    try {
+      video.currentTime = targetTime;
+    } catch {
+      // Some mobile browsers briefly reject seeks while metadata settles.
+    }
+  }, [reducedMotion]);
+
+  const requestUpdate = useCallback(() => {
+    if (frameRef.current !== null) return;
+
+    frameRef.current = window.requestAnimationFrame(() => {
+      frameRef.current = null;
+      updateVideoTime();
+    });
+  }, [updateVideoTime]);
+
+  useEffect(() => {
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const syncMotionPreference = () => setReducedMotion(motionQuery.matches);
+
+    syncMotionPreference();
+    motionQuery.addEventListener("change", syncMotionPreference);
+
+    return () => {
+      motionQuery.removeEventListener("change", syncMotionPreference);
+    };
+  }, []);
+
+  useEffect(() => {
+    requestUpdate();
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+
+    return () => {
+      window.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
+      if (frameRef.current !== null) {
+        window.cancelAnimationFrame(frameRef.current);
+        frameRef.current = null;
+      }
+    };
+  }, [requestUpdate]);
+
+  return (
+    <section ref={sectionRef} className="relative bg-foreground text-background">
+      <div className="sticky top-0 h-screen overflow-hidden">
+        <video
+          ref={videoRef}
+          src="/videos/geaworld.mp4"
+          muted
+          playsInline
+          preload="auto"
+          aria-label="GEA jewelry styling video"
+          onLoadedMetadata={(event) => {
+            const duration = event.currentTarget.duration;
+            durationRef.current = Number.isFinite(duration) ? duration : 0;
+            event.currentTarget.pause();
+            requestUpdate();
+          }}
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,hsl(30_12%_10%_/_0.74),hsl(30_12%_10%_/_0.26),hsl(30_12%_10%_/_0.62))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,hsl(30_12%_10%_/_0.18),transparent_34%,hsl(30_12%_10%_/_0.64))]" />
+      </div>
+
+      <div
+        className="relative z-[1] -mt-[100vh] px-5 sm:px-6 md:px-12 lg:px-16"
+        style={{ textShadow: "0 2px 28px hsl(30 12% 10% / 0.72)" }}
+      >
+        <section className="mx-auto flex min-h-screen max-w-[760px] flex-col items-center justify-center py-24 text-center">
+          <p className="mb-4 font-sans text-[10px] uppercase tracking-[0.4em] text-[hsl(36,33%,93%)] md:mb-8">
+            High-Design Jewelry Access
+          </p>
+          <h1 className="hero-display mb-4 whitespace-pre-line text-[hsl(36,33%,93%)] md:mb-6">
+            Luxury,{"\n"}
+            <ScribbleUnderline color="var(--brass)" delay={0.2}>
+              Accessed.
+            </ScribbleUnderline>
+          </h1>
+          <p className="mx-auto mb-3 max-w-[440px] font-sans text-[12px] leading-relaxed text-[hsl(36,28%,88%)] md:text-[13px]">
+            High-design jewelry you access, not own.
+            <br />
+            For women who want beauty without burden.
+          </p>
+          <p className="mx-auto mb-7 max-w-[460px] font-sans text-[10px] uppercase tracking-[0.18em] text-[hsl(36,25%,84%)] md:text-[11px]">
+            Wear more. Store less. Spend more intelligently.
+          </p>
+          <Link
+            to="/browse"
+            className="inline-block border border-[hsl(36,25%,84%)] px-8 py-3 font-sans text-[10px] uppercase tracking-[0.2em] text-[hsl(36,25%,86%)] transition-colors hover:bg-[hsl(36,25%,86%)] hover:text-[hsl(28,22%,34%)] md:px-10 md:py-3.5 md:text-[11px]"
+          >
+            Browse the Collection
+          </Link>
+          <p className="mx-auto mt-5 max-w-[420px] font-sans text-[11px] leading-relaxed text-[hsl(36,25%,86%)] md:text-[12px]">
+            Membership from $65/mo. Choose 5 or 10 pieces each cycle. Keep 1 favorite.
+          </p>
+          <TrustStrip
+            variant="compact"
+            className="mt-4 text-[hsl(36,25%,86%)] [&_*]:text-[hsl(36,25%,86%)]"
+          />
+        </section>
+
+        <section className="mx-auto max-w-[1180px] py-24 md:py-32">
+          <div className="mb-8 text-center">
+            <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-[hsl(36,33%,93%)]">
+              The Process
+            </p>
+            <h2 className="font-serif text-2xl uppercase tracking-[0.08em] text-[hsl(36,33%,93%)] md:text-4xl">
+              How It Works
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            {steps.map((step) => (
+              <div
+                key={step.number}
+                className="border border-border bg-background p-4 text-foreground shadow-[0_18px_50px_hsl(30_12%_10%_/_0.18)] md:p-5"
+                style={{ textShadow: "none" }}
+              >
+                <div className="mb-3 flex items-center justify-between">
+                  <span className="font-sans text-[9px] uppercase tracking-[0.28em] text-muted-foreground">
+                    Step {step.number}
+                  </span>
+                  <step.icon className="h-4 w-4 stroke-[1.3] text-foreground" />
+                </div>
+                <h3 className="mb-2 font-serif text-base font-semibold tracking-[0.02em] md:text-lg">
+                  {step.title}
+                </h3>
+                <p className="font-sans text-[10px] leading-relaxed text-muted-foreground md:text-[11px]">
+                  {step.description}
+                </p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-7 text-center">
+            <Link
+              to="/how-it-works"
+              className="inline-block border-b border-[hsl(36,25%,86%)] pb-1 font-sans text-[10px] uppercase tracking-[0.25em] text-[hsl(36,25%,86%)] transition-opacity hover:opacity-75 md:text-[11px]"
+            >
+              Learn More
+            </Link>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-[1040px] py-24 md:py-32">
+          <div className="mb-8 text-center">
+            <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-[hsl(36,33%,93%)]">
+              Membership
+            </p>
+            <h2 className="font-serif text-2xl uppercase tracking-[0.08em] text-[hsl(36,33%,93%)] md:text-4xl">
+              Your Tier of Access
+            </h2>
+            <p className="mx-auto mt-4 max-w-[560px] font-sans text-[12px] leading-relaxed text-[hsl(36,28%,88%)] md:text-[13px]">
+              Choose 5 or 10 pieces each cycle. One favorite is included to keep.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            {tiers.map((tier) => (
+              <Link
+                key={tier.name}
+                to="/how-it-works#tiers"
+                className={`group block border border-border p-6 shadow-[0_18px_50px_hsl(30_12%_10%_/_0.18)] transition-transform hover:-translate-y-1 md:p-8 ${
+                  tier.highlighted ? "bg-foreground text-background" : "bg-background text-foreground"
+                }`}
+                style={{ textShadow: "none" }}
+              >
+                <div className="mb-4 flex items-start justify-between gap-4">
+                  <div>
+                    <p
+                      className={`mb-2 font-sans text-[10px] uppercase tracking-[0.3em] ${
+                        tier.highlighted ? "text-background/65" : "text-muted-foreground"
+                      }`}
+                    >
+                      {tier.label}
+                    </p>
+                    <h3 className="font-serif text-xl font-semibold tracking-[0.02em] md:text-2xl">
+                      {tier.name}
+                    </h3>
+                  </div>
+                  <Check
+                    className={`h-5 w-5 stroke-[1.4] ${
+                      tier.highlighted ? "text-background/70" : "text-foreground"
+                    }`}
+                  />
+                </div>
+                <p className="font-serif text-3xl font-medium md:text-4xl">
+                  {tier.price}
+                  <span
+                    className={`ml-2 font-sans text-[11px] tracking-[0.15em] ${
+                      tier.highlighted ? "text-background/65" : "text-muted-foreground"
+                    }`}
+                  >
+                    /month
+                  </span>
+                </p>
+                <p
+                  className={`mt-2 font-sans text-[11px] ${
+                    tier.highlighted ? "text-background/70" : "text-muted-foreground"
+                  }`}
+                >
+                  {tier.promoPrice}
+                </p>
+                <p
+                  className={`mt-4 font-sans text-[12px] leading-relaxed ${
+                    tier.highlighted ? "text-background/80" : "text-muted-foreground"
+                  }`}
+                >
+                  {tier.detail}. Full vault access, protection coverage, sanitation, and free shipping both ways.
+                </p>
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-5 grid grid-cols-2 gap-2 md:grid-cols-4">
+            {assurances.map((item) => (
+              <div
+                key={item.text}
+                className="flex items-center justify-center gap-2 border border-[hsl(36_25%_86%_/_0.48)] bg-foreground px-3 py-2 font-sans text-[9px] uppercase tracking-[0.14em] text-[hsl(36,25%,88%)] md:text-[10px]"
+              >
+                <item.icon className="h-3.5 w-3.5 shrink-0 stroke-[1.4]" />
+                <span>{item.text}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-[1120px] py-24 md:py-32">
+          <div className="mb-8 text-center">
+            <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-[hsl(36,33%,93%)]">
+              Freedom
+            </p>
+            <h2 className="font-serif text-2xl uppercase tracking-[0.08em] text-[hsl(36,33%,93%)] md:text-4xl">
+              Wear More. Spend Smarter.
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+            {freedomBlocks.map((block) => (
+              <div
+                key={block.title}
+                className="border border-border bg-background p-6 text-foreground shadow-[0_18px_50px_hsl(30_12%_10%_/_0.18)] md:p-8"
+                style={{ textShadow: "none" }}
+              >
+                <div className="mb-4 flex items-center justify-between">
+                  <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+                    {block.label}
+                  </p>
+                  <block.icon className="h-5 w-5 stroke-[1.3] text-foreground" />
+                </div>
+                <h3 className="mb-3 font-serif text-lg font-semibold tracking-[0.02em]">
+                  {block.title}
+                </h3>
+                <p className="font-sans text-[12px] leading-relaxed text-muted-foreground">
+                  {block.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-[1120px] py-24 md:py-32">
+          <div className="mb-8 text-center">
+            <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-[hsl(36,33%,93%)]">
+              Philosophy
+            </p>
+            <h2 className="font-serif text-2xl uppercase tracking-[0.08em] text-[hsl(36,33%,93%)] md:text-4xl">
+              Access Defines Status
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div
+              className="border border-border bg-card p-8 text-foreground shadow-[0_18px_50px_hsl(30_12%_10%_/_0.18)] md:p-10"
+              style={{ textShadow: "none" }}
+            >
+              <div className="mb-4 flex items-center justify-between">
+                <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+                  The Old Model
+                </p>
+                <Scale className="h-5 w-5 stroke-[1.3] text-foreground" />
+              </div>
+              <h3 className="mb-4 font-serif text-xl font-semibold tracking-[0.02em] md:text-2xl">
+                Ownership Is a <CircleEmphasis color="var(--tag-red)">Liability</CircleEmphasis>
+              </h3>
+              <p className="font-sans text-[12px] leading-relaxed text-muted-foreground">
+                The average woman wears each piece of fine jewelry fewer than <ScriptNumber>5</ScriptNumber> times before it sits forgotten. Thousands spent. Inches of drawer space consumed. Value depreciating silently.
+              </p>
+            </div>
+            <div
+              className="border border-border bg-foreground p-8 text-background shadow-[0_18px_50px_hsl(30_12%_10%_/_0.18)] md:p-10"
+              style={{ textShadow: "none" }}
+            >
+              <div className="mb-4 flex items-center justify-between">
+                <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-background/60">
+                  The GEA Model
+                </p>
+                <Zap className="h-5 w-5 stroke-[1.3] text-background/70" />
+              </div>
+              <h3 className="mb-4 font-serif text-xl font-semibold tracking-[0.02em] text-background md:text-2xl">
+                Access Is <ScribbleUnderline color="var(--seafoam)" delay={0.5}>Intelligence</ScribbleUnderline>
+              </h3>
+              <p className="font-sans text-[12px] leading-relaxed text-background/70">
+                Access the full vault. Wear what speaks to you this cycle. Keep the piece you love most, return the rest, and choose what is next.{" "}
+                <ScriptNumber className="text-background/90">10+</ScriptNumber> pieces per year. Presence over possession.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  );
+};
