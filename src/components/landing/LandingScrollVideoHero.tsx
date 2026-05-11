@@ -110,8 +110,24 @@ export const LandingScrollVideoHero = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const frameRef = useRef<number | null>(null);
-  const scrubFrameRef = useRef<number | null>(null);
   const durationRef = useRef(0);
+  const targetTimeRef = useRef(0);
+
+  const applyTargetTime = useCallback(() => {
+    const video = videoRef.current;
+
+    if (!video || !durationRef.current || video.seeking) return;
+
+    const targetTime = targetTimeRef.current;
+
+    if (Math.abs(video.currentTime - targetTime) < 0.04) return;
+
+    try {
+      video.currentTime = targetTime;
+    } catch {
+      // Some mobile browsers briefly reject seeks while metadata settles.
+    }
+  }, []);
 
   const updateVideoTime = useCallback(() => {
     const section = sectionRef.current;
@@ -126,14 +142,9 @@ export const LandingScrollVideoHero = () => {
     const videoProgress = clamp(progress * getVideoProgressMultiplier());
     const targetTime = Math.max(0, durationRef.current - 0.05) * videoProgress;
 
-    if (Math.abs(video.currentTime - targetTime) < 0.04) return;
-
-    try {
-      video.currentTime = targetTime;
-    } catch {
-      // Some mobile browsers briefly reject seeks while metadata settles.
-    }
-  }, []);
+    targetTimeRef.current = targetTime;
+    applyTargetTime();
+  }, [applyTargetTime]);
 
   const requestUpdate = useCallback(() => {
     if (frameRef.current !== null) return;
@@ -189,13 +200,6 @@ export const LandingScrollVideoHero = () => {
 
   useEffect(() => {
     requestUpdate();
-    const scrub = () => {
-      updateVideoTime();
-      scrubFrameRef.current = window.requestAnimationFrame(scrub);
-    };
-
-    scrubFrameRef.current = window.requestAnimationFrame(scrub);
-
     window.addEventListener("scroll", requestUpdate, { passive: true });
     window.addEventListener("resize", requestUpdate);
 
@@ -206,29 +210,24 @@ export const LandingScrollVideoHero = () => {
         window.cancelAnimationFrame(frameRef.current);
         frameRef.current = null;
       }
-      if (scrubFrameRef.current !== null) {
-        window.cancelAnimationFrame(scrubFrameRef.current);
-        scrubFrameRef.current = null;
-      }
     };
-  }, [requestUpdate, updateVideoTime]);
+  }, [requestUpdate]);
 
   return (
     <section ref={sectionRef} className="relative bg-foreground text-background">
       <div className="sticky top-0 h-screen overflow-hidden">
         <video
           ref={videoRef}
-          autoPlay
-          loop
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
           aria-label="GEA jewelry styling video"
           onLoadedMetadata={(event) => {
             markVideoReady(event.currentTarget);
           }}
           onLoadedData={(event) => markVideoReady(event.currentTarget)}
           onCanPlay={(event) => markVideoReady(event.currentTarget)}
+          onSeeked={applyTargetTime}
           className="absolute inset-0 h-full w-full transform-gpu object-cover [backface-visibility:hidden]"
         >
           <source src={geaWorldVideoSrc} type="video/mp4" />
