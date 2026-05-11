@@ -101,7 +101,7 @@ const freedomBlocks = [
   },
 ];
 
-const geaWorldVideoSrc = "/videos/geaworld.mp4?v=20260511-optimized";
+const geaWorldVideoSrc = "/videos/geaworld.mp4?v=20260511";
 
 const clamp = (value: number) => Math.min(1, Math.max(0, value));
 const getVideoProgressMultiplier = () => (window.innerWidth < 768 ? 1.45 : 1);
