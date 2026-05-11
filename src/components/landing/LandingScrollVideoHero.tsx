@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import {
   Ban,
@@ -110,13 +110,12 @@ export const LandingScrollVideoHero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const frameRef = useRef<number | null>(null);
   const durationRef = useRef(0);
-  const [reducedMotion, setReducedMotion] = useState(false);
 
   const updateVideoTime = useCallback(() => {
     const section = sectionRef.current;
     const video = videoRef.current;
 
-    if (!section || !video || !durationRef.current || reducedMotion) return;
+    if (!section || !video || !durationRef.current) return;
 
     const sectionTop = section.getBoundingClientRect().top + window.scrollY;
     const sectionHeight = section.offsetHeight;
@@ -132,7 +131,7 @@ export const LandingScrollVideoHero = () => {
     } catch {
       // Some mobile browsers briefly reject seeks while metadata settles.
     }
-  }, [reducedMotion]);
+  }, []);
 
   const requestUpdate = useCallback(() => {
     if (frameRef.current !== null) return;
@@ -154,18 +153,6 @@ export const LandingScrollVideoHero = () => {
     },
     [requestUpdate],
   );
-
-  useEffect(() => {
-    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const syncMotionPreference = () => setReducedMotion(motionQuery.matches);
-
-    syncMotionPreference();
-    motionQuery.addEventListener("change", syncMotionPreference);
-
-    return () => {
-      motionQuery.removeEventListener("change", syncMotionPreference);
-    };
-  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
