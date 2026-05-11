@@ -104,11 +104,13 @@ const freedomBlocks = [
 const geaWorldVideoSrc = "/videos/geaworld.mp4?v=20260511";
 
 const clamp = (value: number) => Math.min(1, Math.max(0, value));
+const getVideoProgressMultiplier = () => (window.innerWidth < 768 ? 1.45 : 1);
 
 export const LandingScrollVideoHero = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const frameRef = useRef<number | null>(null);
+  const scrubFrameRef = useRef<number | null>(null);
   const durationRef = useRef(0);
 
   const updateVideoTime = useCallback(() => {
@@ -121,7 +123,7 @@ export const LandingScrollVideoHero = () => {
     const sectionHeight = section.offsetHeight;
     const scrollRange = Math.max(1, sectionHeight - window.innerHeight);
     const progress = clamp((window.scrollY - sectionTop) / scrollRange);
-    const videoProgress = clamp(progress * 1.45);
+    const videoProgress = clamp(progress * getVideoProgressMultiplier());
     const targetTime = Math.max(0, durationRef.current - 0.05) * videoProgress;
 
     if (Math.abs(video.currentTime - targetTime) < 0.04) return;
@@ -187,6 +189,13 @@ export const LandingScrollVideoHero = () => {
 
   useEffect(() => {
     requestUpdate();
+    const scrub = () => {
+      updateVideoTime();
+      scrubFrameRef.current = window.requestAnimationFrame(scrub);
+    };
+
+    scrubFrameRef.current = window.requestAnimationFrame(scrub);
+
     window.addEventListener("scroll", requestUpdate, { passive: true });
     window.addEventListener("resize", requestUpdate);
 
@@ -197,8 +206,12 @@ export const LandingScrollVideoHero = () => {
         window.cancelAnimationFrame(frameRef.current);
         frameRef.current = null;
       }
+      if (scrubFrameRef.current !== null) {
+        window.cancelAnimationFrame(scrubFrameRef.current);
+        scrubFrameRef.current = null;
+      }
     };
-  }, [requestUpdate]);
+  }, [requestUpdate, updateVideoTime]);
 
   return (
     <section ref={sectionRef} className="relative bg-foreground text-background">
@@ -216,7 +229,7 @@ export const LandingScrollVideoHero = () => {
           }}
           onLoadedData={(event) => markVideoReady(event.currentTarget)}
           onCanPlay={(event) => markVideoReady(event.currentTarget)}
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full transform-gpu object-cover [backface-visibility:hidden]"
         >
           <source src={geaWorldVideoSrc} type="video/mp4" />
         </video>
