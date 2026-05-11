@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Ban,
@@ -102,9 +102,13 @@ const freedomBlocks = [
 ];
 
 const geaWorldVideoSrc = "/videos/geaworld.mp4?v=20260511";
+const geaWorldFrameCount = 24;
+const getGeaWorldFrameSrc = (index: number) =>
+  `/videos/geaworld-frames/frame-${String(index + 1).padStart(2, "0")}.webp`;
 
 const clamp = (value: number) => Math.min(1, Math.max(0, value));
 const getVideoProgressMultiplier = () => (window.innerWidth < 768 ? 1.45 : 1);
+const shouldUseMobileVideo = () => window.innerWidth < 768;
 
 export const LandingScrollVideoHero = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -112,6 +116,20 @@ export const LandingScrollVideoHero = () => {
   const frameRef = useRef<number | null>(null);
   const durationRef = useRef(0);
   const targetTimeRef = useRef(0);
+  const [activeFrame, setActiveFrame] = useState(0);
+  const [useMobileVideo, setUseMobileVideo] = useState(() => shouldUseMobileVideo());
+
+  const getScrollProgress = useCallback(() => {
+    const section = sectionRef.current;
+
+    if (!section) return 0;
+
+    const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+    const sectionHeight = section.offsetHeight;
+    const scrollRange = Math.max(1, sectionHeight - window.innerHeight);
+
+    return clamp((window.scrollY - sectionTop) / scrollRange);
+  }, []);
 
   const applyTargetTime = useCallback(() => {
     const video = videoRef.current;
@@ -129,31 +147,27 @@ export const LandingScrollVideoHero = () => {
     }
   }, []);
 
-  const updateVideoTime = useCallback(() => {
-    const section = sectionRef.current;
-    const video = videoRef.current;
+  const updateMedia = useCallback(() => {
+    const mediaProgress = clamp(getScrollProgress() * getVideoProgressMultiplier());
 
-    if (!section || !video || !durationRef.current) return;
+    if (useMobileVideo) {
+      targetTimeRef.current = Math.max(0, durationRef.current - 0.05) * mediaProgress;
+      applyTargetTime();
+      return;
+    }
 
-    const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-    const sectionHeight = section.offsetHeight;
-    const scrollRange = Math.max(1, sectionHeight - window.innerHeight);
-    const progress = clamp((window.scrollY - sectionTop) / scrollRange);
-    const videoProgress = clamp(progress * getVideoProgressMultiplier());
-    const targetTime = Math.max(0, durationRef.current - 0.05) * videoProgress;
-
-    targetTimeRef.current = targetTime;
-    applyTargetTime();
-  }, [applyTargetTime]);
+    const nextFrame = Math.round(mediaProgress * (geaWorldFrameCount - 1));
+    setActiveFrame((currentFrame) => (currentFrame === nextFrame ? currentFrame : nextFrame));
+  }, [applyTargetTime, getScrollProgress, useMobileVideo]);
 
   const requestUpdate = useCallback(() => {
     if (frameRef.current !== null) return;
 
     frameRef.current = window.requestAnimationFrame(() => {
       frameRef.current = null;
-      updateVideoTime();
+      updateMedia();
     });
-  }, [updateVideoTime]);
+  }, [updateMedia]);
 
   const markVideoReady = useCallback(
     (video: HTMLVideoElement) => {
@@ -168,8 +182,17 @@ export const LandingScrollVideoHero = () => {
   );
 
   useEffect(() => {
+    const syncMediaMode = () => setUseMobileVideo(shouldUseMobileVideo());
+
+    syncMediaMode();
+    window.addEventListener("resize", syncMediaMode);
+
+    return () => window.removeEventListener("resize", syncMediaMode);
+  }, []);
+
+  useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+    if (!video || !useMobileVideo) return;
 
     video.muted = true;
     video.defaultMuted = true;
@@ -179,24 +202,40 @@ export const LandingScrollVideoHero = () => {
     video.setAttribute("webkit-playsinline", "");
     video.load();
 
-    const primePlayback = () => {
-      const playAttempt = video.play();
-
-      if (playAttempt && typeof playAttempt.then === "function") {
-        playAttempt
-          .then(() => markVideoReady(video))
-          .catch(() => requestUpdate());
-      } else {
-        requestUpdate();
-      }
-    };
-
     if (video.readyState >= HTMLMediaElement.HAVE_METADATA) {
       markVideoReady(video);
     }
 
-    primePlayback();
-  }, [markVideoReady, requestUpdate]);
+    const playAttempt = video.play();
+
+    if (playAttempt && typeof playAttempt.then === "function") {
+      playAttempt
+        .then(() => markVideoReady(video))
+        .catch(() => requestUpdate());
+    } else {
+      requestUpdate();
+    }
+  }, [markVideoReady, useMobileVideo]);
+
+  useEffect(() => {
+    if (useMobileVideo) return;
+
+    const preloadFrames = () => {
+      Array.from({ length: geaWorldFrameCount }, (_, index) => {
+        const image = new Image();
+        image.src = getGeaWorldFrameSrc(index);
+        return image;
+      });
+    };
+
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(preloadFrames, { timeout: 1800 });
+      return;
+    }
+
+    const timeoutId = window.setTimeout(preloadFrames, 600);
+    return () => window.clearTimeout(timeoutId);
+  }, [useMobileVideo]);
 
   useEffect(() => {
     requestUpdate();
@@ -216,22 +255,33 @@ export const LandingScrollVideoHero = () => {
   return (
     <section ref={sectionRef} className="relative bg-foreground text-background">
       <div className="sticky top-0 h-screen overflow-hidden">
-        <video
-          ref={videoRef}
-          muted
-          playsInline
-          preload="metadata"
-          aria-label="GEA jewelry styling video"
-          onLoadedMetadata={(event) => {
-            markVideoReady(event.currentTarget);
-          }}
-          onLoadedData={(event) => markVideoReady(event.currentTarget)}
-          onCanPlay={(event) => markVideoReady(event.currentTarget)}
-          onSeeked={applyTargetTime}
-          className="absolute inset-0 h-full w-full transform-gpu object-cover [backface-visibility:hidden]"
-        >
-          <source src={geaWorldVideoSrc} type="video/mp4" />
-        </video>
+        {useMobileVideo ? (
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            aria-label="GEA jewelry styling video"
+            onLoadedMetadata={(event) => markVideoReady(event.currentTarget)}
+            onLoadedData={(event) => markVideoReady(event.currentTarget)}
+            onCanPlay={(event) => markVideoReady(event.currentTarget)}
+            onSeeked={applyTargetTime}
+            className="absolute inset-0 h-full w-full transform-gpu object-cover [backface-visibility:hidden]"
+          >
+            <source src={geaWorldVideoSrc} type="video/mp4" />
+          </video>
+        ) : (
+          <img
+            src={getGeaWorldFrameSrc(activeFrame)}
+            alt=""
+            aria-hidden="true"
+            loading="eager"
+            decoding="async"
+            className="absolute inset-0 h-full w-full transform-gpu object-cover [backface-visibility:hidden]"
+          />
+        )}
         <div className="absolute inset-0 bg-[linear-gradient(90deg,hsl(30_12%_10%_/_0.74),hsl(30_12%_10%_/_0.26),hsl(30_12%_10%_/_0.62))]" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,hsl(30_12%_10%_/_0.18),transparent_34%,hsl(30_12%_10%_/_0.64))]" />
       </div>
