@@ -101,6 +101,8 @@ const freedomBlocks = [
   },
 ];
 
+const geaWorldVideoSrc = "/videos/geaworld.mp4?v=20260511";
+
 const clamp = (value: number) => Math.min(1, Math.max(0, value));
 
 export const LandingScrollVideoHero = () => {
@@ -229,7 +231,7 @@ export const LandingScrollVideoHero = () => {
           onCanPlay={(event) => markVideoReady(event.currentTarget)}
           className="absolute inset-0 h-full w-full object-cover"
         >
-          <source src="/videos/geaworld.mp4" type="video/mp4" />
+          <source src={geaWorldVideoSrc} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-[linear-gradient(90deg,hsl(30_12%_10%_/_0.74),hsl(30_12%_10%_/_0.26),hsl(30_12%_10%_/_0.62))]" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,hsl(30_12%_10%_/_0.18),transparent_34%,hsl(30_12%_10%_/_0.64))]" />
