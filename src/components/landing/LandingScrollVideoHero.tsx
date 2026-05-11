@@ -141,6 +141,18 @@ export const LandingScrollVideoHero = () => {
     });
   }, [updateVideoTime]);
 
+  const markVideoReady = useCallback(
+    (video: HTMLVideoElement) => {
+      if (Number.isFinite(video.duration) && video.duration > 0) {
+        durationRef.current = video.duration;
+      }
+
+      video.pause();
+      requestUpdate();
+    },
+    [requestUpdate],
+  );
+
   useEffect(() => {
     const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     const syncMotionPreference = () => setReducedMotion(motionQuery.matches);
@@ -152,6 +164,37 @@ export const LandingScrollVideoHero = () => {
       motionQuery.removeEventListener("change", syncMotionPreference);
     };
   }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    video.setAttribute("muted", "");
+    video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "");
+    video.load();
+
+    const primePlayback = () => {
+      const playAttempt = video.play();
+
+      if (playAttempt && typeof playAttempt.then === "function") {
+        playAttempt
+          .then(() => markVideoReady(video))
+          .catch(() => requestUpdate());
+      } else {
+        requestUpdate();
+      }
+    };
+
+    if (video.readyState >= HTMLMediaElement.HAVE_METADATA) {
+      markVideoReady(video);
+    }
+
+    primePlayback();
+  }, [markVideoReady, requestUpdate]);
 
   useEffect(() => {
     requestUpdate();
@@ -173,19 +216,21 @@ export const LandingScrollVideoHero = () => {
       <div className="sticky top-0 h-screen overflow-hidden">
         <video
           ref={videoRef}
-          src="/videos/geaworld.mp4"
+          autoPlay
+          loop
           muted
           playsInline
           preload="auto"
           aria-label="GEA jewelry styling video"
           onLoadedMetadata={(event) => {
-            const duration = event.currentTarget.duration;
-            durationRef.current = Number.isFinite(duration) ? duration : 0;
-            event.currentTarget.pause();
-            requestUpdate();
+            markVideoReady(event.currentTarget);
           }}
+          onLoadedData={(event) => markVideoReady(event.currentTarget)}
+          onCanPlay={(event) => markVideoReady(event.currentTarget)}
           className="absolute inset-0 h-full w-full object-cover"
-        />
+        >
+          <source src="/videos/geaworld.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-[linear-gradient(90deg,hsl(30_12%_10%_/_0.74),hsl(30_12%_10%_/_0.26),hsl(30_12%_10%_/_0.62))]" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,hsl(30_12%_10%_/_0.18),transparent_34%,hsl(30_12%_10%_/_0.64))]" />
       </div>
