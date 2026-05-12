@@ -101,14 +101,14 @@ const freedomBlocks = [
   },
 ];
 
-const geaWorldVideoSrc = "/videos/geaworld.mp4?v=20260511";
+const geaWorldVideoSrc =
+  "https://cdn.jsdelivr.net/gh/andreafreydell/elevate-brand-shell@b5bb60ec360fcc233d1892d67d8b8abd58c8a7c0/public/videos/geaworld.mp4";
 const geaWorldFrameCount = 24;
 const getGeaWorldFrameSrc = (index: number) =>
   `/videos/geaworld-frames/frame-${String(index + 1).padStart(2, "0")}.webp`;
 
 const clamp = (value: number) => Math.min(1, Math.max(0, value));
 const getVideoProgressMultiplier = () => (window.innerWidth < 768 ? 1.45 : 1);
-const shouldUseMobileVideo = () => window.innerWidth < 768;
 
 export const LandingScrollVideoHero = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -117,7 +117,8 @@ export const LandingScrollVideoHero = () => {
   const durationRef = useRef(0);
   const targetTimeRef = useRef(0);
   const [activeFrame, setActiveFrame] = useState(0);
-  const [useMobileVideo, setUseMobileVideo] = useState(() => shouldUseMobileVideo());
+  const [videoHasError, setVideoHasError] = useState(false);
+  const useVideoScrub = !videoHasError;
 
   const getScrollProgress = useCallback(() => {
     const section = sectionRef.current;
@@ -150,7 +151,7 @@ export const LandingScrollVideoHero = () => {
   const updateMedia = useCallback(() => {
     const mediaProgress = clamp(getScrollProgress() * getVideoProgressMultiplier());
 
-    if (useMobileVideo) {
+    if (useVideoScrub) {
       targetTimeRef.current = Math.max(0, durationRef.current - 0.05) * mediaProgress;
       applyTargetTime();
       return;
@@ -158,7 +159,7 @@ export const LandingScrollVideoHero = () => {
 
     const nextFrame = Math.round(mediaProgress * (geaWorldFrameCount - 1));
     setActiveFrame((currentFrame) => (currentFrame === nextFrame ? currentFrame : nextFrame));
-  }, [applyTargetTime, getScrollProgress, useMobileVideo]);
+  }, [applyTargetTime, getScrollProgress, useVideoScrub]);
 
   const requestUpdate = useCallback(() => {
     if (frameRef.current !== null) return;
@@ -182,17 +183,8 @@ export const LandingScrollVideoHero = () => {
   );
 
   useEffect(() => {
-    const syncMediaMode = () => setUseMobileVideo(shouldUseMobileVideo());
-
-    syncMediaMode();
-    window.addEventListener("resize", syncMediaMode);
-
-    return () => window.removeEventListener("resize", syncMediaMode);
-  }, []);
-
-  useEffect(() => {
     const video = videoRef.current;
-    if (!video || !useMobileVideo) return;
+    if (!video || !useVideoScrub) return;
 
     video.muted = true;
     video.defaultMuted = true;
@@ -215,10 +207,10 @@ export const LandingScrollVideoHero = () => {
     } else {
       requestUpdate();
     }
-  }, [markVideoReady, useMobileVideo]);
+  }, [markVideoReady, requestUpdate, useVideoScrub]);
 
   useEffect(() => {
-    if (useMobileVideo) return;
+    if (useVideoScrub) return;
 
     const preloadFrames = () => {
       Array.from({ length: geaWorldFrameCount }, (_, index) => {
@@ -235,7 +227,7 @@ export const LandingScrollVideoHero = () => {
 
     const timeoutId = window.setTimeout(preloadFrames, 600);
     return () => window.clearTimeout(timeoutId);
-  }, [useMobileVideo]);
+  }, [useVideoScrub]);
 
   useEffect(() => {
     requestUpdate();
@@ -255,7 +247,7 @@ export const LandingScrollVideoHero = () => {
   return (
     <section ref={sectionRef} className="relative bg-foreground text-background">
       <div className="sticky top-0 h-screen overflow-hidden">
-        {useMobileVideo ? (
+        {useVideoScrub ? (
           <video
             ref={videoRef}
             autoPlay
@@ -264,9 +256,19 @@ export const LandingScrollVideoHero = () => {
             playsInline
             preload="auto"
             aria-label="GEA jewelry styling video"
-            onLoadedMetadata={(event) => markVideoReady(event.currentTarget)}
-            onLoadedData={(event) => markVideoReady(event.currentTarget)}
-            onCanPlay={(event) => markVideoReady(event.currentTarget)}
+            onLoadedMetadata={(event) => {
+              setVideoHasError(false);
+              markVideoReady(event.currentTarget);
+            }}
+            onLoadedData={(event) => {
+              setVideoHasError(false);
+              markVideoReady(event.currentTarget);
+            }}
+            onCanPlay={(event) => {
+              setVideoHasError(false);
+              markVideoReady(event.currentTarget);
+            }}
+            onError={() => setVideoHasError(true)}
             onSeeked={applyTargetTime}
             className="absolute inset-0 h-full w-full transform-gpu object-cover [backface-visibility:hidden]"
           >
