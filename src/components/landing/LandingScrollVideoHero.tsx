@@ -101,7 +101,8 @@ const freedomBlocks = [
   },
 ];
 
-const geaWorldVideoSrc =
+const geaWorldMobileVideoSrc = "/videos/geaworld.mp4?v=20260511";
+const geaWorldDesktopVideoSrc =
   "https://cdn.jsdelivr.net/gh/andreafreydell/elevate-brand-shell@b5bb60ec360fcc233d1892d67d8b8abd58c8a7c0/public/videos/geaworld.mp4";
 const geaWorldFrameCount = 24;
 const getGeaWorldFrameSrc = (index: number) =>
@@ -109,6 +110,7 @@ const getGeaWorldFrameSrc = (index: number) =>
 
 const clamp = (value: number) => Math.min(1, Math.max(0, value));
 const getVideoProgressMultiplier = () => (window.innerWidth < 768 ? 1.45 : 1);
+const shouldUseMobileVideo = () => window.innerWidth < 768;
 
 export const LandingScrollVideoHero = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -117,8 +119,10 @@ export const LandingScrollVideoHero = () => {
   const durationRef = useRef(0);
   const targetTimeRef = useRef(0);
   const [activeFrame, setActiveFrame] = useState(0);
+  const [useMobileVideo, setUseMobileVideo] = useState(() => shouldUseMobileVideo());
   const [videoHasError, setVideoHasError] = useState(false);
   const useVideoScrub = !videoHasError;
+  const geaWorldVideoSrc = useMobileVideo ? geaWorldMobileVideoSrc : geaWorldDesktopVideoSrc;
 
   const getScrollProgress = useCallback(() => {
     const section = sectionRef.current;
@@ -183,6 +187,22 @@ export const LandingScrollVideoHero = () => {
   );
 
   useEffect(() => {
+    const syncMediaMode = () => setUseMobileVideo(shouldUseMobileVideo());
+
+    syncMediaMode();
+    window.addEventListener("resize", syncMediaMode);
+
+    return () => window.removeEventListener("resize", syncMediaMode);
+  }, []);
+
+  useEffect(() => {
+    durationRef.current = 0;
+    targetTimeRef.current = 0;
+    setVideoHasError(false);
+    requestUpdate();
+  }, [requestUpdate, useMobileVideo]);
+
+  useEffect(() => {
     const video = videoRef.current;
     if (!video || !useVideoScrub) return;
 
@@ -207,7 +227,7 @@ export const LandingScrollVideoHero = () => {
     } else {
       requestUpdate();
     }
-  }, [markVideoReady, requestUpdate, useVideoScrub]);
+  }, [geaWorldVideoSrc, markVideoReady, requestUpdate, useVideoScrub]);
 
   useEffect(() => {
     if (useVideoScrub) return;
@@ -249,6 +269,7 @@ export const LandingScrollVideoHero = () => {
       <div className="sticky top-0 h-screen overflow-hidden">
         {useVideoScrub ? (
           <video
+            key={geaWorldVideoSrc}
             ref={videoRef}
             autoPlay
             loop
