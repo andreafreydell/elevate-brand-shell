@@ -101,12 +101,15 @@ const freedomBlocks = [
   },
 ];
 
-const geaWorldMobileVideoSrc = "/videos/geaworld.mp4?v=20260511";
-const geaWorldDesktopVideoSrc =
+const geaWorldFullQualityCdnVideoSrc =
   "https://cdn.jsdelivr.net/gh/andreafreydell/elevate-brand-shell@b5bb60ec360fcc233d1892d67d8b8abd58c8a7c0/public/videos/geaworld.mp4";
+const geaWorldMobileVideoSrc = geaWorldFullQualityCdnVideoSrc;
+const geaWorldMobileFallbackVideoSrc = "/videos/geaworld.mp4?v=20260511";
+const geaWorldDesktopVideoSrc = geaWorldFullQualityCdnVideoSrc;
 const geaWorldFrameCount = 24;
 const getGeaWorldFrameSrc = (index: number) =>
   `/videos/geaworld-frames/frame-${String(index + 1).padStart(2, "0")}.webp`;
+const geaWorldPosterSrc = getGeaWorldFrameSrc(0);
 
 const clamp = (value: number) => Math.min(1, Math.max(0, value));
 const getVideoProgressMultiplier = () => (window.innerWidth < 768 ? 1.45 : 1);
@@ -120,9 +123,15 @@ export const LandingScrollVideoHero = () => {
   const targetTimeRef = useRef(0);
   const [activeFrame, setActiveFrame] = useState(0);
   const [useMobileVideo, setUseMobileVideo] = useState(() => shouldUseMobileVideo());
+  const [useLocalMobileVideo, setUseLocalMobileVideo] = useState(false);
   const [videoHasError, setVideoHasError] = useState(false);
   const useVideoScrub = !videoHasError;
-  const geaWorldVideoSrc = useMobileVideo ? geaWorldMobileVideoSrc : geaWorldDesktopVideoSrc;
+  const geaWorldVideoSrc =
+    useMobileVideo && useLocalMobileVideo
+      ? geaWorldMobileFallbackVideoSrc
+      : useMobileVideo
+        ? geaWorldMobileVideoSrc
+        : geaWorldDesktopVideoSrc;
 
   const getScrollProgress = useCallback(() => {
     const section = sectionRef.current;
@@ -136,6 +145,13 @@ export const LandingScrollVideoHero = () => {
     return clamp((window.scrollY - sectionTop) / scrollRange);
   }, []);
 
+  const switchToLocalMobileVideo = useCallback(() => {
+    if (!useMobileVideo || useLocalMobileVideo) return false;
+
+    setUseLocalMobileVideo(true);
+    return true;
+  }, [useLocalMobileVideo, useMobileVideo]);
+
   const applyTargetTime = useCallback(() => {
     const video = videoRef.current;
 
@@ -148,9 +164,10 @@ export const LandingScrollVideoHero = () => {
     try {
       video.currentTime = targetTime;
     } catch {
+      switchToLocalMobileVideo();
       // Some mobile browsers briefly reject seeks while metadata settles.
     }
-  }, []);
+  }, [switchToLocalMobileVideo]);
 
   const updateMedia = useCallback(() => {
     const mediaProgress = clamp(getScrollProgress() * getVideoProgressMultiplier());
@@ -199,6 +216,7 @@ export const LandingScrollVideoHero = () => {
     durationRef.current = 0;
     targetTimeRef.current = 0;
     setVideoHasError(false);
+    setUseLocalMobileVideo(false);
     requestUpdate();
   }, [requestUpdate, useMobileVideo]);
 
@@ -214,6 +232,20 @@ export const LandingScrollVideoHero = () => {
     video.setAttribute("webkit-playsinline", "");
     video.load();
 
+    const fallbackTimeoutId =
+      useMobileVideo && !useLocalMobileVideo
+        ? window.setTimeout(() => {
+            const hasMetadata =
+              video.readyState >= HTMLMediaElement.HAVE_METADATA &&
+              Number.isFinite(video.duration) &&
+              video.duration > 0;
+
+            if (!hasMetadata) {
+              setUseLocalMobileVideo(true);
+            }
+          }, 4200)
+        : null;
+
     if (video.readyState >= HTMLMediaElement.HAVE_METADATA) {
       markVideoReady(video);
     }
@@ -227,7 +259,13 @@ export const LandingScrollVideoHero = () => {
     } else {
       requestUpdate();
     }
-  }, [geaWorldVideoSrc, markVideoReady, requestUpdate, useVideoScrub]);
+
+    return () => {
+      if (fallbackTimeoutId !== null) {
+        window.clearTimeout(fallbackTimeoutId);
+      }
+    };
+  }, [geaWorldVideoSrc, markVideoReady, requestUpdate, useLocalMobileVideo, useMobileVideo, useVideoScrub]);
 
   useEffect(() => {
     if (useVideoScrub) return;
@@ -276,6 +314,7 @@ export const LandingScrollVideoHero = () => {
             muted
             playsInline
             preload="auto"
+            poster={geaWorldPosterSrc}
             aria-label="GEA jewelry styling video"
             onLoadedMetadata={(event) => {
               setVideoHasError(false);
@@ -289,7 +328,14 @@ export const LandingScrollVideoHero = () => {
               setVideoHasError(false);
               markVideoReady(event.currentTarget);
             }}
-            onError={() => setVideoHasError(true)}
+            onError={() => {
+              if (!switchToLocalMobileVideo()) {
+                setVideoHasError(true);
+              }
+            }}
+            onStalled={() => {
+              switchToLocalMobileVideo();
+            }}
             onSeeked={applyTargetTime}
             className="absolute inset-0 h-full w-full transform-gpu object-cover [backface-visibility:hidden]"
           >
