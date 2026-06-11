@@ -30,10 +30,10 @@ const topicPresets = {
     subject: "Damage or Repair Help",
     message: "Hi GEA team,\n\nI need help with a piece that may need repair.\n",
   },
-  "stacking-edit": {
-    label: "The Stacking Edit",
-    subject: "The Stacking Edit Question",
-    message: "Hi GEA team,\n\nI have a question about The Stacking Edit, the style quiz, or current offers.\n",
+  "next-chapter": {
+    label: "The Next Chapter",
+    subject: "The Next Chapter Question",
+    message: "Hi GEA team,\n\nI have a question about The Next Chapter, the style quiz, or current offers.\n",
   },
   ambassador: {
     label: "Ambassador",
@@ -106,7 +106,7 @@ const Contact = () => {
             for <ScribbleUnderline>You</ScribbleUnderline>
           </>
         }
-        subtitle="Whether it's membership, press, repair support, or a Stacking Edit question, send us a note and we'll route it to the right person."
+        subtitle="Whether it's membership, press, repair support, or a Next Chapter question, send us a note and we'll route it to the right person."
       />
 
       <TornPaperEdge className="max-w-[1440px] mx-auto" />

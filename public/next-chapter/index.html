@@ -2084,6 +2084,27 @@ function setDateline() {
 }
 
 restore();
+
+/* Handoff from gea site email capture: /next-chapter/index.html?name=...&email=... */
+(function acceptHandoff() {
+  const params = new URLSearchParams(window.location.search);
+  const pName = (params.get('name') || '').trim();
+  const pEmail = (params.get('email') || '').trim().toLowerCase();
+  if (pEmail && validEmail(pEmail)) {
+    // If this email already has a saved notebook, load it instead
+    try {
+      const raw = localStorage.getItem(STORAGE_PREFIX + pEmail);
+      if (raw) { Object.assign(state, JSON.parse(raw)); }
+    } catch (e) {}
+    state.email = pEmail;
+    if (pName) state.name = pName;
+    if (!state.profileDone && state.currentQ === 0 && pName) state.currentQ = 1; // both given: skip sign-in; email-only: prefill it
+    persist();
+    // Clean the URL so credentials don't linger in the address bar
+    window.history.replaceState({}, '', window.location.pathname);
+  }
+})();
+
 setDateline();
 if (state.profileDone && state.email) {
   goTo('chapter');

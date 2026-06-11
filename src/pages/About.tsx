@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { PageHero } from "@/components/layout/PageHero";
+import { BloomDivider } from "@/components/craft/BloomDivider";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { ValueBlock } from "@/components/shared/ValueBlock";
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
@@ -35,14 +36,14 @@ const values = [
   {
     title: "Craft as Legacy",
     description:
-      "Inspired by generations of women who adorned themselves with intention, GEA carries forward a lineage of beauty as ritual.",
+      "Inspired by generations of women who dressed themselves with intention, GEA carries forward a lineage of beauty as ritual.",
     icon: Crown,
     label: "Principle 03",
   },
   {
     title: "Access as Equity",
     description:
-      "Luxury shouldn't require wealth accumulation. It should require taste, intention, and the freedom to express.",
+      "Beauty shouldn't require accumulation. It should require taste, intention, and the freedom to keep becoming.",
     icon: Unlock,
     label: "Principle 04",
   },
@@ -55,12 +56,12 @@ const About = () => {
         label="The House"
         headline={
           <>
-            Adorn the Woman
+            Dress the Woman
             <br />
-            You Are <ScribbleUnderline>becoming</ScribbleUnderline>
+            You Are <ScribbleUnderline>Becoming</ScribbleUnderline>
           </>
         }
-        subtitle="GEA was born from a simple conviction: luxury should liberate, not burden. Access should define status - not ownership."
+        subtitle="GEA was born from a simple conviction: you were never meant to stay the same. Jewelry should evolve with you - access, not ownership."
       />
 
       <TornPaperEdge className="max-w-[1440px] mx-auto" />
@@ -99,13 +100,13 @@ const About = () => {
                   in her footsteps, but the world has changed. Women are more mobile, selective, and conscious.
                 </p>
                 <p className="text-[13px] text-foreground font-sans leading-[1.8] mb-6 relative z-[1]">
-                  We want beauty without waste, luxury without guilt, and self-expression without clutter -
+                  We want beauty without waste, evolution without guilt, and self-expression without clutter -
                   yet jewelry is still stuck in old habits of ownership and accumulation.
                 </p>
                 <p className="text-[13px] text-foreground font-sans leading-[1.8] relative z-[1]">
-                  So I created a brand that reimagines luxury as access, not ownership - curated high-design
-                  jewelry that moves with your life, evolves with your taste, and carries no burden. Access is
-                  luxury. Presence is the only possession that matters.
+                  So I created a brand built on access, not ownership - curated high-design
+                  jewelry that moves with your life, evolves with your taste, and carries no burden. You are
+                  always becoming. Presence is the only possession that matters.
                 </p>
               </div>
               <img
@@ -122,6 +123,7 @@ const About = () => {
 
       <DiamondChainBorder className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16" />
 
+      <BloomDivider />
       <SectionHeading label="Doctrine" heading="What We Stand For" />
       <DotGridTexture className="max-w-[1440px] mx-auto" dotSize={0.6} spacing={24}>
         <section className="px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
@@ -149,7 +151,7 @@ const About = () => {
         </WashiTapeNote>
         <div className="max-w-md">
           <MarginNote attribution="GEA Founder">
-            Access is luxury. Presence is the only possession that matters.
+            You are always becoming. Presence is the only possession that matters.
           </MarginNote>
         </div>
       </div>
@@ -184,9 +186,9 @@ const About = () => {
           <AnimateIn variant="fadeUp" delay={0.15} duration={0.8}>
             <HandDrawnFrame strokeColor="hsl(36,25%,78%)">
               <blockquote className="font-serif text-2xl md:text-3xl lg:text-4xl font-medium leading-[1.2] tracking-[-0.01em] max-w-[700px] mx-auto mb-6 italic">
-                "We do not sell jewelry. We grant access to a life more{" "}
+                "We do not sell jewelry. We dress a life in{" "}
                 <ScribbleUnderline color="var(--brass)" delay={0.6}>
-                  beautifully adorned
+                  full bloom
                 </ScribbleUnderline>{" "}
                 - without the weight of ownership, without the guilt of extraction, without the anxiety of
                 accumulation."

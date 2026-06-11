@@ -23,10 +23,11 @@ export const GardenSticker = ({
   const v = variants[variant];
   return (
     <span
-      className={`inline-block rounded-full px-4 py-1 font-script text-[1.05rem] leading-snug text-foreground ${className}`}
+      className={`inline-block border border-dashed px-4 py-1 font-script text-[1.05rem] leading-snug text-foreground ${className}`}
       style={{
         background: v.bg,
-        boxShadow: `0 2px 0 ${v.shadow}`,
+        borderColor: v.shadow,
+        boxShadow: `2px 2px 0 ${v.shadow}`,
         transform: `rotate(${rotation}deg)`,
         fontFamily: "var(--font-script)",
       }}

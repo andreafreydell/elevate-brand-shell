@@ -19,26 +19,34 @@ import { BloomDivider } from "@/components/craft/BloomDivider";
 import { GardenSticker } from "@/components/craft/GardenSticker";
 import { Loader2 } from "lucide-react";
 
-const proofPlaceholderCards = [
+const outAndAboutCards = [
   {
-    label: "Mock Quote 01",
-    title: "\"I got compliments all day, but it still felt easy enough for everyday.\"",
-    body: "Use this as the first testimonial placeholder. It captures the everyday-wear plus compliments theme that shows up again and again in competitor review language.",
+    name: "Harper",
+    place: "Miami",
+    occasion: "gallery night",
+    quote: "\"Wore my rented rainbow tennis necklace to an opening in Wynwood and two strangers asked where it was from. Felt like the art was wearing me back.\"",
+    note: "most-loved piece, 3 months running",
   },
   {
-    label: "Mock Quote 02",
-    title: "\"The stack looked polished in seconds and felt lighter than I expected.\"",
-    body: "Use this as the UGC-style placeholder. It reflects the comfort, lightweight feel, and instant styling payoff people respond to.",
+    name: "June",
+    place: "Austin",
+    occasion: "rooftop dinner",
+    quote: "\"Tried the rings-on-a-chain trick for a birthday dinner on South Congress. Three rings, one chain, endless compliments. My new signature, honestly.\"",
+    note: "from the styling challenge",
   },
   {
-    label: "Mock Quote 03",
-    title: "\"I tried pieces I would never have bought blind, and now I know exactly what suits me.\"",
-    body: "Use this as the discovery placeholder. It sells experimentation, confidence, and the value of trying trends before committing.",
+    name: "Margot",
+    place: "Charleston",
+    occasion: "garden wedding",
+    quote: "\"Rented the daisy enamel huggies for a friend's wedding instead of buying something I'd wear once. Danced all night. Sent them back Monday with zero regret.\"",
+    note: "rented, loved, returned",
   },
   {
-    label: "Mock Quote 04",
-    title: "\"The tennis necklace surprised me most - sparkly, comfortable, and easy to layer with everything.\"",
-    body: "Use this as the most-kept placeholder. It leans into sparkle, versatility, and the kind of piece members end up reaching for constantly.",
+    name: "Sloane",
+    place: "New York",
+    occasion: "big presentation",
+    quote: "\"One architectural cuff for the boardroom, one soft pearl drop for dinner after. I tried pieces I'd never have bought blind — now I know exactly what suits the woman I'm becoming.\"",
+    note: "her becoming brief, worn",
   },
 ];
 
@@ -140,21 +148,35 @@ const Index = () => {
           <WavyDivider className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 mt-4" />
           <SectionHeading label="Community" heading="The Edit" headingMobile />
           <ProductImageRow products={products} />
+          <SectionHeading label="Out & About ✿" heading="Where Members Are Going" headingMobile />
           <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-              {proofPlaceholderCards.map((item, index) => (
-                <div key={item.label} className="border border-border bg-card p-6 md:p-8">
+              {outAndAboutCards.map((item) => (
+                <div
+                  key={item.name}
+                  className="relative border border-dashed bg-card p-6 md:p-8"
+                  style={{
+                    borderColor: "var(--poppy)",
+                    background: "linear-gradient(180deg, var(--rose-soft) 0%, hsl(var(--card)) 38%)",
+                  }}
+                >
+                  <p
+                    className="mb-1 text-[1.15rem]"
+                    style={{ fontFamily: "var(--font-script)", color: "var(--poppy-deep)" }}
+                  >
+                    {item.name}, {item.place} ✿
+                  </p>
                   <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                    {item.label}
+                    {item.occasion}
                   </p>
-                  <h3 className="mb-3 font-serif text-lg font-semibold tracking-[0.02em]">
-                    {item.title}
+                  <h3 className="mb-3 font-serif text-lg font-semibold tracking-[0.02em] italic">
+                    {item.quote}
                   </h3>
-                  <p className="font-sans text-[12px] leading-relaxed text-muted-foreground">
-                    {item.body}
-                  </p>
-                  <p className="mt-4 font-sans text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
-                    Slot {String(index + 1).padStart(2, "0")}
+                  <p
+                    className="mt-4 text-[1rem]"
+                    style={{ fontFamily: "var(--font-script)", color: "var(--meadow)" }}
+                  >
+                    — {item.note}
                   </p>
                 </div>
               ))}
@@ -170,15 +192,12 @@ const Index = () => {
           <div className="mb-5">
             <GardenSticker variant="rose" rotation={-2}>new for members ✿</GardenSticker>
           </div>
-          <h2
-            className="mb-4 text-3xl md:text-4xl font-light italic tracking-[-0.02em] leading-[1.05] text-foreground"
-            style={{ fontFamily: "var(--font-display)", fontVariationSettings: '"opsz" 144, "SOFT" 70, "WONK" 1' }}
-          >
+          <h2 className="mb-4 font-serif text-3xl md:text-4xl font-medium italic tracking-[-0.01em] leading-[1.05] text-foreground">
             The Next Chapter
           </h2>
           <p
-            className="mb-2 text-xl text-[var(--poppy-deep)]"
-            style={{ fontFamily: "var(--font-script)" }}
+            className="mb-2 text-xl"
+            style={{ fontFamily: "var(--font-script)", color: "var(--poppy-deep)" }}
           >
             a notebook for the journey ✿
           </p>
@@ -186,10 +205,11 @@ const Index = () => {
             A monthly companion written for who you're becoming — styling challenges, gentle goals, jewelry rituals, and word from members out in the world.
           </p>
           <a
-            href="/next-chapter/"
-            className="inline-block rounded-full bg-[var(--poppy)] px-8 py-3 font-serif text-[14px] italic text-[#faf4e8] shadow-[0_4px_0_var(--poppy-deep)] transition-transform hover:-translate-y-0.5"
+            href="/next-chapter/index.html"
+            className="inline-block border px-8 py-3 font-sans text-[11px] uppercase tracking-[0.2em] text-[#faf4e8] transition-colors"
+            style={{ background: "var(--poppy)", borderColor: "var(--poppy-deep)" }}
           >
-            Start my notebook ✿
+            Start My Notebook ✿
           </a>
         </AnimateIn>
       </section>

@@ -172,13 +172,13 @@ const categories: { label: string; sectionLabel: string; items: FAQItem[] }[] = 
     ],
   },
   {
-    label: "The Stacking Edit",
+    label: "The Next Chapter",
     sectionLabel: "Newsletter & Launch",
     items: [
       {
-        question: "What is The Stacking Edit?",
+        question: "What is The Next Chapter?",
         answer:
-          "The Stacking Edit is our style newsletter. It covers trending ways to wear jewelry, stack formulas, notable pieces, and first access to launch updates.",
+          "The Next Chapter is your monthly notebook for the journey — a member companion with styling challenges, gentle goals, jewelry rituals, and news from members out in the world. Answer a few questions, receive your Becoming Profile, and a new chapter arrives each month, written for who you're becoming.",
       },
       {
         question: "What do subscribers receive?",
@@ -188,7 +188,7 @@ const categories: { label: string; sectionLabel: string; items: FAQItem[] }[] = 
       {
         question: "Does subscribing start a membership?",
         answer:
-          "No. The Stacking Edit is free and separate from membership. It helps you learn the styling point of view first, then decide if membership is right for you.",
+          "No. The Next Chapter is free and separate from membership. It lets you experience the GEA point of view first — then decide if membership is right for you.",
       },
       {
         question: "Can launch pricing or offers change?",

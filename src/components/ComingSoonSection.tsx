@@ -16,6 +16,7 @@ export const ComingSoonSection = () => {
     setError("");
     try {
       const result = await saveFoundingAccessEmail(email, "coming-soon");
+      window.location.href = `/next-chapter/index.html?email=${encodeURIComponent(email)}`;
       if (!result.success) throw new Error(result.error);
       setSubmitted(true);
     } catch {
@@ -60,23 +61,23 @@ export const ComingSoonSection = () => {
         </div>
       </section>
 
-      {/* Stacking Edit CTA */}
+      {/* The Next Chapter CTA */}
       <section className="bg-[hsl(28,22%,34%)]">
         <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-20 md:py-28 text-center">
           <AnimateIn variant="fadeIn" duration={0.8}>
             <p className="text-[10px] tracking-[0.4em] uppercase text-[hsl(36,25%,78%)] mb-6 font-sans font-medium">
-              The Stacking Edit
+              The Next Chapter <span aria-hidden="true" style={{ color: "var(--poppy)" }}>✿</span>
             </p>
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.15} duration={0.8}>
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium leading-[1.1] tracking-[-0.01em] text-[hsl(36,33%,93%)] mb-4">
-              Get the Trend Report.
+              Start Your Notebook.
             </h2>
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.3} duration={0.8}>
             <p className="text-[13px] text-[hsl(36,20%,75%)] font-sans max-w-[480px] mx-auto mb-3 leading-relaxed">
-              Sign up for stack formulas, trend-led styling notes, and the first look
-              at the jewelry looks everyone will be copying next.
+              A monthly companion written for who you're becoming — styling challenges,
+              gentle goals, jewelry rituals, and word from members out in the world.
             </p>
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.4} duration={0.8}>
@@ -88,7 +89,7 @@ export const ComingSoonSection = () => {
           <AnimateIn variant="fadeUp" delay={0.5} duration={0.8}>
             {submitted ? (
               <p className="text-[11px] tracking-[0.2em] uppercase font-sans text-[hsl(36,33%,93%)]">
-                {error || "You're on the edit. Watch for the first stack report, beta note, and style quiz invite soon."}
+                {error || "Your notebook is open. Watch for your first chapter, style quiz invite, and beta note soon."}
               </p>
             ) : (
               <form onSubmit={handleSubmit} className="max-w-[480px] mx-auto flex flex-col sm:flex-row gap-3">
@@ -105,7 +106,7 @@ export const ComingSoonSection = () => {
                   disabled={loading}
                   className="border border-[hsl(36,25%,78%)] text-[hsl(28,22%,34%)] bg-[hsl(36,25%,78%)] px-8 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans font-medium hover:bg-transparent hover:text-[hsl(36,25%,78%)] transition-colors whitespace-nowrap disabled:opacity-50"
                 >
-                  {loading ? "Submitting..." : "Get the Edit"}
+                  {loading ? "Opening..." : "Start My Notebook"}
                 </button>
               </form>
             )}

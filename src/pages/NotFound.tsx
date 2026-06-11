@@ -51,8 +51,8 @@ const NotFound = () => {
               <Link to="/how-it-works" className="btn-gea">
                 See Membership
               </Link>
-              <Link to="/#stacking-edit" className="btn-gea-outline">
-                Get the Stacking Edit
+              <Link to="/#next-chapter" className="btn-gea-outline">
+                Start The Next Chapter
               </Link>
             </div>
           </HandDrawnFrame>

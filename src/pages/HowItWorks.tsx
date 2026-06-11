@@ -3,6 +3,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { PageHero } from "@/components/layout/PageHero";
 import { SectionHeading } from "@/components/layout/SectionHeading";
+import { BloomDivider } from "@/components/craft/BloomDivider";
 import { StepBlock } from "@/components/shared/StepBlock";
 import { TrustStrip } from "@/components/shared/TrustStrip";
 import { OfferUnit } from "@/components/membership/OfferUnit";
@@ -149,7 +150,7 @@ const HowItWorks = () => {
             Design
           </>
         }
-        subtitle="Five steps between you and curated high-design jewelry. Just access."
+        subtitle="Five steps between you and curated high-design jewelry. Just access - for every version of you."
         heroMobileCompact
       />
 
@@ -269,9 +270,9 @@ const HowItWorks = () => {
         <div className="relative z-[1] mx-auto max-w-[1440px] px-5 py-16 text-center sm:px-6 md:px-12 md:py-24 lg:px-16">
           <HandDrawnFrame strokeColor="hsl(var(--foreground))">
             <h2 className="mb-4 font-serif text-3xl font-medium tracking-[-0.01em] text-ink md:text-4xl lg:text-5xl">
-              Access Is{"\n"}The New{" "}
+              You're Allowed{"\n"}to{" "}
               <ScribbleUnderline color="var(--brass)" delay={0.5}>
-                Luxury
+                Evolve
               </ScribbleUnderline>
             </h2>
             <p className="mx-auto mb-10 max-w-content font-sans text-[13px] leading-relaxed text-muted-foreground">
@@ -294,8 +295,8 @@ const HowItWorks = () => {
             Member Access
           </h2>
           <p className="mx-auto mb-10 max-w-content font-sans text-[13px] leading-relaxed text-[hsl(36,20%,75%)]">
-            We are opening our doors to members who believe luxury is not about
-            owning more - it is about accessing better. Launch pricing, early
+            We are opening our doors to members who believe style is not about
+            owning more - it is about becoming more. Launch pricing, early
             access, priority selection, and member benefits - attached to your
             account from day one.
           </p>
@@ -308,6 +309,7 @@ const HowItWorks = () => {
         </div>
       </section>
 
+      <BloomDivider />
       <SectionHeading label="Your Guarantee" heading="The 5 Trust Standards" />
       <DotGridTexture className="mx-auto max-w-[1440px]" dotSize={0.5} spacing={22}>
         <section className="px-5 pb-16 sm:px-6 md:px-12 lg:px-16">

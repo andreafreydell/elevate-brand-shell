@@ -74,10 +74,10 @@ export const EmailCapturePopup = () => {
           )}
         >
           <DialogPrimitive.Title className="sr-only">
-            The Stacking Edit beta subscription
+            The Next Chapter beta invitation
           </DialogPrimitive.Title>
           <DialogPrimitive.Description className="sr-only">
-            Enter your email to get The Stacking Edit, join the beta path, take the style quiz, and unlock the tennis necklace offer.
+            Enter your email to start The Next Chapter, join the beta path, take the style quiz, and unlock the tennis necklace offer.
           </DialogPrimitive.Description>
 
           <DialogPrimitive.Close
@@ -89,15 +89,15 @@ export const EmailCapturePopup = () => {
 
           <div className="text-center">
             <p className="mb-3 text-[10px] tracking-[0.25em] uppercase font-sans text-muted-foreground">
-              The Stacking Edit Beta
+              The Next Chapter · Beta
             </p>
             <h2 className="font-serif text-2xl md:text-3xl font-medium tracking-[0.02em] text-foreground">
               Take the style quiz. Join the beta. Receive a complimentary tennis necklace.
             </h2>
             <p className="mx-auto mt-4 max-w-[380px] text-sm leading-relaxed font-sans text-muted-foreground">
-              Subscribe to The Stacking Edit for trend-led stack ideas, early styling notes,
-              and what&apos;s rising now. Then take the style quiz and connect with our team
-              to join the private beta segment and receive a complimentary tennis necklace.
+              Start The Next Chapter — a monthly notebook written for who you're becoming,
+              with styling challenges, jewelry rituals, and gentle goals. Then take the style quiz
+              and connect with our team to join the private beta segment and receive a complimentary tennis necklace.
             </p>
             <Link
               to="/how-it-works"
@@ -109,10 +109,10 @@ export const EmailCapturePopup = () => {
             {submitted ? (
               <div className="mt-8 border border-border px-6 py-5">
                 <p className="font-serif text-lg text-foreground">
-                  You&apos;re on the edit.
+                  Your notebook is open. ✿
                 </p>
                 <p className="mt-2 text-sm font-sans text-muted-foreground">
-                  Watch for your first Stacking Edit email, style quiz invite, and beta instructions.
+                  Watch for your first chapter, style quiz invite, and beta instructions.
                 </p>
               </div>
             ) : (

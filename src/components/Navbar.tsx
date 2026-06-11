@@ -171,7 +171,7 @@ export const Navbar = () => {
           ))}
 
           <a
-            href="/next-chapter/"
+            href="/next-chapter/index.html"
             className={`${getNavLinkClass(false)} inline-flex items-center gap-1`}
           >
             The Next Chapter
@@ -239,7 +239,7 @@ export const Navbar = () => {
               ))}
 
               <a
-                href="/next-chapter/"
+                href="/next-chapter/index.html"
                 className="block py-3 text-[12px] tracking-[0.18em] uppercase font-sans text-foreground hover:text-muted-foreground transition-colors border-b border-border/40"
               >
                 The Next Chapter <span aria-hidden="true" className="text-[var(--poppy)]">✿</span>

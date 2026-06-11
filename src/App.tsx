@@ -46,11 +46,19 @@ const ScrollToTop = () => {
 
 const queryClient = new QueryClient();
 
+const NextChapterRedirect = () => {
+  useEffect(() => {
+    window.location.replace("/next-chapter/index.html");
+  }, []);
+  return null;
+};
+
 const AppContent = () => {
   useCartSync();
   return (
     <Routes>
       <Route path="/" element={<Index />} />
+      <Route path="/next-chapter/*" element={<NextChapterRedirect />} />
       <Route path="/admin/rental-ops" element={<AdminRentalOps />} />
       <Route path="/product/:handle" element={<ProductDetail />} />
       <Route path="/how-it-works" element={<HowItWorks />} />
