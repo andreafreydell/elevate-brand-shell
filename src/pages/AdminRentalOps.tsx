@@ -319,7 +319,7 @@ const DataCell = ({ label, value }: { label: string; value: string }) => (
 );
 
 const AdminRentalOps = () => {
-  const [accessGranted, setAccessGranted] = useState(() => localStorage.getItem(ADMIN_STORAGE_KEY) === "true");
+  const [accessGranted, setAccessGranted] = useState(() => (localStorage.getItem(ADMIN_STORAGE_KEY) ?? "") !== "");
   const [passcode, setPasscode] = useState("");
   const [passcodeError, setPasscodeError] = useState(false);
 
