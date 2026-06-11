@@ -1,6 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
-  <circle cx="32" cy="32" r="28" fill="#C54A3D" opacity="0.65" />
-  <circle cx="32" cy="32" r="22" stroke="hsl(36,28%,90%)" stroke-width="0.5" fill="none" opacity="0.4" />
-  <circle cx="32" cy="32" r="18" stroke="hsl(36,28%,90%)" stroke-width="0.3" fill="none" opacity="0.25" />
-  <text x="32" y="40" text-anchor="middle" font-family="serif" font-size="26" font-weight="400" fill="hsl(36,28%,90%)" opacity="0.9">G</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="0" fill="#f3ead9"/>
+  <g transform="translate(32 33)">
+    <ellipse cx="0" cy="-13" rx="8" ry="12" fill="#e0705a"/>
+    <ellipse cx="12.4" cy="-4" rx="8" ry="12" fill="#e0705a" transform="rotate(72)"/>
+    <ellipse cx="7.6" cy="10.5" rx="8" ry="12" fill="#e0705a" transform="rotate(144)"/>
+    <ellipse cx="-7.6" cy="10.5" rx="8" ry="12" fill="#f0b4a6" transform="rotate(216)"/>
+    <ellipse cx="-12.4" cy="-4" rx="8" ry="12" fill="#e0705a" transform="rotate(288)"/>
+    <circle r="6.5" fill="#c08f45"/>
+  </g>
 </svg>

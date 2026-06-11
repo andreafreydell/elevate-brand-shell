@@ -41,15 +41,22 @@ const NotFound = () => {
         <GrainOverlay opacity={0.03} />
         <div className="relative z-[1] mx-auto max-w-[1440px] px-5 py-16 text-center sm:px-6 md:px-12 md:py-24 lg:px-16">
           <HandDrawnFrame strokeColor="hsl(var(--foreground))">
-            <h2 className="mb-4 font-serif text-2xl font-medium md:text-3xl">
+            <h2 className="mb-2 font-serif text-2xl font-medium md:text-3xl">
               Pick up from the strongest next step
             </h2>
+            <p className="mb-5 text-[1.25rem]" style={{ fontFamily: "var(--font-script)", color: "var(--poppy-deep)" }}>
+              even wrong turns can bloom ✿
+            </p>
             <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
               <Link to="/browse" className="btn-gea-outline">
                 Browse the Vault
               </Link>
-              <Link to="/how-it-works" className="btn-gea">
-                See Membership
+              <Link
+                to="/how-it-works"
+                className="inline-block border px-8 py-3 text-[11px] tracking-[0.2em] uppercase font-sans text-[#faf4e8] transition-transform hover:-translate-y-0.5"
+                style={{ background: "var(--poppy)", borderColor: "var(--poppy-deep)", boxShadow: "4px 4px 0 var(--poppy-deep)" }}
+              >
+                See Membership ✿
               </Link>
               <Link to="/#next-chapter" className="btn-gea-outline">
                 Start The Next Chapter

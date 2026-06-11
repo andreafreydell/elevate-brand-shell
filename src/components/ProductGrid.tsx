@@ -197,7 +197,12 @@ export const ProductGrid = ({
         </div>
         {showFilters && filtered.length === 0 && products.length > 0 && (
           <div className="text-center py-16">
-            <p className="text-sm tracking-wider uppercase text-muted-foreground">No pieces match your filters</p>
+            <p className="mb-2 text-[1.4rem]" style={{ fontFamily: "var(--font-script)", color: "var(--poppy-deep)" }}>
+              nothing blooming here yet ✿
+            </p>
+            <p className="text-sm tracking-wider uppercase text-muted-foreground">
+              Try loosening a filter or two — the garden is bigger than it looks
+            </p>
           </div>
         )}
         {hasNextPage && (

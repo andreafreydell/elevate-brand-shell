@@ -38,6 +38,7 @@ export const EmailCapturePopup = () => {
     setError("");
 
     const result = await saveFoundingAccessEmail(email, `popup:${pathname}`);
+    window.location.href = `/next-chapter/index.html?email=${encodeURIComponent(email)}`;
 
     if (result.success) {
       setSubmitted(true);
@@ -74,10 +75,10 @@ export const EmailCapturePopup = () => {
           )}
         >
           <DialogPrimitive.Title className="sr-only">
-            The Next Chapter beta invitation
+            The Next Chapter invitation
           </DialogPrimitive.Title>
           <DialogPrimitive.Description className="sr-only">
-            Enter your email to start The Next Chapter, join the beta path, take the style quiz, and unlock the tennis necklace offer.
+            Enter your email to open The Next Chapter — your free notebook for the journey, before you ever join.
           </DialogPrimitive.Description>
 
           <DialogPrimitive.Close
@@ -89,15 +90,16 @@ export const EmailCapturePopup = () => {
 
           <div className="text-center">
             <p className="mb-3 text-[10px] tracking-[0.25em] uppercase font-sans text-muted-foreground">
-              The Next Chapter · Beta
+              The Next Chapter · Free ✿
             </p>
             <h2 className="font-serif text-2xl md:text-3xl font-medium tracking-[0.02em] text-foreground">
-              Take the style quiz. Join the beta. Receive a complimentary tennis necklace.
+              Most brands ask you to buy. We ask who you’re becoming.
             </h2>
             <p className="mx-auto mt-4 max-w-[380px] text-sm leading-relaxed font-sans text-muted-foreground">
-              Start The Next Chapter — a monthly notebook written for who you're becoming,
-              with styling challenges, jewelry rituals, and gentle goals. Then take the style quiz
-              and connect with our team to join the private beta segment and receive a complimentary tennis necklace.
+              Three minutes of lovely questions. A Becoming Profile that reads like a letter
+              written just for you. And your first chapter — styling challenges, gentle goals,
+              jewelry rituals — open tonight, free, before you spend a cent. No two members
+              read the same notebook.
             </p>
             <Link
               to="/how-it-works"
@@ -112,7 +114,7 @@ export const EmailCapturePopup = () => {
                   Your notebook is open. ✿
                 </p>
                 <p className="mt-2 text-sm font-sans text-muted-foreground">
-                  Watch for your first chapter, style quiz invite, and beta instructions.
+                  Your notebook is opening…
                 </p>
               </div>
             ) : (
@@ -138,7 +140,7 @@ export const EmailCapturePopup = () => {
                   {loading ? "Submitting..." : "Get the Edit"}
                 </button>
                 <p className="mt-3 text-center font-sans text-[11px] text-muted-foreground">
-                  Beta bonus: subscribe, take the style quiz, and connect with our team to join the private beta segment and receive a complimentary tennis necklace.
+                  Free forever — membership is a separate love story ✿
                 </p>
                 <p className="mt-3 text-center font-sans text-[11px] text-muted-foreground">
                   We respect your privacy. Read our{" "}

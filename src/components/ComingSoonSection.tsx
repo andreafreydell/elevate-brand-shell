@@ -82,7 +82,7 @@ export const ComingSoonSection = () => {
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.4} duration={0.8}>
             <p className="text-[11px] text-[hsl(36,20%,75%)] font-sans max-w-[460px] mx-auto mb-10 leading-relaxed">
-              Beta bonus: take the style quiz and connect with our team to join the private beta segment and receive a complimentary tennis necklace.
+              Free before you ever join: answer a few lovely questions and your first chapter opens tonight — no two members read the same notebook.
             </p>
           </AnimateIn>
 
