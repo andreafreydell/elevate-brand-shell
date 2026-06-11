@@ -22,7 +22,7 @@ const Privacy = () => {
       title="Privacy Policy"
       seoTitle="Privacy Policy - GEA | How We Protect Your Information"
       description="GEA's Privacy Policy explains what data we collect, how we use it, which services we work with, and your rights. Written in plain language, not legalese."
-      lastUpdated="March 2026"
+      lastUpdated="June 2026"
       intro={
         <>
           <LegalParagraph>
@@ -45,6 +45,7 @@ const Privacy = () => {
             "Account details: name, email address, shipping address, phone number",
             "Payment information: processed securely through Stripe (we do not store your card details)",
             "Style preferences: taste profile responses, piece selections, keep history",
+            "Becoming Profile & chapter responses: answers you share in The Next Chapter (including free-text responses), used to personalize your monthly chapters",
             "Communications: messages you send us, survey responses, review content",
           ]}
         />
@@ -56,7 +57,7 @@ const Privacy = () => {
           items={[
             "Usage data: pages visited, features used, clicks, scroll depth, time on page",
             "Device data: browser type, operating system, screen resolution, IP address",
-            "Session recordings: anonymized recordings of how you interact with our site (mouse movements, clicks, scrolls) - used to improve the experience, never to identify you personally",
+            "Session recordings: masked recordings of how you interact with our site (mouse movements, clicks, scrolls), with personal information masked - used to improve the experience, not to identify you",
             "Referral data: how you arrived at our site (direct, social media, email, referral link)",
           ]}
         />
@@ -117,7 +118,7 @@ const Privacy = () => {
               </a>
             </span>,
             <span key="klaviyo">
-              <strong>Klaviyo</strong> - Email and SMS communications. Manages
+              <strong>Klaviyo</strong> - Email communications. Manages
               our email flows including welcome messages, shipping
               notifications, styling content, and promotional campaigns.{" "}
               <a
@@ -140,7 +141,7 @@ const Privacy = () => {
             </span>,
             <span key="ga4">
               <strong>Google Analytics 4</strong> - Website analytics. Tracks
-              anonymized usage patterns (page views, events, conversions) to
+              pseudonymized usage patterns (page views, events, conversions) to
               help us understand how members use the site.{" "}
               <a
                 href="https://policies.google.com/privacy"
@@ -151,7 +152,7 @@ const Privacy = () => {
             </span>,
             <span key="clarity">
               <strong>Microsoft Clarity</strong> - Session recording and
-              heatmaps. Records anonymized user sessions to identify usability
+              heatmaps. Records masked user sessions to identify usability
               issues. All personal information is masked.{" "}
               <a
                 href="https://privacy.microsoft.com/privacystatement"
@@ -162,8 +163,8 @@ const Privacy = () => {
             </span>,
             <span key="supabase">
               <strong>Supabase</strong> - Data infrastructure. Hosts our member
-              database, product catalog, and operational data with row-level
-              security.{" "}
+              database, product catalog, and operational data with restricted
+              access controls.{" "}
               <a href="https://supabase.com/privacy" {...externalLinkProps}>
                 Supabase Privacy Policy
               </a>
@@ -221,7 +222,7 @@ const Privacy = () => {
         </LegalParagraph>
       </LegalSection>
 
-      <LegalSection number="5" title="Email & SMS Communications">
+      <LegalSection number="5" title="Email Communications">
         <LegalSubheading>What you will receive</LegalSubheading>
         <LegalList
           items={[
@@ -311,7 +312,7 @@ const Privacy = () => {
         <LegalList
           items={[
             "Payment data is processed by Stripe under PCI-DSS Level 1 compliance",
-            "Database access is protected by row-level security policies",
+            "Database access is restricted through authentication and access controls",
             "All data transmitted between your browser and our servers is encrypted via HTTPS/TLS",
             "Access to member data is restricted to authorized personnel only",
           ]}
@@ -331,7 +332,7 @@ const Privacy = () => {
           items={[
             "Account and membership data: retained for 3 years for legal and tax compliance",
             "Payment records: retained as required by financial regulations",
-            "Analytics data: anonymized and retained indefinitely",
+            "Analytics data: pseudonymized; retained in aggregate form",
             "Marketing preferences: deleted upon request",
           ]}
         />
