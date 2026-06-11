@@ -158,8 +158,9 @@ const HowItWorks = () => {
 
       <div id="tiers">
         <SectionHeading
-          label="Choose Your Tier"
+          label="Choose Your Tier ✿"
           heading="Your Level of Access"
+          script="pick your pace — one favorite is always yours to keep ✿"
           className="section-heading-your-level"
         />
       </div>
@@ -184,8 +185,9 @@ const HowItWorks = () => {
       />
 
       <SectionHeading
-        label="How Access Works"
+        label="How Access Works ✿"
         heading="Choose. Receive. Wear. Keep. Refresh."
+        script="five little steps, zero burden ✿"
         headingMobile
         className="section-heading-how-it-works"
         labelClassName="section-heading-how-it-works-label"
@@ -302,15 +304,16 @@ const HowItWorks = () => {
           </p>
           <Link
             to="/how-it-works#tiers"
-            className="inline-block border border-[hsl(36,25%,78%)] px-10 py-3.5 font-sans text-[11px] uppercase tracking-[0.2em] text-[hsl(36,25%,78%)] transition-colors hover:bg-[hsl(36,25%,78%)] hover:text-[hsl(28,22%,34%)]"
+            className="inline-block border px-10 py-3.5 font-sans text-[11px] uppercase tracking-[0.2em] text-[#faf4e8] transition-transform hover:-translate-y-0.5"
+            style={{ background: "var(--poppy)", borderColor: "var(--poppy-deep)", boxShadow: "4px 4px 0 var(--poppy-deep)" }}
           >
-            Join Now
+            Join Now ✿
           </Link>
         </div>
       </section>
 
       <BloomDivider />
-      <SectionHeading label="Your Guarantee" heading="The 5 Trust Standards" />
+      <SectionHeading label="Your Guarantee ✿" heading="The 5 Trust Standards" script="so you can play without worry ✿" />
       <DotGridTexture className="mx-auto max-w-[1440px]" dotSize={0.5} spacing={22}>
         <section className="px-5 pb-16 sm:px-6 md:px-12 lg:px-16">
           <div className="flex flex-col gap-2 md:hidden">
@@ -367,7 +370,7 @@ const HowItWorks = () => {
 
       <StitchLineDivider className="mx-auto max-w-[1440px] px-5 sm:px-6 md:px-12 lg:px-16" />
 
-      <SectionHeading label="Common Questions" heading="Everything You Need to Know" />
+      <SectionHeading label="Common Questions ✿" heading="Everything You Need to Know" script="ask us anything, really ✿" />
       <section className="mx-auto max-w-[1440px] px-5 pb-16 sm:px-6 md:px-12 lg:px-16">
         <AccordionFAQ items={faqItems} />
       </section>

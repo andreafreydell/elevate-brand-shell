@@ -66,7 +66,7 @@ const About = () => {
 
       <TornPaperEdge className="max-w-[1440px] mx-auto" />
 
-      <SectionHeading label="Origin" heading="The Founder's Story" />
+      <SectionHeading label="Origin ✿" heading="The Founder's Story" script="where the garden was planted ✿" />
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-[2px]">
           <AnimateIn variant="fadeIn" duration={0.6}>
@@ -124,7 +124,7 @@ const About = () => {
       <DiamondChainBorder className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16" />
 
       <BloomDivider />
-      <SectionHeading label="Doctrine" heading="What We Stand For" />
+      <SectionHeading label="Doctrine ✿" heading="What We Stand For" script="our promises, pressed in ink ✿" />
       <DotGridTexture className="max-w-[1440px] mx-auto" dotSize={0.6} spacing={24}>
         <section className="px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -156,7 +156,7 @@ const About = () => {
         </div>
       </div>
 
-      <SectionHeading label="In Plain English" heading="What GEA Means for You" />
+      <SectionHeading label="In Plain English ✿" heading="What GEA Means for You" script="no fine print energy here ✿" />
       <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
         <AnimateIn variant="fadeUp" duration={0.6}>
           <HandDrawnFrame strokeColor="hsl(var(--foreground))">
@@ -216,8 +216,12 @@ const About = () => {
                 keep-your-favorite, care, and what each tier includes.
               </p>
               <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
-                <Link to="/how-it-works" className="btn-gea">
-                  See Membership
+                <Link
+                  to="/how-it-works"
+                  className="inline-block border px-8 py-3 text-[11px] tracking-[0.2em] uppercase font-sans text-[#faf4e8] transition-transform hover:-translate-y-0.5"
+                  style={{ background: "var(--poppy)", borderColor: "var(--poppy-deep)", boxShadow: "4px 4px 0 var(--poppy-deep)" }}
+                >
+                  See Membership ✿
                 </Link>
                 <Link to="/browse" className="btn-gea-outline">
                   Browse the Vault
