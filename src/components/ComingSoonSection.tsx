@@ -76,8 +76,8 @@ export const ComingSoonSection = () => {
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.3} duration={0.8}>
             <p className="text-[13px] text-[hsl(36,20%,75%)] font-sans max-w-[480px] mx-auto mb-3 leading-relaxed">
-              Not a newsletter — a notebook with your name in it. Your Becoming Profile,
-              then a new chapter every month: about you, not about us.
+              Not a newsletter — an interactive notebook made custom for you. Earmark,
+              annotate, write back — a new chapter monthly, by your stylist & founder.
             </p>
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.4} duration={0.8}>

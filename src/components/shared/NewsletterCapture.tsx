@@ -64,10 +64,11 @@ export const NewsletterCapture = () => {
             Write your new chapter.
           </h3>
           <p className="text-[12px] text-muted-foreground font-sans mb-3 leading-relaxed max-w-[460px] mx-auto">
-            Not a newsletter — a notebook with your name in it. Tell us who you're becoming,
-            and GEA reads you back: your Becoming Profile, then a new chapter every month —
-            what to wear for the life you're stepping into, gentle goals, little rituals,
-            and what women in bloom are loving right now.
+            Not a newsletter — an interactive notebook made custom for you and the woman
+            you're becoming. Earmark the styles you love, annotate your gentle goals, vote on
+            what comes next — and write back whenever you like; every note gets read. A new
+            chapter arrives monthly, written by your stylist: GEA's founder and a hopeless
+            jewelry expert.
           </p>
           <p className="text-[12px] font-sans mb-8 leading-relaxed max-w-[460px] mx-auto font-medium text-foreground">
             About you, not about us. No two members read the same notebook.
@@ -114,7 +115,7 @@ export const NewsletterCapture = () => {
                 className="mt-5 text-[1.05rem]"
                 style={{ fontFamily: "var(--font-script)", color: "var(--meadow)" }}
               >
-                takes about three minutes — your first chapter is waiting ✿
+                three lovely minutes — your first chapter is waiting. yours truly ✿
               </p>
               <p className="mt-4 font-sans text-[11px] text-muted-foreground">
                 Already have a notebook?{" "}

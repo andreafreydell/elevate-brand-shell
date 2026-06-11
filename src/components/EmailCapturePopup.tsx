@@ -96,10 +96,10 @@ export const EmailCapturePopup = () => {
               Your next chapter is already waiting.
             </h2>
             <p className="mx-auto mt-4 max-w-[380px] text-sm leading-relaxed font-sans text-muted-foreground">
-              Not a newsletter — a notebook with your name in it. Three lovely minutes of
-              questions, and GEA reads you back: your Becoming Profile tonight, then a new
-              chapter every month — what to wear for the life you're stepping into, gentle
-              goals, little rituals. About you, not about us.
+              Not a newsletter — an interactive notebook made custom for you and the woman
+              you're becoming. Earmark styles, annotate goals, even write back — every note
+              gets read. A new chapter monthly, written by your stylist: GEA's founder and a
+              hopeless jewelry expert. About you, not about us.
             </p>
             <Link
               to="/how-it-works"

@@ -1316,7 +1316,7 @@
         <div class="index-cell" onclick="scrollToId('sec-tips')"><div class="index-icon">✨</div><div class="index-title">Jewelry Rituals</div></div>
         <div class="index-cell" onclick="scrollToId('sec-community')"><div class="index-icon">💌</div><div class="index-title">Out & About</div></div>
         <div class="index-cell" onclick="scrollToId('sec-vote')"><div class="index-icon">🗳️</div><div class="index-title">Your Vote</div></div>
-        <div class="index-cell" onclick="scrollToId('sec-note')"><div class="index-icon">🖋️</div><div class="index-title">Leave a Note</div></div>
+        <div class="index-cell" onclick="scrollToId('sec-note')"><div class="index-icon">🖋️</div><div class="index-title">Write Back</div></div>
       </nav>
 
       <!-- STYLING CHALLENGE -->
@@ -1345,7 +1345,7 @@
             <div class="style-card-eyebrow">The signature move</div>
             <h4 class="style-card-title">Rings on a Chain</h4>
             <p class="style-card-body">Take two or three rings you love — different colors, different moods — and <em>thread them onto a necklace chain</em>. They become a charm story at your collarbone, and they chime a little when you move. Mismatched is the point.</p>
-            <span class="style-card-action" onclick="saveAction(this, 'style-rings-chain')">+ save to my notebook</span>
+            <span class="style-card-action" onclick="saveAction(this, 'style-rings-chain')">+ earmark this ✿</span>
             <div class="style-card-hand">no rules here</div>
           </div>
 
@@ -1368,7 +1368,7 @@
             <div class="style-card-eyebrow">The color clash</div>
             <h4 class="style-card-title">Beads Meet Gold</h4>
             <p class="style-card-body">Layer a <em>colorful beaded strand</em> — coral, rainbow gems, whatever makes you smile — right against a polished gold chain. The "shouldn't work" pairing is exactly what makes people lean in and ask.</p>
-            <span class="style-card-action" onclick="saveAction(this, 'style-beads-gold')">+ save to my notebook</span>
+            <span class="style-card-action" onclick="saveAction(this, 'style-beads-gold')">+ earmark this ✿</span>
             <div class="style-card-hand">opposites attract ✿</div>
           </div>
 
@@ -1390,7 +1390,7 @@
             <div class="style-card-eyebrow">The conversation starter</div>
             <h4 class="style-card-title">The Mismatched Ear</h4>
             <p class="style-card-body">One <em>long drop</em> on the left, one <em>tiny stud</em> on the right. Asymmetry reads as confidence — like you know the rules well enough to break them sweetly. Stack a second stud if you have the piercing.</p>
-            <span class="style-card-action" onclick="saveAction(this, 'style-mismatch-ear')">+ save to my notebook</span>
+            <span class="style-card-action" onclick="saveAction(this, 'style-mismatch-ear')">+ earmark this ✿</span>
             <div class="style-card-hand">dare you ✿</div>
           </div>
 
@@ -1564,7 +1564,7 @@
       <!-- NOTE -->
       <article class="contribute" id="sec-note">
         <div class="contribute-eyebrow">— before you go —</div>
-        <h3 class="contribute-title">Leave us a <em>note.</em></h3>
+        <h3 class="contribute-title">Write <em>back.</em></h3>
         <p class="contribute-sub">One little line — what made you smile this chapter, what you'd love more of. Your words help write Chapter Two.</p>
         <input type="text" class="contribute-input" id="contributeInput" placeholder="dear GEA…" maxlength="200">
         <br>
@@ -1583,7 +1583,8 @@
       <!-- COLOPHON -->
       <footer class="colophon">
         <div class="divider-bloom">❀ ✿ ❀</div>
-        <p class="colophon-text">Chapter Two arrives with your next drop — written for who you're becoming, shaped by what you saved, checked, voted, and whispered to us here.</p>
+        <p class="colophon-text">Chapter Two arrives with your next drop — written for who you're becoming, shaped by what you earmarked, checked, voted, and whispered back to us here.</p>
+        <p class="colophon-text" style="font-family: var(--hand); font-size: 1.35rem; color: var(--poppy-deep); margin-top: 0.6rem;">yours truly — your stylist, founder & jewelry obsessive ✿</p>
         <button class="contribute-submit" id="monthlyBtn" onclick="requestMonthly()" style="margin-bottom:1.5rem;">Get My Next Chapter ✿</button>
         <div class="contribute-confirm" id="monthlyConfirm">— your next chapter is being written ✿ it arrives in your inbox within a few days, and monthly from then on</div>
         <p class="colophon-meta">GEA · The Next Chapter · Vol. I · No. 01 · <span>for <span id="composedFor">you</span></span></p>
