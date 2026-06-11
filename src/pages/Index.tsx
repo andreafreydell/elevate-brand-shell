@@ -15,8 +15,6 @@ import { StitchLineDivider } from "@/components/craft/StitchLineDivider";
 import { WashiTapeNote } from "@/components/craft/WashiTapeNote";
 import { HandDrawnFrame } from "@/components/craft/HandDrawnFrame";
 import { SwayingStems } from "@/components/craft/SwayingStems";
-import { BloomDivider } from "@/components/craft/BloomDivider";
-import { GardenSticker } from "@/components/craft/GardenSticker";
 import { Loader2 } from "lucide-react";
 
 const outAndAboutCards = [
@@ -78,7 +76,7 @@ const Index = () => {
 
       <StitchLineDivider className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16" />
 
-      <SectionHeading label="Craft" heading="What Your Pieces Are Made of" />
+      <SectionHeading label="Craft ✿" heading="What Your Pieces Are Made of" script="made to be worn, loved, returned, reborn ✿" />
       <section className="material-section-mobile max-w-[1180px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-10">
         <StaggerContainer className="material-grid-mobile grid grid-cols-1 md:grid-cols-3 gap-3">
           <StaggerItem>
@@ -146,9 +144,9 @@ const Index = () => {
       ) : products.length > 0 ? (
         <>
           <WavyDivider className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 mt-4" />
-          <SectionHeading label="Community" heading="The Edit" headingMobile />
+          <SectionHeading label="Community ✿" heading="The Edit" script="what members are wearing right now" headingMobile />
           <ProductImageRow products={products} />
-          <SectionHeading label="Out & About ✿" heading="Where Members Are Going" headingMobile />
+          <SectionHeading label="Out & About ✿" heading="Where Members Are Going" script="postcards from the journey ✿" headingMobile />
           <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
               {outAndAboutCards.map((item) => (
@@ -185,35 +183,6 @@ const Index = () => {
         </>
       ) : null}
 
-      <BloomDivider />
-
-      <section className="relative max-w-[760px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-20 text-center">
-        <AnimateIn variant="fadeUp" duration={0.6}>
-          <div className="mb-5">
-            <GardenSticker variant="rose" rotation={-2}>new for members ✿</GardenSticker>
-          </div>
-          <h2 className="mb-4 font-serif text-3xl md:text-4xl font-medium italic tracking-[-0.01em] leading-[1.05] text-foreground">
-            The Next Chapter
-          </h2>
-          <p
-            className="mb-2 text-xl"
-            style={{ fontFamily: "var(--font-script)", color: "var(--poppy-deep)" }}
-          >
-            a notebook for the journey ✿
-          </p>
-          <p className="mx-auto mb-8 max-w-[440px] font-sans text-[12px] leading-relaxed text-muted-foreground md:text-[13px]">
-            A monthly companion written for who you're becoming — styling challenges, gentle goals, jewelry rituals, and word from members out in the world.
-          </p>
-          <a
-            href="/next-chapter/index.html"
-            className="inline-block border px-8 py-3 font-sans text-[11px] uppercase tracking-[0.2em] text-[#faf4e8] transition-colors"
-            style={{ background: "var(--poppy)", borderColor: "var(--poppy-deep)" }}
-          >
-            Start My Notebook ✿
-          </a>
-        </AnimateIn>
-      </section>
-
       <section className="hidden md:block bg-[hsl(28,22%,34%)] relative overflow-hidden">
         <GrainOverlay opacity={0.04} />
         <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-20 md:py-28 text-center relative z-[1]">
@@ -228,9 +197,10 @@ const Index = () => {
                 </p>
                 <Link
                   to="/how-it-works"
-                  className="inline-block border border-[hsl(36,25%,78%)] text-[hsl(36,25%,78%)] px-10 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans hover:bg-[hsl(36,25%,78%)] hover:text-[hsl(28,22%,34%)] transition-colors"
+                  className="inline-block border px-10 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans text-[#faf4e8] transition-transform hover:-translate-y-0.5"
+                  style={{ background: "var(--poppy)", borderColor: "var(--poppy-deep)", boxShadow: "4px 4px 0 var(--poppy-deep)" }}
                 >
-                  See Membership
+                  See Membership ✿
                 </Link>
               </div>
             </HandDrawnFrame>

@@ -47,7 +47,7 @@ const getNavLinkClass = (isActive: boolean) =>
   }`;
 
 const membershipCtaClass =
-  "inline-flex items-center justify-center border border-foreground px-4 py-2 text-[10px] tracking-[0.18em] uppercase font-sans text-foreground transition-colors hover:bg-foreground hover:text-background";
+  "inline-flex items-center justify-center border px-4 py-2 text-[10px] tracking-[0.18em] uppercase font-sans text-[#faf4e8] transition-transform hover:-translate-y-px bg-[var(--poppy)] border-[var(--poppy-deep)] shadow-[2px_2px_0_var(--poppy-deep)]";
 
 const getOccasionHref = (occasion: string) =>
   `/occasions/${encodeURIComponent(occasion)}`;

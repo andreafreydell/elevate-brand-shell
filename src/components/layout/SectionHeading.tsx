@@ -3,12 +3,13 @@ import { AnimateIn } from "@/components/shared/AnimateIn";
 interface SectionHeadingProps {
   label?: string;
   heading: string;
+  script?: string;
   className?: string;
   headingMobile?: boolean;
   labelClassName?: string;
 }
 
-export const SectionHeading = ({ label, heading, className = "", headingMobile = false, labelClassName = "" }: SectionHeadingProps) => {
+export const SectionHeading = ({ label, heading, script, className = "", headingMobile = false, labelClassName = "" }: SectionHeadingProps) => {
   return (
     <AnimateIn variant="fadeUp" duration={0.5}>
       <div className={`max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pt-8 md:pt-24 pb-4 md:pb-10 text-center ${className}`}>
@@ -18,6 +19,11 @@ export const SectionHeading = ({ label, heading, className = "", headingMobile =
           </p>
         )}
         <h2 className={`section-heading ${headingMobile ? 'section-heading-mobile' : ''}`}>{heading}</h2>
+        {script && (
+          <p className="mt-2 text-[1.2rem]" style={{ fontFamily: "var(--font-script)", color: "var(--poppy-deep)" }}>
+            {script}
+          </p>
+        )}
       </div>
     </AnimateIn>
   );

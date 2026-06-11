@@ -47,12 +47,15 @@ export const NewsletterCapture = () => {
             a notebook for the journey ✿
           </p>
           <h3 className="font-serif text-xl md:text-2xl tracking-[0.04em] font-medium mb-3">
-            A monthly companion, written for who you're becoming.
+            We don't send newsletters. We write you chapters.
           </h3>
-          <p className="text-[12px] text-muted-foreground font-sans mb-8 leading-relaxed max-w-[460px] mx-auto">
-            Answer a few playful questions, receive your Becoming Profile, and open your first
-            chapter — styling challenges, gentle goals, jewelry rituals, and word from members
-            out in the world.
+          <p className="text-[12px] text-muted-foreground font-sans mb-3 leading-relaxed max-w-[460px] mx-auto">
+            Tell us who you're becoming — your rooms, your rituals, your style — and GEA writes
+            your story back to you, one chapter a month: styling challenges, gentle goals, and
+            pieces chosen for the woman you're turning into.
+          </p>
+          <p className="text-[12px] font-sans mb-8 leading-relaxed max-w-[460px] mx-auto font-medium text-foreground">
+            No two members read the same notebook.
           </p>
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-3 max-w-[440px] mx-auto">
@@ -76,9 +79,10 @@ export const NewsletterCapture = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="btn-gea whitespace-nowrap rounded-none disabled:opacity-50"
+                className="whitespace-nowrap rounded-none border px-8 py-3 text-[11px] tracking-[0.2em] uppercase font-sans text-[#faf4e8] transition-transform hover:-translate-y-0.5 disabled:opacity-50"
+                style={{ background: "var(--poppy)", borderColor: "var(--poppy-deep)", boxShadow: "4px 4px 0 var(--poppy-deep)" }}
               >
-                {loading ? "Opening..." : "Start My Notebook"}
+                {loading ? "Opening..." : "Start My Notebook ✿"}
               </button>
             </div>
           </form>

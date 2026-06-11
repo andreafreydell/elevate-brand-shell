@@ -374,14 +374,15 @@ export const LandingScrollVideoHero = () => {
             <br />
             Because you were never meant to stay the same.
           </p>
-          <p className="mx-auto mb-7 max-w-[460px] font-sans text-[10px] uppercase tracking-[0.18em] text-[hsl(36,25%,84%)] md:text-[11px]">
-            Wear more. Try everything. Keep becoming.
+          <p className="mx-auto mb-7 max-w-[460px] text-[1.3rem] md:text-[1.5rem]" style={{ fontFamily: "var(--font-script)", color: "var(--rose)" }}>
+            wear more. try everything. keep becoming ✿
           </p>
           <Link
             to="/browse"
-            className="inline-block border border-[hsl(36,25%,84%)] px-8 py-3 font-sans text-[10px] uppercase tracking-[0.2em] text-[hsl(36,25%,86%)] transition-colors hover:bg-[hsl(36,25%,86%)] hover:text-[hsl(28,22%,34%)] md:px-10 md:py-3.5 md:text-[11px]"
+            className="inline-block border px-8 py-3 font-sans text-[10px] uppercase tracking-[0.2em] text-[#faf4e8] transition-transform hover:-translate-y-0.5 md:px-10 md:py-3.5 md:text-[11px]"
+            style={{ background: "var(--poppy)", borderColor: "var(--poppy-deep)", boxShadow: "4px 4px 0 hsl(30 12% 10% / 0.45)" }}
           >
-            Browse the Collection
+            Browse the Collection ✿
           </Link>
           <p className="mx-auto mt-5 max-w-[420px] font-sans text-[11px] leading-relaxed text-[hsl(36,25%,86%)] md:text-[12px]">
             Membership from $65/mo. Choose 5 or 10 pieces each cycle. Keep 1 favorite.
