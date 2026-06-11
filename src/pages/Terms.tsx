@@ -17,7 +17,7 @@ const Terms = () => {
       title="Terms of Service"
       seoTitle="Terms of Service - GEA | Fashion-House Jewelry Access"
       description="Read GEA's Terms of Service. Clear, plain-language terms covering membership, access, billing, piece care, shipping, returns, and your rights as a GEA member."
-      lastUpdated="March 2026"
+      lastUpdated="June 2026"
       intro={
         <>
           <LegalParagraph>
@@ -134,15 +134,20 @@ const Terms = () => {
 
         <LegalSubheading className="mt-8">Normal wear</LegalSubheading>
         <LegalParagraph>
-          On us. We expect pieces to show signs of normal, careful use. You
-          will never be charged for standard wear.
+          On us. We expect pieces to show signs of normal, careful use, and
+          normal wear and tear is covered for up to one affected piece per
+          package, per cycle. Uses outside normal wear — such as exposure to
+          salt water, chemical contact, or unprotected storage during travel —
+          are not covered. If something happens, contact us first: our team
+          will work with you on a solution.
         </LegalParagraph>
 
         <LegalSubheading className="mt-8">Repairable damage</LegalSubheading>
         <LegalParagraph>
-          If a piece is damaged beyond normal wear but can be repaired, a fixed
-          repair fee applies. This fee is disclosed in your account before
-          checkout and is never a surprise.
+          If a piece is damaged beyond normal wear but can be repaired, or
+          more than one piece in a package is affected, a fixed repair fee may
+          apply. A fee schedule is available in your account, and any assessed
+          fee is communicated to you before it is charged — never a surprise.
         </LegalParagraph>
 
         <LegalSubheading className="mt-8">Loss or theft</LegalSubheading>
@@ -232,6 +237,17 @@ const Terms = () => {
           logos, and brand elements - is the property of GEA LLC and protected
           by intellectual property laws. You may not reproduce, distribute, or
           create derivative works from our content without written permission.
+        </LegalParagraph>
+      </LegalSection>
+
+      <LegalSection number="8.1" title="The Next Chapter">
+        <LegalParagraph>
+          The Next Chapter is an optional, free member experience. Participation
+          is not required for membership. Answers you provide — including your
+          Becoming Profile and chapter responses — are used to personalize your
+          monthly chapters and are handled as described in our Privacy Policy.
+          You can request deletion of this information at any time by emailing
+          concierge@geagems.com.
         </LegalParagraph>
       </LegalSection>
 
