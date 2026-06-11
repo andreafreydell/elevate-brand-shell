@@ -204,7 +204,7 @@ const HowItWorks = () => {
           <StepBlock
             number="02"
             title="Receive"
-            description="Your selections typically arrive within 2-5 business days, freshly restored and sealed in our signature packaging."
+            description="Your selections typically arrive within 2-5 business days, restored and sealed in our signature packaging — with a free gift in every delivery: earring backs and hypoallergenic comfort patches, so your lobes stay happy and beautiful. Usage instructions arrive with your first shipment email."
             icon={Package}
           />
           <StepBlock

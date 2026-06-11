@@ -82,6 +82,11 @@ const categories: { label: string; sectionLabel: string; items: FAQItem[] }[] = 
           "Your pieces arrive in GEA signature packaging with a care card, secure storage, and a prepaid return label.",
       },
       {
+        question: "Is there really a gift in every delivery?",
+        answer:
+          "Yes — every package includes a free gift: earring backs and hypoallergenic comfort patches, for beautiful-looking lobes and easier wear if your ears are sensitive. Simple usage instructions arrive with your first shipment email. A small thing, every time, because unboxing should feel like a little ceremony.",
+      },
+      {
         question: "Is shipping free?",
         answer:
           "Yes. Shipping is free on every delivery and every return. No hidden fees and no surprise shipping charges.",

@@ -61,7 +61,7 @@ export const NewsletterCapture = () => {
             a notebook for the journey ✿
           </p>
           <h3 className="font-serif text-xl md:text-2xl tracking-[0.04em] font-medium mb-3">
-            We don't send newsletters. We write you chapters.
+            We don't send newsletters. We write new chapters.
           </h3>
           <p className="text-[12px] text-muted-foreground font-sans mb-3 leading-relaxed max-w-[460px] mx-auto">
             Tell us who you're becoming — your rooms, your rituals, your style — and GEA writes

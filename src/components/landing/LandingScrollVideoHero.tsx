@@ -15,6 +15,7 @@ import {
   Sparkles,
   Truck,
   Zap,
+  Gift,
 } from "lucide-react";
 import { CircleEmphasis } from "@/components/craft/CircleEmphasis";
 import { ScribbleUnderline } from "@/components/craft/ScribbleUnderline";
@@ -31,7 +32,7 @@ const steps = [
   {
     number: "02",
     title: "Receive",
-    description: "Your selections typically arrive within 2-5 business days, restored and sealed in our signature packaging.",
+    description: "Your selections typically arrive within 2-5 business days, sealed in signature packaging — with a little gift inside, every time: earring backs and comfort patches for happy, beautiful lobes.",
     icon: Package,
   },
   {
@@ -78,6 +79,7 @@ const assurances = [
   { icon: Truck, text: "Free Shipping Both Ways" },
   { icon: Ban, text: "Cancel Anytime" },
   { icon: CalendarPlus, text: "One 30-Day Cycle" },
+  { icon: Gift, text: "A Gift Every Delivery" },
 ];
 
 const freedomBlocks = [
@@ -514,7 +516,7 @@ export const LandingScrollVideoHero = () => {
             ))}
           </div>
 
-          <div className="mt-5 grid grid-cols-2 gap-2 md:grid-cols-4">
+          <div className="mt-5 grid grid-cols-2 gap-2 md:grid-cols-5">
             {assurances.map((item) => (
               <div
                 key={item.text}

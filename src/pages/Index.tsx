@@ -71,7 +71,7 @@ const Index = () => {
 
   return (
     <PageLayout>
-      <SwayingStems density="light" />
+      <SwayingStems density="full" />
       <LandingScrollVideoHero />
 
       <StitchLineDivider className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16" />

@@ -2,7 +2,7 @@
  * SwayingStems — Digital Garden companion system
  * Fixed, gently swaying flower stems along the viewport edges.
  * Decorative only (aria-hidden, pointer-events: none).
- * Density: "full" (6 stems, desktop) | "light" (2 stems, subtle).
+ * Density: "full" (8 stems, desktop) | "light" (2 stems, subtle).
  */
 export const SwayingStems = ({ density = "full" }: { density?: "full" | "light" }) => {
   return (
@@ -124,6 +124,39 @@ export const SwayingStems = ({ density = "full" }: { density?: "full" | "light" 
                 <ellipse cx="5.3" cy="7.3" rx="5" ry="7.5" fill="var(--peri)" transform="rotate(144)" />
                 <ellipse cx="-5.3" cy="7.3" rx="5" ry="7.5" fill="var(--peri-soft)" transform="rotate(216)" />
                 <ellipse cx="-8.5" cy="-2.8" rx="5" ry="7.5" fill="var(--peri)" transform="rotate(288)" />
+              </g>
+            </svg>
+          </div>
+          {/* Lavender spike — left mid (notebook variety) */}
+          <div className="gea-stem" data-mobile-hide="true" style={{ left: "8%", height: "26vh", animationDuration: "7.4s", animationDelay: "-2.8s", opacity: 0.42 }}>
+            <svg viewBox="0 0 40 260" xmlns="http://www.w3.org/2000/svg" style={{ height: "100%", width: "auto", display: "block" }}>
+              <path d="M20 260 C 18 190, 23 130, 20 50" stroke="var(--meadow)" strokeWidth="2" fill="none" />
+              <path d="M20 200 C 12 194, 6 196, 2 203 C 10 208, 16 205, 20 200" fill="var(--meadow-soft)" />
+              <ellipse cx="20" cy="44" rx="5" ry="7" fill="var(--peri)" />
+              <ellipse cx="14" cy="58" rx="4.5" ry="6.5" fill="var(--peri-soft)" />
+              <ellipse cx="26" cy="60" rx="4.5" ry="6.5" fill="var(--peri)" />
+              <ellipse cx="16" cy="76" rx="4" ry="6" fill="var(--peri)" />
+              <ellipse cx="25" cy="80" rx="4" ry="6" fill="var(--peri-soft)" />
+              <ellipse cx="19" cy="94" rx="3.5" ry="5.5" fill="var(--peri)" />
+            </svg>
+          </div>
+
+          {/* Seedhead — right mid (notebook variety) */}
+          <div className="gea-stem" data-mobile-hide="true" style={{ right: "9%", height: "27vh", animationDuration: "8.4s", animationDelay: "-5s", opacity: 0.4 }}>
+            <svg viewBox="0 0 50 270" xmlns="http://www.w3.org/2000/svg" style={{ height: "100%", width: "auto", display: "block" }}>
+              <path d="M25 270 C 27 200, 22 140, 25 70" stroke="var(--meadow)" strokeWidth="2" fill="none" />
+              <g transform="translate(25 60)">
+                <circle r="6" fill="var(--honey)" />
+                <g stroke="var(--rose)" strokeWidth="1.4" opacity="0.9">
+                  <line x1="0" y1="0" x2="0" y2="-17" /><line x1="0" y1="0" x2="12" y2="-12" />
+                  <line x1="0" y1="0" x2="17" y2="0" /><line x1="0" y1="0" x2="12" y2="12" />
+                  <line x1="0" y1="0" x2="0" y2="17" /><line x1="0" y1="0" x2="-12" y2="12" />
+                  <line x1="0" y1="0" x2="-17" y2="0" /><line x1="0" y1="0" x2="-12" y2="-12" />
+                </g>
+                <circle cx="0" cy="-17" r="2.4" fill="var(--rose-soft)" /><circle cx="12" cy="-12" r="2.4" fill="var(--rose)" />
+                <circle cx="17" cy="0" r="2.4" fill="var(--rose-soft)" /><circle cx="12" cy="12" r="2.4" fill="var(--rose)" />
+                <circle cx="0" cy="17" r="2.4" fill="var(--rose-soft)" /><circle cx="-12" cy="12" r="2.4" fill="var(--rose)" />
+                <circle cx="-17" cy="0" r="2.4" fill="var(--rose-soft)" /><circle cx="-12" cy="-12" r="2.4" fill="var(--rose)" />
               </g>
             </svg>
           </div>
