@@ -13,7 +13,7 @@ export const NewsletterCapture = () => {
     if (!email) return;
     setLoading(true);
     try {
-      await saveFoundingAccessEmail(email, "next-chapter-monthly");
+      await saveFoundingAccessEmail(email, "next-chapter-monthly", name || undefined);
     } catch {
       // non-blocking
     } finally {
@@ -28,7 +28,7 @@ export const NewsletterCapture = () => {
 
     setLoading(true);
     try {
-      const result = await saveFoundingAccessEmail(email, "next-chapter");
+      const result = await saveFoundingAccessEmail(email, "next-chapter", name);
       if (!result.success) throw new Error(result.error);
     } catch {
       // Capture failure shouldn't block the experience.
