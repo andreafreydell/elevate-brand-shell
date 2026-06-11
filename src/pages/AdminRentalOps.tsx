@@ -728,8 +728,11 @@ const AdminRentalOps = () => {
 
   const handlePasscodeSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    if (passcode.trim() === ADMIN_PASSCODE) {
-      localStorage.setItem(ADMIN_STORAGE_KEY, "true");
+    const entered = passcode.trim();
+    if (entered === ADMIN_PASSCODE) {
+      // Store the passcode itself; it is required to authenticate every
+      // request to the protected rental-ops-data backend function.
+      localStorage.setItem(ADMIN_STORAGE_KEY, entered);
       setAccessGranted(true);
       setPasscodeError(false);
       return;
@@ -737,6 +740,7 @@ const AdminRentalOps = () => {
 
     setPasscodeError(true);
   };
+
 
   if (!accessGranted) {
     return (
