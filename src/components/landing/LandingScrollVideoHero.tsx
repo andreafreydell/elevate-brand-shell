@@ -283,8 +283,8 @@ export const LandingScrollVideoHero = () => {
       return;
     }
 
-    const timeoutId = window.setTimeout(preloadFrames, 600);
-    return () => window.clearTimeout(timeoutId);
+    const timeoutId = setTimeout(preloadFrames, 600);
+    return () => clearTimeout(timeoutId);
   }, [useVideoScrub]);
 
   useEffect(() => {
