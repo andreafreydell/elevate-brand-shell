@@ -2,6 +2,7 @@ import { PageLayout } from "@/components/layout/PageLayout";
 import { ProductGrid } from "@/components/ProductGrid";
 import { ReactNode } from "react";
 import { GrainOverlay } from "@/components/craft/GrainOverlay";
+import { StackingTip } from "@/components/craft/StackingTip";
 
 interface CategoryPageProps {
   title: string;
@@ -25,6 +26,7 @@ const CategoryPage = ({ title, subtitle, productType, headline }: CategoryPagePr
         </p>
       </div>
     </section>
+    <StackingTip productType={productType} />
     <ProductGrid
       query={`product_type:${productType}`}
       heading={title}

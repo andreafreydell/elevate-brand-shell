@@ -92,7 +92,7 @@ const AppContent = () => {
       />
       <Route
         path="/bracelets"
-        element={<CategoryPage title="Bracelets" subtitle="Bangles, cuffs, and tennis bracelets — effortless luxury." productType="Bracelet" />}
+        element={<CategoryPage title="Bracelets" subtitle="Bangles, cuffs, and tennis bracelets — a garden for your wrist." productType="Bracelet" />}
       />
       <Route
         path="/sunglasses"
