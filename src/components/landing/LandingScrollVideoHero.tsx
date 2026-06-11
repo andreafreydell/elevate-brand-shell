@@ -396,24 +396,27 @@ export const LandingScrollVideoHero = () => {
         <section className="mx-auto max-w-[1180px] py-24 md:py-32">
           <div className="mb-8 text-center">
             <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-[hsl(36,33%,93%)]">
-              The Process
+              The Process <span aria-hidden="true" style={{ color: "var(--rose)" }}>✿</span>
             </p>
             <h2 className="font-serif text-2xl uppercase tracking-[0.08em] text-[hsl(36,33%,93%)] md:text-4xl">
               How It Works
             </h2>
+            <p className="mt-2 text-[1.25rem]" style={{ fontFamily: "var(--font-script)", color: "var(--rose)" }}>
+              five little steps, zero burden ✿
+            </p>
           </div>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
             {steps.map((step) => (
               <div
                 key={step.number}
-                className="border border-border bg-background p-4 text-foreground shadow-[0_18px_50px_hsl(30_12%_10%_/_0.18)] md:p-5"
-                style={{ textShadow: "none" }}
+                className="border border-dashed bg-background p-4 text-foreground shadow-[0_18px_50px_hsl(30_12%_10%_/_0.18)] md:p-5"
+                style={{ textShadow: "none", borderColor: "var(--poppy)", background: "linear-gradient(180deg, var(--rose-soft) 0%, hsl(var(--background)) 32%)" }}
               >
                 <div className="mb-3 flex items-center justify-between">
                   <span className="font-sans text-[9px] uppercase tracking-[0.28em] text-muted-foreground">
                     Step {step.number}
                   </span>
-                  <step.icon className="h-4 w-4 stroke-[1.3] text-foreground" />
+                  <step.icon className="h-4 w-4 stroke-[1.3]" style={{ color: "var(--poppy-deep)" }} />
                 </div>
                 <h3 className="mb-2 font-serif text-base font-semibold tracking-[0.02em] md:text-lg">
                   {step.title}
@@ -429,7 +432,7 @@ export const LandingScrollVideoHero = () => {
               to="/how-it-works"
               className="inline-block border-b border-[hsl(36,25%,86%)] pb-1 font-sans text-[10px] uppercase tracking-[0.25em] text-[hsl(36,25%,86%)] transition-opacity hover:opacity-75 md:text-[11px]"
             >
-              Learn More
+              Learn More ✿
             </Link>
           </div>
         </section>
@@ -437,13 +440,13 @@ export const LandingScrollVideoHero = () => {
         <section className="mx-auto max-w-[1040px] py-24 md:py-32">
           <div className="mb-8 text-center">
             <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-[hsl(36,33%,93%)]">
-              Membership
+              Membership <span aria-hidden="true" style={{ color: "var(--rose)" }}>✿</span>
             </p>
             <h2 className="font-serif text-2xl uppercase tracking-[0.08em] text-[hsl(36,33%,93%)] md:text-4xl">
               Your Tier of Access
             </h2>
-            <p className="mx-auto mt-4 max-w-[560px] font-sans text-[12px] leading-relaxed text-[hsl(36,28%,88%)] md:text-[13px]">
-              Choose 5 or 10 pieces each cycle. One favorite is included to keep.
+            <p className="mt-2 text-[1.25rem]" style={{ fontFamily: "var(--font-script)", color: "var(--rose)" }}>
+              choose 5 or 10 pieces — one favorite is always yours to keep ✿
             </p>
           </div>
 
@@ -452,11 +455,19 @@ export const LandingScrollVideoHero = () => {
               <Link
                 key={tier.name}
                 to="/how-it-works#tiers"
-                className={`group block border border-border p-6 shadow-[0_18px_50px_hsl(30_12%_10%_/_0.18)] transition-transform hover:-translate-y-1 md:p-8 ${
-                  tier.highlighted ? "bg-foreground text-background" : "bg-background text-foreground"
+                className={`group relative block border p-6 shadow-[0_18px_50px_hsl(30_12%_10%_/_0.18)] transition-transform hover:-translate-y-1 md:p-8 ${
+                  tier.highlighted ? "border-dashed bg-foreground text-background" : "border-border bg-background text-foreground"
                 }`}
-                style={{ textShadow: "none" }}
+                style={{ textShadow: "none", ...(tier.highlighted ? { borderColor: "var(--poppy)" } : {}) }}
               >
+                {tier.highlighted && (
+                  <span
+                    className="absolute -top-4 left-6 inline-block border border-dashed px-3 py-0.5 text-[1rem]"
+                    style={{ fontFamily: "var(--font-script)", color: "var(--poppy-deep)", background: "var(--rose-soft)", borderColor: "var(--poppy)", transform: "rotate(-2deg)" }}
+                  >
+                    most loved ✿
+                  </span>
+                )}
                 <div className="mb-4 flex items-start justify-between gap-4">
                   <div>
                     <p
@@ -487,11 +498,10 @@ export const LandingScrollVideoHero = () => {
                   </span>
                 </p>
                 <p
-                  className={`mt-2 font-sans text-[11px] ${
-                    tier.highlighted ? "text-background/70" : "text-muted-foreground"
-                  }`}
+                  className="mt-2 text-[1.15rem]"
+                  style={{ fontFamily: "var(--font-script)", color: tier.highlighted ? "var(--rose)" : "var(--poppy-deep)" }}
                 >
-                  {tier.promoPrice}
+                  {tier.promoPrice} ✿
                 </p>
                 <p
                   className={`mt-4 font-sans text-[12px] leading-relaxed ${
@@ -520,24 +530,27 @@ export const LandingScrollVideoHero = () => {
         <section className="mx-auto max-w-[1120px] py-24 md:py-32">
           <div className="mb-8 text-center">
             <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-[hsl(36,33%,93%)]">
-              Freedom
+              Freedom <span aria-hidden="true" style={{ color: "var(--rose)" }}>✿</span>
             </p>
             <h2 className="font-serif text-2xl uppercase tracking-[0.08em] text-[hsl(36,33%,93%)] md:text-4xl">
               Wear More. Spend Smarter.
             </h2>
+            <p className="mt-2 text-[1.25rem]" style={{ fontFamily: "var(--font-script)", color: "var(--rose)" }}>
+              this is what blooming feels like ✿
+            </p>
           </div>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             {freedomBlocks.map((block) => (
               <div
                 key={block.title}
-                className="border border-border bg-background p-6 text-foreground shadow-[0_18px_50px_hsl(30_12%_10%_/_0.18)] md:p-8"
-                style={{ textShadow: "none" }}
+                className="border border-dashed bg-background p-6 text-foreground shadow-[0_18px_50px_hsl(30_12%_10%_/_0.18)] md:p-8"
+                style={{ textShadow: "none", borderColor: "var(--poppy)", background: "linear-gradient(180deg, var(--rose-soft) 0%, hsl(var(--background)) 36%)" }}
               >
                 <div className="mb-4 flex items-center justify-between">
                   <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                    {block.label}
+                    {block.label} <span aria-hidden="true" style={{ color: "var(--poppy)" }}>✿</span>
                   </p>
-                  <block.icon className="h-5 w-5 stroke-[1.3] text-foreground" />
+                  <block.icon className="h-5 w-5 stroke-[1.3]" style={{ color: "var(--poppy-deep)" }} />
                 </div>
                 <h3 className="mb-3 font-serif text-lg font-semibold tracking-[0.02em]">
                   {block.title}
@@ -553,11 +566,14 @@ export const LandingScrollVideoHero = () => {
         <section className="mx-auto max-w-[1120px] py-24 md:py-32">
           <div className="mb-8 text-center">
             <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-[hsl(36,33%,93%)]">
-              Philosophy
+              Philosophy <span aria-hidden="true" style={{ color: "var(--rose)" }}>✿</span>
             </p>
             <h2 className="font-serif text-2xl uppercase tracking-[0.08em] text-[hsl(36,33%,93%)] md:text-4xl">
               You're Allowed to Evolve
             </h2>
+            <p className="mt-2 text-[1.25rem]" style={{ fontFamily: "var(--font-script)", color: "var(--rose)" }}>
+              you were never meant to stay the same ✿
+            </p>
           </div>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div
