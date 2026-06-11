@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,200..900,30..100,0..1;1,9..144,200..900,30..100,0..1&display=swap');
 
 @font-face {
   font-family: 'Heiy';
@@ -74,6 +74,18 @@
     --sky: #BFD3E6;
     --brass: #B79B63;
     --tag-red: #C54A3D;
+
+    /* Digital Garden palette — The Next Chapter companion system */
+    --poppy: #e0705a;
+    --poppy-deep: #c75d4d;
+    --rose: #f0b4a6;
+    --rose-soft: #f7d4ca;
+    --peri: #8d9ed6;
+    --peri-soft: #c3cdf0;
+    --meadow: #7d8c5c;
+    --meadow-soft: #aab98a;
+    --honey: #c08f45;
+    --font-display: 'Fraunces', Georgia, serif;
 
     /* No rounded corners — architectural precision */
     --radius: 0rem;

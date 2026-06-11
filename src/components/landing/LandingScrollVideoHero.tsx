@@ -94,9 +94,9 @@ const freedomBlocks = [
     icon: CalendarPlus,
   },
   {
-    label: "Liberate",
-    title: "Luxury Without Burden",
-    text: "No storage anxiety. No depreciation. No buyer's remorse. Just beautiful jewelry, worn with intention, returned with ease.",
+    label: "Bloom",
+    title: "Beauty Without Burden",
+    text: "No storage anxiety. No depreciation. No buyer's remorse. Just beautiful jewelry, worn with intention, returned with ease — so there's always room to grow.",
     icon: Feather,
   },
 ];
@@ -361,21 +361,21 @@ export const LandingScrollVideoHero = () => {
       >
         <section className="mx-auto flex min-h-screen max-w-[760px] flex-col items-center justify-center py-24 text-center">
           <p className="mb-4 font-sans text-[10px] uppercase tracking-[0.4em] text-[hsl(36,33%,93%)] md:mb-8">
-            High-Design Jewelry Access
+            Jewelry For Who You're Becoming
           </p>
           <h1 className="hero-display mb-4 whitespace-pre-line text-[hsl(36,33%,93%)] md:mb-6">
-            Luxury,{"\n"}
+            Becoming,{"\n"}
             <ScribbleUnderline color="var(--brass)" delay={0.2}>
-              Accessed.
+              Adorned.
             </ScribbleUnderline>
           </h1>
           <p className="mx-auto mb-3 max-w-[440px] font-sans text-[12px] leading-relaxed text-[hsl(36,28%,88%)] md:text-[13px]">
             High-design jewelry you access, not own.
             <br />
-            For women who want beauty without burden.
+            For women in bloom — evolving, experimenting, expressing.
           </p>
           <p className="mx-auto mb-7 max-w-[460px] font-sans text-[10px] uppercase tracking-[0.18em] text-[hsl(36,25%,84%)] md:text-[11px]">
-            Wear more. Store less. Spend more intelligently.
+            Wear more. Try everything. Keep becoming.
           </p>
           <Link
             to="/browse"
@@ -555,7 +555,7 @@ export const LandingScrollVideoHero = () => {
               Philosophy
             </p>
             <h2 className="font-serif text-2xl uppercase tracking-[0.08em] text-[hsl(36,33%,93%)] md:text-4xl">
-              Access Defines Status
+              Adornment Is Self-Expression
             </h2>
           </div>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -570,10 +570,10 @@ export const LandingScrollVideoHero = () => {
                 <Scale className="h-5 w-5 stroke-[1.3] text-foreground" />
               </div>
               <h3 className="mb-4 font-serif text-xl font-semibold tracking-[0.02em] md:text-2xl">
-                Ownership Is a <CircleEmphasis color="var(--tag-red)">Liability</CircleEmphasis>
+                Ownership Is a <CircleEmphasis color="var(--tag-red)">Standstill</CircleEmphasis>
               </h3>
               <p className="font-sans text-[12px] leading-relaxed text-muted-foreground">
-                The average woman wears each piece of fine jewelry fewer than <ScriptNumber>5</ScriptNumber> times before it sits forgotten. Thousands spent. Inches of drawer space consumed. Value depreciating silently.
+                The average woman wears each piece of fine jewelry fewer than <ScriptNumber>5</ScriptNumber> times before it sits forgotten. One frozen identity. Inches of drawer space consumed. Beauty standing still while you keep evolving.
               </p>
             </div>
             <div
@@ -587,11 +587,11 @@ export const LandingScrollVideoHero = () => {
                 <Zap className="h-5 w-5 stroke-[1.3] text-background/70" />
               </div>
               <h3 className="mb-4 font-serif text-xl font-semibold tracking-[0.02em] text-background md:text-2xl">
-                Access Is <ScribbleUnderline color="var(--seafoam)" delay={0.5}>Intelligence</ScribbleUnderline>
+                Access Is <ScribbleUnderline color="var(--seafoam)" delay={0.5}>Evolution</ScribbleUnderline>
               </h3>
               <p className="font-sans text-[12px] leading-relaxed text-background/70">
-                Access the full vault. Wear what speaks to you this cycle. Keep the piece you love most, return the rest, and choose what is next.{" "}
-                <ScriptNumber className="text-background/90">10+</ScriptNumber> pieces per year. Presence over possession.
+                Access the full vault. Wear who you're becoming this cycle. Keep the piece you love most, return the rest, and keep blooming.{" "}
+                <ScriptNumber className="text-background/90">10+</ScriptNumber> pieces per year. Becoming over belonging.
               </p>
             </div>
           </div>

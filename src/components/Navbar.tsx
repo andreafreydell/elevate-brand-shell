@@ -170,6 +170,14 @@ export const Navbar = () => {
             </Link>
           ))}
 
+          <a
+            href="/next-chapter/"
+            className={`${getNavLinkClass(false)} inline-flex items-center gap-1`}
+          >
+            The Next Chapter
+            <span aria-hidden="true" className="text-[var(--poppy)] normal-case tracking-normal">✿</span>
+          </a>
+
           <div className="relative group">
             <button
               type="button"
@@ -229,6 +237,13 @@ export const Navbar = () => {
                   {item.label}
                 </Link>
               ))}
+
+              <a
+                href="/next-chapter/"
+                className="block py-3 text-[12px] tracking-[0.18em] uppercase font-sans text-foreground hover:text-muted-foreground transition-colors border-b border-border/40"
+              >
+                The Next Chapter <span aria-hidden="true" className="text-[var(--poppy)]">✿</span>
+              </a>
 
               <div className="border-b border-border/40 py-4">
                 <Link

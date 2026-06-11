@@ -14,6 +14,9 @@ import { OrganicBlobTag } from "@/components/craft/OrganicBlobTag";
 import { StitchLineDivider } from "@/components/craft/StitchLineDivider";
 import { WashiTapeNote } from "@/components/craft/WashiTapeNote";
 import { HandDrawnFrame } from "@/components/craft/HandDrawnFrame";
+import { SwayingStems } from "@/components/craft/SwayingStems";
+import { BloomDivider } from "@/components/craft/BloomDivider";
+import { GardenSticker } from "@/components/craft/GardenSticker";
 import { Loader2 } from "lucide-react";
 
 const proofPlaceholderCards = [
@@ -62,6 +65,7 @@ const Index = () => {
 
   return (
     <PageLayout>
+      <SwayingStems density="light" />
       <LandingScrollVideoHero />
 
       <StitchLineDivider className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16" />
@@ -158,6 +162,37 @@ const Index = () => {
           </section>
         </>
       ) : null}
+
+      <BloomDivider />
+
+      <section className="relative max-w-[760px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-20 text-center">
+        <AnimateIn variant="fadeUp" duration={0.6}>
+          <div className="mb-5">
+            <GardenSticker variant="rose" rotation={-2}>new for members ✿</GardenSticker>
+          </div>
+          <h2
+            className="mb-4 text-3xl md:text-4xl font-light italic tracking-[-0.02em] leading-[1.05] text-foreground"
+            style={{ fontFamily: "var(--font-display)", fontVariationSettings: '"opsz" 144, "SOFT" 70, "WONK" 1' }}
+          >
+            The Next Chapter
+          </h2>
+          <p
+            className="mb-2 text-xl text-[var(--poppy-deep)]"
+            style={{ fontFamily: "var(--font-script)" }}
+          >
+            a notebook for the journey ✿
+          </p>
+          <p className="mx-auto mb-8 max-w-[440px] font-sans text-[12px] leading-relaxed text-muted-foreground md:text-[13px]">
+            A monthly companion written for who you're becoming — styling challenges, gentle goals, jewelry rituals, and word from members out in the world.
+          </p>
+          <a
+            href="/next-chapter/"
+            className="inline-block rounded-full bg-[var(--poppy)] px-8 py-3 font-serif text-[14px] italic text-[#faf4e8] shadow-[0_4px_0_var(--poppy-deep)] transition-transform hover:-translate-y-0.5"
+          >
+            Start my notebook ✿
+          </a>
+        </AnimateIn>
+      </section>
 
       <section className="hidden md:block bg-[hsl(28,22%,34%)] relative overflow-hidden">
         <GrainOverlay opacity={0.04} />
