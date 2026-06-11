@@ -28,7 +28,7 @@ const Terms = () => {
             By creating an account, purchasing a membership, submitting information through our platform, or accessing any part of <strong>geagems.com</strong>, you agree to these Terms. If you do not agree, please do not use our services.
           </LegalParagraph>
           <LegalParagraph>
-            GEA is operated by <strong>GEA LLC</strong>, a Florida limited liability company
+            GEA is operated by <strong>AMBIENTE HOME LLC</strong>, a Florida limited liability company
             based in Key Biscayne, Florida.
           </LegalParagraph>
         </>
@@ -271,7 +271,7 @@ const Terms = () => {
 
       <LegalSection number="9" title="Intellectual Property">
         <LegalParagraph>
-          All content on <strong>geagems.com</strong>, including text, photography, design, logos, graphics, product descriptions, brand elements, and platform features, is the property of GEA LLC or its licensors and is protected by intellectual property laws.
+          All content on <strong>geagems.com</strong>, including text, photography, design, logos, graphics, product descriptions, brand elements, and platform features, is the property of AMBIENTE HOME LLC or its licensors and is protected by intellectual property laws.
         </LegalParagraph>
         <LegalParagraph>
           You may not reproduce, distribute, modify, display, sell, license, or create derivative works from our content without prior written permission.

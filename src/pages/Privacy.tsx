@@ -32,7 +32,7 @@ const Privacy = () => {
             clarity, not legalese.
           </LegalParagraph>
           <LegalParagraph>
-            GEA is operated by GEA LLC, a Florida limited liability company
+            GEA is operated by AMBIENTE HOME LLC, a Florida limited liability company
             based in Key Biscayne, Florida.
           </LegalParagraph>
         </>
@@ -371,7 +371,7 @@ const Privacy = () => {
             concierge@geagems.com
           </a>
         </LegalParagraph>
-        <LegalParagraph>Mail: GEA LLC, Key Biscayne, FL 33149</LegalParagraph>
+        <LegalParagraph>Mail: AMBIENTE HOME LLC, Key Biscayne, FL 33149</LegalParagraph>
       </LegalSection>
     </LegalDocument>
   );
