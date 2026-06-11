@@ -31,7 +31,7 @@ const steps = [
   {
     number: "02",
     title: "Receive",
-    description: "Your selections arrive in 1-3 days, freshly restored and sealed in our signature packaging.",
+    description: "Your selections typically arrive within 2-5 business days, restored and sealed in our signature packaging.",
     icon: Package,
   },
   {

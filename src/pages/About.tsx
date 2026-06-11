@@ -53,7 +53,8 @@ const About = () => {
   return (
     <PageLayout>
       <PageHero
-        label="The House"
+        label="The House ✿"
+        script="planted with love, growing with you ✿"
         headline={
           <>
             Dress the Woman

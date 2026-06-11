@@ -25,7 +25,7 @@ const steps = [
   {
     title: "Sanitize",
     description:
-      "Each piece is sanitized for hygienic wear using methods designed for shared luxury accessories, then cleared for presentation.",
+      "Each piece is sanitized for hygienic wear using methods designed for shared fine jewelry, then cleared for presentation.",
   },
   {
     title: "Restore Shine and Polish",
@@ -38,12 +38,13 @@ const CareRepair = () => {
   return (
     <PageLayout>
       <PageHero
-        label="The Atelier"
+        label="The Atelier ✿"
+        script="every piece comes home to rest ✿"
         headline={
           <>
-            Restored to
+            Restored with
             <br />
-            <ScribbleUnderline>Perfection</ScribbleUnderline>
+            <ScribbleUnderline>Devotion</ScribbleUnderline>
           </>
         }
         subtitle="Every returning piece passes through our 3-step sanitation ritual. What arrives at your door feels polished, hygienic, and ready to wear."
@@ -92,7 +93,7 @@ const CareRepair = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-[1]">
               <div>
                 <p className="text-[12px] text-foreground font-sans leading-relaxed mb-3">
-                  <strong>Wear freely.</strong> Normal wear is fully covered under your membership.
+                  <strong>Wear freely.</strong> Minor wear and tear is covered under your membership.
                   Don&apos;t be precious - that&apos;s our job.
                 </p>
                 <p className="text-[12px] text-foreground font-sans leading-relaxed">
@@ -136,13 +137,14 @@ const CareRepair = () => {
           <AnimateIn variant="fadeUp" duration={0.5}>
             <HandDrawnFrame strokeColor="hsl(var(--foreground))">
               <h2 className="font-serif text-2xl md:text-3xl tracking-[0.06em] uppercase font-medium mb-4">
-                Every Piece, Perfectly Prepared
+                Every Piece, Lovingly Prepared
               </h2>
               <p className="text-[12px] text-muted-foreground font-sans mb-8">
-                Repair included. Insurance included. That&apos;s the standard.
+                Care included. Repairs for minor wear included. That&apos;s the standard.
               </p>
-              <Link to="/how-it-works" className="btn-gea">
-                See Membership
+              <Link to="/how-it-works" className="inline-block border px-8 py-3 text-[11px] tracking-[0.2em] uppercase font-sans text-[#faf4e8] transition-transform hover:-translate-y-0.5"
+                style={{ background: "var(--poppy)", borderColor: "var(--poppy-deep)", boxShadow: "4px 4px 0 var(--poppy-deep)" }}>
+                See Membership ✿
               </Link>
             </HandDrawnFrame>
           </AnimateIn>

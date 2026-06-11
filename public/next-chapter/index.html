@@ -1579,6 +1579,8 @@
       <footer class="colophon">
         <div class="divider-bloom">❀ ✿ ❀</div>
         <p class="colophon-text">Chapter Two arrives with your next drop — written for who you're becoming, shaped by what you saved, checked, voted, and whispered to us here.</p>
+        <button class="contribute-submit" id="monthlyBtn" onclick="requestMonthly()" style="margin-bottom:1.5rem;">Get My Next Chapter ✿</button>
+        <div class="contribute-confirm" id="monthlyConfirm">— your next chapter is being written ✿ it arrives in your inbox within a few days, and monthly from then on</div>
         <p class="colophon-meta">GEA · The Next Chapter · Vol. I · No. 01 · <span>for <span id="composedFor">you</span></span></p>
       </footer>
 
@@ -2068,6 +2070,21 @@ async function saveChapter() {
   } else {
     status.textContent = `✓ saved on this device — cloud hiccup, we'll retry next visit`;
   }
+}
+
+async function requestMonthly() {
+  state.monthlyEmail = true;
+  persist();
+  document.getElementById('monthlyBtn').style.display = 'none';
+  document.getElementById('monthlyConfirm').classList.add('shown');
+  await supabaseUpsert('members', {
+    email: state.email,
+    name: state.name,
+    becoming_profile: {
+      pillars: state.pillars, focus: state.focus, rooms: state.rooms,
+      leaving: state.leaving, practice: state.practice, monthly_email: true
+    }
+  }, 'email');
 }
 
 function resetAll() {

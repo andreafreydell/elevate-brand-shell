@@ -48,7 +48,7 @@ const trustStandards = [
   },
   {
     icon: Wrench,
-    title: "Repair Guarantee",
+    title: "Repairs Included",
     text: "Normal wear is on us. No questions, no fees. Transparent fixed-fee schedule for significant damage, disclosed before checkout.",
   },
   {
@@ -92,7 +92,7 @@ const faqItems: FAQItem[] = [
   {
     question: "What if something gets damaged?",
     answer:
-      "Normal wear is fully covered. Our in-house atelier handles all repairs - hand cleaning, UV sanitization, and 4-point inspection - at no cost to you.",
+      "Minor wear and tear is covered. Our in-house atelier handles ordinary-wear restoration - hand cleaning, UV sanitization, and 4-point inspection - at no cost to you.",
   },
   {
     question: "What if I don't like my selection?",
@@ -142,7 +142,8 @@ const HowItWorks = () => {
   return (
     <PageLayout>
       <PageHero
-        label="The Process"
+        label="The Process ✿"
+        script="five steps to your first bloom ✿"
         headline={
           <>
             <ScribbleUnderline>Effortless</ScribbleUnderline> by
@@ -203,7 +204,7 @@ const HowItWorks = () => {
           <StepBlock
             number="02"
             title="Receive"
-            description="Your selections arrive in 1-3 days, freshly restored and sealed in our signature packaging."
+            description="Your selections typically arrive within 2-5 business days, freshly restored and sealed in our signature packaging."
             icon={Package}
           />
           <StepBlock

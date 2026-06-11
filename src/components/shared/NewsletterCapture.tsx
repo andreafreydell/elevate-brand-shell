@@ -7,6 +7,20 @@ export const NewsletterCapture = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
+  const [monthlyRequested, setMonthlyRequested] = useState(false);
+
+  const handleMonthly = async () => {
+    if (!email) return;
+    setLoading(true);
+    try {
+      await saveFoundingAccessEmail(email, "next-chapter-monthly");
+    } catch {
+      // non-blocking
+    } finally {
+      setLoading(false);
+      setMonthlyRequested(true);
+    }
+  };
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -86,12 +100,36 @@ export const NewsletterCapture = () => {
               </button>
             </div>
           </form>
-          <p
-            className="mt-5 text-[1.05rem]"
-            style={{ fontFamily: "var(--font-script)", color: "var(--meadow)" }}
-          >
-            takes about three minutes — your first chapter is waiting ✿
-          </p>
+          {monthlyRequested ? (
+            <p
+              className="mt-5 text-[1.15rem]"
+              style={{ fontFamily: "var(--font-script)", color: "var(--meadow)" }}
+            >
+              your next chapter is being written ✿ it arrives in your inbox within a few days — and monthly from then on
+            </p>
+          ) : (
+            <>
+              <p
+                className="mt-5 text-[1.05rem]"
+                style={{ fontFamily: "var(--font-script)", color: "var(--meadow)" }}
+              >
+                takes about three minutes — your first chapter is waiting ✿
+              </p>
+              <p className="mt-4 font-sans text-[11px] text-muted-foreground">
+                Already have a notebook?{" "}
+                <button
+                  type="button"
+                  onClick={handleMonthly}
+                  disabled={loading}
+                  className="underline underline-offset-4 transition-colors hover:text-foreground disabled:opacity-50"
+                  style={{ color: "var(--poppy-deep)" }}
+                >
+                  Get My Next Chapter ✿
+                </button>{" "}
+                — enter your email above first.
+              </p>
+            </>
+          )}
         </div>
       </div>
     </div>

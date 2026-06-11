@@ -7,13 +7,14 @@ interface PageHeroProps {
   label?: string;
   headline: ReactNode;
   subtitle?: string;
+  script?: string;
   cta?: string;
   ctaHref?: string;
   heroMobileCompact?: boolean;
   compact?: boolean;
 }
 
-export const PageHero = ({ label, headline, subtitle, cta, ctaHref = "/membership", heroMobileCompact = false, compact = false }: PageHeroProps) => {
+export const PageHero = ({ label, headline, subtitle, script, cta, ctaHref = "/membership", heroMobileCompact = false, compact = false }: PageHeroProps) => {
   return (
     <section className={`bg-foreground relative overflow-hidden ${heroMobileCompact ? 'page-hero-section-mobile' : 'hero-section-mobile'}`}>
       <GrainOverlay opacity={0.05} />
@@ -30,6 +31,13 @@ export const PageHero = ({ label, headline, subtitle, cta, ctaHref = "/membershi
             {headline}
           </h1>
         </AnimateIn>
+        {script && (
+          <AnimateIn variant="fadeUp" delay={0.22} duration={0.6}>
+            <p className="mb-4 -mt-2 text-[1.3rem]" style={{ fontFamily: "var(--font-script)", color: "var(--rose)" }}>
+              {script}
+            </p>
+          </AnimateIn>
+        )}
         {subtitle && (
           <AnimateIn variant="fadeUp" delay={0.3} duration={0.6}>
             <p className={`text-[13px] leading-relaxed text-background/60 max-w-[440px] mb-10 font-sans ${heroMobileCompact ? 'page-hero-subtitle-mobile' : 'hero-subtitle-mobile'}`}>

@@ -18,7 +18,7 @@ const benefits = [
   "Custom styling consultations",
   "Feature in GEA editorial content",
   "Commission on referred memberships",
-  "Exclusive ambassador-only pieces",
+  "Ambassador-only pieces, first ✿",
 ];
 
 const qualifications = [
@@ -39,7 +39,8 @@ const Ambassador = () => {
   return (
     <PageLayout>
       <PageHero
-        label="Represent"
+        label="Represent ✿"
+        script="carry the garden with you ✿"
         headline={
           <>
             Become a GEA
@@ -124,7 +125,8 @@ const Ambassador = () => {
               <p className="text-[12px] text-muted-foreground font-sans mb-8 max-w-[420px] mx-auto">
                 We review ambassador applications in monthly rounds and contact shortlisted candidates first. Share your platform, audience, and why GEA is a fit for your voice.
               </p>
-              <Link to="/contact?topic=ambassador" className="btn-gea">
+              <Link to="/contact?topic=ambassador" className="inline-block border px-8 py-3 text-[11px] tracking-[0.2em] uppercase font-sans text-[#faf4e8] transition-transform hover:-translate-y-0.5"
+                style={{ background: "var(--poppy)", borderColor: "var(--poppy-deep)", boxShadow: "4px 4px 0 var(--poppy-deep)" }}>
                 Start Ambassador Application
               </Link>
             </HandDrawnFrame>

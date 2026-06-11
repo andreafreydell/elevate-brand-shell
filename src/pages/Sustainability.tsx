@@ -39,7 +39,8 @@ const Sustainability = () => {
   return (
     <PageLayout>
       <PageHero
-        label="Responsibility"
+        label="Responsibility ✿"
+        script="beauty that gives back to the garden ✿"
         headline={
           <>
             Beauty Without

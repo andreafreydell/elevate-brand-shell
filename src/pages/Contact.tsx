@@ -98,7 +98,8 @@ const Contact = () => {
   return (
     <PageLayout>
       <PageHero
-        label="Concierge"
+        label="Concierge ✿"
+        script="a real person reads every note ✿"
         headline={
           <>
             We're Here

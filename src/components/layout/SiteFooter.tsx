@@ -35,12 +35,13 @@ export const SiteFooter = ({ hideNewsletter }: { hideNewsletter?: boolean }) => 
               to="/"
               className="font-serif text-2xl font-semibold italic tracking-[0.12em]"
             >
-              Gea
+              GEA <span aria-hidden="true" style={{ color: "var(--poppy)", fontStyle: "normal" }}>✿</span>
             </Link>
-            <p className="mt-4 max-w-[200px] font-sans text-[11px] leading-relaxed text-muted-foreground">
-              Unlimited Designer Jewelry.
-              <br />
-              Access Is Luxury.
+            <p className="mt-3 text-[1.15rem]" style={{ fontFamily: "var(--font-script)", color: "var(--poppy-deep)" }}>
+              wear who you're becoming ✿
+            </p>
+            <p className="mt-2 max-w-[210px] font-sans text-[11px] leading-relaxed text-muted-foreground">
+              Jewelry membership for women in bloom.
             </p>
           </div>
 

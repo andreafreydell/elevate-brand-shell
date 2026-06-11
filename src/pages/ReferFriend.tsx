@@ -36,7 +36,8 @@ const ReferFriend = () => {
   return (
     <PageLayout>
       <PageHero
-        label="Community"
+        label="Community ✿"
+        script="blooming is better with friends ✿"
         headline={
           <>
             Share the
@@ -132,7 +133,8 @@ const ReferFriend = () => {
               <p className="text-[12px] text-muted-foreground font-sans mb-8 max-w-[480px] mx-auto">
                 Referral links will appear inside eligible member accounts as the program opens. Join membership now, and you'll be first in line when referrals go live for your cohort.
               </p>
-              <Link to="/how-it-works" className="btn-gea">
+              <Link to="/how-it-works" className="inline-block border px-8 py-3 text-[11px] tracking-[0.2em] uppercase font-sans text-[#faf4e8] transition-transform hover:-translate-y-0.5"
+                style={{ background: "var(--poppy)", borderColor: "var(--poppy-deep)", boxShadow: "4px 4px 0 var(--poppy-deep)" }}>
                 Join to Unlock Referrals
               </Link>
             </HandDrawnFrame>

@@ -15,7 +15,8 @@ const Press = () => {
   return (
     <PageLayout>
       <PageHero
-        label="Press"
+        label="Press ✿"
+        script="the story, for the telling ✿"
         headline={
           <>
             The <ScribbleUnderline>House</ScribbleUnderline>
@@ -100,8 +101,8 @@ const Press = () => {
               <p className="mx-auto max-w-[600px] font-serif text-lg font-medium italic leading-[1.5] md:text-xl">
                 GEA is a fashion house jewelry access system. We replace
                 ownership with access, accumulation with expression, and
-                extraction with intention. Founded on the principle that access
-                defines status.
+                extraction with intention. Founded on the principle that you
+                were never meant to stay the same.
               </p>
             </HandDrawnFrame>
           </AnimateIn>

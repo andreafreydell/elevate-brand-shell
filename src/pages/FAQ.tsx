@@ -74,7 +74,7 @@ const categories: { label: string; sectionLabel: string; items: FAQItem[] }[] = 
       {
         question: "How quickly will I receive my pieces?",
         answer:
-          "Most selections ship within 1 business day and arrive within 1-3 business days, depending on your location.",
+          "Most selections ship within 1–2 business days and typically arrive within 2–5 business days, depending on your location.",
       },
       {
         question: "What does the packaging look like?",
@@ -89,7 +89,7 @@ const categories: { label: string; sectionLabel: string; items: FAQItem[] }[] = 
       {
         question: "What if my package is lost or damaged in transit?",
         answer:
-          "Contact us right away. We take responsibility for packages in transit and resolve those issues directly with you.",
+          "Contact us right away. We'll work directly with the carrier to resolve it and keep you updated — you won't be left handling it alone.",
       },
     ],
   },
@@ -126,7 +126,7 @@ const categories: { label: string; sectionLabel: string; items: FAQItem[] }[] = 
       {
         question: "What happens if a piece is damaged while I have it?",
         answer:
-          "Normal wear is on us. Every membership includes restoration and repair for ordinary use.",
+          "Minor wear and tear from ordinary use is on us — every membership includes restoration for it. Wear your pieces; that's what they're for.",
       },
       {
         question: "What counts as damage beyond normal wear?",
@@ -237,7 +237,7 @@ const faqSchema = {
   ),
 };
 
-const trustItems = ["Cancel Anytime", "Free Returns", "Sanitized & Sealed", "Repair Guarantee"];
+const trustItems = ["Cancel Anytime", "Free Returns", "Sanitized & Sealed", "Repairs Included"];
 
 const MidPageCTA = ({
   heading,
