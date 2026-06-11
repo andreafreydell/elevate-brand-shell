@@ -65,10 +65,10 @@ export const NewsletterCapture = () => {
           </h3>
           <p className="text-[12px] text-muted-foreground font-sans mb-3 leading-relaxed max-w-[460px] mx-auto">
             Not a newsletter — an interactive notebook made custom for you and the woman
-            you're becoming. Earmark the styles you love, annotate your gentle goals, vote on
-            what comes next — and write back whenever you like; every note gets read. A new
-            chapter arrives monthly, written by your stylist: GEA's founder and a hopeless
-            jewelry expert.
+            you're becoming. Inside each monthly chapter: what to wear for the life you're
+            stepping into, styling challenges, gentle goals, little rituals, and what women
+            in bloom are loving right now. Earmark what you love, write back anytime — every
+            note gets read. By your stylist: GEA's founder and a hopeless jewelry expert.
           </p>
           <p className="text-[12px] font-sans mb-8 leading-relaxed max-w-[460px] mx-auto font-medium text-foreground">
             About you, not about us. No two members read the same notebook.

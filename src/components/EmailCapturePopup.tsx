@@ -97,9 +97,10 @@ export const EmailCapturePopup = () => {
             </h2>
             <p className="mx-auto mt-4 max-w-[380px] text-sm leading-relaxed font-sans text-muted-foreground">
               Not a newsletter — an interactive notebook made custom for you and the woman
-              you're becoming. Earmark styles, annotate goals, even write back — every note
-              gets read. A new chapter monthly, written by your stylist: GEA's founder and a
-              hopeless jewelry expert. About you, not about us.
+              you're becoming. Inside each monthly chapter: what to wear for the life you're
+              stepping into, styling challenges, gentle goals, little rituals. Earmark what
+              you love, write back anytime. By your stylist: GEA's founder and a hopeless
+              jewelry expert. About you, not about us.
             </p>
             <Link
               to="/how-it-works"
