@@ -46,15 +46,7 @@ export const TierCard = ({ tier }: { tier: TierData }) => {
         >
           /{tier.period}
         </span>
-        {tier.promoPrice && (
-          <p
-            className={`text-[11px] font-sans mt-2 ${
-              tier.highlighted ? "text-background/70" : "text-muted-foreground"
-            }`}
-          >
-            {tier.promoPrice} your first month
-          </p>
-        )}
+
       </div>
 
       {/* Features */}

@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { MEMBERSHIP_CHECKOUT_URLS } from "@/lib/membershipCheckout";
 import {
   Ban,
   CalendarPlus,
@@ -60,7 +61,6 @@ const tiers = [
     name: "Stacking Membership",
     label: "10 Pieces",
     price: "$85",
-    promoPrice: "$75 your first month",
     detail: "10 curated pieces per cycle",
     highlighted: true,
   },
@@ -68,7 +68,6 @@ const tiers = [
     name: "Starter Membership",
     label: "5 Pieces",
     price: "$65",
-    promoPrice: "$55 your first month",
     detail: "5 curated pieces per cycle",
     highlighted: false,
   },
@@ -454,9 +453,9 @@ export const LandingScrollVideoHero = () => {
 
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             {tiers.map((tier) => (
-              <Link
+              <a
                 key={tier.name}
-                to="/how-it-works#tiers"
+                href={MEMBERSHIP_CHECKOUT_URLS[tier.name] ?? "/how-it-works#tiers"}
                 className={`group relative block border p-6 shadow-[0_18px_50px_hsl(30_12%_10%_/_0.18)] transition-transform hover:-translate-y-1 md:p-8 ${
                   tier.highlighted ? "border-dashed bg-foreground text-background" : "border-border bg-background text-foreground"
                 }`}
@@ -503,7 +502,7 @@ export const LandingScrollVideoHero = () => {
                   className="mt-2 text-[1.15rem]"
                   style={{ fontFamily: "var(--font-script)", color: tier.highlighted ? "var(--rose)" : "var(--poppy-deep)" }}
                 >
-                  {tier.promoPrice} ✿
+                  one favorite is always yours to keep ✿
                 </p>
                 <p
                   className={`mt-4 font-sans text-[12px] leading-relaxed ${
@@ -512,7 +511,7 @@ export const LandingScrollVideoHero = () => {
                 >
                   {tier.detail}. Full vault access, protection coverage, sanitation, and free shipping both ways.
                 </p>
-              </Link>
+              </a>
             ))}
           </div>
 

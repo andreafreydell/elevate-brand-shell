@@ -28,10 +28,10 @@ export const PromoBar = () => {
           className="text-[10px] tracking-[0.2em] uppercase font-sans text-foreground hover:text-muted-foreground transition-colors text-center"
         >
           <span className="hidden md:inline">
-            <span className="font-medium">Exclusive Access</span>
+            <span className="font-medium">Wear Who You're Becoming</span>
             <span className="mx-2">-</span>
           </span>
-          Code <span className="font-medium">FOUNDING10</span> - $10 off first month
+          Free shipping both ways <span className="font-medium">✿</span>
           <span className="hidden md:inline">
             <span className="mx-2">-</span>
             Learn about membership

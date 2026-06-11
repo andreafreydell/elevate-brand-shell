@@ -10,7 +10,6 @@ const tierData = [
     name: "Stacking Membership",
     label: "10 Pieces",
     price: "$85",
-    promoPrice: "$75",
     priceNum: 85,
     pieces: 10,
     piecesLabel: "10 curated pieces per cycle",
@@ -28,7 +27,6 @@ const tierData = [
     name: "Starter Membership",
     label: "5 Pieces",
     price: "$65",
-    promoPrice: "$55",
     priceNum: 65,
     pieces: 5,
     piecesLabel: "5 curated pieces per cycle",
@@ -67,7 +65,6 @@ const CompactOffer = ({ ctaHref }: { ctaHref: string }) => (
           </span>
           <span className="font-sans text-[12px] text-muted-foreground">
             {tier.price}/mo
-            <span className="ml-2 text-[10px]">({tier.promoPrice} first month)</span>
           </span>
         </div>
       ))}
@@ -119,13 +116,6 @@ const StandardOffer = ({ ctaHref }: { ctaHref: string }) => (
           >
             /month
           </span>
-          <p
-            className={`mt-2 font-sans text-[11px] ${
-              tier.highlighted ? "text-background/70" : "text-muted-foreground"
-            }`}
-          >
-            {tier.promoPrice} your first month
-          </p>
         </div>
 
         <div className="tier-features-mobile flex-1 p-8 md:p-10">
