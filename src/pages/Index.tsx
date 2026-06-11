@@ -201,10 +201,10 @@ const Index = () => {
             <HandDrawnFrame strokeColor="hsl(36,25%,78%)">
               <div className="py-6">
                 <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-[-0.01em] text-[hsl(36,33%,93%)] mb-6 normal-case">
-                  More <ScribbleUnderline color="var(--brass)">Beauty</ScribbleUnderline>.<br />Less Burden.
+                  Bloom <ScribbleUnderline color="var(--brass)">Freely</ScribbleUnderline>.
                 </h2>
                 <p className="text-[13px] text-[hsl(36,20%,75%)] font-sans max-w-[400px] mx-auto mb-10 leading-relaxed">
-                  Adorn the woman you are becoming. Not the one weighed down by what she already owns.
+                  You were never meant to stay the same. Dress the woman you're becoming — not the one weighed down by what she already owns.
                 </p>
                 <Link
                   to="/how-it-works"

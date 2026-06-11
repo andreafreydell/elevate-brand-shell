@@ -361,18 +361,18 @@ export const LandingScrollVideoHero = () => {
       >
         <section className="mx-auto flex min-h-screen max-w-[760px] flex-col items-center justify-center py-24 text-center">
           <p className="mb-4 font-sans text-[10px] uppercase tracking-[0.4em] text-[hsl(36,33%,93%)] md:mb-8">
-            Jewelry For Who You're Becoming
+            Jewelry Membership for Women in Bloom
           </p>
           <h1 className="hero-display mb-4 whitespace-pre-line text-[hsl(36,33%,93%)] md:mb-6">
-            Becoming,{"\n"}
+            Wear Who{"\n"}
             <ScribbleUnderline color="var(--brass)" delay={0.2}>
-              Adorned.
+              You're Becoming.
             </ScribbleUnderline>
           </h1>
           <p className="mx-auto mb-3 max-w-[440px] font-sans text-[12px] leading-relaxed text-[hsl(36,28%,88%)] md:text-[13px]">
             High-design jewelry you access, not own.
             <br />
-            For women in bloom — evolving, experimenting, expressing.
+            Because you were never meant to stay the same.
           </p>
           <p className="mx-auto mb-7 max-w-[460px] font-sans text-[10px] uppercase tracking-[0.18em] text-[hsl(36,25%,84%)] md:text-[11px]">
             Wear more. Try everything. Keep becoming.
@@ -555,7 +555,7 @@ export const LandingScrollVideoHero = () => {
               Philosophy
             </p>
             <h2 className="font-serif text-2xl uppercase tracking-[0.08em] text-[hsl(36,33%,93%)] md:text-4xl">
-              Adornment Is Self-Expression
+              You're Allowed to Evolve
             </h2>
           </div>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -590,8 +590,8 @@ export const LandingScrollVideoHero = () => {
                 Access Is <ScribbleUnderline color="var(--seafoam)" delay={0.5}>Evolution</ScribbleUnderline>
               </h3>
               <p className="font-sans text-[12px] leading-relaxed text-background/70">
-                Access the full vault. Wear who you're becoming this cycle. Keep the piece you love most, return the rest, and keep blooming.{" "}
-                <ScriptNumber className="text-background/90">10+</ScriptNumber> pieces per year. Becoming over belonging.
+                Access the full vault. Wear who you're becoming this cycle. Keep the piece you love most, return the rest, and keep growing.{" "}
+                <ScriptNumber className="text-background/90">10+</ScriptNumber> pieces per year. Because staying the same was never the plan.
               </p>
             </div>
           </div>
