@@ -32,7 +32,7 @@ const categories: { label: string; sectionLabel: string; items: FAQItem[] }[] = 
       {
         question: "How does the access cycle work?",
         answer:
-          "Join a membership, choose your pieces, and receive them restored and sealed. Wear them for the full 30-day cycle, keep 1 favorite, return the rest with the prepaid label, and then choose your next set.",
+          "Join a membership and each month you receive your Monthly Code — it lets you check out your next set at $0. Wear your pieces for the 30-day cycle, keep 1 favorite, return the rest, and when your new month opens, your next code arrives by email.",
       },
       {
         question: "Can I keep a piece I love?",
@@ -100,7 +100,7 @@ const categories: { label: string; sectionLabel: string; items: FAQItem[] }[] = 
       {
         question: "How do I return pieces?",
         answer:
-          "Use the prepaid return label included in every package. Place your pieces back in the packaging, seal it, and drop it off with the carrier.",
+          "When it's time, we email you return instructions with your prepaid label. Place your pieces back in the packaging, seal it, and drop it off with the carrier.",
       },
       {
         question: "How long can I keep pieces?",
@@ -110,12 +110,12 @@ const categories: { label: string; sectionLabel: string; items: FAQItem[] }[] = 
       {
         question: "What happens after I return?",
         answer:
-          "Once your return is received, your account is updated and your next selection window opens for the upcoming cycle.",
+          "Your next Monthly Code arrives by email when your new cycle opens — it lets you check out your next set at $0. Returning early doesn't move that date; the code always arrives on your monthly rhythm.",
       },
       {
         question: "Can I refresh before my cycle ends?",
         answer:
-          "Not right now. GEA runs one curated shipment per cycle, then your next selection opens when that cycle wraps.",
+          "You can return early anytime — just write concierge@geagems.com and we'll arrange it. Your next Monthly Code still arrives on your regular monthly date, so each cycle stays one curated shipment.",
       },
     ],
   },
@@ -126,12 +126,12 @@ const categories: { label: string; sectionLabel: string; items: FAQItem[] }[] = 
       {
         question: "What happens if a piece is damaged while I have it?",
         answer:
-          "Minor wear and tear from ordinary use is on us — every membership includes restoration for it. Wear your pieces; that's what they're for.",
+          "Normal wear and tear is on us — covered for up to one affected piece per package, every cycle. Wear your pieces; that's what they're for. And if something happens, just send us a message: our expert team always has a good solution.",
       },
       {
         question: "What counts as damage beyond normal wear?",
         answer:
-          "Repairable damage beyond normal wear may carry a fixed fee. You will see that fee before checkout or before any charge is applied to your account.",
+          "Things like salt water swims, chemical contact, or pieces left unprotected in a travel bag fall outside normal wear — jewelry needs a little tenderness. Repairable damage beyond normal wear, or more than one affected piece in a package, may carry a fixed fee, always shown to you before any charge. Whatever happened, write us first — there's usually a good solution.",
       },
       {
         question: "What if a piece is lost?",

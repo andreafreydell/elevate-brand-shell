@@ -49,7 +49,7 @@ const steps = [
   {
     number: "05",
     title: "Refresh",
-    description: "Return the pieces you are not keeping and choose your next chapter.",
+    description: "Return the pieces you are not keeping. Your Monthly Code arrives by email and unlocks your next set at $0.",
     icon: RefreshCw,
   },
 ];

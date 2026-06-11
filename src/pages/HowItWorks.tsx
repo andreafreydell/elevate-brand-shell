@@ -92,7 +92,7 @@ const faqItems: FAQItem[] = [
   {
     question: "What if something gets damaged?",
     answer:
-      "Minor wear and tear is covered. Our in-house atelier handles ordinary-wear restoration - hand cleaning, UV sanitization, and 4-point inspection - at no cost to you.",
+      "Normal wear and tear is covered — up to one affected piece per package. Our in-house atelier handles the restoration. If something happens, write us: our expert team always has a good solution.",
   },
   {
     question: "What if I don't like my selection?",
@@ -222,7 +222,7 @@ const HowItWorks = () => {
           <StepBlock
             number="05"
             title="Refresh"
-            description="At the end of your cycle, return the pieces you are not keeping and choose your next chapter."
+            description="Return when your email says it's time — or earlier via concierge@geagems.com. Your Monthly Code arrives with each new cycle and unlocks your next set at $0."
             icon={RefreshCw}
           />
         </div>

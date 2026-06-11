@@ -93,7 +93,7 @@ const CareRepair = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-[1]">
               <div>
                 <p className="text-[12px] text-foreground font-sans leading-relaxed mb-3">
-                  <strong>Wear freely.</strong> Minor wear and tear is covered under your membership.
+                  <strong>Wear freely.</strong> Normal wear and tear is covered — up to one affected piece per package. If something happens, just write us; our expert team always has a good solution.
                   Don&apos;t be precious - that&apos;s our job.
                 </p>
                 <p className="text-[12px] text-foreground font-sans leading-relaxed">
@@ -140,7 +140,7 @@ const CareRepair = () => {
                 Every Piece, Lovingly Prepared
               </h2>
               <p className="text-[12px] text-muted-foreground font-sans mb-8">
-                Care included. Repairs for minor wear included. That&apos;s the standard.
+                Care included. Normal wear and tear covered, up to one piece per package. That&apos;s the standard.
               </p>
               <Link to="/how-it-works" className="inline-block border px-8 py-3 text-[11px] tracking-[0.2em] uppercase font-sans text-[#faf4e8] transition-transform hover:-translate-y-0.5"
                 style={{ background: "var(--poppy)", borderColor: "var(--poppy-deep)", boxShadow: "4px 4px 0 var(--poppy-deep)" }}>

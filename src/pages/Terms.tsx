@@ -291,10 +291,10 @@ const Terms = () => {
         <LegalParagraph>
           For questions about these terms, email{" "}
           <a
-            href="mailto:legal@wearegea.com"
+            href="mailto:concierge@geagems.com"
             className={inlineLinkClassName}
           >
-            legal@wearegea.com
+            concierge@geagems.com
           </a>
           .
         </LegalParagraph>

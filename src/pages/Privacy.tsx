@@ -248,8 +248,8 @@ const Privacy = () => {
           Every marketing email includes an unsubscribe link at the bottom. You
           can also manage your email preferences in your account settings or by
           emailing{" "}
-          <a href="mailto:privacy@wearegea.com" className={inlineLinkClassName}>
-            privacy@wearegea.com
+          <a href="mailto:concierge@geagems.com" className={inlineLinkClassName}>
+            concierge@geagems.com
           </a>
           .
         </LegalParagraph>
@@ -287,8 +287,8 @@ const Privacy = () => {
 
         <LegalParagraph>
           To exercise any of these rights, email{" "}
-          <a href="mailto:privacy@wearegea.com" className={inlineLinkClassName}>
-            privacy@wearegea.com
+          <a href="mailto:concierge@geagems.com" className={inlineLinkClassName}>
+            concierge@geagems.com
           </a>
           . We will respond within 30 days.
         </LegalParagraph>
@@ -337,8 +337,8 @@ const Privacy = () => {
         />
         <LegalParagraph>
           You may request deletion of your data at any time by emailing{" "}
-          <a href="mailto:privacy@wearegea.com" className={inlineLinkClassName}>
-            privacy@wearegea.com
+          <a href="mailto:concierge@geagems.com" className={inlineLinkClassName}>
+            concierge@geagems.com
           </a>
           .
         </LegalParagraph>
@@ -366,8 +366,8 @@ const Privacy = () => {
         <LegalSubheading className="mt-8">Questions or concerns</LegalSubheading>
         <LegalParagraph>
           Email:{" "}
-          <a href="mailto:privacy@wearegea.com" className={inlineLinkClassName}>
-            privacy@wearegea.com
+          <a href="mailto:concierge@geagems.com" className={inlineLinkClassName}>
+            concierge@geagems.com
           </a>
         </LegalParagraph>
         <LegalParagraph>Mail: GEA LLC, Key Biscayne, FL 33149</LegalParagraph>

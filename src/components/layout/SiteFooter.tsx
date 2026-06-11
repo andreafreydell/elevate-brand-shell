@@ -33,9 +33,10 @@ export const SiteFooter = ({ hideNewsletter }: { hideNewsletter?: boolean }) => 
           <div>
             <Link
               to="/"
-              className="font-serif text-2xl font-semibold italic tracking-[0.12em]"
+              className="font-brand text-[34px] tracking-[0.04em] font-normal leading-[1]"
+              style={{ color: "hsl(30, 16%, 34%)" }}
             >
-              GEA <span aria-hidden="true" style={{ color: "var(--poppy)", fontStyle: "normal" }}>✿</span>
+              Gea<span aria-hidden="true" className="ml-1 text-[18px] align-middle" style={{ color: "var(--poppy)" }}>✿</span>
             </Link>
             <p className="mt-3 text-[1.15rem]" style={{ fontFamily: "var(--font-script)", color: "var(--poppy-deep)" }}>
               wear who you're becoming ✿
