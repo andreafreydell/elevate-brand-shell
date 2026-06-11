@@ -11,3 +11,6 @@ verify_jwt = false
 
 [functions.shopify-register-webhook]
 verify_jwt = false
+
+[functions.rental-ops-data]
+verify_jwt = false
