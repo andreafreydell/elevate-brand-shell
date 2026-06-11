@@ -222,7 +222,7 @@ const HowItWorks = () => {
           <StepBlock
             number="05"
             title="Refresh"
-            description="Return when your email says it's time — or earlier via concierge@geagems.com. Your Monthly Code arrives with each new cycle and unlocks your next set at $0."
+            description="Return when your email says it's time — or earlier via concierge@geagems.com. Your Monthly Code arrives with each new cycle and unlocks your next set."
             icon={RefreshCw}
           />
         </div>

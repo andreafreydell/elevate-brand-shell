@@ -32,7 +32,7 @@ const categories: { label: string; sectionLabel: string; items: FAQItem[] }[] = 
       {
         question: "How does the access cycle work?",
         answer:
-          "Join a membership and each month you receive your Monthly Code — it lets you check out your next set at $0. Wear your pieces for the 30-day cycle, keep 1 favorite, return the rest, and when your new month opens, your next code arrives by email.",
+          "Join a membership and each month you receive your Monthly Code — it unlocks your next set. Wear your pieces for the 30-day cycle, keep 1 favorite, return the rest, and when your new month opens, your next code arrives by email.",
       },
       {
         question: "Can I keep a piece I love?",
@@ -115,7 +115,7 @@ const categories: { label: string; sectionLabel: string; items: FAQItem[] }[] = 
       {
         question: "What happens after I return?",
         answer:
-          "Your next Monthly Code arrives by email when your new cycle opens — it lets you check out your next set at $0. Returning early doesn't move that date; the code always arrives on your monthly rhythm.",
+          "Your next Monthly Code arrives by email when your new cycle opens and unlocks your next set. Returning early doesn't move that date; the code always arrives on your monthly rhythm.",
       },
       {
         question: "Can I refresh before my cycle ends?",
