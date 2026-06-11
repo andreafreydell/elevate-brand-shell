@@ -12,6 +12,9 @@ export interface FilterState {
   color: string;
   style: string;
   occasion: string;
+  material: string;
+  accentColor: string;
+  stackingRole: string;
   sort: string;
 }
 
@@ -19,7 +22,7 @@ interface ProductFiltersProps {
   products: ShopifyProduct[];
   filters: FilterState;
   onChange: (filters: FilterState) => void;
-  hiddenFilters?: Array<"color" | "style" | "occasion">;
+  hiddenFilters?: Array<"color" | "style" | "occasion" | "material" | "accentColor" | "stackingRole">;
 }
 
 function getMetafieldValues(products: ShopifyProduct[], key: string): string[] {
@@ -62,6 +65,27 @@ export function applyFilters(products: ShopifyProduct[], filters: FilterState): 
     });
   }
 
+  if (filters.material) {
+    filtered = filtered.filter((product) => {
+      const metafield = product.node.metafields?.find((item) => item?.key === "material_category");
+      return metafield?.value?.toLowerCase().includes(filters.material.toLowerCase());
+    });
+  }
+
+  if (filters.accentColor) {
+    filtered = filtered.filter((product) => {
+      const metafield = product.node.metafields?.find((item) => item?.key === "other_predominant_color");
+      return metafield?.value?.toLowerCase().includes(filters.accentColor.toLowerCase());
+    });
+  }
+
+  if (filters.stackingRole) {
+    filtered = filtered.filter((product) => {
+      const metafield = product.node.metafields?.find((item) => item?.key === "stacking_role");
+      return metafield?.value?.toLowerCase().includes(filters.stackingRole.toLowerCase());
+    });
+  }
+
   if (filters.occasion) {
     filtered = filtered.filter((product) => {
       const metafield = product.node.metafields?.find((item) => item?.key === "occasions_possible");
@@ -95,19 +119,26 @@ export const ProductFilters = ({
   const colors = getMetafieldValues(products, "plating_color_primary");
   const styles = getMetafieldValues(products, "silhouette_category");
   const occasions = getMetafieldValues(products, "occasions_possible");
+  const materials = getMetafieldValues(products, "material_category");
+  const accentColors = getMetafieldValues(products, "other_predominant_color");
+  const stackingRoles = getMetafieldValues(products, "stacking_role");
 
   const hasActiveFilter =
-    filters.color || filters.style || filters.occasion || (filters.sort && filters.sort !== "default");
+    filters.color || filters.style || filters.occasion || filters.material ||
+    filters.accentColor || filters.stackingRole || (filters.sort && filters.sort !== "default");
 
   const update = (key: keyof FilterState, value: string) => {
     onChange({ ...filters, [key]: value === "all" ? "" : value });
   };
 
-  const clearAll = () => onChange({ color: "", style: "", occasion: "", sort: "" });
+  const clearAll = () => onChange({ color: "", style: "", occasion: "", material: "", accentColor: "", stackingRole: "", sort: "" });
 
   const filterGroups = [
-    { key: "color" as const, label: "Color", options: colors },
-    { key: "style" as const, label: "Style", options: styles },
+    { key: "color" as const, label: "Finish", options: colors },
+    { key: "material" as const, label: "Material", options: materials },
+    { key: "accentColor" as const, label: "Accent Color", options: accentColors },
+    { key: "stackingRole" as const, label: "Stacking Role", options: stackingRoles },
+    { key: "style" as const, label: "Silhouette", options: styles },
     { key: "occasion" as const, label: "Occasion", options: occasions },
   ].filter((group) => group.options.length > 0 && !hiddenFilters.includes(group.key));
 
@@ -124,7 +155,7 @@ export const ProductFilters = ({
               <SelectValue placeholder={group.label} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">All {group.label}s</SelectItem>
+              <SelectItem value="all">All — {group.label}</SelectItem>
               {group.options.map((option) => (
                 <SelectItem key={option} value={option}>
                   {option}

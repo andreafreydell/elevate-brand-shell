@@ -11,18 +11,18 @@ const tips: Record<
 > = {
   Earrings: {
     sticker: "pro tip ✿",
-    title: "Build the ear like a melody.",
-    body: "Start with a dainty stud at the lobe, add a gold huggie just above, and save one drop for the days that deserve an exclamation point. Three pieces, one ear, endless range — and the second ear can whisper while the first one sings.",
-    caption: "lobe, hug, drop ✿",
+    title: "Let gravity be your stylist.",
+    body: "The pro rule: weight sinks, sparkle rises. Your drop or heaviest piece anchors the first lobe, a dainty stud sits just above it, and a whisper-thin huggie or cuff hugs the upper ear. Three pieces descending in weight — and the second ear can whisper while the first one sings.",
+    caption: "drop low, stud mid, hug high ✿",
     svg: (
       <svg viewBox="0 0 220 160" xmlns="http://www.w3.org/2000/svg" className="h-full w-full">
         <rect width="220" height="160" fill="var(--sand-svg, #ece0ca)" />
         <path d="M128 28 C 152 34, 158 64, 144 86 C 136 99, 124 106, 118 118" stroke="#4a3b2c" strokeWidth="2" fill="none" opacity="0.45" />
-        <circle cx="116" cy="122" r="4" fill="var(--honey)" />
-        <circle cx="129" cy="104" r="5.5" fill="none" stroke="var(--poppy)" strokeWidth="2.5" />
-        <ellipse cx="142" cy="84" rx="4" ry="4" fill="var(--peri)" />
-        <path d="M142 88 C 142 96, 140 102, 138 108" stroke="var(--honey)" strokeWidth="1.5" fill="none" />
-        <ellipse cx="137" cy="112" rx="4.5" ry="6" fill="var(--rose)" />
+        <circle cx="142" cy="52" r="5" fill="none" stroke="var(--honey)" strokeWidth="2.5" />
+        <circle cx="132" cy="92" r="3.5" fill="var(--peri)" />
+        <circle cx="116" cy="120" r="3" fill="var(--honey)" />
+        <path d="M116 124 C 116 132, 114 138, 112 144" stroke="var(--honey)" strokeWidth="1.5" fill="none" />
+        <ellipse cx="111" cy="149" rx="5" ry="7" fill="var(--poppy)" />
         <path d="M40 36 l 3 6 l 7 1 l -5 5 l 1 7 l -6 -3 l -6 3 l 1 -7 l -5 -5 l 7 -1 z" fill="var(--rose-soft)" />
       </svg>
     ),

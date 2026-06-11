@@ -54,6 +54,9 @@ export const ProductGrid = ({
     color: "",
     style: "",
     occasion: lockedOccasion || "",
+    material: "",
+    accentColor: "",
+    stackingRole: "",
     sort: "",
   });
 
@@ -74,6 +77,9 @@ export const ProductGrid = ({
       color: "",
       style: "",
       occasion: lockedOccasion || "",
+      material: "",
+      accentColor: "",
+      stackingRole: "",
       sort: "",
     });
   }, [lockedOccasion]);

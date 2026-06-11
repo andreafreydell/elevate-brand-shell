@@ -163,6 +163,7 @@ export const PRODUCTS_QUERY = `
           metafields(identifiers: [
             { namespace: "custom", key: "hero_descriptor_phrase" }
             { namespace: "custom", key: "plating_color_primary" }
+            { namespace: "custom", key: "other_predominant_color" }
             { namespace: "custom", key: "silhouette_category" }
             { namespace: "custom", key: "stacking_role" }
             { namespace: "custom", key: "material_category" }
