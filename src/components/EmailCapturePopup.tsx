@@ -78,7 +78,7 @@ export const EmailCapturePopup = () => {
             The Next Chapter invitation
           </DialogPrimitive.Title>
           <DialogPrimitive.Description className="sr-only">
-            Enter your email to open The Next Chapter — your free notebook for the journey, before you ever join.
+            Enter your email to write your new chapter — a free notebook about you, before you ever join.
           </DialogPrimitive.Description>
 
           <DialogPrimitive.Close
@@ -93,13 +93,13 @@ export const EmailCapturePopup = () => {
               The Next Chapter · Free ✿
             </p>
             <h2 className="font-serif text-2xl md:text-3xl font-medium tracking-[0.02em] text-foreground">
-              Most brands ask you to buy. We ask who you’re becoming.
+              Your next chapter is already waiting.
             </h2>
             <p className="mx-auto mt-4 max-w-[380px] text-sm leading-relaxed font-sans text-muted-foreground">
-              Three minutes of lovely questions. A Becoming Profile that reads like a letter
-              written just for you. And your first chapter — styling challenges, gentle goals,
-              jewelry rituals — open tonight, free, before you spend a cent. No two members
-              read the same notebook.
+              Not a newsletter — a notebook with your name in it. Three lovely minutes of
+              questions, and GEA reads you back: your Becoming Profile tonight, then a new
+              chapter every month — what to wear for the life you're stepping into, gentle
+              goals, little rituals. About you, not about us.
             </p>
             <Link
               to="/how-it-works"
@@ -137,7 +137,7 @@ export const EmailCapturePopup = () => {
                   disabled={loading}
                   className="mt-3 w-full border border-foreground bg-foreground px-8 py-3 text-[11px] tracking-[0.2em] uppercase font-sans text-background transition-colors hover:bg-transparent hover:text-foreground disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  {loading ? "Submitting..." : "Get the Edit"}
+                  {loading ? "Submitting..." : "Write My New Chapter"}
                 </button>
                 <p className="mt-3 text-center font-sans text-[11px] text-muted-foreground">
                   Free forever — membership is a separate love story ✿

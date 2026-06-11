@@ -61,15 +61,16 @@ export const NewsletterCapture = () => {
             a notebook for the journey ✿
           </p>
           <h3 className="font-serif text-xl md:text-2xl tracking-[0.04em] font-medium mb-3">
-            We don't send newsletters. We write new chapters.
+            Write your new chapter.
           </h3>
           <p className="text-[12px] text-muted-foreground font-sans mb-3 leading-relaxed max-w-[460px] mx-auto">
-            Tell us who you're becoming — your rooms, your rituals, your style — and GEA writes
-            your story back to you, one chapter a month: styling challenges, gentle goals, and
-            pieces chosen for the woman you're turning into.
+            Not a newsletter — a notebook with your name in it. Tell us who you're becoming,
+            and GEA reads you back: your Becoming Profile, then a new chapter every month —
+            what to wear for the life you're stepping into, gentle goals, little rituals,
+            and what women in bloom are loving right now.
           </p>
           <p className="text-[12px] font-sans mb-8 leading-relaxed max-w-[460px] mx-auto font-medium text-foreground">
-            No two members read the same notebook.
+            About you, not about us. No two members read the same notebook.
           </p>
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-3 max-w-[440px] mx-auto">

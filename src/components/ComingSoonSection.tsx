@@ -71,13 +71,13 @@ export const ComingSoonSection = () => {
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.15} duration={0.8}>
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium leading-[1.1] tracking-[-0.01em] text-[hsl(36,33%,93%)] mb-4">
-              Start Your Notebook.
+              Write Your New Chapter.
             </h2>
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.3} duration={0.8}>
             <p className="text-[13px] text-[hsl(36,20%,75%)] font-sans max-w-[480px] mx-auto mb-3 leading-relaxed">
-              A monthly companion written for who you're becoming — styling challenges,
-              gentle goals, jewelry rituals, and word from members out in the world.
+              Not a newsletter — a notebook with your name in it. Your Becoming Profile,
+              then a new chapter every month: about you, not about us.
             </p>
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.4} duration={0.8}>
@@ -106,7 +106,7 @@ export const ComingSoonSection = () => {
                   disabled={loading}
                   className="border border-[hsl(36,25%,78%)] text-[hsl(28,22%,34%)] bg-[hsl(36,25%,78%)] px-8 py-3.5 text-[11px] tracking-[0.2em] uppercase font-sans font-medium hover:bg-transparent hover:text-[hsl(36,25%,78%)] transition-colors whitespace-nowrap disabled:opacity-50"
                 >
-                  {loading ? "Opening..." : "Start My Notebook"}
+                  {loading ? "Opening..." : "Write My New Chapter"}
                 </button>
               </form>
             )}
