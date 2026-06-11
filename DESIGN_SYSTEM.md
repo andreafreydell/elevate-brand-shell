@@ -1,6 +1,46 @@
 # GEA Design System
 
-> **Aesthetic:** Warm Editorial Craft Modernism with Soft Brutalist Structure
+> **Aesthetic:** Warm Editorial Craft Modernism with Soft Brutalist Structure — now in bloom with the **Digital Garden** companion layer (June 2026).
+
+---
+
+## 🗣️ Brand Language (June 2026 rebloom — READ FIRST)
+
+GEA's voice teaches one idea: **the customer has a need to keep evolving, and that need is a good thing.** We don't just adapt to her becoming — we name it, give her permission, and dress her for it.
+
+**Core vocabulary (use):** becoming, blooming, evolving, self-expression, personal evolution, growing, "women in bloom," "wear who you're becoming," practice, journey, chapter, notebook.
+
+**Banned vocabulary (never use):** luxury, status, exclusive, elite, prestige, **adornment/adorn** (retired June 2026 — say "dress," "wear," or "style" instead).
+
+**The persuasion arc (hero → philosophy → offer):** name her need ("Wear Who You're Becoming") → grant permission ("You're Allowed to Evolve") → release her ("Bloom Freely").
+
+**Canonical lines:** "Because you were never meant to stay the same." · "Because staying the same was never the plan." · "Jewelry Membership for Women in Bloom."
+
+**Audience:** United States. No Colombia references in customer-facing copy.
+
+**Member companion:** *The Next Chapter — a notebook for the journey* (never "Codex") lives at `/next-chapter/` and is the canonical expression of the Digital Garden register.
+
+---
+
+## 🌸 Digital Garden Palette (companion accents)
+
+Added June 2026 alongside the base palette. Use for The Next Chapter touchpoints, member-moment accents, stickers, and garden components — not as wholesale replacements for base tokens.
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--poppy` | `#e0705a` | Primary garden accent, CTAs, bloom marks (✿) |
+| `--poppy-deep` | `#c75d4d` | Poppy shadows/hover |
+| `--rose` | `#f0b4a6` | Soft accent, sticker shadows |
+| `--rose-soft` | `#f7d4ca` | Sticker/chip fills |
+| `--peri` | `#8d9ed6` | Periwinkle accent |
+| `--peri-soft` | `#c3cdf0` | Periwinkle fills |
+| `--meadow` | `#7d8c5c` | Stems, success/confirmation states |
+| `--meadow-soft` | `#aab98a` | Leaf fills |
+| `--honey` | `#c08f45` | Flower centers, warm gold accents |
+
+**Garden typography:** `--font-display: 'Fraunces'` (variable; use `font-variation-settings: "opsz" 144, "SOFT" 60–100, "WONK" 1` for the soft hand-set feel). Caveat (`--font-script`) for hand annotations. These complement — do not replace — Playfair/Inter.
+
+**Garden components** (in `src/components/craft/`, documented in its README): `SwayingStems` (animated edge flowers, decorative, reduced-motion-aware), `BloomDivider` (❀ ✿ ❀ section break), `GardenSticker` (rounded script sticker label; rose/peri/meadow variants).
 
 ---
 

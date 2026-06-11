@@ -1,9 +1,27 @@
-# GEA Design System + Piece Profile — Implementation Spec v2.0
+# GEA Design System + Piece Profile — Implementation Spec v2.1
 
 > **For:** Lovable / AI builder
 > **Stack:** React + Tailwind CSS + shadcn/ui
-> **Aesthetic:** Warm Editorial Craft Modernism with Soft Brutalist Structure
+> **Aesthetic:** Warm Editorial Craft Modernism with Soft Brutalist Structure — with the **Digital Garden** companion layer (June 2026)
 > **Brand:** GEA — curated jewelry rental platform (access model, not purchase)
+
+---
+
+## 🗣️ BRAND LANGUAGE LAW (June 2026 — overrides any older copy guidance below)
+
+GEA's voice teaches that **the customer has a need to keep evolving, and that need is a good thing.**
+
+- **Use:** becoming, blooming, evolving, self-expression, personal evolution, "women in bloom," "wear who you're becoming," journey, chapter, notebook
+- **NEVER use:** luxury, status, exclusive, elite, prestige, adornment/adorn (retired — say "dress," "wear," "style")
+- **Persuasion arc:** name the need → grant permission ("You're Allowed to Evolve") → release ("Bloom Freely")
+- **Audience:** United States only. No Colombia references in customer-facing copy.
+
+## 🌸 DIGITAL GARDEN TOKENS (June 2026 — available in src/index.css)
+
+Accent layer for member moments, The Next Chapter touchpoints (`/next-chapter/`), and garden components — complements, never replaces, the base palette:
+`--poppy #e0705a` · `--poppy-deep #c75d4d` · `--rose #f0b4a6` · `--rose-soft #f7d4ca` · `--peri #8d9ed6` · `--peri-soft #c3cdf0` · `--meadow #7d8c5c` · `--meadow-soft #aab98a` · `--honey #c08f45`
+Display font: `--font-display: 'Fraunces'` (variable, SOFT/WONK axes). Hand script: Caveat.
+Components: `SwayingStems`, `BloomDivider`, `GardenSticker` in `src/components/craft/`.
 
 ---
 

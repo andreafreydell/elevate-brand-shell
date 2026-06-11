@@ -425,3 +425,27 @@ import { TagRedStamp } from "@/components/craft/TagRedStamp";
 - **Density**: Max 2 artisanal SVG elements visible per screen (grain/stamp don't count)
 - **Opacity**: Always 0.2–0.6 — never solid or heavy
 - **Corners**: Still `rounded-none` everywhere — these layer on top of the design system
+
+---
+
+## Digital Garden Components (June 2026)
+
+The playful companion layer for The Next Chapter and member moments. Garden palette tokens: `--poppy`, `--rose`, `--peri`, `--meadow`, `--honey` (+ `-soft`/`-deep` variants).
+
+### SwayingStems
+Fixed, gently swaying flower stems along viewport edges. Decorative only; respects `prefers-reduced-motion`; lighter on mobile.
+```tsx
+<SwayingStems density="light" /> {/* "full" = 6 stems, "light" = 2 */}
+```
+
+### BloomDivider
+The ❀ ✿ ❀ section break with hairline rules — softer than StitchLineDivider.
+```tsx
+<BloomDivider />
+```
+
+### GardenSticker
+Rounded hand-script sticker label (playful sibling of WashiTapeNote). Variants: `rose` | `peri` | `meadow`.
+```tsx
+<GardenSticker variant="rose" rotation={-2}>new for members ✿</GardenSticker>
+```
