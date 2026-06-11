@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import { Check } from "lucide-react";
+import { MEMBERSHIP_CHECKOUT_URLS } from "@/lib/membershipCheckout";
 
 export interface TierData {
   name: string;
@@ -14,8 +14,8 @@ export interface TierData {
 
 export const TierCard = ({ tier }: { tier: TierData }) => {
   return (
-    <Link
-      to="/how-it-works#tiers"
+    <a
+      href={MEMBERSHIP_CHECKOUT_URLS[tier.name] ?? "/how-it-works#tiers"}
       aria-label={`Join ${tier.name} membership`}
       className={`border border-border flex flex-col ${
         tier.highlighted ? "bg-foreground text-background" : "bg-card"
@@ -91,6 +91,6 @@ export const TierCard = ({ tier }: { tier: TierData }) => {
           Join Now
         </span>
       </div>
-    </Link>
+    </a>
   );
 };

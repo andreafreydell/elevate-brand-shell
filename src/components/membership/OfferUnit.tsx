@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Check } from "lucide-react";
+import { MEMBERSHIP_CHECKOUT_URLS } from "@/lib/membershipCheckout";
 import { SavingsCalculator } from "@/components/membership/SavingsCalculator";
 
 const DEFAULT_TIER_HREF = "/how-it-works#tiers";
@@ -83,9 +84,9 @@ const CompactOffer = ({ ctaHref }: { ctaHref: string }) => (
 const StandardOffer = ({ ctaHref }: { ctaHref: string }) => (
   <div className="tier-grid-mobile mx-auto grid max-w-[900px] grid-cols-1 gap-4 md:grid-cols-2">
     {tierData.map((tier) => (
-      <Link
+      <a
         key={tier.name}
-        to={ctaHref}
+        href={MEMBERSHIP_CHECKOUT_URLS[tier.name] ?? ctaHref}
         aria-label={`Join ${tier.name} membership`}
         className={`tier-card-mobile group flex h-full flex-col border border-border transition-transform duration-300 ease-out hover:-translate-y-[3px] ${
           tier.highlighted ? "bg-foreground text-background" : "bg-card"
@@ -167,7 +168,7 @@ const StandardOffer = ({ ctaHref }: { ctaHref: string }) => (
             Join Now
           </span>
         </div>
-      </Link>
+      </a>
     ))}
   </div>
 );

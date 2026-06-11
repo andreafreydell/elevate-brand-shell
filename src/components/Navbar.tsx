@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { CUSTOMER_ACCOUNT_URL } from "@/lib/membershipCheckout";
 import { CartDrawer } from "./CartDrawer";
 import { Search, User, Heart, Menu, X, ChevronDown } from "lucide-react";
 import { storefrontApiRequest, OCCASIONS_QUERY } from "@/lib/shopify";
@@ -144,12 +145,12 @@ export const Navbar = () => {
             <button className="p-1.5 hover:opacity-70 transition-opacity hidden md:block">
               <Search className="h-[20px] w-[20px] stroke-[1.5]" />
             </button>
-            <Link
-              to="/account"
+            <a
+              href={CUSTOMER_ACCOUNT_URL}
               className="p-1.5 hover:opacity-70 transition-opacity hidden md:block"
             >
               <User className="h-[20px] w-[20px] stroke-[1.5]" />
-            </Link>
+            </a>
             <button className="p-1.5 hover:opacity-70 transition-opacity hidden md:block">
               <Heart className="h-[20px] w-[20px] stroke-[1.5]" />
             </button>
@@ -305,13 +306,13 @@ export const Navbar = () => {
                 <button className="p-1.5 hover:opacity-70 transition-opacity">
                   <Search className="h-[18px] w-[18px] stroke-[1.5]" />
                 </button>
-                <Link
-                  to="/account"
+                <a
+                  href={CUSTOMER_ACCOUNT_URL}
                   onClick={() => toggleMobile(false)}
                   className="p-1.5 hover:opacity-70 transition-opacity"
                 >
                   <User className="h-[18px] w-[18px] stroke-[1.5]" />
-                </Link>
+                </a>
                 <button className="p-1.5 hover:opacity-70 transition-opacity">
                   <Heart className="h-[18px] w-[18px] stroke-[1.5]" />
                 </button>
