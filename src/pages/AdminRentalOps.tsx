@@ -422,26 +422,20 @@ const AdminRentalOps = () => {
     setLoadingData(true);
     setLoadError("");
     try {
-      const [unitsRes, eventsRes] = await Promise.all([
-        supabase
-          .from("theolia_test_serials")
-          .select("*")
-          .order("serial", { ascending: true }),
-        supabase
-          .from("unit_lifecycle_events")
-          .select("*")
-          .order("created_at", { ascending: false })
-          .limit(50),
-      ]);
+      const opsPasscode = localStorage.getItem(ADMIN_STORAGE_KEY) ?? "";
+      const { data, error } = await supabase.functions.invoke("rental-ops-data", {
+        body: { passcode: opsPasscode },
+      });
 
-      if (unitsRes.error) throw unitsRes.error;
-      if (eventsRes.error) throw eventsRes.error;
+      if (error) throw error;
+      const units = (data?.units ?? []) as any[];
+      const eventsData = (data?.events ?? []) as any[];
 
-      const dbUnits = (unitsRes.data ?? []).map(mapDbUnit);
-      const dbReservations = (unitsRes.data ?? [])
+      const dbUnits = units.map(mapDbUnit);
+      const dbReservations = units
         .map(mapDbReservation)
         .filter((r): r is RentalReservation => r !== null);
-      const dbEvents = (eventsRes.data ?? []).map(mapDbEvent);
+      const dbEvents = eventsData.map(mapDbEvent);
 
       setInventoryUnits(dbUnits);
       setReservations(dbReservations);
@@ -454,6 +448,7 @@ const AdminRentalOps = () => {
       setLoadingData(false);
     }
   };
+
 
   useEffect(() => {
     if (accessGranted) {
