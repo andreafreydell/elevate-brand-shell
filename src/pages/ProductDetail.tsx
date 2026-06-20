@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { storefrontApiRequest, PRODUCT_BY_HANDLE_QUERY } from "@/lib/shopify";
+import { storefrontApiRequest, PRODUCT_BY_HANDLE_QUERY, COLLECTION_SIBLINGS_QUERY } from "@/lib/shopify";
 import { Navbar } from "@/components/Navbar";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { AnimateIn } from "@/components/shared/AnimateIn";
@@ -19,7 +19,7 @@ import { ScriptNumber } from "@/components/craft/ScriptNumber";
 import { WashiTapeNote } from "@/components/craft/WashiTapeNote";
 import { GrainOverlay } from "@/components/craft/GrainOverlay";
 import { CategoryGraphic } from "@/components/product/CategoryGraphic";
-import { Loader2, Shield, Package, ArrowLeft } from "lucide-react";
+import { Loader2, Shield, Package, ChevronLeft, ChevronRight } from "lucide-react";
 import { toast } from "sonner";
 
 interface Metafield {
@@ -58,15 +58,29 @@ const useMeta = (metafields: (Metafield | null)[], key: string): string =>
 const splitList = (value: string): string[] =>
   value ? value.split(/[,;]+/).map((item) => item.trim()).filter(Boolean) : [];
 
+// Maps a Shopify product_type to its collection route + display label
+const CATEGORY_ROUTES: Record<string, { path: string; label: string }> = {
+  Earrings: { path: "/earrings", label: "Earrings" },
+  Necklace: { path: "/necklaces", label: "Necklaces" },
+  Ring: { path: "/rings", label: "Rings" },
+  Bracelet: { path: "/bracelets", label: "Bracelets" },
+  Sunglasses: { path: "/sunglasses", label: "Sunglasses" },
+  Hair: { path: "/hair", label: "Hair" },
+};
+
+
+
 const ProductDetail = () => {
   const { handle } = useParams<{ handle: string }>();
   const [product, setProduct] = useState<ProductNode | null>(null);
   const [loading, setLoading] = useState(true);
   const [selectedVariantIdx, setSelectedVariantIdx] = useState(0);
   const [selectedImageIdx, setSelectedImageIdx] = useState(0);
+  const [siblings, setSiblings] = useState<Array<{ handle: string; title: string }>>([]);
 
   useEffect(() => {
     const fetchProduct = async () => {
+      setLoading(true);
       try {
         const data = await storefrontApiRequest(PRODUCT_BY_HANDLE_QUERY, { handle });
         if (data?.data?.productByHandle) {
@@ -79,8 +93,31 @@ const ProductDetail = () => {
       }
     };
 
+    setSelectedVariantIdx(0);
+    setSelectedImageIdx(0);
     fetchProduct();
   }, [handle]);
+
+  useEffect(() => {
+    if (!product) return;
+    const productType = product.productType;
+    if (!productType) return;
+    const fetchSiblings = async () => {
+      try {
+        const data = await storefrontApiRequest(COLLECTION_SIBLINGS_QUERY, {
+          first: 100,
+          query: `product_type:${productType}`,
+        });
+        const edges = data?.data?.products?.edges || [];
+        setSiblings(
+          edges.map((edge: { node: { handle: string; title: string } }) => edge.node),
+        );
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchSiblings();
+  }, [product]);
 
   if (loading) {
     return (
@@ -127,6 +164,15 @@ const ProductDetail = () => {
   const price = variant?.price || product.priceRange.minVariantPrice;
   const displayPrice = `${price.currencyCode} ${parseFloat(price.amount).toFixed(2)}`;
 
+  const collection = CATEGORY_ROUTES[category] || {
+    path: `/${category.toLowerCase()}`,
+    label: category,
+  };
+  const currentIdx = siblings.findIndex((sibling) => sibling.handle === product.handle);
+  const prevProduct = currentIdx > 0 ? siblings[currentIdx - 1] : null;
+  const nextProduct =
+    currentIdx >= 0 && currentIdx < siblings.length - 1 ? siblings[currentIdx + 1] : null;
+
   const blobVariants: Array<"classic" | "coastal" | "modern" | "statement"> = [
     "classic",
     "coastal",
@@ -145,15 +191,49 @@ const ProductDetail = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      <div className="max-w-[1400px] mx-auto px-6 pt-6">
-        <Link
-          to={`/${category.toLowerCase()}s`}
-          className="inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase font-sans text-muted-foreground hover:text-foreground transition-colors"
+      <div className="max-w-[1400px] mx-auto px-6 pt-6 flex items-center justify-between gap-4">
+        {prevProduct ? (
+          <Link
+            to={`/product/${prevProduct.handle}`}
+            className="group inline-flex items-center gap-1.5 text-[10px] tracking-[0.2em] uppercase font-sans text-muted-foreground hover:text-foreground transition-colors shrink-0"
+            title={prevProduct.title}
+          >
+            <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" />
+            <span className="hidden sm:inline">Previous</span>
+          </Link>
+        ) : (
+          <span className="w-4 h-4 shrink-0" aria-hidden />
+        )}
+
+        <nav
+          aria-label="Breadcrumb"
+          className="flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase font-sans text-muted-foreground min-w-0"
         >
-          <ArrowLeft className="w-3 h-3" />
-          {category}s
-        </Link>
+          <Link to="/" className="hover:text-foreground transition-colors shrink-0">
+            Home
+          </Link>
+          <span className="text-muted-foreground/40 shrink-0">/</span>
+          <Link to={collection.path} className="hover:text-foreground transition-colors shrink-0">
+            {collection.label}
+          </Link>
+          <span className="text-muted-foreground/40 shrink-0">/</span>
+          <span className="text-foreground truncate">{product.title}</span>
+        </nav>
+
+        {nextProduct ? (
+          <Link
+            to={`/product/${nextProduct.handle}`}
+            className="group inline-flex items-center gap-1.5 text-[10px] tracking-[0.2em] uppercase font-sans text-muted-foreground hover:text-foreground transition-colors shrink-0"
+            title={nextProduct.title}
+          >
+            <span className="hidden sm:inline">Next</span>
+            <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+          </Link>
+        ) : (
+          <span className="w-4 h-4 shrink-0" aria-hidden />
+        )}
       </div>
+
 
       <main className="max-w-[1400px] mx-auto px-6 py-4 md:py-12 space-y-0">
         <AnimateIn variant="fadeIn">

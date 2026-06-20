@@ -275,6 +275,20 @@ export const PRODUCT_BY_HANDLE_QUERY = `
   }
 `;
 
+// Lightweight query to fetch sibling product handles within a collection (product_type)
+export const COLLECTION_SIBLINGS_QUERY = `
+  query GetCollectionSiblings($first: Int!, $query: String) {
+    products(first: $first, query: $query) {
+      edges {
+        node {
+          handle
+          title
+        }
+      }
+    }
+  }
+`;
+
 // Cart mutations
 export const CART_QUERY = `
   query cart($id: ID!) {
