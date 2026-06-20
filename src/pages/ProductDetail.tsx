@@ -221,6 +221,9 @@ const ProductDetail = () => {
 
               <p className="text-[9px] tracking-[0.35em] uppercase font-sans text-muted-foreground mb-3">
                 GEA · {category}
+                {variant?.sku && (
+                  <span className="text-muted-foreground/70"> · {variant.sku}</span>
+                )}
               </p>
 
               <h1 className="font-serif text-2xl md:text-[2.2rem] font-medium leading-[1.1] tracking-[-0.01em] mb-2">
