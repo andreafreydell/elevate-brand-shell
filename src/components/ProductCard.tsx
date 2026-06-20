@@ -68,9 +68,9 @@ export const ProductCard = ({ product }: { product: ShopifyProduct }) => {
             </div>
           )}
         </div>
-        <div className="p-5 space-y-3">
+        <div className="p-5 space-y-2.5">
           {variant?.sku && (
-            <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-tag-red/70">
+            <p className="font-sans text-[9px] tracking-[0.22em] uppercase text-muted-foreground/80">
               {variant.sku}
             </p>
           )}
