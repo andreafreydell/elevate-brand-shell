@@ -232,7 +232,7 @@ const ProductDetail = () => {
                     }}
                     title="Click to copy reference"
                   >
-                    {" · Ref {variant.sku}</span>
+                    {" · Ref "}{variant.sku}</span>
                 )}
               </p>
 
