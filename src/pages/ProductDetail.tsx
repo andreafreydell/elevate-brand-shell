@@ -102,22 +102,43 @@ const ProductDetail = () => {
     if (!product) return;
     const productType = product.productType;
     if (!productType) return;
+    const currentHandle = product.handle;
+
     const fetchSiblings = async () => {
-      try {
-        const data = await storefrontApiRequest(COLLECTION_SIBLINGS_QUERY, {
-          first: 100,
-          query: `product_type:${productType}`,
-        });
-        const edges = data?.data?.products?.edges || [];
-        setSiblings(
-          edges.map((edge: { node: { handle: string; title: string } }) => edge.node),
-        );
-      } catch (error) {
-        console.error(error);
+      const collected: Array<{ handle: string; title: string }> = [];
+      let after: string | null = null;
+      // Page through the collection until we've found the current product
+      // plus the item after it (so the Next arrow works), capped for safety.
+      for (let page = 0; page < 12; page += 1) {
+        try {
+          const data = await storefrontApiRequest(COLLECTION_SIBLINGS_QUERY, {
+            first: 250,
+            query: `product_type:${productType}`,
+            after,
+          });
+          const products = data?.data?.products;
+          const edges = products?.edges || [];
+          collected.push(
+            ...edges.map((edge: { node: { handle: string; title: string } }) => edge.node),
+          );
+
+          const foundIdx = collected.findIndex((item) => item.handle === currentHandle);
+          const hasNextPage = products?.pageInfo?.hasNextPage;
+          // Stop once we have the current product and at least one item after it.
+          if (foundIdx >= 0 && foundIdx < collected.length - 1) break;
+          if (!hasNextPage) break;
+          after = products?.pageInfo?.endCursor || null;
+        } catch (error) {
+          console.error(error);
+          break;
+        }
       }
+      setSiblings(collected);
     };
+
     fetchSiblings();
   }, [product]);
+
 
   if (loading) {
     return (
