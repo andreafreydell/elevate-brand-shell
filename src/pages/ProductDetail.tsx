@@ -20,7 +20,6 @@ import { WashiTapeNote } from "@/components/craft/WashiTapeNote";
 import { GrainOverlay } from "@/components/craft/GrainOverlay";
 import { CategoryGraphic } from "@/components/product/CategoryGraphic";
 import { Loader2, Shield, Package, ArrowLeft } from "lucide-react";
-import { toast } from "sonner";
 
 interface Metafield {
   key: string;
@@ -224,15 +223,13 @@ const ProductDetail = () => {
               <p className="text-[9px] tracking-[0.35em] uppercase font-sans text-muted-foreground mb-3">
                 GEA · {category}
                 {variant?.sku && (
-                  <span
-                    className="text-muted-foreground/70 cursor-pointer hover:text-muted-foreground select-all"
-                    onClick={() => {
-                      navigator.clipboard.writeText(variant.sku);
-                      toast.success("Reference copied", { position: "top-center" });
-                    }}
-                    title="Click to copy reference"
-                  >
-                    {
+                  <span className="text-muted-foreground/70"> · Ref {variant.sku}</span>
+                )}
+              </p>
+
+              <h1 className="font-serif text-2xl md:text-[2.2rem] font-medium leading-[1.1] tracking-[-0.01em] mb-2">
+                {product.title}
+              </h1>
 
               {heroPhrase && (
                 <p className="font-serif italic text-base md:text-lg text-muted-foreground leading-snug mb-4 md:mb-6">
