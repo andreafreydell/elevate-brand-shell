@@ -69,6 +69,11 @@ export const ProductCard = ({ product }: { product: ShopifyProduct }) => {
           )}
         </div>
         <div className="p-5 space-y-3">
+          {variant?.sku && (
+            <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-tag-red/70">
+              {variant.sku}
+            </p>
+          )}
           <h3 className="font-serif text-base font-medium leading-snug">{product.node.title}</h3>
           <p className="text-sm text-muted-foreground">{displayPrice}</p>
           <span
