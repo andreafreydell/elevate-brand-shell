@@ -39,7 +39,7 @@ export const ProductCard = ({ product }: { product: ShopifyProduct }) => {
     if (!hasMultiple || intervalRef.current) return;
     intervalRef.current = setInterval(() => {
       setActiveIdx((prev) => (prev + 1) % slideshowImages.length);
-    }, 500);
+    }, 1000);
   };
 
   // Clean up the interval if the card unmounts mid-hover
