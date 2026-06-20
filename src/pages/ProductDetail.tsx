@@ -233,8 +233,6 @@ const ProductDetail = () => {
                     title="Click to copy reference"
                   >
                     {
-                {product.title}
-              </h1>
 
               {heroPhrase && (
                 <p className="font-serif italic text-base md:text-lg text-muted-foreground leading-snug mb-4 md:mb-6">
