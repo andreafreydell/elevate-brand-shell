@@ -1,7 +1,7 @@
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { useCartStore } from "@/stores/cartStore";
 import { type ShopifyProduct } from "@/lib/shopify";
-import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
 /** Append width param to Shopify CDN URLs for optimized loading */
@@ -16,51 +16,59 @@ function optimizeShopifyImage(url: string, width: number): string {
 }
 
 export const ProductCard = ({ product }: { product: ShopifyProduct }) => {
-  const addItem = useCartStore(state => state.addItem);
-  const isLoading = useCartStore(state => state.isLoading);
   const variant = product.node.variants.edges[0]?.node;
-  const image = product.node.images.edges[0]?.node;
-  const hoverImage = product.node.images.edges[1]?.node;
   const price = product.node.priceRange.minVariantPrice;
   const displayPrice = `$${parseFloat(price.amount).toFixed(2)}`;
 
-  const handleAddToCart = async (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (!variant) return;
-    await addItem({
-      product,
-      variantId: variant.id,
-      variantTitle: variant.title,
-      price: variant.price,
-      quantity: 1,
-      selectedOptions: variant.selectedOptions || [],
-    });
-    toast.success("Added to bag", { position: "top-center" });
+  // Use up to the first three product images for the hover slideshow
+  const slideshowImages = product.node.images.edges.slice(0, 3).map((edge) => edge.node);
+  const hasMultiple = slideshowImages.length > 1;
+
+  const [activeIdx, setActiveIdx] = useState(0);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const stopSlideshow = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+    setActiveIdx(0);
   };
+
+  const startSlideshow = () => {
+    if (!hasMultiple || intervalRef.current) return;
+    intervalRef.current = setInterval(() => {
+      setActiveIdx((prev) => (prev + 1) % slideshowImages.length);
+    }, 500);
+  };
+
+  // Clean up the interval if the card unmounts mid-hover
+  useEffect(() => () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+  }, []);
 
   return (
     <Link to={`/product/${product.node.handle}`} className="group block">
       <div className="border border-border bg-card overflow-hidden">
-        <div className="aspect-square overflow-hidden">
-          {image ? (
+        <div
+          className="aspect-square overflow-hidden"
+          onMouseEnter={startSlideshow}
+          onMouseLeave={stopSlideshow}
+        >
+          {slideshowImages.length > 0 ? (
             <div className="relative w-full h-full">
-              <img
-                src={optimizeShopifyImage(image.url, 600)}
-                alt={image.altText || product.node.title}
-                className={`w-full h-full object-cover transition-opacity duration-500 ${hoverImage ? 'group-hover:opacity-0' : 'group-hover:scale-105 transition-transform duration-700'}`}
-                loading="lazy"
-                decoding="async"
-              />
-              {hoverImage && (
+              {slideshowImages.map((img, index) => (
                 <img
-                  src={optimizeShopifyImage(hoverImage.url, 600)}
-                  alt={hoverImage.altText || product.node.title}
-                  className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  key={img.url}
+                  src={optimizeShopifyImage(img.url, 600)}
+                  alt={img.altText || product.node.title}
+                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+                    index === activeIdx ? "opacity-100" : "opacity-0"
+                  }`}
                   loading="lazy"
                   decoding="async"
                 />
-              )}
+              ))}
             </div>
           ) : (
             <div className="w-full h-full bg-secondary flex items-center justify-center">
