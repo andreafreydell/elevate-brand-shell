@@ -70,7 +70,16 @@ export const ProductCard = ({ product }: { product: ShopifyProduct }) => {
         </div>
         <div className="p-5 space-y-2.5">
           {variant?.sku && (
-            <p className="font-sans text-[9px] tracking-[0.22em] uppercase text-muted-foreground/80">
+            <p
+              className="font-sans text-[9px] tracking-[0.22em] uppercase text-muted-foreground/80 cursor-pointer hover:text-muted-foreground select-all"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                navigator.clipboard.writeText(variant.sku);
+                toast.success("Reference copied", { position: "top-center" });
+              }}
+              title="Click to copy reference"
+            >
               Ref {variant.sku}
             </p>
           )}
