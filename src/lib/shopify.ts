@@ -277,8 +277,12 @@ export const PRODUCT_BY_HANDLE_QUERY = `
 
 // Lightweight query to fetch sibling product handles within a collection (product_type)
 export const COLLECTION_SIBLINGS_QUERY = `
-  query GetCollectionSiblings($first: Int!, $query: String) {
-    products(first: $first, query: $query) {
+  query GetCollectionSiblings($first: Int!, $query: String, $after: String) {
+    products(first: $first, query: $query, after: $after) {
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
       edges {
         node {
           handle
