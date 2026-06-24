@@ -99,6 +99,14 @@ const AppContent = () => {
         element={<CategoryPage title="Sunglasses" subtitle="Frames that define your gaze — bold, refined, unapologetic." productType="Sunglasses" />}
       />
       <Route
+        path="/charms"
+        element={<CategoryPage title="Charms" subtitle="Tokens, pendants, and add-ons — build a piece that tells your story." productType="Charm" />}
+      />
+      <Route
+        path="/watches"
+        element={<CategoryPage title="Watches" subtitle="Classic faces for the modern wrist." productType="Watch" query="product_type:Watch AND -product_type:strap" />}
+      />
+      <Route
         path="/hair"
         element={<CategoryPage title="Hair" subtitle="Clips, pins, and accessories — the finishing gesture." productType="Hair" />}
       />

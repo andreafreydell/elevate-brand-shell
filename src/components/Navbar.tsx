@@ -15,7 +15,9 @@ const categoryLinks = [
   { label: "Earrings", href: "/earrings" },
   { label: "Necklaces", href: "/necklaces" },
   { label: "Bracelets", href: "/bracelets" },
+  { label: "Charms", href: "/charms" },
   { label: "Rings", href: "/rings" },
+  { label: "Watches", href: "/watches" },
   { label: "Sunglasses", href: "/sunglasses" },
   { label: "Hair", href: "/hair" },
 ];

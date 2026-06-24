@@ -9,11 +9,13 @@ interface CategoryPageProps {
   subtitle: string;
   /** Shopify product_type value for filtering */
   productType: string;
+  /** Optional Shopify search query override (defaults to `product_type:${productType}`) */
+  query?: string;
   /** Optional custom headline with JSX (e.g. ScribbleUnderline) */
   headline?: ReactNode;
 }
 
-const CategoryPage = ({ title, subtitle, productType, headline }: CategoryPageProps) => (
+const CategoryPage = ({ title, subtitle, productType, query, headline }: CategoryPageProps) => (
   <PageLayout>
     <section className="bg-foreground relative overflow-hidden">
       <GrainOverlay opacity={0.05} />
@@ -28,7 +30,7 @@ const CategoryPage = ({ title, subtitle, productType, headline }: CategoryPagePr
     </section>
     <StackingTip productType={productType} />
     <ProductGrid
-      query={`product_type:${productType}`}
+      query={query ?? `product_type:${productType}`}
       heading={title}
       label="The Collection"
       showFilters
