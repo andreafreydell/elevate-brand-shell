@@ -2,3 +2,9 @@ project_id = "nwgndnochdbpjijhnbgq"
 
 [functions.send-contact-email]
 verify_jwt = false
+
+[functions.shopify-order-paid]
+verify_jwt = false
+
+[functions.wms-rental-event]
+verify_jwt = false
