@@ -82,7 +82,7 @@ const Index = () => {
           <StaggerItem>
             <div className="flex flex-col h-full transition-transform duration-300 ease-out hover:scale-[1.02]">
               <div className="material-image-mobile aspect-[16/10] max-h-[280px] overflow-hidden relative">
-                <img src="/images/material-steel.png" alt="Layered gold chain necklaces showcasing 316L stainless steel craftsmanship" className="w-full h-full object-cover" loading="lazy" decoding="async" />
+                <img src="/images/material-steel.webp" alt="Layered gold chain necklaces showcasing 316L stainless steel craftsmanship" className="w-full h-full object-cover" loading="lazy" decoding="async" />
                 <div className="absolute top-3 left-3">
                   <OrganicBlobTag variant="coastal">Hypoallergenic</OrganicBlobTag>
                 </div>
@@ -96,7 +96,7 @@ const Index = () => {
           <StaggerItem className="hidden md:block">
             <div className="flex flex-col h-full transition-transform duration-300 ease-out hover:scale-[1.02]">
               <div className="material-image-mobile aspect-[16/10] max-h-[280px] overflow-hidden relative">
-                <img src="/images/material-moissanite.png" alt="Layered moissanite tennis necklaces on model" className="w-full h-full object-cover" loading="lazy" decoding="async" />
+                <img src="/images/material-moissanite.webp" alt="Layered moissanite tennis necklaces on model" className="w-full h-full object-cover" loading="lazy" decoding="async" />
                 <div className="absolute top-3 left-3">
                   <OrganicBlobTag variant="classic">Conflict-Free</OrganicBlobTag>
                 </div>
@@ -110,7 +110,7 @@ const Index = () => {
           <StaggerItem className="hidden md:block">
             <div className="flex flex-col h-full transition-transform duration-300 ease-out hover:scale-[1.02]">
               <div className="material-image-mobile aspect-[16/10] max-h-[280px] overflow-hidden relative">
-                <img src="/images/material-lifecycle.png" alt="Gold earrings and chain jewelry showcasing lifecycle care craftsmanship" className="w-full h-full object-cover" loading="lazy" decoding="async" />
+                <img src="/images/material-lifecycle.webp" alt="Gold earrings and chain jewelry showcasing lifecycle care craftsmanship" className="w-full h-full object-cover" loading="lazy" decoding="async" />
                 <div className="absolute top-3 left-3">
                   <OrganicBlobTag variant="statement">Restored</OrganicBlobTag>
                 </div>

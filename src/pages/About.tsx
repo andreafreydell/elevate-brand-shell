@@ -73,7 +73,7 @@ const About = () => {
           <AnimateIn variant="fadeIn" duration={0.6}>
             <div className="h-full">
               <img
-                src="/images/founder-portrait.png"
+                src="/images/founder-portrait.webp"
                 alt="GEA founder portrait"
                 className="w-full h-full object-cover"
                 loading="lazy"
@@ -111,7 +111,7 @@ const About = () => {
                 </p>
               </div>
               <img
-                src="/images/founder-signature.png"
+                src="/images/founder-signature.webp"
                 alt="Founder signature - Andrea Freydell"
                 className="max-w-xs h-auto mt-8 relative z-[1]"
                 loading="lazy"

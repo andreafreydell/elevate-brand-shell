@@ -1,9 +1,9 @@
 import { type ShopifyProduct } from "@/lib/shopify";
 
 const EDITORIAL_IMAGES = [
-  { url: "/images/edit-1.png", alt: "Model wearing gold earrings and moissanite ring" },
-  { url: "/images/edit-2.png", alt: "Model wearing gold chain necklace and hoop earrings" },
-  { url: "/images/edit-3.png", alt: "Model styled with layered gold jewelry and emerald rings" },
+  { url: "/images/edit-1.webp", alt: "Model wearing gold earrings and moissanite ring" },
+  { url: "/images/edit-2.webp", alt: "Model wearing gold chain necklace and hoop earrings" },
+  { url: "/images/edit-3.webp", alt: "Model styled with layered gold jewelry and emerald rings" },
 ];
 
 export const ProductImageRow = ({ products }: { products: ShopifyProduct[] }) => {

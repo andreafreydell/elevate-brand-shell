@@ -30,7 +30,7 @@ export const Hero = () => {
         {/* Left image block */}
         <div className="hidden md:block bg-[hsl(30,18%,38%)] overflow-hidden">
           <img
-            src="/images/hero-authority.png"
+            src="/images/hero-authority.webp"
             alt="Layered gold and moissanite necklaces on model"
             className="w-full h-full object-cover"
           />
@@ -58,7 +58,7 @@ export const Hero = () => {
         {/* Right image block */}
         <div className="hidden md:block bg-[hsl(32,15%,42%)] overflow-hidden">
           <img
-            src="/images/hero-editorial.png"
+            src="/images/hero-editorial.webp"
             alt="Gold and emerald rings styled on hand"
             className="w-full h-full object-cover"
           />

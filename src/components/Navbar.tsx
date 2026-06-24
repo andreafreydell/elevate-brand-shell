@@ -14,12 +14,12 @@ const primaryLinks = [
 const categoryLinks = [
   { label: "Earrings", href: "/earrings" },
   { label: "Necklaces", href: "/necklaces" },
-  { label: "Bracelets", href: "/bracelets" },
   { label: "Charms", href: "/charms" },
+  { label: "Bracelets", href: "/bracelets" },
   { label: "Rings", href: "/rings" },
-  { label: "Watches", href: "/watches" },
   { label: "Sunglasses", href: "/sunglasses" },
   { label: "Hair", href: "/hair" },
+  { label: "Watches", href: "/watches" },
 ];
 
 type OccasionQueryResponse = {
@@ -230,6 +230,16 @@ export const Navbar = () => {
           />
           <nav className="relative bg-background border-b border-border animate-fade-in">
             <div className="px-6 py-6 space-y-1">
+              <div className="border-b border-border/40 pb-4 mb-1">
+                <Link
+                  to="/how-it-works"
+                  onClick={() => toggleMobile(false)}
+                  className={`${membershipCtaClass} w-full`}
+                >
+                  See Membership
+                </Link>
+              </div>
+
               {primaryLinks.map((item) => (
                 <Link
                   key={item.label}
@@ -247,16 +257,6 @@ export const Navbar = () => {
               >
                 The Next Chapter <span aria-hidden="true" className="text-[var(--poppy)]">✿</span>
               </a>
-
-              <div className="border-b border-border/40 py-4">
-                <Link
-                  to="/how-it-works"
-                  onClick={() => toggleMobile(false)}
-                  className={`${membershipCtaClass} w-full`}
-                >
-                  See Membership
-                </Link>
-              </div>
 
               <div className="border-b border-border/40">
                 <button
