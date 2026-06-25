@@ -198,8 +198,8 @@ const FullOffer = ({ ctaHref }: { ctaHref: string }) => (
         </h3>
         <p className="cpw-desc mb-6 font-sans text-[12px] leading-relaxed text-muted-foreground">
           The average fine jewelry purchase sits unworn 90% of its life. GEA
-          membership inverts that equation - you wear more, spend less per occasion,
-          and never carry the weight of a depreciating asset.
+          membership flips that - you wear far more, spend less per occasion, and
+          keep the pieces that truly earn a place in your collection.
         </p>
         <Link to="/how-it-works" className="cta-underline">
           See How It Works

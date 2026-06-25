@@ -14,7 +14,7 @@ export const StackingBanner = () => {
         style={{ animation: "gea-marquee 110s linear infinite" }}
       >
         {items.map((b, i) => (
-          <Link key={`${b.png}-${i}`} to={b.href} aria-label="Shop this look" className="group block shrink-0">
+          <Link key={`${b.png}-${i}`} to={b.href} aria-label="Rent this look" className="group block shrink-0">
             <img
               src={`${IMG_BASE}${b.png}.webp`}
               alt=""

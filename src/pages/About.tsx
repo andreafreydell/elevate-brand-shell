@@ -27,9 +27,9 @@ const values = [
     label: "Principle 01",
   },
   {
-    title: "Access Over Accumulation",
+    title: "A Modern Way to Wear",
     description:
-      "We believe the most sustainable piece of jewelry is the one that's always being worn - not the one gathering dust.",
+      "Conventional ownership — buy a piece, wear it a few times, let it rest in a drawer — wasn't built for a life that keeps changing. Access lets you wear far more, and keep the pieces you fall for.",
     icon: RotateCcw,
     label: "Principle 02",
   },
@@ -43,7 +43,7 @@ const values = [
   {
     title: "Access as Equity",
     description:
-      "Beauty shouldn't require accumulation. It should require taste, intention, and the freedom to keep becoming.",
+      "Beauty shouldn't depend on how much you own. It comes from taste, intention, and the freedom to keep becoming — wearing more, and keeping what you love.",
     icon: Unlock,
     label: "Principle 04",
   },
@@ -101,13 +101,13 @@ const About = () => {
                   in her footsteps, but the world has changed. Women are more mobile, selective, and conscious.
                 </p>
                 <p className="text-[13px] text-foreground font-sans leading-[1.8] mb-6 relative z-[1]">
-                  We want beauty without waste, evolution without guilt, and self-expression without clutter -
-                  yet jewelry is still stuck in old habits of ownership and accumulation.
+                  We want beauty that keeps pace with how we live now - more wear, more expression, less sitting
+                  in a drawer - yet conventional ownership hasn't really changed in generations.
                 </p>
                 <p className="text-[13px] text-foreground font-sans leading-[1.8] relative z-[1]">
-                  So I created a brand built on access, not ownership - curated high-design
-                  jewelry that moves with your life, evolves with your taste, and carries no burden. You are
-                  always becoming. Presence is the only possession that matters.
+                  So I created a brand built on access first - curated high-design jewelry that moves with your
+                  life, evolves with your taste, and still lets you keep the pieces you fall for. You are always
+                  becoming, and your jewelry should keep up.
                 </p>
               </div>
               <img
@@ -187,12 +187,11 @@ const About = () => {
           <AnimateIn variant="fadeUp" delay={0.15} duration={0.8}>
             <HandDrawnFrame strokeColor="hsl(36,25%,78%)">
               <blockquote className="font-serif text-2xl md:text-3xl lg:text-4xl font-medium leading-[1.2] tracking-[-0.01em] max-w-[700px] mx-auto mb-6 italic">
-                "We do not sell jewelry. We dress a life in{" "}
+                "We don't just sell jewelry. We dress a life in{" "}
                 <ScribbleUnderline color="var(--brass)" delay={0.6}>
                   full bloom
                 </ScribbleUnderline>{" "}
-                - without the weight of ownership, without the guilt of extraction, without the anxiety of
-                accumulation."
+                - more to wear, more to express, and the freedom to keep what you love."
               </blockquote>
             </HandDrawnFrame>
           </AnimateIn>

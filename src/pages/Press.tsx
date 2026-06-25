@@ -99,10 +99,10 @@ const Press = () => {
           <AnimateIn variant="fadeUp" delay={0.15} duration={0.8}>
             <HandDrawnFrame strokeColor="hsl(36,25%,78%)">
               <p className="mx-auto max-w-[600px] font-serif text-lg font-medium italic leading-[1.5] md:text-xl">
-                GEA is a fashion house jewelry access system. We replace
-                ownership with access, accumulation with expression, and
-                extraction with intention. Founded on the principle that you
-                were never meant to stay the same.
+                GEA is a fashion house jewelry access system. We update
+                conventional ownership with access, accumulation with
+                expression, and extraction with intention. Founded on the
+                principle that you were never meant to stay the same.
               </p>
             </HandDrawnFrame>
           </AnimateIn>

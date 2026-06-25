@@ -210,7 +210,7 @@ const Index = () => {
                   Bloom <ScribbleUnderline color="var(--brass)">Freely</ScribbleUnderline>.
                 </h2>
                 <p className="text-[13px] text-[hsl(36,20%,75%)] font-sans max-w-[400px] mx-auto mb-6 leading-relaxed">
-                  You were never meant to stay the same. Dress the woman you're becoming — not the one weighed down by what she already owns.
+                  You were never meant to stay the same. Dress the woman you're becoming — with the freedom to wear more, and keep what you love.
                 </p>
                 <Link
                   to="/how-it-works"

@@ -14,7 +14,7 @@ const slides = [
     headline: "The Brilliance\nNecklace",
     description:
       "Created moissanite set in gold-plated artisan settings. Light, form, and craft — reimagined.",
-    cta: "Shop Now",
+    cta: "Rent Now",
     ctaHref: "#collection",
   },
 ];

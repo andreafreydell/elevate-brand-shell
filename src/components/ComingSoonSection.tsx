@@ -45,16 +45,15 @@ export const ComingSoonSection = () => {
             </AnimateIn>
             <AnimateIn variant="fadeUp" delay={0.3} duration={0.8}>
               <p className="text-[13px] text-muted-foreground font-sans leading-[1.8] mb-6">
-                GEA was born from a simple observation: the traditional jewelry model is broken.
-                Thousands spent on pieces worn fewer than five times. Drawers full of forgotten beauty.
-                Value depreciating in silence.
+                GEA was born from a simple observation: conventional ownership hasn't kept up with how we
+                live now. Fine pieces get bought, worn a handful of times, then left waiting in a drawer.
               </p>
             </AnimateIn>
             <AnimateIn variant="fadeUp" delay={0.4} duration={0.8}>
               <p className="text-[13px] text-muted-foreground font-sans leading-[1.8]">
-                We believe luxury should be experienced, not accumulated. That access is more intelligent
-                than ownership. That the modern woman deserves a collection that evolves as she does —
-                without the weight of permanence.
+                We believe luxury should be lived in — worn often, mixed freely, refreshed as you grow —
+                while you keep the pieces you love most. A collection that evolves as you do, and keeps pace
+                with who you're becoming.
               </p>
             </AnimateIn>
           </div>

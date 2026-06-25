@@ -34,7 +34,7 @@ export const StackingGrid = () => {
 
   return (
     <>
-      <SectionHeading label="The Feed ✿" heading="Styled &amp; Stacked" script="tap any look to shop it ✿" headingMobile />
+      <SectionHeading label="The Feed ✿" heading="Styled &amp; Stacked" script="tap any look to rent it ✿" headingMobile />
       <section className="pb-8 md:pb-10">
         <style>{`@media (hover:hover) and (pointer:fine){.feed-cell:hover .feed-img{transform:scale(1.32);z-index:20;box-shadow:0 16px 44px rgba(33,25,18,0.38)}}`}</style>
         <div className="hidden md:grid grid-cols-12 gap-[3px]">

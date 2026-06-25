@@ -33,7 +33,7 @@ export const ArtOfStacking = () => (
                 className="mt-3 inline-block font-sans text-[11px] tracking-[0.14em] uppercase border-b pb-0.5"
                 style={{ color: "var(--poppy-deep)", borderColor: "var(--poppy)" }}
               >
-                Shop {c.label} →
+                Rent {c.label} →
               </span>
             </div>
           </Link>

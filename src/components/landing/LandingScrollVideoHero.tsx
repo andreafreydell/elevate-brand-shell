@@ -107,7 +107,7 @@ const freedomBlocks = [
   {
     label: "Bloom",
     title: "Beauty Without Burden",
-    text: "No storage anxiety. No depreciation. No buyer's remorse. Just beautiful jewelry, worn with intention, returned with ease — so there's always room to grow.",
+    text: "Wear far more than you could ever buy, keep the pieces you love, and let the rest refresh. Beautiful jewelry, worn with intention — with room to keep growing.",
     icon: Feather,
   },
 ];
@@ -576,15 +576,15 @@ export const LandingScrollVideoHero = () => {
             >
               <div className="mb-4 flex items-center justify-between">
                 <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                  The Old Model
+                  Conventional Ownership
                 </p>
                 <Scale className="h-5 w-5 stroke-[1.3] text-foreground" />
               </div>
               <h3 className="mb-4 font-serif text-xl font-semibold tracking-[0.02em] md:text-2xl">
-                Ownership Is a <CircleEmphasis color="var(--tag-red)">Standstill</CircleEmphasis>
+                Built for a <CircleEmphasis color="var(--tag-red)">Slower</CircleEmphasis> Era
               </h3>
               <p className="font-sans text-[12px] leading-relaxed text-muted-foreground">
-                The average woman wears each piece of fine jewelry fewer than <ScriptNumber>5</ScriptNumber> times before it sits forgotten. One frozen identity. Inches of drawer space consumed. Beauty standing still while you keep evolving.
+                The average piece of fine jewelry is worn fewer than <ScriptNumber>5</ScriptNumber> times, then waits in a drawer. Buying one piece at a time simply can't keep pace with a life — and a style — that keeps evolving.
               </p>
             </div>
             <div
@@ -601,7 +601,7 @@ export const LandingScrollVideoHero = () => {
                 Access Is <ScribbleUnderline color="var(--seafoam)" delay={0.5}>Evolution</ScribbleUnderline>
               </h3>
               <p className="font-sans text-[12px] leading-relaxed text-background/70">
-                Access the full vault. Wear who you're becoming this cycle. Keep the piece you love most, return the rest, and keep growing.{" "}
+                Access the full vault. Wear who you're becoming this cycle. Keep the pieces you love, return the rest, and keep growing.{" "}
                 <ScriptNumber className="text-background/90">10+</ScriptNumber> pieces per year. Because staying the same was never the plan.
               </p>
             </div>

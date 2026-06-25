@@ -151,6 +151,13 @@ export const Navbar = () => {
             <button
               onClick={() => setSearchOpen(true)}
               aria-label="Search"
+              className="p-1.5 hover:opacity-70 transition-opacity md:hidden"
+            >
+              <Search className="h-5 w-5 stroke-[1.5]" />
+            </button>
+            <button
+              onClick={() => setSearchOpen(true)}
+              aria-label="Search"
               className="p-1.5 hover:opacity-70 transition-opacity hidden md:block"
             >
               <Search className="h-[20px] w-[20px] stroke-[1.5]" />
@@ -170,7 +177,7 @@ export const Navbar = () => {
       </div>
 
       <div className="border-b border-border">
-        <nav className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 h-[42px] hidden md:flex items-center justify-center gap-8 lg:gap-10">
+        <nav className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-8 lg:px-16 min-h-[42px] py-2 hidden md:flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 lg:gap-x-6">
           {primaryLinks.map((item) => (
             <Link
               key={item.label}

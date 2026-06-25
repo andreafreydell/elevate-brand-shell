@@ -6,7 +6,7 @@ import { carousel, IMG_BASE } from "@/data/landingShowcase";
 export const CategoryCarousel = () => (
   <section className="bg-background pt-5 md:pt-7 pb-4 md:pb-6">
     <p className="text-center font-sans text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-4">
-      Shop by Category <span aria-hidden="true" style={{ color: "var(--poppy)" }}>✿</span>
+      Rent by Category <span aria-hidden="true" style={{ color: "var(--poppy)" }}>✿</span>
     </p>
     <div className="mx-auto max-w-[1080px] px-5 sm:px-6 md:px-12 lg:px-16 grid grid-cols-4 md:grid-cols-8 gap-x-3 gap-y-4 md:gap-x-4 justify-items-center">
       {carousel.map((s) => (
