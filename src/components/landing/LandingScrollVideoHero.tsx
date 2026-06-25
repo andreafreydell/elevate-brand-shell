@@ -106,8 +106,8 @@ const freedomBlocks = [
   },
   {
     label: "Bloom",
-    title: "Beauty Without Burden",
-    text: "Wear far more than you could ever buy, keep the pieces you love, and let the rest refresh. Beautiful jewelry, worn with intention — with room to keep growing.",
+    title: "Build It With Intention",
+    text: "Keep only the pieces you wear most and carefully build a collection that's truly yours — one that keeps pace with the woman you're becoming and the places you're going.",
     icon: Feather,
   },
 ];

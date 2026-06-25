@@ -44,7 +44,7 @@ const isPathActive = (pathname: string, href: string) =>
     : pathname === href || pathname.startsWith(`${href}/`);
 
 const getNavLinkClass = (isActive: boolean) =>
-  `text-[11px] tracking-[0.08em] uppercase font-sans transition-colors whitespace-nowrap ${
+  `text-[11px] tracking-[0.1em] uppercase font-sans transition-colors whitespace-nowrap ${
     isActive
       ? "text-foreground border-b border-foreground pb-0.5"
       : "text-foreground hover:border-b hover:border-foreground hover:pb-0.5"
@@ -177,7 +177,7 @@ export const Navbar = () => {
       </div>
 
       <div className="border-b border-border">
-        <nav className="max-w-[1440px] mx-auto px-3 md:px-4 lg:px-4 h-[42px] hidden md:flex items-center justify-center gap-x-1.5 lg:gap-x-2.5">
+        <nav className="max-w-[1440px] mx-auto px-3 md:px-4 lg:px-6 h-[42px] hidden md:flex items-center justify-between gap-x-1">
           {primaryLinks.map((item) => (
             <Link
               key={item.label}
