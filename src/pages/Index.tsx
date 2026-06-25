@@ -91,7 +91,7 @@ const Index = () => {
       <StitchLineDivider className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16" />
 
       <SectionHeading label="Craft ✿" heading="What Your Pieces Are Made of" script="made to be worn, loved, returned, reborn ✿" />
-      <section className="material-section-mobile max-w-[1180px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-10">
+      <section className="material-section-mobile max-w-[1180px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-6">
         <StaggerContainer className="material-grid-mobile grid grid-cols-1 md:grid-cols-3 gap-3">
           <StaggerItem>
             <div className="flex flex-col h-full transition-transform duration-300 ease-out hover:scale-[1.02]">
@@ -138,7 +138,7 @@ const Index = () => {
         </StaggerContainer>
       </section>
 
-      <div className="max-w-[1180px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-8 hidden md:flex justify-between items-start gap-8">
+      <div className="max-w-[1180px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-5 hidden md:flex justify-between items-start gap-8">
         <WashiTapeNote label="CURATOR'S PICK" tapeColor="var(--seafoam)" rotation={-1}>
           <p className="font-serif text-sm italic leading-relaxed text-foreground/80">
             &quot;The moissanite tennis necklace is our most requested piece three months running.&quot;
@@ -152,7 +152,7 @@ const Index = () => {
       </div>
 
       {loading ? (
-        <div className="flex items-center justify-center py-20">
+        <div className="flex items-center justify-center py-12">
           <Loader2 className="w-5 h-5 animate-spin text-muted-foreground" />
         </div>
       ) : products.length > 0 ? (
@@ -161,31 +161,31 @@ const Index = () => {
           <SectionHeading label="Community ✿" heading="The Edit" script="what members are wearing right now" headingMobile />
           <ProductImageRow products={products} />
           <SectionHeading label="Out & About ✿" heading="Where Members Are Going" script="postcards from the journey ✿" headingMobile />
-          <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-16">
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-8">
+            <div className="grid grid-cols-2 gap-2 md:gap-4 md:grid-cols-2 xl:grid-cols-4">
               {outAndAboutCards.map((item) => (
                 <div
                   key={item.name}
-                  className="relative border border-dashed bg-card p-6 md:p-8"
+                  className="relative border border-dashed bg-card p-3 md:p-8"
                   style={{
                     borderColor: "var(--poppy)",
                     background: "linear-gradient(180deg, var(--rose-soft) 0%, hsl(var(--card)) 38%)",
                   }}
                 >
                   <p
-                    className="mb-1 text-[1.15rem]"
+                    className="mb-0.5 md:mb-1 text-[0.8rem] md:text-[1.15rem] leading-tight"
                     style={{ fontFamily: "var(--font-script)", color: "var(--poppy-deep)" }}
                   >
                     {item.name}, {item.place} ✿
                   </p>
-                  <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+                  <p className="mb-1.5 md:mb-3 font-sans text-[8px] md:text-[10px] uppercase tracking-[0.25em] md:tracking-[0.3em] text-muted-foreground">
                     {item.occasion}
                   </p>
-                  <h3 className="mb-3 font-serif text-lg font-semibold tracking-[0.02em] italic">
+                  <h3 className="mb-1.5 md:mb-3 font-serif text-[11px] md:text-lg font-semibold tracking-[0.02em] italic leading-snug">
                     {item.quote}
                   </h3>
                   <p
-                    className="mt-4 text-[1rem]"
+                    className="mt-2 md:mt-4 text-[0.78rem] md:text-[1rem] leading-tight"
                     style={{ fontFamily: "var(--font-script)", color: "var(--meadow)" }}
                   >
                     — {item.note}
@@ -202,14 +202,14 @@ const Index = () => {
 
       <section className="hidden md:block bg-[hsl(28,22%,34%)] relative overflow-hidden">
         <GrainOverlay opacity={0.04} />
-        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-20 md:py-28 text-center relative z-[1]">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-12 md:py-16 text-center relative z-[1]">
           <AnimateIn variant="fadeUp" duration={0.6}>
             <HandDrawnFrame strokeColor="hsl(36,25%,78%)">
               <div className="py-6">
                 <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-[-0.01em] text-[hsl(36,33%,93%)] mb-6 normal-case">
                   Bloom <ScribbleUnderline color="var(--brass)">Freely</ScribbleUnderline>.
                 </h2>
-                <p className="text-[13px] text-[hsl(36,20%,75%)] font-sans max-w-[400px] mx-auto mb-10 leading-relaxed">
+                <p className="text-[13px] text-[hsl(36,20%,75%)] font-sans max-w-[400px] mx-auto mb-6 leading-relaxed">
                   You were never meant to stay the same. Dress the woman you're becoming — not the one weighed down by what she already owns.
                 </p>
                 <Link

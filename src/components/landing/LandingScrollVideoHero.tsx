@@ -357,7 +357,7 @@ export const LandingScrollVideoHero = () => {
       </div>
 
       <div
-        className="relative z-[1] -mt-[100vh] px-5 sm:px-6 md:px-12 lg:px-16"
+        className="relative z-[1] -mt-[100vh] transform-gpu isolate px-5 sm:px-6 md:px-12 lg:px-16 [backface-visibility:hidden]"
         style={{ textShadow: "0 2px 28px hsl(30 12% 10% / 0.72)" }}
       >
         <section className="mx-auto flex min-h-screen max-w-[760px] flex-col items-center justify-center py-24 text-center">
@@ -394,7 +394,7 @@ export const LandingScrollVideoHero = () => {
           />
         </section>
 
-        <section className="mx-auto max-w-[1180px] py-24 md:py-32">
+        <section className="mx-auto max-w-[1180px] py-12 md:py-16">
           <div className="mb-8 text-center">
             <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-[hsl(36,33%,93%)]">
               The Process <span aria-hidden="true" style={{ color: "var(--rose)" }}>✿</span>
@@ -406,28 +406,22 @@ export const LandingScrollVideoHero = () => {
               five little steps, zero burden ✿
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
+          <ol className="mx-auto grid max-w-[620px] gap-2.5 md:gap-3.5">
             {steps.map((step) => (
-              <div
-                key={step.number}
-                className="border border-dashed bg-background p-4 text-foreground shadow-[0_18px_50px_hsl(30_12%_10%_/_0.18)] md:p-5"
-                style={{ textShadow: "none", borderColor: "var(--poppy)", background: "linear-gradient(180deg, var(--rose-soft) 0%, hsl(var(--background)) 32%)" }}
-              >
-                <div className="mb-3 flex items-center justify-between">
-                  <span className="font-sans text-[9px] uppercase tracking-[0.28em] text-muted-foreground">
-                    Step {step.number}
-                  </span>
-                  <step.icon className="h-4 w-4 stroke-[1.3]" style={{ color: "var(--poppy-deep)" }} />
-                </div>
-                <h3 className="mb-2 font-serif text-base font-semibold tracking-[0.02em] md:text-lg">
-                  {step.title}
-                </h3>
-                <p className="font-sans text-[10px] leading-relaxed text-muted-foreground md:text-[11px]">
+              <li key={step.number} className="flex items-baseline gap-3">
+                <span
+                  className="shrink-0 text-[1.45rem] leading-none"
+                  style={{ fontFamily: "var(--font-script)", color: "var(--rose)" }}
+                >
+                  {step.number}
+                </span>
+                <p className="text-[13px] leading-snug text-[hsl(36,30%,90%)] md:text-[14px]">
+                  <span className="font-serif font-semibold text-[hsl(36,42%,95%)]">{step.title}.</span>{" "}
                   {step.description}
                 </p>
-              </div>
+              </li>
             ))}
-          </div>
+          </ol>
           <div className="mt-7 text-center">
             <Link
               to="/how-it-works"
@@ -438,7 +432,7 @@ export const LandingScrollVideoHero = () => {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1040px] py-24 md:py-32">
+        <section className="mx-auto max-w-[1040px] py-12 md:py-16">
           <div className="mb-8 text-center">
             <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-[hsl(36,33%,93%)]">
               Membership <span aria-hidden="true" style={{ color: "var(--rose)" }}>✿</span>
@@ -515,11 +509,11 @@ export const LandingScrollVideoHero = () => {
             ))}
           </div>
 
-          <div className="mt-5 grid grid-cols-2 gap-2 md:grid-cols-5">
+          <div className="mt-5 grid grid-cols-2 gap-2 auto-rows-fr md:grid-cols-5">
             {assurances.map((item) => (
               <div
                 key={item.text}
-                className="flex items-center justify-center gap-2 border border-[hsl(36_25%_86%_/_0.48)] bg-foreground px-3 py-2 font-sans text-[9px] uppercase tracking-[0.14em] text-[hsl(36,25%,88%)] md:text-[10px]"
+                className="flex h-full items-center justify-center gap-2 border border-[hsl(36_25%_86%_/_0.48)] bg-foreground px-3 py-2 text-center font-sans text-[9px] uppercase tracking-[0.14em] text-[hsl(36,25%,88%)] md:text-[10px]"
               >
                 <item.icon className="h-3.5 w-3.5 shrink-0 stroke-[1.4]" />
                 <span>{item.text}</span>
@@ -528,7 +522,7 @@ export const LandingScrollVideoHero = () => {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1120px] py-24 md:py-32">
+        <section className="mx-auto max-w-[1120px] py-12 md:py-16">
           <div className="mb-8 text-center">
             <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-[hsl(36,33%,93%)]">
               Freedom <span aria-hidden="true" style={{ color: "var(--rose)" }}>✿</span>
@@ -540,31 +534,20 @@ export const LandingScrollVideoHero = () => {
               this is what blooming feels like ✿
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          <ul className="mx-auto grid max-w-[640px] gap-3 md:gap-4">
             {freedomBlocks.map((block) => (
-              <div
-                key={block.title}
-                className="border border-dashed bg-background p-6 text-foreground shadow-[0_18px_50px_hsl(30_12%_10%_/_0.18)] md:p-8"
-                style={{ textShadow: "none", borderColor: "var(--poppy)", background: "linear-gradient(180deg, var(--rose-soft) 0%, hsl(var(--background)) 36%)" }}
-              >
-                <div className="mb-4 flex items-center justify-between">
-                  <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                    {block.label} <span aria-hidden="true" style={{ color: "var(--poppy)" }}>✿</span>
-                  </p>
-                  <block.icon className="h-5 w-5 stroke-[1.3]" style={{ color: "var(--poppy-deep)" }} />
-                </div>
-                <h3 className="mb-3 font-serif text-lg font-semibold tracking-[0.02em]">
-                  {block.title}
-                </h3>
-                <p className="font-sans text-[12px] leading-relaxed text-muted-foreground">
+              <li key={block.title} className="flex items-baseline gap-3">
+                <span aria-hidden="true" className="shrink-0 text-[1.1rem] leading-none" style={{ color: "var(--poppy)" }}>✿</span>
+                <p className="text-[13px] leading-snug text-[hsl(36,30%,90%)] md:text-[14px]">
+                  <span className="font-serif font-semibold text-[hsl(36,42%,95%)]">{block.title}.</span>{" "}
                   {block.text}
                 </p>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </section>
 
-        <section className="mx-auto max-w-[1120px] py-24 md:py-32">
+        <section className="mx-auto max-w-[1120px] py-12 md:py-16">
           <div className="mb-8 text-center">
             <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-[hsl(36,33%,93%)]">
               Philosophy <span aria-hidden="true" style={{ color: "var(--rose)" }}>✿</span>

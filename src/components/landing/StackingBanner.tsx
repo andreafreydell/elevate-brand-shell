@@ -19,7 +19,7 @@ export const StackingBanner = () => {
               src={`${IMG_BASE}${b.png}.webp`}
               alt=""
               aria-hidden="true"
-              className="block h-[360px] w-[360px] sm:h-[440px] sm:w-[440px] md:h-[560px] md:w-[560px] lg:h-[640px] lg:w-[640px] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+              className="block h-[200px] w-[200px] sm:h-[320px] sm:w-[320px] md:h-[520px] md:w-[520px] lg:h-[640px] lg:w-[640px] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
               loading="lazy"
               decoding="async"
             />

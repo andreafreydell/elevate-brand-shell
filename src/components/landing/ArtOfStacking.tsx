@@ -7,7 +7,7 @@ import { SectionHeading } from "@/components/layout/SectionHeading";
 export const ArtOfStacking = () => (
   <>
     <SectionHeading label="The Art of Stacking ✿" heading="Four Places to Layer" script="wear more — layer everything ✿" />
-    <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-12 md:pb-16">
+    <section className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pb-8 md:pb-10">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
         {howto.map((c) => (
           <Link
@@ -16,7 +16,7 @@ export const ArtOfStacking = () => (
             className="group flex flex-col overflow-hidden border border-dashed transition-transform duration-300 hover:-translate-y-1"
             style={{ borderColor: "var(--poppy)", background: "linear-gradient(180deg, var(--rose-soft) 0%, hsl(var(--background)) 42%)" }}
           >
-            <div className="aspect-[4/5] overflow-hidden">
+            <div className="aspect-[16/10] md:aspect-[4/5] overflow-hidden">
               <img
                 src={`${IMG_BASE}${c.png}.webp`}
                 alt={`Stacking ${c.label.toLowerCase()}`}

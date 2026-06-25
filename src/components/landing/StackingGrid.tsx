@@ -35,15 +35,16 @@ export const StackingGrid = () => {
   return (
     <>
       <SectionHeading label="The Feed ✿" heading="Styled &amp; Stacked" script="tap any look to shop it ✿" headingMobile />
-      <section className="pb-16">
+      <section className="pb-8 md:pb-10">
+        <style>{`@media (hover:hover) and (pointer:fine){.feed-cell:hover .feed-img{transform:scale(1.32);z-index:20;box-shadow:0 16px 44px rgba(33,25,18,0.38)}}`}</style>
         <div className="hidden md:grid grid-cols-12 gap-[3px]">
           {mixed.map((it, i) => (
-            <Link key={`${it.png}-${i}`} to={it.href} className="group relative aspect-square">
+            <Link key={`${it.png}-${i}`} to={it.href} className="feed-cell group relative aspect-square">
               <img
                 src={`${IMG_BASE}${it.png}.webp`}
                 alt=""
                 aria-hidden="true"
-                className="relative h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.85] group-hover:z-20 group-hover:shadow-[0_18px_50px_rgba(33,25,18,0.4)]"
+                className="feed-img relative h-full w-full object-cover transition-transform duration-500 ease-out"
                 loading="lazy"
                 decoding="async"
               />
@@ -55,7 +56,7 @@ export const StackingGrid = () => {
           ref={flickRef}
           className="md:hidden px-5 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
-          <div className="grid grid-rows-2 grid-flow-col auto-cols-[31%] gap-1 w-max">
+          <div className="grid grid-rows-2 grid-flow-col auto-cols-[42vw] gap-1 w-max">
             {mobileOrder.map((it, i) => (
               <Link key={`${it.png}-${i}`} to={it.href} className="relative aspect-square snap-start overflow-hidden">
                 <img
