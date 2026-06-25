@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { CUSTOMER_ACCOUNT_URL } from "@/lib/membershipCheckout";
 import { CartDrawer } from "./CartDrawer";
+import { SearchOverlay } from "./SearchOverlay";
 import { Search, User, Heart, Menu, X, ChevronDown } from "lucide-react";
 import { storefrontApiRequest, OCCASIONS_QUERY } from "@/lib/shopify";
 
@@ -59,6 +60,7 @@ export const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileOccasionsOpen, setMobileOccasionsOpen] = useState(false);
   const [occasionLinks, setOccasionLinks] = useState<string[]>([]);
+  const [searchOpen, setSearchOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -114,6 +116,8 @@ export const Navbar = () => {
   const isOccasionActive = location.pathname.startsWith("/occasions/");
 
   return (
+    <>
+    <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
     <header className="bg-background relative z-50">
       <div className="border-b border-border">
         <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 h-[60px] md:h-[72px] flex items-center justify-between relative">
@@ -144,7 +148,11 @@ export const Navbar = () => {
           </Link>
 
           <div className="flex items-center gap-5">
-            <button className="p-1.5 hover:opacity-70 transition-opacity hidden md:block">
+            <button
+              onClick={() => setSearchOpen(true)}
+              aria-label="Search"
+              className="p-1.5 hover:opacity-70 transition-opacity hidden md:block"
+            >
               <Search className="h-[20px] w-[20px] stroke-[1.5]" />
             </button>
             <a
@@ -305,7 +313,11 @@ export const Navbar = () => {
               ))}
 
               <div className="flex items-center gap-6 pt-5">
-                <button className="p-1.5 hover:opacity-70 transition-opacity">
+                <button
+                  onClick={() => { toggleMobile(false); setSearchOpen(true); }}
+                  aria-label="Search"
+                  className="p-1.5 hover:opacity-70 transition-opacity"
+                >
                   <Search className="h-[18px] w-[18px] stroke-[1.5]" />
                 </button>
                 <a
@@ -324,5 +336,6 @@ export const Navbar = () => {
         </div>
       )}
     </header>
+    </>
   );
 };

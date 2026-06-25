@@ -184,6 +184,39 @@ export const PRODUCTS_QUERY = `
   }
 `;
 
+// Slim, metadata-rich query used to build the client-side search index.
+export const SEARCH_INDEX_QUERY = `
+  query SearchIndex($first: Int!, $after: String) {
+    products(first: $first, after: $after) {
+      pageInfo { hasNextPage endCursor }
+      edges {
+        node {
+          title
+          handle
+          productType
+          tags
+          featuredImage { url altText }
+          priceRange { minVariantPrice { amount currencyCode } }
+          metafields(identifiers: [
+            { namespace: "custom", key: "occasions_possible" }
+            { namespace: "custom", key: "plating_color_primary" }
+            { namespace: "custom", key: "other_predominant_color" }
+            { namespace: "custom", key: "material_category" }
+            { namespace: "custom", key: "silhouette_category" }
+            { namespace: "custom", key: "outfit_style" }
+            { namespace: "custom", key: "stacking_role" }
+            { namespace: "custom", key: "item_type" }
+            { namespace: "custom", key: "hero_descriptor_phrase" }
+          ]) {
+            key
+            value
+          }
+        }
+      }
+    }
+  }
+`;
+
 export const OCCASIONS_QUERY = `
   query GetOccasions($first: Int!) {
     products(first: $first) {

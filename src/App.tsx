@@ -25,6 +25,7 @@ import Privacy from "./pages/Privacy";
 import Stories from "./pages/Stories";
 import Account from "./pages/Account";
 import BrowseAll from "./pages/BrowseAll";
+import SearchResults from "./pages/SearchResults";
 import CategoryPage from "./pages/CategoryPage";
 import OccasionPage from "./pages/OccasionPage";
 import NotFound from "./pages/NotFound";
@@ -77,6 +78,7 @@ const AppContent = () => {
       <Route path="/stories" element={<Stories />} />
       <Route path="/account" element={<Account />} />
       <Route path="/browse" element={<BrowseAll />} />
+      <Route path="/search" element={<SearchResults />} />
       <Route path="/occasions/:occasion" element={<OccasionPage />} />
       <Route
         path="/earrings"
