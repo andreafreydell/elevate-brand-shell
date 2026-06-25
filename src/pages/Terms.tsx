@@ -70,7 +70,7 @@ const Terms = () => {
         />
 
         <LegalParagraph>
-          Unless otherwise stated in your membership tier or expressly approved by GEA, each shipment is capped at <strong>one piece per package per cycle</strong>.
+          The number of pieces you may keep at no additional cost is set by your membership tier — <strong>1 piece (Seed), 2 pieces (Blossom), or 3 pieces (Garden) per cycle</strong>. Additional rentals may be kept for the posted keep fee, charged when you return the rest.
         </LegalParagraph>
 
         <LegalParagraph>

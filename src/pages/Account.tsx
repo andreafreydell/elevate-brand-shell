@@ -54,9 +54,9 @@ const dashboardSections = [
   },
   {
     icon: Gem,
-    title: "Keep Your Favorite",
+    title: "Keep Your Favorites",
     description:
-      "One piece per cycle is included to keep, with member pricing available on additional favorites.",
+      "Keep 1 to 3 pieces per cycle by tier, included — keep any extra rental for $12, charged when you return the rest.",
   },
 ];
 

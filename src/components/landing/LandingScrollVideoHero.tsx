@@ -45,7 +45,7 @@ const steps = [
   {
     number: "04",
     title: "Keep",
-    description: "One piece per cycle is yours to keep. Want more? Members save 40% on any additional piece.",
+    description: "Keep 1 to 3 pieces each cycle, included with your tier. Love an extra? Keep any rental for $12, charged when you return the rest.",
     icon: Heart,
   },
   {
@@ -58,18 +58,28 @@ const steps = [
 
 const tiers = [
   {
-    name: "Stacking Membership",
-    label: "10 Pieces",
-    price: "$85",
-    detail: "10 curated pieces per cycle",
-    highlighted: true,
+    name: "Seed Membership",
+    label: "3 Pieces",
+    price: "$35",
+    detail: "3 curated rentals per cycle",
+    keep: 1,
+    highlighted: false,
   },
   {
-    name: "Starter Membership",
-    label: "5 Pieces",
+    name: "Blossom Membership",
+    label: "6 Pieces",
     price: "$65",
-    detail: "5 curated pieces per cycle",
+    detail: "6 curated rentals per cycle",
+    keep: 2,
     highlighted: false,
+  },
+  {
+    name: "Garden Membership",
+    label: "10 Pieces",
+    price: "$85",
+    detail: "10 curated rentals per cycle",
+    keep: 3,
+    highlighted: true,
   },
 ];
 
@@ -386,7 +396,7 @@ export const LandingScrollVideoHero = () => {
             Browse the Collection ✿
           </Link>
           <p className="mx-auto mt-5 max-w-[420px] font-sans text-[11px] leading-relaxed text-[hsl(36,25%,86%)] md:text-[12px]">
-            Membership from $65/mo. Choose 5 or 10 pieces each cycle. Keep 1 favorite.
+            Membership from $35/mo. Rent 3, 6, or 10 pieces a cycle. Keep 1 to 3.
           </p>
           <TrustStrip
             variant="compact"
@@ -441,11 +451,11 @@ export const LandingScrollVideoHero = () => {
               Your Tier of Access
             </h2>
             <p className="mt-2 text-[1.25rem]" style={{ fontFamily: "var(--font-script)", color: "var(--rose)" }}>
-              choose 5 or 10 pieces — one favorite is always yours to keep ✿
+              rent 3, 6, or 10 — keep 1 to 3 each cycle ✿
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             {tiers.map((tier) => (
               <a
                 key={tier.name}
@@ -496,7 +506,7 @@ export const LandingScrollVideoHero = () => {
                   className="mt-2 text-[1.15rem]"
                   style={{ fontFamily: "var(--font-script)", color: tier.highlighted ? "var(--rose)" : "var(--poppy-deep)" }}
                 >
-                  one favorite is always yours to keep ✿
+                  {`keep ${tier.keep} ${tier.keep === 1 ? "favorite" : "favorites"} each cycle ✿`}
                 </p>
                 <p
                   className={`mt-4 font-sans text-[12px] leading-relaxed ${

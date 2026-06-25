@@ -356,7 +356,7 @@ const ProductDetail = () => {
                 </span>
               </div>
               <p className="text-[10px] tracking-[0.15em] font-sans text-muted-foreground mb-4 md:mb-6">
-                Members access this at <ScriptNumber>40%</ScriptNumber> off retail
+                Keep it from a rental for <ScriptNumber>$12</ScriptNumber>
               </p>
 
               {product.options.length > 0 && product.options[0].name !== "Title" && (
@@ -406,18 +406,19 @@ const ProductDetail = () => {
                       </p>
                       <p className="font-serif text-lg md:text-xl font-medium mb-1">Access It</p>
                       <p className="text-[11px] text-muted-foreground font-sans leading-relaxed">
-                        Wear this piece through the Stacking Membership
+                        Wear this piece through any GEA membership
                       </p>
                     </div>
                     <CircleEmphasis className="mt-1">Access</CircleEmphasis>
                   </div>
                   <div className="flex items-baseline gap-2 mb-4">
-                    <span className="font-serif text-lg">$85</span>
+                    <span className="text-[9px] tracking-[0.15em] uppercase font-sans text-muted-foreground">from</span>
+                    <span className="font-serif text-lg">$35</span>
                     <span className="text-[9px] tracking-[0.15em] uppercase font-sans text-muted-foreground">/month</span>
-                    <span className="text-[9px] tracking-[0.15em] uppercase font-sans text-muted-foreground">Per 10-piece cycle</span>
+                    <span className="text-[9px] tracking-[0.15em] uppercase font-sans text-muted-foreground">3–10 rentals/cycle</span>
                   </div>
                   <p className="text-[10px] text-muted-foreground font-sans mb-2">
-                    Stacking Membership price for 10 curated pieces per cycle.
+                    Membership from $35/mo. Rent 3, 6, or 10 pieces a cycle by tier.
                   </p>
                   <p className="text-[10px] text-muted-foreground font-sans mb-4">
                     This is not the price of accessing this single piece on its own.

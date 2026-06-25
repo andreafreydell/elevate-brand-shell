@@ -163,7 +163,7 @@ const About = () => {
           <HandDrawnFrame strokeColor="hsl(var(--foreground))">
             <div className="mx-auto max-w-[760px] text-center">
               <p className="mb-5 font-serif text-2xl font-medium leading-[1.25] tracking-[-0.01em] text-foreground md:text-3xl">
-                Membership from $65 per cycle. Choose 5 or 10 pieces. Keep 1 favorite.
+                Membership from $35 per cycle. Rent 3, 6, or 10 pieces. Keep 1 to 3.
               </p>
               <p className="mx-auto max-w-[560px] font-sans text-[13px] leading-relaxed text-muted-foreground">
                 The doctrine only matters if it makes your life better. GEA gives you a more flexible way to wear

@@ -22,7 +22,7 @@ const categories: { label: string; sectionLabel: string; items: FAQItem[] }[] = 
       {
         question: "What is GEA?",
         answer:
-          "GEA is a jewelry membership starting at $65 per 30-day cycle. Choose 5 or 10 pieces, wear them through the cycle, keep 1 favorite, and return the rest with free shipping.",
+          "GEA is a jewelry membership starting at $35 per 30-day cycle. Rent 3, 6, or 10 pieces depending on your tier, wear them through the cycle, keep 1 to 3, and return the rest with free shipping.",
       },
       {
         question: "How is this different from buying jewelry?",
@@ -32,12 +32,12 @@ const categories: { label: string; sectionLabel: string; items: FAQItem[] }[] = 
       {
         question: "How does the access cycle work?",
         answer:
-          "Join a membership and each month you receive your Monthly Code — it unlocks your next set. Wear your pieces for the 30-day cycle, keep 1 favorite, return the rest, and when your new month opens, your next code arrives by email.",
+          "Join a membership and each month you receive your Monthly Code — it unlocks your next set. Wear your pieces for the 30-day cycle, keep 1 to 3, return the rest, and when your new month opens, your next code arrives by email.",
       },
       {
         question: "Can I keep a piece I love?",
         answer:
-          "Yes. One piece per cycle is included to keep at no additional cost. If you want more than one, members save 40% on additional keeps.",
+          "Yes. You keep 1 to 3 pieces per cycle at no additional cost, depending on your tier (Seed 1, Blossom 2, Garden 3). Want to keep more? Keep any extra rental for $12 each, charged when you return the rest.",
       },
     ],
   },

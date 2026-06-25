@@ -87,7 +87,7 @@ const faqItems: FAQItem[] = [
   {
     question: "What if I want to keep a piece?",
     answer:
-      "One piece per cycle is yours to keep - included in your membership at no additional cost. Simply select 'Keep This Piece' in your dashboard. Want to keep additional pieces? Members save 40% on every extra piece.",
+      "You keep 1 to 3 pieces per cycle, included at no additional cost — 1 with Seed, 2 with Blossom, 3 with Garden. Simply select 'Keep This Piece' in your dashboard. Want to keep even more? Keep any extra rental for $12 each, charged when you return the rest.",
   },
   {
     question: "What if something gets damaged?",
@@ -112,12 +112,12 @@ const faqItems: FAQItem[] = [
   {
     question: "How does the cost-per-wear work?",
     answer:
-      "Traditional jewelry purchases average $150+ per piece worn 3-5 times - that's $30+ per wear. With the Stacking Membership at $85 per 10-piece cycle, your cost-per-wear drops fast. The more you wear, the smarter your access becomes.",
+      "Traditional jewelry purchases average $150+ per piece worn 3-5 times - that's $30+ per wear. With the Garden Membership at $85 per 10-piece cycle, your cost-per-wear drops fast. The more you wear, the smarter your access becomes.",
   },
   {
     question: "What is Keep Your Favorite?",
     answer:
-      "Every cycle, one piece from your selection is yours to keep at no additional cost - it's included in your membership. If you fall in love with more than one, members enjoy 40% off any additional piece. Over time, build a curated collection through real experience, not impulse.",
+      "Every cycle you keep 1 to 3 pieces from your rentals at no additional cost, depending on your tier (Seed 1, Blossom 2, Garden 3). Fall for more? Keep any extra rental for $12 each, charged when you return the rest - and add an extra rental item anytime for $6. Over time, build a curated collection through real experience, not impulse.",
   },
   {
     question: "What happens in my first month?",
@@ -161,7 +161,7 @@ const HowItWorks = () => {
         <SectionHeading
           label="Choose Your Tier ✿"
           heading="Your Level of Access"
-          script="pick your pace — one favorite is always yours to keep ✿"
+          script="pick your pace — keep 1 to 3 each cycle ✿"
           className="section-heading-your-level"
         />
       </div>
@@ -171,9 +171,9 @@ const HowItWorks = () => {
             <p className="text-center font-sans text-[12px] leading-relaxed text-muted-foreground">
               Starting from just{" "}
               <MarkerCircle color="var(--tag-red)">
-                <span className="font-semibold text-foreground">$65/mo</span>
+                <span className="font-semibold text-foreground">$35/mo</span>
               </MarkerCircle>{" "}
-              - Starter Membership pricing with full vault access included
+              - Seed Membership pricing with full vault access included
             </p>
           </HandDrawnRect>
         </div>
@@ -215,8 +215,8 @@ const HowItWorks = () => {
           />
           <StepBlock
             number="04"
-            title="Keep Your Favorite"
-            description="One piece per cycle is yours to keep at no additional cost. Want more? Members save 40% on any additional piece."
+            title="Keep Your Favorites"
+            description="Keep 1 to 3 pieces each cycle, included with your tier. Want an extra? Keep any rental for $12, charged when you return the rest."
             icon={Heart}
           />
           <StepBlock
@@ -242,10 +242,10 @@ const HowItWorks = () => {
               <CircleEmphasis color="var(--tag-red)">Favorite</CircleEmphasis>
             </h3>
             <p className="step-detail-description relative z-[1] font-sans text-[12px] leading-relaxed text-muted-foreground">
-              One piece per cycle is yours to keep at no additional cost. Want
-              more? Members save <ScriptNumber>40%</ScriptNumber> on any
-              additional piece. Experience jewelry in real life, then build your
-              collection through discovery.
+              Keep 1 to 3 pieces per cycle at no additional cost, by tier. Want
+              an extra? Keep any rental for <ScriptNumber>$12</ScriptNumber>,
+              charged when you return the rest. Experience jewelry in real life,
+              then build your collection through discovery.
             </p>
           </div>
           <div className="step-detail-card-mobile relative h-full overflow-hidden border border-border bg-card p-8">
@@ -279,7 +279,7 @@ const HowItWorks = () => {
               </ScribbleUnderline>
             </h2>
             <p className="mx-auto mb-10 max-w-content font-sans text-[13px] leading-relaxed text-muted-foreground">
-              Two memberships. One philosophy: more beauty, less burden.
+              Three memberships. One philosophy: more beauty, less burden.
               Every membership includes protection, care, and free shipping.
             </p>
             <TrustStrip variant="full" />

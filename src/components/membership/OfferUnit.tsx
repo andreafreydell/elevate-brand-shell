@@ -7,36 +7,53 @@ const DEFAULT_TIER_HREF = "/how-it-works#tiers";
 
 const tierData = [
   {
-    name: "Stacking Membership",
-    label: "10 Pieces",
-    price: "$85",
-    priceNum: 85,
-    pieces: 10,
-    piecesLabel: "10 curated pieces per cycle",
-    highlighted: true,
+    name: "Seed Membership",
+    label: "3 Pieces",
+    price: "$35",
+    priceNum: 35,
+    pieces: 3,
+    piecesLabel: "3 curated rentals per cycle",
+    highlighted: false,
     features: [
       "Full vault access",
-      "1 piece included to keep per cycle",
-      "Protection coverage included",
-      "Sanitized & Sealed before delivery",
-      "Free shipping both ways",
+      "Keep 1 piece each cycle, included",
+      "Keep any extra rental for $12 (charged on return)",
+      "Add an extra rental item for $6",
+      "Protection, sanitation & free shipping both ways",
       "Cancel anytime - no commitment",
     ],
   },
   {
-    name: "Starter Membership",
-    label: "5 Pieces",
+    name: "Blossom Membership",
+    label: "6 Pieces",
     price: "$65",
     priceNum: 65,
-    pieces: 5,
-    piecesLabel: "5 curated pieces per cycle",
+    pieces: 6,
+    piecesLabel: "6 curated rentals per cycle",
     highlighted: false,
     features: [
       "Full vault access",
-      "1 piece included to keep per cycle",
-      "Protection coverage included",
-      "Sanitized & Sealed before delivery",
-      "Free shipping both ways",
+      "Keep 2 pieces each cycle, included",
+      "Keep any extra rental for $12 (charged on return)",
+      "Add an extra rental item for $6",
+      "Protection, sanitation & free shipping both ways",
+      "Cancel anytime - no commitment",
+    ],
+  },
+  {
+    name: "Garden Membership",
+    label: "10 Pieces",
+    price: "$85",
+    priceNum: 85,
+    pieces: 10,
+    piecesLabel: "10 curated rentals per cycle",
+    highlighted: true,
+    features: [
+      "Full vault access",
+      "Keep 3 pieces each cycle, included",
+      "Keep any extra rental for $12 (charged on return)",
+      "Add an extra rental item for $6",
+      "Protection, sanitation & free shipping both ways",
       "Cancel anytime - no commitment",
     ],
   },
@@ -55,7 +72,7 @@ const CompactOffer = ({ ctaHref }: { ctaHref: string }) => (
       Membership Access
     </p>
     <p className="mb-4 font-sans text-[12px] leading-relaxed text-foreground">
-      Membership from $65/mo. Choose 5 or 10 pieces each cycle. Keep 1 favorite.
+      Membership from $35/mo. Rent 3, 6, or 10 pieces a cycle — keep 1 to 3.
     </p>
     <div className="space-y-3">
       {tierData.map((tier) => (
@@ -79,7 +96,7 @@ const CompactOffer = ({ ctaHref }: { ctaHref: string }) => (
 );
 
 const StandardOffer = ({ ctaHref }: { ctaHref: string }) => (
-  <div className="tier-grid-mobile mx-auto grid max-w-[900px] grid-cols-1 gap-4 md:grid-cols-2">
+  <div className="tier-grid-mobile mx-auto grid max-w-[1120px] grid-cols-1 gap-4 md:grid-cols-3">
     {tierData.map((tier) => (
       <a
         key={tier.name}
@@ -167,8 +184,8 @@ const FullOffer = ({ ctaHref }: { ctaHref: string }) => (
   <div className="space-y-8">
     <StandardOffer ctaHref={ctaHref} />
     <p className="text-center font-sans text-[11px] tracking-[0.1em] text-muted-foreground">
-      One curated shipment per 30-day cycle. One piece is included to keep, and the
-      rest refresh at cycle end.
+      One curated shipment per 30-day cycle. Keep 1 to 3 pieces by tier, included —
+      keep any extra rental for $12 (charged on return), or add an extra rental for $6.
     </p>
 
     <div className="cpw-section-mobile grid grid-cols-1 gap-10 border border-border bg-card p-10 md:grid-cols-2 md:p-14">
@@ -200,7 +217,7 @@ const FullOffer = ({ ctaHref }: { ctaHref: string }) => (
         </div>
         <div className="cpw-card border border-foreground bg-foreground p-6 text-background">
           <p className="cpw-card-label mb-1 font-sans text-[10px] uppercase tracking-[0.25em] text-background/60">
-            Stacking Membership
+            Garden Membership
           </p>
           <p className="cpw-card-price font-serif text-2xl font-medium">Under $2 per wear</p>
           <p className="cpw-card-sub font-sans text-[11px] text-background/70">

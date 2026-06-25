@@ -2,8 +2,9 @@ import { useState } from "react";
 import { AnimateIn } from "@/components/shared/AnimateIn";
 
 const tiers = [
-  { name: "Stacking Membership", price: 85, pieces: 10 },
-  { name: "Starter Membership", price: 65, pieces: 5 },
+  { name: "Seed Membership", price: 35, pieces: 3 },
+  { name: "Blossom Membership", price: 65, pieces: 6 },
+  { name: "Garden Membership", price: 85, pieces: 10 },
 ];
 
 const wearMarks = Array.from({ length: 10 }, (_, index) => index + 1);
