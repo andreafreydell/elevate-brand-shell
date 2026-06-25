@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo, useCallback } from "react";
-import { storefrontApiRequest, PRODUCTS_QUERY, type ShopifyProduct } from "@/lib/shopify";
+import { storefrontApiRequest, GRID_PRODUCTS_QUERY, type ShopifyProduct } from "@/lib/shopify";
 import { rankProducts } from "@/lib/productRanking";
 import { ProductCard } from "./ProductCard";
 import { ProductFilters, applyFilters, type FilterState } from "./ProductFilters";
@@ -24,7 +24,9 @@ const todaySeed = () => {
 };
 
 const PAGE_SIZE = 48;
-const FULL_RANKED_FETCH_SIZE = 250;
+// Rank over a meaningful slice of the assortment without the full 250-product
+// payload — far lighter on mobile while keeping best-first ordering sensible.
+const FULL_RANKED_FETCH_SIZE = 120;
 
 interface ProductGridProps {
   query?: string;
@@ -50,6 +52,7 @@ export const ProductGrid = ({
   const [loadingMore, setLoadingMore] = useState(false);
   const [hasNextPage, setHasNextPage] = useState(false);
   const [endCursor, setEndCursor] = useState<string | null>(null);
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [filters, setFilters] = useState<FilterState>({
     color: "",
     style: "",
@@ -71,6 +74,11 @@ export const ProductGrid = ({
   const effectiveFilters = lockedOccasion
     ? { ...filters, occasion: lockedOccasion }
     : filters;
+  const filtered = useMemo(
+    () => (showFilters ? applyFilters(rankedProducts, effectiveFilters) : rankedProducts),
+    [rankedProducts, showFilters, effectiveFilters]
+  );
+  const visible = filtered.slice(0, visibleCount);
 
   useEffect(() => {
     setFilters({
@@ -99,7 +107,7 @@ export const ProductGrid = ({
       if (query) variables.query = query;
       if (after) variables.after = after;
 
-      const data = await storefrontApiRequest(PRODUCTS_QUERY, variables);
+      const data = await storefrontApiRequest(GRID_PRODUCTS_QUERY, variables);
       const edges = data?.data?.products?.edges || [];
       const pageInfo = data?.data?.products?.pageInfo;
 
@@ -124,13 +132,19 @@ export const ProductGrid = ({
     setProducts([]);
     setEndCursor(null);
     setHasNextPage(false);
+    setVisibleCount(PAGE_SIZE);
     fetchProducts(null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, limit]);
 
   const handleLoadMore = () => {
-    if (endCursor && hasNextPage && !loadingMore) {
+    // Reveal more of the already-fetched, ranked set first; only hit Shopify
+    // again once the local set is exhausted.
+    if (visibleCount < filtered.length) {
+      setVisibleCount((current) => current + PAGE_SIZE);
+    } else if (endCursor && hasNextPage && !loadingMore) {
       fetchProducts(endCursor);
+      setVisibleCount((current) => current + PAGE_SIZE);
     }
   };
 
@@ -158,8 +172,6 @@ export const ProductGrid = ({
       </section>
     );
   }
-
-  const filtered = showFilters ? applyFilters(rankedProducts, effectiveFilters) : rankedProducts;
 
   if (products.length === 0) {
     return (
@@ -189,7 +201,7 @@ export const ProductGrid = ({
           </div>
         )}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-[1px] bg-border">
-          {filtered.map((product) => (
+          {visible.map((product) => (
             <div key={product.node.id} className="bg-background p-3 sm:p-6">
               <ProductCard product={product} />
             </div>
@@ -205,7 +217,7 @@ export const ProductGrid = ({
             </p>
           </div>
         )}
-        {hasNextPage && (
+        {(visibleCount < filtered.length || hasNextPage) && (
           <div className="flex justify-center pt-12">
             <Button
               variant="outline"

@@ -184,6 +184,71 @@ export const PRODUCTS_QUERY = `
   }
 `;
 
+// Lean query for product grids — only what the cards, ranking, and filters use.
+// Drops description, options, variant selectedOptions, and Supercycle metafields
+// (none are read in the grid path), which roughly halves payload + server time.
+export const GRID_PRODUCTS_QUERY = `
+  query GridProducts($first: Int!, $query: String, $after: String) {
+    products(first: $first, query: $query, after: $after) {
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+      edges {
+        node {
+          id
+          title
+          handle
+          productType
+          tags
+          priceRange {
+            minVariantPrice {
+              amount
+              currencyCode
+            }
+          }
+          images(first: 3) {
+            edges {
+              node {
+                url
+                altText
+              }
+            }
+          }
+          variants(first: 1) {
+            edges {
+              node {
+                id
+                title
+                sku
+                price {
+                  amount
+                  currencyCode
+                }
+                availableForSale
+              }
+            }
+          }
+          metafields(identifiers: [
+            { namespace: "custom", key: "silhouette_category" }
+            { namespace: "custom", key: "stacking_role" }
+            { namespace: "custom", key: "plating_color_primary" }
+            { namespace: "custom", key: "other_predominant_color" }
+            { namespace: "custom", key: "material_category" }
+            { namespace: "custom", key: "occasions_possible" }
+            { namespace: "custom", key: "outfit_style" }
+            { namespace: "custom", key: "item_type" }
+            { namespace: "custom", key: "hero_descriptor_phrase" }
+          ]) {
+            key
+            value
+          }
+        }
+      }
+    }
+  }
+`;
+
 // Slim, metadata-rich query used to build the client-side search index.
 export const SEARCH_INDEX_QUERY = `
   query SearchIndex($first: Int!, $after: String) {
