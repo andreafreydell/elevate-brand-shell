@@ -1,0 +1,1442 @@
+[
+ {
+  "file": "1_HERO.png",
+  "png": 1,
+  "variant": "HERO",
+  "sku": "7601234500019",
+  "handle": "zialia-earrings1",
+  "title": "Zialia Silver Halo Stud Earrings",
+  "type": "Earrings"
+ },
+ {
+  "file": "5_LIFESTYLE.png",
+  "png": 5,
+  "variant": "LIFESTYLE",
+  "sku": "7601234500057",
+  "handle": "zeomia-ring5",
+  "title": "Zeomia Silver Cluster Band Ring",
+  "type": "Ring"
+ },
+ {
+  "file": "7_HERO.png",
+  "png": 7,
+  "variant": "HERO",
+  "sku": "7601234500071",
+  "handle": "liorea-ring7",
+  "title": "Liorea Silver Halo Band Ring",
+  "type": "Ring"
+ },
+ {
+  "file": "25_LIFESTYLE.png",
+  "png": 25,
+  "variant": "LIFESTYLE",
+  "sku": "7601234500255",
+  "handle": "miora-ring25",
+  "title": "Miora Silver Knot Statement ring",
+  "type": "ring"
+ },
+ {
+  "file": "30_HERO.png",
+  "png": 30,
+  "variant": "HERO",
+  "sku": "7601234500309",
+  "handle": "liona-earrings30",
+  "title": "Liona Silver Flower Stud Earrings",
+  "type": "Earrings"
+ },
+ {
+  "file": "33_HERO.png",
+  "png": 33,
+  "variant": "HERO",
+  "sku": "7601234500330",
+  "handle": "raelia-earrings33",
+  "title": "Raelia Silver Bow Stud Earrings",
+  "type": "Earrings"
+ },
+ {
+  "file": "38_HERO.png",
+  "png": 38,
+  "variant": "HERO",
+  "sku": "7601234500385",
+  "handle": "maelina-earrings38",
+  "title": "Maelina Silver Halo Stud Earrings",
+  "type": "Earrings"
+ },
+ {
+  "file": "51_HERO.png",
+  "png": 51,
+  "variant": "HERO",
+  "sku": "7601234500514",
+  "handle": "jionna-bracelet51",
+  "title": "Jionna Golden Chain Link bracelet",
+  "type": "bracelet"
+ },
+ {
+  "file": "54_HERO.png",
+  "png": 54,
+  "variant": "HERO",
+  "sku": "7601234500545",
+  "handle": "zeolia-bracelet54",
+  "title": "Zeolia Golden Bar Cuff Bracelet",
+  "type": "Bracelet"
+ },
+ {
+  "file": "67_LIFESTYLE.png",
+  "png": 67,
+  "variant": "LIFESTYLE",
+  "sku": "7601234500675",
+  "handle": "zeolia-ring67",
+  "title": "Zeolia Golden Bar Statement Ring",
+  "type": "Ring"
+ },
+ {
+  "file": "75_HERO.png",
+  "png": 75,
+  "variant": "HERO",
+  "sku": "7601234500750",
+  "handle": "raevia-ring75",
+  "title": "Raevia Golden Orb Stacking Band Ring",
+  "type": "Ring"
+ },
+ {
+  "file": "80_HERO.png",
+  "png": 80,
+  "variant": "HERO",
+  "sku": "7601234500804",
+  "handle": "naelia-bracelet80",
+  "title": "Naelia Golden Heart Link Bracelet",
+  "type": "Bracelet"
+ },
+ {
+  "file": "88_HERO.png",
+  "png": 88,
+  "variant": "HERO",
+  "sku": "7601234500880",
+  "handle": "maelia-ring88",
+  "title": "Maelia Golden Marquise Statement Ring",
+  "type": "Ring"
+ },
+ {
+  "file": "89_HERO.png",
+  "png": 89,
+  "variant": "HERO",
+  "sku": "7601234500897",
+  "handle": "vaelia-bracelet89",
+  "title": "Vaelia Golden Knot Bangle Bracelet",
+  "type": "Bracelet"
+ },
+ {
+  "file": "160_HERO.png",
+  "png": 160,
+  "variant": "HERO",
+  "sku": "7601234501603",
+  "handle": "geolia-necklace160",
+  "title": "Geolia Golden Cube Strand Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "165_HERO.png",
+  "png": 165,
+  "variant": "HERO",
+  "sku": "7601234501658",
+  "handle": "raevia-necklace165",
+  "title": "Raevia Silver Halo Chain Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "168_HERO.png",
+  "png": 168,
+  "variant": "HERO",
+  "sku": "7601234501689",
+  "handle": "zeolia-necklace168",
+  "title": "Zeolia Golden Chain Tennis Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "169_HERO.png",
+  "png": 169,
+  "variant": "HERO",
+  "sku": "7601234501696",
+  "handle": "naelia-necklace169",
+  "title": "Naelia Golden Orb Tennis Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "171_HERO.png",
+  "png": 171,
+  "variant": "HERO",
+  "sku": "7601234501719",
+  "handle": "vialia-necklace171",
+  "title": "Vialia Golden Drop Chain Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "173_HERO.png",
+  "png": 173,
+  "variant": "HERO",
+  "sku": "7601234501733",
+  "handle": "zialle-necklace173",
+  "title": "Zialle Golden Teardrop Choker Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "174_HERO.png",
+  "png": 174,
+  "variant": "HERO",
+  "sku": "7601234501740",
+  "handle": "gaevia-necklace174",
+  "title": "Gaevia Golden Drop Choker Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "178_HERO.png",
+  "png": 178,
+  "variant": "HERO",
+  "sku": "7601234501788",
+  "handle": "zaephia-necklace178",
+  "title": "Zaephia Silver Bar Pendant Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "179_HERO.png",
+  "png": 179,
+  "variant": "HERO",
+  "sku": "7601234501795",
+  "handle": "caevia-bracelet179",
+  "title": "Caevia Silver Cluster Tennis Bracelet",
+  "type": "Bracelet"
+ },
+ {
+  "file": "184_HERO.png",
+  "png": 184,
+  "variant": "HERO",
+  "sku": "7601234501849",
+  "handle": "nerelia-necklace184",
+  "title": "Nerelia Golden Bar Choker Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "192_HERO.png",
+  "png": 192,
+  "variant": "HERO",
+  "sku": "7601234501924",
+  "handle": "maevia-bracelet192",
+  "title": "Maevia Silver Bar Tennis Bracelet",
+  "type": "Bracelet"
+ },
+ {
+  "file": "199_HERO.png",
+  "png": 199,
+  "variant": "HERO",
+  "sku": "7601234501993",
+  "handle": "verenia-bracelet199",
+  "title": "Verenia Golden Cluster Tennis Bracelet",
+  "type": "Bracelet"
+ },
+ {
+  "file": "201_HERO.png",
+  "png": 201,
+  "variant": "HERO",
+  "sku": "7601234502013",
+  "handle": "raelina-bracelet201",
+  "title": "Raelina Golden Bar Cuff Bracelet",
+  "type": "Bracelet"
+ },
+ {
+  "file": "216_HERO.png",
+  "png": 216,
+  "variant": "HERO",
+  "sku": "7601234502167",
+  "handle": "maelia-necklace216",
+  "title": "Maelia Golden Square Pendant Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "219_HERO.png",
+  "png": 219,
+  "variant": "HERO",
+  "sku": "7601234502198",
+  "handle": "leavia-necklace219",
+  "title": "Leavia Golden Octagon Pendant Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "221_HERO.png",
+  "png": 221,
+  "variant": "HERO",
+  "sku": "7601234502211",
+  "handle": "maelina-charm221",
+  "title": "Maelina Golden Drop Pendant Charm",
+  "type": "Charm"
+ },
+ {
+  "file": "222_HERO.png",
+  "png": 222,
+  "variant": "HERO",
+  "sku": "7601234502228",
+  "handle": "maelina-charm222",
+  "title": "Maelina Golden Square Pendant Charm",
+  "type": "Charm"
+ },
+ {
+  "file": "226_HERO (1).png",
+  "png": 226,
+  "variant": "HERO",
+  "sku": "7601234502266",
+  "handle": "thaelia-necklace226",
+  "title": "Thaelia Golden Octagon Pendant Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "226_HERO.png",
+  "png": 226,
+  "variant": "HERO",
+  "sku": "7601234502266",
+  "handle": "thaelia-necklace226",
+  "title": "Thaelia Golden Octagon Pendant Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "227_HERO.png",
+  "png": 227,
+  "variant": "HERO",
+  "sku": "7601234502273",
+  "handle": "thealia-necklace227",
+  "title": "Thealia Golden Drop Pendant Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "229_HERO.png",
+  "png": 229,
+  "variant": "HERO",
+  "sku": "7601234502297",
+  "handle": "zaelina-charm229",
+  "title": "Zaelina Golden Oval Pendant Charm",
+  "type": "Charm"
+ },
+ {
+  "file": "232_HERO.png",
+  "png": 232,
+  "variant": "HERO",
+  "sku": "7601234502327",
+  "handle": "vaenia-charm232",
+  "title": "Vaenia Golden Orb Pendant Charm",
+  "type": "Charm"
+ },
+ {
+  "file": "251_HERO.png",
+  "png": 251,
+  "variant": "HERO",
+  "sku": "7601234502518",
+  "handle": "zeolia-necklace251",
+  "title": "Zeolia Golden Disc Pendant Necklace",
+  "type": "necklace"
+ },
+ {
+  "file": "254_HERO.png",
+  "png": 254,
+  "variant": "HERO",
+  "sku": "7601234502549",
+  "handle": "raevia-necklace254",
+  "title": "Raevia Golden Bar Pendant Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "257_HERO.png",
+  "png": 257,
+  "variant": "HERO",
+  "sku": "7601234502570",
+  "handle": "ziolia-pendant257",
+  "title": "Ziolia Yellow Gold Drop Pendant Pendant",
+  "type": "Pendant"
+ },
+ {
+  "file": "258_HERO.png",
+  "png": 258,
+  "variant": "HERO",
+  "sku": "7601234502587",
+  "handle": "naevia-charm258",
+  "title": "Naevia Golden Oval Pendant Charm",
+  "type": "Charm"
+ },
+ {
+  "file": "263_HERO.png",
+  "png": 263,
+  "variant": "HERO",
+  "sku": "7601234502631",
+  "handle": "liomia-charm263",
+  "title": "Liomia Golden Lemon Drop Pendant Charm",
+  "type": "Charm"
+ },
+ {
+  "file": "292_HERO.png",
+  "png": 292,
+  "variant": "HERO",
+  "sku": "7601234502921",
+  "handle": "raelina-earrings292",
+  "title": "Raelina Golden Shell Stud Earrings",
+  "type": "Earrings"
+ },
+ {
+  "file": "299_HERO.png",
+  "png": 299,
+  "variant": "HERO",
+  "sku": "7601234502990",
+  "handle": "riavia-earrings299",
+  "title": "Riavia Mixed Metal Link Huggie Earrings",
+  "type": "Earrings"
+ },
+ {
+  "file": "301_HERO.png",
+  "png": 301,
+  "variant": "HERO",
+  "sku": "7601234503010",
+  "handle": "riovia-earrings301",
+  "title": "Riovia Mixed Metal Drop Huggie Earrings",
+  "type": "Earrings"
+ },
+ {
+  "file": "303_HERO.png",
+  "png": 303,
+  "variant": "HERO",
+  "sku": "7601234503034",
+  "handle": "theolia-earrings303",
+  "title": "Theolia Golden Knot Stud Earrings",
+  "type": "earrings"
+ },
+ {
+  "file": "306_HERO.png",
+  "png": 306,
+  "variant": "HERO",
+  "sku": "7601234503065",
+  "handle": "vaelina-earrings306",
+  "title": "Vaelina Golden Square Link Huggie Earrings",
+  "type": "Earrings"
+ },
+ {
+  "file": "308_HERO.png",
+  "png": 308,
+  "variant": "HERO",
+  "sku": "7601234503089",
+  "handle": "raelia-earrings308",
+  "title": "Raelia Golden Cluster Drop Earrings",
+  "type": "Earrings"
+ },
+ {
+  "file": "320_HERO.png",
+  "png": 320,
+  "variant": "HERO",
+  "sku": "7601234503201",
+  "handle": "maevia-earrings320",
+  "title": "Maevia Golden Cluster Huggie Earrings",
+  "type": "Earrings"
+ },
+ {
+  "file": "325_HERO.png",
+  "png": 325,
+  "variant": "HERO",
+  "sku": "7601234503256",
+  "handle": "raelia-charm325",
+  "title": "Raelia Golden Drop Pendant Charm",
+  "type": "Charm"
+ },
+ {
+  "file": "335_HERO.png",
+  "png": 335,
+  "variant": "HERO",
+  "sku": "7601234503355",
+  "handle": "thaelia-charm335",
+  "title": "Thaelia Golden Heart Pendant Charm",
+  "type": "Charm"
+ },
+ {
+  "file": "339_HERO.png",
+  "png": 339,
+  "variant": "HERO",
+  "sku": "7601234503393",
+  "handle": "maelira-charm339",
+  "title": "Maelira Golden Boot Enamel Charm",
+  "type": "Charm"
+ },
+ {
+  "file": "349_HERO.png",
+  "png": 349,
+  "variant": "HERO",
+  "sku": "7601234503492",
+  "handle": "veolia-earrings349",
+  "title": "Veolia Silver Cluster Stud Earrings",
+  "type": "Earrings"
+ },
+ {
+  "file": "365_LIFESTYLE.png",
+  "png": 365,
+  "variant": "LIFESTYLE",
+  "sku": "7601234503652",
+  "handle": "raevia-charm365",
+  "title": "Raevia Golden Elephant Pendant Charm",
+  "type": "Charm"
+ },
+ {
+  "file": "370_HERO.png",
+  "png": 370,
+  "variant": "HERO",
+  "sku": "7601234503706",
+  "handle": "thionia-necklace370",
+  "title": "Thionia Golden Heart Pendant Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "381_HERO.png",
+  "png": 381,
+  "variant": "HERO",
+  "sku": "7601234503812",
+  "handle": "vaelina-earrings381",
+  "title": "Vaelina Silver Pear Drop Earrings",
+  "type": "Earrings"
+ },
+ {
+  "file": "382_HERO.png",
+  "png": 382,
+  "variant": "HERO",
+  "sku": "7601234503829",
+  "handle": "zaelia-earrings382",
+  "title": "Zaelia Silver Halo Climber Earrings",
+  "type": "Earrings"
+ },
+ {
+  "file": "396_HERO.png",
+  "png": 396,
+  "variant": "HERO",
+  "sku": "7601234503966",
+  "handle": "raelia-earrings396",
+  "title": "Raelia Silver Flower Stud Earrings",
+  "type": "Earrings"
+ },
+ {
+  "file": "396_LIFESTYLE.png",
+  "png": 396,
+  "variant": "LIFESTYLE",
+  "sku": "7601234503966",
+  "handle": "raelia-earrings396",
+  "title": "Raelia Silver Flower Stud Earrings",
+  "type": "Earrings"
+ },
+ {
+  "file": "415_LIFESTYLE.png",
+  "png": 415,
+  "variant": "LIFESTYLE",
+  "sku": "7601234504154",
+  "handle": "naevia-earrings415",
+  "title": "Naevia Golden Flower Climber Earrings",
+  "type": "Earrings"
+ },
+ {
+  "file": "418_HERO.png",
+  "png": 418,
+  "variant": "HERO",
+  "sku": "7601234504185",
+  "handle": "vielia-earrings418",
+  "title": "Vielia Golden Sapphire Orb Huggie Earrings",
+  "type": "Earrings"
+ },
+ {
+  "file": "423_HERO.png",
+  "png": 423,
+  "variant": "HERO",
+  "sku": "7601234504239",
+  "handle": "zealia-earrings423",
+  "title": "Zealia Golden Spike Huggie Earrings",
+  "type": "Earrings"
+ },
+ {
+  "file": "424_HERO.png",
+  "png": 424,
+  "variant": "HERO",
+  "sku": "7601234504246",
+  "handle": "vaelina-earrings424",
+  "title": "Vaelina Golden Heart Huggie earrings",
+  "type": "earrings"
+ },
+ {
+  "file": "441_HERO.png",
+  "png": 441,
+  "variant": "HERO",
+  "sku": "7601234504413",
+  "handle": "zealia-earrings441",
+  "title": "Zealia Silver Halo Stud Earrings",
+  "type": "Earrings"
+ },
+ {
+  "file": "447_LIFESTYLE.png",
+  "png": 447,
+  "variant": "LIFESTYLE",
+  "sku": "7601234504475",
+  "handle": "maelia-necklace447",
+  "title": "Maelia Golden Pearl Strand Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "450_HERO.png",
+  "png": 450,
+  "variant": "HERO",
+  "sku": "7601234504505",
+  "handle": "beorea-necklace450",
+  "title": "Beorea Golden Bead Strand Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "452_LIFESTYLE.png",
+  "png": 452,
+  "variant": "LIFESTYLE",
+  "sku": "7601234504529",
+  "handle": "zaevia-necklace452",
+  "title": "Zaevia Golden Orb Bead Strand Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "460_HERO.png",
+  "png": 460,
+  "variant": "HERO",
+  "sku": "7601234504604",
+  "handle": "vealia-necklace460",
+  "title": "Vealia Golden Heart Pendant Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "462_HERO.png",
+  "png": 462,
+  "variant": "HERO",
+  "sku": "7601234504628",
+  "handle": "liesia-necklace462",
+  "title": "Liesia Golden Pearl Chain Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "463_HERO.png",
+  "png": 463,
+  "variant": "HERO",
+  "sku": "7601234504635",
+  "handle": "vaelina-necklace463",
+  "title": "Vaelina Golden Flower Choker necklace",
+  "type": "necklace"
+ },
+ {
+  "file": "471_HERO.png",
+  "png": 471,
+  "variant": "HERO",
+  "sku": "7601234504710",
+  "handle": "vionia-necklace471",
+  "title": "Vionia Golden Disc Pendant Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "475_HERO.png",
+  "png": 475,
+  "variant": "HERO",
+  "sku": "7601234504758",
+  "handle": "leonia-necklace475",
+  "title": "Leonia Golden Disc Pendant Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "482_HERO.png",
+  "png": 482,
+  "variant": "HERO",
+  "sku": "7601234504826",
+  "handle": "mirelia-necklace482",
+  "title": "Mirelia Golden Flower Strand Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "492_HERO.png",
+  "png": 492,
+  "variant": "HERO",
+  "sku": "7601234504925",
+  "handle": "raelia-necklace492",
+  "title": "Raelia Golden Pearl Pendant Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "493_HERO.png",
+  "png": 493,
+  "variant": "HERO",
+  "sku": "7601234504932",
+  "handle": "maelvia-necklace493",
+  "title": "Maelvia Golden Cluster Strand Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "494_HERO.png",
+  "png": 494,
+  "variant": "HERO",
+  "sku": "7601234504949",
+  "handle": "zionia-necklace494",
+  "title": "Zionia Golden Daisy Choker Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "495_HERO.png",
+  "png": 495,
+  "variant": "HERO",
+  "sku": "7601234504956",
+  "handle": "miovia-necklace495",
+  "title": "Miovia Golden Disc Choker Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "499_HERO.png",
+  "png": 499,
+  "variant": "HERO",
+  "sku": "7601234504994",
+  "handle": "riolia-necklace499",
+  "title": "Riolia Golden Heart Choker Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "500_HERO.png",
+  "png": 500,
+  "variant": "HERO",
+  "sku": "7601234505007",
+  "handle": "zionia-necklace500",
+  "title": "Zionia Golden Disc Choker Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "500_LIFESTYLE.png",
+  "png": 500,
+  "variant": "LIFESTYLE",
+  "sku": "7601234505007",
+  "handle": "zionia-necklace500",
+  "title": "Zionia Golden Disc Choker Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "507_HERO.png",
+  "png": 507,
+  "variant": "HERO",
+  "sku": "7601234505076",
+  "handle": "raennia-necklace507",
+  "title": "Raennia Golden Disc Bead Strand Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "518_HERO.png",
+  "png": 518,
+  "variant": "HERO",
+  "sku": "7601234505182",
+  "handle": "neomia-necklace518",
+  "title": "Neomia Golden Disc Bead Strand Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "540_LIFESTYLE.png",
+  "png": 540,
+  "variant": "LIFESTYLE",
+  "sku": "7601234505403",
+  "handle": "maelia-bracelet540",
+  "title": "Maelia Golden Link Chain Bracelet",
+  "type": "Bracelet"
+ },
+ {
+  "file": "545_HERO.png",
+  "png": 545,
+  "variant": "HERO",
+  "sku": "7601234505458",
+  "handle": "reolia-bracelet545",
+  "title": "Reolia Silver Bar Cuff Bracelet",
+  "type": "Bracelet"
+ },
+ {
+  "file": "551_HERO.png",
+  "png": 551,
+  "variant": "HERO",
+  "sku": "7601234505519",
+  "handle": "vaelia-bracelet551",
+  "title": "Vaelia Golden Chain Tennis Bracelet",
+  "type": "Bracelet"
+ },
+ {
+  "file": "565_HERO.png",
+  "png": 565,
+  "variant": "HERO",
+  "sku": "7601234505656",
+  "handle": "zaephia-bracelet565",
+  "title": "Zaephia Golden Chain Link Bracelet",
+  "type": "Bracelet"
+ },
+ {
+  "file": "585_HERO.png",
+  "png": 585,
+  "variant": "HERO",
+  "sku": "7601234505854",
+  "handle": "ziomia-bracelet585",
+  "title": "Ziomia Agate Oval Bead Strand Bracelet",
+  "type": "Bracelet"
+ },
+ {
+  "file": "591_LIFESTYLE.png",
+  "png": 591,
+  "variant": "LIFESTYLE",
+  "sku": "7601234505915",
+  "handle": "seania-bracelet591",
+  "title": "Seania Aventurine Orb Strand Bracelet",
+  "type": "bracelet"
+ },
+ {
+  "file": "597_HERO.png",
+  "png": 597,
+  "variant": "HERO",
+  "sku": "7601234505977",
+  "handle": "maelina-bracelet597",
+  "title": "Maelina Green Round Bead Strand Bracelet",
+  "type": "Bracelet"
+ },
+ {
+  "file": "603_HERO.png",
+  "png": 603,
+  "variant": "HERO",
+  "sku": "7601234506035",
+  "handle": "ziomia-bracelet603",
+  "title": "Ziomia Golden Disc Strand Bracelet",
+  "type": "bracelet"
+ },
+ {
+  "file": "607_LIFESTYLE.png",
+  "png": 607,
+  "variant": "LIFESTYLE",
+  "sku": "7601234506073",
+  "handle": "zaelia-bracelet607",
+  "title": "Zaelia Golden Orb Tennis Bracelet",
+  "type": "Bracelet"
+ },
+ {
+  "file": "609_HERO.png",
+  "png": 609,
+  "variant": "HERO",
+  "sku": "7601234506097",
+  "handle": "zealia-bracelet609",
+  "title": "Zealia Enamel Tile Bead Bracelet",
+  "type": "Bracelet"
+ },
+ {
+  "file": "617_HERO.png",
+  "png": 617,
+  "variant": "HERO",
+  "sku": "7601234506172",
+  "handle": "sialia-bracelet617",
+  "title": "Sialia Mixed Metal Flower Link Bracelet",
+  "type": "bracelet"
+ },
+ {
+  "file": "624_HERO.png",
+  "png": 624,
+  "variant": "HERO",
+  "sku": "7601234506240",
+  "handle": "miolia-bracelet624",
+  "title": "Miolia Disc Bead Bracelet",
+  "type": "Bracelet"
+ },
+ {
+  "file": "624_LIFESTYLE.png",
+  "png": 624,
+  "variant": "LIFESTYLE",
+  "sku": "7601234506240",
+  "handle": "miolia-bracelet624",
+  "title": "Miolia Disc Bead Bracelet",
+  "type": "Bracelet"
+ },
+ {
+  "file": "643_LIFESTYLE.png",
+  "png": 643,
+  "variant": "LIFESTYLE",
+  "sku": "7601234506431",
+  "handle": "naelia-necklace643",
+  "title": "Naelia Golden Orb Choker Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "645_LIFESTYLE.png",
+  "png": 645,
+  "variant": "LIFESTYLE",
+  "sku": "7601234506455",
+  "handle": "zaevia-bracelet645",
+  "title": "Zaevia Rose Gold Triangle Bangle Bracelet",
+  "type": "Bracelet"
+ },
+ {
+  "file": "648_LIFESTYLE.png",
+  "png": 648,
+  "variant": "LIFESTYLE",
+  "sku": "7601234506486",
+  "handle": "viesia-bracelet648",
+  "title": "Viesia Rose Gold Flower Tile Bracelet",
+  "type": "Bracelet"
+ },
+ {
+  "file": "662_HERO.png",
+  "png": 662,
+  "variant": "HERO",
+  "sku": "7601234506622",
+  "handle": "maelia-necklace662",
+  "title": "Maelia Golden Orb Tennis Necklace",
+  "type": "necklace"
+ },
+ {
+  "file": "693_HERO.png",
+  "png": 693,
+  "variant": "HERO",
+  "sku": "7601234506936",
+  "handle": "violia-necklace693",
+  "title": "Violia Golden Bar Pendant Necklace",
+  "type": "necklace"
+ },
+ {
+  "file": "694_LIFESTYLE.png",
+  "png": 694,
+  "variant": "LIFESTYLE",
+  "sku": "7601234506943",
+  "handle": "maelia-necklace694",
+  "title": "Maelia Golden Disc Pendant Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "732_LIFESTYLE.png",
+  "png": 732,
+  "variant": "LIFESTYLE",
+  "sku": "7601234507322",
+  "handle": "veanlia-sunglasses732",
+  "title": "Veanlia Tortoise Round Frame Sunglasses",
+  "type": "Sunglasses"
+ },
+ {
+  "file": "733_LIFESTYLE.png",
+  "png": 733,
+  "variant": "LIFESTYLE",
+  "sku": "7601234507339",
+  "handle": "raelia-sunglasses733",
+  "title": "Raelia Tortoise Cat-Eye Shades Sunglasses",
+  "type": "Sunglasses"
+ },
+ {
+  "file": "734_LIFESTYLE.png",
+  "png": 734,
+  "variant": "LIFESTYLE",
+  "sku": "7601234507346",
+  "handle": "veania-sunglasses734",
+  "title": "Veania Tortoiseshell Oval Frame Sunglasses",
+  "type": "Sunglasses"
+ },
+ {
+  "file": "743_LIFESTYLE.png",
+  "png": 743,
+  "variant": "LIFESTYLE",
+  "sku": "7601234507438",
+  "handle": "rionia-sunglasses743",
+  "title": "Rionia Olive Oval Acetate Sunglasses",
+  "type": "Sunglasses"
+ },
+ {
+  "file": "760_HERO.png",
+  "png": 760,
+  "variant": "HERO",
+  "sku": "7601234507605",
+  "handle": "kaenia-hair-accessory760",
+  "title": "Kaenia Tortoise Rectangle Claw Hair accessory",
+  "type": "Hair accessory"
+ },
+ {
+  "file": "790_LIFESTYLE.png",
+  "png": 790,
+  "variant": "LIFESTYLE",
+  "sku": "7601234507902",
+  "handle": "thealia-hair-accessory790",
+  "title": "Thealia Leaf Barrette Hair accessory",
+  "type": "Hair accessory"
+ },
+ {
+  "file": "804_HERO.png",
+  "png": 804,
+  "variant": "HERO",
+  "sku": "7601234508046",
+  "handle": "raelia-hair-accessory804",
+  "title": "Raelia Golden Butterfly Clip Hair accessory",
+  "type": "Hair accessory"
+ },
+ {
+  "file": "805_LIFESTYLE.png",
+  "png": 805,
+  "variant": "LIFESTYLE",
+  "sku": "7601234508053",
+  "handle": "mialia-hair-accessory805",
+  "title": "Mialia Acrylic Butterfly Clip Hair accessory",
+  "type": "Hair accessory"
+ },
+ {
+  "file": "819_HERO.png",
+  "png": 819,
+  "variant": "HERO",
+  "sku": "7601234508190",
+  "handle": "maevia-charm819",
+  "title": "Maevia Silver Letter Pendant Charm",
+  "type": "Charm"
+ },
+ {
+  "file": "824_HERO.png",
+  "png": 824,
+  "variant": "HERO",
+  "sku": "7601234508244",
+  "handle": "vionia-necklace824",
+  "title": "Vionia Golden Disc Strand Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "825_HERO.png",
+  "png": 825,
+  "variant": "HERO",
+  "sku": "7601234508251",
+  "handle": "zionia-necklace825",
+  "title": "Zionia Shell Star Strand Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "831_LIFESTYLE.png",
+  "png": 831,
+  "variant": "LIFESTYLE",
+  "sku": "7601234508312",
+  "handle": "raellia-necklace831",
+  "title": "Raellia Silver Cluster Tennis Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "845_LIFESTYLE.png",
+  "png": 845,
+  "variant": "LIFESTYLE",
+  "sku": "7601234508459",
+  "handle": "sialia-bracelet845",
+  "title": "Sialia Golden Organic Orb Strand Bracelet",
+  "type": "Bracelet"
+ },
+ {
+  "file": "851_LIFESTYLE.png",
+  "png": 851,
+  "variant": "LIFESTYLE",
+  "sku": "7601234508510",
+  "handle": "zaevia-bracelet851",
+  "title": "Zaevia Golden Square Tile Bead Bracelet",
+  "type": "Bracelet"
+ },
+ {
+  "file": "853_HERO.png",
+  "png": 853,
+  "variant": "HERO",
+  "sku": "7601234508534",
+  "handle": "maelia-bracelet853",
+  "title": "Maelia Golden Bar Bangle bracelet",
+  "type": "bracelet"
+ },
+ {
+  "file": "855_LIFESTYLE.png",
+  "png": 855,
+  "variant": "LIFESTYLE",
+  "sku": "7601234508558",
+  "handle": "zeolia-necklace855",
+  "title": "Zeolia Multicolor Rondelle Strand Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "859_LIFESTYLE.png",
+  "png": 859,
+  "variant": "LIFESTYLE",
+  "sku": "7601234508596",
+  "handle": "raelia-bracelet859",
+  "title": "Raelia Golden Bar Bead bracelet",
+  "type": "bracelet"
+ },
+ {
+  "file": "869_LIFESTYLE.png",
+  "png": 869,
+  "variant": "LIFESTYLE",
+  "sku": "7601234508695",
+  "handle": "bionia-ring869",
+  "title": "Bionia Silver Marquise Band Ring",
+  "type": "Ring"
+ },
+ {
+  "file": "870_HERO.png",
+  "png": 870,
+  "variant": "HERO",
+  "sku": "7601234508701",
+  "handle": "zealina-ring870",
+  "title": "Zealina Silver Knot Statement ring",
+  "type": "ring"
+ },
+ {
+  "file": "870_LIFESTYLE.png",
+  "png": 870,
+  "variant": "LIFESTYLE",
+  "sku": "7601234508701",
+  "handle": "zealina-ring870",
+  "title": "Zealina Silver Knot Statement ring",
+  "type": "ring"
+ },
+ {
+  "file": "871_HERO.png",
+  "png": 871,
+  "variant": "HERO",
+  "sku": "7601234508718",
+  "handle": "saelina-ring871",
+  "title": "Saelina Silver Leaf Band Ring",
+  "type": "Ring"
+ },
+ {
+  "file": "875_HERO.png",
+  "png": 875,
+  "variant": "HERO",
+  "sku": "7601234508756",
+  "handle": "zealina-necklace875",
+  "title": "Zealina Golden Orb Strand Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "878_HERO.png",
+  "png": 878,
+  "variant": "HERO",
+  "sku": "7601234508787",
+  "handle": "sealia-bracelet878",
+  "title": "Sealia Silver Orb Bead Bracelet",
+  "type": "Bracelet"
+ },
+ {
+  "file": "889_HERO.png",
+  "png": 889,
+  "variant": "HERO",
+  "sku": "7601234508893",
+  "handle": "ziamia-necklace889",
+  "title": "Ziamia Golden Orb Strand Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "892_LIFESTYLE.png",
+  "png": 892,
+  "variant": "LIFESTYLE",
+  "sku": "7601234508923",
+  "handle": "paelia-bracelet892",
+  "title": "Paelia Golden Disc Strand Bracelet",
+  "type": "Bracelet"
+ },
+ {
+  "file": "893_LIFESTYLE.png",
+  "png": 893,
+  "variant": "LIFESTYLE",
+  "sku": "7601234508930",
+  "handle": "zeolia-necklace893",
+  "title": "Zeolia Acrylic Orb Strand Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "894_LIFESTYLE.png",
+  "png": 894,
+  "variant": "LIFESTYLE",
+  "sku": "7601234508947",
+  "handle": "vaelia-necklace894",
+  "title": "Vaelia Golden Heart Pendant Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "897_LIFESTYLE.png",
+  "png": 897,
+  "variant": "LIFESTYLE",
+  "sku": "7601234508978",
+  "handle": "liavia-bracelet897",
+  "title": "Liavia Tile Strand Bracelet",
+  "type": "Bracelet"
+ },
+ {
+  "file": "898_HERO.png",
+  "png": 898,
+  "variant": "HERO",
+  "sku": "7601234508985",
+  "handle": "zaennia-bracelet898",
+  "title": "Zaennia Bar Bead Bracelet Bracelet",
+  "type": "Bracelet"
+ },
+ {
+  "file": "899_LIFESTYLE.png",
+  "png": 899,
+  "variant": "LIFESTYLE",
+  "sku": "7601234508992",
+  "handle": "raelia-necklace899",
+  "title": "Raelia Acrylic Disc Bead Strand Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "906_LIFESTYLE.png",
+  "png": 906,
+  "variant": "LIFESTYLE",
+  "sku": "7601234509067",
+  "handle": "biolia-bracelet906",
+  "title": "Biolia Golden Orb Tennis Bracelet",
+  "type": "Bracelet"
+ },
+ {
+  "file": "909_HERO.png",
+  "png": 909,
+  "variant": "HERO",
+  "sku": "7601234509098",
+  "handle": "violia-bracelet909",
+  "title": "Violia Silver Row Cuff Bracelet",
+  "type": "Bracelet"
+ },
+ {
+  "file": "912_HERO.png",
+  "png": 912,
+  "variant": "HERO",
+  "sku": "7601234509128",
+  "handle": "qiovia-earrings912",
+  "title": "Qiovia Golden Link Drop Earrings",
+  "type": "Earrings"
+ },
+ {
+  "file": "919_HERO.png",
+  "png": 919,
+  "variant": "HERO",
+  "sku": "7601234509197",
+  "handle": "zeolia-necklace919",
+  "title": "Zeolia Silver Orb Chain Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "923_LIFESTYLE.png",
+  "png": 923,
+  "variant": "LIFESTYLE",
+  "sku": "7601234509234",
+  "handle": "veophia-necklace923",
+  "title": "Veophia Golden Octagon Pendant Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "924_HERO.png",
+  "png": 924,
+  "variant": "HERO",
+  "sku": "7601234509241",
+  "handle": "reolia-necklace924",
+  "title": "Reolia Golden Chain Tennis Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "931_HERO.png",
+  "png": 931,
+  "variant": "HERO",
+  "sku": "7601234509319",
+  "handle": "leonia-necklace931",
+  "title": "Leonia Golden Orb Tennis Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "932_HERO.png",
+  "png": 932,
+  "variant": "HERO",
+  "sku": "7601234509326",
+  "handle": "laenia-necklace932",
+  "title": "Laenia Golden Orb Delicate Bead Strand Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "937_HERO.png",
+  "png": 937,
+  "variant": "HERO",
+  "sku": "7601234509371",
+  "handle": "zialia-necklace937",
+  "title": "Zialia Silver Round Tennis Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "939_LIFESTYLE.png",
+  "png": 939,
+  "variant": "LIFESTYLE",
+  "sku": "7601234509395",
+  "handle": "ziolia-necklace939",
+  "title": "Ziolia Silver Cluster Tennis Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "940_HERO.png",
+  "png": 940,
+  "variant": "HERO",
+  "sku": "7601234509401",
+  "handle": "laevia-necklace940",
+  "title": "Laevia Silver Cluster Tennis necklace",
+  "type": "necklace"
+ },
+ {
+  "file": "944_HERO.png",
+  "png": 944,
+  "variant": "HERO",
+  "sku": "7601234509449",
+  "handle": "vealina-necklace944",
+  "title": "Vealina Silver Oval Tennis Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "947_HERO.png",
+  "png": 947,
+  "variant": "HERO",
+  "sku": "7601234509470",
+  "handle": "zeovia-necklace947",
+  "title": "Zeovia Silver Halo Tennis Chain Necklace",
+  "type": "Necklace"
+ },
+ {
+  "file": "954_LIFESTYLE.png",
+  "png": 954,
+  "variant": "LIFESTYLE",
+  "sku": "7601234509548",
+  "handle": "measia-earrings954",
+  "title": "Measia Silver Crescent Huggie Earrings",
+  "type": "Earrings"
+ },
+ {
+  "file": "972_HERO.png",
+  "png": 972,
+  "variant": "HERO",
+  "sku": "7601234509722",
+  "handle": "riolia-earrings972",
+  "title": "Riolia Golden Butterfly Stud earrings",
+  "type": "earrings"
+ },
+ {
+  "file": "973_LIFESTYLE.png",
+  "png": 973,
+  "variant": "LIFESTYLE",
+  "sku": "7601234509739",
+  "handle": "rionia-earrings973",
+  "title": "Rionia Silver Halo Stud Earrings",
+  "type": "Earrings"
+ },
+ {
+  "file": "975_LIFESTYLE.png",
+  "png": 975,
+  "variant": "LIFESTYLE",
+  "sku": "7601234509753",
+  "handle": "kaelia-earrings975",
+  "title": "Kaelia Golden Triple-Band Ring Huggie Earrings",
+  "type": "Earrings"
+ },
+ {
+  "file": "981_LIFESTYLE.png",
+  "png": 981,
+  "variant": "LIFESTYLE",
+  "sku": "7601234509814",
+  "handle": "laenia-earrings981",
+  "title": "Laenia Golden Knot Stud Earrings",
+  "type": "Earrings"
+ },
+ {
+  "file": "991_LIFESTYLE.png",
+  "png": 991,
+  "variant": "LIFESTYLE",
+  "sku": "7601234509913",
+  "handle": "zaelia-earrings991",
+  "title": "Zaelia Silver Fan Huggie Earrings",
+  "type": "Earrings"
+ },
+ {
+  "file": "993_LIFESTYLE.png",
+  "png": 993,
+  "variant": "LIFESTYLE",
+  "sku": "7601234509937",
+  "handle": "reolia-earrings993",
+  "title": "Reolia Silver Halo Huggie Earrings",
+  "type": "earrings"
+ },
+ {
+  "file": "1001_HERO.png",
+  "png": 1001,
+  "variant": "HERO",
+  "sku": "7601234510018",
+  "handle": "zeovia-earrings1001",
+  "title": "Zeovia Silver Orb Stud Earrings",
+  "type": "Earrings"
+ },
+ {
+  "file": "1001_LIFESTYLE.png",
+  "png": 1001,
+  "variant": "LIFESTYLE",
+  "sku": "7601234510018",
+  "handle": "zeovia-earrings1001",
+  "title": "Zeovia Silver Orb Stud Earrings",
+  "type": "Earrings"
+ },
+ {
+  "file": "1003_HERO.png",
+  "png": 1003,
+  "variant": "HERO",
+  "sku": "7601234510032",
+  "handle": "zaelia-earrings1003",
+  "title": "Zaelia Silver Crescent Huggie Earrings",
+  "type": "Earrings"
+ },
+ {
+  "file": "1022_LIFESTYLE.png",
+  "png": 1022,
+  "variant": "LIFESTYLE",
+  "sku": "7601234510223",
+  "handle": "vealia-watch1022",
+  "title": "Vealia Silver Disc Timepiece watch",
+  "type": "watch"
+ },
+ {
+  "file": "1027_HERO.png",
+  "png": 1027,
+  "variant": "HERO",
+  "sku": "7601234510278",
+  "handle": "zeonia-watch1027",
+  "title": "Zeonia Golden Rectangular Mesh watch",
+  "type": "watch"
+ },
+ {
+  "file": "1030_LIFESTYLE.png",
+  "png": 1030,
+  "variant": "LIFESTYLE",
+  "sku": "7601234510308",
+  "handle": "naevia-watch1030",
+  "title": "Naevia Golden Disc Mesh Watch",
+  "type": "watch"
+ },
+ {
+  "file": "1034_LIFESTYLE.png",
+  "png": 1034,
+  "variant": "LIFESTYLE",
+  "sku": "7601234510346",
+  "handle": "maelia-watch1034",
+  "title": "Maelia Mixed Metal Square Bracelet Watch",
+  "type": "Watch"
+ },
+ {
+  "file": "1039_HERO.png",
+  "png": 1039,
+  "variant": "HERO",
+  "sku": "7601234510391",
+  "handle": "zionia-watch1039",
+  "title": "Zionia Golden Square Link Bracelet Watch",
+  "type": "Watch"
+ },
+ {
+  "file": "1041_HERO.png",
+  "png": 1041,
+  "variant": "HERO",
+  "sku": "7601234510414",
+  "handle": "zionia-watch1041",
+  "title": "Zionia Silver Disc Mesh Watch",
+  "type": "Watch"
+ },
+ {
+  "file": "1042_HERO.png",
+  "png": 1042,
+  "variant": "HERO",
+  "sku": "7601234510421",
+  "handle": "raelia-watch1042",
+  "title": "Raelia Golden Rectangular Link Bracelet Watch",
+  "type": "Watch"
+ }
+]

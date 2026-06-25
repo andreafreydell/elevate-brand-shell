@@ -6,6 +6,11 @@ import { SectionHeading } from "@/components/layout/SectionHeading";
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
 import { ProductImageRow } from "@/components/ProductImageRow";
 import { LandingScrollVideoHero } from "@/components/landing/LandingScrollVideoHero";
+import { CategoryCarousel } from "@/components/landing/CategoryCarousel";
+import { StackingBanner } from "@/components/landing/StackingBanner";
+import { WaveTransition } from "@/components/landing/WaveTransition";
+import { ArtOfStacking } from "@/components/landing/ArtOfStacking";
+import { StackingGrid } from "@/components/landing/StackingGrid";
 import { ScribbleUnderline } from "@/components/craft/ScribbleUnderline";
 import { GrainOverlay } from "@/components/craft/GrainOverlay";
 import { WavyDivider } from "@/components/craft/WavyDivider";
@@ -72,7 +77,16 @@ const Index = () => {
   return (
     <PageLayout>
       <SwayingStems density="full" />
+
+      {/* Module A — big static category bubbles + large slow-moving banner */}
+      <CategoryCarousel />
+      <StackingBanner />
+      <WaveTransition />
+
       <LandingScrollVideoHero />
+
+      {/* Module B — surfaces right after the video experience */}
+      <ArtOfStacking />
 
       <StitchLineDivider className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16" />
 
@@ -182,6 +196,9 @@ const Index = () => {
           </section>
         </>
       ) : null}
+
+      {/* Module C — the Feed, after Out & About */}
+      <StackingGrid />
 
       <section className="hidden md:block bg-[hsl(28,22%,34%)] relative overflow-hidden">
         <GrainOverlay opacity={0.04} />
