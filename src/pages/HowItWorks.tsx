@@ -87,7 +87,7 @@ const faqItems: FAQItem[] = [
   {
     question: "What if I want to keep a piece?",
     answer:
-      "You keep 1 to 3 pieces per cycle, included at no additional cost — 1 with Seed, 2 with Blossom, 3 with Garden. Simply select 'Keep This Piece' in your dashboard. Want to keep even more? Keep any extra rental for $12 each, charged when you return the rest.",
+      "You keep 1 to 3 pieces per cycle, included at no additional cost — 1 with Seed, 2 with Blossom, 3 with Garden. Simply select 'Keep This Piece' in your dashboard. Want to keep even more? Keep any extra rental for 60% off list price, charged when you return the rest.",
   },
   {
     question: "What if something gets damaged?",
@@ -117,7 +117,7 @@ const faqItems: FAQItem[] = [
   {
     question: "What is Keep Your Favorite?",
     answer:
-      "Every cycle you keep 1 to 3 pieces from your rentals at no additional cost, depending on your tier (Seed 1, Blossom 2, Garden 3). Fall for more? Keep any extra rental for $12 each, charged when you return the rest - and add an extra rental item anytime for $6. Over time, build a curated collection through real experience, not impulse.",
+      "Every cycle you keep 1 to 3 pieces from your rentals at no additional cost, depending on your tier (Seed 1, Blossom 2, Garden 3). Fall for more? Keep any extra rental for 60% off list price, charged when you return the rest - and add an extra rental item anytime for $6. Over time, build a curated collection through real experience, not impulse.",
   },
   {
     question: "What happens in my first month?",
@@ -216,7 +216,7 @@ const HowItWorks = () => {
           <StepBlock
             number="04"
             title="Keep Your Favorites"
-            description="Keep 1 to 3 pieces each cycle, included with your tier. Want an extra? Keep any rental for $12, charged when you return the rest."
+            description="Keep 1 to 3 pieces each cycle, included with your tier. Want an extra? Keep any rental for 60% off list price, charged when you return the rest."
             icon={Heart}
           />
           <StepBlock
@@ -243,8 +243,8 @@ const HowItWorks = () => {
             </h3>
             <p className="step-detail-description relative z-[1] font-sans text-[12px] leading-relaxed text-muted-foreground">
               Keep 1 to 3 pieces per cycle at no additional cost, by tier. Want
-              an extra? Keep any rental for <ScriptNumber>$12</ScriptNumber>,
-              charged when you return the rest. Experience jewelry in real life,
+              an extra? Keep any rental for <ScriptNumber>60%</ScriptNumber> off
+              list price, charged when you return the rest. Experience jewelry in real life,
               then build your collection through discovery.
             </p>
           </div>

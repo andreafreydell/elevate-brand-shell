@@ -45,7 +45,7 @@ const steps = [
   {
     number: "04",
     title: "Keep",
-    description: "Keep 1 to 3 pieces each cycle, included with your tier. Love an extra? Keep any rental for $12, charged when you return the rest.",
+    description: "Keep 1 to 3 pieces each cycle, included with your tier. Love an extra? Keep any rental for 60% off list price, charged when you return the rest.",
     icon: Heart,
   },
   {

@@ -37,7 +37,7 @@ const categories: { label: string; sectionLabel: string; items: FAQItem[] }[] = 
       {
         question: "Can I keep a piece I love?",
         answer:
-          "Yes. You keep 1 to 3 pieces per cycle at no additional cost, depending on your tier (Seed 1, Blossom 2, Garden 3). Want to keep more? Keep any extra rental for $12 each, charged when you return the rest.",
+          "Yes. You keep 1 to 3 pieces per cycle at no additional cost, depending on your tier (Seed 1, Blossom 2, Garden 3). Want to keep more? Keep any extra rental for 60% off list price, charged when you return the rest.",
       },
     ],
   },

@@ -356,7 +356,7 @@ const ProductDetail = () => {
                 </span>
               </div>
               <p className="text-[10px] tracking-[0.15em] font-sans text-muted-foreground mb-4 md:mb-6">
-                Keep it from a rental for <ScriptNumber>$12</ScriptNumber>
+                Keep it from a rental for <ScriptNumber>60%</ScriptNumber> off list
               </p>
 
               {product.options.length > 0 && product.options[0].name !== "Title" && (

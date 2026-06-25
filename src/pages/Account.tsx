@@ -56,7 +56,7 @@ const dashboardSections = [
     icon: Gem,
     title: "Keep Your Favorites",
     description:
-      "Keep 1 to 3 pieces per cycle by tier, included — keep any extra rental for $12, charged when you return the rest.",
+      "Keep 1 to 3 pieces per cycle by tier, included — keep any extra rental for 60% off list price, charged when you return the rest.",
   },
 ];
 
