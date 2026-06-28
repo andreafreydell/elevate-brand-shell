@@ -1,9 +1,17 @@
-// Map a Shopify subscription contract's selling plan to a GEA membership tier.
+// Map a Shopify subscription contract line to a GEA membership tier.
+//
+// VERIFIED GEA mapping (from live product descriptions / prices):
+//   Seed    = $35 = 3 items, keep 1  -> three_piece
+//   Blossom = $65 = 6 items, keep 2  -> six_piece
+//   Garden  = $85 = 10 items, keep 3 -> ten_piece
+// (Note: NOT in Seed<Garden<Blossom size order — Garden is the largest.)
 //
 // Resolution order:
-//   1. GEA_SELLING_PLAN_TIER_MAP env (JSON: { "<sellingPlanId>": "three_piece", ... }).
-//      Selling plan ids may be numeric or gid:// — both are checked.
-//   2. Fallback: infer from the selling plan NAME by piece count (3 / 6 / 10).
+//   1. GEA_SELLING_PLAN_TIER_MAP env (JSON) keyed by selling-plan id OR variant id
+//      (numeric or gid:// — both checked). Acts as an explicit override.
+//   2. Plan/variant NAME keyword: "seed" -> three, "blossom" -> six, "garden" -> ten.
+//      (The plans are named "SeedMembership35" etc., so this is the reliable path.)
+//   3. Last resort: infer from a piece count (3 / 6 / 10) in the name.
 //
 // Returns null if no tier can be determined (caller logs + skips).
 
@@ -14,6 +22,12 @@ const PIECE_TO_TIER: Record<number, GeaTier> = {
   6: "six_piece",
   10: "ten_piece",
 };
+
+const NAME_TO_TIER: Array<[string, GeaTier]> = [
+  ["seed", "three_piece"],
+  ["blossom", "six_piece"],
+  ["garden", "ten_piece"],
+];
 
 function loadEnvMap(): Record<string, GeaTier> {
   const raw = Deno.env.get("GEA_SELLING_PLAN_TIER_MAP");
@@ -33,19 +47,29 @@ function numericId(gid: string | null): string | null {
 }
 
 export function resolveTier(
-  lines: Array<{ sellingPlanId: string | null; sellingPlanName: string | null }>,
+  lines: Array<{ variantId?: string | null; sellingPlanId: string | null; sellingPlanName: string | null }>,
 ): GeaTier | null {
   const map = loadEnvMap();
 
+  // 1. Explicit env override, by selling-plan id OR variant id (gid or numeric).
   for (const line of lines) {
-    if (line.sellingPlanId) {
-      if (map[line.sellingPlanId]) return map[line.sellingPlanId];
-      const num = numericId(line.sellingPlanId);
+    for (const raw of [line.sellingPlanId, line.variantId]) {
+      if (!raw) continue;
+      if (map[raw]) return map[raw];
+      const num = numericId(raw);
       if (num && map[num]) return map[num];
     }
   }
 
-  // Fallback: infer from the plan name's piece count.
+  // 2. Name keyword (Seed / Blossom / Garden) — the reliable path for GEA's plans.
+  for (const line of lines) {
+    const name = (line.sellingPlanName || "").toLowerCase();
+    for (const [keyword, tier] of NAME_TO_TIER) {
+      if (name.includes(keyword)) return tier;
+    }
+  }
+
+  // 3. Last resort: a literal piece count in the name.
   for (const line of lines) {
     const name = (line.sellingPlanName || "").toLowerCase();
     for (const pieces of [10, 6, 3]) {

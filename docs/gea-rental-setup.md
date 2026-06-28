@@ -42,21 +42,32 @@ the MVP backend — marked (existing).
 
 ---
 
-## 3. Tier mapping (`GEA_SELLING_PLAN_TIER_MAP`)
+## 3. Tier mapping (VERIFIED — Seed/Blossom/Garden, NOT in size order)
 
-After creating the subscription selling plans, list their ids and set the env var:
+The three memberships already exist. Verified from their live descriptions/prices:
+
+| Membership | Price | Tier | Items / Keep | Variant id |
+| --- | --- | --- | --- | --- |
+| **Seed** | $35 | `three_piece` | 3 / keep 1 | `48545833943140` |
+| **Blossom** | $65 | `six_piece` | 6 / keep 2 | `48630640345188` |
+| **Garden** | $85 | `ten_piece` | 10 / keep 3 | `48545842724964` |
+
+Tier detection works **automatically** off the plan NAME keyword (seed/blossom/garden),
+so no env map is strictly required. The optional `GEA_SELLING_PLAN_TIER_MAP` override
+may be keyed by selling-plan id OR variant id (numeric or gid). Using the variant ids:
 
 ```json
 {
-  "gid://shopify/SellingPlan/111111": "three_piece",
-  "gid://shopify/SellingPlan/222222": "six_piece",
-  "gid://shopify/SellingPlan/333333": "ten_piece"
+  "48545833943140": "three_piece",
+  "48630640345188": "six_piece",
+  "48545842724964": "ten_piece"
 }
 ```
 
-Numeric ids (without the gid prefix) also work. If the map can't resolve a tier,
-`shopify-subscription-sync` falls back to inferring it from the selling-plan NAME
-by piece count (3 / 6 / 10), then skips (logs) if still ambiguous.
+**Other captured ids (for env / frontend):**
+- `VITE_EXTRA_RENTAL_ITEM_VARIANT_ID` = `48643543760996` (Extra Rental Item, $6)
+- Gift item variants (to add to the Membership Gift collection): Ear Lobe Patches
+  `48466377703524`, Resin Earring Lifter Backs `48466377736292`.
 
 ---
 
