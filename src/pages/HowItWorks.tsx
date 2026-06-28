@@ -86,7 +86,7 @@ const faqItems: FAQItem[] = [
   {
     question: "What if I want to keep a piece?",
     answer:
-      "One piece per cycle is yours to keep - included in your membership at no additional cost. Simply select 'Keep This Piece' in your dashboard. Want to keep additional pieces? Members save 40% on every extra piece.",
+      "At least one piece per cycle is yours to keep - included in your membership at no additional cost. Simply select 'Keep This Piece' in your dashboard. Want to keep additional pieces? Additional pieces are 60% off list price.",
   },
   {
     question: "What if something gets damaged?",
@@ -116,7 +116,7 @@ const faqItems: FAQItem[] = [
   {
     question: "What is Keep Your Favorite?",
     answer:
-      "Every cycle, one piece from your selection is yours to keep at no additional cost - it's included in your membership. If you fall in love with more than one, members enjoy 40% off any additional piece. Over time, build a curated collection through real experience, not impulse.",
+      "Every cycle, at least one piece from your selection is yours to keep at no additional cost - it's included in your membership. If you fall in love with more than one, additional pieces are 60% off list price. Over time, build a curated collection through real experience, not impulse.",
   },
   {
     question: "What happens in my first month?",
@@ -185,7 +185,7 @@ const HowItWorks = () => {
           <StepBlock
             number="04"
             title="Keep Your Favorite"
-            description="One piece per cycle is yours to keep at no additional cost. Want more? Members save 40% on any additional piece."
+            description="At least one piece per cycle is yours to keep at no additional cost. Want more? Additional pieces are 60% off list price."
             icon={Heart}
           />
           <StepBlock
@@ -211,10 +211,10 @@ const HowItWorks = () => {
               <CircleEmphasis color="var(--tag-red)">Favorite</CircleEmphasis>
             </h3>
             <p className="step-detail-description relative z-[1] font-sans text-[12px] leading-relaxed text-muted-foreground">
-              One piece per cycle is yours to keep at no additional cost. Want
-              more? Members save <ScriptNumber>40%</ScriptNumber> on any
-              additional piece. Experience jewelry in real life, then build your
-              collection through discovery.
+              At least one piece per cycle is yours to keep at no additional
+              cost. Want more? Additional pieces are{" "}
+              <ScriptNumber>60%</ScriptNumber> off list price. Experience jewelry
+              in real life, then build your collection through discovery.
             </p>
           </div>
           <div className="step-detail-card-mobile relative h-full overflow-hidden border border-border bg-card p-8">

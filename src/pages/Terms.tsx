@@ -193,10 +193,10 @@ const Terms = () => {
 
       <LegalSection number="6" title="Keep Your Favorite">
         <LegalParagraph>
-          If you fall in love with a piece, one piece from your cycle is
-          included to keep at no additional cost. Keep pricing for any
-          additional pieces is displayed in your member dashboard for each
-          piece in your current access set.
+          If you fall in love with a piece, at least one piece from your cycle
+          is included to keep at no additional cost. Additional pieces are 60%
+          off list price, displayed in your member dashboard for each piece in
+          your current access set.
         </LegalParagraph>
         <LegalParagraph>
           Kept pieces become your property upon purchase confirmation. All keep

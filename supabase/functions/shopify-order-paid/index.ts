@@ -2,6 +2,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { corsHeaders, jsonResponse } from "../_shared/cors.ts";
 import {
   isRentalLineItem,
+  removeCustomerTags,
   ShopifyOrderPaidWebhook,
   ShopifyWmsFieldConfig,
   verifyShopifyWebhook,
@@ -47,6 +48,8 @@ Deno.serve(async (req) => {
   const rentalLines = lineItems.filter(isRentalLineItem);
   const assignedSerials = [];
   const errors = [];
+  let isMemberOrder = false;
+  let memberCycleId: string | null = null;
 
   for (const lineItem of rentalLines) {
     if (!lineItem.variant_id || !lineItem.sku) {
@@ -88,6 +91,34 @@ Deno.serve(async (req) => {
       unit_id: reservation.unit_id,
       serial_number: reservation.serial_number,
     });
+
+    // Count this checkout against the member's current cycle (idempotent;
+    // no-op for non-members). Returns the enriched reservation.
+    const { data: counted, error: countError } = await supabase.rpc("count_checkout_for_reservation", {
+      p_reservation_id: reservation.id,
+    });
+    if (countError) {
+      console.error("count_checkout_for_reservation failed:", countError);
+    } else if (counted?.membership_id) {
+      isMemberOrder = true;
+      memberCycleId = counted.rental_cycle_id;
+    }
+  }
+
+  // A member has now used (part of) their cycle — remove the discount tag so the
+  // 100%-off automatic discount can't be reused until next cycle opens.
+  if (isMemberOrder && order.customer?.id) {
+    try {
+      await removeCustomerTags(String(order.customer.id), ["gea_cycle_open"]);
+      if (memberCycleId) {
+        await supabase
+          .from("rental_cycles")
+          .update({ tag_removed_at: new Date().toISOString() })
+          .eq("id", memberCycleId);
+      }
+    } catch (tagError) {
+      console.error("Failed to remove gea_cycle_open tag:", tagError);
+    }
   }
 
   let shopifyWriteResult = null;

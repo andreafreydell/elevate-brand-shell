@@ -56,7 +56,7 @@ const dashboardSections = [
     icon: Gem,
     title: "Keep Your Favorite",
     description:
-      "One piece per cycle is included to keep, with member pricing available on additional favorites.",
+      "At least one piece per cycle is included to keep, with additional pieces available at 60% off list price.",
   },
 ];
 

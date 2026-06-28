@@ -37,7 +37,7 @@ const categories: { label: string; sectionLabel: string; items: FAQItem[] }[] = 
       {
         question: "Can I keep a piece I love?",
         answer:
-          "Yes. One piece per cycle is included to keep at no additional cost. If you want to keep more than one, member pricing is disclosed before you decide.",
+          "Yes. At least one piece per cycle is included to keep at no additional cost. If you want to keep more than one, additional pieces are 60% off list price.",
       },
     ],
   },

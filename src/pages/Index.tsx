@@ -139,7 +139,7 @@ const Index = () => {
           <StaggerItem><StepBlock number="01" title="Choose" description="Browse our curated vault and select the pieces that speak to your moment." icon={Hand} /></StaggerItem>
           <StaggerItem><StepBlock number="02" title="Receive" description="Your selections arrive in 1–3 days, freshly restored and sealed in our signature packaging." icon={Package} /></StaggerItem>
           <StaggerItem><StepBlock number="03" title="Wear" description="Style them for your life — the event, the meeting, the dinner, the everyday." icon={Sparkles} /></StaggerItem>
-          <StaggerItem><StepBlock number="04" title="Keep Your Favorite" description="One piece per cycle is yours to keep — included in your membership. Want more? Members save 40% on any additional piece." icon={Heart} /></StaggerItem>
+          <StaggerItem><StepBlock number="04" title="Keep Your Favorite" description="At least one piece per cycle is yours to keep — included in your membership. Want more? Additional pieces are 60% off list price." icon={Heart} /></StaggerItem>
           <StaggerItem><StepBlock number="05" title="Refresh" description="At the end of your cycle, return the pieces you are not keeping and choose your next chapter." icon={RefreshCw} /></StaggerItem>
         </StaggerContainer>
         <div className="text-center mt-10">

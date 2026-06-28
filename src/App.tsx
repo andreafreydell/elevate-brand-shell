@@ -42,6 +42,10 @@ import BrowseAll from "./pages/BrowseAll";
 import CategoryPage from "./pages/CategoryPage";
 import OccasionPage from "./pages/OccasionPage";
 import NotFound from "./pages/NotFound";
+import AdminLogin from "./pages/admin/AdminLogin";
+import RentalOps from "./pages/admin/RentalOps";
+import { AuthProvider } from "@/contexts/AuthContext";
+import { AdminRoute } from "@/components/auth/AdminRoute";
 
 const queryClient = new QueryClient();
 
@@ -66,6 +70,8 @@ const AppContent = () => {
       <Route path="/legal" element={<Legal />} />
       <Route path="/stories" element={<Stories />} />
       <Route path="/account" element={<Account />} />
+      <Route path="/admin/login" element={<AdminLogin />} />
+      <Route path="/admin/rental-ops" element={<AdminRoute><RentalOps /></AdminRoute>} />
       <Route path="/browse" element={<BrowseAll />} />
       <Route path="/occasions/:occasion" element={<OccasionPage />} />
       <Route path="/earrings" element={<CategoryPage title="Earrings" subtitle="Hoops, studs, drops, and ear cuffs — curated for every occasion." productType="Earrings" />} />
@@ -86,9 +92,11 @@ const App = () => (
       <Sonner />
       <LaunchGate>
         <BrowserRouter>
-          <ScrollToTop />
-          <EmailCapturePopup />
-          <AppContent />
+          <AuthProvider>
+            <ScrollToTop />
+            <EmailCapturePopup />
+            <AppContent />
+          </AuthProvider>
         </BrowserRouter>
       </LaunchGate>
     </TooltipProvider>

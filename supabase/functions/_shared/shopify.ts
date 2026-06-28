@@ -216,3 +216,304 @@ async function addOrderTags(order: ShopifyOrderPaidWebhook, assignedSerials: Ass
 
   return { strategy: "order_tag", count: assignedSerials.length };
 }
+
+// ============================================================================
+// Customer tagging — drives the `gea_cycle_open` segment that the automatic
+// "100% off Rental collection" discount is restricted to.
+// ============================================================================
+
+export function getCustomerGid(customerId: string) {
+  return customerId.startsWith("gid://") ? customerId : `gid://shopify/Customer/${customerId}`;
+}
+
+export async function getCustomerEmail(customerId: string): Promise<string | null> {
+  const query = `
+    query CustomerEmail($id: ID!) {
+      customer(id: $id) { id email }
+    }
+  `;
+  const result = await shopifyGraphql<{
+    data?: { customer?: { id: string; email: string | null } | null };
+  }>(query, { id: getCustomerGid(customerId) });
+  return result.data?.customer?.email ?? null;
+}
+
+export async function addCustomerTags(customerId: string, tags: string[]) {
+  const mutation = `
+    mutation AddCustomerTags($id: ID!, $tags: [String!]!) {
+      tagsAdd(id: $id, tags: $tags) {
+        node { id }
+        userErrors { field message }
+      }
+    }
+  `;
+  const result = await shopifyGraphql<{
+    data?: { tagsAdd?: { userErrors?: Array<{ message: string }> } };
+  }>(mutation, { id: getCustomerGid(customerId), tags });
+
+  const userErrors = result.data?.tagsAdd?.userErrors || [];
+  if (userErrors.length > 0) {
+    throw new Error(`Failed to add customer tags: ${userErrors.map((e) => e.message).join(", ")}`);
+  }
+  return { ok: true, tags };
+}
+
+export async function removeCustomerTags(customerId: string, tags: string[]) {
+  const mutation = `
+    mutation RemoveCustomerTags($id: ID!, $tags: [String!]!) {
+      tagsRemove(id: $id, tags: $tags) {
+        node { id }
+        userErrors { field message }
+      }
+    }
+  `;
+  const result = await shopifyGraphql<{
+    data?: { tagsRemove?: { userErrors?: Array<{ message: string }> } };
+  }>(mutation, { id: getCustomerGid(customerId), tags });
+
+  const userErrors = result.data?.tagsRemove?.userErrors || [];
+  if (userErrors.length > 0) {
+    throw new Error(`Failed to remove customer tags: ${userErrors.map((e) => e.message).join(", ")}`);
+  }
+  return { ok: true, tags };
+}
+
+// ============================================================================
+// Variant lookup — retail price (basis for the 40% keep fee), on-hand inventory
+// (basis for catalog seeding), sku/product linkage.
+// ============================================================================
+
+export interface ShopifyVariantDetails {
+  variantId: string;
+  productId: string | null;
+  sku: string | null;
+  price: string | null;
+  inventoryQuantity: number | null;
+}
+
+export function getVariantGid(variantId: string) {
+  return variantId.startsWith("gid://") ? variantId : `gid://shopify/ProductVariant/${variantId}`;
+}
+
+export async function getVariantDetails(variantId: string): Promise<ShopifyVariantDetails | null> {
+  const query = `
+    query VariantDetails($id: ID!) {
+      productVariant(id: $id) {
+        id
+        sku
+        price
+        inventoryQuantity
+        product { id }
+      }
+    }
+  `;
+  const result = await shopifyGraphql<{
+    data?: {
+      productVariant?: {
+        id: string;
+        sku: string | null;
+        price: string | null;
+        inventoryQuantity: number | null;
+        product?: { id: string } | null;
+      } | null;
+    };
+  }>(query, { id: getVariantGid(variantId) });
+
+  const v = result.data?.productVariant;
+  if (!v) return null;
+  return {
+    variantId: v.id,
+    productId: v.product?.id ?? null,
+    sku: v.sku ?? null,
+    price: v.price ?? null,
+    inventoryQuantity: v.inventoryQuantity ?? null,
+  };
+}
+
+// ============================================================================
+// Subscription contract lookup — tier detection (mirrored into memberships).
+// ============================================================================
+
+export interface ShopifySubscriptionContract {
+  id: string;
+  status: string;
+  customerId: string | null;
+  createdAt: string | null;
+  lines: Array<{ variantId: string | null; sellingPlanId: string | null; sellingPlanName: string | null }>;
+}
+
+export function getSubscriptionContractGid(contractId: string) {
+  return contractId.startsWith("gid://")
+    ? contractId
+    : `gid://shopify/SubscriptionContract/${contractId}`;
+}
+
+export async function getSubscriptionContract(
+  contractId: string,
+): Promise<ShopifySubscriptionContract | null> {
+  const query = `
+    query SubscriptionContract($id: ID!) {
+      subscriptionContract(id: $id) {
+        id
+        status
+        createdAt
+        customer { id }
+        lines(first: 50) {
+          edges {
+            node {
+              variantId
+              sellingPlanId
+              sellingPlanName
+            }
+          }
+        }
+      }
+    }
+  `;
+  const result = await shopifyGraphql<{
+    data?: {
+      subscriptionContract?: {
+        id: string;
+        status: string;
+        createdAt: string | null;
+        customer?: { id: string } | null;
+        lines?: { edges: Array<{ node: { variantId: string | null; sellingPlanId: string | null; sellingPlanName: string | null } }> };
+      } | null;
+    };
+  }>(query, { id: getSubscriptionContractGid(contractId) });
+
+  const c = result.data?.subscriptionContract;
+  if (!c) return null;
+  return {
+    id: c.id,
+    status: c.status,
+    customerId: c.customer?.id ?? null,
+    createdAt: c.createdAt ?? null,
+    lines: (c.lines?.edges || []).map((e) => ({
+      variantId: e.node.variantId ?? null,
+      sellingPlanId: e.node.sellingPlanId ?? null,
+      sellingPlanName: e.node.sellingPlanName ?? null,
+    })),
+  };
+}
+
+// ============================================================================
+// Extra-keep fee charging.
+//
+// IMPORTANT — payment capture caveat: truly auto-capturing a customer's stored
+// card for an arbitrary one-off amount requires a payment provider that supports
+// it for the store. This helper creates a draft order for the fee against the
+// customer and attempts to complete it as paid (paymentPending: false). Whether
+// that actually captures the saved card depends on the store's payment setup; if
+// it cannot, completion fails and the caller records the charge as `failed` with
+// the draft order id retained so the team can collect it. This is the one path
+// to validate against live Shopify before go-live (see the plan's pre-prod step).
+// ============================================================================
+
+export interface KeepFeeChargeResult {
+  draftOrderId: string | null;
+  invoiceUrl: string | null;
+  completedOrderId: string | null;
+  captured: boolean;
+  error: string | null;
+}
+
+export async function chargeKeepFeeToCustomer(params: {
+  customerId: string;
+  title: string;
+  amount: number;
+  quantity?: number;
+  tags?: string[];
+}): Promise<KeepFeeChargeResult> {
+  const createMutation = `
+    mutation CreateKeepFeeDraft($input: DraftOrderInput!) {
+      draftOrderCreate(input: $input) {
+        draftOrder { id invoiceUrl }
+        userErrors { field message }
+      }
+    }
+  `;
+  const createResult = await shopifyGraphql<{
+    data?: {
+      draftOrderCreate?: {
+        draftOrder?: { id: string; invoiceUrl: string | null } | null;
+        userErrors?: Array<{ message: string }>;
+      };
+    };
+  }>(createMutation, {
+    input: {
+      customerId: getCustomerGid(params.customerId),
+      tags: params.tags ?? ["gea_keep_fee"],
+      lineItems: [
+        {
+          title: params.title,
+          originalUnitPrice: params.amount.toFixed(2),
+          quantity: params.quantity ?? 1,
+          requiresShipping: false,
+          taxable: false,
+        },
+      ],
+    },
+  });
+
+  const createErrors = createResult.data?.draftOrderCreate?.userErrors || [];
+  const draftOrder = createResult.data?.draftOrderCreate?.draftOrder;
+  if (createErrors.length > 0 || !draftOrder) {
+    return {
+      draftOrderId: null,
+      invoiceUrl: null,
+      completedOrderId: null,
+      captured: false,
+      error: createErrors.map((e) => e.message).join(", ") || "draftOrderCreate failed",
+    };
+  }
+
+  // Attempt to complete (capture) against the customer's payment method.
+  const completeMutation = `
+    mutation CompleteKeepFeeDraft($id: ID!) {
+      draftOrderComplete(id: $id, paymentPending: false) {
+        draftOrder { id order { id } }
+        userErrors { field message }
+      }
+    }
+  `;
+  try {
+    const completeResult = await shopifyGraphql<{
+      data?: {
+        draftOrderComplete?: {
+          draftOrder?: { id: string; order?: { id: string } | null } | null;
+          userErrors?: Array<{ message: string }>;
+        };
+      };
+    }>(completeMutation, { id: draftOrder.id });
+
+    const completeErrors = completeResult.data?.draftOrderComplete?.userErrors || [];
+    const completedOrderId = completeResult.data?.draftOrderComplete?.draftOrder?.order?.id ?? null;
+
+    if (completeErrors.length > 0 || !completedOrderId) {
+      return {
+        draftOrderId: draftOrder.id,
+        invoiceUrl: draftOrder.invoiceUrl,
+        completedOrderId: null,
+        captured: false,
+        error: completeErrors.map((e) => e.message).join(", ") || "draftOrderComplete did not capture payment",
+      };
+    }
+
+    return {
+      draftOrderId: draftOrder.id,
+      invoiceUrl: draftOrder.invoiceUrl,
+      completedOrderId,
+      captured: true,
+      error: null,
+    };
+  } catch (err) {
+    return {
+      draftOrderId: draftOrder.id,
+      invoiceUrl: draftOrder.invoiceUrl,
+      completedOrderId: null,
+      captured: false,
+      error: err instanceof Error ? err.message : String(err),
+    };
+  }
+}

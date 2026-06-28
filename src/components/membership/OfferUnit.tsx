@@ -4,14 +4,14 @@ import { SavingsCalculator } from "@/components/membership/SavingsCalculator";
 
 const tierData = [
   {
-    name: "Tier 2",
-    label: "10 Pieces",
-    price: "$85",
-    promoPrice: "$75",
-    priceNum: 85,
-    pieces: 10,
-    piecesLabel: "10 curated pieces per cycle",
-    highlighted: true,
+    name: "Tier 1",
+    label: "3 Pieces",
+    price: "$35",
+    promoPrice: "$25",
+    priceNum: 35,
+    pieces: 3,
+    piecesLabel: "3 curated pieces per cycle",
+    highlighted: false,
     features: [
       "Full vault access",
       "1 piece included to keep per cycle",
@@ -22,17 +22,35 @@ const tierData = [
     ],
   },
   {
-    name: "Tier 1",
-    label: "5 Pieces",
+    name: "Tier 2",
+    label: "6 Pieces",
     price: "$65",
     promoPrice: "$55",
     priceNum: 65,
-    pieces: 5,
-    piecesLabel: "5 curated pieces per cycle",
+    pieces: 6,
+    piecesLabel: "6 curated pieces per cycle",
+    highlighted: true,
+    features: [
+      "Full vault access",
+      "2 pieces included to keep per cycle",
+      "Protection coverage included",
+      "Sanitized & Sealed before delivery",
+      "Free shipping both ways",
+      "Cancel anytime — no commitment",
+    ],
+  },
+  {
+    name: "Tier 3",
+    label: "10 Pieces",
+    price: "$85",
+    promoPrice: "$75",
+    priceNum: 85,
+    pieces: 10,
+    piecesLabel: "10 curated pieces per cycle",
     highlighted: false,
     features: [
       "Full vault access",
-      "1 piece included to keep per cycle",
+      "3 pieces included to keep per cycle",
       "Protection coverage included",
       "Sanitized & Sealed before delivery",
       "Free shipping both ways",
@@ -72,7 +90,7 @@ const CompactOffer = () => (
 
 /* ── Standard: side-by-side cards with features ── */
 const StandardOffer = () => (
-  <div className="tier-grid-mobile grid grid-cols-1 md:grid-cols-2 gap-4 max-w-[900px] mx-auto">
+  <div className="tier-grid-mobile grid grid-cols-1 md:grid-cols-3 gap-4 max-w-[1100px] mx-auto">
     {tierData.map((tier) => (
       <div
         key={tier.name}
@@ -149,7 +167,7 @@ const FullOffer = () => (
   <div className="space-y-8">
     <StandardOffer />
     <p className="text-[11px] text-muted-foreground font-sans tracking-[0.1em] text-center">
-      One curated shipment per 30-day cycle. One piece is included to keep, and the rest refresh at cycle end.
+      One curated shipment per 30-day cycle. At least one piece is included to keep, and the rest refresh at cycle end.
     </p>
 
     {/* Cost-per-wear reframe */}
@@ -180,7 +198,7 @@ const FullOffer = () => (
         </div>
         <div className="cpw-card border border-foreground bg-foreground text-background p-6">
           <p className="cpw-card-label text-[10px] tracking-[0.25em] uppercase font-sans text-background/60 mb-1">
-            GEA Tier 2
+            GEA · 10 Pieces
           </p>
           <p className="cpw-card-price font-serif text-2xl font-medium">Under $2 per wear</p>
           <p className="cpw-card-sub text-[11px] text-background/70 font-sans">$85/mo, 10 pieces, worn 5 times each</p>

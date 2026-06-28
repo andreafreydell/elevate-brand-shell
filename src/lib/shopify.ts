@@ -165,8 +165,6 @@ export const PRODUCTS_QUERY = `
             { namespace: "custom", key: "silhouette_category" }
             { namespace: "custom", key: "material_category" }
             { namespace: "custom", key: "occasions_possible" }
-            { namespace: "supercycle", key: "supercycle_enabled" }
-            { namespace: "supercycle", key: "methods" }
           ]) {
             key
             value
@@ -253,12 +251,6 @@ export const PRODUCT_BY_HANDLE_QUERY = `
         { namespace: "custom", key: "occasions_possible" }
         { namespace: "custom", key: "outfit_style" }
         { namespace: "custom", key: "item_type" }
-        { namespace: "supercycle", key: "supercycle_enabled" }
-        { namespace: "supercycle", key: "methods" }
-        { namespace: "supercycle", key: "calendar_configuration" }
-        { namespace: "supercycle", key: "membership_configuration" }
-        { namespace: "supercycle", key: "subscription_configuration" }
-        { namespace: "supercycle", key: "resale_configuration" }
       ]) {
         key
         value

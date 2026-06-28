@@ -258,7 +258,7 @@ const ProductDetail = () => {
                 </span>
               </div>
               <p className="text-[10px] tracking-[0.15em] font-sans text-muted-foreground mb-4 md:mb-6">
-                Members access this at <ScriptNumber>40%</ScriptNumber> off retail
+                Members keep this at <ScriptNumber>60%</ScriptNumber> off retail
               </p>
 
               {/* Variant selector */}
@@ -316,10 +316,10 @@ const ProductDetail = () => {
                     <span className="text-[9px] tracking-[0.15em] uppercase font-sans text-muted-foreground">/month</span>
                   </div>
                   {/*
-                    Tier 2: 10 curated pieces per cycle · Cancel anytime
+                    Tier 3: 10 curated pieces per cycle · Cancel anytime
                   */}
                   <p className="text-[10px] text-muted-foreground font-sans mb-4">
-                    Tier 2: 10 curated pieces per cycle · 1 piece included to keep
+                    Tier 3: 10 curated pieces per cycle · 3 pieces included to keep
                   </p>
                   <button
                     disabled

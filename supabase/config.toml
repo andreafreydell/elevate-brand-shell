@@ -8,3 +8,23 @@ verify_jwt = false
 
 [functions.wms-rental-event]
 verify_jwt = false
+
+# Shopify subscription_contracts/* webhook -> mirror tier into memberships (HMAC-verified).
+[functions.shopify-subscription-sync]
+verify_jwt = false
+
+# Daily cron / admin: open due cycles, tag customers, fire Klaviyo event (secret or staff).
+[functions.gea-open-cycle]
+verify_jwt = false
+
+# Shopify returns/create webhook + WMS/staff manual reconcile (HMAC or secret).
+[functions.gea-create-return]
+verify_jwt = false
+
+# Catalog seeding from Shopify on-hand inventory (secret or staff).
+[functions.gea-seed-inventory]
+verify_jwt = false
+
+# Staff-only: charge the 40% extra-keep fee (JWT validated + staff allowlist).
+[functions.gea-charge-keep-fee]
+verify_jwt = true
