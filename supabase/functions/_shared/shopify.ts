@@ -109,15 +109,72 @@ export async function writeAssignedSerialsToShopify(
   return { skipped: true, reason: `writer_not_implemented:${config.field_strategy}` };
 }
 
+function getShopDomain() {
+  return Deno.env.get("SHOPIFY_SHOP_DOMAIN") || Deno.env.get("SHOPIFY_STORE_DOMAIN");
+}
+
+// In-memory cache for client_credentials tokens (valid ~24h, scoped per warm instance).
+let cachedAdminToken: string | null = null;
+let cachedAdminTokenExpiry = 0;
+
+// Resolve an Admin API access token. Priority:
+// 1. A static SHOPIFY_ADMIN_ACCESS_TOKEN, if set (manual override).
+// 2. Mint a fresh token via the OAuth client_credentials grant using
+//    SHOPIFY_OAUTH_CLIENT_ID + SHOPIFY_OAUTH_CLIENT_SECRET (auto-refreshes every 24h).
+// 3. Fall back to the connector-managed SHOPIFY_ACCESS_TOKEN.
+async function getAdminAccessToken(): Promise<string> {
+  const staticToken = Deno.env.get("SHOPIFY_ADMIN_ACCESS_TOKEN");
+  if (staticToken) return staticToken;
+
+  const clientId = Deno.env.get("SHOPIFY_OAUTH_CLIENT_ID");
+  const clientSecret = Deno.env.get("SHOPIFY_OAUTH_CLIENT_SECRET");
+  const shopDomain = getShopDomain();
+
+  if (clientId && clientSecret && shopDomain) {
+    const now = Date.now();
+    if (cachedAdminToken && now < cachedAdminTokenExpiry - 60_000) {
+      return cachedAdminToken;
+    }
+
+    const tokenResponse = await fetch(`https://${shopDomain}/admin/oauth/access_token`, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        grant_type: "client_credentials",
+        client_id: clientId,
+        client_secret: clientSecret,
+      }),
+    });
+
+    const tokenJson = await tokenResponse.json().catch(() => ({}));
+    if (!tokenResponse.ok || !tokenJson.access_token) {
+      console.error("Shopify client_credentials token error:", JSON.stringify(tokenJson));
+      throw new Error("Failed to mint Shopify Admin token via client_credentials grant.");
+    }
+
+    cachedAdminToken = tokenJson.access_token as string;
+    const expiresInSeconds = Number(tokenJson.expires_in ?? 86400);
+    cachedAdminTokenExpiry = now + expiresInSeconds * 1000;
+    return cachedAdminToken;
+  }
+
+  const fallback = Deno.env.get("SHOPIFY_ACCESS_TOKEN");
+  if (fallback) return fallback;
+
+  throw new Error(
+    "Shopify admin credentials missing: set SHOPIFY_OAUTH_CLIENT_ID + SHOPIFY_OAUTH_CLIENT_SECRET (preferred), or SHOPIFY_ADMIN_ACCESS_TOKEN / SHOPIFY_ACCESS_TOKEN.",
+  );
+}
+
 async function shopifyGraphql<T>(query: string, variables: Record<string, unknown>): Promise<T> {
-  // Accept both our env names and the names already present in the live backend.
-  const shopDomain = Deno.env.get("SHOPIFY_SHOP_DOMAIN") || Deno.env.get("SHOPIFY_STORE_DOMAIN");
-  const adminToken = Deno.env.get("SHOPIFY_ADMIN_ACCESS_TOKEN") || Deno.env.get("SHOPIFY_ACCESS_TOKEN");
+  const shopDomain = getShopDomain();
   const apiVersion = Deno.env.get("SHOPIFY_ADMIN_API_VERSION") || "2026-01";
 
-  if (!shopDomain || !adminToken) {
-    throw new Error("Shopify domain/token must be configured (SHOPIFY_STORE_DOMAIN/SHOPIFY_SHOP_DOMAIN + SHOPIFY_ACCESS_TOKEN/SHOPIFY_ADMIN_ACCESS_TOKEN).");
+  if (!shopDomain) {
+    throw new Error("Shopify domain must be configured (SHOPIFY_SHOP_DOMAIN or SHOPIFY_STORE_DOMAIN).");
   }
+
+  const adminToken = await getAdminAccessToken();
 
   const response = await fetch(`https://${shopDomain}/admin/api/${apiVersion}/graphql.json`, {
     method: "POST",
