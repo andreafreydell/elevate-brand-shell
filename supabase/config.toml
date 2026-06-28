@@ -3,14 +3,30 @@ project_id = "nwgndnochdbpjijhnbgq"
 [functions.send-contact-email]
 verify_jwt = false
 
+# Shopify orders/paid webhook -> assign serialized unit, count member cycle, drop discount tag.
 [functions.shopify-order-paid]
 verify_jwt = false
 
-[functions.shopify-order-lifecycle]
+# WMS event endpoint -> unit/reservation state transitions (secret-authed).
+[functions.wms-rental-event]
 verify_jwt = false
 
-[functions.shopify-register-webhook]
+# Shopify subscription_contracts/* webhook -> mirror tier into memberships (HMAC-verified).
+[functions.shopify-subscription-sync]
 verify_jwt = false
 
-[functions.rental-ops-data]
+# Daily cron / admin: open due cycles, tag customers, fire Klaviyo event (secret or staff).
+[functions.gea-open-cycle]
 verify_jwt = false
+
+# Shopify returns/create webhook + WMS/staff manual reconcile (HMAC or secret).
+[functions.gea-create-return]
+verify_jwt = false
+
+# Catalog seeding from Shopify on-hand inventory (secret or staff).
+[functions.gea-seed-inventory]
+verify_jwt = false
+
+# Staff-only: charge the 40% extra-keep fee (JWT validated + staff allowlist).
+[functions.gea-charge-keep-fee]
+verify_jwt = true

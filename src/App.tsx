@@ -8,7 +8,10 @@ import { useEffect } from "react";
 import LaunchGate from "@/components/LaunchGate";
 import { EmailCapturePopup } from "@/components/EmailCapturePopup";
 import Index from "./pages/Index";
-import AdminRentalOps from "./pages/AdminRentalOps";
+import AdminLogin from "./pages/admin/AdminLogin";
+import RentalOps from "./pages/admin/RentalOps";
+import { AuthProvider } from "@/contexts/AuthContext";
+import { AdminRoute } from "@/components/auth/AdminRoute";
 import ProductDetail from "./pages/ProductDetail";
 import HowItWorks from "./pages/HowItWorks";
 import About from "./pages/About";
@@ -60,7 +63,8 @@ const AppContent = () => {
     <Routes>
       <Route path="/" element={<Index />} />
       <Route path="/next-chapter/*" element={<NextChapterRedirect />} />
-      <Route path="/admin/rental-ops" element={<AdminRentalOps />} />
+      <Route path="/admin/login" element={<AdminLogin />} />
+      <Route path="/admin/rental-ops" element={<AdminRoute><RentalOps /></AdminRoute>} />
       <Route path="/product/:handle" element={<ProductDetail />} />
       <Route path="/how-it-works" element={<HowItWorks />} />
       <Route path="/membership" element={<Navigate to="/how-it-works" replace />} />
@@ -124,9 +128,11 @@ const App = () => (
       <Sonner />
       <LaunchGate>
         <BrowserRouter>
-          <ScrollToTop />
-          <EmailCapturePopup />
-          <AppContent />
+          <AuthProvider>
+            <ScrollToTop />
+            <EmailCapturePopup />
+            <AppContent />
+          </AuthProvider>
         </BrowserRouter>
       </LaunchGate>
     </TooltipProvider>
