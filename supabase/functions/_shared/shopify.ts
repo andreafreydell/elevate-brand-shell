@@ -331,6 +331,74 @@ export async function getVariantDetails(variantId: string): Promise<ShopifyVaria
   };
 }
 
+// Page through every product variant in a collection (for catalog seeding the
+// whole Rental collection in one call instead of passing 1,000+ variant ids).
+// Returns the same shape as getVariantDetails so the seeder can reuse its logic.
+export async function getCollectionVariants(collectionId: string): Promise<ShopifyVariantDetails[]> {
+  const gid = collectionId.startsWith("gid://")
+    ? collectionId
+    : `gid://shopify/Collection/${collectionId}`;
+  const query = `
+    query CollectionVariants($id: ID!, $cursor: String) {
+      collection(id: $id) {
+        products(first: 40, after: $cursor) {
+          pageInfo { hasNextPage endCursor }
+          edges {
+            node {
+              id
+              variants(first: 100) {
+                edges { node { id sku price inventoryQuantity } }
+              }
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  const out: ShopifyVariantDetails[] = [];
+  let cursor: string | null = null;
+  // Cap iterations as a runaway guard (40 products/page × 200 pages = 8,000 products).
+  for (let page = 0; page < 200; page++) {
+    const result = await shopifyGraphql<{
+      data?: {
+        collection?: {
+          products?: {
+            pageInfo: { hasNextPage: boolean; endCursor: string | null };
+            edges: Array<{
+              node: {
+                id: string;
+                variants: { edges: Array<{ node: { id: string; sku: string | null; price: string | null; inventoryQuantity: number | null } }> };
+              };
+            }>;
+          };
+        } | null;
+      };
+    }>(query, { id: gid, cursor });
+
+    const products = result.data?.collection?.products;
+    if (!products) break;
+
+    for (const productEdge of products.edges) {
+      const productId = productEdge.node.id;
+      for (const variantEdge of productEdge.node.variants.edges) {
+        out.push({
+          variantId: variantEdge.node.id,
+          productId,
+          sku: variantEdge.node.sku ?? null,
+          price: variantEdge.node.price ?? null,
+          inventoryQuantity: variantEdge.node.inventoryQuantity ?? null,
+        });
+      }
+    }
+
+    if (!products.pageInfo.hasNextPage) break;
+    cursor = products.pageInfo.endCursor;
+  }
+
+  return out;
+}
+
 // ============================================================================
 // Subscription contract lookup — tier detection (mirrored into memberships).
 // ============================================================================
