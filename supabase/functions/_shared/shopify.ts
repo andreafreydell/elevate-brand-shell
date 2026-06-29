@@ -48,16 +48,7 @@ function timingSafeEqual(left: Uint8Array, right: Uint8Array) {
   return result === 0;
 }
 
-export async function verifyShopifyWebhook(req: Request, rawBody: string) {
-  const secret = Deno.env.get("SHOPIFY_WEBHOOK_SECRET");
-  if (!secret) {
-    console.warn("SHOPIFY_WEBHOOK_SECRET not set; skipping HMAC verification.");
-    return true;
-  }
-
-  const sentHmac = req.headers.get("x-shopify-hmac-sha256");
-  if (!sentHmac) return false;
-
+async function hmacMatches(secret: string, rawBody: string, sentHmac: string) {
   const key = await crypto.subtle.importKey(
     "raw",
     textEncoder.encode(secret),
@@ -71,6 +62,33 @@ export async function verifyShopifyWebhook(req: Request, rawBody: string) {
 
   return timingSafeEqual(textEncoder.encode(expected), textEncoder.encode(sentHmac));
 }
+
+export async function verifyShopifyWebhook(req: Request, rawBody: string) {
+  const sentHmac = req.headers.get("x-shopify-hmac-sha256");
+  if (!sentHmac) return false;
+
+  // Candidate signing secrets, in priority order. Webhooks created via the
+  // Shopify admin UI are signed with SHOPIFY_WEBHOOK_SECRET; webhooks
+  // registered through this custom app's Admin API are signed with the app's
+  // client secret, so we also accept that as a fallback.
+  const candidates = [
+    Deno.env.get("SHOPIFY_WEBHOOK_SECRET"),
+    Deno.env.get("SHOPIFY_OAUTH_CLIENT_SECRET"),
+    Deno.env.get("SHOPIFY_CLIENT_SECRET"),
+  ].filter((value): value is string => Boolean(value));
+
+  if (candidates.length === 0) {
+    console.warn("No Shopify signing secret set; skipping HMAC verification.");
+    return true;
+  }
+
+  for (const secret of candidates) {
+    if (await hmacMatches(secret, rawBody, sentHmac)) return true;
+  }
+
+  return false;
+}
+
 
 export function getOrderGid(orderId: string) {
   return orderId.startsWith("gid://") ? orderId : `gid://shopify/Order/${orderId}`;
