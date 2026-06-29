@@ -150,7 +150,7 @@ const AppContent = () => {
       />
       <Route
         path="/necklaces"
-        element={<CategoryPage title="Necklaces" subtitle="Chains, pendants, and layering pieces — crafted to elevate." productType="Necklace" />}
+        element={<CategoryPage title="Necklaces" subtitle="Chains, pendants, and layering pieces — crafted to elevate." productType="Necklace" subCollections={[{ label: "Letter Pieces", to: "/letter-pieces" }]} />}
       />
       <Route
         path="/rings"
@@ -166,7 +166,7 @@ const AppContent = () => {
       />
       <Route
         path="/charms"
-        element={<CategoryPage title="Charms" subtitle="Tokens, pendants, and add-ons — build a piece that tells your story." productType="Charm" subCollections={[{ label: "Charm Chains", to: "/charm-chains" }]} />}
+        element={<CategoryPage title="Charms" subtitle="Tokens, pendants, and add-ons — build a piece that tells your story." productType="Charm" subCollections={[{ label: "Charm Chains", to: "/charm-chains" }, { label: "Letter Pieces", to: "/letter-pieces" }]} />}
       />
       <Route
         path="/charm-chains"
@@ -180,6 +180,18 @@ const AppContent = () => {
               const closure = mfs.find((m) => m?.key === "closure_and_security")?.value || "";
               return /lobster|spring|carabiner/i.test(closure);
             }}
+          />
+        )}
+      />
+      <Route
+        path="/letter-pieces"
+        element={(
+          <CategoryPage
+            title="Letter & Name Pieces"
+            subtitle="Initials A–Z and word pieces — letter charms & pendants, plus 'MOM', 'LOVE' and more."
+            productType="Charm"
+            query="Letter OR Label"
+            clientFilter={(p) => /letter|label/i.test((p.node as { title?: string }).title || "")}
           />
         )}
       />
