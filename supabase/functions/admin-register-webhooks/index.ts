@@ -4,10 +4,10 @@ const API_VERSION = Deno.env.get("SHOPIFY_ADMIN_API_VERSION") || "2026-01";
 const FUNCTIONS_BASE = "https://nwgndnochdbpjijhnbgq.supabase.co/functions/v1";
 
 const DESIRED = [
-  { topic: "subscription_contracts/create", fn: "shopify-subscription-sync" },
-  { topic: "subscription_contracts/update", fn: "shopify-subscription-sync" },
-  { topic: "returns/request", fn: "gea-create-return" },
-  { topic: "orders/paid", fn: "shopify-order-paid" },
+  { topic: "SUBSCRIPTION_CONTRACTS_CREATE", fn: "shopify-subscription-sync" },
+  { topic: "SUBSCRIPTION_CONTRACTS_UPDATE", fn: "shopify-subscription-sync" },
+  { topic: "RETURNS_REQUEST", fn: "gea-create-return" },
+  { topic: "ORDERS_PAID", fn: "shopify-order-paid" },
 ];
 
 function getShopDomain() {
@@ -55,45 +55,71 @@ Deno.serve(async (req) => {
     const shopDomain = getShopDomain();
     if (!shopDomain) throw new Error("Shop domain not configured.");
     const token = await mintAdminToken(shopDomain);
-
-    const restBase = `https://${shopDomain}/admin/api/${API_VERSION}`;
+    const gqlUrl = `https://${shopDomain}/admin/api/${API_VERSION}/graphql.json`;
     const authHeaders = { "X-Shopify-Access-Token": token, "Content-Type": "application/json" };
 
-    // Existing webhooks
-    const listRes = await fetch(`${restBase}/webhooks.json?limit=250`, { headers: authHeaders });
-    const listJson = await listRes.json().catch(() => ({}));
-    const existing: Array<{ id: number; topic: string; address: string }> = listJson.webhooks || [];
+    async function gql(query: string, variables: Record<string, unknown> = {}) {
+      const r = await fetch(gqlUrl, {
+        method: "POST",
+        headers: authHeaders,
+        body: JSON.stringify({ query, variables }),
+      });
+      return r.json();
+    }
+
+    const listQuery = `{
+      webhookSubscriptions(first: 100) {
+        edges { node { id topic endpoint { __typename ... on WebhookHttpEndpoint { callbackUrl } } } }
+      }
+    }`;
+
+    const listJson = await gql(listQuery);
+    type Node = { id: string; topic: string; endpoint?: { callbackUrl?: string } };
+    const existing: Node[] = (listJson?.data?.webhookSubscriptions?.edges || []).map(
+      (e: { node: Node }) => e.node,
+    );
+
+    const createMutation = `
+      mutation Create($topic: WebhookSubscriptionTopic!, $sub: WebhookSubscriptionInput!) {
+        webhookSubscriptionCreate(topic: $topic, webhookSubscription: $sub) {
+          webhookSubscription { id }
+          userErrors { field message }
+        }
+      }`;
 
     const results: unknown[] = [];
 
     for (const { topic, fn } of DESIRED) {
-      const address = `${FUNCTIONS_BASE}/${fn}`;
-      const match = existing.find((w) => w.topic === topic && w.address === address);
+      const callbackUrl = `${FUNCTIONS_BASE}/${fn}`;
+      const match = existing.find((w) => w.topic === topic && w.endpoint?.callbackUrl === callbackUrl);
       if (match) {
-        results.push({ topic, address, status: "already_exists", id: match.id });
+        results.push({ topic, callbackUrl, status: "already_exists", id: match.id });
         continue;
       }
 
-      const createRes = await fetch(`${restBase}/webhooks.json`, {
-        method: "POST",
-        headers: authHeaders,
-        body: JSON.stringify({ webhook: { topic, address, format: "json" } }),
+      const createJson = await gql(createMutation, {
+        topic,
+        sub: { callbackUrl, format: "JSON" },
       });
-      const createJson = await createRes.json().catch(() => ({}));
-      if (createRes.ok && createJson.webhook) {
-        results.push({ topic, address, status: "created", id: createJson.webhook.id });
+
+      const payload = createJson?.data?.webhookSubscriptionCreate;
+      const userErrors = payload?.userErrors || [];
+      const topErrors = createJson?.errors;
+
+      if (payload?.webhookSubscription?.id) {
+        results.push({ topic, callbackUrl, status: "created", id: payload.webhookSubscription.id });
       } else {
-        results.push({ topic, address, status: "error", http: createRes.status, body: createJson });
+        results.push({ topic, callbackUrl, status: "error", userErrors, topErrors });
       }
     }
 
-    // Re-list for confirmation
-    const finalRes = await fetch(`${restBase}/webhooks.json?limit=250`, { headers: authHeaders });
-    const finalJson = await finalRes.json().catch(() => ({}));
-    const finalWebhooks = (finalJson.webhooks || []).map((w: { id: number; topic: string; address: string }) => ({
-      id: w.id,
-      topic: w.topic,
-      address: w.address,
+    const finalJson = await gql(listQuery);
+    const finalWebhooks: Array<{ topic: string; callbackUrl?: string; id: string }> = (
+      finalJson?.data?.webhookSubscriptions?.edges || []
+    ).map((e: { node: Node }) => ({
+      id: e.node.id,
+      topic: e.node.topic,
+      callbackUrl: e.node.endpoint?.callbackUrl,
     }));
 
     return new Response(
