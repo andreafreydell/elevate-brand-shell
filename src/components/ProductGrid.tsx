@@ -53,6 +53,9 @@ export const ProductGrid = ({
   const [hasNextPage, setHasNextPage] = useState(false);
   const [endCursor, setEndCursor] = useState<string | null>(null);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  // How many products came from the initial (ranked) fetch. Later "load more"
+  // pages append AFTER these so the order never reshuffles under the user.
+  const [initialCount, setInitialCount] = useState(0);
   const [filters, setFilters] = useState<FilterState>({
     color: "",
     style: "",
@@ -63,14 +66,16 @@ export const ProductGrid = ({
     sort: "",
   });
 
-  const displayProducts = useMemo(
-    () => (shuffle ? seededShuffle(products, todaySeed()) : products),
-    [products, shuffle]
-  );
-  const rankedProducts = useMemo(
-    () => (shuffle ? displayProducts : rankProducts(displayProducts, { query, lockedOccasion })),
-    [displayProducts, query, lockedOccasion, shuffle]
-  );
+  // Rank/shuffle only the initial batch; "load more" pages keep their fetched
+  // order and append at the end, so revealing more never reorders what's above.
+  const rankedProducts = useMemo(() => {
+    const base = products.slice(0, initialCount || products.length);
+    const appended = products.slice(initialCount || products.length);
+    const ordered = shuffle
+      ? seededShuffle(base, todaySeed())
+      : rankProducts(base, { query, lockedOccasion });
+    return [...ordered, ...appended];
+  }, [products, initialCount, query, lockedOccasion, shuffle]);
   const effectiveFilters = lockedOccasion
     ? { ...filters, occasion: lockedOccasion }
     : filters;
@@ -113,6 +118,7 @@ export const ProductGrid = ({
 
       if (isInitial) {
         setProducts(edges);
+        setInitialCount(edges.length);
       } else {
         setProducts(prev => [...prev, ...edges]);
       }

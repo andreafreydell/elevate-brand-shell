@@ -101,7 +101,7 @@ const Index = () => {
                   <OrganicBlobTag variant="coastal">Hypoallergenic</OrganicBlobTag>
                 </div>
               </div>
-              <div className="material-text-mobile card-frosted border-t border-border p-5 flex-1 flex flex-col justify-start">
+              <div className="material-text-mobile bg-card border-t border-border p-5 flex-1 flex flex-col justify-start">
                 <p className="material-label text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-sans mb-2 font-medium">316L Stainless Steel &amp; Sterling Silver</p>
                 <p className="material-description text-[11px] text-muted-foreground font-sans leading-relaxed">Surgical-grade stainless steel - tarnish-resistant and hypoallergenic. Sterling silver for timeless brilliance.</p>
               </div>
@@ -115,7 +115,7 @@ const Index = () => {
                   <OrganicBlobTag variant="classic">Conflict-Free</OrganicBlobTag>
                 </div>
               </div>
-              <div className="material-text-mobile card-frosted border-t border-border p-5 flex-1 flex flex-col justify-start">
+              <div className="material-text-mobile bg-card border-t border-border p-5 flex-1 flex flex-col justify-start">
                 <p className="material-label text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-sans mb-2 font-medium">Lab-Created Moissanite</p>
                 <p className="material-description text-[11px] text-muted-foreground font-sans leading-relaxed">Conflict-free brilliance. Higher refractive index than diamond. Ethically engineered.</p>
               </div>
@@ -129,7 +129,7 @@ const Index = () => {
                   <OrganicBlobTag variant="statement">Restored</OrganicBlobTag>
                 </div>
               </div>
-              <div className="material-text-mobile card-frosted border-t border-border p-5 flex-1 flex flex-col justify-start">
+              <div className="material-text-mobile bg-card border-t border-border p-5 flex-1 flex flex-col justify-start">
                 <p className="material-label text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-sans mb-2 font-medium">Lifecycle Care</p>
                 <p className="material-description text-[11px] text-muted-foreground font-sans leading-relaxed">Every piece is professionally cleaned, inspected, and restored between members.</p>
               </div>
@@ -200,16 +200,16 @@ const Index = () => {
       {/* Module C — the Feed, after Out & About */}
       <StackingGrid />
 
-      <section className="hidden md:block card-frosted-brown relative overflow-hidden">
+      <section className="hidden md:block bg-[hsl(28,22%,34%)] relative overflow-hidden">
         <GrainOverlay opacity={0.04} />
         <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 py-12 md:py-16 text-center relative z-[1]">
           <AnimateIn variant="fadeUp" duration={0.6}>
-            <HandDrawnFrame strokeColor="hsl(30,16%,38%)">
+            <HandDrawnFrame strokeColor="hsl(36,25%,78%)">
               <div className="py-6">
-                <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-[-0.01em] text-foreground mb-6 normal-case">
-                  Bloom <ScribbleUnderline color="var(--poppy-deep)">Freely</ScribbleUnderline>.
+                <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-[-0.01em] text-[hsl(36,33%,93%)] mb-6 normal-case">
+                  Bloom <ScribbleUnderline color="var(--brass)">Freely</ScribbleUnderline>.
                 </h2>
-                <p className="text-[13px] text-foreground/75 font-sans max-w-[400px] mx-auto mb-6 leading-relaxed">
+                <p className="text-[13px] text-[hsl(36,20%,75%)] font-sans max-w-[400px] mx-auto mb-6 leading-relaxed">
                   You were never meant to stay the same. Dress the woman you're becoming — with the freedom to wear more, and keep what you love.
                 </p>
                 <Link

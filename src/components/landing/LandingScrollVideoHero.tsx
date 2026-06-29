@@ -120,7 +120,7 @@ const heroPosterSrc = "/videos/flowers-hero-poster.webp";
 // A soft, light cream scrim placed behind text blocks only — keeps the beige feel
 // while making the dark copy crystal-clear over the embroidery (no dark gradient).
 const scrim =
-  "bg-[hsl(36_33%_94%_/_0.62)] supports-[backdrop-filter]:bg-[hsl(36_33%_94%_/_0.42)] backdrop-blur-[3px] rounded-[4px]";
+  "bg-[hsl(36_33%_93%_/_0.8)] supports-[backdrop-filter]:bg-[hsl(36_33%_93%_/_0.62)] backdrop-blur-[4px] rounded-[4px]";
 
 const clamp = (value: number) => Math.min(1, Math.max(0, value));
 
@@ -227,7 +227,7 @@ export const LandingScrollVideoHero = () => {
       <div className="relative z-[1] -mt-[100vh] transform-gpu isolate px-5 sm:px-6 md:px-12 lg:px-16 [backface-visibility:hidden]">
         <section className="mx-auto flex min-h-screen max-w-[760px] flex-col items-center justify-center py-24 text-center">
           <div className={`${scrim} px-6 py-8 md:px-10 md:py-10`}>
-            <p className="mb-4 font-sans text-[10px] uppercase tracking-[0.4em] text-muted-foreground md:mb-7">
+            <p className="mb-4 font-sans text-[10px] uppercase tracking-[0.4em] text-foreground md:mb-7">
               Jewelry Membership for Women in Bloom
             </p>
             <h1 className="hero-display mb-4 whitespace-pre-line text-foreground md:mb-6">
@@ -236,7 +236,7 @@ export const LandingScrollVideoHero = () => {
                 You're Becoming.
               </ScribbleUnderline>
             </h1>
-            <p className="mx-auto mb-6 max-w-[440px] font-sans text-[12px] leading-relaxed text-muted-foreground md:text-[13px]">
+            <p className="mx-auto mb-6 max-w-[440px] font-sans text-[12px] leading-relaxed text-foreground md:text-[13px]">
               High-design jewelry you access, not own.
             </p>
             <p className="mx-auto mb-7 max-w-[460px] text-[1.3rem] md:text-[1.5rem]" style={{ fontFamily: "var(--font-script)", color: "var(--poppy-deep)" }}>
@@ -249,19 +249,19 @@ export const LandingScrollVideoHero = () => {
             >
               Browse the Collection ✿
             </Link>
-            <p className="mx-auto mt-5 max-w-[440px] font-sans text-[11px] leading-relaxed text-muted-foreground md:text-[12px]">
+            <p className="mx-auto mt-5 max-w-[440px] font-sans text-[11px] leading-relaxed text-foreground md:text-[12px]">
               Founding price from $35/mo · rent 3, 6, or 10 · keep 1 to 3 · <span className="text-foreground">yours for life</span>.
             </p>
             <TrustStrip
               variant="compact"
-              className="mt-4 text-muted-foreground [&_*]:text-muted-foreground"
+              className="mt-4 text-foreground [&_*]:text-foreground"
             />
           </div>
         </section>
 
         <section className="mx-auto max-w-[1180px] py-12 md:py-16">
           <div className={`mx-auto mb-8 block w-full max-w-[640px] px-6 py-6 text-center ${scrim}`}>
-            <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-muted-foreground">
+            <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-foreground">
               The Process <span aria-hidden="true" style={{ color: "var(--poppy-deep)" }}>✿</span>
             </p>
             <h2 className="font-serif text-2xl uppercase tracking-[0.08em] text-foreground md:text-4xl">
@@ -280,7 +280,7 @@ export const LandingScrollVideoHero = () => {
                 >
                   {step.number}
                 </span>
-                <p className="text-[13px] leading-snug text-muted-foreground md:text-[14px]">
+                <p className="text-[13px] leading-snug text-foreground md:text-[14px]">
                   <span className="font-serif font-semibold text-foreground">{step.title}.</span>{" "}
                   {step.description}
                 </p>
@@ -299,7 +299,7 @@ export const LandingScrollVideoHero = () => {
 
         <section className="mx-auto max-w-[1040px] py-12 md:py-16">
           <div className={`mx-auto mb-8 block w-full max-w-[640px] px-6 py-6 text-center ${scrim}`}>
-            <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-muted-foreground">
+            <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-foreground">
               Membership <span aria-hidden="true" style={{ color: "var(--poppy-deep)" }}>✿</span>
             </p>
             <h2 className="font-serif text-2xl uppercase tracking-[0.08em] text-foreground md:text-4xl">
@@ -315,8 +315,8 @@ export const LandingScrollVideoHero = () => {
               <a
                 key={tier.name}
                 href={MEMBERSHIP_CHECKOUT_URLS[tier.name] ?? "/how-it-works#tiers"}
-                className={`group relative block p-6 text-foreground shadow-[0_18px_50px_hsl(30_12%_10%_/_0.14)] transition-transform hover:-translate-y-1 md:p-8 ${
-                  tier.highlighted ? "border border-dashed card-frosted-brown" : "card-frosted"
+                className={`group relative block p-6 shadow-[0_18px_50px_hsl(30_12%_10%_/_0.14)] transition-transform hover:-translate-y-1 md:p-8 ${
+                  tier.highlighted ? "border border-dashed bg-foreground text-background" : "card-frosted text-foreground"
                 }`}
                 style={tier.highlighted ? { borderColor: "var(--poppy)" } : undefined}
               >
@@ -330,30 +330,30 @@ export const LandingScrollVideoHero = () => {
                 )}
                 <div className="mb-4 flex items-start justify-between gap-4">
                   <div>
-                    <p className="mb-2 font-sans text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+                    <p className={`mb-2 font-sans text-[10px] uppercase tracking-[0.3em] ${tier.highlighted ? "text-background/70" : "text-foreground"}`}>
                       {tier.label}
                     </p>
-                    <h3 className="font-serif text-xl font-semibold tracking-[0.02em] text-foreground md:text-2xl">
+                    <h3 className={`font-serif text-xl font-semibold tracking-[0.02em] md:text-2xl ${tier.highlighted ? "text-background" : "text-foreground"}`}>
                       {tier.name}
                     </h3>
                   </div>
-                  <Check className="h-5 w-5 shrink-0 stroke-[1.4] text-foreground" />
+                  <Check className={`h-5 w-5 shrink-0 stroke-[1.4] ${tier.highlighted ? "text-background/75" : "text-foreground"}`} />
                 </div>
-                <p className="font-serif text-3xl font-medium text-foreground md:text-4xl">
-                  <span className="mr-2 font-normal text-muted-foreground/55 line-through">{tier.was}</span>
+                <p className={`font-serif text-3xl font-medium md:text-4xl ${tier.highlighted ? "text-background" : "text-foreground"}`}>
+                  <span className={`mr-2 font-normal line-through ${tier.highlighted ? "text-background/45" : "text-foreground/55"}`}>{tier.was}</span>
                   {tier.price}
-                  <span className="ml-2 font-sans text-[11px] tracking-[0.15em] text-muted-foreground">/month</span>
+                  <span className={`ml-2 font-sans text-[11px] tracking-[0.15em] ${tier.highlighted ? "text-background/65" : "text-foreground"}`}>/month</span>
                 </p>
-                <p className="mt-1 font-sans text-[9px] tracking-[0.04em] text-muted-foreground/80">
+                <p className={`mt-1 font-sans text-[9px] tracking-[0.04em] ${tier.highlighted ? "text-background/70" : "text-foreground/80"}`}>
                   founding member — your price for life
                 </p>
                 <p
                   className="mt-2 text-[1.15rem]"
-                  style={{ fontFamily: "var(--font-script)", color: "var(--poppy-deep)" }}
+                  style={{ fontFamily: "var(--font-script)", color: tier.highlighted ? "var(--rose)" : "var(--poppy-deep)" }}
                 >
                   {`keep ${tier.keep} ${tier.keep === 1 ? "favorite" : "favorites"} each cycle ✿`}
                 </p>
-                <p className="mt-4 font-sans text-[12px] leading-relaxed text-muted-foreground">
+                <p className={`mt-4 font-sans text-[12px] leading-relaxed ${tier.highlighted ? "text-background/80" : "text-foreground"}`}>
                   {tier.detail} Full vault access, sanitized, free shipping both ways.
                 </p>
               </a>
@@ -375,7 +375,7 @@ export const LandingScrollVideoHero = () => {
 
         <section className="mx-auto max-w-[1120px] py-12 md:py-16">
           <div className={`mx-auto mb-8 block w-full max-w-[640px] px-6 py-6 text-center ${scrim}`}>
-            <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-muted-foreground">
+            <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-foreground">
               Freedom <span aria-hidden="true" style={{ color: "var(--poppy-deep)" }}>✿</span>
             </p>
             <h2 className="font-serif text-2xl uppercase tracking-[0.08em] text-foreground md:text-4xl">
@@ -389,7 +389,7 @@ export const LandingScrollVideoHero = () => {
             {freedomBlocks.map((block) => (
               <li key={block.title} className="flex items-baseline gap-3">
                 <span aria-hidden="true" className="shrink-0 text-[1.1rem] leading-none" style={{ color: "var(--poppy)" }}>✿</span>
-                <p className="text-[13px] leading-snug text-muted-foreground md:text-[14px]">
+                <p className="text-[13px] leading-snug text-foreground md:text-[14px]">
                   <span className="font-serif font-semibold text-foreground">{block.title}.</span>{" "}
                   {block.text}
                 </p>
@@ -400,7 +400,7 @@ export const LandingScrollVideoHero = () => {
 
         <section className="mx-auto max-w-[860px] py-12 md:py-16">
           <div className={`mx-auto mb-7 block w-full max-w-[600px] px-6 py-6 text-center ${scrim}`}>
-            <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-muted-foreground">
+            <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-foreground">
               Philosophy <span aria-hidden="true" style={{ color: "var(--poppy-deep)" }}>✿</span>
             </p>
             <h2 className="font-serif text-2xl uppercase tracking-[0.08em] text-foreground md:text-4xl">
@@ -414,10 +414,10 @@ export const LandingScrollVideoHero = () => {
           {/* Inline comparison — transparent so the video reads through to the end. */}
           <div className={`mx-auto grid max-w-[640px] gap-4 px-6 py-7 md:grid-cols-2 ${scrim}`}>
             <div>
-              <p className="mb-2 font-sans text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+              <p className="mb-2 font-sans text-[10px] uppercase tracking-[0.3em] text-foreground">
                 Built for a Different Era
               </p>
-              <p className="font-sans text-[13px] leading-relaxed text-muted-foreground md:text-[14px]">
+              <p className="font-sans text-[13px] leading-relaxed text-foreground md:text-[14px]">
                 A fine piece is worn fewer than <ScriptNumber>5</ScriptNumber> times, then waits in a drawer. Buying one at a time can't keep pace with a life that keeps evolving.
               </p>
             </div>

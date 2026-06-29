@@ -510,7 +510,7 @@ const ProductDetail = () => {
 
         {(heroPhrase || product.description) && (
           <AnimateIn delay={0.1}>
-            <div className="relative card-frosted-brown text-foreground py-6 md:py-16 px-5 md:px-16 overflow-hidden">
+            <div className="relative bg-foreground text-background py-6 md:py-16 px-5 md:px-16 overflow-hidden">
               <GrainOverlay opacity={0.03} />
               <StampBadge
                 text="GEA"
@@ -519,7 +519,7 @@ const ProductDetail = () => {
                 className="absolute top-5 right-8 hidden md:inline-flex opacity-30"
               />
               <div className="max-w-[780px] mx-auto text-center relative z-10">
-                <p className="text-[9px] tracking-[0.4em] uppercase font-sans text-foreground/50 mb-6">
+                <p className="text-[9px] tracking-[0.4em] uppercase font-sans text-background/50 mb-6">
                   The Piece
                 </p>
                 <p className="font-serif text-lg md:text-3xl lg:text-4xl font-medium leading-[1.2] tracking-[-0.01em]">
@@ -566,7 +566,7 @@ const ProductDetail = () => {
               </div>
             </div>
 
-            <div className="card-frosted flex flex-col items-center justify-center p-5 md:p-14 relative overflow-hidden">
+            <div className="bg-card flex flex-col items-center justify-center p-5 md:p-14 relative overflow-hidden">
               <div className="w-full max-w-[200px] mx-auto opacity-70">
                 <CategoryGraphic category={category} />
               </div>

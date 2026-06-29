@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation, useNavigationType } from "react-router-dom";
 import { useCartSync } from "@/hooks/useCartSync";
 import { useEffect } from "react";
 import LaunchGate from "@/components/LaunchGate";
@@ -33,18 +33,54 @@ import CategoryPage from "./pages/CategoryPage";
 import OccasionPage from "./pages/OccasionPage";
 import NotFound from "./pages/NotFound";
 
-const ScrollToTop = () => {
-  const { pathname, hash } = useLocation();
+// Per-history-entry scroll positions (in-memory, survives within the SPA session).
+const scrollPositions = new Map<string, number>();
+
+const ScrollManager = () => {
+  const { hash, key } = useLocation();
+  const navType = useNavigationType(); // "POP" (back/forward) | "PUSH" | "REPLACE"
+
+  // Continuously remember where we are on this history entry.
+  useEffect(() => {
+    const save = () => scrollPositions.set(key, window.scrollY);
+    window.addEventListener("scroll", save, { passive: true });
+    return () => {
+      save();
+      window.removeEventListener("scroll", save);
+    };
+  }, [key]);
+
   useEffect(() => {
     if (hash) {
       setTimeout(() => {
-        const el = document.getElementById(hash.slice(1));
-        el?.scrollIntoView({ behavior: "smooth" });
+        document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: "smooth" });
       }, 100);
-    } else {
-      window.scrollTo(0, 0);
+      return;
     }
-  }, [pathname, hash]);
+
+    if (navType === "POP") {
+      // Returning to a previous page: restore its scroll. Retry briefly so it
+      // sticks once async content (e.g. product grids) finishes growing the page.
+      const target = scrollPositions.get(key) ?? 0;
+      if (target === 0) {
+        window.scrollTo(0, 0);
+        return;
+      }
+      let tries = 0;
+      const id = window.setInterval(() => {
+        window.scrollTo(0, target);
+        tries += 1;
+        if (tries >= 25 || Math.abs(window.scrollY - target) <= 2) {
+          window.clearInterval(id);
+        }
+      }, 60);
+      return () => window.clearInterval(id);
+    }
+
+    // New navigation (PUSH/REPLACE): start at the top.
+    window.scrollTo(0, 0);
+  }, [key, hash, navType]);
+
   return null;
 };
 
@@ -129,7 +165,7 @@ const App = () => (
       <LaunchGate>
         <BrowserRouter>
           <AuthProvider>
-            <ScrollToTop />
+            <ScrollManager />
             <EmailCapturePopup />
             <AppContent />
           </AuthProvider>

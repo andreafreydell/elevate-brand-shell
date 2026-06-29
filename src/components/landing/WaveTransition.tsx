@@ -3,9 +3,9 @@
  *  banner shows above the top wave and the video shows below the bottom wave. */
 const W = 1440;
 const PERIOD = 120; // smaller = tighter / more frequent
-const AMP = 13;
-const TOP = 50;
-const BOT = 100;
+const AMP = 7;
+const TOP = 66;
+const BOT = 84;
 
 const buildPath = () => {
   let top = `M0,${TOP}`;
