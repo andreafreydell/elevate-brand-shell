@@ -166,7 +166,22 @@ const AppContent = () => {
       />
       <Route
         path="/charms"
-        element={<CategoryPage title="Charms" subtitle="Tokens, pendants, and add-ons — build a piece that tells your story." productType="Charm" />}
+        element={<CategoryPage title="Charms" subtitle="Tokens, pendants, and add-ons — build a piece that tells your story." productType="Charm" subCollections={[{ label: "Charm Chains", to: "/charm-chains" }]} />}
+      />
+      <Route
+        path="/charm-chains"
+        element={(
+          <CategoryPage
+            title="Charm Chains"
+            subtitle="Chain necklaces with lobster, spring-ring & carabiner clasps — ready to layer your charms."
+            productType="Necklace"
+            clientFilter={(p) => {
+              const mfs = (p.node as { metafields?: Array<{ key: string; value: string | null } | null> }).metafields || [];
+              const closure = mfs.find((m) => m?.key === "closure_and_security")?.value || "";
+              return /lobster|spring|carabiner/i.test(closure);
+            }}
+          />
+        )}
       />
       <Route
         path="/watches"

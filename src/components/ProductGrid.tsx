@@ -36,6 +36,8 @@ interface ProductGridProps {
   showFilters?: boolean;
   shuffle?: boolean;
   lockedOccasion?: string;
+  /** Optional client-side predicate to narrow the fetched set (e.g. by metafield). */
+  clientFilter?: (product: ShopifyProduct) => boolean;
 }
 
 export const ProductGrid = ({
@@ -46,6 +48,7 @@ export const ProductGrid = ({
   showFilters = false,
   shuffle = false,
   lockedOccasion,
+  clientFilter,
 }: ProductGridProps) => {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
   const [loading, setLoading] = useState(true);
@@ -79,10 +82,11 @@ export const ProductGrid = ({
   const effectiveFilters = lockedOccasion
     ? { ...filters, occasion: lockedOccasion }
     : filters;
-  const filtered = useMemo(
-    () => (showFilters ? applyFilters(rankedProducts, effectiveFilters) : rankedProducts),
-    [rankedProducts, showFilters, effectiveFilters]
-  );
+  const filtered = useMemo(() => {
+    let list = showFilters ? applyFilters(rankedProducts, effectiveFilters) : rankedProducts;
+    if (clientFilter) list = list.filter(clientFilter);
+    return list;
+  }, [rankedProducts, showFilters, effectiveFilters, clientFilter]);
   const visible = filtered.slice(0, visibleCount);
 
   useEffect(() => {

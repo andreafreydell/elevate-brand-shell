@@ -239,6 +239,7 @@ export const GRID_PRODUCTS_QUERY = `
             { namespace: "custom", key: "outfit_style" }
             { namespace: "custom", key: "item_type" }
             { namespace: "custom", key: "hero_descriptor_phrase" }
+            { namespace: "custom", key: "closure_and_security" }
           ]) {
             key
             value
