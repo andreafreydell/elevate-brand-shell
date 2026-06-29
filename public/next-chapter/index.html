@@ -1629,8 +1629,8 @@
    ================================================================ */
 const SUPABASE = {
   ENABLED: true,
-  URL: 'https://beqjmsmlyasuhchuknac.supabase.co',
-  ANON_KEY: 'sb_publishable_w6WdHsEhVz4tcUSwV3tX9Q_Qktfa91l'
+  URL: 'https://nwgndnochdbpjijhnbgq.supabase.co',
+  ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im53Z25kbm9jaGRicGppamhuYmdxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI1OTM3MTUsImV4cCI6MjA4ODE2OTcxNX0.M-xxATrWvKrNeeUTFLfkjlyqS1zoortA5HVfeLWPae8'
 };
 
 async function supabaseUpsert(table, row, conflict) {
@@ -1642,7 +1642,7 @@ async function supabaseUpsert(table, row, conflict) {
         'apikey': SUPABASE.ANON_KEY,
         'Authorization': `Bearer ${SUPABASE.ANON_KEY}`,
         'Content-Type': 'application/json',
-        'Prefer': 'resolution=merge-duplicates'
+        'Prefer': 'resolution=merge-duplicates,return=minimal'
       },
       body: JSON.stringify(row)
     });
