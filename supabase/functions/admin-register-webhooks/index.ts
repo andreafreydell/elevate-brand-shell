@@ -6,7 +6,7 @@ const FUNCTIONS_BASE = "https://nwgndnochdbpjijhnbgq.supabase.co/functions/v1";
 const DESIRED = [
   { topic: "subscription_contracts/create", fn: "shopify-subscription-sync" },
   { topic: "subscription_contracts/update", fn: "shopify-subscription-sync" },
-  { topic: "returns/create", fn: "gea-create-return" },
+  { topic: "returns/request", fn: "gea-create-return" },
   { topic: "orders/paid", fn: "shopify-order-paid" },
 ];
 
