@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { storefrontApiRequest, PRODUCT_BY_HANDLE_QUERY, COLLECTION_SIBLINGS_QUERY } from "@/lib/shopify";
+import { storefrontApiRequest, PRODUCT_BY_HANDLE_QUERY, COLLECTION_SIBLINGS_QUERY, type ShopifyProduct } from "@/lib/shopify";
+import { useCartStore } from "@/stores/cartStore";
 import { Navbar } from "@/components/Navbar";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { AnimateIn } from "@/components/shared/AnimateIn";
 import { OfferUnit } from "@/components/membership/OfferUnit";
-import { CircleEmphasis } from "@/components/craft/CircleEmphasis";
 import { WavyDivider } from "@/components/craft/WavyDivider";
 import { MarginNote } from "@/components/craft/MarginNote";
 import { TagRedStamp } from "@/components/craft/TagRedStamp";
@@ -77,6 +77,8 @@ const ProductDetail = () => {
   const [selectedVariantIdx, setSelectedVariantIdx] = useState(0);
   const [selectedImageIdx, setSelectedImageIdx] = useState(0);
   const [siblings, setSiblings] = useState<Array<{ handle: string; title: string }>>([]);
+  const [adding, setAdding] = useState(false);
+  const addItem = useCartStore((state) => state.addItem);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -207,6 +209,27 @@ const ProductDetail = () => {
     "hsl(350, 40%, 72%)",
     "hsl(60, 40%, 72%)",
   ];
+
+  const handleAddToCart = async () => {
+    if (!variant) return;
+    setAdding(true);
+    try {
+      await addItem({
+        product: { node: product } as unknown as ShopifyProduct,
+        variantId: variant.id,
+        variantTitle: variant.title,
+        price: variant.price,
+        quantity: 1,
+        selectedOptions: variant.selectedOptions,
+      });
+      toast.success("Added to cart", { position: "top-center" });
+    } catch (error) {
+      console.error(error);
+      toast.error("Could not add to cart");
+    } finally {
+      setAdding(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -397,72 +420,29 @@ const ProductDetail = () => {
                 </div>
               )}
 
-              <div className="space-y-4 mb-3">
-                <div className="border border-border bg-card p-3 md:p-6">
-                  <div className="flex items-start justify-between mb-2 md:mb-3">
-                    <div>
-                      <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-1">
-                        Option 1
-                      </p>
-                      <p className="font-serif text-lg md:text-xl font-medium mb-1">Access It</p>
-                      <p className="text-[11px] text-muted-foreground font-sans leading-relaxed">
-                        Wear this piece through any GEA membership
-                      </p>
-                    </div>
-                    <CircleEmphasis className="mt-1">Access</CircleEmphasis>
-                  </div>
-                  <div className="flex items-baseline gap-2 mb-4">
-                    <span className="text-[9px] tracking-[0.15em] uppercase font-sans text-muted-foreground">from</span>
-                    <span className="font-serif text-lg">$35</span>
-                    <span className="text-[9px] tracking-[0.15em] uppercase font-sans text-muted-foreground">/month</span>
-                    <span className="text-[9px] tracking-[0.15em] uppercase font-sans text-muted-foreground">3–10 rentals/cycle</span>
-                  </div>
-                  <p className="text-[10px] text-muted-foreground font-sans mb-2">
-                    Membership from $35/mo. Rent 3, 6, or 10 pieces a cycle by tier.
-                  </p>
-                  <p className="text-[10px] text-muted-foreground font-sans mb-4">
-                    This is not the price of accessing this single piece on its own.
-                  </p>
-                  <Link
-                    to="/how-it-works"
-                    className="block w-full border border-foreground bg-foreground py-3 text-center text-[10px] tracking-[0.25em] uppercase font-sans text-background transition-colors hover:bg-transparent hover:text-foreground"
-                  >
-                    See Membership
-                  </Link>
-                  <Link
-                    to="/how-it-works"
-                    className="mt-3 inline-block text-[10px] tracking-[0.18em] uppercase font-sans text-muted-foreground underline underline-offset-4 transition-colors hover:text-foreground"
-                  >
-                    See How It Works
-                  </Link>
-                </div>
-
-                <div className="border border-border bg-card p-3 md:p-6">
-                  <div className="flex items-start justify-between mb-2 md:mb-3">
-                    <div>
-                      <p className="text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground mb-1">
-                        Option 2
-                      </p>
-                      <p className="font-serif text-lg md:text-xl font-medium mb-1">Buy It</p>
-                      <p className="text-[11px] text-muted-foreground font-sans leading-relaxed">
-                        Keep this piece forever
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-baseline gap-2 mb-4">
-                    <span className="font-serif text-lg">{displayPrice}</span>
-                    <span className="text-[9px] tracking-[0.15em] uppercase font-sans text-muted-foreground">one-time</span>
-                  </div>
-                  <p className="text-[10px] text-muted-foreground font-sans mb-4">
-                    Full retail price · Yours to keep
-                  </p>
-                  <button
-                    disabled
-                    className="w-full border border-border bg-secondary text-muted-foreground py-3 text-[10px] tracking-[0.25em] uppercase font-sans cursor-not-allowed"
-                  >
-                    Coming Soon
-                  </button>
-                </div>
+              <div className="space-y-3 mb-3">
+                <button
+                  onClick={handleAddToCart}
+                  disabled={!variant?.availableForSale || adding}
+                  className="block w-full border border-foreground bg-foreground py-3.5 text-center text-[11px] tracking-[0.25em] uppercase font-sans text-background transition-colors hover:bg-transparent hover:text-foreground disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {adding ? "Adding…" : "Add to Cart"}
+                </button>
+                <p className="text-[10px] leading-relaxed text-muted-foreground font-sans">
+                  Subscribed? Your tier's pieces are <span className="text-foreground">free</span> — up to the number you signed up for. Each extra piece is just <span className="text-foreground">+$6</span>.
+                </p>
+                <Link
+                  to="/how-it-works"
+                  className="block w-full border border-foreground py-3.5 text-center text-[11px] tracking-[0.25em] uppercase font-sans text-foreground transition-colors hover:bg-foreground hover:text-background"
+                >
+                  Subscribe to Join
+                </Link>
+                <Link
+                  to="/how-it-works"
+                  className="inline-block text-[10px] tracking-[0.18em] uppercase font-sans text-muted-foreground underline underline-offset-4 transition-colors hover:text-foreground"
+                >
+                  See How It Works
+                </Link>
               </div>
 
               <div className="flex items-center justify-center gap-2 md:gap-4 mb-4 md:mb-6">
@@ -530,7 +510,7 @@ const ProductDetail = () => {
 
         {(heroPhrase || product.description) && (
           <AnimateIn delay={0.1}>
-            <div className="relative bg-foreground text-background py-6 md:py-16 px-5 md:px-16 overflow-hidden">
+            <div className="relative card-frosted-brown text-foreground py-6 md:py-16 px-5 md:px-16 overflow-hidden">
               <GrainOverlay opacity={0.03} />
               <StampBadge
                 text="GEA"
@@ -539,7 +519,7 @@ const ProductDetail = () => {
                 className="absolute top-5 right-8 hidden md:inline-flex opacity-30"
               />
               <div className="max-w-[780px] mx-auto text-center relative z-10">
-                <p className="text-[9px] tracking-[0.4em] uppercase font-sans text-background/50 mb-6">
+                <p className="text-[9px] tracking-[0.4em] uppercase font-sans text-foreground/50 mb-6">
                   The Piece
                 </p>
                 <p className="font-serif text-lg md:text-3xl lg:text-4xl font-medium leading-[1.2] tracking-[-0.01em]">
@@ -586,7 +566,7 @@ const ProductDetail = () => {
               </div>
             </div>
 
-            <div className="bg-card flex flex-col items-center justify-center p-5 md:p-14 relative overflow-hidden">
+            <div className="card-frosted flex flex-col items-center justify-center p-5 md:p-14 relative overflow-hidden">
               <div className="w-full max-w-[200px] mx-auto opacity-70">
                 <CategoryGraphic category={category} />
               </div>

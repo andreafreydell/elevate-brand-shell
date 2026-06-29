@@ -179,7 +179,7 @@ export const Navbar = () => {
       </div>
 
       <div className="border-b border-border">
-        <nav className="max-w-[1440px] mx-auto px-3 md:px-4 lg:px-6 h-[42px] hidden md:flex items-center justify-between gap-x-1">
+        <nav className="max-w-[1080px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 h-[42px] hidden md:flex items-center justify-between gap-x-1">
           {primaryLinks.map((item) => (
             <Link
               key={item.label}
@@ -203,7 +203,7 @@ export const Navbar = () => {
               type="button"
               className={`${getNavLinkClass(categoryLinks.some((c) => isPathActive(location.pathname, c.href)))} inline-flex items-center gap-1`}
             >
-              Shop
+              Categories
               <ChevronDown className="h-3 w-3 stroke-[1.7]" />
             </button>
             <div className="pointer-events-none absolute left-1/2 top-full z-50 w-[260px] -translate-x-1/2 pt-3 opacity-0 transition-opacity duration-150 group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:opacity-100">
@@ -329,7 +329,7 @@ export const Navbar = () => {
                   onClick={() => setMobileShopOpen((current) => !current)}
                   className="w-full flex items-center justify-between py-3 text-[12px] tracking-[0.18em] uppercase font-sans text-foreground hover:text-muted-foreground transition-colors"
                 >
-                  Shop
+                  Categories
                   <ChevronDown
                     className={`h-4 w-4 transition-transform ${
                       mobileShopOpen ? "rotate-180" : ""

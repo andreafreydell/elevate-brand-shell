@@ -233,6 +233,23 @@
 }
 
 @layer components {
+  /* GEA frosted card — the house "filled card" look: soft translucent cream wash +
+     blur, no border. Replaces solid bg-card fills across the site. */
+  .card-frosted {
+    background: hsl(36 33% 94% / 0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 4px;
+  }
+  /* Brown / ombre variant — for cards that used to be solid dark brown. Light-brown
+     frosted ombre; pair with dark (foreground) text. */
+  .card-frosted-brown {
+    background: linear-gradient(180deg, hsl(30 30% 71% / 0.5), hsl(30 26% 57% / 0.42));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 4px;
+  }
+
   /* GEA primary button — solid dark, square, editorial */
   .btn-gea {
     @apply inline-flex items-center justify-center

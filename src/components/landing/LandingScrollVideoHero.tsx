@@ -260,7 +260,7 @@ export const LandingScrollVideoHero = () => {
         </section>
 
         <section className="mx-auto max-w-[1180px] py-12 md:py-16">
-          <div className={`mx-auto mb-8 inline-block w-full max-w-[640px] px-6 py-6 text-center ${scrim}`}>
+          <div className={`mx-auto mb-8 block w-full max-w-[640px] px-6 py-6 text-center ${scrim}`}>
             <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-muted-foreground">
               The Process <span aria-hidden="true" style={{ color: "var(--poppy-deep)" }}>✿</span>
             </p>
@@ -298,7 +298,7 @@ export const LandingScrollVideoHero = () => {
         </section>
 
         <section className="mx-auto max-w-[1040px] py-12 md:py-16">
-          <div className={`mx-auto mb-8 inline-block w-full max-w-[640px] px-6 py-6 text-center ${scrim}`}>
+          <div className={`mx-auto mb-8 block w-full max-w-[640px] px-6 py-6 text-center ${scrim}`}>
             <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-muted-foreground">
               Membership <span aria-hidden="true" style={{ color: "var(--poppy-deep)" }}>✿</span>
             </p>
@@ -315,8 +315,8 @@ export const LandingScrollVideoHero = () => {
               <a
                 key={tier.name}
                 href={MEMBERSHIP_CHECKOUT_URLS[tier.name] ?? "/how-it-works#tiers"}
-                className={`group relative block border p-6 shadow-[0_18px_50px_hsl(30_12%_10%_/_0.18)] transition-transform hover:-translate-y-1 md:p-8 ${
-                  tier.highlighted ? "border-dashed bg-foreground text-background" : "border-border bg-background text-foreground"
+                className={`group relative block p-6 text-foreground shadow-[0_18px_50px_hsl(30_12%_10%_/_0.14)] transition-transform hover:-translate-y-1 md:p-8 ${
+                  tier.highlighted ? "border border-dashed card-frosted-brown" : "card-frosted"
                 }`}
                 style={tier.highlighted ? { borderColor: "var(--poppy)" } : undefined}
               >
@@ -330,57 +330,30 @@ export const LandingScrollVideoHero = () => {
                 )}
                 <div className="mb-4 flex items-start justify-between gap-4">
                   <div>
-                    <p
-                      className={`mb-2 font-sans text-[10px] uppercase tracking-[0.3em] ${
-                        tier.highlighted ? "text-background/65" : "text-muted-foreground"
-                      }`}
-                    >
+                    <p className="mb-2 font-sans text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
                       {tier.label}
                     </p>
-                    <h3 className="font-serif text-xl font-semibold tracking-[0.02em] md:text-2xl">
+                    <h3 className="font-serif text-xl font-semibold tracking-[0.02em] text-foreground md:text-2xl">
                       {tier.name}
                     </h3>
                   </div>
-                  <Check
-                    className={`h-5 w-5 stroke-[1.4] ${
-                      tier.highlighted ? "text-background/70" : "text-foreground"
-                    }`}
-                  />
+                  <Check className="h-5 w-5 shrink-0 stroke-[1.4] text-foreground" />
                 </div>
-                <p className="font-serif text-3xl font-medium md:text-4xl">
-                  <span
-                    className={`mr-2 align-middle font-sans text-[15px] font-normal line-through ${
-                      tier.highlighted ? "text-background/45" : "text-muted-foreground/60"
-                    }`}
-                  >
-                    {tier.was}
-                  </span>
+                <p className="font-serif text-3xl font-medium text-foreground md:text-4xl">
+                  <span className="mr-2 font-normal text-muted-foreground/55 line-through">{tier.was}</span>
                   {tier.price}
-                  <span
-                    className={`ml-2 font-sans text-[11px] tracking-[0.15em] ${
-                      tier.highlighted ? "text-background/65" : "text-muted-foreground"
-                    }`}
-                  >
-                    /month
-                  </span>
+                  <span className="ml-2 font-sans text-[11px] tracking-[0.15em] text-muted-foreground">/month</span>
                 </p>
-                <p
-                  className="mt-1.5 font-sans text-[10px] uppercase tracking-[0.18em]"
-                  style={{ color: tier.highlighted ? "var(--rose)" : "var(--poppy-deep)" }}
-                >
-                  ✿ Founding Member — your price for life
+                <p className="mt-1 font-sans text-[9px] tracking-[0.04em] text-muted-foreground/80">
+                  founding member — your price for life
                 </p>
                 <p
                   className="mt-2 text-[1.15rem]"
-                  style={{ fontFamily: "var(--font-script)", color: tier.highlighted ? "var(--rose)" : "var(--poppy-deep)" }}
+                  style={{ fontFamily: "var(--font-script)", color: "var(--poppy-deep)" }}
                 >
                   {`keep ${tier.keep} ${tier.keep === 1 ? "favorite" : "favorites"} each cycle ✿`}
                 </p>
-                <p
-                  className={`mt-4 font-sans text-[12px] leading-relaxed ${
-                    tier.highlighted ? "text-background/80" : "text-muted-foreground"
-                  }`}
-                >
+                <p className="mt-4 font-sans text-[12px] leading-relaxed text-muted-foreground">
                   {tier.detail} Full vault access, sanitized, free shipping both ways.
                 </p>
               </a>
@@ -401,7 +374,7 @@ export const LandingScrollVideoHero = () => {
         </section>
 
         <section className="mx-auto max-w-[1120px] py-12 md:py-16">
-          <div className={`mx-auto mb-8 inline-block w-full max-w-[640px] px-6 py-6 text-center ${scrim}`}>
+          <div className={`mx-auto mb-8 block w-full max-w-[640px] px-6 py-6 text-center ${scrim}`}>
             <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-muted-foreground">
               Freedom <span aria-hidden="true" style={{ color: "var(--poppy-deep)" }}>✿</span>
             </p>
@@ -426,7 +399,7 @@ export const LandingScrollVideoHero = () => {
         </section>
 
         <section className="mx-auto max-w-[860px] py-12 md:py-16">
-          <div className={`mx-auto mb-7 inline-block w-full max-w-[600px] px-6 py-6 text-center ${scrim}`}>
+          <div className={`mx-auto mb-7 block w-full max-w-[600px] px-6 py-6 text-center ${scrim}`}>
             <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-muted-foreground">
               Philosophy <span aria-hidden="true" style={{ color: "var(--poppy-deep)" }}>✿</span>
             </p>

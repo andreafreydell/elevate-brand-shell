@@ -21,25 +21,28 @@ export const CategoryGraphic = ({ category, className = "" }: CategoryGraphicPro
             <stop offset="100%" stopColor="hsl(36, 20%, 85%)" />
           </linearGradient>
         </defs>
-        {/* Stylized ear curve */}
+        {/* Outer helix → lobe */}
         <path
-          d="M75 20 C95 25, 105 50, 100 80 C95 110, 75 130, 60 140"
-          stroke="hsl(36, 15%, 70%)"
-          strokeWidth="1"
+          d="M70 34 C90 36, 99 56, 95 84 C92 106, 80 122, 66 130 C58 135, 49 132, 47 123 C45.5 116, 50 110, 57 108"
+          stroke="hsl(36, 15%, 60%)"
+          strokeWidth="2"
           fill="none"
+          strokeLinecap="round"
         />
+        {/* Inner antihelix curl */}
         <path
-          d="M60 140 C55 135, 50 125, 55 115 C60 105, 75 100, 80 90"
+          d="M79 60 C88 65, 87 82, 78 89 C71 94, 62 90, 62 81"
           stroke="hsl(36, 15%, 70%)"
-          strokeWidth="1"
+          strokeWidth="1.3"
           fill="none"
+          strokeLinecap="round"
         />
-        {/* Earring drop */}
-        <circle cx="60" cy="85" r="3" fill="hsl(36, 15%, 55%)" />
-        <line x1="60" y1="88" x2="60" y2="105" stroke="hsl(36, 15%, 55%)" strokeWidth="0.8" />
-        <ellipse cx="60" cy="115" rx="8" ry="12" fill="url(#earGrad)" stroke="hsl(36, 15%, 65%)" strokeWidth="0.5" />
+        {/* Earring on the lobe */}
+        <circle cx="58" cy="120" r="2.2" fill="hsl(36, 15%, 55%)" />
+        <line x1="58" y1="122" x2="58" y2="132" stroke="hsl(36, 15%, 55%)" strokeWidth="0.9" />
+        <ellipse cx="58" cy="142" rx="7" ry="10" fill="url(#earGrad)" stroke="hsl(36, 15%, 62%)" strokeWidth="0.7" />
         {/* Sparkle */}
-        <circle cx="62" cy="112" r="1.5" fill="hsl(36, 25%, 80%)" opacity="0.8" />
+        <circle cx="60" cy="139" r="1.4" fill="hsl(36, 25%, 88%)" opacity="0.85" />
       </svg>
     );
   }
@@ -92,18 +95,32 @@ export const CategoryGraphic = ({ category, className = "" }: CategoryGraphicPro
             <stop offset="100%" stopColor="hsl(36, 25%, 85%)" />
           </linearGradient>
         </defs>
-        {/* Finger outline */}
+        {/* Finger — tapered with a rounded tip */}
         <path
-          d="M40 130 L40 50 Q40 35, 50 35 Q60 35, 60 50 L60 130"
-          stroke="hsl(36, 15%, 70%)"
+          d="M41 132 L41 60 C41 46, 45.5 39, 50 39 C54.5 39, 59 46, 59 60 L59 132"
+          stroke="hsl(36, 15%, 62%)"
+          strokeWidth="2"
+          fill="none"
+          strokeLinecap="round"
+        />
+        {/* Knuckle hint */}
+        <path
+          d="M43 98 C47 101, 53 101, 57 98"
+          stroke="hsl(36, 15%, 72%)"
           strokeWidth="1"
           fill="none"
+          strokeLinecap="round"
         />
-        {/* Ring band */}
-        <ellipse cx="50" cy="70" rx="12" ry="5" fill="none" stroke="url(#ringGrad)" strokeWidth="4" />
-        {/* Stone */}
-        <ellipse cx="50" cy="65" rx="5" ry="4" fill="hsl(36, 20%, 88%)" stroke="hsl(36, 15%, 70%)" strokeWidth="0.5" />
-        <circle cx="50" cy="64" r="1.5" fill="hsl(36, 30%, 95%)" />
+        {/* Ring band wrapping the finger */}
+        <ellipse cx="50" cy="80" rx="11" ry="4.5" fill="none" stroke="url(#ringGrad)" strokeWidth="4.5" />
+        {/* Marquise stone */}
+        <path
+          d="M50 63 C54 67.5, 54 74, 50 78 C46 74, 46 67.5, 50 63 Z"
+          fill="hsl(36, 22%, 90%)"
+          stroke="hsl(36, 15%, 65%)"
+          strokeWidth="0.6"
+        />
+        <circle cx="50" cy="70.5" r="1.3" fill="hsl(36, 30%, 96%)" />
       </svg>
     );
   }
