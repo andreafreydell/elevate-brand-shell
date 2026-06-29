@@ -43,7 +43,7 @@ async function mintAdminToken(shopDomain: string): Promise<string> {
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
 
-  const adminSecret = Deno.env.get("GEA_ADMIN_SECRET");
+  const adminSecret = Deno.env.get("REGISTER_WEBHOOKS_KEY");
   if (!adminSecret || req.headers.get("x-admin-secret") !== adminSecret) {
     return new Response(JSON.stringify({ error: "unauthorized" }), {
       status: 401,
