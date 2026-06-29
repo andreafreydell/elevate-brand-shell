@@ -45,7 +45,7 @@ export const WavyDivider = ({
         <motion.path
           d="M0 12 C100 4, 200 20, 300 12 S500 4, 600 12 S700 20, 800 12"
           stroke={color}
-          strokeWidth="1"
+          strokeWidth="0.3"
           strokeLinecap="round"
           fill="none"
           filter={`url(#${filterId})`}
@@ -58,7 +58,7 @@ export const WavyDivider = ({
           <motion.path
             d="M0 16 C100 8, 200 24, 300 16 S500 8, 600 16 S700 24, 800 16"
             stroke={color}
-            strokeWidth="0.5"
+            strokeWidth="0.15"
             strokeLinecap="round"
             fill="none"
             opacity="0.4"

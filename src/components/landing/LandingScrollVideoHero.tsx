@@ -10,15 +10,12 @@ import {
   Heart,
   Package,
   RefreshCw,
-  Scale,
   Shield,
   Shuffle,
   Sparkles,
   Truck,
-  Zap,
   Gift,
 } from "lucide-react";
-import { CircleEmphasis } from "@/components/craft/CircleEmphasis";
 import { ScribbleUnderline } from "@/components/craft/ScribbleUnderline";
 import { ScriptNumber } from "@/components/craft/ScriptNumber";
 import { TrustStrip } from "@/components/shared/TrustStrip";
@@ -27,31 +24,31 @@ const steps = [
   {
     number: "01",
     title: "Choose",
-    description: "Browse our curated vault and select the pieces that speak to your moment.",
+    description: "Pick the pieces that speak to your moment from the full vault.",
     icon: Hand,
   },
   {
     number: "02",
     title: "Receive",
-    description: "Your selections typically arrive within 2-5 business days, sealed in signature packaging — with a little gift inside, every time: earring backs and comfort patches for happy, beautiful lobes.",
+    description: "It arrives in 2–5 days, sealed — with a little gift inside, every time.",
     icon: Package,
   },
   {
     number: "03",
     title: "Wear",
-    description: "Style them for your life - the event, the meeting, the dinner, the everyday.",
+    description: "Wear them everywhere — the event, the meeting, the everyday.",
     icon: Sparkles,
   },
   {
     number: "04",
     title: "Keep",
-    description: "Keep 1 to 3 pieces each cycle, included with your tier. Love an extra? Keep any rental for 60% off list price, charged when you return the rest.",
+    description: "Keep 1 to 3 each cycle, included. Love an extra? Keep it for 60% off list.",
     icon: Heart,
   },
   {
     number: "05",
     title: "Refresh",
-    description: "Return the pieces you are not keeping. Your Monthly Code arrives by email and unlocks your next set.",
+    description: "Return the rest. Your next code arrives by email and unlocks your next set.",
     icon: RefreshCw,
   },
 ];
@@ -61,7 +58,8 @@ const tiers = [
     name: "Seed Membership",
     label: "3 Pieces",
     price: "$35",
-    detail: "3 curated rentals per cycle",
+    was: "$55",
+    detail: "3 rentals per cycle.",
     keep: 1,
     highlighted: false,
   },
@@ -69,7 +67,8 @@ const tiers = [
     name: "Blossom Membership",
     label: "6 Pieces",
     price: "$65",
-    detail: "6 curated rentals per cycle",
+    was: "$100",
+    detail: "6 rentals per cycle.",
     keep: 2,
     highlighted: false,
   },
@@ -77,7 +76,8 @@ const tiers = [
     name: "Garden Membership",
     label: "10 Pieces",
     price: "$85",
-    detail: "10 curated rentals per cycle",
+    was: "$130",
+    detail: "10 rentals per cycle.",
     keep: 3,
     highlighted: true,
   },
@@ -93,21 +93,18 @@ const assurances = [
 
 const freedomBlocks = [
   {
-    label: "Explore",
     title: "Freedom to Experiment",
-    text: "Try bold statement pieces without the commitment of ownership. If it doesn't feel right, refresh your selection at the end of your cycle. No risk. No regret.",
+    text: "Try bold pieces without the commitment of ownership. Refresh next cycle. No risk, no regret.",
     icon: Shuffle,
   },
   {
-    label: "Discover",
     title: "Always Something New",
-    text: "Your collection evolves as you do. New drops enter the vault monthly. Early access for members means you're always first.",
+    text: "New drops enter the vault monthly — and members see them first.",
     icon: CalendarPlus,
   },
   {
-    label: "Bloom",
     title: "Build It With Intention",
-    text: "Keep only the pieces you wear most and carefully build a collection that's truly yours — one that keeps pace with the woman you're becoming and the places you're going.",
+    text: "Keep only the pieces you reach for, and build a collection that's truly yours.",
     icon: Feather,
   },
 ];
@@ -119,6 +116,11 @@ const freedomBlocks = [
 // (no re-encode) before merge.
 const heroVideoSrc = "/videos/flowers-hero.mp4?v=test";
 const heroPosterSrc = "/videos/flowers-hero-poster.webp";
+
+// A soft, light cream scrim placed behind text blocks only — keeps the beige feel
+// while making the dark copy crystal-clear over the embroidery (no dark gradient).
+const scrim =
+  "bg-[hsl(36_33%_94%_/_0.62)] supports-[backdrop-filter]:bg-[hsl(36_33%_94%_/_0.42)] backdrop-blur-[3px] rounded-[4px]";
 
 const clamp = (value: number) => Math.min(1, Math.max(0, value));
 
@@ -224,42 +226,42 @@ export const LandingScrollVideoHero = () => {
 
       <div className="relative z-[1] -mt-[100vh] transform-gpu isolate px-5 sm:px-6 md:px-12 lg:px-16 [backface-visibility:hidden]">
         <section className="mx-auto flex min-h-screen max-w-[760px] flex-col items-center justify-center py-24 text-center">
-          <p className="mb-4 font-sans text-[10px] uppercase tracking-[0.4em] text-foreground/70 md:mb-8">
-            Jewelry Membership for Women in Bloom
-          </p>
-          <h1 className="hero-display mb-4 whitespace-pre-line text-foreground md:mb-6">
-            Wear Who{"\n"}
-            <ScribbleUnderline color="var(--brass)" delay={0.2}>
-              You're Becoming.
-            </ScribbleUnderline>
-          </h1>
-          <p className="mx-auto mb-3 max-w-[440px] font-sans text-[12px] leading-relaxed text-foreground/80 md:text-[13px]">
-            High-design jewelry you access, not own.
-            <br />
-            Because you were never meant to stay the same.
-          </p>
-          <p className="mx-auto mb-7 max-w-[460px] text-[1.3rem] md:text-[1.5rem]" style={{ fontFamily: "var(--font-script)", color: "var(--poppy-deep)" }}>
-            wear more. try everything. keep becoming ✿
-          </p>
-          <Link
-            to="/browse"
-            className="inline-block border px-8 py-3 font-sans text-[10px] uppercase tracking-[0.2em] text-[#faf4e8] transition-transform hover:-translate-y-0.5 md:px-10 md:py-3.5 md:text-[11px]"
-            style={{ background: "var(--poppy)", borderColor: "var(--poppy-deep)", boxShadow: "4px 4px 0 hsl(30 12% 10% / 0.45)" }}
-          >
-            Browse the Collection ✿
-          </Link>
-          <p className="mx-auto mt-5 max-w-[420px] font-sans text-[11px] leading-relaxed text-foreground/75 md:text-[12px]">
-            Membership from $35/mo. Rent 3, 6, or 10 pieces a cycle. Keep 1 to 3.
-          </p>
-          <TrustStrip
-            variant="compact"
-            className="mt-4 text-foreground/75 [&_*]:text-foreground/75"
-          />
+          <div className={`${scrim} px-6 py-8 md:px-10 md:py-10`}>
+            <p className="mb-4 font-sans text-[10px] uppercase tracking-[0.4em] text-muted-foreground md:mb-7">
+              Jewelry Membership for Women in Bloom
+            </p>
+            <h1 className="hero-display mb-4 whitespace-pre-line text-foreground md:mb-6">
+              Wear Who{"\n"}
+              <ScribbleUnderline color="var(--brass)" delay={0.2}>
+                You're Becoming.
+              </ScribbleUnderline>
+            </h1>
+            <p className="mx-auto mb-6 max-w-[440px] font-sans text-[12px] leading-relaxed text-muted-foreground md:text-[13px]">
+              High-design jewelry you access, not own.
+            </p>
+            <p className="mx-auto mb-7 max-w-[460px] text-[1.3rem] md:text-[1.5rem]" style={{ fontFamily: "var(--font-script)", color: "var(--poppy-deep)" }}>
+              wear more. try everything. keep becoming ✿
+            </p>
+            <Link
+              to="/browse"
+              className="inline-block border px-8 py-3 font-sans text-[10px] uppercase tracking-[0.2em] text-[#faf4e8] transition-transform hover:-translate-y-0.5 md:px-10 md:py-3.5 md:text-[11px]"
+              style={{ background: "var(--poppy)", borderColor: "var(--poppy-deep)", boxShadow: "4px 4px 0 hsl(30 12% 10% / 0.45)" }}
+            >
+              Browse the Collection ✿
+            </Link>
+            <p className="mx-auto mt-5 max-w-[440px] font-sans text-[11px] leading-relaxed text-muted-foreground md:text-[12px]">
+              Founding price from $35/mo · rent 3, 6, or 10 · keep 1 to 3 · <span className="text-foreground">yours for life</span>.
+            </p>
+            <TrustStrip
+              variant="compact"
+              className="mt-4 text-muted-foreground [&_*]:text-muted-foreground"
+            />
+          </div>
         </section>
 
         <section className="mx-auto max-w-[1180px] py-12 md:py-16">
-          <div className="mb-8 text-center">
-            <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-foreground/70">
+          <div className={`mx-auto mb-8 inline-block w-full max-w-[640px] px-6 py-6 text-center ${scrim}`}>
+            <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-muted-foreground">
               The Process <span aria-hidden="true" style={{ color: "var(--poppy-deep)" }}>✿</span>
             </p>
             <h2 className="font-serif text-2xl uppercase tracking-[0.08em] text-foreground md:text-4xl">
@@ -269,7 +271,7 @@ export const LandingScrollVideoHero = () => {
               five little steps, zero burden ✿
             </p>
           </div>
-          <ol className="mx-auto grid max-w-[620px] gap-2.5 md:gap-3.5">
+          <ol className={`mx-auto grid max-w-[600px] gap-3 px-6 py-6 md:gap-3.5 ${scrim}`}>
             {steps.map((step) => (
               <li key={step.number} className="flex items-baseline gap-3">
                 <span
@@ -278,7 +280,7 @@ export const LandingScrollVideoHero = () => {
                 >
                   {step.number}
                 </span>
-                <p className="text-[13px] leading-snug text-foreground/85 md:text-[14px]">
+                <p className="text-[13px] leading-snug text-muted-foreground md:text-[14px]">
                   <span className="font-serif font-semibold text-foreground">{step.title}.</span>{" "}
                   {step.description}
                 </p>
@@ -296,15 +298,15 @@ export const LandingScrollVideoHero = () => {
         </section>
 
         <section className="mx-auto max-w-[1040px] py-12 md:py-16">
-          <div className="mb-8 text-center">
-            <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-foreground/70">
+          <div className={`mx-auto mb-8 inline-block w-full max-w-[640px] px-6 py-6 text-center ${scrim}`}>
+            <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-muted-foreground">
               Membership <span aria-hidden="true" style={{ color: "var(--poppy-deep)" }}>✿</span>
             </p>
             <h2 className="font-serif text-2xl uppercase tracking-[0.08em] text-foreground md:text-4xl">
               Your Tier of Access
             </h2>
             <p className="mt-2 text-[1.25rem]" style={{ fontFamily: "var(--font-script)", color: "var(--poppy-deep)" }}>
-              rent 3, 6, or 10 — keep 1 to 3 each cycle ✿
+              founding pricing — locked in for life ✿
             </p>
           </div>
 
@@ -346,6 +348,13 @@ export const LandingScrollVideoHero = () => {
                   />
                 </div>
                 <p className="font-serif text-3xl font-medium md:text-4xl">
+                  <span
+                    className={`mr-2 align-middle font-sans text-[15px] font-normal line-through ${
+                      tier.highlighted ? "text-background/45" : "text-muted-foreground/60"
+                    }`}
+                  >
+                    {tier.was}
+                  </span>
                   {tier.price}
                   <span
                     className={`ml-2 font-sans text-[11px] tracking-[0.15em] ${
@@ -354,6 +363,12 @@ export const LandingScrollVideoHero = () => {
                   >
                     /month
                   </span>
+                </p>
+                <p
+                  className="mt-1.5 font-sans text-[10px] uppercase tracking-[0.18em]"
+                  style={{ color: tier.highlighted ? "var(--rose)" : "var(--poppy-deep)" }}
+                >
+                  ✿ Founding Member — your price for life
                 </p>
                 <p
                   className="mt-2 text-[1.15rem]"
@@ -366,7 +381,7 @@ export const LandingScrollVideoHero = () => {
                     tier.highlighted ? "text-background/80" : "text-muted-foreground"
                   }`}
                 >
-                  {tier.detail}. Full vault access, protection coverage, sanitation, and free shipping both ways.
+                  {tier.detail} Full vault access, sanitized, free shipping both ways.
                 </p>
               </a>
             ))}
@@ -376,7 +391,7 @@ export const LandingScrollVideoHero = () => {
             {assurances.map((item) => (
               <div
                 key={item.text}
-                className="flex h-full items-center justify-center gap-2 border border-foreground/20 bg-background/70 px-3 py-2 text-center font-sans text-[9px] uppercase tracking-[0.14em] text-foreground md:text-[10px]"
+                className="flex h-full items-center justify-center gap-2 border border-foreground/20 bg-[hsl(36_33%_94%_/_0.7)] px-3 py-2 text-center font-sans text-[9px] uppercase tracking-[0.14em] text-foreground backdrop-blur-[2px] md:text-[10px]"
               >
                 <item.icon className="h-3.5 w-3.5 shrink-0 stroke-[1.4]" />
                 <span>{item.text}</span>
@@ -386,8 +401,8 @@ export const LandingScrollVideoHero = () => {
         </section>
 
         <section className="mx-auto max-w-[1120px] py-12 md:py-16">
-          <div className="mb-8 text-center">
-            <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-foreground/70">
+          <div className={`mx-auto mb-8 inline-block w-full max-w-[640px] px-6 py-6 text-center ${scrim}`}>
+            <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-muted-foreground">
               Freedom <span aria-hidden="true" style={{ color: "var(--poppy-deep)" }}>✿</span>
             </p>
             <h2 className="font-serif text-2xl uppercase tracking-[0.08em] text-foreground md:text-4xl">
@@ -397,11 +412,11 @@ export const LandingScrollVideoHero = () => {
               this is what blooming feels like ✿
             </p>
           </div>
-          <ul className="mx-auto grid max-w-[640px] gap-3 md:gap-4">
+          <ul className={`mx-auto grid max-w-[600px] gap-3 px-6 py-6 md:gap-4 ${scrim}`}>
             {freedomBlocks.map((block) => (
               <li key={block.title} className="flex items-baseline gap-3">
                 <span aria-hidden="true" className="shrink-0 text-[1.1rem] leading-none" style={{ color: "var(--poppy)" }}>✿</span>
-                <p className="text-[13px] leading-snug text-foreground/85 md:text-[14px]">
+                <p className="text-[13px] leading-snug text-muted-foreground md:text-[14px]">
                   <span className="font-serif font-semibold text-foreground">{block.title}.</span>{" "}
                   {block.text}
                 </p>
@@ -410,9 +425,9 @@ export const LandingScrollVideoHero = () => {
           </ul>
         </section>
 
-        <section className="mx-auto max-w-[1120px] py-12 md:py-16">
-          <div className="mb-8 text-center">
-            <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-foreground/70">
+        <section className="mx-auto max-w-[860px] py-12 md:py-16">
+          <div className={`mx-auto mb-7 inline-block w-full max-w-[600px] px-6 py-6 text-center ${scrim}`}>
+            <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-muted-foreground">
               Philosophy <span aria-hidden="true" style={{ color: "var(--poppy-deep)" }}>✿</span>
             </p>
             <h2 className="font-serif text-2xl uppercase tracking-[0.08em] text-foreground md:text-4xl">
@@ -422,38 +437,24 @@ export const LandingScrollVideoHero = () => {
               you were never meant to stay the same ✿
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            <div
-              className="border border-border bg-card p-8 text-foreground shadow-[0_18px_50px_hsl(30_12%_10%_/_0.18)] md:p-10"
-            >
-              <div className="mb-4 flex items-center justify-between">
-                <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                  Conventional Ownership
-                </p>
-                <Scale className="h-5 w-5 stroke-[1.3] text-foreground" />
-              </div>
-              <h3 className="mb-4 font-serif text-xl font-semibold tracking-[0.02em] md:text-2xl">
-                Built for a <CircleEmphasis color="var(--tag-red)">Slower</CircleEmphasis> Era
-              </h3>
-              <p className="font-sans text-[12px] leading-relaxed text-muted-foreground">
-                The average piece of fine jewelry is worn fewer than <ScriptNumber>5</ScriptNumber> times, then waits in a drawer. Buying one piece at a time simply can't keep pace with a life — and a style — that keeps evolving.
+
+          {/* Inline comparison — transparent so the video reads through to the end. */}
+          <div className={`mx-auto grid max-w-[640px] gap-4 px-6 py-7 md:grid-cols-2 ${scrim}`}>
+            <div>
+              <p className="mb-2 font-sans text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+                Built for a Different Era
+              </p>
+              <p className="font-sans text-[13px] leading-relaxed text-muted-foreground md:text-[14px]">
+                A fine piece is worn fewer than <ScriptNumber>5</ScriptNumber> times, then waits in a drawer. Buying one at a time can't keep pace with a life that keeps evolving.
               </p>
             </div>
-            <div
-              className="border border-border bg-foreground p-8 text-background shadow-[0_18px_50px_hsl(30_12%_10%_/_0.18)] md:p-10"
-            >
-              <div className="mb-4 flex items-center justify-between">
-                <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-background/60">
-                  The GEA Model
-                </p>
-                <Zap className="h-5 w-5 stroke-[1.3] text-background/70" />
-              </div>
-              <h3 className="mb-4 font-serif text-xl font-semibold tracking-[0.02em] text-background md:text-2xl">
-                Access Is <ScribbleUnderline color="var(--seafoam)" delay={0.5}>Evolution</ScribbleUnderline>
-              </h3>
-              <p className="font-sans text-[12px] leading-relaxed text-background/70">
-                Access the full vault. Wear who you're becoming this cycle. Keep the pieces you love, return the rest, and keep growing.{" "}
-                <ScriptNumber className="text-background/90">10+</ScriptNumber> pieces per year. Because staying the same was never the plan.
+            <div className="md:border-l md:border-foreground/15 md:pl-4">
+              <p className="mb-2 font-sans text-[10px] uppercase tracking-[0.3em]" style={{ color: "var(--poppy-deep)" }}>
+                The GEA Way
+              </p>
+              <p className="font-sans text-[13px] leading-relaxed text-foreground md:text-[14px]">
+                Access the full vault. Keep what you love, return the rest, and wear{" "}
+                <ScriptNumber>10+</ScriptNumber> pieces a year. Because staying the same was never the plan.
               </p>
             </div>
           </div>

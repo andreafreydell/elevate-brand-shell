@@ -59,6 +59,7 @@ const getOccasionHref = (occasion: string) =>
 export const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileOccasionsOpen, setMobileOccasionsOpen] = useState(false);
+  const [mobileShopOpen, setMobileShopOpen] = useState(false);
   const [occasionLinks, setOccasionLinks] = useState<string[]>([]);
   const [searchOpen, setSearchOpen] = useState(false);
   const location = useLocation();
@@ -109,6 +110,7 @@ export const Navbar = () => {
     setMobileOpen(open);
     if (!open) {
       setMobileOccasionsOpen(false);
+      setMobileShopOpen(false);
     }
     document.body.style.overflow = open ? "hidden" : "";
   };
@@ -199,6 +201,29 @@ export const Navbar = () => {
           <div className="relative group">
             <button
               type="button"
+              className={`${getNavLinkClass(categoryLinks.some((c) => isPathActive(location.pathname, c.href)))} inline-flex items-center gap-1`}
+            >
+              Shop
+              <ChevronDown className="h-3 w-3 stroke-[1.7]" />
+            </button>
+            <div className="pointer-events-none absolute left-1/2 top-full z-50 w-[260px] -translate-x-1/2 pt-3 opacity-0 transition-opacity duration-150 group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:opacity-100">
+              <div className="grid grid-cols-2 gap-x-2 border border-border bg-background p-3 shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
+                {categoryLinks.map((item) => (
+                  <Link
+                    key={item.label}
+                    to={item.href}
+                    className="block px-2 py-2 text-[10px] tracking-[0.18em] uppercase font-sans text-foreground hover:bg-accent transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="relative group">
+            <button
+              type="button"
               className={`${getNavLinkClass(isOccasionActive)} inline-flex items-center gap-1`}
             >
               Occasions
@@ -224,16 +249,6 @@ export const Navbar = () => {
               </div>
             </div>
           </div>
-
-          {categoryLinks.map((item) => (
-            <Link
-              key={item.label}
-              to={item.href}
-              className={getNavLinkClass(isPathActive(location.pathname, item.href))}
-            >
-              {item.label}
-            </Link>
-          ))}
         </nav>
       </div>
 
@@ -308,16 +323,34 @@ export const Navbar = () => {
                 )}
               </div>
 
-              {categoryLinks.map((item) => (
-                <Link
-                  key={item.label}
-                  to={item.href}
-                  onClick={() => toggleMobile(false)}
-                  className="block py-3 text-[12px] tracking-[0.18em] uppercase font-sans text-foreground hover:text-muted-foreground transition-colors border-b border-border/40"
+              <div className="border-b border-border/40">
+                <button
+                  type="button"
+                  onClick={() => setMobileShopOpen((current) => !current)}
+                  className="w-full flex items-center justify-between py-3 text-[12px] tracking-[0.18em] uppercase font-sans text-foreground hover:text-muted-foreground transition-colors"
                 >
-                  {item.label}
-                </Link>
-              ))}
+                  Shop
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform ${
+                      mobileShopOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {mobileShopOpen && (
+                  <div className="grid grid-cols-2 pb-3">
+                    {categoryLinks.map((item) => (
+                      <Link
+                        key={item.label}
+                        to={item.href}
+                        onClick={() => toggleMobile(false)}
+                        className="block py-2 pl-4 text-[11px] tracking-[0.16em] uppercase font-sans text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
 
               <div className="flex items-center gap-6 pt-5">
                 <button

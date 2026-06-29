@@ -27,14 +27,12 @@ export const PromoBar = () => {
           to="/how-it-works"
           className="text-[10px] tracking-[0.2em] uppercase font-sans text-foreground hover:text-muted-foreground transition-colors text-center"
         >
+          <span className="font-medium">Founding offer — your price locked in for life</span>
+          <span aria-hidden="true" className="mx-2 text-[var(--poppy)]">✿</span>
           <span className="hidden md:inline">
-            <span className="font-medium">Wear Who You're Becoming</span>
+            Free shipping both ways
             <span className="mx-2">-</span>
-          </span>
-          Free shipping both ways <span className="font-medium">✿</span>
-          <span className="hidden md:inline">
-            <span className="mx-2">-</span>
-            Learn about membership
+            See membership
           </span>
         </Link>
         <button
