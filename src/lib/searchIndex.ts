@@ -20,6 +20,7 @@ interface RawNode {
   tags?: string[];
   featuredImage?: { url?: string } | null;
   priceRange?: { minVariantPrice?: { amount?: string; currencyCode?: string } };
+  variants?: { edges?: Array<{ node?: { sku?: string | null } | null } | null> } | null;
   metafields?: Array<{ key: string; value: string | null } | null> | null;
 }
 
@@ -48,10 +49,15 @@ async function fetchAll(): Promise<SearchItem[]> {
       const n = edge.node;
       const color = mf(n, "plating_color_primary");
       const occasions = mf(n, "occasions_possible");
+      const skus = (n.variants?.edges || [])
+        .map((e) => e?.node?.sku || "")
+        .filter(Boolean)
+        .join(" ");
 
       const parts = [
         n.title,
         n.productType || "",
+        skus,
         (n.tags || []).join(" "),
         occasions,
         color,

@@ -4,7 +4,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate, useLocation, useNavigationType } from "react-router-dom";
 import { useCartSync } from "@/hooks/useCartSync";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { ChevronUp } from "lucide-react";
 import LaunchGate from "@/components/LaunchGate";
 import { EmailCapturePopup } from "@/components/EmailCapturePopup";
 import Index from "./pages/Index";
@@ -82,6 +83,29 @@ const ScrollManager = () => {
   }, [key, hash, navType]);
 
   return null;
+};
+
+const ScrollToTopButton = () => {
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setShow(window.scrollY > 600);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  if (!show) return null;
+  return (
+    <button
+      type="button"
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      aria-label="Scroll to top"
+      className="fixed bottom-5 right-5 z-[80] flex h-11 w-11 items-center justify-center text-[#faf4e8] transition-transform hover:-translate-y-0.5"
+      style={{ background: "var(--poppy)", border: "1px solid var(--poppy-deep)", boxShadow: "3px 3px 0 hsl(30 12% 10% / 0.35)" }}
+    >
+      <ChevronUp className="h-5 w-5 stroke-[2]" />
+    </button>
+  );
 };
 
 const queryClient = new QueryClient();
@@ -168,6 +192,7 @@ const App = () => (
             <ScrollManager />
             <EmailCapturePopup />
             <AppContent />
+            <ScrollToTopButton />
           </AuthProvider>
         </BrowserRouter>
       </LaunchGate>

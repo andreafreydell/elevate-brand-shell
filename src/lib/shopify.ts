@@ -262,6 +262,9 @@ export const SEARCH_INDEX_QUERY = `
           tags
           featuredImage { url altText }
           priceRange { minVariantPrice { amount currencyCode } }
+          variants(first: 25) {
+            edges { node { sku } }
+          }
           metafields(identifiers: [
             { namespace: "custom", key: "occasions_possible" }
             { namespace: "custom", key: "plating_color_primary" }
@@ -417,11 +420,6 @@ export const CART_CREATE_MUTATION = `
                   id
                 }
               }
-              sellingPlanAllocation {
-                sellingPlan {
-                  id
-                }
-              }
             }
           }
         }
@@ -446,11 +444,6 @@ export const CART_LINES_ADD_MUTATION = `
               }
               merchandise {
                 ... on ProductVariant {
-                  id
-                }
-              }
-              sellingPlanAllocation {
-                sellingPlan {
                   id
                 }
               }
