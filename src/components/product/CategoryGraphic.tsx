@@ -84,43 +84,43 @@ export const CategoryGraphic = ({ category, className = "" }: CategoryGraphicPro
     );
   }
 
-  // Rings: hand silhouette with ring
+  // Rings: a hand with a ring on the ring finger
   if (normalized.includes("ring")) {
     return (
-      <svg viewBox="0 0 100 140" className={`w-full h-auto ${className}`} fill="none">
+      <svg viewBox="0 0 120 150" className={`w-full h-auto ${className}`} fill="none">
         <defs>
           <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="hsl(36, 25%, 85%)" />
-            <stop offset="50%" stopColor="hsl(36, 30%, 92%)" />
-            <stop offset="100%" stopColor="hsl(36, 25%, 85%)" />
+            <stop offset="0%" stopColor="hsl(36, 25%, 82%)" />
+            <stop offset="50%" stopColor="hsl(36, 32%, 92%)" />
+            <stop offset="100%" stopColor="hsl(36, 25%, 82%)" />
           </linearGradient>
         </defs>
-        {/* Finger — tapered with a rounded tip */}
+        {/* Palm */}
         <path
-          d="M41 132 L41 60 C41 46, 45.5 39, 50 39 C54.5 39, 59 46, 59 60 L59 132"
-          stroke="hsl(36, 15%, 62%)"
-          strokeWidth="2"
-          fill="none"
-          strokeLinecap="round"
-        />
-        {/* Knuckle hint */}
-        <path
-          d="M43 98 C47 101, 53 101, 57 98"
-          stroke="hsl(36, 15%, 72%)"
-          strokeWidth="1"
-          fill="none"
-          strokeLinecap="round"
-        />
-        {/* Ring band wrapping the finger */}
-        <ellipse cx="50" cy="80" rx="11" ry="4.5" fill="none" stroke="url(#ringGrad)" strokeWidth="4.5" />
-        {/* Marquise stone */}
-        <path
-          d="M50 63 C54 67.5, 54 74, 50 78 C46 74, 46 67.5, 50 63 Z"
+          d="M34 96 Q30 122 42 138 Q60 150 80 140 Q92 132 92 110 L92 96 Z"
           fill="hsl(36, 22%, 90%)"
-          stroke="hsl(36, 15%, 65%)"
+          stroke="hsl(36, 15%, 62%)"
+          strokeWidth="1.6"
+          strokeLinejoin="round"
+        />
+        {/* Four fingers (thick rounded strokes) + thumb */}
+        <g stroke="hsl(36, 18%, 66%)" strokeWidth="11" strokeLinecap="round" fill="none">
+          <line x1="44" y1="100" x2="44" y2="56" />
+          <line x1="58" y1="100" x2="58" y2="44" />
+          <line x1="72" y1="100" x2="72" y2="52" />
+          <line x1="85" y1="98" x2="85" y2="66" />
+          <line x1="33" y1="106" x2="20" y2="90" />
+        </g>
+        {/* Ring band on the ring finger */}
+        <ellipse cx="72" cy="74" rx="7" ry="3.4" fill="none" stroke="url(#ringGrad)" strokeWidth="4.5" />
+        {/* Stone */}
+        <path
+          d="M72 64 C75.5 68, 75.5 73, 72 77 C68.5 73, 68.5 68, 72 64 Z"
+          fill="hsl(36, 24%, 93%)"
+          stroke="hsl(36, 15%, 62%)"
           strokeWidth="0.6"
         />
-        <circle cx="50" cy="70.5" r="1.3" fill="hsl(36, 30%, 96%)" />
+        <circle cx="72" cy="71" r="1.3" fill="hsl(36, 35%, 97%)" />
       </svg>
     );
   }

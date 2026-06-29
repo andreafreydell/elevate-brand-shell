@@ -10,6 +10,7 @@ const tierData = [
     name: "Seed Membership",
     label: "3 Pieces",
     price: "$35",
+    was: "$55",
     priceNum: 35,
     pieces: 3,
     piecesLabel: "3 curated rentals per cycle",
@@ -27,6 +28,7 @@ const tierData = [
     name: "Blossom Membership",
     label: "6 Pieces",
     price: "$65",
+    was: "$100",
     priceNum: 65,
     pieces: 6,
     piecesLabel: "6 curated rentals per cycle",
@@ -44,6 +46,7 @@ const tierData = [
     name: "Garden Membership",
     label: "10 Pieces",
     price: "$85",
+    was: "$130",
     priceNum: 85,
     pieces: 10,
     piecesLabel: "10 curated rentals per cycle",
@@ -72,7 +75,7 @@ const CompactOffer = ({ ctaHref }: { ctaHref: string }) => (
       Membership Access
     </p>
     <p className="mb-4 font-sans text-[12px] leading-relaxed text-foreground">
-      Membership from $35/mo. Rent 3, 6, or 10 pieces a cycle — keep 1 to 3.
+      Founding price from $35/mo. Rent 3, 6, or 10 pieces a cycle — keep 1 to 3.
     </p>
     <div className="space-y-3">
       {tierData.map((tier) => (
@@ -81,12 +84,15 @@ const CompactOffer = ({ ctaHref }: { ctaHref: string }) => (
             {tier.name} - {tier.pieces} pieces
           </span>
           <span className="font-sans text-[12px] text-muted-foreground">
-            {tier.price}/mo
+            <span className="text-muted-foreground/55 line-through">{tier.was}</span> {tier.price}/mo
           </span>
         </div>
       ))}
     </div>
-    <p className="mt-4 font-sans text-[11px] leading-relaxed text-muted-foreground">
+    <p className="mt-3 font-sans text-[10px] tracking-[0.04em] text-muted-foreground/80">
+      ✿ Founding member — your price locked in for life.
+    </p>
+    <p className="mt-3 font-sans text-[11px] leading-relaxed text-muted-foreground">
       Tier pricing reflects membership access, not the price of a single piece.
     </p>
     <Link to={ctaHref} className="cta-underline mt-5 inline-block">
@@ -123,6 +129,13 @@ const StandardOffer = ({ ctaHref }: { ctaHref: string }) => (
         </div>
 
         <div className="tier-price-section-mobile border-b border-border px-8 py-6 md:px-10">
+          <span
+            className={`mr-2 font-serif text-3xl font-medium md:text-4xl line-through ${
+              tier.highlighted ? "text-background/40" : "text-muted-foreground/55"
+            }`}
+          >
+            {tier.was}
+          </span>
           <span className="tier-price-mobile font-serif text-3xl font-medium md:text-4xl">
             {tier.price}
           </span>
@@ -133,6 +146,13 @@ const StandardOffer = ({ ctaHref }: { ctaHref: string }) => (
           >
             /month
           </span>
+          <p
+            className={`mt-1.5 font-sans text-[9px] tracking-[0.04em] ${
+              tier.highlighted ? "text-background/65" : "text-muted-foreground/80"
+            }`}
+          >
+            founding member — your price for life
+          </p>
         </div>
 
         <div className="tier-features-mobile flex-1 p-8 md:p-10">

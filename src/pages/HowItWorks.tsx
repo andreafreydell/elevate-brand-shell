@@ -169,11 +169,11 @@ const HowItWorks = () => {
         <div className="mb-8 hidden justify-center md:flex">
           <HandDrawnRect className="max-w-md">
             <p className="text-center font-sans text-[12px] leading-relaxed text-muted-foreground">
-              Starting from just{" "}
+              Founding price from{" "}
               <MarkerCircle color="var(--tag-red)">
                 <span className="font-semibold text-foreground">$35/mo</span>
               </MarkerCircle>{" "}
-              - Seed Membership pricing with full vault access included
+              <span className="line-through">$55</span> — Seed pricing, your founding rate locked in for life
             </p>
           </HandDrawnRect>
         </div>

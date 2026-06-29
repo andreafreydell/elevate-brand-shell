@@ -1,22 +1,19 @@
-/** A dark wavy ribbon that sits over the seam between the banner and the video.
- *  Both edges undulate (tight, frequent waves); it overlaps both sections so the
- *  banner shows above the top wave and the video shows below the bottom wave. */
+/** A slim dark wavy ribbon over the seam between the banner and the video.
+ *  Drawn as ONE wavy path with a thick round stroke, so both edges are perfectly
+ *  parallel (no mismatched/independent top & bottom waves). It overlaps both
+ *  sections via negative margins so banner shows above and video below. */
 const W = 1440;
 const PERIOD = 120; // smaller = tighter / more frequent
-const AMP = 7;
-const TOP = 66;
-const BOT = 84;
+const AMP = 9; // wave height
+const MID = 75; // vertical centre within the 150 viewBox
+const THICK = 18; // ribbon thickness
 
 const buildPath = () => {
-  let top = `M0,${TOP}`;
+  let d = `M0,${MID}`;
   for (let x = 0; x < W; x += PERIOD) {
-    top += ` Q ${x + PERIOD / 4},${TOP - AMP} ${x + PERIOD / 2},${TOP} Q ${x + (3 * PERIOD) / 4},${TOP + AMP} ${x + PERIOD},${TOP}`;
+    d += ` Q ${x + PERIOD / 4},${MID - AMP} ${x + PERIOD / 2},${MID} Q ${x + (3 * PERIOD) / 4},${MID + AMP} ${x + PERIOD},${MID}`;
   }
-  let bot = ` L${W},${BOT}`;
-  for (let x = W; x > 0; x -= PERIOD) {
-    bot += ` Q ${x - PERIOD / 4},${BOT + AMP} ${x - PERIOD / 2},${BOT} Q ${x - (3 * PERIOD) / 4},${BOT - AMP} ${x - PERIOD},${BOT}`;
-  }
-  return `${top}${bot} Z`;
+  return d;
 };
 
 export const WaveTransition = () => (
@@ -25,7 +22,13 @@ export const WaveTransition = () => (
     className="pointer-events-none relative z-[3] -mt-[42px] md:-mt-[68px] -mb-[42px] md:-mb-[68px]"
   >
     <svg className="block w-full h-[88px] md:h-[150px]" viewBox="0 0 1440 150" preserveAspectRatio="none">
-      <path d={buildPath()} fill="hsl(30 12% 10%)" />
+      <path
+        d={buildPath()}
+        fill="none"
+        stroke="hsl(30 12% 10%)"
+        strokeWidth={THICK}
+        strokeLinecap="round"
+      />
     </svg>
   </div>
 );

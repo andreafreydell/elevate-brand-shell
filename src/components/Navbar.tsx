@@ -291,6 +291,35 @@ export const Navbar = () => {
               <div className="border-b border-border/40">
                 <button
                   type="button"
+                  onClick={() => setMobileShopOpen((current) => !current)}
+                  className="w-full flex items-center justify-between py-3 text-[12px] tracking-[0.18em] uppercase font-sans text-foreground hover:text-muted-foreground transition-colors"
+                >
+                  Categories
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform ${
+                      mobileShopOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {mobileShopOpen && (
+                  <div className="grid grid-cols-2 pb-3">
+                    {categoryLinks.map((item) => (
+                      <Link
+                        key={item.label}
+                        to={item.href}
+                        onClick={() => toggleMobile(false)}
+                        className="block py-2 pl-4 text-[11px] tracking-[0.16em] uppercase font-sans text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div className="border-b border-border/40">
+                <button
+                  type="button"
                   onClick={() => setMobileOccasionsOpen((current) => !current)}
                   className="w-full flex items-center justify-between py-3 text-[12px] tracking-[0.18em] uppercase font-sans text-foreground hover:text-muted-foreground transition-colors"
                 >
@@ -319,35 +348,6 @@ export const Navbar = () => {
                         Loading
                       </p>
                     )}
-                  </div>
-                )}
-              </div>
-
-              <div className="border-b border-border/40">
-                <button
-                  type="button"
-                  onClick={() => setMobileShopOpen((current) => !current)}
-                  className="w-full flex items-center justify-between py-3 text-[12px] tracking-[0.18em] uppercase font-sans text-foreground hover:text-muted-foreground transition-colors"
-                >
-                  Categories
-                  <ChevronDown
-                    className={`h-4 w-4 transition-transform ${
-                      mobileShopOpen ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
-                {mobileShopOpen && (
-                  <div className="grid grid-cols-2 pb-3">
-                    {categoryLinks.map((item) => (
-                      <Link
-                        key={item.label}
-                        to={item.href}
-                        onClick={() => toggleMobile(false)}
-                        className="block py-2 pl-4 text-[11px] tracking-[0.16em] uppercase font-sans text-muted-foreground hover:text-foreground transition-colors"
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
                   </div>
                 )}
               </div>
