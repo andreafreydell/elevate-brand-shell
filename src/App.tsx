@@ -267,10 +267,13 @@ const App = () => (
       <LaunchGate>
         <BrowserRouter>
           <AuthProvider>
-            <ScrollManager />
-            <EmailCapturePopup />
-            <AppContent />
-            <ScrollToTopButton />
+            <CustomerAuthProvider>
+              <ScrollManager />
+              <EmailCapturePopup />
+              <AppContent />
+              <ScrollToTopButton />
+              <CustomerAuthModal />
+            </CustomerAuthProvider>
           </AuthProvider>
         </BrowserRouter>
       </LaunchGate>
