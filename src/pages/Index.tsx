@@ -5,6 +5,7 @@ import { PageLayout } from "@/components/layout/PageLayout";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/AnimateIn";
 import { ProductImageRow } from "@/components/ProductImageRow";
+import { photoSrcSet } from "@/lib/responsiveImages";
 import { LandingScrollVideoHero } from "@/components/landing/LandingScrollVideoHero";
 import { CategoryCarousel } from "@/components/landing/CategoryCarousel";
 import { StackingBanner } from "@/components/landing/StackingBanner";
@@ -96,7 +97,7 @@ const Index = () => {
           <StaggerItem className="w-[150px] shrink-0 snap-start md:w-auto md:shrink-0">
             <div className="flex flex-col h-full transition-transform duration-300 ease-out hover:scale-[1.02]">
               <div className="material-image-mobile aspect-[16/10] max-h-[280px] overflow-hidden relative">
-                <img src="/images/material-steel.webp" alt="Layered gold chain necklaces showcasing 316L stainless steel craftsmanship" className="w-full h-full object-cover" loading="lazy" decoding="async" />
+                <img src="/images/material-steel.webp" srcSet={photoSrcSet("material-steel")} sizes="(min-width: 768px) 380px, 150px" alt="Layered gold chain necklaces showcasing 316L stainless steel craftsmanship" className="w-full h-full object-cover" loading="lazy" decoding="async" />
                 <div className="absolute top-3 left-3">
                   <OrganicBlobTag variant="coastal">Hypoallergenic</OrganicBlobTag>
                 </div>
@@ -110,7 +111,7 @@ const Index = () => {
           <StaggerItem className="w-[150px] shrink-0 snap-start md:w-auto md:shrink-0">
             <div className="flex flex-col h-full transition-transform duration-300 ease-out hover:scale-[1.02]">
               <div className="material-image-mobile aspect-[16/10] max-h-[280px] overflow-hidden relative">
-                <img src="/images/material-moissanite.webp" alt="Layered moissanite tennis necklaces on model" className="w-full h-full object-cover" loading="lazy" decoding="async" />
+                <img src="/images/material-moissanite.webp" srcSet={photoSrcSet("material-moissanite")} sizes="(min-width: 768px) 380px, 150px" alt="Layered moissanite tennis necklaces on model" className="w-full h-full object-cover" loading="lazy" decoding="async" />
                 <div className="absolute top-3 left-3">
                   <OrganicBlobTag variant="classic">Conflict-Free</OrganicBlobTag>
                 </div>
@@ -124,7 +125,7 @@ const Index = () => {
           <StaggerItem className="w-[150px] shrink-0 snap-start md:w-auto md:shrink-0">
             <div className="flex flex-col h-full transition-transform duration-300 ease-out hover:scale-[1.02]">
               <div className="material-image-mobile aspect-[16/10] max-h-[280px] overflow-hidden relative">
-                <img src="/images/material-lifecycle.webp" alt="Gold earrings and chain jewelry showcasing lifecycle care craftsmanship" className="w-full h-full object-cover" loading="lazy" decoding="async" />
+                <img src="/images/material-lifecycle.webp" srcSet={photoSrcSet("material-lifecycle")} sizes="(min-width: 768px) 380px, 150px" alt="Gold earrings and chain jewelry showcasing lifecycle care craftsmanship" className="w-full h-full object-cover" loading="lazy" decoding="async" />
                 <div className="absolute top-3 left-3">
                   <OrganicBlobTag variant="statement">Restored</OrganicBlobTag>
                 </div>

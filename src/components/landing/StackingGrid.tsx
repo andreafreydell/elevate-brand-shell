@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { grid, IMG_BASE } from "@/data/landingShowcase";
+import { landingSrcSet } from "@/lib/responsiveImages";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 
 /** Module C — tight Instagram feed, two rows, categories mixed together.
@@ -42,6 +43,8 @@ export const StackingGrid = () => {
             <Link key={`${it.png}-${i}`} to={it.href} className="feed-cell group relative aspect-square">
               <img
                 src={`${IMG_BASE}${it.png}.webp`}
+                srcSet={landingSrcSet(it.png)}
+                sizes="(min-width: 768px) 120px, 42vw"
                 alt=""
                 aria-hidden="true"
                 className="feed-img relative h-full w-full object-cover transition-transform duration-500 ease-out"
@@ -61,6 +64,8 @@ export const StackingGrid = () => {
               <Link key={`${it.png}-${i}`} to={it.href} className="relative aspect-square snap-start overflow-hidden">
                 <img
                   src={`${IMG_BASE}${it.png}.webp`}
+                  srcSet={landingSrcSet(it.png)}
+                  sizes="42vw"
                   alt=""
                   aria-hidden="true"
                   className="h-full w-full object-cover"

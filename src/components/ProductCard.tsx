@@ -98,7 +98,8 @@ export const ProductCard = ({
                       index === activeIdx ? "opacity-100" : "opacity-0"
                     }`}
                     loading={isPrimary && (priority || eager) ? "eager" : "lazy"}
-                    fetchPriority={isPrimary && priority ? "high" : "auto"}
+                    // lowercase attribute name avoids the React camelCase prop warning
+                    {...(isPrimary && priority ? ({ fetchpriority: "high" } as Record<string, string>) : {})}
                     decoding="async"
                   />
                 );

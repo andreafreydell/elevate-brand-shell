@@ -94,7 +94,11 @@ const assurances = [
 // move down the section, so the embroidered story reveals itself top-to-bottom while
 // the footage gently plays. Sources stay local for preview; CDN-host at full quality
 // (no re-encode) before merge.
-const heroVideoSrc = "/videos/flowers-hero.mp4?v=test";
+// Optimized, faststart-streamable encodes (~9MB, down from 23MB) — same clip,
+// re-encoded at high quality. WebM/VP9 first for modern browsers, H.264 MP4
+// fallback for Safari/iOS.
+const heroVideoWebm = "/videos/flowers-hero.webm";
+const heroVideoMp4 = "/videos/flowers-hero.mp4";
 const heroPosterSrc = "/videos/flowers-hero-poster.webp";
 
 // A soft, light cream scrim placed behind text blocks only — keeps the beige feel
@@ -214,7 +218,8 @@ export const LandingScrollVideoHero = () => {
             style={{ objectPosition: "50% 0%" }}
             className="absolute inset-0 h-full w-full transform-gpu object-cover [backface-visibility:hidden]"
           >
-            {videoActive && <source src={heroVideoSrc} type="video/mp4" />}
+            {videoActive && <source src={heroVideoWebm} type="video/webm" />}
+            {videoActive && <source src={heroVideoMp4} type="video/mp4" />}
           </video>
         ) : (
           <img

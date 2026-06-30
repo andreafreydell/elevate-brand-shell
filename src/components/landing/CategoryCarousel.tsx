@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { carousel, IMG_BASE } from "@/data/landingShowcase";
+import { landingSrcSet } from "@/lib/responsiveImages";
 
 /** Module A — large static category bubbles. All categories shown at once,
  *  no movement; wraps to keep every bubble visible on smaller screens. */
@@ -19,6 +20,8 @@ export const CategoryCarousel = () => (
           <div className="relative aspect-square w-full overflow-hidden rounded-full bg-[#eaddc7] transition-transform duration-300 ease-out group-hover:z-10 group-hover:scale-[1.6] group-hover:shadow-[0_16px_44px_rgba(33,25,18,0.32)]">
             <img
               src={`${IMG_BASE}${s.png}.webp`}
+              srcSet={landingSrcSet(s.png)}
+              sizes="(min-width: 768px) 140px, 22vw"
               alt={s.label}
               className="h-full w-full object-cover"
               loading="eager"

@@ -1,9 +1,10 @@
 import { type ShopifyProduct } from "@/lib/shopify";
+import { photoSrcSet } from "@/lib/responsiveImages";
 
 const EDITORIAL_IMAGES = [
-  { url: "/images/edit-1.webp", alt: "Model wearing gold earrings and moissanite ring" },
-  { url: "/images/edit-2.webp", alt: "Model wearing gold chain necklace and hoop earrings" },
-  { url: "/images/edit-3.webp", alt: "Model styled with layered gold jewelry and emerald rings" },
+  { url: "/images/edit-1.webp", name: "edit-1", alt: "Model wearing gold earrings and moissanite ring" },
+  { url: "/images/edit-2.webp", name: "edit-2", alt: "Model wearing gold chain necklace and hoop earrings" },
+  { url: "/images/edit-3.webp", name: "edit-3", alt: "Model styled with layered gold jewelry and emerald rings" },
 ];
 
 export const ProductImageRow = ({ products }: { products: ShopifyProduct[] }) => {
@@ -14,6 +15,8 @@ export const ProductImageRow = ({ products }: { products: ShopifyProduct[] }) =>
           <div key={i} className="edit-gallery-image-mobile aspect-[4/5] overflow-hidden bg-card">
             <img
               src={img.url}
+              srcSet={photoSrcSet(img.name)}
+              sizes="(min-width: 768px) 470px, 100vw"
               alt={img.alt}
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               loading="lazy"

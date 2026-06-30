@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { banner, IMG_BASE } from "@/data/landingShowcase";
+import { landingSrcSet } from "@/lib/responsiveImages";
 
 /** Module A — large image band (2x) that drifts slowly. The wavy transition into
  *  the video is rendered separately (WaveTransition) so it can cut both sections. */
@@ -17,6 +18,8 @@ export const StackingBanner = () => {
           <Link key={`${b.png}-${i}`} to={b.href} aria-label="Rent this look" className="group block shrink-0">
             <img
               src={`${IMG_BASE}${b.png}.webp`}
+              srcSet={landingSrcSet(b.png)}
+              sizes="(min-width: 1024px) 640px, (min-width: 768px) 520px, (min-width: 640px) 320px, 200px"
               alt=""
               aria-hidden="true"
               className="block h-[200px] w-[200px] sm:h-[320px] sm:w-[320px] md:h-[520px] md:w-[520px] lg:h-[640px] lg:w-[640px] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
