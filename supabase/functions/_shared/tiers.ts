@@ -15,18 +15,18 @@
 //
 // Returns null if no tier can be determined (caller logs + skips).
 
-export type GeaTier = "three_piece" | "six_piece" | "ten_piece";
+export type GeaTier = "seed" | "blossom" | "garden";
 
 const PIECE_TO_TIER: Record<number, GeaTier> = {
-  3: "three_piece",
-  6: "six_piece",
-  10: "ten_piece",
+  3: "seed",
+  6: "blossom",
+  10: "garden",
 };
 
 const NAME_TO_TIER: Array<[string, GeaTier]> = [
-  ["seed", "three_piece"],
-  ["blossom", "six_piece"],
-  ["garden", "ten_piece"],
+  ["seed", "seed"],
+  ["blossom", "blossom"],
+  ["garden", "garden"],
 ];
 
 function loadEnvMap(): Record<string, GeaTier> {
@@ -82,7 +82,7 @@ export function resolveTier(
   return null;
 }
 
-// Normalize Shopify subscription contract status to the memberships.status enum.
+// Normalize Shopify subscription contract status to the profile membership_status enum.
 export function normalizeStatus(shopifyStatus: string | null | undefined): string {
   switch ((shopifyStatus || "").toUpperCase()) {
     case "ACTIVE":
@@ -91,10 +91,9 @@ export function normalizeStatus(shopifyStatus: string | null | undefined): strin
       return "paused";
     case "CANCELLED":
     case "CANCELED":
-      return "cancelled";
     case "EXPIRED":
     case "FAILED":
-      return "expired";
+      return "cancelled";
     default:
       return "active";
   }

@@ -71,7 +71,7 @@ export default function RentalOps() {
   const charges = useTable("charges", () =>
     supabase.from("charges").select("*").order("created_at", { ascending: false }));
   const members = useTable("members", () =>
-    supabase.from("memberships").select("*").order("created_at", { ascending: false }));
+    supabase.from("profiles").select("*").neq("membership_status", "none").order("created_at", { ascending: false }));
   const cycles = useTable("cycles", () =>
     supabase.from("rental_cycles").select("*").gt("extra_keeps", 0).order("cycle_end", { ascending: false }));
 
@@ -292,11 +292,11 @@ export default function RentalOps() {
             renderRow={(m) => (
               <TableRow key={m.id}>
                 <TableCell className="font-mono text-[12px]">{m.shopify_customer_id}</TableCell>
-                <TableCell>{m.tier}</TableCell>
+                <TableCell>{m.membership_tier}</TableCell>
                 <TableCell>{m.free_items_per_cycle}</TableCell>
                 <TableCell>{m.keep_allowance_per_cycle}</TableCell>
-                <TableCell><Badge variant={m.status === "active" ? "outline" : "secondary"}>{m.status}</Badge></TableCell>
-                <TableCell>{fmtDate(m.started_at)}</TableCell>
+                <TableCell><Badge variant={m.membership_status === "active" ? "outline" : "secondary"}>{m.membership_status}</Badge></TableCell>
+                <TableCell>{fmtDate(m.membership_started_at)}</TableCell>
               </TableRow>
             )}
           />

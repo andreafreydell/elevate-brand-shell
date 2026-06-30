@@ -98,17 +98,9 @@ export const saveFoundingAccessEmail = async (
     return { success: false, error: "Please enter a valid email address." };
   }
 
-  // Klaviyo first and unconditionally: even if Supabase hiccups, the welcome
-  // flow still reaches them. Endpoint is idempotent for repeat subscribes.
+  // Klaviyo is the source of truth for the founding-access waitlist: the welcome
+  // flow reaches every captured email. Endpoint is idempotent for repeat subscribes.
   subscribeToKlaviyo(normalizedEmail, source, firstName);
-
-  const { error } = await supabase
-    .from("founding_members")
-    .insert({ email: normalizedEmail, source });
-
-  if (error && error.code !== "23505") {
-    return { success: false, error: "Something went wrong. Please try again." };
-  }
 
   markFoundingAccessCaptured();
   return { success: true };
