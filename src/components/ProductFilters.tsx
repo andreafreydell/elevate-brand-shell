@@ -152,15 +152,15 @@ export const ProductFilters = ({
     <div className="max-w-[1400px] mx-auto px-6">
       <div className="flex flex-wrap items-center gap-3 py-4 border-b border-border">
         {filterGroups.map((group) => (
-          <Select key={group.key} value={filters[group.key] || "all"} onValueChange={(value) => update(group.key, value)}>
+          <Select key={group.key} value={filters[group.key] || undefined} onValueChange={(value) => update(group.key, value)}>
             <SelectTrigger
               data-active={filters[group.key] ? "true" : undefined}
               className="w-[150px] shrink-0 h-9 border-border bg-transparent text-xs tracking-[0.15em] uppercase font-sans data-[active=true]:border-foreground data-[active=true]:bg-secondary [&>span]:truncate"
             >
-              <SelectValue placeholder={group.label} />
+              <SelectValue placeholder={`Pick ${group.label}`} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">All — {group.label}</SelectItem>
+              <SelectItem value="all">All {group.label}</SelectItem>
               {group.options.map((option) => (
                 <SelectItem key={option} value={option}>
                   {option}
@@ -170,9 +170,12 @@ export const ProductFilters = ({
           </Select>
         ))}
 
-        <Select value={filters.sort || "default"} onValueChange={(value) => update("sort", value)}>
-          <SelectTrigger className="w-[150px] shrink-0 h-9 border-border bg-transparent text-xs tracking-[0.15em] uppercase font-sans [&>span]:truncate">
-            <SelectValue placeholder="Sort" />
+        <Select value={(filters.sort && filters.sort !== "default") ? filters.sort : undefined} onValueChange={(value) => update("sort", value)}>
+          <SelectTrigger
+            data-active={(filters.sort && filters.sort !== "default") ? "true" : undefined}
+            className="w-[150px] shrink-0 h-9 border-border bg-transparent text-xs tracking-[0.15em] uppercase font-sans data-[active=true]:border-foreground data-[active=true]:bg-secondary [&>span]:truncate"
+          >
+            <SelectValue placeholder="Sort by" />
           </SelectTrigger>
           <SelectContent>
             {SORT_OPTIONS.map((option) => (

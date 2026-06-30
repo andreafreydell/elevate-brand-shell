@@ -4,8 +4,32 @@ import { landingSrcSet } from "@/lib/responsiveImages";
 
 /** Module A — large image band (2x) that drifts slowly. The wavy transition into
  *  the video is rendered separately (WaveTransition) so it can cut both sections. */
+// Hand-picked close-up / simpler shots to mix in among the bold hero photos.
+// Same {png, href} shape as the existing banner items (png maps to the product
+// handle ending in that number); images live in /landing/<png>.webp.
+const featureItems = [
+  { png: 80, href: "/product/naelia-bracelet80" },
+  { png: 180, href: "/product/ziolia-necklace180" },
+  { png: 297, href: "/product/giovia-earrings297" },
+  { png: 308, href: "/product/raelia-earrings308" },
+  { png: 460, href: "/product/vealia-necklace460" },
+  { png: 532, href: "/product/laevia-bracelet532" },
+  { png: 98, href: "/product/saunia-earrings98" },
+];
+
+// Alternate existing hero photo, then a new feature, then existing, and so on.
+const interleave = <T,>(a: T[], b: T[]): T[] => {
+  const out: T[] = [];
+  for (let i = 0; i < Math.max(a.length, b.length); i++) {
+    if (i < a.length) out.push(a[i]);
+    if (i < b.length) out.push(b[i]);
+  }
+  return out;
+};
+
 export const StackingBanner = () => {
-  const items = [...banner, ...banner, ...banner]; // tripled for a seamless loop
+  const mixed = interleave(banner, featureItems);
+  const items = [...mixed, ...mixed, ...mixed]; // tripled for a seamless loop
 
   return (
     <section className="relative overflow-hidden">
