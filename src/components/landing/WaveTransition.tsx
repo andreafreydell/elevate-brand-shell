@@ -25,7 +25,7 @@ export const WaveTransition = () => (
       <path
         d={buildPath()}
         fill="none"
-        stroke="hsl(30 12% 10%)"
+        stroke="hsl(var(--foreground))"
         strokeWidth={THICK}
         strokeLinecap="round"
       />
