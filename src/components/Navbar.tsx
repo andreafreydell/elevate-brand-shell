@@ -489,16 +489,8 @@ export const Navbar = () => {
                 >
                   <Search className="h-[18px] w-[18px] stroke-[1.5]" />
                 </button>
-                <a
-                  href={CUSTOMER_ACCOUNT_URL}
-                  onClick={() => toggleMobile(false)}
-                  className="p-1.5 hover:opacity-70 transition-opacity"
-                >
-                  <User className="h-[18px] w-[18px] stroke-[1.5]" />
-                </a>
-                <button className="p-1.5 hover:opacity-70 transition-opacity">
-                  <Heart className="h-[18px] w-[18px] stroke-[1.5]" />
-                </button>
+                <AccountMenu size={18} onNavigate={() => toggleMobile(false)} />
+                <FavoritesButton size={18} onNavigate={() => toggleMobile(false)} />
               </div>
             </div>
           </nav>
