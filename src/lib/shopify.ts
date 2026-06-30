@@ -395,6 +395,65 @@ export const COLLECTION_SIBLINGS_QUERY = `
   }
 `;
 
+// Fetch full product cards for an arbitrary set of handles (used by the
+// account-page Occasions/wishlist grids). Shopify's query supports OR-ing
+// handles together.
+export const PRODUCTS_BY_HANDLES_QUERY = `
+  query ProductsByHandles($query: String!, $first: Int!) {
+    products(first: $first, query: $query) {
+      edges {
+        node {
+          id
+          title
+          handle
+          productType
+          tags
+          priceRange {
+            minVariantPrice {
+              amount
+              currencyCode
+            }
+          }
+          images(first: 3) {
+            edges {
+              node {
+                url
+                altText
+              }
+            }
+          }
+          variants(first: 1) {
+            edges {
+              node {
+                id
+                title
+                sku
+                price {
+                  amount
+                  currencyCode
+                }
+                availableForSale
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export async function fetchProductsByHandles(handles: string[]): Promise<ShopifyProduct[]> {
+  if (!handles.length) return [];
+  const query = handles.map((h) => `handle:${h}`).join(" OR ");
+  const data = await storefrontApiRequest(PRODUCTS_BY_HANDLES_QUERY, { query, first: 250 });
+  const edges: ShopifyProduct[] = data?.data?.products?.edges ?? [];
+  // Preserve the caller's handle order so saved items stay in a stable sequence.
+  const order = new Map(handles.map((h, i) => [h, i]));
+  return [...edges].sort(
+    (a, b) => (order.get(a.node.handle) ?? 0) - (order.get(b.node.handle) ?? 0),
+  );
+}
+
 // Cart mutations
 export const CART_QUERY = `
   query cart($id: ID!) {

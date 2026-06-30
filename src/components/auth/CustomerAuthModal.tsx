@@ -9,8 +9,8 @@ import { useCustomerAuth, type AuthIntent } from "@/contexts/CustomerAuthContext
 
 const INTENT_COPY: Record<Exclude<AuthIntent, null>, { signup: string; login: string }> = {
   favorites: {
-    signup: "Create your account to save favorites.",
-    login: "Log in to save your favorites.",
+    signup: "Create your account to save this to your first Occasion.",
+    login: "Log in to save this to an Occasion.",
   },
   checkout: {
     signup: "Create your account to check out.",

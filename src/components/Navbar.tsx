@@ -143,22 +143,30 @@ export const Navbar = () => {
     );
 
   // Heart: favorites entry point. Signed-out shoppers are prompted to create an
-  // account first (wishlist UI itself is not built yet).
-  const FavoritesButton = ({ size, onNavigate }: { size: number; onNavigate?: () => void }) => (
-    <button
-      type="button"
-      aria-label="Favorites"
-      onClick={() => {
-        if (!isSignedIn) {
+  // account first; signed-in shoppers go to their saved Occasions.
+  const FavoritesButton = ({ size, onNavigate }: { size: number; onNavigate?: () => void }) =>
+    isSignedIn ? (
+      <Link
+        to="/account"
+        aria-label="Your Occasions"
+        onClick={onNavigate}
+        className="p-1.5 hover:opacity-70 transition-opacity"
+      >
+        <Heart className="stroke-[1.5]" style={{ height: size, width: size }} />
+      </Link>
+    ) : (
+      <button
+        type="button"
+        aria-label="Favorites"
+        onClick={() => {
           openAuthModal({ mode: "signup", intent: "favorites" });
-        }
-        onNavigate?.();
-      }}
-      className="p-1.5 hover:opacity-70 transition-opacity"
-    >
-      <Heart className="stroke-[1.5]" style={{ height: size, width: size }} />
-    </button>
-  );
+          onNavigate?.();
+        }}
+        className="p-1.5 hover:opacity-70 transition-opacity"
+      >
+        <Heart className="stroke-[1.5]" style={{ height: size, width: size }} />
+      </button>
+    );
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
