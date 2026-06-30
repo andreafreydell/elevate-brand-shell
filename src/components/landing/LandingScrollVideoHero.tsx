@@ -130,6 +130,10 @@ export const LandingScrollVideoHero = () => {
   const imgRef = useRef<HTMLImageElement>(null);
   const frameRef = useRef<number | null>(null);
   const [videoHasError, setVideoHasError] = useState(false);
+  // The hero clip is heavy, so we hold off fetching it until the section is
+  // near the viewport. The poster shows immediately; the video streams in as
+  // you approach — keeping the initial page load (carousel/banner) fast.
+  const [videoActive, setVideoActive] = useState(false);
 
   const getScrollProgress = useCallback(() => {
     const section = sectionRef.current;
@@ -162,10 +166,32 @@ export const LandingScrollVideoHero = () => {
     });
   }, [updateMedia]);
 
-  // Keep the clip gently playing (muted, inline) for the "flowers turn" motion.
+  // Defer loading the heavy clip until the hero is approaching the viewport.
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section || videoActive) return;
+    if (typeof IntersectionObserver === "undefined") {
+      setVideoActive(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setVideoActive(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "300px 0px" },
+    );
+    io.observe(section);
+    return () => io.disconnect();
+  }, [videoActive]);
+
+  // Once active, load + keep the clip gently playing (muted, inline) for the
+  // "flowers turn" motion.
   useEffect(() => {
     const video = videoRef.current;
-    if (!video || videoHasError) return;
+    if (!video || videoHasError || !videoActive) return;
 
     video.muted = true;
     video.defaultMuted = true;
@@ -173,8 +199,9 @@ export const LandingScrollVideoHero = () => {
     video.setAttribute("muted", "");
     video.setAttribute("playsinline", "");
     video.setAttribute("webkit-playsinline", "");
+    video.load();
     video.play().catch(() => undefined);
-  }, [videoHasError]);
+  }, [videoActive, videoHasError]);
 
   useEffect(() => {
     requestUpdate();
@@ -197,18 +224,17 @@ export const LandingScrollVideoHero = () => {
         {!videoHasError ? (
           <video
             ref={videoRef}
-            autoPlay
             loop
             muted
             playsInline
-            preload="auto"
+            preload="none"
             poster={heroPosterSrc}
             aria-label="GEA jewelry styling video"
             onError={() => setVideoHasError(true)}
             style={{ objectPosition: "50% 0%" }}
             className="absolute inset-0 h-full w-full transform-gpu object-cover [backface-visibility:hidden]"
           >
-            <source src={heroVideoSrc} type="video/mp4" />
+            {videoActive && <source src={heroVideoSrc} type="video/mp4" />}
           </video>
         ) : (
           <img
