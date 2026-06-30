@@ -56,7 +56,7 @@ Deno.serve(async (req) => {
           metric: "GEA Cycle Opened",
           email,
           properties: {
-            tier: m.tier,
+            tier: m.membership_tier,
             cycle_number: cycle.cycle_number,
             free_items: cycle.free_items_allowance,
             keep_allowance: cycle.keep_allowance,
