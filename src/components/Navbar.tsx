@@ -90,6 +90,75 @@ export const Navbar = () => {
   const [occasionLinks, setOccasionLinks] = useState<string[]>([]);
   const [searchOpen, setSearchOpen] = useState(false);
   const location = useLocation();
+  const { isSignedIn, profile, user, openAuthModal, signOut } = useCustomerAuth();
+
+  // Account icon: signed-out opens the login modal; signed-in shows a menu with
+  // the account link and a log-out option.
+  const AccountMenu = ({ size, onNavigate }: { size: number; onNavigate?: () => void }) =>
+    isSignedIn ? (
+      <DropdownMenu>
+        <DropdownMenuTrigger
+          aria-label="Account menu"
+          className="p-1.5 hover:opacity-70 transition-opacity focus:outline-none"
+        >
+          <User className="stroke-[1.5]" style={{ height: size, width: size }} />
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end" className="w-56 rounded-none">
+          <DropdownMenuLabel className="font-sans">
+            <span className="block text-[10px] tracking-[0.2em] uppercase text-muted-foreground">Signed in as</span>
+            <span className="block truncate text-[13px] font-normal text-foreground">
+              {profile?.full_name || profile?.email || user?.email}
+            </span>
+          </DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem asChild>
+            <Link to="/account" onClick={onNavigate} className="text-[11px] tracking-[0.15em] uppercase">
+              My Account
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => {
+              signOut();
+              onNavigate?.();
+            }}
+            className="text-[11px] tracking-[0.15em] uppercase"
+          >
+            <LogOut className="mr-2 h-3.5 w-3.5" />
+            Log out
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    ) : (
+      <button
+        type="button"
+        aria-label="Account"
+        onClick={() => {
+          openAuthModal({ mode: "login", intent: "account" });
+          onNavigate?.();
+        }}
+        className="p-1.5 hover:opacity-70 transition-opacity"
+      >
+        <User className="stroke-[1.5]" style={{ height: size, width: size }} />
+      </button>
+    );
+
+  // Heart: favorites entry point. Signed-out shoppers are prompted to create an
+  // account first (wishlist UI itself is not built yet).
+  const FavoritesButton = ({ size, onNavigate }: { size: number; onNavigate?: () => void }) => (
+    <button
+      type="button"
+      aria-label="Favorites"
+      onClick={() => {
+        if (!isSignedIn) {
+          openAuthModal({ mode: "signup", intent: "favorites" });
+        }
+        onNavigate?.();
+      }}
+      className="p-1.5 hover:opacity-70 transition-opacity"
+    >
+      <Heart className="stroke-[1.5]" style={{ height: size, width: size }} />
+    </button>
+  );
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
