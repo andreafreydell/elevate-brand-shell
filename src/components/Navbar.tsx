@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { CUSTOMER_ACCOUNT_URL } from "@/lib/membershipCheckout";
 import { CartDrawer } from "./CartDrawer";
 import { SearchOverlay } from "./SearchOverlay";
-import { Search, User, Heart, Menu, X, ChevronDown } from "lucide-react";
+import { Search, User, Heart, Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import { storefrontApiRequest, OCCASIONS_QUERY } from "@/lib/shopify";
 
 const primaryLinks = [
@@ -12,12 +12,23 @@ const primaryLinks = [
   { label: "How It Works", href: "/how-it-works" },
 ];
 
-const categoryLinks = [
+type CatLink = { label: string; href: string; children?: { label: string; href: string }[] };
+
+const categoryLinks: CatLink[] = [
   { label: "Earrings", href: "/earrings" },
-  { label: "Necklaces", href: "/necklaces" },
-  { label: "Charms", href: "/charms" },
-  { label: "Charm Chains", href: "/charm-chains" },
-  { label: "Letter Pieces", href: "/letter-pieces" },
+  {
+    label: "Necklaces",
+    href: "/necklaces",
+    children: [{ label: "Personalized Necklaces", href: "/personalized-necklaces" }],
+  },
+  {
+    label: "Charms",
+    href: "/charms",
+    children: [
+      { label: "Charm Chains", href: "/charm-chains" },
+      { label: "Personalized Necklaces", href: "/personalized-necklaces" },
+    ],
+  },
   { label: "Bracelets", href: "/bracelets" },
   { label: "Rings", href: "/rings" },
   { label: "Sunglasses", href: "/sunglasses" },
@@ -208,16 +219,41 @@ export const Navbar = () => {
               Categories
               <ChevronDown className="h-3 w-3 stroke-[1.7]" />
             </button>
-            <div className="pointer-events-none absolute left-1/2 top-full z-50 w-[260px] -translate-x-1/2 pt-3 opacity-0 transition-opacity duration-150 group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:opacity-100">
-              <div className="grid grid-cols-2 gap-x-2 border border-border bg-background p-3 shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
+            <div className="pointer-events-none absolute left-1/2 top-full z-50 w-[280px] -translate-x-1/2 pt-3 opacity-0 transition-opacity duration-150 group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:opacity-100">
+              <div className="border border-border bg-background p-2 shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
                 {categoryLinks.map((item) => (
-                  <Link
-                    key={item.label}
-                    to={item.href}
-                    className="block px-2 py-2 text-[10px] tracking-[0.18em] uppercase font-sans text-foreground hover:bg-accent transition-colors"
-                  >
-                    {item.label}
-                  </Link>
+                  <div key={item.label} className="group/cat">
+                    <div className="flex items-center justify-between transition-colors hover:bg-accent">
+                      <Link
+                        to={item.href}
+                        className="block flex-1 px-2 py-2 text-[10px] tracking-[0.18em] uppercase font-sans text-foreground"
+                      >
+                        {item.label}
+                      </Link>
+                      {item.children && (
+                        <Link
+                          to={item.children[0].href}
+                          aria-label={`${item.label} subcategories`}
+                          className="px-2 py-2 text-[var(--poppy-deep)]"
+                        >
+                          <ChevronRight className="h-3.5 w-3.5 stroke-[2]" />
+                        </Link>
+                      )}
+                    </div>
+                    {item.children && (
+                      <div className="hidden pb-1 pl-3 group-hover/cat:block">
+                        {item.children.map((c) => (
+                          <Link
+                            key={c.href}
+                            to={c.href}
+                            className="block px-2 py-1.5 text-[10px] tracking-[0.16em] uppercase font-sans text-muted-foreground transition-colors hover:text-foreground"
+                          >
+                            › {c.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 ))}
               </div>
             </div>
@@ -304,16 +340,27 @@ export const Navbar = () => {
                   />
                 </button>
                 {mobileShopOpen && (
-                  <div className="grid grid-cols-2 pb-3">
+                  <div className="pb-3">
                     {categoryLinks.map((item) => (
-                      <Link
-                        key={item.label}
-                        to={item.href}
-                        onClick={() => toggleMobile(false)}
-                        className="block py-2 pl-4 text-[11px] tracking-[0.16em] uppercase font-sans text-muted-foreground hover:text-foreground transition-colors"
-                      >
-                        {item.label}
-                      </Link>
+                      <div key={item.label}>
+                        <Link
+                          to={item.href}
+                          onClick={() => toggleMobile(false)}
+                          className="block py-2 pl-4 text-[11px] tracking-[0.16em] uppercase font-sans text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                          {item.label}
+                        </Link>
+                        {item.children?.map((c) => (
+                          <Link
+                            key={c.href}
+                            to={c.href}
+                            onClick={() => toggleMobile(false)}
+                            className="block py-1.5 pl-8 text-[10px] tracking-[0.14em] uppercase font-sans text-muted-foreground/80 hover:text-foreground transition-colors"
+                          >
+                            › {c.label}
+                          </Link>
+                        ))}
+                      </div>
                     ))}
                   </div>
                 )}

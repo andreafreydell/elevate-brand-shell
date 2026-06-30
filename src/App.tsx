@@ -150,7 +150,7 @@ const AppContent = () => {
       />
       <Route
         path="/necklaces"
-        element={<CategoryPage title="Necklaces" subtitle="Chains, pendants, and layering pieces — crafted to elevate." productType="Necklace" subCollections={[{ label: "Letter Pieces", to: "/letter-pieces" }]} />}
+        element={<CategoryPage title="Necklaces" subtitle="Chains, pendants, and layering pieces — crafted to elevate." productType="Necklace" subCollections={[{ label: "Personalized Necklaces", to: "/personalized-necklaces" }]} />}
       />
       <Route
         path="/rings"
@@ -166,7 +166,7 @@ const AppContent = () => {
       />
       <Route
         path="/charms"
-        element={<CategoryPage title="Charms" subtitle="Tokens, pendants, and add-ons — build a piece that tells your story." productType="Charm" subCollections={[{ label: "Charm Chains", to: "/charm-chains" }, { label: "Letter Pieces", to: "/letter-pieces" }]} />}
+        element={<CategoryPage title="Charms" subtitle="Tokens, pendants, and add-ons — build a piece that tells your story." productType="Charm" subCollections={[{ label: "Charm Chains", to: "/charm-chains" }, { label: "Personalized Necklaces", to: "/personalized-necklaces" }]} />}
       />
       <Route
         path="/charm-chains"
@@ -184,10 +184,10 @@ const AppContent = () => {
         )}
       />
       <Route
-        path="/letter-pieces"
+        path="/personalized-necklaces"
         element={(
           <CategoryPage
-            title="Letter, Name & Zodiac Pieces"
+            title="Personalized Necklaces"
             subtitle="Initials A–Z, word pieces (MOM, LOVE), and zodiac discs — use the filter to jump between them."
             productType="Charm"
             query="Letter OR Label OR Zodiac"
