@@ -82,6 +82,27 @@ const Account = () => {
 
       <TornPaperEdge className="mx-auto max-w-[1440px]" />
 
+      {isSignedIn ? (
+        <div className="pt-12">
+          <OccasionsSection />
+        </div>
+      ) : (
+        <section className="mx-auto max-w-[1440px] px-5 py-14 text-center sm:px-6 md:px-12 lg:px-16">
+          <Heart className="mx-auto mb-4 h-6 w-6 text-muted-foreground" />
+          <h2 className="mb-2 font-serif text-2xl font-medium md:text-3xl">Your Occasions</h2>
+          <p className="mx-auto mb-6 max-w-md font-sans text-[13px] text-muted-foreground">
+            Log in to view the pieces you've saved and organise them into Occasions.
+          </p>
+          <button
+            type="button"
+            onClick={() => openAuthModal({ mode: "login", intent: "favorites" })}
+            className="btn-gea"
+          >
+            Log in
+          </button>
+        </section>
+      )}
+
       <SectionHeading heading="Dashboard Modules" />
       <section className="mx-auto max-w-[1440px] px-5 pb-16 sm:px-6 md:px-12 lg:px-16">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
