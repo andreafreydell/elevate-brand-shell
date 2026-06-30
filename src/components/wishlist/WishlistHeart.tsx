@@ -50,12 +50,17 @@ export const WishlistHeart = ({ handle, size = 18, className }: WishlistHeartPro
     }
   }, [open]);
 
-  const handleOpenChange = (next: boolean) => {
-    if (next && !isSignedIn) {
+  // We manage opening manually (not via Radix's trigger) because the heart often
+  // lives inside a product <Link>: we must preventDefault to stop navigation,
+  // which would otherwise also cancel Radix's built-in trigger toggle.
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!isSignedIn) {
       openAuthModal({ mode: "signup", intent: "favorites" });
       return;
     }
-    setOpen(next);
+    setOpen((o) => !o);
   };
 
   const handleCreate = async () => {
@@ -74,17 +79,13 @@ export const WishlistHeart = ({ handle, size = 18, className }: WishlistHeartPro
   };
 
   return (
-    <Popover open={open} onOpenChange={handleOpenChange}>
+    <Popover open={open} onOpenChange={(next) => !next && setOpen(false)}>
       <PopoverTrigger asChild>
         <button
           type="button"
           aria-label={saved ? "Saved to Occasions — edit" : "Save to an Occasion"}
           aria-pressed={saved}
-          onClick={(e) => {
-            // Prevent the surrounding product link from navigating.
-            e.preventDefault();
-            e.stopPropagation();
-          }}
+          onClick={handleClick}
           className={cn(
             "flex items-center justify-center bg-background/85 backdrop-blur-sm border border-border p-2 text-foreground transition-colors hover:bg-background focus:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40",
             className,
