@@ -298,6 +298,11 @@ const ProductDetail = () => {
                 <div className="absolute bottom-4 left-4">
                   <OrganicBlobTag variant="coastal">{category}</OrganicBlobTag>
                 </div>
+                <WishlistHeart
+                  handle={product.handle}
+                  size={18}
+                  className="absolute left-4 top-4 z-10"
+                />
                 <WaxSeal size={28} className="absolute top-4 right-4" />
               </div>
 
