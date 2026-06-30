@@ -261,7 +261,7 @@ export const OccasionsSection = () => {
           <Heart className="mx-auto mb-4 h-6 w-6 text-muted-foreground" />
           <p className="mb-1 font-serif text-lg">Create your first Occasion</p>
           <p className="mx-auto max-w-sm font-sans text-[13px] text-muted-foreground">
-            Group the pieces you love by moment — a wedding, a holiday, a everyday rotation.
+            Group the pieces you love by moment — a wedding, a holiday, an everyday rotation.
             Tap the heart on any piece to save it here.
           </p>
         </div>
