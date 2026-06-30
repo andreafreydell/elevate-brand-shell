@@ -202,6 +202,22 @@ const StandardOffer = ({ ctaHref }: { ctaHref: string }) => (
 
 const FullOffer = ({ ctaHref }: { ctaHref: string }) => (
   <div className="space-y-8">
+    <div
+      className="mx-auto max-w-[720px] border border-border bg-card px-6 py-6 text-center"
+      style={{ borderTop: "2px solid var(--poppy)" }}
+    >
+      <p className="font-sans text-[10px] uppercase tracking-[0.32em] text-muted-foreground">
+        The GEA Promise <span aria-hidden="true" style={{ color: "var(--poppy-deep)" }}>✿</span>
+      </p>
+      <p className="mt-2 font-serif text-2xl font-semibold leading-snug md:text-3xl">
+        A <span style={{ color: "var(--poppy-deep)" }}>$40 gift</span>, free —{" "}
+        <span style={{ color: "var(--poppy-deep)" }}>every single month</span>.
+      </p>
+      <p className="mx-auto mt-3 max-w-[560px] font-sans text-[13px] leading-relaxed text-muted-foreground md:text-[14px]">
+        20 ear-protection patches + a pair of earring lifters in every shipment — because everyone
+        deserves to wear <em>all</em> the jewelry, without hurting their ears.
+      </p>
+    </div>
     <StandardOffer ctaHref={ctaHref} />
     <p className="text-center font-sans text-[11px] tracking-[0.1em] text-muted-foreground">
       One curated shipment per 30-day cycle. Keep 1 to 3 pieces by tier, included —

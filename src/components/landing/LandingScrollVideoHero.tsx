@@ -310,6 +310,23 @@ export const LandingScrollVideoHero = () => {
             </p>
           </div>
 
+          <div
+            className={`mx-auto mb-6 block w-full max-w-[700px] px-6 py-5 text-center ${scrim}`}
+            style={{ borderTop: "2px solid var(--poppy)" }}
+          >
+            <p className="font-sans text-[10px] uppercase tracking-[0.32em] text-foreground/70">
+              The GEA Promise <span aria-hidden="true" style={{ color: "var(--poppy-deep)" }}>✿</span>
+            </p>
+            <p className="mt-2 font-serif text-xl font-semibold leading-snug text-foreground md:text-[1.7rem]">
+              A <span style={{ color: "var(--poppy-deep)" }}>$40 gift</span>, free —{" "}
+              <span style={{ color: "var(--poppy-deep)" }}>every single month</span>.
+            </p>
+            <p className="mx-auto mt-2 max-w-[540px] font-sans text-[13px] leading-relaxed text-foreground/85 md:text-[14px]">
+              20 ear-protection patches + a pair of earring lifters in every shipment — because everyone
+              deserves to wear <em>all</em> the jewelry, without hurting their ears.
+            </p>
+          </div>
+
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             {tiers.map((tier) => (
               <a
