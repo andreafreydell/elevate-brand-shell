@@ -1,10 +1,18 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { CUSTOMER_ACCOUNT_URL } from "@/lib/membershipCheckout";
 import { CartDrawer } from "./CartDrawer";
 import { SearchOverlay } from "./SearchOverlay";
-import { Search, User, Heart, Menu, X, ChevronDown, ChevronRight } from "lucide-react";
+import { Search, User, Heart, Menu, X, ChevronDown, ChevronRight, LogOut } from "lucide-react";
 import { storefrontApiRequest, OCCASIONS_QUERY } from "@/lib/shopify";
+import { useCustomerAuth } from "@/contexts/CustomerAuthContext";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const primaryLinks = [
   { label: "Home", href: "/" },
