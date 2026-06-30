@@ -12,6 +12,8 @@ import Index from "./pages/Index";
 import AdminLogin from "./pages/admin/AdminLogin";
 import RentalOps from "./pages/admin/RentalOps";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { CustomerAuthProvider } from "@/contexts/CustomerAuthContext";
+import { CustomerAuthModal } from "@/components/auth/CustomerAuthModal";
 import { AdminRoute } from "@/components/auth/AdminRoute";
 import ProductDetail from "./pages/ProductDetail";
 import HowItWorks from "./pages/HowItWorks";
