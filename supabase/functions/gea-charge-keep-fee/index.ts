@@ -84,7 +84,7 @@ Deno.serve(async (req) => {
 
     // Attempt to capture against the customer's payment on file.
     const charged = await chargeKeepFeeToCustomer({
-      customerId: membership.shopify_customer_id,
+      customerId: account.shopify_customer_id,
       title: `GEA extra-keep fee — ${item.serial_number}`,
       amount: Number(item.fee_amount),
     });
