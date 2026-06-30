@@ -150,7 +150,7 @@ const AppContent = () => {
       />
       <Route
         path="/necklaces"
-        element={<CategoryPage title="Necklaces" subtitle="Chains, pendants, and layering pieces — crafted to elevate." productType="Necklace" subCollections={[{ label: "Personalized Necklaces", to: "/personalized-necklaces" }]} />}
+        element={<CategoryPage title="Necklaces" subtitle="Chains, pendants, and layering pieces — crafted to elevate." productType="Necklace" subCollections={[{ label: "Beads & Stones", to: "/beaded-necklaces" }, { label: "Crystals", to: "/crystal-necklaces" }]} filterFooter={[{ label: "Personalized Necklaces", to: "/personalized-necklaces" }]} />}
       />
       <Route
         path="/rings"
@@ -192,12 +192,35 @@ const AppContent = () => {
             subtitle="Initials A–Z, word pieces (MOM, LOVE), and zodiac discs — use the filter to jump between them."
             productType="Charm"
             query="Letter OR Label OR Zodiac"
-            parentLinks={[{ label: "All Necklaces", to: "/necklaces" }, { label: "All Charms", to: "/charms" }]}
             filterGroups={[
               { label: "Letters", re: /letter/i },
-              { label: "Labels", re: /label/i },
+              { label: "Text", re: /label/i },
               { label: "Zodiac", re: /zodiac/i },
             ]}
+          />
+        )}
+      />
+      <Route
+        path="/beaded-necklaces"
+        element={(
+          <CategoryPage
+            title="Beads & Stones"
+            subtitle="Beaded, strand & natural-stone necklaces — texture made to layer."
+            productType="Necklace"
+            query="product_type:Necklace AND (title:bead* OR title:strand* OR title:stone*)"
+            parentLinks={[{ label: "All Necklaces", to: "/necklaces" }]}
+          />
+        )}
+      />
+      <Route
+        path="/crystal-necklaces"
+        element={(
+          <CategoryPage
+            title="Crystals"
+            subtitle="Tennis, crystal & CZ necklaces — all the sparkle, none of the commitment."
+            productType="Necklace"
+            query="product_type:Necklace AND (title:tennis* OR title:crystal* OR title:cz OR title:zirconia OR title:pave* OR title:pavé* OR title:rhinestone*)"
+            parentLinks={[{ label: "All Necklaces", to: "/necklaces" }]}
           />
         )}
       />

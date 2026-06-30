@@ -32,13 +32,15 @@ interface CategoryPageProps {
   parentLinks?: SubCollection[];
   /** Optional sub-collection buttons shown at the top of the collection. */
   subCollections?: SubCollection[];
+  /** Optional link(s) shown at the end of the filter bar (e.g. a related sub-collection). */
+  filterFooter?: SubCollection[];
   /** Optional in-collection filter dropdown (matched against the product title). */
   filterGroups?: FilterGroup[];
 }
 
 const titleOf = (p: ShopifyProduct) => ((p.node as { title?: string }).title || "");
 
-const CategoryPage = ({ title, subtitle, productType, query, headline, clientFilter, parentLinks, subCollections, filterGroups }: CategoryPageProps) => {
+const CategoryPage = ({ title, subtitle, productType, query, headline, clientFilter, parentLinks, subCollections, filterFooter, filterGroups }: CategoryPageProps) => {
   const [active, setActive] = useState("all");
 
   const effectiveFilter = filterGroups
@@ -112,6 +114,25 @@ const CategoryPage = ({ title, subtitle, productType, query, headline, clientFil
         label="The Collection"
         showFilters
         clientFilter={effectiveFilter}
+        belowFilters={
+          filterFooter && filterFooter.length > 0 ? (
+            <div className="flex flex-wrap items-center gap-2.5">
+              <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                Also in {title}
+              </span>
+              {filterFooter.map((f) => (
+                <Link
+                  key={f.to}
+                  to={f.to}
+                  className="inline-block border border-dashed px-4 py-2 font-sans text-[11px] uppercase tracking-[0.16em] transition-transform hover:-translate-y-0.5"
+                  style={{ borderColor: "var(--poppy)", color: "var(--poppy-deep)", background: "var(--rose-soft)" }}
+                >
+                  {f.label} ✿
+                </Link>
+              ))}
+            </div>
+          ) : undefined
+        }
       />
     </PageLayout>
   );

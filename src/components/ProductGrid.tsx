@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo, useCallback } from "react";
+import { useEffect, useState, useMemo, useCallback, type ReactNode } from "react";
 import { storefrontApiRequest, GRID_PRODUCTS_QUERY, type ShopifyProduct } from "@/lib/shopify";
 import { rankProducts } from "@/lib/productRanking";
 import { ProductCard } from "./ProductCard";
@@ -38,17 +38,20 @@ interface ProductGridProps {
   lockedOccasion?: string;
   /** Optional client-side predicate to narrow the fetched set (e.g. by metafield). */
   clientFilter?: (product: ShopifyProduct) => boolean;
+  /** Optional content rendered directly beneath the filter bar (e.g. a link to a sub-collection). */
+  belowFilters?: ReactNode;
 }
 
 export const ProductGrid = ({
   query,
   heading = "Current Pieces",
   label = "The Collection",
-  limit = 250,
+  limit = 1000,
   showFilters = false,
   shuffle = false,
   lockedOccasion,
   clientFilter,
+  belowFilters,
 }: ProductGridProps) => {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
   const [loading, setLoading] = useState(true);
@@ -200,6 +203,9 @@ export const ProductGrid = ({
           onChange={setFilters}
           hiddenFilters={lockedOccasion ? ["occasion"] : []}
         />
+      )}
+      {belowFilters && (
+        <div className="max-w-[1400px] mx-auto px-6 pt-3">{belowFilters}</div>
       )}
       <section className="max-w-[1400px] mx-auto px-6 py-16 md:py-24">
         {heading && (

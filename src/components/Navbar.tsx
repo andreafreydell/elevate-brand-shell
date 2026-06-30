@@ -19,7 +19,11 @@ const categoryLinks: CatLink[] = [
   {
     label: "Necklaces",
     href: "/necklaces",
-    children: [{ label: "Personalized Necklaces", href: "/personalized-necklaces" }],
+    children: [
+      { label: "Beads & Stones", href: "/beaded-necklaces" },
+      { label: "Crystals", href: "/crystal-necklaces" },
+      { label: "Personalized Necklaces", href: "/personalized-necklaces" },
+    ],
   },
   {
     label: "Charms",
