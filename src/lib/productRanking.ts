@@ -2,6 +2,7 @@ import { type ShopifyProduct } from "@/lib/shopify";
 import {
   CATEGORY_SILHOUETTE_SCORES,
   CATEGORY_WEIGHT_PROFILES,
+  EVEN_MIX_MODE,
   KEYWORD_SIGNAL_SCORES,
   MANUAL_PRODUCT_RANKING_ROWS,
   MATERIAL_SIGNAL_SCORES,
@@ -411,10 +412,26 @@ export function getProductRankingBreakdown(
   };
 }
 
+// Stable per-day pseudo-random key for a product handle — used for the even mix.
+function evenMixKey(handle: string): number {
+  const now = new Date();
+  let h = (now.getFullYear() * 10000 + (now.getMonth() + 1) * 100 + now.getDate()) >>> 0;
+  for (let i = 0; i < handle.length; i += 1) {
+    h = (Math.imul(h, 31) + handle.charCodeAt(i)) >>> 0;
+  }
+  return h;
+}
+
 export function rankProducts(
   products: ShopifyProduct[],
   context: ProductRankingContext = {},
 ): ShopifyProduct[] {
+  // Even mix: ignore weights + manual boosts, distribute all pieces evenly
+  // (deterministic shuffle that re-rolls daily so the mix stays fresh).
+  if (EVEN_MIX_MODE) {
+    return [...products].sort((left, right) => evenMixKey(left.node.handle) - evenMixKey(right.node.handle));
+  }
+
   return [...products].sort((left, right) => {
     const leftScore = getProductRankingBreakdown(left, context).finalScore;
     const rightScore = getProductRankingBreakdown(right, context).finalScore;

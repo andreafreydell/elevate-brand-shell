@@ -24,6 +24,15 @@ export interface ProductRankingOverrideRow extends Partial<ProductRankingColumns
   notes?: string;
 }
 
+/**
+ * EVEN MIX MODE
+ * When true, `rankProducts` ignores the curated weight profiles + manual boosts
+ * below and returns an even, daily-shuffled mix — so every category/piece is
+ * distributed evenly instead of certain pieces being ranked to the top.
+ * Set to `false` to restore the curated weighted ranking (all weights/boosts apply again).
+ */
+export const EVEN_MIX_MODE = true;
+
 export const CATEGORY_WEIGHT_PROFILES: Record<MerchandisingCategory, ProductRankingColumns> = {
   default: {
     categoryFit: 0.23,
