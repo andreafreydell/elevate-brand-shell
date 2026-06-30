@@ -126,7 +126,10 @@ export const LandingScrollVideoHero = () => {
 
     const sectionTop = section.getBoundingClientRect().top + window.scrollY;
     const sectionHeight = section.offsetHeight;
-    const scrollRange = Math.max(1, sectionHeight - window.innerHeight);
+    // Finish the pan ~half a screen before the section ends, so the bottom of
+    // the clip (the modern city) is fully revealed just after the Philosophy
+    // section and held for a beat (the spacer below) before the video releases.
+    const scrollRange = Math.max(1, sectionHeight - window.innerHeight * 1.5);
 
     return clamp((window.scrollY - sectionTop) / scrollRange);
   }, []);
@@ -427,6 +430,10 @@ export const LandingScrollVideoHero = () => {
             </div>
           </div>
         </section>
+
+        {/* Tail spacer: holds the fully-panned final frame (the modern city at
+            the bottom of the clip) visible for a beat after Philosophy. */}
+        <div aria-hidden="true" className="h-[50vh]" />
       </div>
     </section>
   );
