@@ -25,15 +25,24 @@ interface ProductFiltersProps {
   hiddenFilters?: Array<"color" | "style" | "occasion" | "material" | "accentColor" | "stackingRole">;
 }
 
+// Tidy a raw metafield value: unify the various dash characters (-, –, —) and
+// collapse whitespace so near-duplicate options ("gold-finished" vs
+// "gold–finished") merge into one clean choice instead of cluttering the list.
+const cleanValue = (value: string) =>
+  value.replace(/[‒-―]/g, "-").replace(/\s+/g, " ").trim();
+
+// Lowercased form for matching (so the same dash/casing differences don't break filtering).
+const normalizeForMatch = (value: string) => cleanValue(value).toLowerCase();
+
 function getMetafieldValues(products: ShopifyProduct[], key: string): string[] {
   const values = new Set<string>();
   products.forEach((product) => {
     const metafield = product.node.metafields?.find((item) => item?.key === key);
     if (metafield?.value) {
       metafield.value.split(",").forEach((value) => {
-        const trimmed = value.trim();
-        if (trimmed) {
-          values.add(trimmed);
+        const cleaned = cleanValue(value);
+        if (cleaned) {
+          values.add(cleaned);
         }
       });
     }
@@ -51,46 +60,39 @@ const SORT_OPTIONS = [
 export function applyFilters(products: ShopifyProduct[], filters: FilterState): ShopifyProduct[] {
   let filtered = [...products];
 
+  const matchesMetafield = (product: ShopifyProduct, key: string, selected: string) => {
+    const metafield = product.node.metafields?.find((item) => item?.key === key);
+    if (!metafield?.value) return false;
+    // Split the (possibly multi-value) metafield and require an exact value
+    // match, so e.g. "Green" doesn't sweep in "Emerald Green".
+    return metafield.value
+      .split(",")
+      .map((part) => normalizeForMatch(part))
+      .includes(normalizeForMatch(selected));
+  };
+
   if (filters.color) {
-    filtered = filtered.filter((product) => {
-      const metafield = product.node.metafields?.find((item) => item?.key === "plating_color_primary");
-      return metafield?.value?.toLowerCase().includes(filters.color.toLowerCase());
-    });
+    filtered = filtered.filter((product) => matchesMetafield(product, "plating_color_primary", filters.color));
   }
 
   if (filters.style) {
-    filtered = filtered.filter((product) => {
-      const metafield = product.node.metafields?.find((item) => item?.key === "silhouette_category");
-      return metafield?.value?.toLowerCase().includes(filters.style.toLowerCase());
-    });
+    filtered = filtered.filter((product) => matchesMetafield(product, "silhouette_category", filters.style));
   }
 
   if (filters.material) {
-    filtered = filtered.filter((product) => {
-      const metafield = product.node.metafields?.find((item) => item?.key === "material_category");
-      return metafield?.value?.toLowerCase().includes(filters.material.toLowerCase());
-    });
+    filtered = filtered.filter((product) => matchesMetafield(product, "material_category", filters.material));
   }
 
   if (filters.accentColor) {
-    filtered = filtered.filter((product) => {
-      const metafield = product.node.metafields?.find((item) => item?.key === "other_predominant_color");
-      return metafield?.value?.toLowerCase().includes(filters.accentColor.toLowerCase());
-    });
+    filtered = filtered.filter((product) => matchesMetafield(product, "other_predominant_color", filters.accentColor));
   }
 
   if (filters.stackingRole) {
-    filtered = filtered.filter((product) => {
-      const metafield = product.node.metafields?.find((item) => item?.key === "stacking_role");
-      return metafield?.value?.toLowerCase().includes(filters.stackingRole.toLowerCase());
-    });
+    filtered = filtered.filter((product) => matchesMetafield(product, "stacking_role", filters.stackingRole));
   }
 
   if (filters.occasion) {
-    filtered = filtered.filter((product) => {
-      const metafield = product.node.metafields?.find((item) => item?.key === "occasions_possible");
-      return metafield?.value?.toLowerCase().includes(filters.occasion.toLowerCase());
-    });
+    filtered = filtered.filter((product) => matchesMetafield(product, "occasions_possible", filters.occasion));
   }
 
   if (filters.sort === "price-asc") {
@@ -151,7 +153,10 @@ export const ProductFilters = ({
       <div className="flex flex-wrap items-center gap-3 py-4 border-b border-border">
         {filterGroups.map((group) => (
           <Select key={group.key} value={filters[group.key] || "all"} onValueChange={(value) => update(group.key, value)}>
-            <SelectTrigger className="w-auto min-w-[120px] h-9 border-border bg-transparent text-xs tracking-[0.15em] uppercase font-sans">
+            <SelectTrigger
+              data-active={filters[group.key] ? "true" : undefined}
+              className="w-[150px] shrink-0 h-9 border-border bg-transparent text-xs tracking-[0.15em] uppercase font-sans data-[active=true]:border-foreground data-[active=true]:bg-secondary [&>span]:truncate"
+            >
               <SelectValue placeholder={group.label} />
             </SelectTrigger>
             <SelectContent>
@@ -166,7 +171,7 @@ export const ProductFilters = ({
         ))}
 
         <Select value={filters.sort || "default"} onValueChange={(value) => update("sort", value)}>
-          <SelectTrigger className="w-auto min-w-[140px] h-9 border-border bg-transparent text-xs tracking-[0.15em] uppercase font-sans">
+          <SelectTrigger className="w-[150px] shrink-0 h-9 border-border bg-transparent text-xs tracking-[0.15em] uppercase font-sans [&>span]:truncate">
             <SelectValue placeholder="Sort" />
           </SelectTrigger>
           <SelectContent>

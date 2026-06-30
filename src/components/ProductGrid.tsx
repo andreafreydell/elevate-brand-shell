@@ -59,6 +59,10 @@ export const ProductGrid = ({
   const [hasNextPage, setHasNextPage] = useState(false);
   const [endCursor, setEndCursor] = useState<string | null>(null);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  // Cards below this index load their image immediately. Starts at the first
+  // above-the-fold row; expands to cover each "load more" batch so freshly
+  // revealed pieces don't lazily pop in as the user scrolls into them.
+  const [eagerUntil, setEagerUntil] = useState(6);
   // How many products came from the initial (ranked) fetch. Later "load more"
   // pages append AFTER these so the order never reshuffles under the user.
   const [initialCount, setInitialCount] = useState(0);
@@ -146,18 +150,22 @@ export const ProductGrid = ({
     setEndCursor(null);
     setHasNextPage(false);
     setVisibleCount(PAGE_SIZE);
+    setEagerUntil(6);
     fetchProducts(null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, limit]);
 
   const handleLoadMore = () => {
     // Reveal more of the already-fetched, ranked set first; only hit Shopify
-    // again once the local set is exhausted.
+    // again once the local set is exhausted. Eager-load the newly revealed
+    // batch so the user sees images right away instead of a lazy pop-in.
     if (visibleCount < filtered.length) {
       setVisibleCount((current) => current + PAGE_SIZE);
+      setEagerUntil((current) => Math.max(current, visibleCount + PAGE_SIZE));
     } else if (endCursor && hasNextPage && !loadingMore) {
       fetchProducts(endCursor);
       setVisibleCount((current) => current + PAGE_SIZE);
+      setEagerUntil((current) => Math.max(current, visibleCount + PAGE_SIZE));
     }
   };
 
@@ -219,7 +227,7 @@ export const ProductGrid = ({
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-[1px] bg-border">
           {visible.map((product, index) => (
             <div key={product.node.id} className="bg-background p-3 sm:p-6">
-              <ProductCard product={product} priority={index < 6} />
+              <ProductCard product={product} priority={index < 6} eager={index < eagerUntil} />
             </div>
           ))}
         </div>

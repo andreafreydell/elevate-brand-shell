@@ -5,13 +5,11 @@ import {
   Ban,
   CalendarPlus,
   Check,
-  Feather,
   Hand,
   Heart,
   Package,
   RefreshCw,
   Shield,
-  Shuffle,
   Sparkles,
   Truck,
   Gift,
@@ -89,24 +87,6 @@ const assurances = [
   { icon: Ban, text: "Cancel Anytime" },
   { icon: CalendarPlus, text: "One 30-Day Cycle" },
   { icon: Gift, text: "A Gift Every Delivery" },
-];
-
-const freedomBlocks = [
-  {
-    title: "Freedom to Experiment",
-    text: "Try bold pieces without the commitment of ownership. Refresh next cycle. No risk, no regret.",
-    icon: Shuffle,
-  },
-  {
-    title: "Always Something New",
-    text: "New drops enter the vault monthly — and members see them first.",
-    icon: CalendarPlus,
-  },
-  {
-    title: "Build It With Intention",
-    text: "Keep only the pieces you reach for, and build a collection that's truly yours.",
-    icon: Feather,
-  },
 ];
 
 // TEST BRANCH (flowers-hero-video-test): the tall 9:16 "flowers gently turn" clip.
@@ -408,31 +388,6 @@ export const LandingScrollVideoHero = () => {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1120px] py-12 md:py-16">
-          <div className={`mx-auto mb-8 block w-full max-w-[640px] px-6 py-6 text-center ${scrim}`}>
-            <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-foreground">
-              Freedom <span aria-hidden="true" style={{ color: "var(--poppy-deep)" }}>✿</span>
-            </p>
-            <h2 className="font-serif text-2xl uppercase tracking-[0.08em] text-foreground md:text-4xl">
-              Wear More. Spend Smarter.
-            </h2>
-            <p className="mt-2 text-[1.25rem]" style={{ fontFamily: "var(--font-script)", color: "var(--poppy-deep)" }}>
-              this is what blooming feels like ✿
-            </p>
-          </div>
-          <ul className={`mx-auto grid max-w-[600px] gap-3 px-6 py-6 md:gap-4 ${scrim}`}>
-            {freedomBlocks.map((block) => (
-              <li key={block.title} className="flex items-baseline gap-3">
-                <span aria-hidden="true" className="shrink-0 text-[1.1rem] leading-none" style={{ color: "var(--poppy)" }}>✿</span>
-                <p className="text-[13px] leading-snug text-foreground md:text-[14px]">
-                  <span className="font-serif font-semibold text-foreground">{block.title}.</span>{" "}
-                  {block.text}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </section>
-
         <section className="mx-auto max-w-[860px] py-12 md:py-16">
           <div className={`mx-auto mb-7 block w-full max-w-[600px] px-6 py-6 text-center ${scrim}`}>
             <p className="mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-foreground">
@@ -462,7 +417,7 @@ export const LandingScrollVideoHero = () => {
               </p>
               <p className="font-sans text-[13px] leading-relaxed text-foreground md:text-[14px]">
                 Access the full vault. Keep what you love, return the rest, and wear{" "}
-                <ScriptNumber>10+</ScriptNumber> pieces a year. Because staying the same was never the plan.
+                <ScriptNumber>36+</ScriptNumber> pieces a year. Because staying the same was never the plan.
               </p>
             </div>
           </div>

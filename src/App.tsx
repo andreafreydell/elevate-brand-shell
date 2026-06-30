@@ -110,6 +110,21 @@ const ScrollToTopButton = () => {
 
 const queryClient = new QueryClient();
 
+// Collection "families" — the full set of links shown at the end of the filters
+// so every sub-collection page (and the parent) links to the rest, and visitors
+// can always get to the complete category ("All Necklaces" / "All Charms").
+const NECKLACE_LINKS = {
+  all: { label: "All Necklaces", to: "/necklaces" },
+  beads: { label: "Beads & Stones", to: "/beaded-necklaces" },
+  crystals: { label: "Crystals", to: "/crystal-necklaces" },
+  personalized: { label: "Personalized Necklaces", to: "/personalized-necklaces" },
+};
+const CHARM_LINKS = {
+  all: { label: "All Charms", to: "/charms" },
+  chains: { label: "Charm Chains", to: "/charm-chains" },
+  personalized: { label: "Personalized Necklaces", to: "/personalized-necklaces" },
+};
+
 const NextChapterRedirect = () => {
   useEffect(() => {
     window.location.replace("/next-chapter/index.html");
@@ -150,7 +165,7 @@ const AppContent = () => {
       />
       <Route
         path="/necklaces"
-        element={<CategoryPage title="Necklaces" subtitle="Chains, pendants, and layering pieces — crafted to elevate." productType="Necklace" subCollections={[{ label: "Beads & Stones", to: "/beaded-necklaces" }, { label: "Crystals", to: "/crystal-necklaces" }]} filterFooter={[{ label: "Personalized Necklaces", to: "/personalized-necklaces" }]} />}
+        element={<CategoryPage title="Necklaces" subtitle="Chains, pendants, and layering pieces — crafted to elevate." productType="Necklace" filterFooter={[NECKLACE_LINKS.beads, NECKLACE_LINKS.crystals, NECKLACE_LINKS.personalized]} />}
       />
       <Route
         path="/rings"
@@ -166,7 +181,7 @@ const AppContent = () => {
       />
       <Route
         path="/charms"
-        element={<CategoryPage title="Charms" subtitle="Tokens, pendants, and add-ons — build a piece that tells your story." productType="Charm" subCollections={[{ label: "Charm Chains", to: "/charm-chains" }, { label: "Personalized Necklaces", to: "/personalized-necklaces" }]} />}
+        element={<CategoryPage title="Charms" subtitle="Tokens, pendants, and add-ons — build a piece that tells your story." productType="Charm" filterFooter={[CHARM_LINKS.chains, CHARM_LINKS.personalized]} />}
       />
       <Route
         path="/charm-chains"
@@ -175,7 +190,8 @@ const AppContent = () => {
             title="Charm Chains"
             subtitle="Chain necklaces with lobster, spring-ring & carabiner clasps — ready to layer your charms."
             productType="Necklace"
-            parentLinks={[{ label: "All Charms", to: "/charms" }]}
+            filterFooter={[CHARM_LINKS.all, CHARM_LINKS.personalized]}
+            filterFooterLabel="Also in Charms"
             clientFilter={(p) => {
               const mfs = (p.node as { metafields?: Array<{ key: string; value: string | null } | null> }).metafields || [];
               const closure = mfs.find((m) => m?.key === "closure_and_security")?.value || "";
@@ -192,6 +208,8 @@ const AppContent = () => {
             subtitle="Initials A–Z, word pieces (MOM, LOVE), and zodiac discs — use the filter to jump between them."
             productType="Charm"
             query="Letter OR Label OR Zodiac"
+            filterFooter={[NECKLACE_LINKS.all, NECKLACE_LINKS.beads, NECKLACE_LINKS.crystals]}
+            filterFooterLabel="Also in Necklaces"
             filterGroups={[
               { label: "Letters", re: /letter/i },
               { label: "Text", re: /label/i },
@@ -208,7 +226,8 @@ const AppContent = () => {
             subtitle="Beaded, strand & natural-stone necklaces — texture made to layer."
             productType="Necklace"
             query="product_type:Necklace AND (title:bead* OR title:strand* OR title:stone*)"
-            parentLinks={[{ label: "All Necklaces", to: "/necklaces" }]}
+            filterFooter={[NECKLACE_LINKS.all, NECKLACE_LINKS.crystals, NECKLACE_LINKS.personalized]}
+            filterFooterLabel="Also in Necklaces"
           />
         )}
       />
@@ -220,7 +239,8 @@ const AppContent = () => {
             subtitle="Tennis, crystal & CZ necklaces — all the sparkle, none of the commitment."
             productType="Necklace"
             query="product_type:Necklace AND (title:tennis* OR title:crystal* OR title:cz OR title:zirconia OR title:pave* OR title:pavé* OR title:rhinestone*)"
-            parentLinks={[{ label: "All Necklaces", to: "/necklaces" }]}
+            filterFooter={[NECKLACE_LINKS.all, NECKLACE_LINKS.beads, NECKLACE_LINKS.personalized]}
+            filterFooterLabel="Also in Necklaces"
           />
         )}
       />

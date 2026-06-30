@@ -28,19 +28,17 @@ interface CategoryPageProps {
   headline?: ReactNode;
   /** Optional client-side predicate to narrow the set (e.g. by a metafield). */
   clientFilter?: (product: ShopifyProduct) => boolean;
-  /** Optional "back up to the whole category" link(s) shown first (e.g. All Necklaces). */
-  parentLinks?: SubCollection[];
-  /** Optional sub-collection buttons shown at the top of the collection. */
-  subCollections?: SubCollection[];
-  /** Optional link(s) shown at the end of the filter bar (e.g. a related sub-collection). */
+  /** Optional link(s) shown at the end of the filter bar — the rest of this collection family (e.g. All Necklaces, sub-collections). */
   filterFooter?: SubCollection[];
+  /** Heading for the filterFooter row (defaults to `Also in {title}`). */
+  filterFooterLabel?: string;
   /** Optional in-collection filter dropdown (matched against the product title). */
   filterGroups?: FilterGroup[];
 }
 
 const titleOf = (p: ShopifyProduct) => ((p.node as { title?: string }).title || "");
 
-const CategoryPage = ({ title, subtitle, productType, query, headline, clientFilter, parentLinks, subCollections, filterFooter, filterGroups }: CategoryPageProps) => {
+const CategoryPage = ({ title, subtitle, productType, query, headline, clientFilter, filterFooter, filterFooterLabel, filterGroups }: CategoryPageProps) => {
   const [active, setActive] = useState("all");
 
   const effectiveFilter = filterGroups
@@ -66,44 +64,22 @@ const CategoryPage = ({ title, subtitle, productType, query, headline, clientFil
         </div>
       </section>
 
-      {((parentLinks && parentLinks.length > 0) || (subCollections && subCollections.length > 0) || filterGroups) && (
+      {filterGroups && (
         <div className="max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16 pt-5 md:pt-6 flex flex-wrap items-center gap-2.5">
-          {parentLinks?.map((p) => (
-            <Link
-              key={p.to}
-              to={p.to}
-              className="inline-flex items-center gap-1.5 border px-4 py-2 font-sans text-[11px] uppercase tracking-[0.16em] transition-transform hover:-translate-y-0.5"
-              style={{ borderColor: "var(--poppy-deep)", background: "var(--poppy-deep)", color: "#fff" }}
+          <label className="inline-flex items-center gap-2">
+            <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Filter</span>
+            <select
+              value={active}
+              onChange={(e) => setActive(e.target.value)}
+              className="cursor-pointer border px-3 py-2 font-sans text-[11px] uppercase tracking-[0.14em] outline-none"
+              style={{ borderColor: "var(--seafoam)", color: "var(--meadow)", background: "hsl(170 30% 95%)" }}
             >
-              <span aria-hidden="true">←</span> {p.label}
-            </Link>
-          ))}
-          {subCollections?.map((s) => (
-            <Link
-              key={s.to}
-              to={s.to}
-              className="inline-block border border-dashed px-4 py-2 font-sans text-[11px] uppercase tracking-[0.16em] transition-transform hover:-translate-y-0.5"
-              style={{ borderColor: "var(--poppy)", color: "var(--poppy-deep)", background: "var(--rose-soft)" }}
-            >
-              {s.label} ✿
-            </Link>
-          ))}
-          {filterGroups && (
-            <label className="inline-flex items-center gap-2">
-              <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Filter</span>
-              <select
-                value={active}
-                onChange={(e) => setActive(e.target.value)}
-                className="cursor-pointer border px-3 py-2 font-sans text-[11px] uppercase tracking-[0.14em] outline-none"
-                style={{ borderColor: "var(--seafoam)", color: "var(--meadow)", background: "hsl(170 30% 95%)" }}
-              >
-                <option value="all">All</option>
-                {filterGroups.map((g) => (
-                  <option key={g.label} value={g.label}>{g.label}</option>
-                ))}
-              </select>
-            </label>
-          )}
+              <option value="all">All</option>
+              {filterGroups.map((g) => (
+                <option key={g.label} value={g.label}>{g.label}</option>
+              ))}
+            </select>
+          </label>
         </div>
       )}
 
@@ -118,7 +94,7 @@ const CategoryPage = ({ title, subtitle, productType, query, headline, clientFil
           filterFooter && filterFooter.length > 0 ? (
             <div className="flex flex-wrap items-center gap-2.5">
               <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                Also in {title}
+                {filterFooterLabel ?? `Also in ${title}`}
               </span>
               {filterFooter.map((f) => (
                 <Link

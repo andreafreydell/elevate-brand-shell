@@ -26,7 +26,17 @@ function shopifySrcSet(url: string): string {
 // crisp file without over-fetching.
 const CARD_SIZES = "(min-width: 1024px) 33vw, 38vw";
 
-export const ProductCard = ({ product, priority = false }: { product: ShopifyProduct; priority?: boolean }) => {
+export const ProductCard = ({
+  product,
+  priority = false,
+  eager = false,
+}: {
+  product: ShopifyProduct;
+  /** Fetch the primary image at high priority (above-the-fold hero cards only). */
+  priority?: boolean;
+  /** Load the primary image immediately instead of lazily (e.g. a just-revealed "load more" batch). */
+  eager?: boolean;
+}) => {
   const variant = product.node.variants.edges[0]?.node;
   const price = product.node.priceRange.minVariantPrice;
   const displayPrice = `$${parseFloat(price.amount).toFixed(2)}`;
@@ -87,7 +97,7 @@ export const ProductCard = ({ product, priority = false }: { product: ShopifyPro
                     className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
                       index === activeIdx ? "opacity-100" : "opacity-0"
                     }`}
-                    loading={isPrimary && priority ? "eager" : "lazy"}
+                    loading={isPrimary && (priority || eager) ? "eager" : "lazy"}
                     fetchPriority={isPrimary && priority ? "high" : "auto"}
                     decoding="async"
                   />
