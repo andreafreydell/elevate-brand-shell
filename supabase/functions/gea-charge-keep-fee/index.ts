@@ -63,7 +63,7 @@ Deno.serve(async (req) => {
 
     // Ensure the charge row exists (idempotent).
     const { data: charge, error: chargeError } = await supabase.rpc("create_charge", {
-      p_membership_id: membership.id,
+      p_account_id: account.id,
       p_rental_cycle_id: cycle_id,
       p_rental_reservation_id: item.rental_reservation_id,
       p_charge_type: "extra_keep_fee",
