@@ -187,11 +187,15 @@ const AppContent = () => {
         path="/letter-pieces"
         element={(
           <CategoryPage
-            title="Letter & Name Pieces"
-            subtitle="Initials A–Z and word pieces — letter charms & pendants, plus 'MOM', 'LOVE' and more."
+            title="Letter, Name & Zodiac Pieces"
+            subtitle="Initials A–Z, word pieces (MOM, LOVE), and zodiac discs — use the filter to jump between them."
             productType="Charm"
-            query="Letter OR Label"
-            clientFilter={(p) => /letter|label/i.test((p.node as { title?: string }).title || "")}
+            query="Letter OR Label OR Zodiac"
+            filterGroups={[
+              { label: "Letters", re: /letter/i },
+              { label: "Labels", re: /label/i },
+              { label: "Zodiac", re: /zodiac/i },
+            ]}
           />
         )}
       />
