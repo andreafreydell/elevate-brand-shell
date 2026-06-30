@@ -71,9 +71,9 @@ Deno.serve(async (req) => {
         .update({ cycle_tag_applied: true, tag_applied_at: new Date().toISOString() })
         .eq("id", cycle.id);
 
-      opened.push({ membership_id: m.id, cycle_number: cycle.cycle_number });
+      opened.push({ account_id: m.id, cycle_number: cycle.cycle_number });
     } catch (err) {
-      errors.push({ membership_id: m.id, error: err instanceof Error ? err.message : String(err) });
+      errors.push({ account_id: m.id, error: err instanceof Error ? err.message : String(err) });
     }
   }
 
