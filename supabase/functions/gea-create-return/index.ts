@@ -93,11 +93,11 @@ Deno.serve(async (req) => {
     if (existing) {
       returnId = existing.id;
     } else {
-      const { serials, membershipId, cycleId } = await shippedSerialsForOrder(supabase, body.shopify_order_id);
+      const { serials, accountId, cycleId } = await shippedSerialsForOrder(supabase, body.shopify_order_id);
       const { data: created, error: createError } = await supabase
         .from("member_returns")
         .insert({
-          membership_id: membershipId,
+          account_id: accountId,
           rental_cycle_id: cycleId,
           shopify_order_id: body.shopify_order_id,
           source: "wms",
