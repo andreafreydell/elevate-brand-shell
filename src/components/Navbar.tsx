@@ -260,15 +260,12 @@ export const Navbar = () => {
             >
               <Search className="h-[20px] w-[20px] stroke-[1.5]" />
             </button>
-            <a
-              href={CUSTOMER_ACCOUNT_URL}
-              className="p-1.5 hover:opacity-70 transition-opacity hidden md:block"
-            >
-              <User className="h-[20px] w-[20px] stroke-[1.5]" />
-            </a>
-            <button className="p-1.5 hover:opacity-70 transition-opacity hidden md:block">
-              <Heart className="h-[20px] w-[20px] stroke-[1.5]" />
-            </button>
+            <div className="hidden md:block">
+              <AccountMenu size={20} />
+            </div>
+            <div className="hidden md:block">
+              <FavoritesButton size={20} />
+            </div>
             <CartDrawer />
           </div>
         </div>
