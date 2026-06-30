@@ -211,9 +211,9 @@ export const ProductGrid = ({
           </div>
         )}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-[1px] bg-border">
-          {visible.map((product) => (
+          {visible.map((product, index) => (
             <div key={product.node.id} className="bg-background p-3 sm:p-6">
-              <ProductCard product={product} />
+              <ProductCard product={product} priority={index < 6} />
             </div>
           ))}
         </div>

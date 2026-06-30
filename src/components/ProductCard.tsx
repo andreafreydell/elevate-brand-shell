@@ -15,7 +15,18 @@ function optimizeShopifyImage(url: string, width: number): string {
   }
 }
 
-export const ProductCard = ({ product }: { product: ShopifyProduct }) => {
+// Candidate widths the Shopify CDN should render, so the browser can pick the
+// right one per device instead of always downloading a single oversized file.
+const SRCSET_WIDTHS = [180, 240, 320, 420, 540, 640];
+function shopifySrcSet(url: string): string {
+  return SRCSET_WIDTHS.map((w) => `${optimizeShopifyImage(url, w)} ${w}w`).join(", ");
+}
+// Real rendered card width: ~37vw on mobile (2-up, after grid padding) and
+// ~33vw in the 3-up desktop grid. Kept tight so retina devices still pull a
+// crisp file without over-fetching.
+const CARD_SIZES = "(min-width: 1024px) 33vw, 38vw";
+
+export const ProductCard = ({ product, priority = false }: { product: ShopifyProduct; priority?: boolean }) => {
   const variant = product.node.variants.edges[0]?.node;
   const price = product.node.priceRange.minVariantPrice;
   const displayPrice = `$${parseFloat(price.amount).toFixed(2)}`;
@@ -25,6 +36,9 @@ export const ProductCard = ({ product }: { product: ShopifyProduct }) => {
   const hasMultiple = slideshowImages.length > 1;
 
   const [activeIdx, setActiveIdx] = useState(0);
+  // The hover images (2nd/3rd) are only mounted once the user actually hovers,
+  // so the initial grid downloads one image per card instead of three.
+  const [armed, setArmed] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const stopSlideshow = () => {
@@ -37,6 +51,7 @@ export const ProductCard = ({ product }: { product: ShopifyProduct }) => {
 
   const startSlideshow = () => {
     if (!hasMultiple || intervalRef.current) return;
+    setArmed(true);
     intervalRef.current = setInterval(() => {
       setActiveIdx((prev) => (prev + 1) % slideshowImages.length);
     }, 667);
@@ -57,18 +72,27 @@ export const ProductCard = ({ product }: { product: ShopifyProduct }) => {
         >
           {slideshowImages.length > 0 ? (
             <div className="relative w-full h-full">
-              {slideshowImages.map((img, index) => (
-                <img
-                  key={img.url}
-                  src={optimizeShopifyImage(img.url, 600)}
-                  alt={img.altText || product.node.title}
-                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-                    index === activeIdx ? "opacity-100" : "opacity-0"
-                  }`}
-                  loading="lazy"
-                  decoding="async"
-                />
-              ))}
+              {slideshowImages.map((img, index) => {
+                // Only the primary image loads up front; hover images mount on
+                // first hover so the grid isn't downloading 3 images per card.
+                if (index > 0 && !armed) return null;
+                const isPrimary = index === 0;
+                return (
+                  <img
+                    key={img.url}
+                    src={optimizeShopifyImage(img.url, 420)}
+                    srcSet={shopifySrcSet(img.url)}
+                    sizes={CARD_SIZES}
+                    alt={img.altText || product.node.title}
+                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+                      index === activeIdx ? "opacity-100" : "opacity-0"
+                    }`}
+                    loading={isPrimary && priority ? "eager" : "lazy"}
+                    fetchPriority={isPrimary && priority ? "high" : "auto"}
+                    decoding="async"
+                  />
+                );
+              })}
             </div>
           ) : (
             <div className="w-full h-full bg-secondary flex items-center justify-center">
