@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { ShoppingCart, Minus, Plus, Trash2, ExternalLink, Loader2 } from "lucide-react";
+import { ShoppingCart, Minus, Plus, Trash2, Loader2 } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
 import { useCustomerAuth } from "@/contexts/CustomerAuthContext";
 
@@ -92,14 +92,37 @@ export const CartDrawer = () => {
                   ))}
                 </div>
               </div>
-              <div className="flex-shrink-0 space-y-4 pt-6 border-t border-border">
+              <div className="flex-shrink-0 space-y-5 pt-6 border-t border-border">
                 <div className="flex justify-between items-center">
                   <span className="text-xs tracking-wider uppercase text-muted-foreground">Subtotal</span>
                   <span className="font-serif text-lg">{items[0]?.price.currencyCode || '$'} {totalPrice.toFixed(2)}</span>
                 </div>
-                <Button onClick={handleCheckout} className="w-full rounded-none h-12 text-xs tracking-[0.2em] uppercase font-sans" size="lg" disabled={items.length === 0 || isLoading || isSyncing}>
-                  {isLoading || isSyncing ? <Loader2 className="w-4 h-4 animate-spin" /> : <><ExternalLink className="w-4 h-4 mr-3" />Proceed to Checkout</>}
-                </Button>
+                <div className="space-y-3">
+                  <Button onClick={handleCheckout} className="w-full rounded-none h-12 text-xs tracking-[0.2em] uppercase font-sans" size="lg" disabled={items.length === 0 || isLoading || isSyncing}>
+                    {isLoading || isSyncing ? <Loader2 className="w-4 h-4 animate-spin" /> : "Proceed to Rent or Buy"}
+                  </Button>
+                  <div className="flex flex-col items-center gap-2">
+                    {!isSignedIn && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setIsOpen(false);
+                          openAuthModal({ mode: "login", intent: "checkout" });
+                        }}
+                        className="font-sans text-[11px] tracking-[0.15em] uppercase text-muted-foreground underline underline-offset-4 transition-colors hover:text-foreground"
+                      >
+                        Log in to activate rent (items check out free)
+                      </button>
+                    )}
+                    <Link
+                      to="/how-it-works"
+                      onClick={() => setIsOpen(false)}
+                      className="font-sans text-[11px] tracking-[0.15em] uppercase text-foreground underline underline-offset-4 transition-colors hover:text-muted-foreground"
+                    >
+                      Get a Membership
+                    </Link>
+                  </div>
+                </div>
                 <p className="text-center font-sans text-[12px] text-muted-foreground">
                   By proceeding, you agree to our{" "}
                   <Link
