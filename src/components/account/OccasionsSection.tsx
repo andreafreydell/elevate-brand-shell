@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Heart, Loader2, Pencil, Trash2, X, Check, Plus } from "lucide-react";
-import { toast } from "sonner";
 import { useCustomerAuth, type WishlistOccasion } from "@/contexts/CustomerAuthContext";
 import { fetchProductsByHandles, type ShopifyProduct } from "@/lib/shopify";
 
