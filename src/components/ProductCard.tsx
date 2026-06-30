@@ -76,10 +76,15 @@ export const ProductCard = ({
     <Link to={`/product/${product.node.handle}`} className="group block">
       <div className="border border-border bg-card overflow-hidden">
         <div
-          className="aspect-square overflow-hidden"
+          className="relative aspect-square overflow-hidden"
           onMouseEnter={startSlideshow}
           onMouseLeave={stopSlideshow}
         >
+          <WishlistHeart
+            handle={product.node.handle}
+            size={16}
+            className="absolute right-2.5 top-2.5 z-10"
+          />
           {slideshowImages.length > 0 ? (
             <div className="relative w-full h-full">
               {slideshowImages.map((img, index) => {
