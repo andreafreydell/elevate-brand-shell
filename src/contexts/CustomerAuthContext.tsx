@@ -103,8 +103,8 @@ export const CustomerAuthProvider = ({ children }: { children: ReactNode }) => {
       .select("id, email, full_name, shopify_customer_id, membership_tier, membership_status, is_founding_member, wishlist")
       .eq("id", userId)
       .maybeSingle();
-    setProfile((data as CustomerProfile) ?? null);
-    setWishlist(parseWishlist((data as CustomerProfile | null)?.wishlist));
+    setProfile((data as unknown as CustomerProfile) ?? null);
+    setWishlist(parseWishlist((data as { wishlist?: unknown } | null)?.wishlist));
   }, []);
 
   useEffect(() => {
