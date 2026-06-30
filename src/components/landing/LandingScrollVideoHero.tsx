@@ -126,10 +126,12 @@ export const LandingScrollVideoHero = () => {
 
     const sectionTop = section.getBoundingClientRect().top + window.scrollY;
     const sectionHeight = section.offsetHeight;
-    // Finish the pan ~half a screen before the section ends, so the bottom of
-    // the clip (the modern city) is fully revealed just after the Philosophy
-    // section and held for a beat (the spacer below) before the video releases.
-    const scrollRange = Math.max(1, sectionHeight - window.innerHeight * 1.5);
+    // Finish the pan a touch before the section ends so the bottom of the clip
+    // (the modern city) is fully revealed just after Philosophy and held for a
+    // beat (the spacer below) before the video releases. The tail is shorter on
+    // mobile, where the near-square crop made the city dwell far too long.
+    const tail = window.innerWidth < 768 ? 0.2 : 0.5;
+    const scrollRange = Math.max(1, sectionHeight - window.innerHeight * (1 + tail));
 
     return clamp((window.scrollY - sectionTop) / scrollRange);
   }, []);
@@ -432,8 +434,9 @@ export const LandingScrollVideoHero = () => {
         </section>
 
         {/* Tail spacer: holds the fully-panned final frame (the modern city at
-            the bottom of the clip) visible for a beat after Philosophy. */}
-        <div aria-hidden="true" className="h-[50vh]" />
+            the bottom of the clip) visible for a beat after Philosophy. Shorter
+            on mobile so the city doesn't dwell ~2.5x too long. */}
+        <div aria-hidden="true" className="h-[20vh] md:h-[50vh]" />
       </div>
     </section>
   );
