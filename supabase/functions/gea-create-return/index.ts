@@ -44,11 +44,11 @@ Deno.serve(async (req) => {
     if (!orderId) {
       return jsonResponse({ error: "Missing order_id on return webhook" }, 400);
     }
-    const { serials, membershipId, cycleId } = await shippedSerialsForOrder(supabase, orderId);
+    const { serials, accountId, cycleId } = await shippedSerialsForOrder(supabase, orderId);
     const { data, error } = await supabase
       .from("member_returns")
       .insert({
-        membership_id: membershipId,
+        account_id: accountId,
         rental_cycle_id: cycleId,
         shopify_order_id: orderId,
         shopify_return_id: payload.id != null ? String(payload.id) : null,
