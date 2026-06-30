@@ -191,7 +191,7 @@ export const CustomerAuthProvider = ({ children }: { children: ReactNode }) => {
       if (!uid) return;
       const { error } = await supabase
         .from("profiles")
-        .update({ wishlist: { occasions: next } })
+        .update({ wishlist: { occasions: next } as unknown as Record<string, never> })
         .eq("id", uid);
       if (error) {
         setWishlist(previous);
