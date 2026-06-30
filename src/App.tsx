@@ -175,6 +175,7 @@ const AppContent = () => {
             title="Charm Chains"
             subtitle="Chain necklaces with lobster, spring-ring & carabiner clasps — ready to layer your charms."
             productType="Necklace"
+            parentLinks={[{ label: "All Charms", to: "/charms" }]}
             clientFilter={(p) => {
               const mfs = (p.node as { metafields?: Array<{ key: string; value: string | null } | null> }).metafields || [];
               const closure = mfs.find((m) => m?.key === "closure_and_security")?.value || "";
@@ -191,6 +192,7 @@ const AppContent = () => {
             subtitle="Initials A–Z, word pieces (MOM, LOVE), and zodiac discs — use the filter to jump between them."
             productType="Charm"
             query="Letter OR Label OR Zodiac"
+            parentLinks={[{ label: "All Necklaces", to: "/necklaces" }, { label: "All Charms", to: "/charms" }]}
             filterGroups={[
               { label: "Letters", re: /letter/i },
               { label: "Labels", re: /label/i },
