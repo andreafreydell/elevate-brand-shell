@@ -10,18 +10,26 @@ import { useCustomerAuth } from "@/contexts/CustomerAuthContext";
 export const CartDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { items, isLoading, isSyncing, updateQuantity, removeItem, getCheckoutUrl, syncCart } = useCartStore();
+  const { isSignedIn, openAuthModal } = useCustomerAuth();
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = items.reduce((sum, item) => sum + (parseFloat(item.price.amount) * item.quantity), 0);
 
   useEffect(() => { if (isOpen) syncCart(); }, [isOpen, syncCart]);
 
   const handleCheckout = () => {
+    // Signed-out shoppers must create an account / log in before checkout.
+    if (!isSignedIn) {
+      setIsOpen(false);
+      openAuthModal({ mode: "login", intent: "checkout" });
+      return;
+    }
     const checkoutUrl = getCheckoutUrl();
     if (checkoutUrl) {
       window.open(checkoutUrl, '_blank');
       setIsOpen(false);
     }
   };
+
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
