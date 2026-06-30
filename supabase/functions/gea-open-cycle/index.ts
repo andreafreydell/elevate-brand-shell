@@ -23,25 +23,25 @@ Deno.serve(async (req) => {
     return jsonResponse({ error: "Unauthorized" }, 401);
   }
 
-  const { data: memberships, error: membershipError } = await supabase
-    .from("memberships")
-    .select("id, shopify_customer_id, tier")
-    .eq("status", "active");
+  const { data: members, error: membershipError } = await supabase
+    .from("profiles")
+    .select("id, shopify_customer_id, membership_tier")
+    .eq("membership_status", "active");
 
   if (membershipError) {
     return jsonResponse({ error: membershipError.message }, 500);
   }
 
-  const opened: Array<{ membership_id: string; cycle_number: number }> = [];
-  const errors: Array<{ membership_id: string; error: string }> = [];
+  const opened: Array<{ account_id: string; cycle_number: number }> = [];
+  const errors: Array<{ account_id: string; error: string }> = [];
 
-  for (const m of memberships || []) {
+  for (const m of members || []) {
     try {
       const { data: cycle, error: cycleError } = await supabase.rpc("get_or_create_current_cycle", {
-        p_membership_id: m.id,
+        p_account_id: m.id,
       });
       if (cycleError || !cycle) {
-        errors.push({ membership_id: m.id, error: cycleError?.message || "cycle creation failed" });
+        errors.push({ account_id: m.id, error: cycleError?.message || "cycle creation failed" });
         continue;
       }
 
@@ -56,7 +56,7 @@ Deno.serve(async (req) => {
           metric: "GEA Cycle Opened",
           email,
           properties: {
-            tier: m.tier,
+            tier: m.membership_tier,
             cycle_number: cycle.cycle_number,
             free_items: cycle.free_items_allowance,
             keep_allowance: cycle.keep_allowance,
@@ -71,9 +71,9 @@ Deno.serve(async (req) => {
         .update({ cycle_tag_applied: true, tag_applied_at: new Date().toISOString() })
         .eq("id", cycle.id);
 
-      opened.push({ membership_id: m.id, cycle_number: cycle.cycle_number });
+      opened.push({ account_id: m.id, cycle_number: cycle.cycle_number });
     } catch (err) {
-      errors.push({ membership_id: m.id, error: err instanceof Error ? err.message : String(err) });
+      errors.push({ account_id: m.id, error: err instanceof Error ? err.message : String(err) });
     }
   }
 

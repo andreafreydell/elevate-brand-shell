@@ -13,13 +13,13 @@ import { verifyShopifyWebhook } from "../_shared/shopify.ts";
 async function shippedSerialsForOrder(supabase: any, orderId: string) {
   const { data } = await supabase
     .from("rental_reservations")
-    .select("serial_number, membership_id, rental_cycle_id")
+    .select("serial_number, account_id, rental_cycle_id")
     .eq("shopify_order_id", orderId)
     .in("internal_status", ["assigned", "released_to_wms", "shipped", "return_open"]);
   const serials = (data || []).map((r: any) => r.serial_number);
-  const membershipId = (data || []).find((r: any) => r.membership_id)?.membership_id ?? null;
+  const accountId = (data || []).find((r: any) => r.account_id)?.account_id ?? null;
   const cycleId = (data || []).find((r: any) => r.rental_cycle_id)?.rental_cycle_id ?? null;
-  return { serials, membershipId, cycleId };
+  return { serials, accountId, cycleId };
 }
 
 Deno.serve(async (req) => {
@@ -44,11 +44,11 @@ Deno.serve(async (req) => {
     if (!orderId) {
       return jsonResponse({ error: "Missing order_id on return webhook" }, 400);
     }
-    const { serials, membershipId, cycleId } = await shippedSerialsForOrder(supabase, orderId);
+    const { serials, accountId, cycleId } = await shippedSerialsForOrder(supabase, orderId);
     const { data, error } = await supabase
       .from("member_returns")
       .insert({
-        membership_id: membershipId,
+        account_id: accountId,
         rental_cycle_id: cycleId,
         shopify_order_id: orderId,
         shopify_return_id: payload.id != null ? String(payload.id) : null,
@@ -93,11 +93,11 @@ Deno.serve(async (req) => {
     if (existing) {
       returnId = existing.id;
     } else {
-      const { serials, membershipId, cycleId } = await shippedSerialsForOrder(supabase, body.shopify_order_id);
+      const { serials, accountId, cycleId } = await shippedSerialsForOrder(supabase, body.shopify_order_id);
       const { data: created, error: createError } = await supabase
         .from("member_returns")
         .insert({
-          membership_id: membershipId,
+          account_id: accountId,
           rental_cycle_id: cycleId,
           shopify_order_id: body.shopify_order_id,
           source: "wms",

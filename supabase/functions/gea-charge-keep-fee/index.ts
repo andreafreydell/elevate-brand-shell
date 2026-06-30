@@ -25,23 +25,23 @@ Deno.serve(async (req) => {
     return jsonResponse({ error: "cycle_id required" }, 400);
   }
 
-  // Resolve membership + customer for this cycle.
+  // Resolve account + Shopify customer for this cycle.
   const { data: cycle, error: cycleError } = await supabase
     .from("rental_cycles")
-    .select("id, membership_id")
+    .select("id, account_id")
     .eq("id", cycle_id)
     .single();
   if (cycleError || !cycle) {
     return jsonResponse({ error: cycleError?.message || "cycle not found" }, 404);
   }
 
-  const { data: membership } = await supabase
-    .from("memberships")
+  const { data: account } = await supabase
+    .from("profiles")
     .select("id, shopify_customer_id")
-    .eq("id", cycle.membership_id)
+    .eq("id", cycle.account_id)
     .single();
-  if (!membership) {
-    return jsonResponse({ error: "membership not found" }, 404);
+  if (!account) {
+    return jsonResponse({ error: "account not found" }, 404);
   }
 
   const { data: chargeable, error: feeError } = await supabase.rpc("compute_keep_fees", {
@@ -63,7 +63,7 @@ Deno.serve(async (req) => {
 
     // Ensure the charge row exists (idempotent).
     const { data: charge, error: chargeError } = await supabase.rpc("create_charge", {
-      p_membership_id: membership.id,
+      p_account_id: account.id,
       p_rental_cycle_id: cycle_id,
       p_rental_reservation_id: item.rental_reservation_id,
       p_charge_type: "extra_keep_fee",
@@ -84,7 +84,7 @@ Deno.serve(async (req) => {
 
     // Attempt to capture against the customer's payment on file.
     const charged = await chargeKeepFeeToCustomer({
-      customerId: membership.shopify_customer_id,
+      customerId: account.shopify_customer_id,
       title: `GEA extra-keep fee — ${item.serial_number}`,
       amount: Number(item.fee_amount),
     });

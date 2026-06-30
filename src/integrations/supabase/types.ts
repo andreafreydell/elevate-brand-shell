@@ -16,6 +16,7 @@ export type Database = {
     Tables: {
       charges: {
         Row: {
+          account_id: string | null
           amount: number
           basis: Json
           charge_type: string
@@ -25,7 +26,6 @@ export type Database = {
           error: string | null
           id: string
           idempotency_key: string
-          membership_id: string | null
           quantity: number
           rental_cycle_id: string | null
           rental_reservation_id: string | null
@@ -34,6 +34,7 @@ export type Database = {
           updated_at: string
         }
         Insert: {
+          account_id?: string | null
           amount: number
           basis?: Json
           charge_type: string
@@ -43,7 +44,6 @@ export type Database = {
           error?: string | null
           id?: string
           idempotency_key: string
-          membership_id?: string | null
           quantity?: number
           rental_cycle_id?: string | null
           rental_reservation_id?: string | null
@@ -52,6 +52,7 @@ export type Database = {
           updated_at?: string
         }
         Update: {
+          account_id?: string | null
           amount?: number
           basis?: Json
           charge_type?: string
@@ -61,7 +62,6 @@ export type Database = {
           error?: string | null
           id?: string
           idempotency_key?: string
-          membership_id?: string | null
           quantity?: number
           rental_cycle_id?: string | null
           rental_reservation_id?: string | null
@@ -71,10 +71,10 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: "charges_membership_id_fkey"
-            columns: ["membership_id"]
+            foreignKeyName: "charges_account_id_fkey"
+            columns: ["account_id"]
             isOneToOne: false
-            referencedRelation: "memberships"
+            referencedRelation: "profiles"
             referencedColumns: ["id"]
           },
           {
@@ -117,27 +117,6 @@ export type Database = {
           message?: string
           name?: string
           subject?: string
-        }
-        Relationships: []
-      }
-      founding_members: {
-        Row: {
-          created_at: string
-          email: string
-          id: string
-          source: string | null
-        }
-        Insert: {
-          created_at?: string
-          email: string
-          id?: string
-          source?: string | null
-        }
-        Update: {
-          created_at?: string
-          email?: string
-          id?: string
-          source?: string | null
         }
         Relationships: []
       }
@@ -227,11 +206,11 @@ export type Database = {
       }
       member_returns: {
         Row: {
+          account_id: string | null
           created_at: string
           expected_serials: string[]
           id: string
           kept_serials: string[]
-          membership_id: string | null
           metadata: Json
           reconciled_at: string | null
           rental_cycle_id: string | null
@@ -243,11 +222,11 @@ export type Database = {
           updated_at: string
         }
         Insert: {
+          account_id?: string | null
           created_at?: string
           expected_serials?: string[]
           id?: string
           kept_serials?: string[]
-          membership_id?: string | null
           metadata?: Json
           reconciled_at?: string | null
           rental_cycle_id?: string | null
@@ -259,11 +238,11 @@ export type Database = {
           updated_at?: string
         }
         Update: {
+          account_id?: string | null
           created_at?: string
           expected_serials?: string[]
           id?: string
           kept_serials?: string[]
-          membership_id?: string | null
           metadata?: Json
           reconciled_at?: string | null
           rental_cycle_id?: string | null
@@ -276,10 +255,10 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: "member_returns_membership_id_fkey"
-            columns: ["membership_id"]
+            foreignKeyName: "member_returns_account_id_fkey"
+            columns: ["account_id"]
             isOneToOne: false
-            referencedRelation: "memberships"
+            referencedRelation: "profiles"
             referencedColumns: ["id"]
           },
           {
@@ -291,59 +270,78 @@ export type Database = {
           },
         ]
       }
-      memberships: {
+      profiles: {
         Row: {
-          auth_user_id: string | null
-          cancelled_at: string | null
           created_at: string
+          email: string | null
+          founding_source: string | null
           free_items_per_cycle: number
+          full_name: string | null
           id: string
+          is_founding_member: boolean
           keep_allowance_per_cycle: number
+          membership_cancelled_at: string | null
+          membership_started_at: string | null
+          membership_status: string
+          membership_tier: string
           metadata: Json
-          shopify_customer_id: string
+          next_chapter_completed: boolean
+          next_chapter_completed_at: string | null
+          shopify_customer_id: string | null
           shopify_subscription_contract_id: string | null
-          started_at: string
-          status: string
-          tier: string
           tier_source: Json
           updated_at: string
+          wishlist: Json
         }
         Insert: {
-          auth_user_id?: string | null
-          cancelled_at?: string | null
           created_at?: string
-          free_items_per_cycle: number
-          id?: string
+          email?: string | null
+          founding_source?: string | null
+          free_items_per_cycle?: number
+          full_name?: string | null
+          id: string
+          is_founding_member?: boolean
           keep_allowance_per_cycle?: number
+          membership_cancelled_at?: string | null
+          membership_started_at?: string | null
+          membership_status?: string
+          membership_tier?: string
           metadata?: Json
-          shopify_customer_id: string
+          next_chapter_completed?: boolean
+          next_chapter_completed_at?: string | null
+          shopify_customer_id?: string | null
           shopify_subscription_contract_id?: string | null
-          started_at?: string
-          status?: string
-          tier: string
           tier_source?: Json
           updated_at?: string
+          wishlist?: Json
         }
         Update: {
-          auth_user_id?: string | null
-          cancelled_at?: string | null
           created_at?: string
+          email?: string | null
+          founding_source?: string | null
           free_items_per_cycle?: number
+          full_name?: string | null
           id?: string
+          is_founding_member?: boolean
           keep_allowance_per_cycle?: number
+          membership_cancelled_at?: string | null
+          membership_started_at?: string | null
+          membership_status?: string
+          membership_tier?: string
           metadata?: Json
-          shopify_customer_id?: string
+          next_chapter_completed?: boolean
+          next_chapter_completed_at?: string | null
+          shopify_customer_id?: string | null
           shopify_subscription_contract_id?: string | null
-          started_at?: string
-          status?: string
-          tier?: string
           tier_source?: Json
           updated_at?: string
+          wishlist?: Json
         }
         Relationships: []
       }
       rental_cycles: {
         Row: {
+          account_id: string
           checkout_count: number
           created_at: string
           cycle_end: string
@@ -357,7 +355,6 @@ export type Database = {
           id: string
           keep_allowance: number
           keep_count: number
-          membership_id: string
           reconciled_at: string | null
           status: string
           tag_applied_at: string | null
@@ -365,6 +362,7 @@ export type Database = {
           updated_at: string
         }
         Insert: {
+          account_id: string
           checkout_count?: number
           created_at?: string
           cycle_end: string
@@ -378,7 +376,6 @@ export type Database = {
           id?: string
           keep_allowance: number
           keep_count?: number
-          membership_id: string
           reconciled_at?: string | null
           status?: string
           tag_applied_at?: string | null
@@ -386,6 +383,7 @@ export type Database = {
           updated_at?: string
         }
         Update: {
+          account_id?: string
           checkout_count?: number
           created_at?: string
           cycle_end?: string
@@ -399,7 +397,6 @@ export type Database = {
           id?: string
           keep_allowance?: number
           keep_count?: number
-          membership_id?: string
           reconciled_at?: string | null
           status?: string
           tag_applied_at?: string | null
@@ -408,16 +405,17 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: "rental_cycles_membership_id_fkey"
-            columns: ["membership_id"]
+            foreignKeyName: "rental_cycles_account_id_fkey"
+            columns: ["account_id"]
             isOneToOne: false
-            referencedRelation: "memberships"
+            referencedRelation: "profiles"
             referencedColumns: ["id"]
           },
         ]
       }
       rental_reservations: {
         Row: {
+          account_id: string | null
           assigned_at: string
           closed_at: string | null
           created_at: string
@@ -428,7 +426,6 @@ export type Database = {
           item_price_cache: number | null
           keep_requested: boolean
           kept_at: string | null
-          membership_id: string | null
           metadata: Json
           released_to_wms_at: string | null
           rental_cycle_id: string | null
@@ -449,6 +446,7 @@ export type Database = {
           updated_at: string
         }
         Insert: {
+          account_id?: string | null
           assigned_at?: string
           closed_at?: string | null
           created_at?: string
@@ -459,7 +457,6 @@ export type Database = {
           item_price_cache?: number | null
           keep_requested?: boolean
           kept_at?: string | null
-          membership_id?: string | null
           metadata?: Json
           released_to_wms_at?: string | null
           rental_cycle_id?: string | null
@@ -480,6 +477,7 @@ export type Database = {
           updated_at?: string
         }
         Update: {
+          account_id?: string | null
           assigned_at?: string
           closed_at?: string | null
           created_at?: string
@@ -490,7 +488,6 @@ export type Database = {
           item_price_cache?: number | null
           keep_requested?: boolean
           kept_at?: string | null
-          membership_id?: string | null
           metadata?: Json
           released_to_wms_at?: string | null
           rental_cycle_id?: string | null
@@ -512,17 +509,17 @@ export type Database = {
         }
         Relationships: [
           {
+            foreignKeyName: "rental_reservations_account_id_fkey"
+            columns: ["account_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "rental_reservations_inventory_unit_id_fkey"
             columns: ["inventory_unit_id"]
             isOneToOne: false
             referencedRelation: "inventory_units"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "rental_reservations_membership_id_fkey"
-            columns: ["membership_id"]
-            isOneToOne: false
-            referencedRelation: "memberships"
             referencedColumns: ["id"]
           },
           {
@@ -849,6 +846,7 @@ export type Database = {
       count_checkout_for_reservation: {
         Args: { p_reservation_id: string }
         Returns: {
+          account_id: string | null
           assigned_at: string
           closed_at: string | null
           created_at: string
@@ -859,7 +857,6 @@ export type Database = {
           item_price_cache: number | null
           keep_requested: boolean
           kept_at: string | null
-          membership_id: string | null
           metadata: Json
           released_to_wms_at: string | null
           rental_cycle_id: string | null
@@ -888,15 +885,16 @@ export type Database = {
       }
       create_charge: {
         Args: {
+          p_account_id: string
           p_amount: number
           p_basis: Json
           p_charge_type: string
           p_idempotency_key: string
-          p_membership_id: string
           p_rental_cycle_id: string
           p_rental_reservation_id: string
         }
         Returns: {
+          account_id: string | null
           amount: number
           basis: Json
           charge_type: string
@@ -906,7 +904,6 @@ export type Database = {
           error: string | null
           id: string
           idempotency_key: string
-          membership_id: string | null
           quantity: number
           rental_cycle_id: string | null
           rental_reservation_id: string | null
@@ -935,6 +932,7 @@ export type Database = {
           p_sku: string
         }
         Returns: {
+          account_id: string | null
           assigned_at: string
           closed_at: string | null
           created_at: string
@@ -945,7 +943,6 @@ export type Database = {
           item_price_cache: number | null
           keep_requested: boolean
           kept_at: string | null
-          membership_id: string | null
           metadata: Json
           released_to_wms_at: string | null
           rental_cycle_id: string | null
@@ -977,8 +974,9 @@ export type Database = {
         Returns: number
       }
       get_or_create_current_cycle: {
-        Args: { p_membership_id: string }
+        Args: { p_account_id: string }
         Returns: {
+          account_id: string
           checkout_count: number
           created_at: string
           cycle_end: string
@@ -992,7 +990,6 @@ export type Database = {
           id: string
           keep_allowance: number
           keep_count: number
-          membership_id: string
           reconciled_at: string | null
           status: string
           tag_applied_at: string | null
@@ -1193,11 +1190,11 @@ export type Database = {
       reconcile_member_return: {
         Args: { p_force?: boolean; p_return_id: string }
         Returns: {
+          account_id: string | null
           created_at: string
           expected_serials: string[]
           id: string
           kept_serials: string[]
-          membership_id: string | null
           metadata: Json
           reconciled_at: string | null
           rental_cycle_id: string | null
@@ -1232,24 +1229,30 @@ export type Database = {
           p_tier_source?: Json
         }
         Returns: {
-          auth_user_id: string | null
-          cancelled_at: string | null
           created_at: string
+          email: string | null
+          founding_source: string | null
           free_items_per_cycle: number
+          full_name: string | null
           id: string
+          is_founding_member: boolean
           keep_allowance_per_cycle: number
+          membership_cancelled_at: string | null
+          membership_started_at: string | null
+          membership_status: string
+          membership_tier: string
           metadata: Json
-          shopify_customer_id: string
+          next_chapter_completed: boolean
+          next_chapter_completed_at: string | null
+          shopify_customer_id: string | null
           shopify_subscription_contract_id: string | null
-          started_at: string
-          status: string
-          tier: string
           tier_source: Json
           updated_at: string
+          wishlist: Json
         }
         SetofOptions: {
           from: "*"
-          to: "memberships"
+          to: "profiles"
           isOneToOne: true
           isSetofReturn: false
         }

@@ -99,7 +99,7 @@ Deno.serve(async (req) => {
     });
     if (countError) {
       console.error("count_checkout_for_reservation failed:", countError);
-    } else if (counted?.membership_id) {
+    } else if (counted?.account_id) {
       isMemberOrder = true;
       memberCycleId = counted.rental_cycle_id;
     }

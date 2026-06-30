@@ -63,5 +63,17 @@ Deno.serve(async (req) => {
     return jsonResponse({ error: error.message }, 500);
   }
 
-  return jsonResponse({ ok: true, tier, membership: data });
+  // No matching profile means the customer hasn't created an account yet; the
+  // tier will sync once they sign up and their profile is linked to this customer.
+  if (!data) {
+    return jsonResponse({
+      ok: true,
+      skipped: true,
+      reason: "no_account_for_customer",
+      shopify_customer_id: numericCustomerId,
+      tier,
+    });
+  }
+
+  return jsonResponse({ ok: true, tier, profile: data });
 });
