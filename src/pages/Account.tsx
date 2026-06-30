@@ -63,6 +63,7 @@ const dashboardSections = [
 ];
 
 const Account = () => {
+  const { isSignedIn, openAuthModal } = useCustomerAuth();
   return (
     <PageLayout>
       <section className="relative overflow-hidden bg-[hsl(28,22%,34%)]">
