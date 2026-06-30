@@ -19,7 +19,7 @@ const buildPath = () => {
 export const WaveTransition = () => (
   <div
     aria-hidden="true"
-    className="pointer-events-none relative z-[3] -mt-[42px] md:-mt-[68px] -mb-[42px] md:-mb-[68px]"
+    className="pointer-events-none relative z-[3] -mt-[44px] md:-mt-[75px] -mb-[44px] md:-mb-[75px]"
   >
     <svg className="block w-full h-[88px] md:h-[150px]" viewBox="0 0 1440 150" preserveAspectRatio="none">
       <path
