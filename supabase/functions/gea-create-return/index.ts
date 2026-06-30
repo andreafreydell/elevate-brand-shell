@@ -13,13 +13,13 @@ import { verifyShopifyWebhook } from "../_shared/shopify.ts";
 async function shippedSerialsForOrder(supabase: any, orderId: string) {
   const { data } = await supabase
     .from("rental_reservations")
-    .select("serial_number, membership_id, rental_cycle_id")
+    .select("serial_number, account_id, rental_cycle_id")
     .eq("shopify_order_id", orderId)
     .in("internal_status", ["assigned", "released_to_wms", "shipped", "return_open"]);
   const serials = (data || []).map((r: any) => r.serial_number);
-  const membershipId = (data || []).find((r: any) => r.membership_id)?.membership_id ?? null;
+  const accountId = (data || []).find((r: any) => r.account_id)?.account_id ?? null;
   const cycleId = (data || []).find((r: any) => r.rental_cycle_id)?.rental_cycle_id ?? null;
-  return { serials, membershipId, cycleId };
+  return { serials, accountId, cycleId };
 }
 
 Deno.serve(async (req) => {
