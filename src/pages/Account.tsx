@@ -11,6 +11,8 @@ import { DiamondChainBorder } from "@/components/craft/DiamondChainBorder";
 import { OrganicBlobTag } from "@/components/craft/OrganicBlobTag";
 import { TagRedStamp } from "@/components/craft/TagRedStamp";
 import { User, Package, Clock, Heart, RefreshCw, Gem } from "lucide-react";
+import { useCustomerAuth } from "@/contexts/CustomerAuthContext";
+import { OccasionsSection } from "@/components/account/OccasionsSection";
 
 const blobVariants: Array<"coastal" | "statement" | "modern" | "classic"> = [
   "coastal",
