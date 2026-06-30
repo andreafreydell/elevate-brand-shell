@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useCartStore } from "@/stores/cartStore";
 import { type ShopifyProduct } from "@/lib/shopify";
 import { toast } from "sonner";
+import { WishlistHeart } from "@/components/wishlist/WishlistHeart";
 
 /** Append width param to Shopify CDN URLs for optimized loading */
 function optimizeShopifyImage(url: string, width: number): string {
