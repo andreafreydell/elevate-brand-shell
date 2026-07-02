@@ -30,3 +30,7 @@ verify_jwt = false
 # Staff-only: charge the 40% extra-keep fee (JWT validated + staff allowlist).
 [functions.gea-charge-keep-fee]
 verify_jwt = true
+
+# Temporary: mint a one-time magic sign-in link for a member (secret-authed).
+[functions.gea-admin-link]
+verify_jwt = false
