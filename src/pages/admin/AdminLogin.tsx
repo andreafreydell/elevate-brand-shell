@@ -45,6 +45,21 @@ export default function AdminLogin() {
     toast.success("Magic link sent — check your email.");
   };
 
+  const handleResetPassword = async () => {
+    if (!email) {
+      toast.error("Enter your email first.");
+      return;
+    }
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/admin/settings`,
+    });
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
+    toast.success("Password reset link sent — check your email.");
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center px-6 bg-background">
       <div className="w-full max-w-sm border border-border bg-card p-8 md:p-10">
@@ -86,6 +101,14 @@ export default function AdminLogin() {
           className="cta-underline mt-5 text-[12px] block mx-auto"
         >
           Email me a magic link instead
+        </button>
+
+        <button
+          type="button"
+          onClick={handleResetPassword}
+          className="cta-underline mt-3 text-[12px] block mx-auto"
+        >
+          Forgot password? Email me a reset link
         </button>
       </div>
     </div>

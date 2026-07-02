@@ -1,4 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -131,6 +132,9 @@ export default function RentalOps() {
         </div>
         <div className="flex items-center gap-4">
           <span className="text-[12px] text-muted-foreground font-sans hidden md:inline">{user?.email}</span>
+          <Button variant="outline" size="sm" asChild>
+            <Link to="/admin/settings">Set password</Link>
+          </Button>
           <Button variant="outline" size="sm" onClick={signOut}>Sign out</Button>
         </div>
       </div>

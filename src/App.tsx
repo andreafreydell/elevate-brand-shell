@@ -11,6 +11,7 @@ import { EmailCapturePopup } from "@/components/EmailCapturePopup";
 import Index from "./pages/Index";
 import AdminLogin from "./pages/admin/AdminLogin";
 import RentalOps from "./pages/admin/RentalOps";
+import AdminSettings from "./pages/admin/AdminSettings";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { CustomerAuthProvider } from "@/contexts/CustomerAuthContext";
 import { CustomerAuthModal } from "@/components/auth/CustomerAuthModal";
@@ -142,6 +143,7 @@ const AppContent = () => {
       <Route path="/next-chapter/*" element={<NextChapterRedirect />} />
       <Route path="/admin/login" element={<AdminLogin />} />
       <Route path="/admin/rental-ops" element={<AdminRoute><RentalOps /></AdminRoute>} />
+      <Route path="/admin/settings" element={<AdminRoute><AdminSettings /></AdminRoute>} />
       <Route path="/product/:handle" element={<ProductDetail />} />
       <Route path="/how-it-works" element={<HowItWorks />} />
       <Route path="/membership" element={<Navigate to="/how-it-works" replace />} />
