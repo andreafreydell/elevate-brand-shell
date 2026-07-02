@@ -47,7 +47,33 @@ Deno.serve(async (req) => {
   const wmsFieldConfig = config as ShopifyWmsFieldConfig;
 
   const lineItems = order.line_items || [];
-  const rentalLines = lineItems.filter(isRentalLineItem);
+
+  // Resolve which line variants are actual rental units. A line is a rental line
+  // when its variant exists in inventory_units and is not an excluded variant
+  // (memberships, the $6 Extra Rental Item fee, or the two gift items). The
+  // storefront cart sets no line-item properties, so this DB check is the rule.
+  const candidateVariantIds = Array.from(
+    new Set(
+      lineItems
+        .filter((li) => li.variant_id != null && !isExcludedFromRental(li))
+        .map((li) => String(li.variant_id)),
+    ),
+  );
+
+  let rentalVariantIds = new Set<string>();
+  if (candidateVariantIds.length > 0) {
+    const { data: units, error: unitsError } = await supabase
+      .from("inventory_units")
+      .select("shopify_variant_id")
+      .in("shopify_variant_id", candidateVariantIds);
+    if (unitsError) {
+      console.error("Failed to load inventory_units for rental detection:", unitsError);
+    } else {
+      rentalVariantIds = new Set((units || []).map((u) => String(u.shopify_variant_id)));
+    }
+  }
+
+  const rentalLines = lineItems.filter((li) => isRentalLineItem(li, rentalVariantIds));
   const assignedSerials = [];
   const errors = [];
   let isMemberOrder = false;
