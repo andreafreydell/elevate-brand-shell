@@ -8,6 +8,7 @@ import {
   verifyShopifyWebhook,
   writeAssignedSerialsToShopify,
 } from "../_shared/shopify.ts";
+import { handleMembershipOrder } from "../_shared/membership.ts";
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
