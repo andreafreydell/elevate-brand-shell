@@ -13,6 +13,7 @@ import { TagRedStamp } from "@/components/craft/TagRedStamp";
 import { User, Package, Clock, Heart, RefreshCw, Gem } from "lucide-react";
 import { useCustomerAuth } from "@/contexts/CustomerAuthContext";
 import { OccasionsSection } from "@/components/account/OccasionsSection";
+import { CurrentCycleCard } from "@/components/account/CurrentCycleCard";
 
 const blobVariants: Array<"coastal" | "statement" | "modern" | "classic"> = [
   "coastal",
@@ -87,6 +88,7 @@ const Account = () => {
 
       {isSignedIn ? (
         <div className="pt-12">
+          <CurrentCycleCard />
           <OccasionsSection />
         </div>
       ) : (

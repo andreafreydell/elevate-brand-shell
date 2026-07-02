@@ -101,15 +101,37 @@ export function getOrderGid(orderId: string) {
   return orderId.startsWith("gid://") ? orderId : `gid://shopify/Order/${orderId}`;
 }
 
-export function isRentalLineItem(lineItem: ShopifyWebhookLineItem) {
-  const processAllLines = Deno.env.get("GEA_RENTAL_PROCESS_ALL_LINES") === "true";
-  if (processAllLines) return true;
+// Variants that must NEVER grab a rental serial, even if they somehow appear in
+// inventory_units or carry a rental property:
+//  - the three membership subscription variants (Seed / Blossom / Garden)
+//  - the $6 "Extra Rental Item" fee line (not a physical unit)
+//  - the two gift-with-purchase items
+export const NON_RENTAL_VARIANT_IDS = new Set<string>([
+  "48545833943140", // Seed membership
+  "48630640345188", // Blossom membership
+  "48545842724964", // Garden membership
+  "48643543760996", // $6 Extra Rental Item (fee)
+  "48466377703524", // gift item
+  "48466377736292", // gift item
+]);
 
-  const rentalPropertyKey = Deno.env.get("GEA_RENTAL_LINE_PROPERTY_KEY") || "_gea_rental";
-  return (lineItem.properties || []).some((property) => {
-    const value = String(property.value ?? "").toLowerCase();
-    return property.name === rentalPropertyKey && ["true", "1", "yes", "rental"].includes(value);
-  });
+export function isExcludedFromRental(lineItem: ShopifyWebhookLineItem) {
+  const vid = lineItem.variant_id != null ? String(lineItem.variant_id) : null;
+  return vid != null && NON_RENTAL_VARIANT_IDS.has(vid);
+}
+
+// LIVE RULE: a line is a rental line when its variant exists in inventory_units
+// AND it is not one of the explicitly excluded variants above. The storefront
+// cart does not set any line-item properties, so this DB-backed check is the
+// authoritative signal. `rentalVariantIds` is the set of variant ids found in
+// inventory_units for this order (resolved once, in the webhook handler).
+export function isRentalLineItem(
+  lineItem: ShopifyWebhookLineItem,
+  rentalVariantIds: Set<string>,
+) {
+  if (isExcludedFromRental(lineItem)) return false;
+  const vid = lineItem.variant_id != null ? String(lineItem.variant_id) : null;
+  return vid != null && rentalVariantIds.has(vid);
 }
 
 export async function writeAssignedSerialsToShopify(
