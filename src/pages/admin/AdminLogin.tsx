@@ -45,6 +45,21 @@ export default function AdminLogin() {
     toast.success("Magic link sent — check your email.");
   };
 
+  const handleResetPassword = async () => {
+    if (!email) {
+      toast.error("Enter your email first.");
+      return;
+    }
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/admin/settings`,
+    });
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
+    toast.success("Password reset link sent — check your email.");
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center px-6 bg-background">
       <div className="w-full max-w-sm border border-border bg-card p-8 md:p-10">
