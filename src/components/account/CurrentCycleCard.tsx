@@ -64,19 +64,21 @@ export const CurrentCycleCard = () => {
       return;
     }
     setLoading(true);
-    supabase
-      .from("rental_cycles")
-      .select(
-        "cycle_number, cycle_end, free_items_allowance, free_used, checkout_count, keep_allowance, keep_count",
-      )
-      .eq("account_id", profile.id)
-      .order("cycle_number", { ascending: false })
-      .limit(1)
-      .maybeSingle()
-      .then(({ data }) => {
-        if (active) setCycle((data as CycleRow) ?? null);
-      })
-      .finally(() => active && setLoading(false));
+    (async () => {
+      const { data } = await supabase
+        .from("rental_cycles")
+        .select(
+          "cycle_number, cycle_end, free_items_allowance, free_used, checkout_count, keep_allowance, keep_count",
+        )
+        .eq("account_id", profile.id)
+        .order("cycle_number", { ascending: false })
+        .limit(1)
+        .maybeSingle();
+      if (active) {
+        setCycle((data as CycleRow) ?? null);
+        setLoading(false);
+      }
+    })();
     return () => {
       active = false;
     };
