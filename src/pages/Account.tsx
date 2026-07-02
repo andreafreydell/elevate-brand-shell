@@ -88,6 +88,7 @@ const Account = () => {
 
       {isSignedIn ? (
         <div className="pt-12">
+          <CurrentCycleCard />
           <OccasionsSection />
         </div>
       ) : (
