@@ -132,6 +132,9 @@ export default function RentalOps() {
         </div>
         <div className="flex items-center gap-4">
           <span className="text-[12px] text-muted-foreground font-sans hidden md:inline">{user?.email}</span>
+          <Button variant="outline" size="sm" asChild>
+            <Link to="/admin/settings">Set password</Link>
+          </Button>
           <Button variant="outline" size="sm" onClick={signOut}>Sign out</Button>
         </div>
       </div>
