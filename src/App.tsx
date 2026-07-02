@@ -11,6 +11,7 @@ import { EmailCapturePopup } from "@/components/EmailCapturePopup";
 import Index from "./pages/Index";
 import AdminLogin from "./pages/admin/AdminLogin";
 import RentalOps from "./pages/admin/RentalOps";
+import AdminSettings from "./pages/admin/AdminSettings";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { CustomerAuthProvider } from "@/contexts/CustomerAuthContext";
 import { CustomerAuthModal } from "@/components/auth/CustomerAuthModal";
