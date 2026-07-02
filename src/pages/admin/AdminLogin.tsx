@@ -102,6 +102,14 @@ export default function AdminLogin() {
         >
           Email me a magic link instead
         </button>
+
+        <button
+          type="button"
+          onClick={handleResetPassword}
+          className="cta-underline mt-3 text-[12px] block mx-auto"
+        >
+          Forgot password? Email me a reset link
+        </button>
       </div>
     </div>
   );
