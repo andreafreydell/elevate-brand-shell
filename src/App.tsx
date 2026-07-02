@@ -143,6 +143,7 @@ const AppContent = () => {
       <Route path="/next-chapter/*" element={<NextChapterRedirect />} />
       <Route path="/admin/login" element={<AdminLogin />} />
       <Route path="/admin/rental-ops" element={<AdminRoute><RentalOps /></AdminRoute>} />
+      <Route path="/admin/settings" element={<AdminRoute><AdminSettings /></AdminRoute>} />
       <Route path="/product/:handle" element={<ProductDetail />} />
       <Route path="/how-it-works" element={<HowItWorks />} />
       <Route path="/membership" element={<Navigate to="/how-it-works" replace />} />
