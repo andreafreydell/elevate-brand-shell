@@ -1,6 +1,7 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { corsHeaders, jsonResponse } from "../_shared/cors.ts";
 import {
+  isExcludedFromRental,
   isRentalLineItem,
   removeCustomerTags,
   ShopifyOrderPaidWebhook,
