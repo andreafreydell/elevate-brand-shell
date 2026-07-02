@@ -825,6 +825,7 @@ export type Database = {
           isSetofReturn: false
         }
       }
+      canonical_tier: { Args: { p_tier: string }; Returns: string }
       claim_theolia_serial: {
         Args: {
           _line_item_id: string
