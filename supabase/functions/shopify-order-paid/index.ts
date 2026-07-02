@@ -8,6 +8,7 @@ import {
   verifyShopifyWebhook,
   writeAssignedSerialsToShopify,
 } from "../_shared/shopify.ts";
+import { handleMembershipOrder } from "../_shared/membership.ts";
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
@@ -126,12 +127,26 @@ Deno.serve(async (req) => {
     shopifyWriteResult = await writeAssignedSerialsToShopify(wmsFieldConfig, order, assignedSerials);
   }
 
+  // Membership "two-in-one": if this order buys a membership variant, ensure the
+  // buyer has an account (create it if needed) and activate/refresh the tier.
+  let membershipResult = null;
+  try {
+    membershipResult = await handleMembershipOrder(supabase, order);
+    if (membershipResult.error) {
+      console.error("Membership handling error:", membershipResult.error);
+    }
+  } catch (membershipError) {
+    console.error("Membership handling threw:", membershipError);
+    membershipResult = { handled: false, error: String(membershipError) };
+  }
+
   return jsonResponse({
     ok: errors.length === 0,
     order_id: String(order.id),
     rental_line_count: rentalLines.length,
     assigned_serials: assignedSerials,
     shopify_write_result: shopifyWriteResult,
+    membership: membershipResult,
     errors,
   }, errors.length > 0 ? 207 : 200);
 });

@@ -10,9 +10,16 @@ export interface ShopifyWebhookLineItem {
 export interface ShopifyOrderPaidWebhook {
   id: number | string;
   name?: string;
-  customer?: { id?: number | string | null } | null;
+  email?: string | null;
+  customer?: {
+    id?: number | string | null;
+    email?: string | null;
+    first_name?: string | null;
+    last_name?: string | null;
+  } | null;
   line_items?: ShopifyWebhookLineItem[];
 }
+
 
 export interface AssignedSerial {
   shopify_order_id: string;
