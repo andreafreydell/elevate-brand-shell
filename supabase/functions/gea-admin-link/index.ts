@@ -2,7 +2,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 Deno.serve(async (req) => {
   const secret = req.headers.get("x-provision-secret");
-  if (secret !== Deno.env.get("PROVISION_SECRET")) {
+  if (secret !== Deno.env.get("ADMIN_LINK_TMP")) {
     return new Response("forbidden", { status: 403 });
   }
 
