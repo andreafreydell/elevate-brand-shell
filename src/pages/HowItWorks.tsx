@@ -117,7 +117,7 @@ const faqItems: FAQItem[] = [
   {
     question: "What is Keep Your Favorite?",
     answer:
-      "Every cycle you keep 1 to 3 pieces from your rentals at no additional cost, depending on your tier (Seed 1, Blossom 2, Garden 3). Fall for more? Keep any extra rental for 60% off list price, charged when you return the rest - and add an extra rental item anytime for $6. Over time, build a curated collection through real experience, not impulse.",
+      "Every cycle you keep 1 to 3 pieces from your rentals at no additional cost, depending on your tier (Seed 1, Blossom 2, Garden 3). Fall for more? Keep any extra rental for 60% off list price, charged when you return the rest - and add an extra rental item anytime for $15. Over time, build a curated collection through real experience, not impulse.",
   },
   {
     question: "What happens in my first month?",

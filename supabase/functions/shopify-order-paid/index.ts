@@ -1,6 +1,7 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { corsHeaders, jsonResponse } from "../_shared/cors.ts";
 import {
+  fulfillMembershipLines,
   isExcludedFromRental,
   isRentalLineItem,
   removeCustomerTags,
@@ -9,7 +10,8 @@ import {
   verifyShopifyWebhook,
   writeAssignedSerialsToShopify,
 } from "../_shared/shopify.ts";
-import { handleMembershipOrder } from "../_shared/membership.ts";
+import { handleMembershipOrder, MEMBERSHIP_VARIANT_TIERS } from "../_shared/membership.ts";
+import { openCycleForMember } from "../_shared/cycles.ts";
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
@@ -120,6 +122,13 @@ Deno.serve(async (req) => {
       serial_number: reservation.serial_number,
     });
 
+    // Logistics enrichment: piece title on the reservation row (address +
+    // order number are stamped once per order below).
+    await supabase
+      .from("rental_reservations")
+      .update({ product_title: lineItem.title || null })
+      .eq("id", reservation.id);
+
     // Count this checkout against the member's current cycle (idempotent;
     // no-op for non-members). Returns the enriched reservation.
     const { data: counted, error: countError } = await supabase.rpc("count_checkout_for_reservation", {
@@ -149,6 +158,18 @@ Deno.serve(async (req) => {
     }
   }
 
+  // Logistics enrichment: shipping address + order number on every reservation
+  // of this order (same destination for all lines).
+  if (assignedSerials.length > 0 && (order.shipping_address || order.order_number != null)) {
+    await supabase
+      .from("rental_reservations")
+      .update({
+        shipping_address: order.shipping_address ?? null,
+        order_number: order.order_number != null ? String(order.order_number) : null,
+      })
+      .eq("shopify_order_id", String(order.id));
+  }
+
   let shopifyWriteResult = null;
   if (assignedSerials.length > 0) {
     shopifyWriteResult = await writeAssignedSerialsToShopify(wmsFieldConfig, order, assignedSerials);
@@ -157,10 +178,32 @@ Deno.serve(async (req) => {
   // Membership "two-in-one": if this order buys a membership variant, ensure the
   // buyer has an account (create it if needed) and activate/refresh the tier.
   let membershipResult = null;
+  let activation = null;
+  let fulfillment = null;
   try {
     membershipResult = await handleMembershipOrder(supabase, order);
     if (membershipResult.error) {
       console.error("Membership handling error:", membershipResult.error);
+    }
+
+    // Instant activation: the moment the membership order lands, open cycle 1,
+    // tag the customer (discount goes live) and fire the "pick your pieces"
+    // email — no waiting for the daily job. Idempotent via cycle_tag_applied.
+    if (membershipResult.handled && membershipResult.account_id) {
+      activation = await openCycleForMember(supabase, {
+        account_id: membershipResult.account_id,
+        shopify_customer_id: order.customer?.id != null ? String(order.customer.id) : null,
+        tier: membershipResult.tier ?? null,
+      });
+      if (activation.error) console.error("Instant activation error:", activation.error);
+
+      // Memberships are a service — mark their lines fulfilled so the order
+      // doesn't sit "unfulfilled" for ops.
+      fulfillment = await fulfillMembershipLines(
+        String(order.id),
+        new Set(Object.keys(MEMBERSHIP_VARIANT_TIERS)),
+      );
+      if (fulfillment.error) console.error("Membership auto-fulfill error:", fulfillment.error);
     }
   } catch (membershipError) {
     console.error("Membership handling threw:", membershipError);
@@ -174,6 +217,8 @@ Deno.serve(async (req) => {
     assigned_serials: assignedSerials,
     shopify_write_result: shopifyWriteResult,
     membership: membershipResult,
+    activation,
+    membership_fulfillment: fulfillment,
     errors,
   }, errors.length > 0 ? 207 : 200);
 });

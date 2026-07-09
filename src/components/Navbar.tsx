@@ -91,6 +91,8 @@ export const Navbar = () => {
   const [searchOpen, setSearchOpen] = useState(false);
   const location = useLocation();
   const { isSignedIn, profile, user, openAuthModal, signOut } = useCustomerAuth();
+  // Active members get the RETURN SHIPMENT CTA in place of SEE MEMBERSHIP.
+  const isMember = isSignedIn && profile?.membership_status === "active";
 
   // Account icon: signed-out opens the login modal; signed-in shows a menu with
   // the account link and a log-out option.
@@ -240,9 +242,15 @@ export const Navbar = () => {
           </button>
 
           <div className="hidden md:flex w-[180px]">
-            <Link to="/how-it-works" className={membershipCtaClass}>
-              See Membership
-            </Link>
+            {isMember ? (
+              <Link to="/returns" className={membershipCtaClass}>
+                Return Shipment
+              </Link>
+            ) : (
+              <Link to="/how-it-works" className={membershipCtaClass}>
+                See Membership
+              </Link>
+            )}
           </div>
 
           <Link
@@ -387,13 +395,23 @@ export const Navbar = () => {
           <nav className="relative bg-background border-b border-border animate-fade-in">
             <div className="px-6 py-6 space-y-1">
               <div className="border-b border-border/40 pb-4 mb-1">
-                <Link
-                  to="/how-it-works"
-                  onClick={() => toggleMobile(false)}
-                  className={`${membershipCtaClass} w-full`}
-                >
-                  See Membership
-                </Link>
+                {isMember ? (
+                  <Link
+                    to="/returns"
+                    onClick={() => toggleMobile(false)}
+                    className={`${membershipCtaClass} w-full`}
+                  >
+                    Return Shipment
+                  </Link>
+                ) : (
+                  <Link
+                    to="/how-it-works"
+                    onClick={() => toggleMobile(false)}
+                    className={`${membershipCtaClass} w-full`}
+                  >
+                    See Membership
+                  </Link>
+                )}
               </div>
 
               {primaryLinks.map((item) => (

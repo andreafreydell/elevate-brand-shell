@@ -30,3 +30,11 @@ verify_jwt = false
 # Staff-only: charge the 40% extra-keep fee (JWT validated + staff allowlist).
 [functions.gea-charge-keep-fee]
 verify_jwt = true
+
+# Staff-only: enroll a pilot member without a checkout (JWT + staff allowlist).
+[functions.gea-enroll-member]
+verify_jwt = true
+
+# Member-facing: submit a return/keep selection for their own pieces (JWT).
+[functions.gea-member-return]
+verify_jwt = true

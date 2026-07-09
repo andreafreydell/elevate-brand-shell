@@ -388,6 +388,13 @@ export const LandingScrollVideoHero = () => {
             ))}
           </div>
 
+          <div className={`mx-auto mt-5 block w-full max-w-[700px] px-6 py-4 text-center ${scrim}`}>
+            <p className="font-sans text-[12px] leading-relaxed text-foreground md:text-[13px]">
+              Pay today and your account is created automatically — <span className="font-medium">pick your pieces right away</span>,
+              then again every month, checking out at $0 like a regular order ✿
+            </p>
+          </div>
+
           <div className={`mx-auto mt-5 block w-full max-w-[700px] px-6 py-5 text-center ${scrim}`} style={{ borderTop: "2px solid var(--poppy)" }}>
             <p className="font-sans text-[10px] uppercase tracking-[0.32em] text-foreground/70">
               We've thought of everything <span aria-hidden="true" style={{ color: "var(--poppy-deep)" }}>✿</span>

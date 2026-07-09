@@ -10,6 +10,7 @@ export interface ShopifyWebhookLineItem {
 export interface ShopifyOrderPaidWebhook {
   id: number | string;
   name?: string;
+  order_number?: number | string;
   email?: string | null;
   customer?: {
     id?: number | string | null;
@@ -17,6 +18,9 @@ export interface ShopifyOrderPaidWebhook {
     first_name?: string | null;
     last_name?: string | null;
   } | null;
+  // Raw shipping address from the orders/paid payload (name, address1, city,
+  // province, zip, country, phone, ...). Stored verbatim for logistics.
+  shipping_address?: Record<string, unknown> | null;
   line_items?: ShopifyWebhookLineItem[];
 }
 
@@ -396,6 +400,56 @@ export interface ShopifyVariantDetails {
   inventoryQuantity: number | null;
 }
 
+// Find a Shopify customer by email, creating one when none exists. Used by
+// pilot enrollment so no-card members still get a taggable customer record
+// (the 100%-off discount is customer-segment based).
+export async function findOrCreateCustomerByEmail(
+  email: string,
+  firstName?: string | null,
+  lastName?: string | null,
+): Promise<{ id: string | null; created: boolean; error: string | null }> {
+  try {
+    const searchResult = await shopifyGraphql<{
+      data?: { customers?: { nodes?: Array<{ id: string }> } };
+    }>(
+      `query FindCustomer($q: String!) { customers(first: 1, query: $q) { nodes { id } } }`,
+      { q: `email:${email}` },
+    );
+    const existing = searchResult.data?.customers?.nodes?.[0]?.id;
+    if (existing) {
+      return { id: existing.split("/").pop() ?? null, created: false, error: null };
+    }
+
+    const createResult = await shopifyGraphql<{
+      data?: {
+        customerCreate?: {
+          customer?: { id: string } | null;
+          userErrors?: Array<{ message: string }>;
+        };
+      };
+    }>(
+      `mutation CreateCustomer($input: CustomerInput!) {
+        customerCreate(input: $input) { customer { id } userErrors { field message } }
+      }`,
+      {
+        input: {
+          email,
+          ...(firstName ? { firstName } : {}),
+          ...(lastName ? { lastName } : {}),
+        },
+      },
+    );
+    const userErrors = createResult.data?.customerCreate?.userErrors || [];
+    const createdId = createResult.data?.customerCreate?.customer?.id;
+    if (!createdId) {
+      return { id: null, created: false, error: userErrors.map((e) => e.message).join(", ") || "customerCreate failed" };
+    }
+    return { id: createdId.split("/").pop() ?? null, created: true, error: null };
+  } catch (err) {
+    return { id: null, created: false, error: err instanceof Error ? err.message : String(err) };
+  }
+}
+
 export function getVariantGid(variantId: string) {
   return variantId.startsWith("gid://") ? variantId : `gid://shopify/ProductVariant/${variantId}`;
 }
@@ -620,5 +674,121 @@ export async function chargeKeepFeeToCustomer(params: {
       captured: false,
       error: err instanceof Error ? err.message : String(err),
     };
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Membership auto-fulfillment: memberships are a service, nothing ships, so
+// their order lines are marked fulfilled immediately (keeps the orders list
+// clean for ops). Only the given variant ids are fulfilled — rental/gift lines
+// are untouched. Requires the app to carry the merchant-managed fulfillment
+// order scopes; failures are returned, never thrown.
+export async function fulfillMembershipLines(
+  orderId: string,
+  membershipVariantIds: Set<string>,
+): Promise<{ fulfilled: boolean; error: string | null }> {
+  try {
+    const query = `
+      query FulfillmentOrders($id: ID!) {
+        order(id: $id) {
+          fulfillmentOrders(first: 10) {
+            nodes {
+              id
+              status
+              lineItems(first: 50) {
+                nodes {
+                  id
+                  remainingQuantity
+                  lineItem { variant { legacyResourceId } }
+                }
+              }
+            }
+          }
+        }
+      }
+    `;
+    const result = await shopifyGraphql<{
+      data?: {
+        order?: {
+          fulfillmentOrders?: {
+            nodes?: Array<{
+              id: string;
+              status: string;
+              lineItems?: {
+                nodes?: Array<{
+                  id: string;
+                  remainingQuantity: number;
+                  lineItem?: { variant?: { legacyResourceId?: string | null } | null } | null;
+                }>;
+              };
+            }>;
+          } | null;
+        } | null;
+      };
+      errors?: Array<{ message: string }>;
+    }>(query, { id: getOrderGid(orderId) });
+
+    if (result.errors?.length) {
+      return { fulfilled: false, error: result.errors.map((e) => e.message).join(", ") };
+    }
+
+    const byFulfillmentOrder: Array<{
+      fulfillmentOrderId: string;
+      fulfillmentOrderLineItems: Array<{ id: string; quantity: number }>;
+    }> = [];
+
+    for (const fo of result.data?.order?.fulfillmentOrders?.nodes || []) {
+      if (fo.status !== "OPEN" && fo.status !== "IN_PROGRESS") continue;
+      const lines = (fo.lineItems?.nodes || [])
+        .filter(
+          (line) =>
+            line.remainingQuantity > 0 &&
+            line.lineItem?.variant?.legacyResourceId &&
+            membershipVariantIds.has(String(line.lineItem.variant.legacyResourceId)),
+        )
+        .map((line) => ({ id: line.id, quantity: line.remainingQuantity }));
+      if (lines.length > 0) {
+        byFulfillmentOrder.push({ fulfillmentOrderId: fo.id, fulfillmentOrderLineItems: lines });
+      }
+    }
+
+    if (byFulfillmentOrder.length === 0) {
+      return { fulfilled: false, error: null }; // nothing to fulfill (already done or no membership lines)
+    }
+
+    const mutation = `
+      mutation FulfillMembership($fulfillment: FulfillmentV2Input!) {
+        fulfillmentCreateV2(fulfillment: $fulfillment) {
+          fulfillment { id status }
+          userErrors { field message }
+        }
+      }
+    `;
+    const fulfillResult = await shopifyGraphql<{
+      data?: {
+        fulfillmentCreateV2?: {
+          fulfillment?: { id: string; status: string } | null;
+          userErrors?: Array<{ message: string }>;
+        };
+      };
+      errors?: Array<{ message: string }>;
+    }>(mutation, {
+      fulfillment: {
+        lineItemsByFulfillmentOrder: byFulfillmentOrder,
+        notifyCustomer: false,
+      },
+    });
+
+    const userErrors = fulfillResult.data?.fulfillmentCreateV2?.userErrors || [];
+    if (fulfillResult.errors?.length || userErrors.length) {
+      return {
+        fulfilled: false,
+        error: [...(fulfillResult.errors || []), ...userErrors].map((e) => e.message).join(", "),
+      };
+    }
+
+    return { fulfilled: Boolean(fulfillResult.data?.fulfillmentCreateV2?.fulfillment?.id), error: null };
+  } catch (err) {
+    return { fulfilled: false, error: err instanceof Error ? err.message : String(err) };
   }
 }

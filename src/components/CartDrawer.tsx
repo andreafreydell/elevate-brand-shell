@@ -6,13 +6,20 @@ import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTr
 import { ShoppingCart, Minus, Plus, Trash2, Loader2 } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
 import { useCustomerAuth } from "@/contexts/CustomerAuthContext";
+import { useMemberEntitlement } from "@/hooks/useMemberEntitlement";
+import { INCLUDED_LABEL, isMemberIncludedVariant } from "@/lib/memberIncluded";
 
 export const CartDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { items, isLoading, isSyncing, updateQuantity, removeItem, getCheckoutUrl, syncCart } = useCartStore();
   const { isSignedIn, openAuthModal } = useCustomerAuth();
+  const { isEntitled } = useMemberEntitlement();
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
-  const totalPrice = items.reduce((sum, item) => sum + (parseFloat(item.price.amount) * item.quantity), 0);
+  // Entitled members: included pieces don't count toward the payable subtotal shown.
+  const totalPrice = items.reduce((sum, item) => {
+    if (isEntitled && isMemberIncludedVariant(item.variantId)) return sum;
+    return sum + (parseFloat(item.price.amount) * item.quantity);
+  }, 0);
 
   useEffect(() => { if (isOpen) syncCart(); }, [isOpen, syncCart]);
 
@@ -72,7 +79,11 @@ export const CartDrawer = () => {
                       <div className="flex-1 min-w-0">
                         <h4 className="font-serif text-sm font-medium leading-tight">{item.product.node.title}</h4>
                         <p className="text-xs text-muted-foreground mt-1 tracking-wider uppercase">{item.selectedOptions.map(o => o.value).join(' · ')}</p>
-                        <p className="text-sm font-medium mt-2">{item.price.currencyCode} {parseFloat(item.price.amount).toFixed(2)}</p>
+                        {isEntitled && isMemberIncludedVariant(item.variantId) ? (
+                          <p className="text-sm font-medium mt-2" style={{ color: "var(--poppy-deep)" }}>{INCLUDED_LABEL}</p>
+                        ) : (
+                          <p className="text-sm font-medium mt-2">{item.price.currencyCode} {parseFloat(item.price.amount).toFixed(2)}</p>
+                        )}
                       </div>
                       <div className="flex flex-col items-end gap-3 flex-shrink-0">
                         <button className="p-1 hover:bg-accent transition-colors" onClick={() => removeItem(item.cartKey)}>

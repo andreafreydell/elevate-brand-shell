@@ -19,7 +19,7 @@ const tierData = [
       "Full vault access",
       "Keep 1 piece each cycle, included",
       "Keep any extra rental for 60% off list price (charged on return)",
-      "Add an extra rental item for $6",
+      "Add an extra rental item for $15",
       "Protection, sanitation & free shipping both ways",
       "Cancel anytime - no commitment",
     ],
@@ -37,7 +37,7 @@ const tierData = [
       "Full vault access",
       "Keep 2 pieces each cycle, included",
       "Keep any extra rental for 60% off list price (charged on return)",
-      "Add an extra rental item for $6",
+      "Add an extra rental item for $15",
       "Protection, sanitation & free shipping both ways",
       "Cancel anytime - no commitment",
     ],
@@ -55,7 +55,7 @@ const tierData = [
       "Full vault access",
       "Keep 3 pieces each cycle, included",
       "Keep any extra rental for 60% off list price (charged on return)",
-      "Add an extra rental item for $6",
+      "Add an extra rental item for $15",
       "Protection, sanitation & free shipping both ways",
       "Cancel anytime - no commitment",
     ],
@@ -216,7 +216,11 @@ const FullOffer = ({ ctaHref }: { ctaHref: string }) => (
     </div>
     <p className="text-center font-sans text-[11px] tracking-[0.1em] text-muted-foreground">
       One curated shipment per 30-day cycle. Keep 1 to 3 pieces by tier, included —
-      keep any extra rental for 60% off list price (charged on return), or add an extra rental for $6.
+      keep any extra rental for 60% off list price (charged on return), or add an extra rental for $15.
+    </p>
+    <p className="mx-auto max-w-[560px] text-center font-sans text-[12px] leading-relaxed text-foreground">
+      Pay today and your account is created automatically — <span className="font-medium">pick your pieces right away</span>,
+      then again every month, checking out at $0 like a regular order ✿
     </p>
 
     <div className="cpw-section-mobile grid grid-cols-1 gap-10 border border-border bg-card p-10 md:grid-cols-2 md:p-14">

@@ -1,12 +1,15 @@
 import { corsHeaders, jsonResponse } from "../_shared/cors.ts";
 import { serviceClient, verifySecret, verifyStaff } from "../_shared/auth.ts";
-import { addCustomerTags, getCustomerEmail } from "../_shared/shopify.ts";
-import { trackKlaviyoEvent } from "../_shared/klaviyo.ts";
+import { emitReturnDueEvents, openCycleForMember } from "../_shared/cycles.ts";
 
 // Daily cron (or admin trigger): for every active membership whose new 30-day
 // cycle is due, open the cycle, tag the customer `gea_cycle_open` (enters the
-// segment the automatic discount applies to), and fire the Klaviyo `cycle_opened`
-// event that drives the "pick your pieces" email. Idempotent via cycle_tag_applied.
+// segment the automatic discount applies to), and fire the Klaviyo `GEA Cycle
+// Opened` event that drives the "pick your pieces" email. Also fires the
+// day-31 `GEA Return Due` reminder for cycles past their end with pieces
+// still out. Idempotent via cycle_tag_applied / return_reminder_sent_at.
+// NOTE: first cycles now open instantly at purchase (shopify-order-paid);
+// this job is the renewal engine for month 2+.
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -36,49 +39,29 @@ Deno.serve(async (req) => {
   const errors: Array<{ account_id: string; error: string }> = [];
 
   for (const m of members || []) {
-    try {
-      const { data: cycle, error: cycleError } = await supabase.rpc("get_or_create_current_cycle", {
-        p_account_id: m.id,
-      });
-      if (cycleError || !cycle) {
-        errors.push({ account_id: m.id, error: cycleError?.message || "cycle creation failed" });
-        continue;
-      }
-
-      // Already opened/tagged this cycle: skip (idempotent).
-      if (cycle.cycle_tag_applied) continue;
-
-      await addCustomerTags(m.shopify_customer_id, ["gea_cycle_open"]);
-
-      const email = await getCustomerEmail(m.shopify_customer_id);
-      if (email) {
-        await trackKlaviyoEvent({
-          metric: "GEA Cycle Opened",
-          email,
-          properties: {
-            tier: m.membership_tier,
-            cycle_number: cycle.cycle_number,
-            free_items: cycle.free_items_allowance,
-            keep_allowance: cycle.keep_allowance,
-          },
-        });
-      } else {
-        console.warn("No email for customer", m.shopify_customer_id, "- skipped Klaviyo event");
-      }
-
-      await supabase
-        .from("rental_cycles")
-        .update({ cycle_tag_applied: true, tag_applied_at: new Date().toISOString() })
-        .eq("id", cycle.id);
-
-      opened.push({ account_id: m.id, cycle_number: cycle.cycle_number });
-    } catch (err) {
-      errors.push({ account_id: m.id, error: err instanceof Error ? err.message : String(err) });
+    const result = await openCycleForMember(supabase, {
+      account_id: m.id,
+      shopify_customer_id: m.shopify_customer_id,
+      tier: m.membership_tier,
+    });
+    if (result.opened && result.cycle_number != null) {
+      opened.push({ account_id: m.id, cycle_number: result.cycle_number });
+    } else if (result.error) {
+      errors.push({ account_id: m.id, error: result.error });
     }
   }
 
+  // Day-31 "It's Time To Return Your Items" reminders.
+  const returnDue = await emitReturnDueEvents(supabase);
+
   return jsonResponse(
-    { ok: errors.length === 0, opened_count: opened.length, opened, errors },
-    errors.length > 0 ? 207 : 200,
+    {
+      ok: errors.length === 0 && returnDue.errors.length === 0,
+      opened_count: opened.length,
+      opened,
+      return_reminders_sent: returnDue.reminded,
+      errors: [...errors, ...returnDue.errors],
+    },
+    errors.length > 0 || returnDue.errors.length > 0 ? 207 : 200,
   );
 });

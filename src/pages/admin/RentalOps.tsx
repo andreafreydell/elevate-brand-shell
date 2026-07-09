@@ -205,7 +205,7 @@ export default function RentalOps() {
                 <TableCell className="font-mono text-[12px]">{r.serial_number}</TableCell>
                 <TableCell>{r.sku}</TableCell>
                 <TableCell>{r.internal_status}</TableCell>
-                <TableCell>{r.is_free_item == null ? "—" : r.is_free_item ? "free" : "$6"}</TableCell>
+                <TableCell>{r.is_free_item == null ? "—" : r.is_free_item ? "free" : "extra"}</TableCell>
                 <TableCell>{fmtDate(r.assigned_at)}</TableCell>
               </TableRow>
             )}

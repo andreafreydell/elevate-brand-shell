@@ -22,6 +22,8 @@ import { CategoryGraphic } from "@/components/product/CategoryGraphic";
 import { Loader2, Shield, Package, ChevronLeft, ChevronRight } from "lucide-react";
 import { toast } from "sonner";
 import { WishlistHeart } from "@/components/wishlist/WishlistHeart";
+import { useMemberEntitlement } from "@/hooks/useMemberEntitlement";
+import { INCLUDED_LABEL, isMemberIncludedVariant } from "@/lib/memberIncluded";
 
 interface Metafield {
   key: string;
@@ -73,6 +75,7 @@ const CATEGORY_ROUTES: Record<string, { path: string; label: string }> = {
 
 const ProductDetail = () => {
   const { handle } = useParams<{ handle: string }>();
+  const { isEntitled } = useMemberEntitlement();
   const [product, setProduct] = useState<ProductNode | null>(null);
   const [loading, setLoading] = useState(true);
   const [selectedVariantIdx, setSelectedVariantIdx] = useState(0);
@@ -187,6 +190,7 @@ const ProductDetail = () => {
   const category = product.productType || itemType || "Jewelry";
   const price = variant?.price || product.priceRange.minVariantPrice;
   const displayPrice = `${price.currencyCode} ${parseFloat(price.amount).toFixed(2)}`;
+  const showIncluded = isEntitled && isMemberIncludedVariant(variant?.id);
 
   const collection = CATEGORY_ROUTES[category] || {
     path: `/${category.toLowerCase()}`,
@@ -379,10 +383,18 @@ const ProductDetail = () => {
               <StitchLineDivider className="mb-5" />
 
               <div className="flex items-baseline gap-3 mb-2">
-                <span className="font-serif text-xl md:text-3xl font-medium">{displayPrice}</span>
-                <span className="text-[10px] tracking-[0.2em] uppercase font-sans text-muted-foreground">
-                  / piece
-                </span>
+                {showIncluded ? (
+                  <span className="font-serif text-xl md:text-2xl font-medium" style={{ color: "var(--poppy-deep)" }}>
+                    {INCLUDED_LABEL}
+                  </span>
+                ) : (
+                  <>
+                    <span className="font-serif text-xl md:text-3xl font-medium">{displayPrice}</span>
+                    <span className="text-[10px] tracking-[0.2em] uppercase font-sans text-muted-foreground">
+                      / piece
+                    </span>
+                  </>
+                )}
               </div>
               <p className="text-[10px] tracking-[0.15em] font-sans text-muted-foreground mb-4 md:mb-6">
                 Keep it from a rental for <ScriptNumber>60%</ScriptNumber> off list
@@ -435,7 +447,7 @@ const ProductDetail = () => {
                   {adding ? "Adding…" : "Add to Cart"}
                 </button>
                 <p className="text-[10px] leading-relaxed text-muted-foreground font-sans">
-                  Subscribed? Your tier's pieces are <span className="text-foreground">free</span> — up to the number you signed up for. Each extra piece is just <span className="text-foreground">+$6</span>.
+                  Subscribed? Your tier's pieces are <span className="text-foreground">free</span> — up to the number you signed up for. Each extra piece is just <span className="text-foreground">+$15</span>.
                 </p>
                 <Link
                   to="/how-it-works"
@@ -667,7 +679,12 @@ const ProductDetail = () => {
           <div className="border-x border-b border-border p-4 md:p-12 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6">
             <div>
               <p className="font-serif text-lg md:text-2xl mb-1">{product.title}</p>
-              <p className="font-serif text-base md:text-xl text-muted-foreground">{displayPrice}</p>
+              <p
+                className={showIncluded ? "font-serif text-base md:text-xl" : "font-serif text-base md:text-xl text-muted-foreground"}
+                style={showIncluded ? { color: "var(--poppy-deep)" } : undefined}
+              >
+                {showIncluded ? INCLUDED_LABEL : displayPrice}
+              </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
               <Link

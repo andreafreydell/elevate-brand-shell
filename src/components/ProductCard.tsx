@@ -4,6 +4,8 @@ import { useCartStore } from "@/stores/cartStore";
 import { type ShopifyProduct } from "@/lib/shopify";
 import { toast } from "sonner";
 import { WishlistHeart } from "@/components/wishlist/WishlistHeart";
+import { useMemberEntitlement } from "@/hooks/useMemberEntitlement";
+import { INCLUDED_LABEL, isMemberIncludedVariant } from "@/lib/memberIncluded";
 
 /** Append width param to Shopify CDN URLs for optimized loading */
 function optimizeShopifyImage(url: string, width: number): string {
@@ -40,6 +42,8 @@ export const ProductCard = ({
 }) => {
   const variant = product.node.variants.edges[0]?.node;
   const price = product.node.priceRange.minVariantPrice;
+  const { isEntitled } = useMemberEntitlement();
+  const showIncluded = isEntitled && isMemberIncludedVariant(variant?.id);
   const displayPrice = `$${parseFloat(price.amount).toFixed(2)}`;
 
   // Use up to the first three product images for the hover slideshow
@@ -133,7 +137,11 @@ export const ProductCard = ({
             </p>
           )}
           <h3 className="font-serif text-base font-medium leading-snug">{product.node.title}</h3>
-          <p className="text-sm text-muted-foreground">{displayPrice}</p>
+          {showIncluded ? (
+            <p className="text-sm" style={{ color: "var(--poppy-deep)" }}>{INCLUDED_LABEL}</p>
+          ) : (
+            <p className="text-sm text-muted-foreground">{displayPrice}</p>
+          )}
           <span
             className="block w-full border border-foreground text-foreground py-2.5 text-xs tracking-[0.2em] uppercase font-sans text-center group-hover:bg-foreground group-hover:text-hero-text transition-colors duration-200"
           >
