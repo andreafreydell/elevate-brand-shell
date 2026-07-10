@@ -169,7 +169,7 @@ Deno.serve(async (req) => {
     address: e.node.endpoint?.callbackUrl,
   }));
 
-  return new Response(JSON.stringify({ results, allWebhooks }, null, 2), {
+  return new Response(JSON.stringify({ grantedScopes, hasFulfillmentScopes, results, allWebhooks }, null, 2), {
     headers: { ...corsHeaders, "Content-Type": "application/json" },
   });
 });
