@@ -96,6 +96,28 @@ Deno.serve(async (req) => {
     return jsonResponse({ error: "Unauthorized" }, 401);
   }
 
+  const url = new URL(req.url);
+
+  // Cron scheduling branch: passes GEA_CRON_SECRET (env) into the DB helper so
+  // the daily gea-open-cycle POST authenticates without exposing the secret.
+  if (url.searchParams.get("action") === "schedule-cron") {
+    const cronSecret = Deno.env.get("GEA_CRON_SECRET");
+    if (!cronSecret) return jsonResponse({ error: "GEA_CRON_SECRET missing" }, 500);
+    const { createClient } = await import("https://esm.sh/@supabase/supabase-js@2");
+    const admin = createClient(
+      Deno.env.get("SUPABASE_URL")!,
+      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
+    );
+    const { data, error } = await admin.rpc("gea_schedule_open_cycle", { p_secret: cronSecret });
+    if (error) return jsonResponse({ error: error.message }, 500);
+    const { data: jobs } = await admin
+      .schema("cron")
+      .from("job")
+      .select("jobid, jobname, schedule, active")
+      .eq("jobname", "gea-open-cycle-daily");
+    return jsonResponse({ ok: true, scheduled: data, jobs });
+  }
+
   try {
     const existing = await listWebhooks();
     const created: Array<{ topic: string; address: string; result: unknown }> = [];
