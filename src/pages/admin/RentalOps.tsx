@@ -356,20 +356,19 @@ export default function RentalOps() {
         <TabsContent value="charges" className="mt-6 space-y-8">
           <div>
             <h2 className="font-serif text-lg mb-3">Cycles with extra keeps</h2>
+            <p className="text-[12px] text-muted-foreground font-sans mb-3">
+              Keep fees are charged automatically when the warehouse closes the return. This list is for visibility only.
+            </p>
             <Section
               title="Over-keep cycles" query={cycles}
               empty="No cycles over their keep allowance."
-              columns={["Cycle", "Keeps", "Allowed", "Extra", ""]}
+              columns={["Cycle", "Keeps", "Allowed", "Extra"]}
               renderRow={(c) => (
                 <TableRow key={c.id}>
                   <TableCell className="font-mono text-[12px]">#{c.cycle_number} · {fmtDate(c.cycle_end)}</TableCell>
                   <TableCell>{c.keep_count}</TableCell>
                   <TableCell>{c.keep_allowance}</TableCell>
                   <TableCell>{c.extra_keeps}</TableCell>
-                  <TableCell className="text-right">
-                    <Button size="sm" disabled={chargeFees.isPending}
-                      onClick={() => chargeFees.mutate(c.id)}>Charge 40% keep fee</Button>
-                  </TableCell>
                 </TableRow>
               )}
             />
@@ -378,7 +377,7 @@ export default function RentalOps() {
             <h2 className="font-serif text-lg mb-3">Charges</h2>
             <Section
               title="Charges" query={charges} empty="No charges yet."
-              columns={["Type", "Amount", "Status", "Ref", "Created"]}
+              columns={["Type", "Amount", "Status", "Ref", "Created", ""]}
               renderRow={(c) => (
                 <TableRow key={c.id}>
                   <TableCell>{c.charge_type}</TableCell>
@@ -386,10 +385,17 @@ export default function RentalOps() {
                   <TableCell><Badge variant={c.status === "charged" ? "outline" : c.status === "failed" ? "destructive" : "secondary"}>{c.status}</Badge></TableCell>
                   <TableCell className="font-mono text-[11px]">{c.shopify_charge_ref || "—"}</TableCell>
                   <TableCell>{fmtDate(c.created_at)}</TableCell>
+                  <TableCell className="text-right">
+                    {c.status === "failed" && c.rental_cycle_id && (
+                      <Button size="sm" variant="outline" disabled={retryCharge.isPending}
+                        onClick={() => retryCharge.mutate(c.rental_cycle_id)}>Retry failed charges</Button>
+                    )}
+                  </TableCell>
                 </TableRow>
               )}
             />
           </div>
+
         </TabsContent>
 
         <TabsContent value="members" className="mt-6">
