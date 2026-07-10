@@ -1,5 +1,6 @@
 import { corsHeaders, jsonResponse } from "../_shared/cors.ts";
 
+const GUARD = "r4-gea-pilot-9f3k2m7q1x8v-temp";
 const SHOP_DOMAIN = Deno.env.get("SHOPIFY_STORE_DOMAIN") || Deno.env.get("SHOPIFY_SHOP_DOMAIN") || "1iggem-wc.myshopify.com";
 const ADMIN_TOKEN = Deno.env.get("SHOPIFY_ACCESS_TOKEN")!;
 const API_VERSION = "2025-07";
