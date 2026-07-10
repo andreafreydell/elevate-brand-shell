@@ -1,6 +1,27 @@
 # GEA Rental Platform — Live Status & Outstanding Workstreams
 
-_Last updated: 2026-07-10 (Round-3 automation complete)._
+_Last updated: 2026-07-10 evening (Round-4: GEAPILOT live)._
+
+## ✅ ROUND 4 (2026-07-10) — GEAPILOT: one free Seed month via checkout code
+- **Shopify discount code `GEAPILOT`** (verified): 100% off, entitled to ONLY the
+  Rental collection (320845938788) — can never discount memberships/extra/gifts;
+  once per customer; active, no end date.
+- **Backend (deployed)**: `handlePilotCodeOrder` in shopify-order-paid — an order
+  carrying the code (and no membership variant) enrolls the buyer as a seed pilot
+  (tier_source source=pilot-code) with a SILENTLY opened cycle (cycle_tag_applied +
+  tag_removed_at pre-stamped: no gea_cycle_open tag, no "pick your pieces" email, no
+  "pick now" PromoBar). Runs BEFORE the rental-lines loop so
+  count_checkout_for_reservation attaches the order's pieces to the new cycle (free
+  up to 3, 4+ count as extras = visible over-use). Active members typing the code are
+  never downgraded. `ensureAccountForOrder` extracted for reuse.
+- **No pilot auto-renewal**: gea-open-cycle skips tier_source pilot-code AND
+  pilot-enrollment for renewals (one month only; buying a real membership rewrites
+  tier_source and re-enables renewals). Day-31 return reminder unaffected.
+- **Invite image**: `Dropbox/Ambiente Home LLC/Website/GEAPILOT-invite.png`
+  (1080×1080 PNG, GEA field-note style, built via headless-Chrome render of
+  scratchpad HTML). Copy: "A month of fine jewelry, on us" / code GEAPILOT / pick 3.
+- **Untested**: a real checkout with the code (expect $0 total + pilot account +
+  cycle + reservations on dashboard, receipt-only email).
 
 ## ✅ ROUND 3 (2026-07-10) — FULLY AUTOMATIC RETURNS PIPELINE, live & verified
 The warehouse works ONLY in the Shopify admin; the dashboard is visualization-only.
