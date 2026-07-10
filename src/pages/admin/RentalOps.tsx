@@ -272,8 +272,9 @@ export default function RentalOps() {
             renderRow={(r) => {
               const open = expandedRes.has(r.id);
               return (
-                <>
-                  <TableRow key={r.id}>
+                <Fragment key={r.id}>
+                  <TableRow>
+
                     <TableCell className="w-8 align-top">
                       <button type="button" onClick={() => toggleRes(r.id)} aria-label="Toggle details"
                         className="text-muted-foreground hover:text-foreground">
