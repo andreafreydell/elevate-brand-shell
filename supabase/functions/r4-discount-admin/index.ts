@@ -26,7 +26,7 @@ async function gql(query: string, variables: Record<string, unknown> = {}) {
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
-  const guard = Deno.env.get("R4_DISCOUNT_TMP");
+  const guard = GUARD;
   if (!guard || req.headers.get("x-r4-secret") !== guard) {
     return jsonResponse({ error: "unauthorized" }, 401);
   }
