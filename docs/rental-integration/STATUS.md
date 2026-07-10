@@ -64,15 +64,25 @@ Running handoff log: what's DONE, what's PENDING and on whom. Per-goal test runb
   OFF, sender concierge@geagems.com).
 - Members receive exactly: Shopify receipt + cycle-open email (+ day-31 return reminder).
 
-### Lovable mega-batch (sent Jul 9 ~7:47 PM — REPORT NOT YET READ)
-Sent as one prompt; **verify its report next session**. Items: apply migration
-`20260703090000` · deploy `shopify-order-paid`/`gea-open-cycle`/`gea-enroll-member`/
-`gea-member-return` · build small `/welcome` page (NOT a landing replacement) · dashboard
-(reservation logistics columns, member drill-down, **Enroll pilot member** button, Kept
-tab title/SKU) · auth Site URL → geagems.com + redirect allowlist · Shopify: extra
-variant 48643543760996 $6→$15, membership description line, $0 "Concierge Shipping —
-Included ✿" rate. **Probed before session end: both new functions deployed (401, was
-404). Migration/frontend/Shopify items unconfirmed — check the Lovable chat report.**
+### Lovable mega-batch (Jul 9 evening) — MOSTLY DONE, independently verified
+- ✅ Migration `20260703090000` applied (columns probe 200).
+- ✅ All 4 edge functions deployed (gea-enroll-member/gea-member-return 404→401).
+- ✅ **Site outage found & fixed mid-batch:** anon REST reads went 401 site-wide. NOT a
+  key rotation — a security-hardening pass had revoked EXECUTE on `is_staff()` from
+  anon while `staff_read_*` policies were defined for `public`, so every anonymous read
+  of the staff-guarded tables errored. Lovable fixed via two migrations (restore grant →
+  rescope all staff policies to `authenticated` → re-revoke from anon; also cleared the
+  linter warning), verified all tables 200 and the gea-member-return JWT chain intact.
+- ✅ Frontend **published to geagems.com** (bundle index-DfK17vER.js): /welcome route,
+  /returns, "Included in your membership", Concierge Shipping copy, Return Shipment
+  navbar — all confirmed present in the live bundle.
+- ❓ Auth Site URL → geagems.com: was in the task list; **confirm in Lovable's final
+  report** (test: send a reset email, link should land on geagems.com not lovable.app).
+- ⏸ **Shopify items PENDING founder's Connect click** (Lovable's Shopify session
+  expired; "Connect to Shopify" prompt waiting in its chat): extra variant
+  48643543760996 $6→$15 (verified still 6.00), membership description line, $0
+  "Concierge Shipping — Included ✿" rate. A duplicate instruction message sits paused in
+  Lovable's queue — delete it or let it no-op.
 
 ---
 
