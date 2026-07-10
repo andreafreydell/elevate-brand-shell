@@ -678,6 +678,169 @@ export async function chargeKeepFeeToCustomer(params: {
 }
 
 // ---------------------------------------------------------------------------
+// Shopify Returns: the warehouse works out of the Shopify admin, so a member's
+// return declaration must exist there as a real Return object. A Return can
+// only be created against FULFILLED line items (the warehouse marks orders
+// fulfilled when it ships), so unfulfilled lines are reported back as skipped
+// rather than failing the whole declaration.
+
+export function getReturnGid(returnId: string) {
+  return returnId.startsWith("gid://") ? returnId : `gid://shopify/Return/${returnId}`;
+}
+
+export async function createShopifyReturn(
+  orderId: string,
+  lineItemIds: string[],
+): Promise<{ returnId: string | null; skippedLineItemIds: string[]; error: string | null }> {
+  try {
+    const wanted = new Set(lineItemIds.map(String));
+    const query = `
+      query ReturnableFulfillments($orderId: ID!) {
+        returnableFulfillments(orderId: $orderId, first: 10) {
+          nodes {
+            returnableFulfillmentLineItems(first: 50) {
+              nodes {
+                quantity
+                fulfillmentLineItem { id lineItem { legacyResourceId } }
+              }
+            }
+          }
+        }
+      }
+    `;
+    const result = await shopifyGraphql<{
+      data?: {
+        returnableFulfillments?: {
+          nodes?: Array<{
+            returnableFulfillmentLineItems?: {
+              nodes?: Array<{
+                quantity: number;
+                fulfillmentLineItem?: {
+                  id: string;
+                  lineItem?: { legacyResourceId?: string | null } | null;
+                } | null;
+              }>;
+            };
+          }>;
+        } | null;
+      };
+    }>(query, { orderId: getOrderGid(orderId) });
+
+    const returnLineItems: Array<{ fulfillmentLineItemId: string; quantity: number; returnReason: string }> = [];
+    const matched = new Set<string>();
+    for (const node of result.data?.returnableFulfillments?.nodes || []) {
+      for (const line of node.returnableFulfillmentLineItems?.nodes || []) {
+        const legacyId = line.fulfillmentLineItem?.lineItem?.legacyResourceId;
+        if (!legacyId || !line.fulfillmentLineItem?.id) continue;
+        if (!wanted.has(String(legacyId)) || matched.has(String(legacyId))) continue;
+        matched.add(String(legacyId));
+        returnLineItems.push({
+          fulfillmentLineItemId: line.fulfillmentLineItem.id,
+          quantity: Math.max(1, line.quantity),
+          returnReason: "OTHER",
+        });
+      }
+    }
+
+    const skippedLineItemIds = [...wanted].filter((id) => !matched.has(id));
+    if (returnLineItems.length === 0) {
+      return {
+        returnId: null,
+        skippedLineItemIds,
+        error: "No returnable (fulfilled) line items on this order yet",
+      };
+    }
+
+    const mutation = `
+      mutation ReturnCreate($returnInput: ReturnInput!) {
+        returnCreate(returnInput: $returnInput) {
+          return { id }
+          userErrors { field message }
+        }
+      }
+    `;
+    const createResult = await shopifyGraphql<{
+      data?: {
+        returnCreate?: {
+          return?: { id: string } | null;
+          userErrors?: Array<{ message: string }>;
+        };
+      };
+    }>(mutation, {
+      returnInput: { orderId: getOrderGid(orderId), returnLineItems },
+    });
+
+    const userErrors = createResult.data?.returnCreate?.userErrors || [];
+    const returnId = createResult.data?.returnCreate?.return?.id ?? null;
+    if (userErrors.length > 0 || !returnId) {
+      return {
+        returnId: null,
+        skippedLineItemIds,
+        error: userErrors.map((e) => e.message).join(", ") || "returnCreate failed",
+      };
+    }
+    return { returnId, skippedLineItemIds, error: null };
+  } catch (err) {
+    return {
+      returnId: null,
+      skippedLineItemIds: lineItemIds,
+      error: err instanceof Error ? err.message : String(err),
+    };
+  }
+}
+
+// Resolve which order line items a Shopify Return covers (used by the
+// returns/close webhook to auto-reconcile: received line items -> serials).
+export async function getReturnLineItems(
+  returnId: string,
+): Promise<{ orderId: string | null; lineItemIds: string[]; error: string | null }> {
+  try {
+    const query = `
+      query ReturnLineItems($id: ID!) {
+        return(id: $id) {
+          order { legacyResourceId }
+          returnLineItems(first: 50) {
+            nodes {
+              ... on ReturnLineItem {
+                quantity
+                fulfillmentLineItem { lineItem { legacyResourceId } }
+              }
+            }
+          }
+        }
+      }
+    `;
+    const result = await shopifyGraphql<{
+      data?: {
+        return?: {
+          order?: { legacyResourceId?: string | null } | null;
+          returnLineItems?: {
+            nodes?: Array<{
+              quantity?: number;
+              fulfillmentLineItem?: { lineItem?: { legacyResourceId?: string | null } | null } | null;
+            }>;
+          };
+        } | null;
+      };
+    }>(query, { id: getReturnGid(returnId) });
+
+    const ret = result.data?.return;
+    if (!ret) return { orderId: null, lineItemIds: [], error: "Return not found" };
+    const lineItemIds = (ret.returnLineItems?.nodes || [])
+      .map((n) => n.fulfillmentLineItem?.lineItem?.legacyResourceId)
+      .filter((id): id is string => Boolean(id))
+      .map(String);
+    return {
+      orderId: ret.order?.legacyResourceId ? String(ret.order.legacyResourceId) : null,
+      lineItemIds,
+      error: null,
+    };
+  } catch (err) {
+    return { orderId: null, lineItemIds: [], error: err instanceof Error ? err.message : String(err) };
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Membership auto-fulfillment: memberships are a service, nothing ships, so
 // their order lines are marked fulfilled immediately (keeps the orders list
 // clean for ops). Only the given variant ids are fulfilled — rental/gift lines

@@ -38,3 +38,11 @@ verify_jwt = true
 # Member-facing: submit a return/keep selection for their own pieces (JWT).
 [functions.gea-member-return]
 verify_jwt = true
+
+# Shopify fulfillments/create + /update webhook -> reservations to "shipped" (HMAC-verified).
+[functions.shopify-fulfillment-event]
+verify_jwt = false
+
+# Shopify returns/close webhook -> auto-reconcile + auto keep-fee charge (HMAC-verified).
+[functions.shopify-return-event]
+verify_jwt = false

@@ -1,15 +1,21 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { corsHeaders, jsonResponse } from "../_shared/cors.ts";
 import { serviceClient } from "../_shared/auth.ts";
+import { createShopifyReturn } from "../_shared/shopify.ts";
 
 // Member-facing return declaration (the RETURN SHIPMENT flow): a signed-in
 // member says which of their out pieces they're RETURNING and which they're
 // KEEPING. Keeps are finalized immediately (mark_unit_kept -> keep counters +
 // over-allowance keeps become chargeable). Declared returns are recorded on a
-// member_returns row (expected_serials = what the box should contain); the
-// team reconciles on arrival exactly as before. No Shopify Return object is
-// created here — rental lines are never Shopify-fulfilled, so the native
-// returns API can't represent them; member_returns is the source of truth.
+// member_returns row (expected_serials = what the box should contain) AND
+// mirrored as a real Shopify Return on the order — the warehouse lives in the
+// Shopify admin, so that's where the return must show up. Shopify only allows
+// returns on FULFILLED lines (the warehouse fulfills when it ships), so if a
+// line isn't fulfilled yet the declaration still succeeds internally and the
+// Shopify mirror is reported as skipped. From here everything is automatic:
+// the warehouse closes the return in Shopify when the box arrives, and the
+// returns/close webhook (shopify-return-event) restocks arrivals, converts
+// no-shows to keeps, and charges over-allowance keep fees.
 
 const OUT_STATUSES = ["assigned", "released_to_wms", "shipped", "return_open"];
 
@@ -91,7 +97,13 @@ Deno.serve(async (req) => {
     byOrder.set(key, [...(byOrder.get(key) || []), serial]);
   }
 
-  const returnsRecorded: Array<{ shopify_order_id: string; return_id: string; serials: string[] }> = [];
+  const returnsRecorded: Array<{
+    shopify_order_id: string;
+    return_id: string;
+    serials: string[];
+    shopify_return_id: string | null;
+    shopify_return_error: string | null;
+  }> = [];
   for (const [orderId, serials] of byOrder) {
     const cycleId = ownedBySerial.get(serials[0])!.rental_cycle_id;
     const { data: existing } = await supabase
@@ -101,6 +113,7 @@ Deno.serve(async (req) => {
       .eq("status", "open")
       .maybeSingle();
 
+    let rowId: string | null = null;
     if (existing?.id) {
       const merged = Array.from(new Set([...(existing.expected_serials || []), ...serials]));
       const { error } = await supabase
@@ -108,7 +121,7 @@ Deno.serve(async (req) => {
         .update({ expected_serials: merged })
         .eq("id", existing.id);
       if (error) errors.push({ serial: serials.join(","), error: error.message });
-      else returnsRecorded.push({ shopify_order_id: orderId, return_id: existing.id, serials });
+      else rowId = existing.id;
     } else {
       const { data: created, error } = await supabase
         .from("member_returns")
@@ -124,8 +137,41 @@ Deno.serve(async (req) => {
         .select("id")
         .single();
       if (error || !created) errors.push({ serial: serials.join(","), error: error?.message || "insert failed" });
-      else returnsRecorded.push({ shopify_order_id: orderId, return_id: created.id, serials });
+      else rowId = created.id;
     }
+    if (!rowId) continue;
+
+    // Mirror into Shopify so the warehouse sees "Return in progress" on the
+    // order. Non-fatal: internal state is already recorded either way.
+    let shopifyReturnId: string | null = null;
+    let shopifyReturnError: string | null = null;
+    if (orderId !== "no_order") {
+      const lineItemIds = serials
+        .map((s) => ownedBySerial.get(s)?.shopify_line_item_id)
+        .filter((id): id is string => Boolean(id))
+        .map(String);
+      if (lineItemIds.length > 0) {
+        const mirrored = await createShopifyReturn(orderId, lineItemIds);
+        shopifyReturnId = mirrored.returnId;
+        shopifyReturnError = mirrored.error;
+        if (mirrored.returnId) {
+          await supabase
+            .from("member_returns")
+            .update({ shopify_return_id: mirrored.returnId })
+            .eq("id", rowId);
+        } else if (mirrored.error) {
+          console.error(`Shopify return mirror failed for order ${orderId}:`, mirrored.error);
+        }
+      }
+    }
+
+    returnsRecorded.push({
+      shopify_order_id: orderId,
+      return_id: rowId,
+      serials,
+      shopify_return_id: shopifyReturnId,
+      shopify_return_error: shopifyReturnError,
+    });
   }
 
   // Mark declared returns as return_open so the dashboard reflects the intent.
