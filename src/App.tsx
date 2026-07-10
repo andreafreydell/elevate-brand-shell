@@ -31,6 +31,7 @@ import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import Stories from "./pages/Stories";
 import Account from "./pages/Account";
+import Welcome from "./pages/Welcome";
 import Returns from "./pages/Returns";
 import BrowseAll from "./pages/BrowseAll";
 import SearchResults from "./pages/SearchResults";
