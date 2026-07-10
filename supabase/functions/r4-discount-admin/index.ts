@@ -8,23 +8,14 @@ const GRAPHQL_URL = `https://${SHOP_DOMAIN}/admin/api/${API_VERSION}/graphql.jso
 const RENTAL_COLLECTION_GID = "gid://shopify/Collection/320845938788";
 
 async function getAdminToken(): Promise<string> {
-  const staticToken = Deno.env.get("SHOPIFY_ADMIN_ACCESS_TOKEN");
-  if (staticToken) return staticToken;
-  const clientId = Deno.env.get("SHOPIFY_OAUTH_CLIENT_ID");
-  const clientSecret = Deno.env.get("SHOPIFY_OAUTH_CLIENT_SECRET");
-  if (clientId && clientSecret) {
-    const res = await fetch(`https://${SHOP_DOMAIN}/admin/oauth/access_token`, {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({
-        grant_type: "client_credentials",
-        client_id: clientId,
-        client_secret: clientSecret,
-      }),
-    });
-    const json = await res.json().catch(() => ({}));
-    if (res.ok && json.access_token) return json.access_token as string;
-    throw new Error(`client_credentials mint failed: ${JSON.stringify(json)}`);
+  // The Lovable Shopify connection stores the online token as a JSON blob whose
+  // inner access_token carries the discount/price-rule write scopes.
+  const rawOnline = Deno.env.get("SHOPIFY_ONLINE_ACCESS_TOKEN:user:djoX1ZLa7yNi4l875ImBCPzeenJ3");
+  if (rawOnline) {
+    try {
+      const parsed = JSON.parse(rawOnline) as { access_token?: string };
+      if (parsed.access_token) return parsed.access_token;
+    } catch { /* fall through */ }
   }
   const fallback = Deno.env.get("SHOPIFY_ACCESS_TOKEN");
   if (fallback) return fallback;
