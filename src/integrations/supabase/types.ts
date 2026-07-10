@@ -992,6 +992,7 @@ export type Database = {
         Args: { p_at?: string; p_started_at: string }
         Returns: number
       }
+      gea_schedule_open_cycle: { Args: { p_secret: string }; Returns: string }
       get_or_create_current_cycle: {
         Args: { p_account_id: string }
         Returns: {
