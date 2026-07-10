@@ -307,23 +307,33 @@ export default function RentalOps() {
           <Section
             title="Returns" query={returns} empty="No returns yet."
             columns={["Order", "Expected", "Returned", "Kept", "Status", ""]}
-            renderRow={(r) => (
-              <TableRow key={r.id}>
-                <TableCell>{r.shopify_order_id}</TableCell>
-                <TableCell>{(r.expected_serials || []).length}</TableCell>
-                <TableCell>{(r.returned_serials || []).length}</TableCell>
-                <TableCell>{(r.kept_serials || []).length}</TableCell>
-                <TableCell><Badge variant={r.status === "reconciled" ? "outline" : "secondary"}>{r.status}</Badge></TableCell>
-                <TableCell className="text-right">
-                  {r.status !== "reconciled" && (
-                    <Button size="sm" variant="outline" disabled={reconcile.isPending}
-                      onClick={() => reconcile.mutate(r.id)}>Reconcile</Button>
-                  )}
-                </TableCell>
-              </TableRow>
-            )}
+            renderRow={(r) => {
+              // Member declared a piece as returning but it never arrived, so
+              // reconciliation converted it to a keep — worth a human eyeball.
+              const needsAttention =
+                r.status === "reconciled" &&
+                (r.kept_serials || []).length > 0 &&
+                (r.metadata?.source_detail === "member_portal");
+              return (
+                <TableRow key={r.id}>
+                  <TableCell>{r.shopify_order_id}</TableCell>
+                  <TableCell>{(r.expected_serials || []).length}</TableCell>
+                  <TableCell>{(r.returned_serials || []).length}</TableCell>
+                  <TableCell>{(r.kept_serials || []).length}</TableCell>
+                  <TableCell><Badge variant={r.status === "reconciled" ? "outline" : "secondary"}>{r.status}</Badge></TableCell>
+                  <TableCell className="text-right">
+                    {needsAttention && (
+                      <Badge variant="destructive" title="Declared as returning but never arrived — converted to a keep. Please review.">
+                        Attention
+                      </Badge>
+                    )}
+                  </TableCell>
+                </TableRow>
+              );
+            }}
           />
         </TabsContent>
+
 
         <TabsContent value="kept" className="mt-6">
           <Section
