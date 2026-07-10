@@ -1,18 +1,43 @@
 import { corsHeaders, jsonResponse } from "../_shared/cors.ts";
 
-const SHOP_DOMAIN = Deno.env.get("SHOPIFY_STORE_DOMAIN") || Deno.env.get("SHOPIFY_SHOP_DOMAIN") || "1iggem-wc.myshopify.com";
-const ADMIN_TOKEN = Deno.env.get("SHOPIFY_ACCESS_TOKEN")!;
-const API_VERSION = "2025-07";
+const GUARD = "r4-gea-pilot-9f3k2m7q1x8v-temp";
+const SHOP_DOMAIN = Deno.env.get("SHOPIFY_SHOP_DOMAIN") || Deno.env.get("SHOPIFY_STORE_DOMAIN") || "1iggem-wc.myshopify.com";
+const API_VERSION = Deno.env.get("SHOPIFY_ADMIN_API_VERSION") || "2026-01";
 const GRAPHQL_URL = `https://${SHOP_DOMAIN}/admin/api/${API_VERSION}/graphql.json`;
 
 const RENTAL_COLLECTION_GID = "gid://shopify/Collection/320845938788";
 
+async function getAdminToken(): Promise<string> {
+  const staticToken = Deno.env.get("SHOPIFY_ADMIN_ACCESS_TOKEN");
+  if (staticToken) return staticToken;
+  const clientId = Deno.env.get("SHOPIFY_OAUTH_CLIENT_ID");
+  const clientSecret = Deno.env.get("SHOPIFY_OAUTH_CLIENT_SECRET");
+  if (clientId && clientSecret) {
+    const res = await fetch(`https://${SHOP_DOMAIN}/admin/oauth/access_token`, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        grant_type: "client_credentials",
+        client_id: clientId,
+        client_secret: clientSecret,
+      }),
+    });
+    const json = await res.json().catch(() => ({}));
+    if (res.ok && json.access_token) return json.access_token as string;
+    throw new Error(`client_credentials mint failed: ${JSON.stringify(json)}`);
+  }
+  const fallback = Deno.env.get("SHOPIFY_ACCESS_TOKEN");
+  if (fallback) return fallback;
+  throw new Error("No Shopify admin credentials available.");
+}
+
 async function gql(query: string, variables: Record<string, unknown> = {}) {
+  const adminToken = await getAdminToken();
   const res = await fetch(GRAPHQL_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "X-Shopify-Access-Token": ADMIN_TOKEN,
+      "X-Shopify-Access-Token": adminToken,
     },
     body: JSON.stringify({ query, variables }),
   });
@@ -25,13 +50,81 @@ async function gql(query: string, variables: Record<string, unknown> = {}) {
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
-  const guard = Deno.env.get("R4_DISCOUNT_TMP");
+  const guard = GUARD;
   if (!guard || req.headers.get("x-r4-secret") !== guard) {
     return jsonResponse({ error: "unauthorized" }, 401);
   }
 
   const url = new URL(req.url);
   const action = url.searchParams.get("action") || "create";
+
+  // REST route: create a collection-scoped price rule + discount code.
+  if (action === "rest-create") {
+    const adminToken = await getAdminToken();
+    const restBase = `https://${SHOP_DOMAIN}/admin/api/${API_VERSION}`;
+    const headers = {
+      "Content-Type": "application/json",
+      "X-Shopify-Access-Token": adminToken,
+    };
+
+    const priceRuleBody = {
+      price_rule: {
+        title: "GEAPILOT",
+        target_type: "line_item",
+        target_selection: "entitled",
+        allocation_method: "each",
+        value_type: "percentage",
+        value: "-100.0",
+        customer_selection: "all",
+        entitled_collection_ids: [320845938788],
+        once_per_customer: true,
+        starts_at: new Date().toISOString(),
+        ends_at: null,
+      },
+    };
+
+    const prRes = await fetch(`${restBase}/price_rules.json`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify(priceRuleBody),
+    });
+    const prText = await prRes.text();
+    let prJson: any = null;
+    try { prJson = JSON.parse(prText); } catch { /* raw */ }
+    if (!prRes.ok || !prJson?.price_rule?.id) {
+      return jsonResponse({ step: "price_rule", status: prRes.status, body: prJson ?? prText }, 200);
+    }
+
+    const priceRuleId = prJson.price_rule.id;
+    const dcRes = await fetch(`${restBase}/price_rules/${priceRuleId}/discount_codes.json`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({ discount_code: { code: "GEAPILOT" } }),
+    });
+    const dcText = await dcRes.text();
+    let dcJson: any = null;
+    try { dcJson = JSON.parse(dcText); } catch { /* raw */ }
+
+    return jsonResponse({
+      step: "done",
+      price_rule: prJson.price_rule,
+      discount_code: { status: dcRes.status, body: dcJson ?? dcText },
+    }, 200);
+  }
+
+  if (action === "rest-read") {
+    const adminToken = await getAdminToken();
+    const restBase = `https://${SHOP_DOMAIN}/admin/api/${API_VERSION}`;
+    const id = url.searchParams.get("id");
+    const headers = { "X-Shopify-Access-Token": adminToken };
+    const prRes = await fetch(`${restBase}/price_rules/${id}.json`, { headers });
+    const prJson = await prRes.json().catch(() => null);
+    const dcRes = await fetch(`${restBase}/price_rules/${id}/discount_codes.json`, { headers });
+    const dcJson = await dcRes.json().catch(() => null);
+    return jsonResponse({ price_rule: prJson, discount_codes: dcJson }, 200);
+  }
+
+
 
   if (action === "create") {
     const mutation = `
