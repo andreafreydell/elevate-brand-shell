@@ -10,7 +10,11 @@ import {
   verifyShopifyWebhook,
   writeAssignedSerialsToShopify,
 } from "../_shared/shopify.ts";
-import { handleMembershipOrder, MEMBERSHIP_VARIANT_TIERS } from "../_shared/membership.ts";
+import {
+  handleMembershipOrder,
+  handlePilotCodeOrder,
+  MEMBERSHIP_VARIANT_TIERS,
+} from "../_shared/membership.ts";
 import { openCycleForMember } from "../_shared/cycles.ts";
 
 Deno.serve(async (req) => {
@@ -49,6 +53,19 @@ Deno.serve(async (req) => {
   const wmsFieldConfig = config as ShopifyWmsFieldConfig;
 
   const lineItems = order.line_items || [];
+
+  // GEAPILOT: enroll the buyer as a silent seed pilot BEFORE the rental lines
+  // are processed, so count_checkout_for_reservation attaches this order's
+  // pieces to the brand-new cycle (free up to the seed allowance). No tag, no
+  // "pick your pieces" email — they are picking right now, in this order.
+  let pilot = null;
+  try {
+    pilot = await handlePilotCodeOrder(supabase, order);
+    if (pilot.error) console.error("Pilot-code handling error:", pilot.error);
+  } catch (pilotError) {
+    console.error("Pilot-code handling threw:", pilotError);
+    pilot = { handled: false, error: String(pilotError) };
+  }
 
   // Resolve which line variants are actual rental units. A line is a rental line
   // when its variant exists in inventory_units and is not an excluded variant
@@ -217,6 +234,7 @@ Deno.serve(async (req) => {
     assigned_serials: assignedSerials,
     shopify_write_result: shopifyWriteResult,
     membership: membershipResult,
+    pilot,
     activation,
     membership_fulfillment: fulfillment,
     errors,

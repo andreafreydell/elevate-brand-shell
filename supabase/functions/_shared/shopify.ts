@@ -21,6 +21,7 @@ export interface ShopifyOrderPaidWebhook {
   // Raw shipping address from the orders/paid payload (name, address1, city,
   // province, zip, country, phone, ...). Stored verbatim for logistics.
   shipping_address?: Record<string, unknown> | null;
+  discount_codes?: Array<{ code?: string | null }> | null;
   line_items?: ShopifyWebhookLineItem[];
 }
 

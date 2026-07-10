@@ -28,7 +28,7 @@ Deno.serve(async (req) => {
 
   const { data: members, error: membershipError } = await supabase
     .from("profiles")
-    .select("id, shopify_customer_id, membership_tier")
+    .select("id, shopify_customer_id, membership_tier, tier_source")
     .eq("membership_status", "active");
 
   if (membershipError) {
@@ -37,8 +37,20 @@ Deno.serve(async (req) => {
 
   const opened: Array<{ account_id: string; cycle_number: number }> = [];
   const errors: Array<{ account_id: string; error: string }> = [];
+  let skippedPilots = 0;
 
   for (const m of members || []) {
+    // Pilots (GEAPILOT code or dashboard enrollment) get exactly one month —
+    // no automatic renewal, no month-2 "pick your pieces" email. Converting
+    // by buying a real membership rewrites tier_source via the two-in-one
+    // path, which re-enables renewals. Their day-31 return reminder still
+    // fires below (emitReturnDueEvents is cycle-based, member-agnostic).
+    const source = (m.tier_source as { source?: string } | null)?.source;
+    if (source === "pilot-code" || source === "pilot-enrollment") {
+      skippedPilots += 1;
+      continue;
+    }
+
     const result = await openCycleForMember(supabase, {
       account_id: m.id,
       shopify_customer_id: m.shopify_customer_id,
@@ -59,6 +71,7 @@ Deno.serve(async (req) => {
       ok: errors.length === 0 && returnDue.errors.length === 0,
       opened_count: opened.length,
       opened,
+      skipped_pilots: skippedPilots,
       return_reminders_sent: returnDue.reminded,
       errors: [...errors, ...returnDue.errors],
     },
