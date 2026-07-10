@@ -59,31 +59,33 @@ Deno.serve(async (req) => {
   const action = url.searchParams.get("action") || "create";
 
   if (action === "diag") {
-    const permanent = "1iggem-wc.myshopify.com";
-    const envKeys = Object.keys(Deno.env.toObject()).filter((k) => k.toUpperCase().includes("SHOPIFY"));
-    const candidates: Record<string, string | undefined> = {
-      SHOPIFY_ACCESS_TOKEN: Deno.env.get("SHOPIFY_ACCESS_TOKEN"),
-      ONLINE_LITERAL: Deno.env.get("SHOPIFY_ONLINE_ACCESS_TOKEN:user:djoX1ZLa7yNi4l875ImBCPzeenJ3"),
-    };
-    // add any env key that looks like an online token
-    for (const k of envKeys) {
-      if (k.startsWith("SHOPIFY_ONLINE_ACCESS_TOKEN")) candidates[k] = Deno.env.get(k);
+    const domains = ["1iggem-wc.myshopify.com", "maisonfreydell.myshopify.com"];
+    const rawShpat = Deno.env.get("SHOPIFY_ACCESS_TOKEN");
+    const rawOnline = Deno.env.get("SHOPIFY_ONLINE_ACCESS_TOKEN:user:djoX1ZLa7yNi4l875ImBCPzeenJ3");
+    let onlineParsed: string | undefined;
+    if (rawOnline) {
+      try { onlineParsed = (JSON.parse(rawOnline) as { access_token?: string }).access_token; } catch { /* ignore */ }
     }
+    const candidates: Record<string, string | undefined> = {
+      shpat: rawShpat,
+      online_parsed: onlineParsed,
+    };
     const results: Record<string, unknown> = {};
     for (const [name, tok] of Object.entries(candidates)) {
       if (!tok) { results[name] = "absent"; continue; }
-      const r = await fetch(`https://${permanent}/admin/api/${API_VERSION}/price_rules.json?limit=1`, {
-        headers: { "X-Shopify-Access-Token": tok },
-      });
-      results[name] = { present: true, len: tok.length, prefix: tok.slice(0, 6), status: r.status };
+      const perDomain: Record<string, unknown> = { len: tok.length, prefix: tok.slice(0, 6) };
+      for (const d of domains) {
+        const r = await fetch(`https://${d}/admin/api/${API_VERSION}/price_rules.json?limit=1`, {
+          headers: { "X-Shopify-Access-Token": tok },
+        });
+        perDomain[d] = r.status;
+      }
+      results[name] = perDomain;
     }
-    return jsonResponse({
-      shopify_env_keys: envKeys,
-      SHOPIFY_SHOP_DOMAIN: Deno.env.get("SHOPIFY_SHOP_DOMAIN") || null,
-      SHOPIFY_STORE_DOMAIN: Deno.env.get("SHOPIFY_STORE_DOMAIN") || null,
-      read_tests: results,
-    }, 200);
+    return jsonResponse({ read_tests: results }, 200);
   }
+
+
 
 
 
