@@ -90,6 +90,17 @@ interface ListResp {
   errors?: unknown;
 }
 
+async function getAccessScopes(): Promise<string[]> {
+  const shopDomain = getShopDomain();
+  const apiVersion = Deno.env.get("SHOPIFY_ADMIN_API_VERSION") || "2026-01";
+  const token = await getAdminAccessToken();
+  const res = await fetch(`https://${shopDomain}/admin/api/${apiVersion}/oauth/access_scopes.json`, {
+    headers: { "X-Shopify-Access-Token": token },
+  });
+  const j = await res.json().catch(() => ({}));
+  return (j.access_scopes || []).map((s: { handle: string }) => s.handle);
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
 
@@ -100,6 +111,20 @@ Deno.serve(async (req) => {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   }
+
+  // Force a fresh client_credentials mint (bypass any warm cache).
+  cachedToken = null;
+  cachedExpiry = 0;
+
+  let grantedScopes: string[] = [];
+  try {
+    grantedScopes = await getAccessScopes();
+  } catch (e) {
+    grantedScopes = [`error: ${e instanceof Error ? e.message : String(e)}`];
+  }
+  const hasFulfillmentScopes =
+    grantedScopes.includes("read_fulfillments") &&
+    grantedScopes.includes("read_merchant_managed_fulfillment_orders");
 
   const desired: Array<{ topic: string; fn: string }> = [
     { topic: "FULFILLMENTS_CREATE", fn: "shopify-fulfillment-event" },
