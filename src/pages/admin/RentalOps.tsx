@@ -162,23 +162,10 @@ export default function RentalOps() {
     onError: (e: Error) => toast.error(e.message),
   });
 
-  const reconcile = useMutation({
-    mutationFn: async (returnId: string) => {
-      const { error } = await supabase.functions.invoke("gea-create-return", {
-        body: { return_id: returnId, force: true },
-      });
-      if (error) throw error;
-    },
-    onSuccess: () => {
-      toast.success("Return reconciled.");
-      qc.invalidateQueries({ queryKey: ["returns"] });
-      qc.invalidateQueries({ queryKey: ["kept"] });
-      qc.invalidateQueries({ queryKey: ["inv"] });
-    },
-    onError: (e: Error) => toast.error(e.message),
-  });
-
-  const chargeFees = useMutation({
+  // Returns reconciliation and keep-fee charging are now fully automatic
+  // (driven by the Shopify returns/close webhook). The only manual control
+  // that remains is a retry for charge rows that failed to capture.
+  const retryCharge = useMutation({
     mutationFn: async (cycleId: string) => {
       const { error } = await supabase.functions.invoke("gea-charge-keep-fee", {
         body: { cycle_id: cycleId },
@@ -186,12 +173,13 @@ export default function RentalOps() {
       if (error) throw error;
     },
     onSuccess: () => {
-      toast.success("Keep fees charged.");
+      toast.success("Retried failed charges.");
       qc.invalidateQueries({ queryKey: ["charges"] });
       qc.invalidateQueries({ queryKey: ["cycles"] });
     },
     onError: (e: Error) => toast.error(e.message),
   });
+
 
   return (
     <div className="min-h-screen bg-background px-6 md:px-10 py-8 max-w-[1200px] mx-auto">
@@ -319,23 +307,33 @@ export default function RentalOps() {
           <Section
             title="Returns" query={returns} empty="No returns yet."
             columns={["Order", "Expected", "Returned", "Kept", "Status", ""]}
-            renderRow={(r) => (
-              <TableRow key={r.id}>
-                <TableCell>{r.shopify_order_id}</TableCell>
-                <TableCell>{(r.expected_serials || []).length}</TableCell>
-                <TableCell>{(r.returned_serials || []).length}</TableCell>
-                <TableCell>{(r.kept_serials || []).length}</TableCell>
-                <TableCell><Badge variant={r.status === "reconciled" ? "outline" : "secondary"}>{r.status}</Badge></TableCell>
-                <TableCell className="text-right">
-                  {r.status !== "reconciled" && (
-                    <Button size="sm" variant="outline" disabled={reconcile.isPending}
-                      onClick={() => reconcile.mutate(r.id)}>Reconcile</Button>
-                  )}
-                </TableCell>
-              </TableRow>
-            )}
+            renderRow={(r) => {
+              // Member declared a piece as returning but it never arrived, so
+              // reconciliation converted it to a keep — worth a human eyeball.
+              const needsAttention =
+                r.status === "reconciled" &&
+                (r.kept_serials || []).length > 0 &&
+                (r.metadata?.source_detail === "member_portal");
+              return (
+                <TableRow key={r.id}>
+                  <TableCell>{r.shopify_order_id}</TableCell>
+                  <TableCell>{(r.expected_serials || []).length}</TableCell>
+                  <TableCell>{(r.returned_serials || []).length}</TableCell>
+                  <TableCell>{(r.kept_serials || []).length}</TableCell>
+                  <TableCell><Badge variant={r.status === "reconciled" ? "outline" : "secondary"}>{r.status}</Badge></TableCell>
+                  <TableCell className="text-right">
+                    {needsAttention && (
+                      <Badge variant="destructive" title="Declared as returning but never arrived — converted to a keep. Please review.">
+                        Attention
+                      </Badge>
+                    )}
+                  </TableCell>
+                </TableRow>
+              );
+            }}
           />
         </TabsContent>
+
 
         <TabsContent value="kept" className="mt-6">
           <Section
@@ -358,20 +356,19 @@ export default function RentalOps() {
         <TabsContent value="charges" className="mt-6 space-y-8">
           <div>
             <h2 className="font-serif text-lg mb-3">Cycles with extra keeps</h2>
+            <p className="text-[12px] text-muted-foreground font-sans mb-3">
+              Keep fees are charged automatically when the warehouse closes the return. This list is for visibility only.
+            </p>
             <Section
               title="Over-keep cycles" query={cycles}
               empty="No cycles over their keep allowance."
-              columns={["Cycle", "Keeps", "Allowed", "Extra", ""]}
+              columns={["Cycle", "Keeps", "Allowed", "Extra"]}
               renderRow={(c) => (
                 <TableRow key={c.id}>
                   <TableCell className="font-mono text-[12px]">#{c.cycle_number} · {fmtDate(c.cycle_end)}</TableCell>
                   <TableCell>{c.keep_count}</TableCell>
                   <TableCell>{c.keep_allowance}</TableCell>
                   <TableCell>{c.extra_keeps}</TableCell>
-                  <TableCell className="text-right">
-                    <Button size="sm" disabled={chargeFees.isPending}
-                      onClick={() => chargeFees.mutate(c.id)}>Charge 40% keep fee</Button>
-                  </TableCell>
                 </TableRow>
               )}
             />
@@ -380,7 +377,7 @@ export default function RentalOps() {
             <h2 className="font-serif text-lg mb-3">Charges</h2>
             <Section
               title="Charges" query={charges} empty="No charges yet."
-              columns={["Type", "Amount", "Status", "Ref", "Created"]}
+              columns={["Type", "Amount", "Status", "Ref", "Created", ""]}
               renderRow={(c) => (
                 <TableRow key={c.id}>
                   <TableCell>{c.charge_type}</TableCell>
@@ -388,10 +385,17 @@ export default function RentalOps() {
                   <TableCell><Badge variant={c.status === "charged" ? "outline" : c.status === "failed" ? "destructive" : "secondary"}>{c.status}</Badge></TableCell>
                   <TableCell className="font-mono text-[11px]">{c.shopify_charge_ref || "—"}</TableCell>
                   <TableCell>{fmtDate(c.created_at)}</TableCell>
+                  <TableCell className="text-right">
+                    {c.status === "failed" && c.rental_cycle_id && (
+                      <Button size="sm" variant="outline" disabled={retryCharge.isPending}
+                        onClick={() => retryCharge.mutate(c.rental_cycle_id)}>Retry failed charges</Button>
+                    )}
+                  </TableCell>
                 </TableRow>
               )}
             />
           </div>
+
         </TabsContent>
 
         <TabsContent value="members" className="mt-6">
