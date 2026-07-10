@@ -1,0 +1,1 @@
+GRANT EXECUTE ON FUNCTION public.is_staff() TO anon, authenticated;
