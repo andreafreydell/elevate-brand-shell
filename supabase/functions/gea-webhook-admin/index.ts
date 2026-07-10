@@ -92,7 +92,7 @@ Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   const key = req.headers.get("x-register-key");
-  if (!key || key !== Deno.env.get("REGISTER_WEBHOOKS_KEY")) {
+  if (!key || key !== Deno.env.get("GEA_WEBHOOK_REG_TMP")) {
     return jsonResponse({ error: "Unauthorized" }, 401);
   }
 
