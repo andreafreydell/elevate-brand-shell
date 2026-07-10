@@ -31,6 +31,7 @@ import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import Stories from "./pages/Stories";
 import Account from "./pages/Account";
+import Welcome from "./pages/Welcome";
 import Returns from "./pages/Returns";
 import BrowseAll from "./pages/BrowseAll";
 import SearchResults from "./pages/SearchResults";
@@ -161,6 +162,7 @@ const AppContent = () => {
       <Route path="/legal" element={<Legal />} />
       <Route path="/stories" element={<Stories />} />
       <Route path="/account" element={<Account />} />
+      <Route path="/welcome" element={<Welcome />} />
       <Route path="/returns" element={<Returns />} />
       <Route path="/browse" element={<BrowseAll />} />
       <Route path="/search" element={<SearchResults />} />
