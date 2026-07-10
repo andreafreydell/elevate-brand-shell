@@ -356,6 +356,7 @@ export type Database = {
           keep_allowance: number
           keep_count: number
           reconciled_at: string | null
+          return_reminder_sent_at: string | null
           status: string
           tag_applied_at: string | null
           tag_removed_at: string | null
@@ -377,6 +378,7 @@ export type Database = {
           keep_allowance: number
           keep_count?: number
           reconciled_at?: string | null
+          return_reminder_sent_at?: string | null
           status?: string
           tag_applied_at?: string | null
           tag_removed_at?: string | null
@@ -398,6 +400,7 @@ export type Database = {
           keep_allowance?: number
           keep_count?: number
           reconciled_at?: string | null
+          return_reminder_sent_at?: string | null
           status?: string
           tag_applied_at?: string | null
           tag_removed_at?: string | null
@@ -427,6 +430,8 @@ export type Database = {
           keep_requested: boolean
           kept_at: string | null
           metadata: Json
+          order_number: string | null
+          product_title: string | null
           released_to_wms_at: string | null
           rental_cycle_id: string | null
           rental_end: string | null
@@ -435,6 +440,7 @@ export type Database = {
           returned_at: string | null
           serial_number: string
           shipped_at: string | null
+          shipping_address: Json | null
           shopify_customer_id: string | null
           shopify_line_item_id: string | null
           shopify_order_id: string
@@ -458,6 +464,8 @@ export type Database = {
           keep_requested?: boolean
           kept_at?: string | null
           metadata?: Json
+          order_number?: string | null
+          product_title?: string | null
           released_to_wms_at?: string | null
           rental_cycle_id?: string | null
           rental_end?: string | null
@@ -466,6 +474,7 @@ export type Database = {
           returned_at?: string | null
           serial_number: string
           shipped_at?: string | null
+          shipping_address?: Json | null
           shopify_customer_id?: string | null
           shopify_line_item_id?: string | null
           shopify_order_id: string
@@ -489,6 +498,8 @@ export type Database = {
           keep_requested?: boolean
           kept_at?: string | null
           metadata?: Json
+          order_number?: string | null
+          product_title?: string | null
           released_to_wms_at?: string | null
           rental_cycle_id?: string | null
           rental_end?: string | null
@@ -497,6 +508,7 @@ export type Database = {
           returned_at?: string | null
           serial_number?: string
           shipped_at?: string | null
+          shipping_address?: Json | null
           shopify_customer_id?: string | null
           shopify_line_item_id?: string | null
           shopify_order_id?: string
@@ -859,6 +871,8 @@ export type Database = {
           keep_requested: boolean
           kept_at: string | null
           metadata: Json
+          order_number: string | null
+          product_title: string | null
           released_to_wms_at: string | null
           rental_cycle_id: string | null
           rental_end: string | null
@@ -867,6 +881,7 @@ export type Database = {
           returned_at: string | null
           serial_number: string
           shipped_at: string | null
+          shipping_address: Json | null
           shopify_customer_id: string | null
           shopify_line_item_id: string | null
           shopify_order_id: string
@@ -945,6 +960,8 @@ export type Database = {
           keep_requested: boolean
           kept_at: string | null
           metadata: Json
+          order_number: string | null
+          product_title: string | null
           released_to_wms_at: string | null
           rental_cycle_id: string | null
           rental_end: string | null
@@ -953,6 +970,7 @@ export type Database = {
           returned_at: string | null
           serial_number: string
           shipped_at: string | null
+          shipping_address: Json | null
           shopify_customer_id: string | null
           shopify_line_item_id: string | null
           shopify_order_id: string
@@ -992,6 +1010,7 @@ export type Database = {
           keep_allowance: number
           keep_count: number
           reconciled_at: string | null
+          return_reminder_sent_at: string | null
           status: string
           tag_applied_at: string | null
           tag_removed_at: string | null
