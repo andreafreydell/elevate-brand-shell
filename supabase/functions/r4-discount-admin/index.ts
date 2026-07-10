@@ -58,6 +58,35 @@ Deno.serve(async (req) => {
   const url = new URL(req.url);
   const action = url.searchParams.get("action") || "create";
 
+  if (action === "diag") {
+    const permanent = "1iggem-wc.myshopify.com";
+    const envKeys = Object.keys(Deno.env.toObject()).filter((k) => k.toUpperCase().includes("SHOPIFY"));
+    const candidates: Record<string, string | undefined> = {
+      SHOPIFY_ACCESS_TOKEN: Deno.env.get("SHOPIFY_ACCESS_TOKEN"),
+      ONLINE_LITERAL: Deno.env.get("SHOPIFY_ONLINE_ACCESS_TOKEN:user:djoX1ZLa7yNi4l875ImBCPzeenJ3"),
+    };
+    // add any env key that looks like an online token
+    for (const k of envKeys) {
+      if (k.startsWith("SHOPIFY_ONLINE_ACCESS_TOKEN")) candidates[k] = Deno.env.get(k);
+    }
+    const results: Record<string, unknown> = {};
+    for (const [name, tok] of Object.entries(candidates)) {
+      if (!tok) { results[name] = "absent"; continue; }
+      const r = await fetch(`https://${permanent}/admin/api/${API_VERSION}/price_rules.json?limit=1`, {
+        headers: { "X-Shopify-Access-Token": tok },
+      });
+      results[name] = { present: true, len: tok.length, prefix: tok.slice(0, 6), status: r.status };
+    }
+    return jsonResponse({
+      shopify_env_keys: envKeys,
+      SHOPIFY_SHOP_DOMAIN: Deno.env.get("SHOPIFY_SHOP_DOMAIN") || null,
+      SHOPIFY_STORE_DOMAIN: Deno.env.get("SHOPIFY_STORE_DOMAIN") || null,
+      read_tests: results,
+    }, 200);
+  }
+
+
+
   // REST route: create a collection-scoped price rule + discount code.
   if (action === "rest-create") {
     const adminToken = await getAdminToken();
