@@ -1,6 +1,35 @@
 # GEA Rental Platform — Live Status & Outstanding Workstreams
 
-_Last updated: 2026-07-09 late evening (end of Round-2 build session)._
+_Last updated: 2026-07-10 (Round-3 automation complete)._
+
+## ✅ ROUND 3 (2026-07-10) — FULLY AUTOMATIC RETURNS PIPELINE, live & verified
+The warehouse works ONLY in the Shopify admin; the dashboard is visualization-only.
+Commit `Round 3: fully automatic returns pipeline` + Lovable deploys, all verified:
+- **Member declares on /returns** → gea-member-return records internally AND creates a
+  real **Shopify Return** on the order (createShopifyReturn; skips gracefully if lines
+  unfulfilled — Shopify requires fulfilled lines).
+- **Warehouse ships** (marks fulfilled in Shopify) → `fulfillments/create|update`
+  webhooks → shopify-fulfillment-event → reservations → shipped.
+- **Warehouse closes the return in Shopify** → `returns/close` webhook →
+  shopify-return-event → returned_serials → reconcile_member_return(force) (arrivals
+  restock; declared-but-missing become keeps) → **automatic keep-fee charging**
+  (chargeKeepFeesForCycle in _shared/fees.ts). gea-charge-keep-fee = staff retry only.
+- **Registered webhook set (verified live):** ORDERS_PAID→shopify-order-paid,
+  RETURNS_REQUEST→gea-create-return, RETURNS_CLOSE→shopify-return-event,
+  FULFILLMENTS_CREATE/UPDATE→shopify-fulfillment-event.
+- **Daily cron LIVE:** gea-open-cycle 9am ET (renewals + day-31 reminders).
+- **Dashboard**: manual reconcile removed; read-only + red Attention badge (member
+  declared a return that never arrived) + "Retry failed charges" on failed charges only.
+  Published to geagems.com.
+- **Shopify app scopes**: released gea-rental-backend-3 (+4 fulfillment scopes) and
+  approved the store grant — this also unblocks Round-2 membership auto-fulfill.
+- **Shopify GUI (done with founder):** taxes verified correct (add-on-top; NOTE: no
+  state tax registration yet — home state FL registration + accountant before real
+  revenue; Shopify Tax active, tracks nexus thresholds); shipping rate renamed **"Free
+  Concierge Shipping — Included ✿"** ($0); subscription-app confirmation email OFF;
+  Shopify native return emails moot (returns flow via our Return objects, label manual).
+
+_Previous session log below._
 
 Running handoff log: what's DONE, what's PENDING and on whom. Per-goal test runbook in
 `VERIFY.md`. **Round-1 dry run (2026-07-02, real client Kim) PASSED end-to-end.**
