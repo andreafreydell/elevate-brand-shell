@@ -1,19 +1,43 @@
 import { corsHeaders, jsonResponse } from "../_shared/cors.ts";
 
 const GUARD = "r4-gea-pilot-9f3k2m7q1x8v-temp";
-const SHOP_DOMAIN = Deno.env.get("SHOPIFY_STORE_DOMAIN") || Deno.env.get("SHOPIFY_SHOP_DOMAIN") || "1iggem-wc.myshopify.com";
-const ADMIN_TOKEN = Deno.env.get("SHOPIFY_ACCESS_TOKEN")!;
-const API_VERSION = "2025-07";
+const SHOP_DOMAIN = Deno.env.get("SHOPIFY_SHOP_DOMAIN") || Deno.env.get("SHOPIFY_STORE_DOMAIN") || "1iggem-wc.myshopify.com";
+const API_VERSION = Deno.env.get("SHOPIFY_ADMIN_API_VERSION") || "2026-01";
 const GRAPHQL_URL = `https://${SHOP_DOMAIN}/admin/api/${API_VERSION}/graphql.json`;
 
 const RENTAL_COLLECTION_GID = "gid://shopify/Collection/320845938788";
 
+async function getAdminToken(): Promise<string> {
+  const staticToken = Deno.env.get("SHOPIFY_ADMIN_ACCESS_TOKEN");
+  if (staticToken) return staticToken;
+  const clientId = Deno.env.get("SHOPIFY_OAUTH_CLIENT_ID");
+  const clientSecret = Deno.env.get("SHOPIFY_OAUTH_CLIENT_SECRET");
+  if (clientId && clientSecret) {
+    const res = await fetch(`https://${SHOP_DOMAIN}/admin/oauth/access_token`, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        grant_type: "client_credentials",
+        client_id: clientId,
+        client_secret: clientSecret,
+      }),
+    });
+    const json = await res.json().catch(() => ({}));
+    if (res.ok && json.access_token) return json.access_token as string;
+    throw new Error(`client_credentials mint failed: ${JSON.stringify(json)}`);
+  }
+  const fallback = Deno.env.get("SHOPIFY_ACCESS_TOKEN");
+  if (fallback) return fallback;
+  throw new Error("No Shopify admin credentials available.");
+}
+
 async function gql(query: string, variables: Record<string, unknown> = {}) {
+  const adminToken = await getAdminToken();
   const res = await fetch(GRAPHQL_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "X-Shopify-Access-Token": ADMIN_TOKEN,
+      "X-Shopify-Access-Token": adminToken,
     },
     body: JSON.stringify({ query, variables }),
   });
