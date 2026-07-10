@@ -46,7 +46,3 @@ verify_jwt = false
 # Shopify returns/close webhook -> auto-reconcile + auto keep-fee charge (HMAC-verified).
 [functions.shopify-return-event]
 verify_jwt = false
-
-# TEMP: R4 one-off to create the GEAPILOT collection-scoped discount via Admin API.
-[functions.r4-discount-admin]
-verify_jwt = false
