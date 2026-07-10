@@ -58,6 +58,74 @@ Deno.serve(async (req) => {
   const url = new URL(req.url);
   const action = url.searchParams.get("action") || "create";
 
+  // REST route: create a collection-scoped price rule + discount code.
+  if (action === "rest-create") {
+    const adminToken = await getAdminToken();
+    const restBase = `https://${SHOP_DOMAIN}/admin/api/${API_VERSION}`;
+    const headers = {
+      "Content-Type": "application/json",
+      "X-Shopify-Access-Token": adminToken,
+    };
+
+    const priceRuleBody = {
+      price_rule: {
+        title: "GEAPILOT",
+        target_type: "line_item",
+        target_selection: "entitled",
+        allocation_method: "each",
+        value_type: "percentage",
+        value: "-100.0",
+        customer_selection: "all",
+        entitled_collection_ids: [320845938788],
+        once_per_customer: true,
+        starts_at: new Date().toISOString(),
+        ends_at: null,
+      },
+    };
+
+    const prRes = await fetch(`${restBase}/price_rules.json`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify(priceRuleBody),
+    });
+    const prText = await prRes.text();
+    let prJson: any = null;
+    try { prJson = JSON.parse(prText); } catch { /* raw */ }
+    if (!prRes.ok || !prJson?.price_rule?.id) {
+      return jsonResponse({ step: "price_rule", status: prRes.status, body: prJson ?? prText }, 200);
+    }
+
+    const priceRuleId = prJson.price_rule.id;
+    const dcRes = await fetch(`${restBase}/price_rules/${priceRuleId}/discount_codes.json`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({ discount_code: { code: "GEAPILOT" } }),
+    });
+    const dcText = await dcRes.text();
+    let dcJson: any = null;
+    try { dcJson = JSON.parse(dcText); } catch { /* raw */ }
+
+    return jsonResponse({
+      step: "done",
+      price_rule: prJson.price_rule,
+      discount_code: { status: dcRes.status, body: dcJson ?? dcText },
+    }, 200);
+  }
+
+  if (action === "rest-read") {
+    const adminToken = await getAdminToken();
+    const restBase = `https://${SHOP_DOMAIN}/admin/api/${API_VERSION}`;
+    const id = url.searchParams.get("id");
+    const headers = { "X-Shopify-Access-Token": adminToken };
+    const prRes = await fetch(`${restBase}/price_rules/${id}.json`, { headers });
+    const prJson = await prRes.json().catch(() => null);
+    const dcRes = await fetch(`${restBase}/price_rules/${id}/discount_codes.json`, { headers });
+    const dcJson = await dcRes.json().catch(() => null);
+    return jsonResponse({ price_rule: prJson, discount_codes: dcJson }, 200);
+  }
+
+
+
   if (action === "create") {
     const mutation = `
       mutation CreateGeaPilot($basicCodeDiscount: DiscountCodeBasicInput!) {
