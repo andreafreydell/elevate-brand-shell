@@ -162,23 +162,10 @@ export default function RentalOps() {
     onError: (e: Error) => toast.error(e.message),
   });
 
-  const reconcile = useMutation({
-    mutationFn: async (returnId: string) => {
-      const { error } = await supabase.functions.invoke("gea-create-return", {
-        body: { return_id: returnId, force: true },
-      });
-      if (error) throw error;
-    },
-    onSuccess: () => {
-      toast.success("Return reconciled.");
-      qc.invalidateQueries({ queryKey: ["returns"] });
-      qc.invalidateQueries({ queryKey: ["kept"] });
-      qc.invalidateQueries({ queryKey: ["inv"] });
-    },
-    onError: (e: Error) => toast.error(e.message),
-  });
-
-  const chargeFees = useMutation({
+  // Returns reconciliation and keep-fee charging are now fully automatic
+  // (driven by the Shopify returns/close webhook). The only manual control
+  // that remains is a retry for charge rows that failed to capture.
+  const retryCharge = useMutation({
     mutationFn: async (cycleId: string) => {
       const { error } = await supabase.functions.invoke("gea-charge-keep-fee", {
         body: { cycle_id: cycleId },
@@ -186,12 +173,13 @@ export default function RentalOps() {
       if (error) throw error;
     },
     onSuccess: () => {
-      toast.success("Keep fees charged.");
+      toast.success("Retried failed charges.");
       qc.invalidateQueries({ queryKey: ["charges"] });
       qc.invalidateQueries({ queryKey: ["cycles"] });
     },
     onError: (e: Error) => toast.error(e.message),
   });
+
 
   return (
     <div className="min-h-screen bg-background px-6 md:px-10 py-8 max-w-[1200px] mx-auto">
