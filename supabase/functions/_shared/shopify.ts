@@ -731,7 +731,8 @@ export async function createShopifyReturn(
     const matched = new Set<string>();
     for (const node of result.data?.returnableFulfillments?.nodes || []) {
       for (const line of node.returnableFulfillmentLineItems?.nodes || []) {
-        const legacyId = line.fulfillmentLineItem?.lineItem?.legacyResourceId;
+        const gid = line.fulfillmentLineItem?.lineItem?.id || "";
+        const legacyId = gid.split("/").pop() || null;
         if (!legacyId || !line.fulfillmentLineItem?.id) continue;
         if (!wanted.has(String(legacyId)) || matched.has(String(legacyId))) continue;
         matched.add(String(legacyId));
