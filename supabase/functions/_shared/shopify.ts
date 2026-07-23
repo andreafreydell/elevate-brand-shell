@@ -702,7 +702,7 @@ export async function createShopifyReturn(
             returnableFulfillmentLineItems(first: 50) {
               nodes {
                 quantity
-                fulfillmentLineItem { id lineItem { legacyResourceId } }
+                fulfillmentLineItem { id lineItem { id } }
               }
             }
           }
@@ -718,7 +718,7 @@ export async function createShopifyReturn(
                 quantity: number;
                 fulfillmentLineItem?: {
                   id: string;
-                  lineItem?: { legacyResourceId?: string | null } | null;
+                  lineItem?: { id?: string | null } | null;
                 } | null;
               }>;
             };
@@ -727,11 +727,12 @@ export async function createShopifyReturn(
       };
     }>(query, { orderId: getOrderGid(orderId) });
 
-    const returnLineItems: Array<{ fulfillmentLineItemId: string; quantity: number; returnReason: string }> = [];
+    const returnLineItems: Array<{ fulfillmentLineItemId: string; quantity: number; returnReason: string; returnReasonNote: string }> = [];
     const matched = new Set<string>();
     for (const node of result.data?.returnableFulfillments?.nodes || []) {
       for (const line of node.returnableFulfillmentLineItems?.nodes || []) {
-        const legacyId = line.fulfillmentLineItem?.lineItem?.legacyResourceId;
+        const gid = line.fulfillmentLineItem?.lineItem?.id || "";
+        const legacyId = gid.split("/").pop() || null;
         if (!legacyId || !line.fulfillmentLineItem?.id) continue;
         if (!wanted.has(String(legacyId)) || matched.has(String(legacyId))) continue;
         matched.add(String(legacyId));
@@ -739,6 +740,7 @@ export async function createShopifyReturn(
           fulfillmentLineItemId: line.fulfillmentLineItem.id,
           quantity: Math.max(1, line.quantity),
           returnReason: "OTHER",
+          returnReasonNote: "Member portal return",
         });
       }
     }
