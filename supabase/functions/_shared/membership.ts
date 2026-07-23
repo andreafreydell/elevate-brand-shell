@@ -99,7 +99,9 @@ async function ensureAccountForOrder(
     });
 
     if (createError) {
-      // Race / already registered: fall back to looking the profile up by email.
+      // Race / already registered: look up the existing auth user by email and
+      // ensure a profile row exists (the handle_new_user trigger may not have
+      // been attached when the user was originally created, e.g. via magic link).
       const { data: existing } = await supabase
         .from("profiles")
         .select("id")
@@ -108,17 +110,29 @@ async function ensureAccountForOrder(
       if (existing?.id) {
         accountId = existing.id;
       } else {
-        return {
-          account_id: null,
-          created_user: false,
-          linked_customer: false,
-          error: `create_user_failed: ${createError.message}`,
-        };
+        // Fetch existing auth user id by email via admin API.
+        const { data: list } = await supabase.auth.admin.listUsers({ page: 1, perPage: 200 });
+        const found = list?.users?.find((u) => (u.email || "").toLowerCase() === email);
+        if (found?.id) {
+          accountId = found.id;
+          // Backfill missing profile row.
+          await supabase
+            .from("profiles")
+            .upsert({ id: found.id, email, full_name: fullName }, { onConflict: "id" });
+        } else {
+          return {
+            account_id: null,
+            created_user: false,
+            linked_customer: false,
+            error: `create_user_failed: ${createError.message}`,
+          };
+        }
       }
     } else if (created?.user?.id) {
       accountId = created.user.id;
       createdUser = true;
     }
+
 
     if (accountId) {
       await supabase.from("profiles").update({ shopify_customer_id: customerId }).eq("id", accountId);
