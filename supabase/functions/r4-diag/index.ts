@@ -1,7 +1,7 @@
 // Temp diagnostic: recent orders + webhook deliveries. Delete after use.
 Deno.serve(async (req) => {
-  const auth = req.headers.get("authorization")?.replace(/^Bearer\s+/i, "");
-  if (auth !== Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")) {
+  const auth = req.headers.get("x-diag-key");
+  if (auth !== "r4-diag-2026-072a3f9e-tempkey") {
     return new Response("forbidden", { status: 403 });
   }
   const url = new URL(req.url);
