@@ -727,7 +727,7 @@ export async function createShopifyReturn(
       };
     }>(query, { orderId: getOrderGid(orderId) });
 
-    const returnLineItems: Array<{ fulfillmentLineItemId: string; quantity: number; returnReason: string }> = [];
+    const returnLineItems: Array<{ fulfillmentLineItemId: string; quantity: number; returnReason: string; returnReasonNote: string }> = [];
     const matched = new Set<string>();
     for (const node of result.data?.returnableFulfillments?.nodes || []) {
       for (const line of node.returnableFulfillmentLineItems?.nodes || []) {
