@@ -718,7 +718,7 @@ export async function createShopifyReturn(
                 quantity: number;
                 fulfillmentLineItem?: {
                   id: string;
-                  lineItem?: { legacyResourceId?: string | null } | null;
+                  lineItem?: { id?: string | null } | null;
                 } | null;
               }>;
             };
