@@ -740,6 +740,7 @@ export async function createShopifyReturn(
           fulfillmentLineItemId: line.fulfillmentLineItem.id,
           quantity: Math.max(1, line.quantity),
           returnReason: "OTHER",
+          returnReasonNote: "Member portal return",
         });
       }
     }
