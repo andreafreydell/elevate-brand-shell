@@ -702,7 +702,7 @@ export async function createShopifyReturn(
             returnableFulfillmentLineItems(first: 50) {
               nodes {
                 quantity
-                fulfillmentLineItem { id lineItem { legacyResourceId } }
+                fulfillmentLineItem { id lineItem { id } }
               }
             }
           }
