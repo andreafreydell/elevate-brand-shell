@@ -1,7 +1,7 @@
 // Temp diagnostic: recent orders + webhook deliveries. Delete after use.
 Deno.serve(async (req) => {
-  const auth = req.headers.get("x-admin-secret");
-  if (auth !== Deno.env.get("WEBHOOK_ADMIN_TMP")) {
+  const auth = req.headers.get("authorization")?.replace(/^Bearer\s+/i, "");
+  if (auth !== Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")) {
     return new Response("forbidden", { status: 403 });
   }
   const url = new URL(req.url);
