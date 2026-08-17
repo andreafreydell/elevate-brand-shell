@@ -53,6 +53,7 @@ interface CustomerAuthContextValue {
   signUpWithEmail: (email: string, password: string, fullName: string) => Promise<{ error: string | null; needsConfirmation: boolean }>;
   signInWithEmail: (email: string, password: string) => Promise<{ error: string | null }>;
   signInWithGoogle: () => Promise<{ error: string | null }>;
+  resetPassword: (email: string) => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;
   refreshProfile: () => Promise<void>;
   // Wishlist / Occasions
@@ -171,6 +172,16 @@ export const CustomerAuthProvider = ({ children }: { children: ReactNode }) => {
     // result.redirected → browser is navigating to Google; otherwise the session
     // is already set and onAuthStateChange will pick it up.
     return { error: null };
+  }, []);
+
+  // Members' accounts are auto-created at purchase with no password, so this is
+  // the only self-serve way back in. The link signs them in and lands on
+  // /welcome, which already has the set-password form.
+  const resetPassword: CustomerAuthContextValue["resetPassword"] = useCallback(async (email) => {
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/welcome`,
+    });
+    return { error: error ? error.message : null };
   }, []);
 
   const signOut = useCallback(async () => {
@@ -300,6 +311,7 @@ export const CustomerAuthProvider = ({ children }: { children: ReactNode }) => {
         signUpWithEmail,
         signInWithEmail,
         signInWithGoogle,
+        resetPassword,
         signOut,
         refreshProfile,
         wishlist,

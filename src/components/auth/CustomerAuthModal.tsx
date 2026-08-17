@@ -30,6 +30,7 @@ export const CustomerAuthModal = () => {
     signUpWithEmail,
     signInWithEmail,
     signInWithGoogle,
+    resetPassword,
   } = useCustomerAuth();
   const { open, mode, intent } = authModal;
 
@@ -38,6 +39,7 @@ export const CustomerAuthModal = () => {
   const [fullName, setFullName] = useState("");
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
+  const [resetLoading, setResetLoading] = useState(false);
 
   const isSignup = mode === "signup";
 
@@ -81,6 +83,22 @@ export const CustomerAuthModal = () => {
       toast.success("Signed in.", { position: "top-center" });
       closeAuthModal();
     }
+  };
+
+  const handleForgotPassword = async () => {
+    if (!email) {
+      toast.error("Enter your email above first, then tap “Forgot password?” again.", { position: "top-center" });
+      return;
+    }
+    setResetLoading(true);
+    const { error } = await resetPassword(email);
+    setResetLoading(false);
+    if (error) {
+      toast.error(error);
+      return;
+    }
+    toast.success("Check your email — your sign-in link is on its way ✿", { position: "top-center" });
+    closeAuthModal();
   };
 
   const handleGoogle = async () => {
@@ -159,7 +177,19 @@ export const CustomerAuthModal = () => {
             />
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="ca-password" className="text-[11px] tracking-[0.15em] uppercase">Password</Label>
+            <div className="flex items-baseline justify-between">
+              <Label htmlFor="ca-password" className="text-[11px] tracking-[0.15em] uppercase">Password</Label>
+              {!isSignup && (
+                <button
+                  type="button"
+                  onClick={handleForgotPassword}
+                  disabled={resetLoading}
+                  className="text-[11px] font-sans text-muted-foreground underline underline-offset-4 transition-colors hover:text-foreground disabled:opacity-60"
+                >
+                  {resetLoading ? "Sending…" : "Forgot password?"}
+                </button>
+              )}
+            </div>
             <Input
               id="ca-password"
               type="password"
