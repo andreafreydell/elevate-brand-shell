@@ -32,7 +32,7 @@ the MVP backend — marked (existing).
 
 1. **"Rental" collection** — add every rentable product/variant. This is what the
    member discount applies 100%-off to. Keep it accurate; only items in here go free.
-2. **"Extra Rental Item" product — price $6.00** — a single simple product, NOT in
+2. **"Extra Rental Item" product — price $15.00** — a single simple product, NOT in
    the Rental collection (so the 100%-off discount never zeroes it). The member
    selection page adds this × the number of pieces beyond the member's tier count.
    Record its variant id for the frontend (`VITE_EXTRA_RENTAL_ITEM_VARIANT_ID`).
@@ -65,7 +65,7 @@ may be keyed by selling-plan id OR variant id (numeric or gid). Using the varian
 ```
 
 **Other captured ids (for env / frontend):**
-- `VITE_EXTRA_RENTAL_ITEM_VARIANT_ID` = `48643543760996` (Extra Rental Item, $6)
+- `VITE_EXTRA_RENTAL_ITEM_VARIANT_ID` = `48643543760996` (Extra Rental Item, $15 — verified live 2026-08-04)
 - Gift item variants (to add to the Membership Gift collection): Ear Lobe Patches
   `48466377703524`, Resin Earring Lifter Backs `48466377736292`.
 
