@@ -770,7 +770,11 @@ export async function createShopifyReturn(
         };
       };
     }>(mutation, {
-      returnInput: { orderId: getOrderGid(orderId), returnLineItems },
+      // notifyCustomer defaults to FALSE for API-created returns — without it
+      // Shopify never sends the store's return-instructions email, even though
+      // the notification template is configured (the "/returns promises an
+      // email that never arrives" bug).
+      returnInput: { orderId: getOrderGid(orderId), returnLineItems, notifyCustomer: true },
     });
 
     const userErrors = createResult.data?.returnCreate?.userErrors || [];
